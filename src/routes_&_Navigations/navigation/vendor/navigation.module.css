@@ -1,0 +1,75 @@
+.icon_green {
+  color: #65c23f;
+}
+
+.nav_links {
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding-bottom: 1rem;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.seller_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+.nav_links .seller_info h1 {
+  font-size: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+.seller_info button {
+  font-size: 1rem;
+  border: none;
+  display: block;
+  background-color: inherit;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li a {
+  color: #353535;
+  text-decoration: none;
+  padding: 0 2rem;
+  display: block;
+}
+ul li a:hover {
+  color: #353535;
+}
+li {
+  transition: all 0.1s;
+  padding: 0.8rem 0;
+}
+
+li:hover {
+  background-color: #e8f6e2;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 1220px) {
+  .seller_info button {
+    display: none;
+  }
+  .nav_links {
+    height: auto;
+    overflow-y: auto;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .nav_links .seller_info h1 {
+    font-size: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+  }
+}

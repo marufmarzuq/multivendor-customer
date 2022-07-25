@@ -1,0 +1,126 @@
+.header_title {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.dashboard_card {
+  border-radius: 8px;
+  height: 140px;
+  position: relative;
+  margin-bottom: 2rem;
+  color: #fff;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  padding: 1rem 0 0 1rem;
+  align-items: flex-start;
+}
+
+.dashboard_card h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  z-index: 2;
+}
+
+.dashboard_card p {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  z-index: 2;
+}
+.dashboard_card img {
+  width: 100%;
+  border-radius: 0 0 8px 8px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+.dashboard_card_1 {
+  background-image: linear-gradient(90deg, #6791d9, #4eb9ee);
+
+  /* background-color: red; */
+}
+
+.dashboard_card_2 {
+  background-image: linear-gradient(90deg, #b854a6, #e24a8c);
+}
+
+.dashboard_card_3 {
+  background-image: linear-gradient(90deg, #5346ba, #7f5bbf);
+}
+
+.orders {
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.verified {
+  background-color: #fff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.verified img {
+  width: 50%;
+}
+
+.orders_part {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(114, 114, 114, 0.094);
+  border-bottom: 1px solid rgba(114, 114, 114, 0.094);
+}
+
+.orders_part p {
+  font-size: 0.9rem;
+
+  opacity: 0.9;
+}
+
+.orders h6 {
+  font-size: 1.2rem;
+}
+
+.products {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 1rem 1.5rem 2rem 1.5rem;
+}
+
+.products h6 {
+  font-size: 1.1rem;
+}
+
+.products h5 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.shop {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.shop h6 {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+.payment {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.payment h6 {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+@media only screen and (min-width: 768px) {
+  .dashboard_card {
+    margin-bottom: 0;
+  }
+}
