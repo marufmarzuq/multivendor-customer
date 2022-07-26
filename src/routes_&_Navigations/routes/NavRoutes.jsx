@@ -8,6 +8,7 @@ import CustomerHome from "../../components/customer/CustomerHome";
 import NotFound from "../../pages/NotFound";
 import Login from "../../pages/vendor/Login";
 import Layout from "../../Layout/vendor/Layout";
+import PurchaseHistory from "../../pages/vendor/PurchaseHistory";
 
 const NavRoutes = () => {
   // let navigate = useNavigate();
@@ -30,7 +31,7 @@ const NavRoutes = () => {
         >
           {/*all route for vendor will place here */}
           <Route path="" element={<Dashboard />} />
-          <Route path="purchase-history" element={<AddProduct />} />
+          <Route path="purchase-history" element={<PurchaseHistory />} />
         </Route>
         {/* route for vendor ends here */}
 
