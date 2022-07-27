@@ -7,11 +7,25 @@
   padding-bottom: 50px;
 }
 
+hr {
+  opacity: 0.1;
+}
+
+.hide {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
   .background {
     background-color: white;
     margin-top: 12px !important;
     margin-left: 10px;
     border-radius: 5px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .hide {
+    display: block;
   }
 }

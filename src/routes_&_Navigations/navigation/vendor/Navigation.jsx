@@ -21,12 +21,20 @@ import { RiVipDiamondLine } from "react-icons/ri";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { BsArrowCounterclockwise, BsCurrencyDollar } from "react-icons/bs";
 import { FaTimes, FaMoneyBillWave } from "react-icons/fa";
+import { AiOutlineDown } from "react-icons/ai";
 import { BiLogOutCircle, BiConversation } from "react-icons/bi";
+import { useState, useEffect } from "react";
 
 const Navigation = ({ toggleF, toggle }) => {
   const logOut = () => {
     toggleF(!toggle);
     console.log("signout ");
+  };
+
+  const [prodCollap, setProdColl] = useState(false);
+
+  const collapse = (name) => {
+    if (name == "products") setProdColl(!prodCollap);
   };
 
   const closeNav = () => {
@@ -88,23 +96,50 @@ const Navigation = ({ toggleF, toggle }) => {
               <span className="ps-2">Wishlist</span>
             </Link>
           </li>
-          <li>
-            <Link onClick={() => closeNav()} to="">
-              <RiVipDiamondLine className={navigationStyle.icon_green} />
-              <span className="ps-2">Products</span>
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => closeNav()} to="">
-              <AiOutlineArrowUp className={navigationStyle.icon_green} />
-              <span className="ps-2">Product Bulk Upload</span>
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => closeNav()} to="">
-              <RiVipDiamondLine className={navigationStyle.icon_green} />
-              <span className="ps-2">Digital Products</span>
-            </Link>
+          <li onClick={() => collapse("products")}>
+            {/* <Link onClick={() => closeNav()} to=""> */}
+            <RiVipDiamondLine className={navigationStyle.icon_green} />
+            <span className="ps-2 ">Products</span>
+            <span className={navigationStyle.right}>
+              <AiOutlineDown className={`${navigationStyle.icon_green}`} />
+            </span>
+            <div
+              className={
+                prodCollap ? navigationStyle.open : navigationStyle.close
+              }
+            >
+              <li className={`${navigationStyle.inside_nav} mt-2`}>
+                <Link onClick={() => closeNav()} to="purchase-history">
+                  <AiFillFileAdd className={navigationStyle.icon_green} />
+                  <span className="ps-2">Purchase History</span>
+                </Link>
+              </li>
+              <li className={navigationStyle.inside_nav}>
+                <Link onClick={() => closeNav()} to="">
+                  <RiVipDiamondLine className={navigationStyle.icon_green} />
+                  <span className="ps-2">Products</span>
+                </Link>
+              </li>
+              <li className={navigationStyle.inside_nav}>
+                <Link onClick={() => closeNav()} to="">
+                  <AiOutlineArrowUp className={navigationStyle.icon_green} />
+                  <span className="ps-2">Product Bulk Upload</span>
+                </Link>
+              </li>
+              <li className={navigationStyle.inside_nav}>
+                <Link onClick={() => closeNav()} to="">
+                  <RiVipDiamondLine className={navigationStyle.icon_green} />
+                  <span className="ps-2">Digital Products</span>
+                </Link>
+              </li>
+              <li className={navigationStyle.inside_nav}>
+                <Link onClick={() => closeNav()} to="">
+                  <IoIosStarHalf className={navigationStyle.icon_green} />
+                  <span className="ps-2">Product Reviews</span>
+                </Link>
+              </li>
+            </div>
+            {/* </Link> */}
           </li>
           <li>
             <Link onClick={() => closeNav()} to="">
@@ -122,12 +157,6 @@ const Navigation = ({ toggleF, toggle }) => {
             <Link onClick={() => closeNav()} to="">
               <BsArrowCounterclockwise className={navigationStyle.icon_green} />
               <span className="ps-2">Received Refund Request</span>
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => closeNav()} to="">
-              <IoIosStarHalf className={navigationStyle.icon_green} />
-              <span className="ps-2">Product Reviews</span>
             </Link>
           </li>
           <li>

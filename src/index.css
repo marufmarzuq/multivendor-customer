@@ -26,3 +26,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* bootstrap accordion edited */
+.accordion-item {
+  border: none !important;
+}
