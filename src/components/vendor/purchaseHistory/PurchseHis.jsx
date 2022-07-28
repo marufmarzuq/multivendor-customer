@@ -64,7 +64,10 @@ const PurchseHis = () => {
               <button className={purchaseStyle.del}>
                 <RiDeleteBin2Line />
               </button>
-              <button className={purchaseStyle.preview}>
+              <button
+                onClick={() => setShow(!show)}
+                className={purchaseStyle.preview}
+              >
                 <BsEyeFill />
               </button>
               <button className={purchaseStyle.invoice}>
@@ -95,7 +98,10 @@ const PurchseHis = () => {
               <button className={purchaseStyle.del}>
                 <RiDeleteBin2Line />
               </button>
-              <button className={purchaseStyle.preview}>
+              <button
+                onClick={() => setShow(!show)}
+                className={purchaseStyle.preview}
+              >
                 <BsEyeFill />
               </button>
               <button className={purchaseStyle.invoice}>
