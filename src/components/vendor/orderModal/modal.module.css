@@ -1,19 +1,34 @@
-.on {
-  transform: translateY(0);
-  transition: all 0.5s;
+.orderModalWidth {
+  min-width: 80vw !important;
 }
 
-.off {
-  transform: translateY(-500px);
-  transition: all 0.5s;
+.orderSummary {
+  padding: 15px 0;
+  border: 1px solid rgba(128, 128, 128, 0.196);
+  border-radius: 8px;
 }
-body {
-  position: relative;
-}
-.modalBody {
-  background-color: rgb(245, 152, 152);
-  position: absolute;
-  left: 0;
 
-  z-index: 20 !important;
+.orderSummary h6 {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.196);
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+  font-weight: 600;
+}
+
+.orderBody {
+  padding-right: 10px;
+}
+
+.orderBody h6,
+.orderBody p {
+  border: none;
+  font-size: 0.8rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .orderBody h6,
+  .orderBody p {
+    font-size: 0.9rem;
+    border: none;
+  }
 }

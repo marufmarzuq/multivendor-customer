@@ -5,10 +5,10 @@ import { AiOutlineEye } from "react-icons/ai";
 import { BsArrowDown, BsDownload, BsEyeFill } from "react-icons/bs";
 
 import { useState } from "react";
-import Modal from "../orderModal/Modal";
+import OrderModal from "../orderModal/OrderModal";
 
 const PurchseHis = () => {
-  const [modal, setModal] = useState(false);
+  const [show, setShow] = useState(false);
   return (
     <Fragment>
       <div className={`${purchaseStyle.background}`}>
@@ -45,12 +45,7 @@ const PurchseHis = () => {
 
         <section>
           <div className="row px-0 mx-0 ps-3 mt-4 pt-2">
-            <div
-              className="col-4 col-lg-2"
-              onClick={() =>
-                alert("Details will appear in modal... Coming soon")
-              }
-            >
+            <div className="col-4 col-lg-2" onClick={() => setShow(!show)}>
               <p className={purchaseStyle.code}>20210518-44545</p>
             </div>
             <div className="col-4 col-lg-2">
@@ -81,12 +76,7 @@ const PurchseHis = () => {
 
         <section>
           <div className="row px-0 mx-0 ps-3 mt-4 pt-2">
-            <div
-              className="col-4 col-lg-2"
-              onClick={() =>
-                alert("Details will appear in modal... Coming soon")
-              }
-            >
+            <div className="col-4 col-lg-2" onClick={() => setShow(!show)}>
               <p className={purchaseStyle.code}>20210518-44545</p>
             </div>
             <div className="col-4 col-lg-2">
@@ -114,6 +104,8 @@ const PurchseHis = () => {
             </div>
           </div>
         </section>
+
+        <OrderModal show={show} setShow={setShow} />
       </div>
     </Fragment>
   );
