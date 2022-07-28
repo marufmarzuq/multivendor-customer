@@ -17,9 +17,15 @@
 
 .orderBody {
   padding-right: 10px;
+  padding-top: 1rem;
 }
 
-.orderBody h6,
+.orderBody h6 {
+  border: none;
+  font-size: 0.8rem;
+  padding-bottom: 0.8rem;
+}
+
 .orderBody p {
   border: none;
   font-size: 0.8rem;
