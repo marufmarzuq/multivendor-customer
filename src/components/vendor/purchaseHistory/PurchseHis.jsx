@@ -48,16 +48,16 @@ const PurchseHis = () => {
             <div className="col-4 col-lg-2" onClick={() => setShow(!show)}>
               <p className={purchaseStyle.code}>20210518-44545</p>
             </div>
-            <div className="col-4 col-lg-2">
+            <div className={`col-4 col-lg-2 ${purchaseStyle.hide}`}>
               <p>18-05-2021 </p>
             </div>
             <div className="col-4 col-lg-2">
               <p> ৳1,000.000 </p>
             </div>
-            <div className="col-4 col-lg-2">
+            <div className={`col-4 col-lg-2 ${purchaseStyle.hide}`}>
               <span> On delivery</span>
             </div>
-            <div className="col-4 col-lg-2">
+            <div className={`col-4 col-lg-2 ${purchaseStyle.hide}`}>
               <span className={purchaseStyle.paid}>Paid</span>
             </div>
             <div className="col-4 col-lg-2">
@@ -82,16 +82,16 @@ const PurchseHis = () => {
             <div className="col-4 col-lg-2" onClick={() => setShow(!show)}>
               <p className={purchaseStyle.code}>20210518-44545</p>
             </div>
-            <div className="col-4 col-lg-2">
+            <div className={`col-4 col-lg-2 ${purchaseStyle.hide}`}>
               <p>18-05-2021 </p>
             </div>
             <div className="col-4 col-lg-2">
               <p> ৳1,2000.000 </p>
             </div>
-            <div className="col-4 col-lg-2">
+            <div className={`col-4 col-lg-2 ${purchaseStyle.hide}`}>
               <span>Pending</span>
             </div>
-            <div className="col-4 col-lg-2">
+            <div className={`col-4 col-lg-2 ${purchaseStyle.hide}`}>
               <span className={purchaseStyle.unpaid}>UnPaid</span>
             </div>
             <div className="col-4 col-lg-2">

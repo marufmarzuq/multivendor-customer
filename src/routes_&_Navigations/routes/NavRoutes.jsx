@@ -9,6 +9,7 @@ import NotFound from "../../pages/NotFound";
 import Login from "../../pages/vendor/Login";
 import Layout from "../../Layout/vendor/Layout";
 import PurchaseHistory from "../../pages/vendor/PurchaseHistory";
+import SentRefundReq from "../../pages/vendor/SentRefundReq";
 
 const NavRoutes = () => {
   // let navigate = useNavigate();
@@ -32,6 +33,7 @@ const NavRoutes = () => {
           {/*all route for vendor will place here */}
           <Route path="" element={<Dashboard />} />
           <Route path="purchase-history" element={<PurchaseHistory />} />
+          <Route path="sent-refund-request" element={<SentRefundReq />} />
         </Route>
         {/* route for vendor ends here */}
 
