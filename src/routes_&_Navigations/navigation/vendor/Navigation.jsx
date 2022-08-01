@@ -85,7 +85,7 @@ const Navigation = ({ toggleF, toggle }) => {
             </Link>
           </li>
           <li>
-            <Link onClick={() => closeNav()} to="">
+            <Link onClick={() => closeNav()} to="wishlist">
               <MdOutlineFavoriteBorder className={navigationStyle.icon_green} />
               <span className="ps-2">Wishlist</span>
             </Link>
