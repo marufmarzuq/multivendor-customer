@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import DashboardCom from "../../components/vendor/dashboard_components/Dashboard_Com";
+import DashboardCom from "./components/DashboardCom";
+
 const Dashboard = () => {
   return (
     <Fragment>

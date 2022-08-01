@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
-import PurchseHis from "../../components/vendor/purchaseHistory/PurchseHis";
+import PurchaseHis from "./components/purchaseHis/PurchaseHis";
 
 const PurchaseHistory = () => {
   return (
     <Fragment>
-      <PurchseHis />
+      <PurchaseHis />
     </Fragment>
   );
 };
