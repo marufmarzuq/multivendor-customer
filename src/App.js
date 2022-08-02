@@ -7,6 +7,7 @@ import Router from "./setup/router";
 import AppProviders from "./setup/providers";
 
 function App() {
+// test commit
   return (
     <AppProviders>
       <Router />
