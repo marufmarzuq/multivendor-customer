@@ -11,7 +11,6 @@ import Layout from "./layouts/seller/Layout";
 import PrivateRoute from "./routeModels/PrivateRoute";
 
 const Router = () => {
-  // let navigate = useNavigate();
   return (
     <Fragment>
       <Routes>
