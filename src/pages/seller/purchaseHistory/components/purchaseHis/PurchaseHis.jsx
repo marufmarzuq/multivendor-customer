@@ -7,7 +7,7 @@ import { BsArrowDown, BsDownload, BsEyeFill } from "react-icons/bs";
 import { useState } from "react";
 import OrderModal from "../orderModal/OrderModal";
 
-const PurchseHis = () => {
+const PurchaseHis = () => {
   const [show, setShow] = useState(false);
   return (
     <Fragment>
@@ -117,4 +117,4 @@ const PurchseHis = () => {
   );
 };
 
-export default PurchseHis;
+export default PurchaseHis;

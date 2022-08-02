@@ -1,11 +1,9 @@
 import React, { Fragment } from "react";
 import dashboardStyle from "./dashboard.module.css";
-import wave1 from "../../../assets/vendor/images/wave_1.svg";
-import wave2 from "../../../assets/vendor/images/wave_2.svg";
-import wave3 from "../../../assets/vendor/images/wave_3.svg";
-import verified from "../../../assets/vendor/images/verified.png";
 
-const Dashboard_Com = () => {
+import { wave1, wave2, wave3, verified } from "../../../../assets/index";
+
+const DashboardCom = () => {
   return (
     <Fragment>
       <div className="px-4 py-2">
@@ -168,4 +166,4 @@ const Dashboard_Com = () => {
   );
 };
 
-export default Dashboard_Com;
+export default DashboardCom;

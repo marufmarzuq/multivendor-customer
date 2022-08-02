@@ -9,7 +9,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineUser,
 } from "react-icons/ai";
-import Navigation from "../../routes_&_Navigations/navigation/vendor/Navigation";
+import Navigation from "../../../../navigation/seller/Navigation";
 
 const Layout = () => {
   const [toggle, setToggle] = useState(false);

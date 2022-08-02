@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import SentRefund from "../../components/vendor/sentRefundReq/SentRefund";
+import SentRefund from "./components/SentRefund";
 
 const SentRefundReq = () => {
   return (
