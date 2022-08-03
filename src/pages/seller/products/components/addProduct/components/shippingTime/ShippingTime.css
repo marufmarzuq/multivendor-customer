@@ -1,0 +1,17 @@
+.shipping-input-container {
+  display: grid;
+  grid-template-columns: auto 50px;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  color: #666;
+}
+
+.shipping-input-container input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  border-radius: 3px;
+  font-size: 16px;
+  color: #555;
+}
