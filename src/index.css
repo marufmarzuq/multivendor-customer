@@ -31,3 +31,35 @@ code {
 .accordion-item {
   border: none !important;
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+/* cofig css */
+/* .page-title {
+  text-align: center;
+  font-size: 24px;
+  color: #585858;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.pos-activation-widget {
+  width: 100%;
+  max-width: 350px;
+  background-color: white;
+  border-radius: 3px;
+}
+h3.confi-widget-title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+.confi-widget-body {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
