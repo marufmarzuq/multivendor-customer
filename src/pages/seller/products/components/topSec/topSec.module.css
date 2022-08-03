@@ -1,0 +1,45 @@
+.addBtnParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10rem;
+}
+.addBtnParent a {
+  text-decoration: none;
+}
+.addBtn {
+  /* background-color: green; */
+  width: 12rem;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 3px;
+  transition: all 0.3s;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.addBtn:hover {
+  box-shadow: 1px 5px 15px rgba(128, 128, 128, 0.319);
+}
+
+.icon {
+  font-size: 2rem;
+  color: black;
+}
+
+.addBtn h6 {
+  color: #65c23f;
+}
+@media only screen and (min-width: 768px) {
+  .addBtnParent {
+    height: 15rem;
+  }
+
+  .addBtn {
+    width: 16rem;
+    height: 8rem;
+  }
+}

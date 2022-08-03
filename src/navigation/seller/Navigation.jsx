@@ -110,7 +110,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   </Link>
                 </li>
                 <li className={navigationStyle.inside_nav}>
-                  <Link onClick={() => closeNav()} to="">
+                  <Link onClick={() => closeNav()} to="products">
                     <RiVipDiamondLine className={navigationStyle.icon_green} />
                     <span className="ps-2">Products</span>
                   </Link>
