@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import dashboardStyle from "./dashboard.module.css";
 
 import { wave1, wave2, wave3, verified } from "../../../../assets/index";
+import { Link } from "react-router-dom";
 
 const DashboardCom = () => {
   return (
@@ -137,7 +138,9 @@ const DashboardCom = () => {
                 </div>
 
                 <div className="text-center mt-4">
-                  <button className="btn btn-primary">Add New Product</button>
+                  <Link to="products/add-products" className="btn btn-primary">
+                    Add New Product
+                  </Link>
                 </div>
               </div>
             </div>

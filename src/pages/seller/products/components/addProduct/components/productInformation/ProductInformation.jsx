@@ -12,7 +12,7 @@ const options = [
 
 const ProductInformation = () => {
   const [tags, setTags] = useState(["example tag"]);
-  console.log(tags);
+
   return (
     <div className="add-product-single-widget">
       <div className="widget-title">Product Information</div>

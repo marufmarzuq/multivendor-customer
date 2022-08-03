@@ -180,12 +180,12 @@ const Navigation = ({ toggleF, toggle }) => {
               <span className="ps-2">My Wallet</span>
             </Link>
           </li>{" "}
-          <li>
+          {/* <li>
             <Link onClick={() => closeNav()} to="">
               <TiSupport className={navigationStyle.icon_green} />
               <span className="ps-2">Support Ticket</span>
             </Link>
-          </li>{" "}
+          </li>{" "} */}
           <li>
             <Link onClick={() => closeNav()} to="">
               <AiOutlineUser className={navigationStyle.icon_green} />

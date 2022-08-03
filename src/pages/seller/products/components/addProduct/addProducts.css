@@ -1,0 +1,24 @@
+.add-product-widget-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 15px;
+}
+.add-product-single-widget {
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #ddd;
+}
+.widget-title {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-bottom: 1px solid #edeef4;
+}
+.widget-content-container {
+  padding: 15px 20px 20px;
+}
+.add-product-widget-container > div {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

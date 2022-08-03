@@ -3,9 +3,9 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import CustomerHome from "../../pages/customer/customerHome/CustomerHome";
 import Login from "../../pages/Login";
 import NotFound from "../../pages/NotFound";
-import AddProducts from "../../pages/seller/addProduct/AddProducts";
 
 import Dashboard from "../../pages/seller/dashboard/Dashboard";
+import AddProducts from "../../pages/seller/products/components/addProduct/AddProducts";
 import Products from "../../pages/seller/products/Products";
 import PurchaseHistory from "../../pages/seller/purchaseHistory/PurchaseHistory";
 import SentRefundReq from "../../pages/seller/sentRefund/SentRefundReq";
