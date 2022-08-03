@@ -1,0 +1,9 @@
+.add-product-toggles-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  align-items: center;
+}
+.add-product-toggles-container span {
+  font-size: 14px;
+}
