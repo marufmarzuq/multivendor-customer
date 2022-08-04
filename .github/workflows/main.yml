@@ -17,3 +17,9 @@ jobs:
         server: ftp.markutos.com
         username: nitu@staging.markutos.com
         password: z!aR5%5&lpkD
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/public/**
+          **/src/**
