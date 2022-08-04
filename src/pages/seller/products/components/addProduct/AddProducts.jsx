@@ -14,7 +14,8 @@ import TodaysDeal from "./components/todaysDeal/TodaysDeal";
 import ShippingTime from "./components/shippingTime/ShippingTime";
 import PdfSpecification from "./components/pdfSpecification/PdfSpecification";
 import "./addProducts.css";
-
+import LowStockQuantity from "./components/lowStockQuantity/LowStockQuantity";
+import ShippingConfiguration from "./components/shippingConfiguration/ShippingConfiguration";
 const AddProducts = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -37,6 +38,8 @@ const AddProducts = () => {
           <ProductSEO />
         </div>
         <div className="">
+          <ShippingConfiguration />
+          <LowStockQuantity />
           <StockVisibility />
           <CashOnDelivery />
           <Featured />

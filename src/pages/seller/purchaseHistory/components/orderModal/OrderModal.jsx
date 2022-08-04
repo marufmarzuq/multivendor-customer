@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 import modalStyle from "./modal.module.css";
+import Timeline from "../timeline/Timeline";
 
 const OrderModal = ({ show, setShow }) => {
   return (
@@ -24,6 +25,7 @@ const OrderModal = ({ show, setShow }) => {
         </Modal.Header>
         <Modal.Body>
           <section>
+            <Timeline />
             <div className={modalStyle.orderSummary}>
               <h6>Order Summary</h6>
 

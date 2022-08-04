@@ -54,7 +54,8 @@ const SentRefund = () => {
               <p>৳6,000</p>
             </div>
             <div className="col-4 col-lg-2">
-              <span className={sentRefundStyle.paid}>Paid</span>
+              <span className={`${sentRefundStyle.paid}`}>Paid</span>
+              <span className={sentRefundStyle.unpaid}>Rejected</span>
             </div>
           </div>
         </section>
@@ -78,6 +79,7 @@ const SentRefund = () => {
             </div>
             <div className="col-4 col-lg-2">
               <span className={sentRefundStyle.unpaid}>UnPaid</span>
+              <span className={sentRefundStyle.unpaid}>Rjected</span>
             </div>
           </div>
         </section>

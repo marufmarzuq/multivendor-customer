@@ -1,7 +1,11 @@
 import React from "react";
+import { useState } from "react";
 import "./ProductImages.css";
+import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
 
 const ProductImages = () => {
+  const [show, setShow] = useState(false);
+  console.log(show);
   return (
     <div className="add-product-single-widget">
       <div className="widget-title">Product Images</div>
@@ -13,7 +17,7 @@ const ProductImages = () => {
               <span className="helper-text">(600x600)</span>
             </div>
             <div>
-              <div className="custom-browse">
+              <div onClick={() => setShow(!show)} className="custom-browse">
                 <div>Browse</div>
                 <div>Choose File</div>
               </div>
@@ -29,7 +33,7 @@ const ProductImages = () => {
               <span className="helper-text">((300x300)</span>
             </div>
             <div>
-              <div className="custom-browse">
+              <div onClick={() => setShow(!show)} className="custom-browse">
                 <div>Browse</div>
                 <div>Choose File</div>
               </div>
@@ -39,6 +43,7 @@ const ProductImages = () => {
                 we had to crop some edge in different devices to make it
                 responsive.
               </span>
+              <UploadFilesModal show={show} setShow={setShow} />
             </div>
           </div>
         </div>

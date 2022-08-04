@@ -7,7 +7,7 @@ const ShippingTime = () => {
       <div className="widget-title">Estimate Shipping Time</div>
       <div className="widget-content-container">
         <div className="shipping-input-container">
-          <input type="text" placeholder="Enter Shipping Time" />
+          <input type="number" min={1} placeholder="Enter Shipping Time" />
           <span>Days</span>
         </div>
       </div>

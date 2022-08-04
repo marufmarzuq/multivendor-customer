@@ -34,6 +34,7 @@ p {
   padding: 2px 4px;
   border-radius: 3px;
   font-size: 0.9rem;
+  margin-right: 0.2rem;
 }
 
 .paid {
@@ -42,6 +43,7 @@ p {
   background-color: #65c23f;
   color: #fff;
   font-size: 0.9rem;
+  margin-right: 0.2rem;
 }
 /* .del,
 .preview,

@@ -37,7 +37,7 @@ const WishlistCom = () => {
               <p className={wishlistStyle.code}>20210518-5869</p>
             </div>
             <div className={`col-4 col-lg-3 ${wishlistStyle.hide}`}>
-              <p>18-05-2022 </p>
+              <p>18-05-2022 ----- 09:51 AM </p>
             </div>
             <div className="col-4 col-lg-3">
               <p> 15 </p>
@@ -57,7 +57,7 @@ const WishlistCom = () => {
               <p className={wishlistStyle.code}>20210518-44545</p>
             </div>
             <div className={`col-4 col-lg-3 ${wishlistStyle.hide}`}>
-              <p>18-05-2022 </p>
+              <p>18-05-2022 ----- 09:51 AM </p>
             </div>
             <div className="col-4 col-lg-3">
               <p> 31 </p>

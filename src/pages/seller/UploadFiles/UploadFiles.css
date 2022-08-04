@@ -1,0 +1,129 @@
+.drag-upload {
+  min-height: 66vh;
+  margin-bottom: 1rem;
+  border: 5px double rgba(113, 112, 112, 0.095);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(128, 128, 128, 0.053);
+}
+
+.upload-files-header {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+.upload-files-title {
+  font-size: 18px;
+  color: #444;
+  font-weight: 500;
+}
+.ufh-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+input.upload-files-search {
+  padding: 10px 20px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  font-size: 15px;
+  color: #444;
+}
+.upload-new-file-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 230px;
+  background-color: #377dff;
+  height: 39px;
+  justify-content: center;
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.upload-new-file-btn:hover {
+  background-color: #2a6de9;
+}
+.uploaded-files-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  grid-gap: 15px;
+  background-color: #fff;
+  padding: 20px;
+}
+.single-uploaded-file {
+  border: 1px solid #cfcfcf;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #e1e6ef78;
+}
+.file-img-container {
+  height: 160px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e3e3e3;
+}
+.file-img-container img {
+  max-width: 100%;
+}
+.file-options {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background-color: white;
+  height: 25px;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.file-options-icon-container {
+  position: relative;
+}
+.file-options-box {
+  position: absolute;
+  bottom: 25px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 0 5px #ddd;
+  padding: 10px 0;
+}
+.single-file-option {
+  display: grid;
+  grid-template-columns: 25px 100px;
+  padding: 5px 15px;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.3s;
+  color: #444;
+}
+.single-file-option:hover {
+  background-color: #377dff;
+  color: #fff;
+}
+.single-file-option span {
+  font-size: 13px;
+}
+.file-name {
+  font-size: 13px;
+  padding-top: 5px;
+  font-weight: 500;
+}
+.file-size {
+  font-weight: 300;
+  font-size: 11px;
+}
