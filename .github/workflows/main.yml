@@ -1,16 +1,25 @@
-on: push
-name: 🚀 Deploy website on push
+on: 
+  push:
+    branches:
+      - main
+name: Deploy website on push
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Get latest code
-        uses: actions/checkout@v2
-
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: stagingadmin.markutos.com
-          username: nitu@staging.markutos.com
-          password: &sa@iQ}2ue6y
+    - name: Get latest code
+      uses: actions/checkout@v2
+    
+    - name: Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: ftp.markutos.com
+        username: nitu@staging.markutos.com
+        password: z!aR5%5&lpkD
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/node_modules/**
+          **/public/**
+          **/src/**
