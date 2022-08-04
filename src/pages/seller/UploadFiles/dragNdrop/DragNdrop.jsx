@@ -7,18 +7,16 @@ const DragNdrop = () => {
   let [files, setFiles] = useState([]);
   let imageview = useRef(null);
   let onFile = (e) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      if (reader.readyState == 2) {
-        let newFile = e.target.files[0];
-
-        let newFiles = [...files, newFile];
-        imageview.src = e.target.files[0];
-        setFiles(newFiles);
-      }
-    };
-
-    reader.readAsDataURL(e.target.files[0]);
+    // const reader = new FileReader();
+    // reader.onload = () => {
+    //   if (reader.readyState == 2) {
+    //     let newFile = e.target.files[0];
+    //     let newFiles = [...files, newFile];
+    //     imageview.src = e.target.files[0];
+    //     setFiles(newFiles);
+    //   }
+    // };
+    // reader.readAsDataURL(e.target.files[0]);
   };
 
   return (

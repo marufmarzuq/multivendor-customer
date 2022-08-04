@@ -6,7 +6,7 @@ import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 
 import uploadModalStyle from "./uploadModal.module.css";
-import "./UploadFiles.css";
+import "./uploadFiles.css";
 import { uploadedFiles } from "../../../utils/data";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiUploadCloud } from "react-icons/fi";
@@ -70,7 +70,7 @@ const OrderModal = ({ show, setShow }) => {
                 </div>
                 <div className="uploaded-files-container mb-1">
                   {uploadedFiles.map((file, index) => (
-                    <div className="single-uploaded-file">
+                    <div key={index} className="single-uploaded-file">
                       <div className="file-img-container">
                         <img src={file.img} alt="" />
                       </div>

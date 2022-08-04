@@ -8,9 +8,9 @@ const CashOnDelivery = () => {
       <div className="widget-content-container">
         <div className="add-product-toggles-container">
           <span>Status</span>
-          <label class="confi-switch">
+          <label className="confi-switch">
             <input type="checkbox" />
-            <span class="slider round"></span>
+            <span className="slider round"></span>
           </label>
         </div>
       </div>

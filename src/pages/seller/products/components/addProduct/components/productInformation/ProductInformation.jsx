@@ -58,9 +58,9 @@ const ProductInformation = () => {
           <label>
             <span>Refundable</span>
           </label>
-          <label class="confi-switch">
+          <label className="confi-switch">
             <input type="checkbox" />
-            <span class="slider round"></span>
+            <span className="slider round"></span>
           </label>
         </div>
       </div>

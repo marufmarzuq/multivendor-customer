@@ -19,9 +19,9 @@ const ProductVariation = () => {
       <div className="widget-content-container">
         <div className="ap-single-content">
           <p>Colors</p>
-          <label class="confi-switch">
+          <label className="confi-switch">
             <input type="checkbox" />
-            <span class="slider round"></span>
+            <span className="slider round"></span>
           </label>
         </div>
         <div className="ap-single-content">

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./UploadFiles.css";
+
 import { uploadedFiles } from "../../utils/data";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiUploadCloud } from "react-icons/fi";
@@ -9,6 +9,7 @@ import {
   AiOutlineDelete,
 } from "react-icons/ai";
 import { RiFileCopyLine } from "react-icons/ri";
+import "./uploadFiles.css";
 
 const UploadFiles = () => {
   const [currIndex, setCurrIndex] = useState(null);
@@ -34,7 +35,7 @@ const UploadFiles = () => {
       </div>
       <div className="uploaded-files-container">
         {uploadedFiles.map((file, index) => (
-          <div className="single-uploaded-file">
+          <div key={index} className="single-uploaded-file">
             <div className="file-img-container">
               <img src={file.img} alt="" />
             </div>

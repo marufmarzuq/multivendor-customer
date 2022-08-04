@@ -5,7 +5,7 @@ import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
 
 const ProductImages = () => {
   const [show, setShow] = useState(false);
-  console.log(show);
+
   return (
     <div className="add-product-single-widget">
       <div className="widget-title">Product Images</div>
