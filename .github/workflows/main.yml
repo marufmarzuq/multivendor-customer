@@ -16,7 +16,7 @@ jobs:
       with:
         server: ftp.markutos.com
         username: nitu@staging.markutos.com
-        password: ufuxNTf68mr]
+        password: &sa@iQ}2ue6y
         exclude: |
           **/.git*
           **/.git*/**
