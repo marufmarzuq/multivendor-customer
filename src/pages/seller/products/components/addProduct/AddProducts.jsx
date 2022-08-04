@@ -26,17 +26,17 @@ const AddProducts = () => {
         <h4>Add New product</h4>
       </div>
       <div className="add-product-widget-container">
-        <div className="apw-left">
+        <div className="">
           <ProductInformation />
           <ProductImages />
           <ProductVideos />
           <ProductVariation />
           <ProductPriceStock />
-          {/* <ProductDescription /> */}
+          <ProductDescription />
           <PdfSpecification />
           <ProductSEO />
         </div>
-        <div className="apw-right">
+        <div className="">
           <StockVisibility />
           <CashOnDelivery />
           <Featured />
