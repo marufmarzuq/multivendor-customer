@@ -1,9 +1,7 @@
 import React, { Fragment } from "react";
-import { BsDownload, BsEyeFill } from "react-icons/bs";
-import { RiDeleteBin2Line, RiEyeLine } from "react-icons/ri";
-import { IoCopyOutline } from "react-icons/io";
+import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
-import { BiCopy, BiEdit, BiX } from "react-icons/bi";
+import { BiCopy, BiEdit } from "react-icons/bi";
 const AllPorducts = () => {
   return (
     <Fragment>
