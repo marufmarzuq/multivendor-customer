@@ -1,6 +1,6 @@
 {
   "name": "ecommerce_admin",
-  "homepage": "http://staging.markutos.com/",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
