@@ -23,4 +23,5 @@ jobs:
         server: ftp.markutos.com
         username: nitu@staging.markutos.com
         password: '@O9i6?sBF{*O'
+        local-dir: ./build/
 
