@@ -10,7 +10,7 @@ import "bootstrap/dist/js/bootstrap.min.js";
 
 const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
-// test
+
 root.render(
   <React.StrictMode>
     <App />
