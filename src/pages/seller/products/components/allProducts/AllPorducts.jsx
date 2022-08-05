@@ -1,10 +1,12 @@
 import React, { Fragment } from "react";
-import { BsDownload, BsEyeFill } from "react-icons/bs";
-import { RiDeleteBin2Line, RiEyeLine } from "react-icons/ri";
-import { IoCopyOutline } from "react-icons/io";
+import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
-import { BiCopy, BiEdit, BiX } from "react-icons/bi";
+<<<<<<< HEAD
+
 import { Link } from "react-router-dom";
+=======
+import { BiCopy, BiEdit } from "react-icons/bi";
+>>>>>>> 7b17c36a647a833663b4936b8a0c1a783301dff3
 const AllPorducts = () => {
   return (
     <Fragment>

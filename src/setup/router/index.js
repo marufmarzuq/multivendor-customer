@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import CustomerHome from "../../pages/customer/customerHome/CustomerHome";
 import Login from "../../pages/Login";
 import NotFound from "../../pages/NotFound";

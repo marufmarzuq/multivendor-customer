@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter, Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import layoutStyle from "./layout.module.css";
 

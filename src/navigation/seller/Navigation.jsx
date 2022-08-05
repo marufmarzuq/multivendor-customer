@@ -4,9 +4,6 @@ import navigationStyle from "./navigation.module.css";
 
 import {
   AiOutlineHome,
-  AiOutlineBars,
-  AiOutlineShoppingCart,
-  AiOutlineArrowDown,
   AiFillFileAdd,
   AiOutlineUser,
   AiOutlineArrowUp,
@@ -14,7 +11,6 @@ import {
 
 import { IoMdCheckmarkCircleOutline, IoIosStarHalf } from "react-icons/io";
 import { HiOutlineTicket } from "react-icons/hi";
-import { TiSupport } from "react-icons/ti";
 import { FiSettings } from "react-icons/fi";
 import { GiNotebook, GiBackwardTime } from "react-icons/gi";
 import { RiVipDiamondLine } from "react-icons/ri";
@@ -22,8 +18,8 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { BsArrowCounterclockwise, BsCurrencyDollar } from "react-icons/bs";
 import { FaTimes, FaMoneyBillWave } from "react-icons/fa";
 import { AiOutlineDown } from "react-icons/ai";
-import { BiLogOutCircle, BiConversation } from "react-icons/bi";
-import { useState, useEffect } from "react";
+import { BiLogOutCircle } from "react-icons/bi";
+import { useState } from "react";
 
 const Navigation = ({ toggleF, toggle }) => {
   const logOut = () => {
@@ -34,7 +30,7 @@ const Navigation = ({ toggleF, toggle }) => {
   const [prodCollap, setProdColl] = useState(false);
 
   const collapse = (name) => {
-    if (name == "products") setProdColl(!prodCollap);
+    if (name === "products") setProdColl(!prodCollap);
   };
 
   const closeNav = () => {
