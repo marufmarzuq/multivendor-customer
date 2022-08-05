@@ -6,9 +6,12 @@ import { BsArrowDown, BsDownload, BsEyeFill } from "react-icons/bs";
 
 import { useState } from "react";
 import OrderModal from "../orderModal/OrderModal";
+import PdfGen from "../../../../../components/pdfGenerator/PdfGen";
+import PdfModal from "../../../../../components/pdfModal/PdfModal";
 
 const PurchaseHis = () => {
   const [show, setShow] = useState(false);
+  const [pdfShow, setPdfShow] = useState(false);
   return (
     <Fragment>
       <div className={`${purchaseStyle.background}`}>
@@ -70,7 +73,10 @@ const PurchaseHis = () => {
               >
                 <BsEyeFill />
               </button>
-              <button className={purchaseStyle.invoice}>
+              <button
+                onClick={() => setPdfShow(!pdfShow)}
+                className={purchaseStyle.invoice}
+              >
                 <BsDownload />
               </button>
             </div>
@@ -104,13 +110,17 @@ const PurchaseHis = () => {
               >
                 <BsEyeFill />
               </button>
-              <button className={purchaseStyle.invoice}>
+              <button
+                onClick={() => setPdfShow(!pdfShow)}
+                className={purchaseStyle.invoice}
+              >
                 <BsDownload />
               </button>
             </div>
           </div>
         </section>
 
+        <PdfModal show={pdfShow} setShow={setPdfShow} />
         <OrderModal show={show} setShow={setShow} />
       </div>
     </Fragment>

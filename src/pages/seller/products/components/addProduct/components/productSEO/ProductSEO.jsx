@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import "./ProductSEO.css";
+import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
 
 const ProductSEO = () => {
+  const [show, setShow] = useState(false);
   return (
     <div className="add-product-single-widget">
       <div className="widget-title">SEO Meta Tags</div>
@@ -19,10 +21,12 @@ const ProductSEO = () => {
             <p>Meta Image</p>
           </div>
           <div>
-            <div className="custom-browse">
+            <div onClick={() => setShow(!show)} className="custom-browse">
               <div>Browse</div>
               <div>Choose File</div>
             </div>
+
+            <UploadFilesModal show={show} setShow={setShow} />
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ import NotFound from "../../pages/NotFound";
 
 import Dashboard from "../../pages/seller/dashboard/Dashboard";
 import AddProducts from "../../pages/seller/products/components/addProduct/AddProducts";
+import UpdateProduct from "../../pages/seller/products/components/updateProducts/UpdateProduct";
 import Products from "../../pages/seller/products/Products";
 import PurchaseHistory from "../../pages/seller/purchaseHistory/PurchaseHistory";
 import SentRefundReq from "../../pages/seller/sentRefund/SentRefundReq";
@@ -38,6 +39,8 @@ const Router = () => {
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="products" element={<Products />} />
           <Route path="products/add-products" element={<AddProducts />} />
+
+          <Route path="products/update-product" element={<UpdateProduct />} />
         </Route>
         {/* route for seller ends here */}
 

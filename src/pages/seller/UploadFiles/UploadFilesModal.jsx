@@ -19,12 +19,18 @@ import { RiFileCopyLine } from "react-icons/ri";
 import DragNdrop from "./dragNdrop/DragNdrop";
 
 const OrderModal = ({ show, setShow }) => {
+  let [files, setFiles] = useState([]);
   const [view, setView] = useState("select");
   const [currIndex, setCurrIndex] = useState(null);
   const handleOptions = (index) => {
     if (index === currIndex) setCurrIndex(null);
     else setCurrIndex(index);
   };
+
+  const submitFiles = () => {
+    console.log(files);
+  };
+
   return (
     <>
       <Modal
@@ -40,11 +46,15 @@ const OrderModal = ({ show, setShow }) => {
             <Button
               variant="outline-success"
               onClick={() => setView("select")}
-              className="me-3"
+              className="me-3 mb-2 mb-md-0"
             >
               Select File
             </Button>
-            <Button variant="outline-success" onClick={() => setView("upload")}>
+            <Button
+              className="me-3 mb-2 mb-md-0"
+              variant="outline-success"
+              onClick={() => setView("upload")}
+            >
               <FiUploadCloud />
               <span className="ms-2">Upload New File</span>
             </Button>
@@ -111,13 +121,15 @@ const OrderModal = ({ show, setShow }) => {
             </section>
           ) : (
             <section className="drag-upload">
-              <DragNdrop />
+              <DragNdrop files={files} setFiles={setFiles} />
             </section>
           )}
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="outline-success">Save File</Button>
+          <Button onClick={submitFiles} variant="outline-success">
+            Save File
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

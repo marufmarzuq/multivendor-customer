@@ -6,7 +6,7 @@ import { useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 const ProductDescription = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  console.log(editorState);
+
   return (
     <div className="add-product-single-widget">
       <div className="widget-title">Product Description</div>

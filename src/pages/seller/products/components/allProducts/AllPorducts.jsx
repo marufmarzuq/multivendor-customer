@@ -4,6 +4,7 @@ import { RiDeleteBin2Line, RiEyeLine } from "react-icons/ri";
 import { IoCopyOutline } from "react-icons/io";
 import allProductsStyle from "./allProducts.module.css";
 import { BiCopy, BiEdit, BiX } from "react-icons/bi";
+import { Link } from "react-router-dom";
 const AllPorducts = () => {
   return (
     <Fragment>
@@ -65,36 +66,35 @@ const AllPorducts = () => {
               <p> 10000.00</p>
             </div>
             <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-              <p>
-                <div className="form-check form-switch">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    role="switch"
-                    id="flexSwitchCheckDefault"
-                  />
-                </div>
-              </p>
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckDefault"
+                />
+              </div>
             </div>
 
             <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-              <p>
-                <div className="form-check form-switch">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    role="switch"
-                    id="flexSwitchCheckDefault"
-                  />
-                </div>
-              </p>
+              <div className="form-check form-switch">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  role="switch"
+                  id="flexSwitchCheckDefault"
+                />
+              </div>
             </div>
 
             <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
               <p>
-                <button className={allProductsStyle.preview}>
-                  <BiEdit />
-                </button>
+                <Link to="update-product">
+                  <button className={allProductsStyle.preview}>
+                    <BiEdit />
+                  </button>
+                </Link>
+
                 <button className={allProductsStyle.preview}>
                   <BiCopy />
                 </button>

@@ -1,6 +1,7 @@
-import React from "react";
-
+import React, { useState } from "react";
+import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
 const PdfSpecification = () => {
+  const [show, setShow] = useState(false);
   return (
     <div className="add-product-single-widget">
       <div className="widget-title">PDF Specification</div>
@@ -10,10 +11,12 @@ const PdfSpecification = () => {
             <p>Add PDF</p>
           </div>
           <div>
-            <div className="custom-browse">
+            <div onClick={() => setShow(!show)} className="custom-browse">
               <div>Browse</div>
               <div>Choose File</div>
             </div>
+
+            <UploadFilesModal show={show} setShow={setShow} />
           </div>
         </div>
       </div>
