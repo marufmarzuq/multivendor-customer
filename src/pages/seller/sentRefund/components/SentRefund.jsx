@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from "react";
-import PdfGen from "../../../../components/pdfGenerator/PdfGen";
+import React, { Fragment } from "react";
+
 import sentRefundStyle from "./sentRefund.module.css";
 
 const SentRefund = () => {
