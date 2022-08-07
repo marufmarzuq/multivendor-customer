@@ -9,7 +9,7 @@ const UploadCSV = () => {
       <h5>Upload CSV File</h5>
       <div className={`${upCSVstyle.uploadCSVfile} ap-single-content`}>
         <div>
-          <p>Add PDF</p>
+          <p>Add CSV</p>
         </div>
         <div>
           <div onClick={() => setShow(!show)} className="custom-browse">
