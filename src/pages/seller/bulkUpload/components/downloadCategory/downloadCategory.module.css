@@ -1,0 +1,26 @@
+.catContainer {
+  background-color: #fff;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 3px;
+}
+
+.catContainer p {
+  background-color: #cce5ff;
+  margin: 0;
+  padding: 0.7rem;
+  margin-bottom: 1px;
+  font-size: 1rem;
+}
+
+.catContainer button {
+  margin-top: 0.7rem;
+  margin-right: 0.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .catContainer button {
+    margin-top: 1rem;
+    margin-right: 0.5rem;
+  }
+}

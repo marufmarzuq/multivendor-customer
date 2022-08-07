@@ -1,0 +1,14 @@
+.upContainer {
+  background-color: #fff;
+  margin-top: 1rem;
+  border-radius: 3px;
+}
+
+.upContainer h5 {
+  padding: 1rem;
+  border-bottom: 1px dotted gray;
+}
+
+.upContainer .uploadCSVfile {
+  padding: 1rem;
+}

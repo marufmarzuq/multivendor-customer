@@ -113,6 +113,12 @@ const Navigation = ({ toggleF, toggle }) => {
                 </li>
                 <li className={navigationStyle.inside_nav}>
                   <Link onClick={() => closeNav()} to="">
+                    <RiVipDiamondLine className={navigationStyle.icon_green} />
+                    <span className="ps-2">Digital Products</span>
+                  </Link>
+                </li>
+                <li className={navigationStyle.inside_nav}>
+                  <Link onClick={() => closeNav()} to="products/bulk-upload">
                     <AiOutlineArrowUp className={navigationStyle.icon_green} />
                     <span className="ps-2">Product Bulk Upload</span>
                   </Link>
@@ -128,12 +134,12 @@ const Navigation = ({ toggleF, toggle }) => {
             </div>
             {/* </Link> */}
           </li>
-          <li>
+          {/* <li>
             <Link onClick={() => closeNav()} to="">
               <GiNotebook className={navigationStyle.icon_green} />
               <span className="ps-2">POS Manager</span>
             </Link>
-          </li>
+          </li> */}
           <li>
             <Link onClick={() => closeNav()} to="">
               <HiOutlineTicket className={navigationStyle.icon_green} />
