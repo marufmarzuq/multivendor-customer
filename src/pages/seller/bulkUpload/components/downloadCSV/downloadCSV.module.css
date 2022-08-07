@@ -1,0 +1,17 @@
+.csvContainer {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 3px;
+}
+
+.csvContainer p {
+  background-color: #cce5ff;
+  margin: 0;
+  padding: 0.7rem;
+  font-size: 1rem;
+  margin-bottom: 1px;
+}
+
+.csvContainer button {
+  margin-top: 1rem;
+}

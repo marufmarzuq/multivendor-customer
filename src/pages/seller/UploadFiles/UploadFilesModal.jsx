@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import { Col, Row } from "react-bootstrap";
-
 import Button from "react-bootstrap/Button";
-import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
-
 import uploadModalStyle from "./uploadModal.module.css";
 import "./uploadFiles.css";
 import { uploadedFiles } from "../../../utils/data";
@@ -28,6 +24,7 @@ const OrderModal = ({ show, setShow }) => {
   };
 
   const submitFiles = () => {
+    setShow(!show);
     console.log(files);
   };
 

@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import CustomerHome from "../../pages/customer/customerHome/CustomerHome";
 import Login from "../../pages/Login";
 import NotFound from "../../pages/NotFound";
+import BulkUpload from "../../pages/seller/bulkUpload/BulkUpload";
 
 import Dashboard from "../../pages/seller/dashboard/Dashboard";
 import AddProducts from "../../pages/seller/products/components/addProduct/AddProducts";
@@ -41,6 +42,7 @@ const Router = () => {
           <Route path="products/add-products" element={<AddProducts />} />
 
           <Route path="products/update-product" element={<UpdateProduct />} />
+          <Route path="products/bulk-upload" element={<BulkUpload />} />
         </Route>
         {/* route for seller ends here */}
 
