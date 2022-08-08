@@ -7,6 +7,7 @@ import BulkUpload from "../../pages/seller/bulkUpload/BulkUpload";
 
 import Dashboard from "../../pages/seller/dashboard/Dashboard";
 import AddDigitalProducts from "../../pages/seller/digitalProduct/components/addDigitalProducts/AddDigitalProducts";
+import UpdateDigitalProduct from "../../pages/seller/digitalProduct/components/updateDigitalProduct/UpdateDigitalProduct";
 import DigitalProduct from "../../pages/seller/digitalProduct/DigitalProduct";
 import AddProducts from "../../pages/seller/products/components/addProduct/AddProducts";
 import UpdateProduct from "../../pages/seller/products/components/updateProducts/UpdateProduct";
@@ -53,6 +54,10 @@ const Router = () => {
           <Route
             path="products/digital-products/add"
             element={<AddDigitalProducts />}
+          />
+          <Route
+            path="products/digital-products/update"
+            element={<UpdateDigitalProduct />}
           />
         </Route>
         {/* route for seller ends here */}

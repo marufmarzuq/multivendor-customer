@@ -30,6 +30,7 @@
 .custom-browse > div:first-child {
   background-color: #ddd;
   padding: 10px;
+
   text-align: center;
   color: #555;
 }

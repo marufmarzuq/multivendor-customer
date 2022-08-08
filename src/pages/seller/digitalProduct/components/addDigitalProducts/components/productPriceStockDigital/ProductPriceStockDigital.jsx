@@ -2,7 +2,7 @@ import React from "react";
 import "./ProductPriceStock.css";
 import Select from "react-select";
 
-const ProductPriceStock = () => {
+const ProductPriceStockDigital = () => {
   const discountOptions = [
     { value: "flat", label: "Flat" },
     { value: "percent", label: "Percent" },
@@ -36,4 +36,4 @@ const ProductPriceStock = () => {
   );
 };
 
-export default ProductPriceStock;
+export default ProductPriceStockDigital;

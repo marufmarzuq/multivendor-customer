@@ -3,12 +3,12 @@ import { useState } from "react";
 import "./ProductImages.css";
 import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
 
-const ProductImages = () => {
+const ProductImagesDigital = () => {
   const [show, setShow] = useState(false);
 
   return (
     <div className="add-product-single-widget">
-      <div className="widget-title">Product Images</div>
+      <div className="widget-title"> Images</div>
       <div className="widget-content-container">
         <div className="product-images-container">
           <div className="ap-single-content">
@@ -52,4 +52,4 @@ const ProductImages = () => {
   );
 };
 
-export default ProductImages;
+export default ProductImagesDigital;

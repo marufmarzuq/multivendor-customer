@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./ProductSEO.css";
+import "./productSEO.css";
 import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
 
-const ProductSEO = () => {
+const DigtalProductSEO = () => {
   const [show, setShow] = useState(false);
   return (
     <div className="add-product-single-widget">
@@ -34,4 +34,4 @@ const ProductSEO = () => {
   );
 };
 
-export default ProductSEO;
+export default DigtalProductSEO;

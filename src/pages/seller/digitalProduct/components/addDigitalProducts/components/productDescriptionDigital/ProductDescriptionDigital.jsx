@@ -4,7 +4,8 @@ import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-const ProductDescription = () => {
+
+const ProductDescriptionDigital = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   return (
@@ -28,4 +29,4 @@ const ProductDescription = () => {
   );
 };
 
-export default ProductDescription;
+export default ProductDescriptionDigital;

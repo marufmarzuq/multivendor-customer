@@ -85,7 +85,7 @@ const AllDigitalPorducts = () => {
 
             <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
               <p>
-                <Link to="update-product">
+                <Link to="update">
                   <button className={allProductsStyle.preview}>
                     <BiEdit />
                   </button>
