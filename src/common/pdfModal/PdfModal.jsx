@@ -1,11 +1,7 @@
-import React, { useState } from "react";
-import { Col, Row } from "react-bootstrap";
-
-import Button from "react-bootstrap/Button";
-import Table from "react-bootstrap/Table";
+import React from "react";
 import Modal from "react-bootstrap/Modal";
 import modalStyle from "./pdfModal.module.css";
-import PdfGen from "../pdfGenerator/PdfGen";
+import PdfGen from "./PdfModal";
 
 const PdfModal = ({ show, setShow }) => {
   return (
