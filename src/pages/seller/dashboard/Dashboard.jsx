@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import DashboardCom from "./components/DashboardCom";
 
 const Dashboard = () => {

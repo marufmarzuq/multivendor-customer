@@ -6,6 +6,8 @@ import NotFound from "../../pages/NotFound";
 import BulkUpload from "../../pages/seller/bulkUpload/BulkUpload";
 
 import Dashboard from "../../pages/seller/dashboard/Dashboard";
+import AddDigitalProducts from "../../pages/seller/digitalProduct/components/addDigitalProducts/AddDigitalProducts";
+import DigitalProduct from "../../pages/seller/digitalProduct/DigitalProduct";
 import AddProducts from "../../pages/seller/products/components/addProduct/AddProducts";
 import UpdateProduct from "../../pages/seller/products/components/updateProducts/UpdateProduct";
 import Products from "../../pages/seller/products/Products";
@@ -35,14 +37,23 @@ const Router = () => {
         >
           {/*all route for seller will place here */}
           <Route path="" element={<Dashboard />} />
+
           <Route path="purchase-history" element={<PurchaseHistory />} />
           <Route path="sent-refund-request" element={<SentRefundReq />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="products" element={<Products />} />
-          <Route path="products/add-products" element={<AddProducts />} />
+          <Route path="products/add" element={<AddProducts />} />
 
-          <Route path="products/update-product" element={<UpdateProduct />} />
+          <Route path="products/update" element={<UpdateProduct />} />
           <Route path="products/bulk-upload" element={<BulkUpload />} />
+          <Route
+            path="products/digital-products"
+            element={<DigitalProduct />}
+          />
+          <Route
+            path="products/digital-products/add"
+            element={<AddDigitalProducts />}
+          />
         </Route>
         {/* route for seller ends here */}
 

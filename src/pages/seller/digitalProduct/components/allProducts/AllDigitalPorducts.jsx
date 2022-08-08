@@ -5,12 +5,12 @@ import allProductsStyle from "./allProducts.module.css";
 import { BiCopy, BiEdit, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const AllPorducts = () => {
+const AllDigitalPorducts = () => {
   return (
     <Fragment>
       <div className={`${allProductsStyle.background}`}>
         <section>
-          <h5 className="px-md-4 px-3 py-2">All Products</h5>
+          <h5 className="px-md-4 px-3 py-2">All Digital Products</h5>
           <hr />
         </section>
 
@@ -24,12 +24,10 @@ const AllPorducts = () => {
             <div className={`col-6 col-lg-2`}>
               <p>Name</p>
             </div>
-            <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+            <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
               <p>Category</p>
             </div>
-            <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
-              <p>Current Qty</p>
-            </div>
+
             <div className={`col-4 col-lg-2 `}>
               <p> Base Price</p>
             </div>
@@ -37,7 +35,7 @@ const AllPorducts = () => {
               <p> Published</p>
             </div>
 
-            <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+            <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
               <p> Featured</p>
             </div>
 
@@ -56,12 +54,10 @@ const AllPorducts = () => {
             <div className={`col-6 col-lg-2`}>
               <p>Seler Product</p>
             </div>
-            <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+            <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
               <p>Baby</p>
             </div>
-            <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
-              <p>9899</p>
-            </div>
+
             <div className={`col-4 col-lg-2 `}>
               <p> 10000.00</p>
             </div>
@@ -76,7 +72,7 @@ const AllPorducts = () => {
               </div>
             </div>
 
-            <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+            <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
               <div className="form-check form-switch">
                 <input
                   className="form-check-input"
@@ -89,7 +85,7 @@ const AllPorducts = () => {
 
             <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
               <p>
-                <Link to="update">
+                <Link to="update-product">
                   <button className={allProductsStyle.preview}>
                     <BiEdit />
                   </button>
@@ -110,4 +106,4 @@ const AllPorducts = () => {
   );
 };
 
-export default AllPorducts;
+export default AllDigitalPorducts;
