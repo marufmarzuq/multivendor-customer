@@ -1,5 +1,5 @@
 import React from "react";
-import "./ProductDescription.css";
+import "./productDescription.css";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { useState } from "react";
