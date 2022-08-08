@@ -16,7 +16,7 @@ const Layout = () => {
 
   return (
     <>
-      <div className="container ">
+      <div className="container-fluid ">
         {/* navbar for small devices */}
         <section>
           <div className={`row m-0 ${layoutStyle.navbar_mobile}`}>
@@ -43,8 +43,8 @@ const Layout = () => {
           </div>
         </section>
 
-        <div className="row ">
-          <div className={` col-xl-3 col-12 px-0`}>
+        <div className={` ${layoutStyle.layoutContainer}`}>
+          <div className={`   px-0`}>
             {/* Navigaions will be here */}
             <div
               className={
@@ -56,7 +56,7 @@ const Layout = () => {
               <Navigation toggle={toggle} toggleF={setToggle} />
             </div>
           </div>
-          <div className=" col-xl-9 col-12  px-0 mx-0">
+          <div className="  px-0 mx-0">
             {/* Container for showing content */}
 
             <div className={layoutStyle.content}>

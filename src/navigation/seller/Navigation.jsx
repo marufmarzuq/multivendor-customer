@@ -28,9 +28,11 @@ const Navigation = ({ toggleF, toggle }) => {
   };
 
   const [prodCollap, setProdColl] = useState(false);
+  const [refundCollap, setRefundProdColl] = useState(false);
 
   const collapse = (name) => {
     if (name === "products") setProdColl(!prodCollap);
+    if (name === "refund") setRefundProdColl(!refundCollap);
   };
 
   const closeNav = () => {
@@ -74,12 +76,50 @@ const Navigation = ({ toggleF, toggle }) => {
               <span className="ps-2">Purchase History</span>
             </Link>
           </li>
-          <li>
-            <Link onClick={() => closeNav()} to="sent-refund-request">
-              <BsArrowCounterclockwise className={navigationStyle.icon_green} />
-              <span className="ps-2">Sent Refund Request</span>
-            </Link>
+          {/* refund dropdown start */}
+          <li onClick={() => collapse("refund")}>
+            <BsArrowCounterclockwise className={navigationStyle.icon_green} />
+            <span className="ps-2 ">Refunds</span>
+            <span className={navigationStyle.right}>
+              <AiOutlineDown className={`${navigationStyle.icon_green}`} />
+            </span>
+            <div
+              className={
+                refundCollap
+                  ? navigationStyle.openRefund
+                  : navigationStyle.close
+              }
+            >
+              <ul className={navigationStyle.insideNavUl}>
+                <li className="mt-2">
+                  <Link
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to="sent-refund-request"
+                  >
+                    <BsArrowCounterclockwise
+                      className={navigationStyle.icon_green}
+                    />
+                    <span className="ps-2">Sent Refund Request</span>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to=""
+                  >
+                    <BsArrowCounterclockwise
+                      className={navigationStyle.icon_green}
+                    />
+                    <span className="ps-2">Received Refund Request</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </li>
+          {/* refund dropdown end */}
           <li>
             <Link onClick={() => closeNav()} to="wishlist">
               <MdOutlineFavoriteBorder className={navigationStyle.icon_green} />
@@ -99,33 +139,53 @@ const Navigation = ({ toggleF, toggle }) => {
               }
             >
               <ul className={navigationStyle.insideNavUl}>
-                <li className={`${navigationStyle.inside_nav} mt-2`}>
-                  <Link onClick={() => closeNav()} to="purchase-history">
+                <li className={` mt-2`}>
+                  <Link
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to="purchase-history"
+                  >
                     <AiFillFileAdd className={navigationStyle.icon_green} />
                     <span className="ps-2">Purchase History</span>
                   </Link>
                 </li>
-                <li className={navigationStyle.inside_nav}>
-                  <Link onClick={() => closeNav()} to="products">
+                <li>
+                  <Link
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to="products"
+                  >
                     <RiVipDiamondLine className={navigationStyle.icon_green} />
                     <span className="ps-2">Products</span>
                   </Link>
                 </li>
-                <li className={navigationStyle.inside_nav}>
-                  <Link onClick={() => closeNav()} to="">
+                <li>
+                  <Link
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to=""
+                  >
                     <RiVipDiamondLine className={navigationStyle.icon_green} />
                     <span className="ps-2">Digital Products</span>
                   </Link>
                 </li>
-                <li className={navigationStyle.inside_nav}>
-                  <Link onClick={() => closeNav()} to="products/bulk-upload">
+                <li>
+                  <Link
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to="products/bulk-upload"
+                  >
                     <AiOutlineArrowUp className={navigationStyle.icon_green} />
                     <span className="ps-2">Product Bulk Upload</span>
                   </Link>
                 </li>
 
-                <li className={navigationStyle.inside_nav}>
-                  <Link onClick={() => closeNav()} to="">
+                <li>
+                  <Link
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to=""
+                  >
                     <IoIosStarHalf className={navigationStyle.icon_green} />
                     <span className="ps-2">Product Reviews</span>
                   </Link>
@@ -144,12 +204,6 @@ const Navigation = ({ toggleF, toggle }) => {
             <Link onClick={() => closeNav()} to="">
               <HiOutlineTicket className={navigationStyle.icon_green} />
               <span className="ps-2">Orders</span>
-            </Link>
-          </li>
-          <li>
-            <Link onClick={() => closeNav()} to="">
-              <BsArrowCounterclockwise className={navigationStyle.icon_green} />
-              <span className="ps-2">Received Refund Request</span>
             </Link>
           </li>
           <li>

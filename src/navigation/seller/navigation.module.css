@@ -56,8 +56,12 @@ li:hover {
   background-color: #e8f6e2;
   cursor: pointer;
 }
+.insideNavUl li {
+  padding: 0;
+}
 
 .inside_nav {
+  padding: 0.5rem;
   padding-left: 1.5rem;
 }
 .insideNavUl {
@@ -70,7 +74,13 @@ li:hover {
 }
 
 .open {
-  height: 180px;
+  height: 220px;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.openRefund {
+  height: 100px;
   overflow: hidden;
   transition: all 0.3s;
 }
@@ -92,8 +102,10 @@ li:hover {
   .nav_links {
     height: auto;
     overflow-y: auto;
-    margin-top: 0.7rem;
-    margin-bottom: 0.7rem;
+    /* margin-top: 0.7rem;
+    margin-bottom: 0.7rem; */
+
+    min-height: 100vh;
   }
 
   .nav_links .seller_info h1 {
