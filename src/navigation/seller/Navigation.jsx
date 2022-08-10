@@ -120,12 +120,6 @@ const Navigation = ({ toggleF, toggle }) => {
             </div>
           </li>
           {/* refund dropdown end */}
-          <li>
-            <Link onClick={() => closeNav()} to="wishlist">
-              <MdOutlineFavoriteBorder className={navigationStyle.icon_green} />
-              <span className="ps-2">Wishlist</span>
-            </Link>
-          </li>
           <li onClick={() => collapse("products")}>
             {/* <Link onClick={() => closeNav()} to=""> */}
             <RiVipDiamondLine className={navigationStyle.icon_green} />
@@ -135,11 +129,11 @@ const Navigation = ({ toggleF, toggle }) => {
             </span>
             <div
               className={
-                prodCollap ? navigationStyle.open : navigationStyle.close
+                prodCollap ? navigationStyle.openProduct : navigationStyle.close
               }
             >
               <ul className={navigationStyle.insideNavUl}>
-                <li className={` mt-2`}>
+                {/* <li className={` mt-2`}>
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
@@ -148,8 +142,8 @@ const Navigation = ({ toggleF, toggle }) => {
                     <AiFillFileAdd className={navigationStyle.icon_green} />
                     <span className="ps-2">Purchase History</span>
                   </Link>
-                </li>
-                <li>
+                </li> */}
+                <li className="mt-2">
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
@@ -179,7 +173,18 @@ const Navigation = ({ toggleF, toggle }) => {
                     <span className="ps-2">Product Bulk Upload</span>
                   </Link>
                 </li>
-
+                <li>
+                  <Link
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to="wishlist"
+                  >
+                    <MdOutlineFavoriteBorder
+                      className={navigationStyle.icon_green}
+                    />
+                    <span className="ps-2">Wishlist</span>
+                  </Link>
+                </li>
                 <li>
                   <Link
                     className={navigationStyle.inside_nav}
@@ -201,7 +206,7 @@ const Navigation = ({ toggleF, toggle }) => {
             </Link>
           </li> */}
           <li>
-            <Link onClick={() => closeNav()} to="">
+            <Link onClick={() => closeNav()} to="orders">
               <HiOutlineTicket className={navigationStyle.icon_green} />
               <span className="ps-2">Orders</span>
             </Link>

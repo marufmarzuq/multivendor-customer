@@ -9,6 +9,7 @@ import Dashboard from "../../pages/seller/dashboard/Dashboard";
 import AddDigitalProducts from "../../pages/seller/digitalProduct/components/addDigitalProducts/AddDigitalProducts";
 import UpdateDigitalProduct from "../../pages/seller/digitalProduct/components/updateDigitalProduct/UpdateDigitalProduct";
 import DigitalProduct from "../../pages/seller/digitalProduct/DigitalProduct";
+import Orders from "../../pages/seller/orders/Orders";
 import AddProducts from "../../pages/seller/products/components/addProduct/AddProducts";
 import UpdateProduct from "../../pages/seller/products/components/updateProducts/UpdateProduct";
 import Products from "../../pages/seller/products/Products";
@@ -59,6 +60,8 @@ const Router = () => {
             path="products/digital-products/update"
             element={<UpdateDigitalProduct />}
           />
+
+          <Route path="orders" element={<Orders />} />
         </Route>
         {/* route for seller ends here */}
 

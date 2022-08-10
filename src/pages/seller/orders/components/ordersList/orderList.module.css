@@ -1,0 +1,121 @@
+.background {
+  background-color: white;
+  margin-top: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  padding-bottom: 30px;
+}
+.orderRow {
+  display: grid;
+  grid-template-columns: 1fr 6fr 3fr 3fr;
+}
+
+hr {
+  opacity: 0.1;
+}
+
+.hide {
+  display: none;
+}
+
+.header p {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+p {
+  font-size: 0.9rem;
+}
+
+.code {
+  color: #65c23f;
+  cursor: pointer;
+}
+
+.unpaid {
+  background-color: #ef486a;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+
+.paid {
+  padding: 2px 4px;
+  border-radius: 3px;
+  background-color: #65c23f;
+  color: #fff;
+  font-size: 0.9rem;
+}
+.del,
+.preview,
+.invoice {
+  border: none;
+  background-color: red;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  margin-right: 3px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+}
+
+.del {
+  background-color: #f7c0cb8f;
+  color: #e6264c;
+}
+
+.preview {
+  background-color: #65d0f74b;
+  color: #25bcf1;
+}
+
+.invoice {
+  background-color: #fbd5624c;
+  color: #fbbe08;
+}
+.del:hover {
+  background-color: #f65b7a;
+  color: #fff;
+}
+.preview:hover {
+  background-color: #45c7f6;
+  color: #fff;
+}
+.invoice:hover {
+  background-color: #fbbe08;
+  color: #fff;
+}
+@media only screen and (min-width: 768px) {
+  .orderRow {
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr 3fr 2fr 3fr 3fr 2fr;
+  }
+  .background {
+    background-color: white;
+    margin-top: 12px !important;
+    margin-left: 10px;
+    border-radius: 5px;
+  }
+
+  .del,
+  .preview,
+  .invoice {
+    border: none;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .hide {
+    display: block;
+  }
+}

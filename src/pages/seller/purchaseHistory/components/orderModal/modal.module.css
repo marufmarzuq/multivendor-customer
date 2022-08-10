@@ -1,6 +1,13 @@
 .orderModalWidth {
   min-width: 80vw !important;
 }
+.statusDropdown {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 2rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+}
 
 .orderSummary {
   padding: 15px 0;
