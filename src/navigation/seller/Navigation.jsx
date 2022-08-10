@@ -65,7 +65,7 @@ const Navigation = ({ toggleF, toggle }) => {
 
         <ul className="ps-0">
           <li>
-            <Link onClick={() => closeNav()} to="">
+            <Link onClick={() => closeNav()} to="/">
               <AiOutlineHome className={` ${navigationStyle.icon_green}`} />
               <span className="ps-1"> Dashboard</span>
             </Link>
@@ -147,7 +147,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="products"
+                    to="/products"
                   >
                     <RiVipDiamondLine className={navigationStyle.icon_green} />
                     <span className="ps-2">Products</span>
@@ -157,7 +157,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="products/digital-products"
+                    to="/digital-products"
                   >
                     <RiVipDiamondLine className={navigationStyle.icon_green} />
                     <span className="ps-2">Digital Products</span>

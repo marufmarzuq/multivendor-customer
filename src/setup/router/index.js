@@ -43,12 +43,12 @@ const Router = () => {
           <Route path="purchase-history" element={<PurchaseHistory />} />
           <Route path="sent-refund-request" element={<SentRefundReq />} />
           <Route path="wishlist" element={<Wishlist />} />
-          <Route path="products" element={<Products />} />
-          <Route path="products/add" element={<AddProducts />} />
+          {/* <Route path="products" element={<Products />} /> */}
+          {/* <Route path="products/add" element={<AddProducts />} /> */}
 
-          <Route path="products/update" element={<UpdateProduct />} />
+          {/* <Route path="products/update" element={<UpdateProduct />} /> */}
           <Route path="products/bulk-upload" element={<BulkUpload />} />
-          <Route
+          {/* <Route
             path="products/digital-products"
             element={<DigitalProduct />}
           />
@@ -59,11 +59,23 @@ const Router = () => {
           <Route
             path="products/digital-products/update"
             element={<UpdateDigitalProduct />}
-          />
+          /> */}
 
           <Route path="orders" element={<Orders />} />
         </Route>
         {/* route for seller ends here */}
+
+        <Route path="products" element={<Layout />}>
+          <Route path="" element={<Products />} />
+          <Route path="add" element={<AddProducts />} />
+          <Route path="update" element={<UpdateProduct />} />
+        </Route>
+
+        <Route path="digital-products" element={<Layout />}>
+          <Route path="" element={<DigitalProduct />} />
+          <Route path="add" element={<AddDigitalProducts />} />
+          <Route path="update" element={<UpdateDigitalProduct />} />
+        </Route>
 
         <Route path="*" element={<NotFound />} />
       </Routes>
