@@ -23,6 +23,12 @@ const UpdateDigitalProduct = () => {
         <ProductDescriptionDigital />
         <DigtalProductSEO />
       </div>
+      <div className="addDigitalProduct">
+        <button className="btn  btn-lg btn-success">
+          {" "}
+          Update Digital Product{" "}
+        </button>
+      </div>
     </div>
   );
 };
