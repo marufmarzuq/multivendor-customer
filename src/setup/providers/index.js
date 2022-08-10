@@ -5,7 +5,7 @@ import { store } from "../../redux/store/store";
 const AppProviders = ({ children }) => {
   return (
     <Provider store={store}>
-      <BrowserRouter>{children}</BrowserRouter>;
+      <BrowserRouter>{children}</BrowserRouter>
     </Provider>
   );
 };
