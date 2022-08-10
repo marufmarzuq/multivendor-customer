@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import modalStyle from "./pdfModal.module.css";
-import PdfGen from "./PdfModal";
+import PdfGen from "../pdfGenerator/PdfGen";
 
 const PdfModal = ({ show, setShow }) => {
   return (

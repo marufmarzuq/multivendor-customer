@@ -1,12 +1,24 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
-
+import Select from "react-select";
 import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 import modalStyle from "./modal.module.css";
 import Timeline from "../timeline/Timeline";
-
-const OrderModal = ({ show, setShow }) => {
+const options = [
+  { value: "payment_status", label: "Payment Status" },
+  { value: "paid", label: "Paid" },
+  { value: "unpaid", label: "UnPaid" },
+];
+const options2 = [
+  { value: "Delivery_status", label: "Delivery Status" },
+  { value: "pending", label: "Pending" },
+  { value: "confirmed", label: "Confirmed" },
+  { value: "on_delivery", label: "On Delivery" },
+  { value: "delivered", label: "Delivered" },
+];
+const OrderModal = ({ page, show, setShow }) => {
+  console.log(page);
   return (
     <>
       <Modal
@@ -25,6 +37,15 @@ const OrderModal = ({ show, setShow }) => {
         <Modal.Body>
           <section>
             <Timeline />
+            {page == "order" ? (
+              <div className={modalStyle.statusDropdown}>
+                <Select options={options} placeholder="Payment Status" />
+
+                <Select options={options2} placeholder="Delivery Status" />
+              </div>
+            ) : (
+              ""
+            )}
             <div className={modalStyle.orderSummary}>
               <h6>Order Summary</h6>
 

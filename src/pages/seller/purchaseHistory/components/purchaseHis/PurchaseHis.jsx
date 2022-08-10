@@ -120,7 +120,7 @@ const PurchaseHis = () => {
         </section>
 
         <PdfModal show={pdfShow} setShow={setPdfShow} />
-        <OrderModal show={show} setShow={setShow} />
+        <OrderModal page="purchaseHistory" show={show} setShow={setShow} />
       </div>
     </Fragment>
   );
