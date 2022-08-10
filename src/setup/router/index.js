@@ -38,7 +38,7 @@ const Router = () => {
           }
         >
           {/*all route for seller will place here */}
-          <Route path="" element={<Dashboard />} />
+          <Route path="/" element={<Dashboard />} />
 
           <Route path="purchase-history" element={<PurchaseHistory />} />
           <Route path="sent-refund-request" element={<SentRefundReq />} />
@@ -57,12 +57,13 @@ const Router = () => {
             element={<AddDigitalProducts />}
           />
           <Route
-            path="products/digital-products/update"
+            path="digital-products/update"
             element={<UpdateDigitalProduct />}
           />
 
           <Route path="orders" element={<Orders />} />
         </Route>
+
         {/* route for seller ends here */}
 
         <Route path="*" element={<NotFound />} />
