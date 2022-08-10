@@ -44,6 +44,9 @@ const UpdateProduct = () => {
             <ShippingTime />
           </div>
         </div>
+        <div className="addBtn">
+          <button className="btn btn-lg btn-success"> Update Product </button>
+        </div>
       </div>
     </div>
   );

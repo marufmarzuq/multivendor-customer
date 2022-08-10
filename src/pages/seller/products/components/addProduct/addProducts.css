@@ -1,3 +1,15 @@
+.addBtn {
+  display: flex;
+  justify-content: end;
+  margin-right: 5rem;
+  margin-top: 1rem;
+}
+.addDigitalProduct {
+  display: flex;
+  justify-content: end;
+  margin-right: 7.2rem;
+  margin-top: 1rem;
+}
 .add-product-widget-container {
   display: grid;
   grid-template-columns: 1fr;
