@@ -138,7 +138,7 @@ const DashboardCom = () => {
                 </div>
 
                 <div className="text-center mt-4">
-                  <Link to="products/add-products" className="btn btn-primary">
+                  <Link to="/products/add" className="btn btn-primary">
                     Add New Product
                   </Link>
                 </div>

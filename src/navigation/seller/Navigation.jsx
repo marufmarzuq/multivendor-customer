@@ -70,12 +70,12 @@ const Navigation = ({ toggleF, toggle }) => {
               <span className="ps-1"> Dashboard</span>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link onClick={() => closeNav()} to="purchase-history">
               <AiFillFileAdd className={navigationStyle.icon_green} />
               <span className="ps-2">Purchase History</span>
             </Link>
-          </li>
+          </li> */}
           {/* refund dropdown start */}
           <li onClick={() => collapse("refund")}>
             <BsArrowCounterclockwise className={navigationStyle.icon_green} />
