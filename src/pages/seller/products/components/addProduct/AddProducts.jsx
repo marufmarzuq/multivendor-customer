@@ -47,8 +47,8 @@ const AddProducts = () => {
           <ShippingTime />
         </div>
       </div>
-      <div className="addBtn">
-        <button className="btn btn-lg btn-success"> Add Product </button>
+      <div className="mt-4">
+        <button className="btn btn-lg btn-success"> Save Product </button>
       </div>
     </div>
   );

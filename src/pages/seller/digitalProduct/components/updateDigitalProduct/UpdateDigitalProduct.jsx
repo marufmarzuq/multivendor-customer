@@ -23,11 +23,8 @@ const UpdateDigitalProduct = () => {
         <ProductDescriptionDigital />
         <DigtalProductSEO />
       </div>
-      <div className="addDigitalProduct">
-        <button className="btn  btn-lg btn-success">
-          {" "}
-          Update Digital Product{" "}
-        </button>
+      <div className="mt-4">
+        <button className="btn  btn-lg btn-success"> Save Product </button>
       </div>
     </div>
   );

@@ -44,8 +44,9 @@ const Layout = () => {
         </section>
 
         <div className={` ${layoutStyle.layoutContainer}`}>
-          <div className={`   px-0`}>
+          <div className={` m-0  px-0`}>
             {/* Navigaions will be here */}
+
             <div
               className={
                 toggle
@@ -56,10 +57,10 @@ const Layout = () => {
               <Navigation toggle={toggle} toggleF={setToggle} />
             </div>
           </div>
-          <div className="  px-0 mx-0">
+          <div className=" px-0 mx-0">
             {/* Container for showing content */}
 
-            <div className={layoutStyle.content}>
+            <div className={`pt-4  ${layoutStyle.content}`}>
               <Outlet />
             </div>
           </div>
