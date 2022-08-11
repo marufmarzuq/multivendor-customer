@@ -1,3 +1,9 @@
+.active {
+  background-color: #d0eacb;
+
+  border-radius: 3px;
+}
+
 .icon_green {
   color: #65c23f;
 }
@@ -53,7 +59,7 @@ li {
 }
 
 li:hover {
-  background-color: #e8f6e2;
+  background-color: #e8f6e2c2;
   cursor: pointer;
 }
 .insideNavUl li {
@@ -70,6 +76,7 @@ li:hover {
 
 .inside_nav:hover {
   background-color: #d0eacb;
+  transition: all 0.2s;
   border-radius: 5px;
 }
 

@@ -1,8 +1,9 @@
 .addBtnParent {
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  height: 10rem;
+  height: auto !important;
+  margin-right: 0.3rem;
 }
 .addBtnParent a {
   text-decoration: none;

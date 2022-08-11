@@ -47,15 +47,9 @@ const Router = () => {
           <Route path="products/add" element={<AddProducts />} />
 
           <Route path="products/update" element={<UpdateProduct />} />
-          <Route path="products/bulk-upload" element={<BulkUpload />} />
-          <Route
-            path="products/digital-products"
-            element={<DigitalProduct />}
-          />
-          <Route
-            path="products/digital-products/add"
-            element={<AddDigitalProducts />}
-          />
+          <Route path="bulk-upload" element={<BulkUpload />} />
+          <Route path="digital-products" element={<DigitalProduct />} />
+          <Route path="digital-products/add" element={<AddDigitalProducts />} />
           <Route
             path="digital-products/update"
             element={<UpdateDigitalProduct />}
