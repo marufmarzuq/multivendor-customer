@@ -82,18 +82,17 @@ const Navigation = ({ toggleF, toggle }) => {
         </div>
 
         <ul className="ps-0">
-<<<<<<< HEAD
+
           <li>
             <Link onClick={() => closeNav()} to="/">
-=======
-          <li
+         <li
             onClick={() => handleDropdown("dashboard")}
             className={` ${
               activeMenu == "dashboard" ? navigationStyle.active : ""
             } `}
           >
             <Link onClick={() => closeNav()} to="">
->>>>>>> dev
+
               <AiOutlineHome className={` ${navigationStyle.icon_green}`} />
               <span className="ps-1"> Dashboard</span>
             </Link>
@@ -352,12 +351,7 @@ const Navigation = ({ toggleF, toggle }) => {
               <span className="ps-2">My Wallet</span>
             </Link>
           </li>{" "}
-          {/* <li>
-            <Link onClick={() => closeNav()} to="">
-              <TiSupport className={navigationStyle.icon_green} />
-              <span className="ps-2">Support Ticket</span>
-            </Link>
-          </li>{" "} */}
+     
           <li
             onClick={() => handleDropdown("profile")}
             className={`  ${
