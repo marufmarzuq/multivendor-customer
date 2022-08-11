@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import navigationStyle from "./navigation.module.css";
 
 import {
@@ -31,12 +31,30 @@ const Navigation = ({ toggleF, toggle }) => {
   const [refundCollap, setRefundProdColl] = useState(false);
 
   const collapse = (name) => {
-    if (name === "products") setProdColl(!prodCollap);
-    if (name === "refund") setRefundProdColl(!refundCollap);
+    if (name === "products") {
+      setProdColl(!prodCollap);
+      setRefundProdColl(false);
+    }
+    if (name === "refund") {
+      setRefundProdColl(!refundCollap);
+      setProdColl(false);
+    }
   };
 
   const closeNav = () => {
     toggleF(!toggle);
+  };
+
+  const { pathname } = useLocation();
+  const firstPath = pathname.split("/")[1];
+  const [activeMenu, setActiveMenu] = useState(firstPath || "");
+  console.log(activeMenu);
+  const handleDropdown = (type) => {
+    // if (activeMenu === type) {
+    //   setActiveMenu("");
+    // } else {
+    setActiveMenu(type);
+    // }
   };
 
   return (
@@ -64,8 +82,18 @@ const Navigation = ({ toggleF, toggle }) => {
         </div>
 
         <ul className="ps-0">
+<<<<<<< HEAD
           <li>
             <Link onClick={() => closeNav()} to="/">
+=======
+          <li
+            onClick={() => handleDropdown("dashboard")}
+            className={` ${
+              activeMenu == "dashboard" ? navigationStyle.active : ""
+            } `}
+          >
+            <Link onClick={() => closeNav()} to="">
+>>>>>>> dev
               <AiOutlineHome className={` ${navigationStyle.icon_green}`} />
               <span className="ps-1"> Dashboard</span>
             </Link>
@@ -77,12 +105,17 @@ const Navigation = ({ toggleF, toggle }) => {
             </Link>
           </li> */}
           {/* refund dropdown start */}
-          <li onClick={() => collapse("refund")}>
-            <BsArrowCounterclockwise className={navigationStyle.icon_green} />
-            <span className="ps-2 ">Refunds</span>
-            <span className={navigationStyle.right}>
-              <AiOutlineDown className={`${navigationStyle.icon_green}`} />
-            </span>
+          <li>
+            <div onClick={() => collapse("refund")}>
+              <BsArrowCounterclockwise className={navigationStyle.icon_green} />
+              <span className="ps-2 ">Refunds</span>
+              <span
+                onClick={() => collapse("refund")}
+                className={navigationStyle.right}
+              >
+                <AiOutlineDown className={`${navigationStyle.icon_green}`} />
+              </span>
+            </div>
             <div
               className={
                 refundCollap
@@ -91,7 +124,14 @@ const Navigation = ({ toggleF, toggle }) => {
               }
             >
               <ul className={navigationStyle.insideNavUl}>
-                <li className="mt-2">
+                <li
+                  onClick={() => handleDropdown("sent-refund-request")}
+                  className={` mt-2 ${
+                    activeMenu == "sent-refund-request"
+                      ? navigationStyle.active
+                      : ""
+                  } `}
+                >
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
@@ -104,7 +144,14 @@ const Navigation = ({ toggleF, toggle }) => {
                   </Link>
                 </li>
 
-                <li>
+                <li
+                  onClick={() => handleDropdown("received-refund-request")}
+                  className={` mt-2 ${
+                    activeMenu == "received-refund-request"
+                      ? navigationStyle.active
+                      : ""
+                  } `}
+                >
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
@@ -120,13 +167,18 @@ const Navigation = ({ toggleF, toggle }) => {
             </div>
           </li>
           {/* refund dropdown end */}
-          <li onClick={() => collapse("products")}>
+          <li>
             {/* <Link onClick={() => closeNav()} to=""> */}
-            <RiVipDiamondLine className={navigationStyle.icon_green} />
-            <span className="ps-2 ">Products</span>
-            <span className={navigationStyle.right}>
-              <AiOutlineDown className={`${navigationStyle.icon_green}`} />
-            </span>
+            <div onClick={() => collapse("products")}>
+              <RiVipDiamondLine className={navigationStyle.icon_green} />
+              <span className="ps-2 ">Products</span>
+              <span className={navigationStyle.right}>
+                <AiOutlineDown
+                  onClick={() => collapse("products")}
+                  className={`${navigationStyle.icon_green}`}
+                />
+              </span>
+            </div>
             <div
               className={
                 prodCollap ? navigationStyle.openProduct : navigationStyle.close
@@ -143,17 +195,29 @@ const Navigation = ({ toggleF, toggle }) => {
                     <span className="ps-2">Purchase History</span>
                   </Link>
                 </li> */}
-                <li className="mt-2">
+                <li
+                  onClick={() => handleDropdown("products")}
+                  className={` mt-2 ${
+                    activeMenu == "products" ? navigationStyle.active : ""
+                  } `}
+                >
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
                     to="/products"
                   >
                     <RiVipDiamondLine className={navigationStyle.icon_green} />
-                    <span className="ps-2">Products</span>
+                    <span className="ps-2">All Products</span>
                   </Link>
                 </li>
-                <li>
+                <li
+                  onClick={() => handleDropdown("digital-products")}
+                  className={`  ${
+                    activeMenu == "digital-products"
+                      ? navigationStyle.active
+                      : ""
+                  } `}
+                >
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
@@ -163,17 +227,27 @@ const Navigation = ({ toggleF, toggle }) => {
                     <span className="ps-2">Digital Products</span>
                   </Link>
                 </li>
-                <li>
+                <li
+                  onClick={() => handleDropdown("bulk-upload")}
+                  className={`  ${
+                    activeMenu == "bulk-upload" ? navigationStyle.active : ""
+                  } `}
+                >
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="products/bulk-upload"
+                    to="/bulk-upload"
                   >
                     <AiOutlineArrowUp className={navigationStyle.icon_green} />
                     <span className="ps-2">Product Bulk Upload</span>
                   </Link>
                 </li>
-                <li>
+                <li
+                  onClick={() => handleDropdown("wishlist")}
+                  className={`  ${
+                    activeMenu == "wishlist" ? navigationStyle.active : ""
+                  } `}
+                >
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
@@ -185,7 +259,14 @@ const Navigation = ({ toggleF, toggle }) => {
                     <span className="ps-2">Wishlist</span>
                   </Link>
                 </li>
-                <li>
+                <li
+                  onClick={() => handleDropdown("product-reviews")}
+                  className={`  ${
+                    activeMenu == "product-reviews"
+                      ? navigationStyle.active
+                      : ""
+                  } `}
+                >
                   <Link
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
@@ -205,37 +286,67 @@ const Navigation = ({ toggleF, toggle }) => {
               <span className="ps-2">POS Manager</span>
             </Link>
           </li> */}
-          <li>
+          <li
+            onClick={() => handleDropdown("orders")}
+            className={`  ${
+              activeMenu == "orders" ? navigationStyle.active : ""
+            } `}
+          >
             <Link onClick={() => closeNav()} to="orders">
               <HiOutlineTicket className={navigationStyle.icon_green} />
               <span className="ps-2">Orders</span>
             </Link>
           </li>
-          <li>
+          <li
+            onClick={() => handleDropdown("setting")}
+            className={`  ${
+              activeMenu == "setting" ? navigationStyle.active : ""
+            } `}
+          >
             <Link onClick={() => closeNav()} to="">
               <FiSettings className={navigationStyle.icon_green} />
               <span className="ps-2">Shop setting</span>
             </Link>
           </li>
-          <li>
+          <li
+            onClick={() => handleDropdown("payment-history")}
+            className={`  ${
+              activeMenu == "payment-history" ? navigationStyle.active : ""
+            } `}
+          >
             <Link onClick={() => closeNav()} to="">
               <GiBackwardTime className={navigationStyle.icon_green} />
               <span className="ps-2">Payment History</span>
             </Link>
           </li>{" "}
-          <li>
+          <li
+            onClick={() => handleDropdown("money-withdraw")}
+            className={`  ${
+              activeMenu == "money-withdraw" ? navigationStyle.active : ""
+            } `}
+          >
             <Link onClick={() => closeNav()} to="">
               <FaMoneyBillWave className={navigationStyle.icon_green} />
               <span className="ps-2">Money Withdraw</span>
             </Link>
           </li>{" "}
-          <li>
+          <li
+            onClick={() => handleDropdown("commision-history")}
+            className={`  ${
+              activeMenu == "commision-history" ? navigationStyle.active : ""
+            } `}
+          >
             <Link onClick={() => closeNav()} to="">
               <AiFillFileAdd className={navigationStyle.icon_green} />
               <span className="ps-2">Commission History</span>
             </Link>
           </li>{" "}
-          <li>
+          <li
+            onClick={() => handleDropdown("wallet")}
+            className={`  ${
+              activeMenu == "wallet" ? navigationStyle.active : ""
+            } `}
+          >
             <Link onClick={() => closeNav()} to="">
               <BsCurrencyDollar className={navigationStyle.icon_green} />
               <span className="ps-2">My Wallet</span>
@@ -247,7 +358,12 @@ const Navigation = ({ toggleF, toggle }) => {
               <span className="ps-2">Support Ticket</span>
             </Link>
           </li>{" "} */}
-          <li>
+          <li
+            onClick={() => handleDropdown("profile")}
+            className={`  ${
+              activeMenu == "profile" ? navigationStyle.active : ""
+            } `}
+          >
             <Link onClick={() => closeNav()} to="">
               <AiOutlineUser className={navigationStyle.icon_green} />
               <span className="ps-2">Manage profile</span>

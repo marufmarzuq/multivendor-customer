@@ -8,11 +8,8 @@ const TopSec = () => {
       <h5>Products</h5>
 
       <div className={topSecStyle.addBtnParent}>
-        <Link to="add">
-          <div className={topSecStyle.addBtn}>
-            <AiOutlinePlusCircle className={topSecStyle.icon} />
-            <h6 className="mt-3">Add New Product </h6>
-          </div>
+        <Link className="btn btn-outline-success" to="add">
+          Add New Product
         </Link>
       </div>
     </div>

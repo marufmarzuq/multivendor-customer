@@ -38,17 +38,15 @@ const Router = () => {
           }
         >
           {/*all route for seller will place here */}
-          <Route path="" element={<Dashboard />} />
-
+          <Route path="/" element={<Dashboard />} />
           <Route path="purchase-history" element={<PurchaseHistory />} />
           <Route path="sent-refund-request" element={<SentRefundReq />} />
           <Route path="wishlist" element={<Wishlist />} />
           {/* <Route path="products" element={<Products />} /> */}
           {/* <Route path="products/add" element={<AddProducts />} /> */}
-
-          {/* <Route path="products/update" element={<UpdateProduct />} /> */}
+          <Route path="products/update" element={<UpdateProduct />} />
           <Route path="products/bulk-upload" element={<BulkUpload />} />
-          {/* <Route
+          <Route
             path="products/digital-products"
             element={<DigitalProduct />}
           />
@@ -59,10 +57,10 @@ const Router = () => {
           <Route
             path="products/digital-products/update"
             element={<UpdateDigitalProduct />}
-          /> */}
-
+          />{" "}
           <Route path="orders" element={<Orders />} />
         </Route>
+
         {/* route for seller ends here */}
 
         <Route path="products" element={<Layout />}>
