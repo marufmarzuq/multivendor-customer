@@ -3,9 +3,9 @@ import AppProviders from "./setup/providers";
 
 function App() {
   return (
-    <AppProviders>
-      <Router />
-    </AppProviders>
+    // <AppProviders>
+    <Router />
+    // </AppProviders>
   );
 }
 
