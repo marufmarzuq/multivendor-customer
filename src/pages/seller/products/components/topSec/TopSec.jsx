@@ -8,7 +8,7 @@ const TopSec = () => {
       <h5>Products</h5>
 
       <div className={topSecStyle.addBtnParent}>
-        <Link className="btn btn-outline-success" to="add">
+        <Link className="btn btn-outline-success" to="/products/add">
           Add New Product
         </Link>
       </div>
