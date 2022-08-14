@@ -184,16 +184,6 @@ const Navigation = ({ toggleF, toggle }) => {
               }
             >
               <ul className={navigationStyle.insideNavUl}>
-                {/* <li className={` mt-2`}>
-                  <Link
-                    className={navigationStyle.inside_nav}
-                    onClick={() => closeNav()}
-                    to="purchase-history"
-                  >
-                    <AiFillFileAdd className={navigationStyle.icon_green} />
-                    <span className="ps-2">Purchase History</span>
-                  </Link>
-                </li> */}
                 <li
                   onClick={() => handleDropdown("products")}
                   className={` mt-2 ${
