@@ -21,48 +21,60 @@ import PrivateRoute from "./routeModels/PrivateRoute";
 
 const Router = () => {
   return (
-    <Fragment>
-      <Routes>
-        {/* route for customer starts here */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/customer" element={<CustomerHome />} />
-        {/* route for customer ends here */}
+    <Routes>
+      {/* route for customer starts here */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/customer" element={<CustomerHome />} />
+      {/* route for customer ends here */}
 
-        {/* routes for seller start from here */}
+      {/* routes for seller start from here */}
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <Layout />
+          </PrivateRoute>
+        }
+      >
+        {/*all route for seller will place here */}
+        <Route path="" element={<Dashboard />} />
+
+        {/* <Route path="purchase-history" element={<PurchaseHistory />} /> */}
+        <Route path="sent-refund-request" element={<SentRefundReq />} />
+        <Route path="products/wishlist" element={<Wishlist />} />
+        <Route path="products/all" element={<Products />} />
+        <Route path="products/add" element={<AddProducts />} />
+
+        <Route path="products/update" element={<UpdateProduct />} />
+        <Route path="products/bulk-upload" element={<BulkUpload />} />
+        <Route path="products/digital/all" element={<DigitalProduct />} />
+        <Route path="products/digital/add" element={<AddDigitalProducts />} />
         <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <Layout />
-            </PrivateRoute>
-          }
-        >
-          {/*all route for seller will place here */}
-          <Route path="/" element={<Dashboard />} />
+          path="digital-products/update"
+          element={<UpdateDigitalProduct />}
+        />
 
-          <Route path="purchase-history" element={<PurchaseHistory />} />
-          <Route path="sent-refund-request" element={<SentRefundReq />} />
-          <Route path="wishlist" element={<Wishlist />} />
-          <Route path="products" element={<Products />} />
-          <Route path="products/add" element={<AddProducts />} />
+        <Route path="orders" element={<Orders />} />
+      </Route>
 
-          <Route path="products/update" element={<UpdateProduct />} />
-          <Route path="bulk-upload" element={<BulkUpload />} />
-          <Route path="digital-products" element={<DigitalProduct />} />
-          <Route path="digital-products/add" element={<AddDigitalProducts />} />
-          <Route
-            path="digital-products/update"
-            element={<UpdateDigitalProduct />}
-          />
+      {/* <Route path="products" element={<Layout />}>
+        <Route path="all" element={<Products />} />
+        <Route path="add" element={<AddProducts />} />
+        <Route path="update" element={<UpdateProduct />} />
+        <Route path="bulk-upload" element={<BulkUpload />} />
+        <Route path="wishlist" element={<Wishlist />} />
+      </Route>
 
-          <Route path="orders" element={<Orders />} />
-        </Route>
+      <Route path="digital-products" element={<Layout />}>
+        <Route path="all" element={<DigitalProduct />} />
+        <Route path="add" element={<AddDigitalProducts />} />
+        <Route path="update" element={<UpdateDigitalProduct />} />
+      </Route> */}
 
-        {/* route for seller ends here */}
+      {/* route for seller ends here */}
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Fragment>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 };
 

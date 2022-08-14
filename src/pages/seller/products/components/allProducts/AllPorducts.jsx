@@ -89,7 +89,7 @@ const AllPorducts = () => {
 
             <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
               <p>
-                <Link to="update">
+                <Link to="/products/update">
                   <button className={allProductsStyle.preview}>
                     <BiEdit />
                   </button>
