@@ -10,7 +10,7 @@ import Dashboard from "../../pages/seller/dashboard/Dashboard";
 import AddDigitalProducts from "../../pages/seller/digitalProduct/components/addDigitalProducts/AddDigitalProducts";
 import UpdateDigitalProduct from "../../pages/seller/digitalProduct/components/updateDigitalProduct/UpdateDigitalProduct";
 import DigitalProduct from "../../pages/seller/digitalProduct/DigitalProduct";
-import MoneyWithDraw from "../../pages/seller/moneyWithdraw/MoneyWithDraw";
+
 import MyWallet from "../../pages/seller/myWallet/MyWallet";
 import Orders from "../../pages/seller/orders/Orders";
 import PaymentHistory from "../../pages/seller/paymentHistory/PaymentHistory";
@@ -24,7 +24,7 @@ import SentRefundReq from "../../pages/seller/sentRefund/SentRefundReq";
 import Wishlist from "../../pages/seller/wishlist/Wishlist";
 import Layout from "./layouts/seller/Layout";
 import PrivateRoute from "./routeModels/PrivateRoute";
-
+import MoneyWithDraw from "../../pages/seller/moneyWithdraw/MoneyWithDraw";
 const Router = () => {
   return (
     <Routes>
