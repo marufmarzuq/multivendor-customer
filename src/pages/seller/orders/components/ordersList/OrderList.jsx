@@ -3,7 +3,7 @@ import { BsDownload, BsEyeFill } from "react-icons/bs";
 import { useState } from "react";
 import orderListStyle from "./orderList.module.css";
 import PdfModal from "../../../../../common/pdfModal/PdfModal";
-import OrderModal from "../../../purchaseHistory/components/orderModal/OrderModal";
+import OrderModal from "../orderModal/OrderModal";
 
 const OrderList = () => {
   const [show, setShow] = useState(false);

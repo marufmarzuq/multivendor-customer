@@ -6,6 +6,7 @@
   border-radius: 5px;
   padding-bottom: 30px;
 }
+
 .tableData small {
   font-size: 0.9rem;
 }
@@ -17,8 +18,10 @@
 .tableData table td {
   padding-top: 25px !important;
 }
+
 hr {
   opacity: 0.1;
+  z-index: 5;
 }
 
 .hide {
@@ -28,6 +31,9 @@ hr {
 .header p {
   font-size: 0.9rem;
   font-weight: 600;
+}
+p {
+  font-size: 0.9rem;
 }
 
 .code {

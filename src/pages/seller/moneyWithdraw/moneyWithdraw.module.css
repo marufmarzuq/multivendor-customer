@@ -6,12 +6,33 @@
   border-radius: 5px;
   padding-bottom: 30px;
 }
+.background h3 {
+  font-size: 1.2rem;
+}
+.balance {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1.7rem;
+  margin-top: -1rem;
+  margin-bottom: 4rem;
+  padding-right: 4rem;
+  background-color: #85ffbd;
+  background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  flex-direction: column;
+}
+
+.balance h4,
+button {
+  font-weight: 600 !important;
+}
 .tableData small {
   font-size: 0.9rem;
 }
 
 .tableData thead th {
-  border-bottom: 1px solid rgba(215, 215, 215, 0.266);
+  border-bottom: 1px solid rgba(215, 215, 215, 0.432);
   padding-bottom: 20px !important;
 }
 .tableData table td {
@@ -59,6 +80,19 @@ hr {
     margin-top: 12px !important;
     margin-left: 10px;
     border-radius: 5px;
+  }
+  .balance {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1.7rem;
+    margin-top: -1rem;
+    margin-bottom: 4rem;
+    padding-right: 4rem;
+    background-color: #85ffbd;
+    background-image: linear-gradient(45deg, #85ffbd 0%, #fffb7d 100%);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    flex-direction: row;
   }
 }
 
