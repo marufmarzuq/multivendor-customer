@@ -10,6 +10,7 @@ import Dashboard from "../../pages/seller/dashboard/Dashboard";
 import AddDigitalProducts from "../../pages/seller/digitalProduct/components/addDigitalProducts/AddDigitalProducts";
 import UpdateDigitalProduct from "../../pages/seller/digitalProduct/components/updateDigitalProduct/UpdateDigitalProduct";
 import DigitalProduct from "../../pages/seller/digitalProduct/DigitalProduct";
+import ManageProfile from "../../pages/seller/manageProfile/ManageProfile";
 import MoneyWithDraw from "../../pages/seller/moneyWithdraw/MoneyWithDraw";
 import MyWallet from "../../pages/seller/myWallet/MyWallet";
 import Orders from "../../pages/seller/orders/Orders";
@@ -44,6 +45,7 @@ const Router = () => {
         <Route path="commission-history" element={<CommissonHistory />} />
         <Route path="my-wallet" element={<MyWallet />} />
         <Route path="withdraw" element={<MoneyWithDraw />} />
+        <Route path="manage-profile" element={<ManageProfile />} />
       </Route>
 
       <Route

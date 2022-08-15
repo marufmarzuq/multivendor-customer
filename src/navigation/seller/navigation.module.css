@@ -13,6 +13,7 @@
   border-radius: 6px;
   padding-bottom: 1rem;
   height: 100vh;
+
   overflow-y: scroll;
 }
 
@@ -107,16 +108,9 @@ li:hover {
     display: none;
   }
   .nav_links {
-    /* height: 100vh; */
-    /* overflow-y: auto; */
-    /* margin-top: 0.7rem;
-    margin-bottom: 0.7rem; */
-    /* min-height: 90vh; */
-    /* overflow: scroll; */
     padding-bottom: 0;
     margin: 0;
     height: 98vh;
-    /* background-color: rebeccapurple; */
   }
 
   .nav_links .seller_info h1 {
