@@ -13,7 +13,7 @@ const MyWallet = () => {
 
         <section className={walletStyle.balance}>
           <h4>Wallet Balance : ৳-30,000.000</h4>
-          <button className="btn btn-success"> Recharge Wallet</button>
+          {/* <button className="btn btn-success"> Recharge Wallet</button> */}
         </section>
 
         <section>

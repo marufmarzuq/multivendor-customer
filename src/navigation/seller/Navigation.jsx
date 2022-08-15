@@ -72,7 +72,7 @@ const Navigation = ({ toggleF, toggle }) => {
 
   return (
     <Fragment>
-      <div className={navigationStyle.nav_NavLinks}>
+      <div className={navigationStyle.nav_links}>
         <div className={navigationStyle.seller_info}>
           <h1 className="">
             <button onClick={() => logOut()}>
@@ -346,12 +346,12 @@ const Navigation = ({ toggleF, toggle }) => {
             </NavLink>
           </li>{" "}
           <li
-            onClick={() => handleDropdown("profile")}
+            onClick={() => handleDropdown("manage-profile")}
             className={`  ${
-              activeMenu == "profile" ? navigationStyle.active : ""
+              activeMenu == "manage-profile" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/">
+            <NavLink onClick={() => closeNav()} to="/manage-profile">
               <AiOutlineUser className={navigationStyle.icon_green} />
               <span className="ps-2">Manage profile</span>
             </NavLink>

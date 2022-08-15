@@ -20,8 +20,9 @@ const UpdateProduct = () => {
   return (
     <div>
       <div className="add-product mx-3 mb-5">
-        <div className="page-title mt-3 mb-3">
+        <div className=" d-flex justify-content-between mt-3 mb-3">
           <h4>Update product</h4>
+          <button className="btn btn-outline-success"> Save Product </button>
         </div>
         <div className="add-product-widget-container">
           <div className="">
@@ -45,7 +46,10 @@ const UpdateProduct = () => {
           </div>
         </div>
         <div className="mt-4">
-          <button className="btn btn-lg btn-success"> Save Product </button>
+          <button className="btn btn-lg btn-outline-success">
+            {" "}
+            Save Product{" "}
+          </button>
         </div>
       </div>
     </div>

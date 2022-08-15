@@ -1,7 +1,10 @@
 import React, { Fragment } from "react";
+import { useState } from "react";
 import { Table } from "react-bootstrap";
 import withdrawStyle from "./moneyWithdraw.module.css";
+import WithdrawModal from "./WithdrawModal";
 const MoneyWithDraw = () => {
+  const [show, setShow] = useState(false);
   return (
     <Fragment>
       <div className={`${withdrawStyle.background}`}>
@@ -12,7 +15,11 @@ const MoneyWithDraw = () => {
 
         <section className={withdrawStyle.balance}>
           <h4>Pending Balance : ৳-50,000.000</h4>
-          <button className="btn btn-success"> Send Withdraw Request</button>
+          <button onClick={() => setShow(!show)} className="btn btn-success">
+            Send Withdraw Request
+          </button>
+
+          <WithdrawModal show={show} setShow={setShow} />
         </section>
 
         <section>

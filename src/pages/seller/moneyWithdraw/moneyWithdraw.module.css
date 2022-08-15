@@ -1,3 +1,17 @@
+.modalWidth {
+  min-width: 50vw !important;
+}
+.infoContainer {
+  display: grid;
+  grid-template-columns: 20% auto;
+  grid-gap: 1rem;
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 3rem;
+
+  padding-bottom: 10rem;
+}
+
 .background {
   background-color: white;
   margin-top: 12px;
@@ -75,6 +89,16 @@ hr {
 }
 
 @media only screen and (min-width: 768px) {
+  .infoContainer {
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-gap: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 3rem;
+
+    padding-bottom: 5rem;
+  }
   .background {
     background-color: white;
     margin-top: 12px !important;
