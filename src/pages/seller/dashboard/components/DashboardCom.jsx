@@ -1,8 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import dashboardStyle from "./dashboard.module.css";
 
-import { wave1, wave2, wave3, verified } from "../../../../assets/index";
-import { Link } from "react-router-dom";
+import { BsCurrencyDollar, BsShop } from "react-icons/bs";
+import { AiOutlineShoppingCart, AiOutlineShop } from "react-icons/ai";
+import { Table } from "react-bootstrap";
+import SaleHistory from "./SaleHistory";
 
 const DashboardCom = () => {
   return (
@@ -21,145 +23,271 @@ const DashboardCom = () => {
         <section>
           <div className="row px-0">
             <div className="col-md-3">
-              <div
-                className={`${dashboardStyle.dashboard_card} ${dashboardStyle.dashboard_card_1}`}
-              >
-                <h1>1</h1>
-                <p>Products</p>
-                <img src={wave1} alt="" />
+              <div className={`${dashboardStyle.dashboard_card} `}>
+                <div className="col">
+                  <h1>Total Revenue</h1>
+                  <small> ( Last 30 Days ) </small>
+                </div>
+
+                <div>
+                  <span>
+                    <BsCurrencyDollar />
+                  </span>
+                </div>
+                <div>
+                  <h5>$0.00</h5>
+                </div>
               </div>
             </div>
+
             <div className="col-md-3">
-              <div
-                className={`${dashboardStyle.dashboard_card} ${dashboardStyle.dashboard_card_2}`}
-              >
-                <h1>0</h1>
-                <p>Total Sale</p>
-                <img src={wave2} alt="" />
+              <div className={`${dashboardStyle.dashboard_card} `}>
+                <div className="col">
+                  <h1>Total Order</h1>
+                  <small> ( Last 30 Days ) </small>
+                </div>
+
+                <div>
+                  <span>
+                    <AiOutlineShoppingCart />
+                  </span>
+                </div>
+                <div>
+                  <h5> 0 </h5>
+                </div>
               </div>
             </div>
+
             <div className="col-md-3">
-              <div
-                className={`${dashboardStyle.dashboard_card} ${dashboardStyle.dashboard_card_3}`}
-              >
-                <h1>৳ 100000</h1>
-                <p>Total Earnings</p>
-                <img src={wave3} alt="" />
+              <div className={`${dashboardStyle.dashboard_card} `}>
+                <div className="col">
+                  <h1>Todays Revenue</h1>
+                </div>
+
+                <div>
+                  <span>
+                    <BsCurrencyDollar />
+                  </span>
+                </div>
+                <div>
+                  <h5>$0.00</h5>
+                </div>
               </div>
             </div>
+
             <div className="col-md-3">
-              <div
-                className={`${dashboardStyle.dashboard_card} ${dashboardStyle.dashboard_card_1}`}
-              >
-                <h1>0</h1>
-                <p>Successful orders</p>
-                <img src={wave1} alt="" />
+              <div className={`${dashboardStyle.dashboard_card} `}>
+                <div className="col">
+                  <h1>Total Shops</h1>
+                </div>
+
+                <div>
+                  <span>
+                    <AiOutlineShop />
+                  </span>
+                </div>
+                <div>
+                  <h5> 10</h5>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         <section>
-          <div className="row mt-4  ">
-            <div className={`col-sm-7 `}>
-              <div className={`p-4 ${dashboardStyle.orders}`}>
-                <h6>Orders</h6>
+          <div className="row">
+            <div className="col">
+              <SaleHistory />
+            </div>
+          </div>
+        </section>
+        <section>
+          <div className={` ${dashboardStyle.tables}`}>
+            <div className={dashboardStyle.table}>
+              <h3 className={dashboardStyle.tableHeader}>Recent Orders</h3>
+              <div>
+                <Table hover borderless responsive>
+                  <thead>
+                    <tr>
+                      <th>
+                        <small> Tracking Number</small>
+                      </th>
+                      <th>
+                        <small> Total </small>
+                      </th>
+                      <th>
+                        <small> Order Date </small>
+                      </th>
+                      <th>
+                        <small> Status</small>
+                      </th>
+                    </tr>
+                  </thead>
 
-                <div className={`row px-0 ${dashboardStyle.orders_part}`}>
-                  <div className="col-10">
-                    <p>Total orders:</p>
-                  </div>
-                  <div className="col-2">
-                    <p>8</p>
-                  </div>
-                </div>
-
-                <div className={`row px-0 ${dashboardStyle.orders_part}`}>
-                  <div className="col-10">
-                    <p>Pending orders:</p>
-                  </div>
-                  <div className="col-2">
-                    <p>6</p>
-                  </div>
-                </div>
-
-                <div className={`row px-0 ${dashboardStyle.orders_part}`}>
-                  <div className="col-10">
-                    <p>Canceled orders:</p>
-                  </div>
-                  <div className="col-2">
-                    <p>0</p>
-                  </div>
-                </div>
-
-                <div className={`row px-0 ${dashboardStyle.orders_part}`}>
-                  <div className="col-10">
-                    <p>Successful orders:</p>
-                  </div>
-                  <div className="col-2">
-                    <p>2</p>
-                  </div>
-                </div>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <small>20220801</small>
+                      </td>
+                      <td>
+                        <small> 20 </small>
+                      </td>
+                      <td>
+                        <small> 2022-08-01 23:46:29</small>
+                      </td>
+                      <td>
+                        <small> Pending</small>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <small>20220801</small>
+                      </td>
+                      <td>
+                        <small> 20 </small>
+                      </td>
+                      <td>
+                        <small> 2022-08-01 23:46:29</small>
+                      </td>
+                      <td>
+                        <small> Pending</small>
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
               </div>
             </div>
-            <div className={`col-sm-5 mt-3 mt-md-5 mt-xxl-4`}>
-              <div className={` p-4 ${dashboardStyle.verified}`}>
-                <img src={verified} alt="" />
+            <div className={dashboardStyle.table}>
+              <h3 className={dashboardStyle.tableHeader}>Recent Withdrawals</h3>
+              <div>
+                <Table hover borderless responsive>
+                  <thead>
+                    <tr>
+                      <th>
+                        <small> Shop Name</small>
+                      </th>
+                      <th>
+                        <small> Amount </small>
+                      </th>
+                      <th>
+                        <small> Status </small>
+                      </th>
+                      <th>
+                        <small> Created</small>
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>
+                        <small>shop one</small>
+                      </td>
+                      <td>
+                        <small> 2000 </small>
+                      </td>
+                      <td>
+                        <small> Pending</small>
+                      </td>
+                      <td>
+                        <small> 2022-08-01 23:46:29</small>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <small>shop two</small>
+                      </td>
+                      <td>
+                        <small> 2000 </small>
+                      </td>
+                      <td>
+                        <small> Pending</small>
+                      </td>
+                      <td>
+                        <small> 2022-08-01 23:46:29</small>
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
               </div>
             </div>
           </div>
         </section>
 
         <section>
-          <div className="row px-0 mt-3">
-            <div className="col-sm-8">
-              <div className={dashboardStyle.products}>
-                <h6>Products</h6>
+          <div className="row mt-3">
+            <div className="col">
+              <div className={dashboardStyle.table}>
+                <h3 className={dashboardStyle.tableHeader}>Popular Products</h3>
+                <div>
+                  <Table hover borderless responsive>
+                    <thead>
+                      <tr>
+                        <th>
+                          <small> ID </small>
+                        </th>
+                        <th>
+                          <small> Name </small>
+                        </th>
+                        <th>
+                          <small> Group </small>
+                        </th>
+                        <th>
+                          <small> Shop</small>
+                        </th>
+                        <th>
+                          <small> Price/Unit</small>
+                        </th>
+                        <th>
+                          <small> Quantity</small>
+                        </th>
+                      </tr>
+                    </thead>
 
-                <div className="row mt-4 px-0">
-                  <div className="col-6">
-                    <h5>Category</h5>
-                  </div>
-
-                  <div className="col-6">
-                    <h5>Product</h5>
-                  </div>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <small> 101 </small>
+                        </td>
+                        <td>
+                          <small> Mobile phone </small>
+                        </td>
+                        <td>
+                          <small> Electronics</small>
+                        </td>
+                        <td>
+                          <small>Shop one</small>
+                        </td>
+                        <td>
+                          <small>$ 250</small>
+                        </td>
+                        <td>
+                          <small>10</small>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <small> 101 </small>
+                        </td>
+                        <td>
+                          <small> Mobile phone </small>
+                        </td>
+                        <td>
+                          <small> Electronics</small>
+                        </td>
+                        <td>
+                          <small>Shop one</small>
+                        </td>
+                        <td>
+                          <small>$ 250</small>
+                        </td>
+                        <td>
+                          <small>10</small>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </Table>
                 </div>
-
-                <hr />
-
-                <div className="row">
-                  <div className="col-6">
-                    <p>Baby</p>
-                  </div>
-                  <div className="col-6">
-                    <p>1</p>
-                  </div>
-                </div>
-
-                <div className="text-center mt-4">
-                  <Link to="/products/add" className="btn btn-primary">
-                    Add New Product
-                  </Link>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-4 mt-3 mt-md-0">
-              <div className={`${dashboardStyle.shop}`}>
-                <h6>Shop</h6>
-                <p>Manage & organize your shop</p>
-
-                <button className="btn btn-primary mt-3">Go to setting</button>
-              </div>
-              <div
-                className={`
-                mt-3 
-              ${dashboardStyle.payment}`}
-              >
-                <h6>Payment</h6>
-                <p>Configure your payment method</p>
-
-                <button className="btn btn-primary mt-3">Configure Now</button>
               </div>
             </div>
           </div>
