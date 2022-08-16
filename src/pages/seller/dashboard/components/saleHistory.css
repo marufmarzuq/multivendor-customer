@@ -1,0 +1,14 @@
+.saleHistory {
+  background-color: #fff;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.saleHistory h6 {
+  font-weight: 600;
+}
+.custom-tooltip {
+  background-color: #fff;
+  border: none;
+}
