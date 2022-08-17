@@ -3,6 +3,7 @@ import dashboardStyle from "./dashboard.module.css";
 
 import { BsCurrencyDollar, BsShop } from "react-icons/bs";
 import { AiOutlineShoppingCart, AiOutlineShop } from "react-icons/ai";
+import { HiOutlineReceiptRefund } from "react-icons/hi";
 import { Table } from "react-bootstrap";
 import SaleHistory from "./SaleHistory";
 
@@ -78,16 +79,16 @@ const DashboardCom = () => {
             <div className="col-md-3">
               <div className={`${dashboardStyle.dashboard_card} `}>
                 <div className="col">
-                  <h1>Total Shops</h1>
+                  <h1>Todays Refund</h1>
                 </div>
 
                 <div>
                   <span>
-                    <AiOutlineShop />
+                    <HiOutlineReceiptRefund />
                   </span>
                 </div>
                 <div>
-                  <h5> 10</h5>
+                  <h5>$0.00</h5>
                 </div>
               </div>
             </div>
@@ -164,9 +165,6 @@ const DashboardCom = () => {
                   <thead>
                     <tr>
                       <th>
-                        <small> Shop Name</small>
-                      </th>
-                      <th>
                         <small> Amount </small>
                       </th>
                       <th>
@@ -181,9 +179,6 @@ const DashboardCom = () => {
                   <tbody>
                     <tr>
                       <td>
-                        <small>shop one</small>
-                      </td>
-                      <td>
                         <small> 2000 </small>
                       </td>
                       <td>
@@ -194,9 +189,6 @@ const DashboardCom = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td>
-                        <small>shop two</small>
-                      </td>
                       <td>
                         <small> 2000 </small>
                       </td>
@@ -232,9 +224,7 @@ const DashboardCom = () => {
                         <th>
                           <small> Group </small>
                         </th>
-                        <th>
-                          <small> Shop</small>
-                        </th>
+
                         <th>
                           <small> Price/Unit</small>
                         </th>
@@ -255,9 +245,7 @@ const DashboardCom = () => {
                         <td>
                           <small> Electronics</small>
                         </td>
-                        <td>
-                          <small>Shop one</small>
-                        </td>
+
                         <td>
                           <small>$ 250</small>
                         </td>
@@ -275,9 +263,7 @@ const DashboardCom = () => {
                         <td>
                           <small> Electronics</small>
                         </td>
-                        <td>
-                          <small>Shop one</small>
-                        </td>
+
                         <td>
                           <small>$ 250</small>
                         </td>

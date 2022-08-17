@@ -1,0 +1,70 @@
+.background {
+  background-color: white;
+  margin-top: 12px;
+  margin-left: 1rem !important;
+  margin-right: 5px;
+  border-radius: 5px;
+  padding-bottom: 30px;
+}
+.tableData small {
+  font-size: 0.9rem;
+}
+
+.tableData thead th {
+  border-bottom: 1px solid rgba(215, 215, 215, 0.266);
+  padding-bottom: 20px !important;
+}
+.tableData table td {
+  padding-top: 25px !important;
+}
+
+hr {
+  opacity: 0.1;
+}
+
+.hide {
+  display: none;
+}
+
+.header p {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.code {
+  color: #65c23f;
+  cursor: pointer;
+}
+
+.unpaid {
+  background-color: #ef486a;
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  margin-right: 0.2rem;
+}
+
+.paid {
+  padding: 2px 4px;
+  border-radius: 3px;
+  background-color: #65c23f;
+  color: #fff;
+  font-size: 0.9rem;
+  margin-right: 0.2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .background {
+    background-color: white;
+    margin-top: 12px !important;
+    margin-left: 10px;
+    border-radius: 5px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .hide {
+    display: block;
+  }
+}
