@@ -340,7 +340,7 @@ const Navigation = ({ toggleF, toggle }) => {
               activeMenu == "setting" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/">
+            <NavLink onClick={() => closeNav()} to="/setting">
               <FiSettings className={navigationStyle.icon_green} />
               <span className="ps-2">Shop setting</span>
             </NavLink>
