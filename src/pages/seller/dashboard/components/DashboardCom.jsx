@@ -22,7 +22,7 @@ const DashboardCom = () => {
         </section>
 
         <section>
-          <div className="row px-0">
+          <div className={`row px-0 `}>
             <div className="col-md-3">
               <div className={`${dashboardStyle.dashboard_card} `}>
                 <div className="col">

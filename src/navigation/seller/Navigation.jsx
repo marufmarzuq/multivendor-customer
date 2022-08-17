@@ -279,7 +279,7 @@ const Navigation = ({ toggleF, toggle }) => {
             </div>
           </li>
           {/* refund dropdown end */}
-          <li
+          {/* <li
             onClick={() => handleDropdown("customers")}
             className={`  ${
               activeMenu == "customers" ? navigationStyle.active : ""
@@ -289,7 +289,7 @@ const Navigation = ({ toggleF, toggle }) => {
               <AiOutlineUser className={navigationStyle.icon_green} />
               <span className="ps-2">Customers</span>
             </NavLink>
-          </li>
+          </li> */}
           <li
             onClick={() => handleDropdown("withdraw")}
             className={`  ${

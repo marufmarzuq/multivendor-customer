@@ -14,6 +14,12 @@
 
   padding: 1.5rem;
   background-color: #fff;
+  transition: all 0.3s;
+}
+
+.dashboard_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 2px 2px 5px rgba(163, 163, 163, 0.144);
 }
 
 .dashboard_card h1 {
