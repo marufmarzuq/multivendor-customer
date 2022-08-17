@@ -27,6 +27,7 @@ import Wishlist from "../../pages/seller/wishlist/Wishlist";
 import Layout from "./layouts/seller/Layout";
 import PrivateRoute from "./routeModels/PrivateRoute";
 import MoneyWithDraw from "../../pages/seller/moneyWithdraw/MoneyWithDraw";
+import Customers from "../../pages/seller/customers/Customers";
 const Router = () => {
   return (
     <Routes>
@@ -47,6 +48,7 @@ const Router = () => {
         <Route path="my-wallet" element={<MyWallet />} />
         <Route path="withdraw" element={<MoneyWithDraw />} />
         <Route path="manage-profile" element={<ManageProfile />} />
+        <Route path="customers" element={<Customers />} />
       </Route>
 
       <Route

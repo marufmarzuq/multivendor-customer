@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Table } from "react-bootstrap";
 import customerStyle from "./cusomers.module.css";
 const Customers = () => {
@@ -6,7 +6,7 @@ const Customers = () => {
     <Fragment>
       <div className={`${customerStyle.background}`}>
         <section>
-          <h5 className="px-md-4 px-3 py-2 pt-3">Payment History</h5>
+          <h5 className="px-md-4 px-3 py-2 pt-3">Customers</h5>
           <hr />
         </section>
 
@@ -18,13 +18,19 @@ const Customers = () => {
                   <small>#</small>
                 </th>
                 <th>
-                  <small>Date</small>
+                  <small>Name</small>
                 </th>
                 <th>
-                  <small>Amount</small>
+                  <small>Email</small>
                 </th>
                 <th>
-                  <small>Payment Method</small>
+                  <small> Total Orders</small>
+                </th>
+                <th>
+                  <small> Total Reviews</small>
+                </th>
+                <th>
+                  <small> Total Refunds</small>
                 </th>
               </tr>
             </thead>
@@ -35,13 +41,39 @@ const Customers = () => {
                   <small>1</small>
                 </td>
                 <td>
-                  <small> 17-05-2021</small>
+                  <small> Mr. Cusotomer</small>
                 </td>
                 <td>
-                  <small> ৳10,000.000 </small>
+                  <small> customer@email.com </small>
                 </td>
                 <td>
-                  <small> Cash</small>
+                  <small> 10 </small>
+                </td>
+                <td>
+                  <small> 5 </small>
+                </td>
+                <td>
+                  <small> 3 </small>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <small>2</small>
+                </td>
+                <td>
+                  <small> Mr. Cusotomer</small>
+                </td>
+                <td>
+                  <small> customer@email.com </small>
+                </td>
+                <td>
+                  <small> 15 </small>
+                </td>
+                <td>
+                  <small> 13 </small>
+                </td>
+                <td>
+                  <small> 2</small>
                 </td>
               </tr>
             </tbody>
