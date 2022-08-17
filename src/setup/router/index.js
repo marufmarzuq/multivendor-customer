@@ -29,6 +29,7 @@ import PrivateRoute from "./routeModels/PrivateRoute";
 import MoneyWithDraw from "../../pages/seller/moneyWithdraw/MoneyWithDraw";
 import Customers from "../../pages/seller/customers/Customers";
 import ShopSetting from "../../pages/seller/shopSetting/ShopSetting";
+
 const Router = () => {
   return (
     <Routes>

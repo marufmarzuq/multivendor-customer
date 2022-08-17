@@ -1,8 +1,10 @@
 import React from "react";
+import { useEffect } from "react";
 import SettingBanner from "./componetns/settingBanner/SettingBanner";
 import SettingInfo from "./componetns/settingInfo/SettingInfo";
 import SettingSocialLinks from "./componetns/settingSocialLinks/SettingSocialLinks";
 import settingStyle from "./shopSetting.module.css";
+
 const ShopSetting = () => {
   return (
     <div className="add-product mx-3 mb-5">

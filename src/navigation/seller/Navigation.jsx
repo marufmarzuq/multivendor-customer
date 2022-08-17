@@ -19,6 +19,8 @@ import { BsArrowCounterclockwise, BsCurrencyDollar } from "react-icons/bs";
 import { FaTimes, FaMoneyBillWave } from "react-icons/fa";
 import { AiOutlineDown } from "react-icons/ai";
 import { BiLogOutCircle } from "react-icons/bi";
+import { VscCircuitBoard } from "react-icons/vsc";
+import { AiOutlineSend, AiOutlineRotateLeft } from "react-icons/ai";
 import { useState } from "react";
 
 const Navigation = ({ toggleF, toggle }) => {
@@ -150,7 +152,7 @@ const Navigation = ({ toggleF, toggle }) => {
                     onClick={() => closeNav()}
                     to="/products/digital/all"
                   >
-                    <RiVipDiamondLine className={navigationStyle.icon_green} />
+                    <VscCircuitBoard className={navigationStyle.icon_green} />
                     <span className="ps-2">Digital Products</span>
                   </NavLink>
                 </li>
@@ -249,16 +251,14 @@ const Navigation = ({ toggleF, toggle }) => {
                     onClick={() => closeNav()}
                     to="/sent-refund-request"
                   >
-                    <BsArrowCounterclockwise
-                      className={navigationStyle.icon_green}
-                    />
+                    <AiOutlineSend className={navigationStyle.icon_green} />
                     <span className="ps-2">Sent Refund Request</span>
                   </NavLink>
                 </li>
 
                 <li
                   onClick={() => handleDropdown("received-refund-request")}
-                  className={` mt-2 ${
+                  className={`  ${
                     activeMenu == "received-refund-request"
                       ? navigationStyle.active
                       : ""
@@ -269,7 +269,7 @@ const Navigation = ({ toggleF, toggle }) => {
                     onClick={() => closeNav()}
                     to="/received-refund-request"
                   >
-                    <BsArrowCounterclockwise
+                    <AiOutlineRotateLeft
                       className={navigationStyle.icon_green}
                     />
                     <span className="ps-2">Received Refund Request</span>
