@@ -1,3 +1,43 @@
+.dashboard_card {
+  border-radius: 8px;
+  height: 160px;
+  width: 200px;
+
+  display: grid;
+  grid-template-columns: 10fr 4fr;
+  box-shadow: 2px 2px 25px rgba(163, 163, 163, 0.144);
+  padding: 1.5rem;
+  background-color: #fff;
+  transition: all 0.3s;
+}
+
+.dashboard_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 2px 2px 5px rgba(163, 163, 163, 0.144);
+}
+.dashboard_card h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+.dashboard_card small {
+  font-weight: 600;
+  color: gray;
+  font-size: 0.8rem;
+}
+.dashboard_card h5 {
+  margin-top: 2rem;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+.dashboard_card span {
+  background-color: #06b382;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  padding: 6px 8px 7px 8px;
+  font-size: 25px;
+}
+
 .background {
   background-color: white;
   margin-top: 12px;
@@ -10,8 +50,9 @@
   font-size: 1.2rem;
 }
 .balance {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+
+  justify-content: center !important;
   padding-left: 1.7rem;
   margin-top: -1rem;
   margin-bottom: 1rem;
@@ -19,7 +60,6 @@
 
   padding-top: 2rem;
   padding-bottom: 2rem;
-  flex-direction: column;
 }
 
 .balance h4,
@@ -29,10 +69,15 @@ button {
 .tableData small {
   font-size: 0.9rem;
 }
+.tableData {
+  margin-top: 1rem;
+}
 
 .tableData thead th {
-  border-bottom: 1px solid rgba(215, 215, 215, 0.432);
-  padding-bottom: 20px !important;
+  border-top: 1px solid rgba(215, 215, 215, 0.796);
+  border-bottom: 1px solid rgba(215, 215, 215, 0.796);
+  padding-top: 13px;
+  padding-bottom: 13px;
 }
 .tableData table td {
   padding-top: 25px !important;
@@ -74,6 +119,18 @@ hr {
 }
 
 @media only screen and (min-width: 768px) {
+  .dashboard_card {
+    border-radius: 8px;
+    height: 160px;
+    width: 300px;
+
+    display: grid;
+    grid-template-columns: 10fr 4fr;
+    box-shadow: 2px 2px 25px rgba(163, 163, 163, 0.144);
+    padding: 1.5rem;
+    background-color: #fff;
+    transition: all 0.3s;
+  }
   .background {
     background-color: white;
     margin-top: 12px !important;

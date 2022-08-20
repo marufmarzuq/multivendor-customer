@@ -18,7 +18,11 @@ hr {
 .hide {
   display: none;
 }
-
+.header {
+  border-top: 1px dotted rgba(68, 68, 68, 0.371);
+  border-bottom: 1px dotted rgba(37, 37, 37, 0.371);
+  padding-top: 15px;
+}
 .header p {
   font-size: 0.9rem;
   font-weight: 600;
@@ -33,19 +37,21 @@ p {
 }
 
 .unpaid {
-  background-color: #ef486a;
-  color: #fff;
+  color: #ef486a;
   padding: 2px 4px;
   border-radius: 3px;
   font-size: 0.9rem;
+  margin-right: 0.2rem;
+  border: 1px solid #ef486a;
 }
 
 .paid {
   padding: 2px 4px;
   border-radius: 3px;
-  background-color: #65c23f;
-  color: #fff;
+  color: #65c23f;
   font-size: 0.9rem;
+  margin-right: 0.2rem;
+  border: 1px solid #65c23f;
 }
 .del,
 .preview,

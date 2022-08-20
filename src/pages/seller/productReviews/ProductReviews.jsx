@@ -7,7 +7,6 @@ const ProductReviews = () => {
       <div className={`${reviewsStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 py-2 pt-3">Product Reviews</h5>
-          <hr />
         </section>
 
         <section className={`px-4 ${reviewsStyle.tableData}`}>

@@ -28,7 +28,7 @@ const WishlistCom = () => {
         </section>
 
         <section>
-          <div className="row px-0 mx-0 ps-3 mt-4 pt-2">
+          <div className="row px-0 mx-0 ps-3 mt-3 pt-2">
             <div className="col-4 col-lg-3">
               <p className={wishlistStyle.code}>20210518-5869</p>
             </div>
@@ -48,7 +48,7 @@ const WishlistCom = () => {
         </section>
 
         <section>
-          <div className="row px-0 mx-0 ps-3 mt-4 pt-2">
+          <div className="row px-0 mx-0 ps-3 mt-3 pt-2">
             <div className="col-4 col-lg-3">
               <p className={wishlistStyle.code}>20210518-44545</p>
             </div>

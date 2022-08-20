@@ -105,7 +105,9 @@ const DashboardCom = () => {
         <section>
           <div className={` ${dashboardStyle.tables}`}>
             <div className={dashboardStyle.table}>
-              <h3 className={dashboardStyle.tableHeader}>Recent Orders</h3>
+              <h3 className={` mb-3 ${dashboardStyle.tableHeader}`}>
+                Recent Orders
+              </h3>
               <div>
                 <Table hover borderless responsive>
                   <thead>
@@ -159,7 +161,9 @@ const DashboardCom = () => {
               </div>
             </div>
             <div className={dashboardStyle.table}>
-              <h3 className={dashboardStyle.tableHeader}>Recent Withdrawals</h3>
+              <h3 className={` mb-3 ${dashboardStyle.tableHeader}`}>
+                Recent Withdrawals
+              </h3>
               <div>
                 <Table hover borderless responsive>
                   <thead>
@@ -210,7 +214,9 @@ const DashboardCom = () => {
           <div className="row mt-3">
             <div className="col">
               <div className={dashboardStyle.table}>
-                <h3 className={dashboardStyle.tableHeader}>Popular Products</h3>
+                <h3 className={` mb-3 ${dashboardStyle.tableHeader}`}>
+                  Popular Products
+                </h3>
                 <div>
                   <Table hover borderless responsive>
                     <thead>

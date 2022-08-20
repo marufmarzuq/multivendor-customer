@@ -12,13 +12,12 @@ const OrderList = () => {
     <Fragment>
       <div className={`${orderListStyle.background}`}>
         <section>
-          <h5 className="px-md-4 px-3 py-2">Orders</h5>
-          <hr />
+          <h5 className="px-md-4 px-3 pt-3 py-2">Orders</h5>
         </section>
 
         <section>
           <div
-            className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-4 pt-2 ${orderListStyle.header}`}
+            className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-3 ${orderListStyle.header}`}
           >
             <div>
               <p>#</p>
@@ -35,17 +34,16 @@ const OrderList = () => {
             <div className={` ${orderListStyle.hide}`}>
               <p>Amount</p>
             </div>
-            <div className={` ${orderListStyle.hide}`}>
+            <div className={` text-center ${orderListStyle.hide}`}>
               <p>Delivery Status</p>
             </div>
-            <div>
+            <div className="text-center">
               <p> Payment Status</p>
             </div>
-            <div>
+            <div className="text-center">
               <p>Options</p>
             </div>
           </div>
-          <hr />
         </section>
 
         <section>
@@ -67,13 +65,13 @@ const OrderList = () => {
             <div className={`${orderListStyle.hide}`}>
               <span> 100 </span>
             </div>
-            <div className={`${orderListStyle.hide}`}>
+            <div className={`text-center ${orderListStyle.hide}`}>
               <span> On delivery </span>
             </div>
-            <div>
+            <div className="text-center">
               <span className={orderListStyle.paid}>Paid</span>
             </div>
-            <div>
+            <div className="text-center">
               <button
                 onClick={() => setShow(!show)}
                 className={orderListStyle.preview}
@@ -108,13 +106,13 @@ const OrderList = () => {
             <div className={`${orderListStyle.hide}`}>
               <span> 100 </span>
             </div>
-            <div className={`${orderListStyle.hide}`}>
+            <div className={`text-center ${orderListStyle.hide}`}>
               <span> Pending </span>
             </div>
-            <div>
+            <div className="text-center">
               <span className={orderListStyle.unpaid}>UnPaid</span>
             </div>
-            <div>
+            <div className="text-center">
               <button
                 onClick={() => setShow(!show)}
                 className={orderListStyle.preview}

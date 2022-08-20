@@ -7,7 +7,6 @@ const CommissonHistory = () => {
       <div className={`${commissionStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 py-2 pt-3">Commission History</h5>
-          <hr />
         </section>
 
         <section className={`px-4 ${commissionStyle.tableData}`}>

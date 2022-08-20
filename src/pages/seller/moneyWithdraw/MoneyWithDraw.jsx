@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import { useState } from "react";
 import { Table } from "react-bootstrap";
+import { BsCurrencyDollar } from "react-icons/bs";
 import withdrawStyle from "./moneyWithdraw.module.css";
 import WithdrawModal from "./WithdrawModal";
 const MoneyWithDraw = () => {
@@ -14,17 +15,33 @@ const MoneyWithDraw = () => {
         </section>
 
         <section className={withdrawStyle.balance}>
-          <h4>Pending Balance : ৳-50,000.000</h4>
-          <button onClick={() => setShow(!show)} className="btn btn-success">
-            Send Withdraw Request
-          </button>
+          <section>
+            <div className={`${withdrawStyle.dashboard_card} `}>
+              <div className="">
+                <h1>Pending Balance</h1>
+              </div>
+
+              <div>
+                <span>
+                  <BsCurrencyDollar />
+                </span>
+              </div>
+              <div>
+                <h5>$0.00</h5>
+              </div>
+            </div>
+          </section>
+          <div>
+            <button onClick={() => setShow(!show)} className="btn btn-success">
+              Send Withdraw Request
+            </button>
+          </div>
 
           <WithdrawModal show={show} setShow={setShow} />
         </section>
 
         <section>
           <h3 className="px-md-4 px-3 py-2 pt-3">Withdraw Request history </h3>
-          <hr />
         </section>
 
         <section className={`px-4 ${withdrawStyle.tableData}`}>

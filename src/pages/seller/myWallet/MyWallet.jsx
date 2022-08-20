@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Table } from "react-bootstrap";
+import { BsCurrencyDollar } from "react-icons/bs";
 import walletStyle from "./myWallet.module.css";
 
 const MyWallet = () => {
@@ -12,13 +13,27 @@ const MyWallet = () => {
         </section>
 
         <section className={walletStyle.balance}>
-          <h4>Wallet Balance : ৳-30,000.000</h4>
+          <section>
+            <div className={`${walletStyle.dashboard_card} `}>
+              <div className="">
+                <h1>Wallet Balance</h1>
+              </div>
+
+              <div>
+                <span>
+                  <BsCurrencyDollar />
+                </span>
+              </div>
+              <div>
+                <h5>$0.00</h5>
+              </div>
+            </div>
+          </section>
           {/* <button className="btn btn-success"> Recharge Wallet</button> */}
         </section>
 
         <section>
           <h3 className="px-md-4 px-3 py-2 pt-3">Wallet recharge history </h3>
-          <hr />
         </section>
 
         <section className={`px-4 ${walletStyle.tableData}`}>
