@@ -1,7 +1,7 @@
 .background {
   background-color: white;
   margin-top: 12px;
-  margin-left: 5px;
+
   margin-right: 5px;
   border-radius: 5px;
   padding-bottom: 30px;
@@ -14,7 +14,11 @@ hr {
 .hide {
   display: none;
 }
-
+.header {
+  border-top: 1px dotted rgba(68, 68, 68, 0.371);
+  border-bottom: 1px dotted rgba(37, 37, 37, 0.371);
+  padding-top: 20px;
+}
 .header p {
   font-size: 0.9rem;
   font-weight: 600;

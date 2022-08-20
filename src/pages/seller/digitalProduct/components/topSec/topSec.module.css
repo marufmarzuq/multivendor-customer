@@ -1,10 +1,13 @@
 .addBtnParent {
   display: flex;
-  justify-content: end;
+  justify-content: space-between;
   align-items: center;
   height: auto !important;
   margin-right: 0.3rem;
+  margin-top: -25px;
+  padding-left: 12px;
 }
+
 .addBtnParent a {
   text-decoration: none;
 }
