@@ -9,7 +9,7 @@ const TopSec = () => {
 
       <div className={topSecStyle.addBtnParent}>
         <h5>Products</h5>
-        <Link className="btn btn-outline-success" to="/products/add">
+        <Link className="btn btn-success" to="/seller/products/add">
           Add New Product
         </Link>
       </div>

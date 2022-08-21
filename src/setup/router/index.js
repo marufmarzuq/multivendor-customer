@@ -29,12 +29,13 @@ import PrivateRoute from "./routeModels/PrivateRoute";
 import MoneyWithDraw from "../../pages/seller/moneyWithdraw/MoneyWithDraw";
 import Customers from "../../pages/seller/customers/Customers";
 import ShopSetting from "../../pages/seller/shopSetting/ShopSetting";
+import Home from "../../pages/customer/homepage/Home";
 
 const Router = () => {
   return (
     <Routes>
       <Route
-        path="/"
+        path="/seller"
         element={
           <PrivateRoute>
             <Layout />
@@ -54,7 +55,7 @@ const Router = () => {
       </Route>
 
       <Route
-        path="products/"
+        path="seller/products/"
         element={
           <PrivateRoute>
             <Layout />
@@ -71,6 +72,8 @@ const Router = () => {
         <Route path="digital/add" element={<AddDigitalProducts />} />
         <Route path="digital/update" element={<UpdateDigitalProduct />} />
       </Route>
+
+      <Route path="/" element={<Home />} />
 
       <Route path="/*" element={<NotFound />} />
     </Routes>
