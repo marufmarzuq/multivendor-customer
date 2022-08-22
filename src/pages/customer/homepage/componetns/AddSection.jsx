@@ -1,6 +1,6 @@
 import React from "react";
 
-import "../home.css";
+import "./addSection.css";
 
 const AddSection = () => {
   return (
