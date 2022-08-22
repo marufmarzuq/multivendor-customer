@@ -8,7 +8,7 @@ const AddSectionTwo = () => {
           <div className="col-12 col-md-6 text-center">
             <div className="ads-wrapper">
               <h2 className="ad-header">Fashion Jewelry</h2>
-              <a href="#" className="button-outline">
+              <a href="#" className="btn button-outline">
                 Shop Now
               </a>
             </div>
@@ -16,7 +16,7 @@ const AddSectionTwo = () => {
           <div className="col-12 col-md-6 text-center">
             <div className="ads-wrapper">
               <h2 className="ad-header">Fashion Jewelry</h2>
-              <a href="#" className="button-outline">
+              <a href="#" className="btn button-outline">
                 Shop Now
               </a>
             </div>

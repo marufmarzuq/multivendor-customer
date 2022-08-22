@@ -1,5 +1,5 @@
 import React from "react";
-import { groceries, product1, product2, slider1 } from "../../../../assets";
+import { groceries, product1, product2, slider1 } from "../../../../../assets";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

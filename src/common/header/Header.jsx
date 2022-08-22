@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./header.css";
 import { logo } from "../../assets/index";
+import { AiOutlineBars } from "react-icons/ai";
+import { FaTimes } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 const Header = () => {
+  const [mobileNav, setMobileNav] = useState(false);
+  console.log(mobileNav);
   return (
     <header class="header">
       {/* <!-- topbar --> */}
@@ -113,7 +118,7 @@ const Header = () => {
             <div class="col-6 col-md-2 col-lg-3">
               <div class="menu-icons">
                 <ul class="d-flex justify-content-end">
-                  <li>
+                  {/* <li>
                     <a href="#">
                       <i class="icon-balance count-circle">
                         <span>0</span>
@@ -133,7 +138,7 @@ const Header = () => {
                         <span>10</span>
                       </i>
                     </a>
-                  </li>
+                  </li> */}
                   <li>
                     <a href="#">
                       <i class="icon-user"></i>
@@ -223,24 +228,29 @@ const Header = () => {
             <div class="col-8">
               <div class="shop-menu">
                 <ul
-                  class="d-flex flex-column flex-md-row side-navigation"
-                  id="mobile-menu"
+                  class={`${
+                    mobileNav
+                      ? `d-flex flex-column flex-md-row side-navigation mobile-menu-open`
+                      : `d-flex flex-column flex-md-row side-navigation`
+                  }`}
                 >
-                  <a
-                    href="javascript:void(0)"
-                    class="closebtn d-block d-md-none"
-                    onclick="closeNav()"
+                  <button
+                    // href="javascript:void(0)"
+
+                    class="closebtn btn d-block d-md-none"
+                    onClick={() => setMobileNav(!mobileNav)}
                   >
-                    &times;
-                  </a>
+                    <FaTimes />
+                  </button>
+
                   <li>
-                    <a href="#">Home</a>
+                    <NavLink to="/">Home</NavLink>
                   </li>
                   <li>
                     <a href="#">Store List</a>
                   </li>
                   <li>
-                    <a href="#">Shop</a>
+                    <NavLink to="/shop">Shop</NavLink>
                   </li>
                   <li>
                     <a href="#">Checkout</a>
@@ -251,9 +261,9 @@ const Header = () => {
                 </ul>
                 <span
                   class="mobile-nav-open d-block d-md-none"
-                  onclick="openNav()"
+                  onClick={() => setMobileNav(!mobileNav)}
                 >
-                  <i class="icon-bar"></i>
+                  <AiOutlineBars />
                 </span>
               </div>
             </div>

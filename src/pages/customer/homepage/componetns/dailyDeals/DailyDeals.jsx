@@ -1,6 +1,6 @@
 import React from "react";
 import "./dailyDeals.css";
-import { product1, product2 } from "../../../../assets";
+import { product1, product2 } from "../../../../../assets";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft } from "react-icons/fa";
 const DailyDeals = () => {

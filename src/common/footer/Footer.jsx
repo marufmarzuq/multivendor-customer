@@ -1,4 +1,6 @@
 import React from "react";
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { BiUser } from "react-icons/bi";
 import "./footer.css";
 const Footer = () => {
   return (
@@ -42,28 +44,28 @@ const Footer = () => {
                 <span>01234567890, 25678945</span>
               </li>
               <li>
-                <i class="far fa-user"></i>
+                <BiUser />
                 <span>info@sakira.com</span>
               </li>
               <li>
-                <i class="far fa-user"></i>
+                <BiUser />
                 <span>infosakira.com</span>
               </li>
             </ul>
             <ul class="social-buttons">
               <li>
                 <a href="#">
-                  <i class="fab fa-facebook-f"></i>
+                  <FaFacebookF />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <i class="fab fa-twitter"></i>
+                  <FaTwitter />
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <i class="fab fa-linkedin-in"></i>
+                  <FaLinkedinIn />
                 </a>
               </li>
             </ul>

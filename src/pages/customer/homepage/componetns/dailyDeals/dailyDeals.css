@@ -32,14 +32,16 @@ featured-products .featured-products-tabs .nav-tabs .nav-link.active {
   color: #2e74e8;
 }
 .nav-tabs {
-  border: none;
+  border: none !important;
 }
 .nav-tabs .nav-link {
-  border: none;
+  border: none !important;
+  margin-right: 3px;
 }
-.nav-tabs .nav-link:hover,
-.nav-tabs .nav-link:focus {
-  border: none;
+.nav-tabs .nav-link :hover,
+.nav-tabs .nav-link :focus {
+  border: none !important;
+  outline: none;
 }
 .nav-tabs .nav-link.active {
   border: none;
@@ -189,7 +191,10 @@ featured-products .featured-products-tabs .nav-tabs .nav-link.active {
 .nav-tabs button {
   font-weight: 500 !important;
 }
-
+.section-title h2 {
+  line-height: auto;
+}
 .section-title {
   font-weight: 400 !important;
+  line-height: auto !important;
 }

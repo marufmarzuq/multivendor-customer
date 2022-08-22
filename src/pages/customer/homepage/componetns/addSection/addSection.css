@@ -1,3 +1,8 @@
+.ads {
+  padding-bottom: 12px;
+  padding-top: 12px;
+}
+
 .ads .ads-wrapper {
   padding: 80px 0 50px 0;
   background-repeat: no-repeat;
@@ -5,7 +10,7 @@
   background-position: 100% 100%;
   border-radius: 10px;
   overflow: hidden;
-  background-image: url("../../../../assets/images/ad1.png");
+  background-image: url("../../../../../assets/images/ad1.png");
 }
 .ads .ads-wrapper .ad-header {
   font-size: 54px;
@@ -66,7 +71,7 @@
 @media (max-width: 767px) {
   .ads .ads-wrapper {
     padding: 30px 0 50px 0;
-    background-image: url("../../../../assets/images/ad1.png");
+    background-image: url("../../../../../assets/images/ad1.png");
   }
 
   .ads .ads-wrapper .ad-header {

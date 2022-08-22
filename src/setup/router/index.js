@@ -30,6 +30,8 @@ import MoneyWithDraw from "../../pages/seller/moneyWithdraw/MoneyWithDraw";
 import Customers from "../../pages/seller/customers/Customers";
 import ShopSetting from "../../pages/seller/shopSetting/ShopSetting";
 import Home from "../../pages/customer/homepage/Home";
+import CustomerLayout from "./layouts/customer/CustomerLayout";
+import Shop from "../../pages/customer/shop/Shop";
 
 const Router = () => {
   return (
@@ -73,7 +75,10 @@ const Router = () => {
         <Route path="digital/update" element={<UpdateDigitalProduct />} />
       </Route>
 
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<CustomerLayout />}>
+        <Route path="" element={<Home />} />
+        <Route path="shop" element={<Shop />} />
+      </Route>
 
       <Route path="/*" element={<NotFound />} />
     </Routes>

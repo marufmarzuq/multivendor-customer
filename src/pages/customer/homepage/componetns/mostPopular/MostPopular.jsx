@@ -1,21 +1,22 @@
 import React from "react";
-import { groceries, product1, product2 } from "../../../../assets";
+import "../dailyDeals/dailyDeals.css";
+import { product2, product1, groceries } from "../../../../../assets";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft } from "react-icons/fa";
-const Featured = () => {
+const MostPopular = () => {
   return (
-    <section className="featured-products my-4 mb-5">
+    <section className="most-popular my-4">
       <div className="container">
         <div className="row">
-          <h2 className="section-title">Featured Products</h2>
+          <h2 className="section-title">Most Popular</h2>
         </div>
-        <div className="row featured-products-tabs">
+        <div className="row most-popular-tabs">
           <ul className="nav nav-tabs justify-content-center" role="tablist">
             <li className="nav-item">
               <button
                 className="nav-link active"
                 data-bs-toggle="tab"
-                data-bs-target="#fp-all"
+                data-bs-target="#mp-all"
               >
                 All
               </button>
@@ -24,7 +25,7 @@ const Featured = () => {
               <button
                 className="nav-link"
                 data-bs-toggle="tab"
-                data-bs-target="#fp-beauty"
+                data-bs-target="#mp-beauty"
               >
                 Beauty
               </button>
@@ -33,21 +34,21 @@ const Featured = () => {
               <button
                 className="nav-link"
                 data-bs-toggle="tab"
-                data-bs-target="#fp-groceries"
+                data-bs-target="#mp-groceries"
               >
                 Groceries
               </button>
             </li>
           </ul>
           <div className="tab-content">
-            <div className="tab-pane fade show active" id="fp-all">
+            <div className="tab-pane fade show active" id="mp-all">
               <div className="container">
                 <div className="row products-wrap">
                   <div className="col-sm-6 col-md-3 mb-3">
                     <div className="single-product style-1">
                       <div className="image-wrap">
                         <a href="#">
-                          <img src={groceries} alt="Locket New" />
+                          <img src={product2} alt="Locket New" />
                         </a>
                         <div className="buttons-wrap">
                           <button>
@@ -65,6 +66,13 @@ const Featured = () => {
                         </div>
                       </div>
                       <div className="content-wrap">
+                        <div className="variations d-flex flex-column">
+                          <div className="variation d-flex justify-content-center">
+                            <span className="variation-name">1 KG</span>
+                            <span>5 KG</span>
+                            <span>10 KG</span>
+                          </div>
+                        </div>
                         <h3 className="product-title">
                           <a href="#">Locket New</a>
                         </h3>
@@ -85,7 +93,7 @@ const Featured = () => {
                 </div>
               </div>
             </div>
-            <div className="tab-pane fade" id="fp-beauty">
+            <div className="tab-pane fade" id="mp-beauty">
               <div className="container">
                 <div className="row products-wrap">
                   <div className="col-sm-6 col-md-3 mb-3">
@@ -130,14 +138,14 @@ const Featured = () => {
                 </div>
               </div>
             </div>
-            <div className="tab-pane fade" id="fp-groceries">
+            <div className="tab-pane fade" id="mp-groceries">
               <div className="container">
                 <div className="row products-wrap">
                   <div className="col-sm-6 col-md-3 mb-3">
                     <div className="single-product style-1">
                       <div className="image-wrap">
                         <a href="#">
-                          <img src={product2} alt="Locket New" />
+                          <img src={groceries} alt="Locket New" />
                         </a>
                         <div className="buttons-wrap">
                           <button>
@@ -177,7 +185,7 @@ const Featured = () => {
             </div>
           </div>
         </div>
-        <div className="d-flex  justify-content-center my-2">
+        <div className="d-flex justify-content-center my-2">
           <a href="#" className="btn btn-primary">
             View More
           </a>
@@ -187,4 +195,4 @@ const Featured = () => {
   );
 };
 
-export default Featured;
+export default MostPopular;

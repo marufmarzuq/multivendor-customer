@@ -8,7 +8,7 @@ import {
   bagAndShoes,
   product1,
   product2,
-} from "../../../../assets";
+} from "../../../../../assets";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";

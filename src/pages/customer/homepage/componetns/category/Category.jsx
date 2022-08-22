@@ -6,7 +6,7 @@ import {
   clothing,
   groceries,
   bagAndShoes,
-} from "../../../../assets";
+} from "../../../../../assets";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -15,7 +15,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from "swiper";
 const Category = () => {
   return (
-    <section class="category-wrapper">
+    <section class="category-wrapper wrapper">
       <div class="container">
         <div class="row">
           <div class="col-12 col-xs-4 col-md-3 col-lg-4">
@@ -83,7 +83,6 @@ const Category = () => {
               <div class="row mb-4">
                 <div class="col-12 col-xs-9 col-md-9 my-2">
                   {/* <!-- Slider main container --> */}
-
 
                   <div className="category-slider">
                     <div class="swiper-wrapper">
@@ -184,7 +183,7 @@ const Category = () => {
                   <div className="mb-3">
                     <div class="swiper-wrapper ">
                       <Swiper
-                        spaceBetween={30}
+                        spaceBetween={10}
                         centeredSlides={true}
                         slidesPerView={3}
                         // breakpoints={{
