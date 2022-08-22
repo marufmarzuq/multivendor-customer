@@ -4,6 +4,100 @@ body {
   font-family: 400;
   position: relative;
 }
+* {
+  margin: 0;
+  padding: 0;
+}
+
+dl,
+ol,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.form-control:focus {
+  box-shadow: none;
+  border-color: #d7d7d7;
+}
+a {
+  text-decoration: none !important;
+  color: #333333 !important;
+}
+.btn {
+  color: #fff !important;
+}
+.primary-button {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 10px 16px;
+  border-radius: 5px;
+  background-color: #0c6adf;
+  color: #ffffff;
+  width: auto;
+  transition: all 0.5s linear;
+}
+
+.primary-button:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #1164cb;
+}
+
+.show {
+  display: block !important;
+}
+
+
+/* scrollbar design */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* ./scrollbar design */
+/* Animations */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    right: -50%;
+  }
+}
+
+.radio-item {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.radio-item span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  border: 5px solid #ffffff;
+  outline: 1px solid #d7d7d7;
+  margin-left: 10px;
+  transition: all 0.3s;
+}
+.radio-item span:hover {
+  cursor: pointer;
+  outline: 1px solid #2e74e8;
+}
+.radio-item .color {
+  height: 26px;
+  width: 26px;
+}
+.radio-item .size {
+  padding: 0px 5px;
+  line-height: 20px;
+  font-size: 16px;
+  font-weight: 500;
+}
 
 body.show:after {
   background-color: #222;
@@ -17,7 +111,13 @@ body.show:after {
   top: 0;
   z-index: 10;
 }
-
+.dropdown-menu {
+  min-width: max-content;
+  padding: 0;
+  transform: none !important;
+  top: 100% !important;
+  overflow: hidden;
+}
 .header {
   margin-bottom: 38px;
   padding: 0;
@@ -186,6 +286,8 @@ body.show:after {
 .header .header-menu .shop-menu ul li a:hover {
   font-weight: 500;
 }
+
+
 /* responsive style */
 @media (max-width: 767px) {
   .header .topbar .left-menu,

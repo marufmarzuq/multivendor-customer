@@ -31,3 +31,16 @@ featured-products .daily-deals-tabs .nav-tabs .nav-link.active,
 featured-products .featured-products-tabs .nav-tabs .nav-link.active {
   color: #2e74e8;
 }
+.nav-tabs {
+  border: none;
+}
+.nav-tabs .nav-link {
+  border: none;
+}
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  border: none;
+}
+.nav-tabs .nav-link.active {
+  border: none;
+}
