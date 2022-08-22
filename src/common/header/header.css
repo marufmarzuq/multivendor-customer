@@ -148,14 +148,6 @@
   line-height: 22px;
   margin-bottom: 20px;
 }
-
-.footer-title {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 22px;
-  margin-bottom: 15px;
-}
-
 .primary-button {
   font-weight: 500;
   font-size: 16px;
@@ -786,60 +778,6 @@ featured-products .most-popular-tabs .nav-tabs .nav-link.active,
 featured-products .daily-deals-tabs .nav-tabs .nav-link.active,
 featured-products .featured-products-tabs .nav-tabs .nav-link.active {
   color: #2e74e8;
-}
-
-.footer {
-  background-color: #f3f3f3;
-  padding: 88px 0 0 0;
-}
-.footer .footer-top {
-  margin-bottom: 35px;
-}
-.footer .footer-top .newsletter {
-  display: flex;
-  align-items: baseline;
-}
-.footer .footer-top .newsletter h3 {
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 22px;
-}
-.footer .footer-top .newsletter .input-group {
-  margin-left: 8px;
-}
-.footer .footer-top .newsletter .input-group input {
-  max-width: 430px;
-}
-.footer .footer-top .newsletter .input-group button {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  padding: 8px 30px 8px 30px;
-}
-.footer .footer-main {
-  padding-bottom: 64px;
-}
-.footer .footer-main p {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 22px;
-  margin-bottom: 16px;
-}
-
-.footer-bottom {
-  background-color: #0c6adf;
-  text-align: center;
-}
-.footer-bottom .footer-copyright {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 22px;
-  padding: 20px 0 22px 0;
-  color: #ffffff;
-}
-.footer-bottom .footer-copyright p {
-  margin: 0;
-  width: 100%;
 }
 
 /* Dropdown menu style */
