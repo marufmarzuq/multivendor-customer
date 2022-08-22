@@ -90,6 +90,7 @@ const Category = () => {
                       <Swiper
                         spaceBetween={30}
                         centeredSlides={true}
+                        slidesPerView={1}
                         autoplay={{
                           delay: 2500,
                           disableOnInteraction: false,
@@ -179,13 +180,21 @@ const Category = () => {
                 </div>
               </div>
               <div class="row ">
-                <div class="col-12 col-xs-12 col-md-12 category-thumbs-slider swiper">
+                <div class="col-12 col-xs-12 col-md-12 category-thumbs-slider  ">
                   <div className="mb-3">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper ">
                       <Swiper
                         spaceBetween={30}
                         centeredSlides={true}
                         slidesPerView={3}
+                        // breakpoints={{
+                        //   320: {
+                        //     slidesPerView: 2,
+                        //   },
+                        //   550: {
+                        //     slidesPerView: 3,
+                        //   },
+                        // }}
                         autoplay={{
                           delay: 2500,
                           disableOnInteraction: false,

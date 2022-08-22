@@ -21,7 +21,24 @@ const Shops = () => {
           <Swiper
             spaceBetween={30}
             centeredSlides={true}
-            slidesPerView={5}
+            slidesPerView={1}
+            breakpoints={{
+              960: {
+                slidesPerView: 5,
+              },
+              768: {
+                slidesPerView: 4,
+              },
+              650: {
+                slidesPerView: 3,
+              },
+              550: {
+                slidesPerView: 2,
+              },
+              450: {
+                slidesPerView: 1,
+              },
+            }}
             autoplay={{
               delay: 2500,
               disableOnInteraction: false,
