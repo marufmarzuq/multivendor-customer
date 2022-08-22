@@ -1,0 +1,81 @@
+.ads .ads-wrapper {
+  padding: 80px 0 50px 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  background-image: url("../../../../assets/images/ad1.png");
+}
+.ads .ads-wrapper .ad-header {
+  font-size: 54px;
+  margin-bottom: 60px;
+  color: #ffffff;
+  line-height: 40px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.ads .ads-wrapper .button-outline {
+  font-size: 22px;
+  color: #ffffff;
+  padding: 0px 10px;
+  text-transform: uppercase;
+  font-weight: 400;
+  background: transparent;
+  border: 1px solid #ffffff;
+  display: inline-block;
+  border-radius: 0px;
+}
+.ads .ads-wrapper .button-outline:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+/* ads styles */
+.ads .ads-wrapper {
+  padding: 80px 0 50px 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100% 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.ads .ads-wrapper .ad-header {
+  font-size: 54px;
+  margin-bottom: 60px;
+  color: #ffffff;
+  line-height: 40px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.ads .ads-wrapper .button-outline {
+  font-size: 22px;
+  color: #ffffff;
+  padding: 0px 10px;
+  text-transform: uppercase;
+  font-weight: 400;
+  background: transparent;
+  border: 1px solid #ffffff;
+  display: inline-block;
+  border-radius: 0px;
+}
+.ads .ads-wrapper .button-outline:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .ads .ads-wrapper {
+    padding: 30px 0 50px 0;
+    background-image: url("../../../../assets/images/ad1.png");
+  }
+
+  .ads .ads-wrapper .ad-header {
+    font-size: 54px;
+    margin-bottom: 60px;
+    line-height: 40px;
+  }
+  .ads .ads-wrapper .button-outline {
+    font-size: 22px;
+    padding: 0px 10px;
+  }
+}

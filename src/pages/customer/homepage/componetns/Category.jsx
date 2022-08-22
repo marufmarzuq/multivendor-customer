@@ -1,5 +1,5 @@
 import React from "react";
-import "../home.css";
+import "./category.css";
 import {
   catSlider1,
   beauty,
@@ -15,7 +15,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from "swiper";
 const Category = () => {
   return (
-    <section class="category-wrapper ">
+    <section class="category-wrapper">
       <div class="container">
         <div class="row">
           <div class="col-12 col-xs-4 col-md-3 col-lg-4">
@@ -84,7 +84,7 @@ const Category = () => {
                 <div class="col-12 col-xs-9 col-md-9 my-2">
                   {/* <!-- Slider main container --> */}
 
-                  {/* <div class="category-slider"> */}
+
                   <div className="category-slider">
                     <div class="swiper-wrapper">
                       <Swiper

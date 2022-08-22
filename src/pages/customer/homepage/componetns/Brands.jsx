@@ -1,5 +1,5 @@
 import React from "react";
-import "../home.css";
+import "./brands.css";
 import {
   catSlider1,
   beauty,

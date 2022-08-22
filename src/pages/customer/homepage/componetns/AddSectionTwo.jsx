@@ -1,5 +1,5 @@
 import React from "react";
-import "../home.css";
+import "./addSection.css";
 const AddSectionTwo = () => {
   return (
     <section className="ads my-4">
