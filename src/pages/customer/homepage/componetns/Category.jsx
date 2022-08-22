@@ -15,7 +15,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from "swiper";
 const Category = () => {
   return (
-    <section class="category-wrapper ">
+    <section class="category-wrapper">
       <div class="container">
         <div class="row">
           <div class="col-12 col-xs-4 col-md-3 col-lg-4">
