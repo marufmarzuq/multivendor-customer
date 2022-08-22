@@ -100,7 +100,7 @@
   overflow: hidden;
   background-position: center;
   background-size: cover;
-  background-image: url("../../../assets/images/cat-promo-bg.png");
+  background-image: url("../../../../assets/images/cat-promo-bg.png");
 }
 .category-wrapper a {
   text-decoration: none;
