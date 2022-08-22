@@ -46,6 +46,10 @@ a {
   background-color: #1164cb;
 }
 
+.wrapper {
+  background-color: #fff;
+}
+
 .show {
   display: block !important;
 }

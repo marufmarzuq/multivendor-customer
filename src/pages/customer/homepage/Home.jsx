@@ -9,7 +9,7 @@ import DailyDeals from "./componetns/DailyDeals";
 import Featured from "./componetns/Featured";
 import MostPopular from "./componetns/MostPopular";
 import Shops from "./componetns/Shops";
-import "./home.css";
+
 const Home = () => {
   return (
     <>
