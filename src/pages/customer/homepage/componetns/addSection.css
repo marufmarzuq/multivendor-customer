@@ -5,6 +5,7 @@
   background-position: 100% 100%;
   border-radius: 10px;
   overflow: hidden;
+  background-image: url("../../../../assets/images/ad1.png");
 }
 .ads .ads-wrapper .ad-header {
   font-size: 54px;
@@ -66,11 +67,8 @@
   .ads .ads-wrapper {
     padding: 30px 0 50px 0;
     background-image: url("../../../../assets/images/ad1.png");
-    background-color: red;
   }
-  .ads {
-    color: red !important;
-  }
+
   .ads .ads-wrapper .ad-header {
     font-size: 54px;
     margin-bottom: 60px;

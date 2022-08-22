@@ -54,7 +54,6 @@ a {
   display: block !important;
 }
 
-
 /* scrollbar design */
 ::-webkit-scrollbar-track {
   background: #ffffff;
@@ -291,7 +290,6 @@ body.show:after {
   font-weight: 500;
 }
 
-
 /* responsive style */
 @media (max-width: 767px) {
   .header .topbar .left-menu,
@@ -381,7 +379,7 @@ body.show:after {
     position: fixed;
     z-index: 99;
     top: 0;
-    left: 0;
+    left: -100px;
     background-color: #060606fa;
     overflow-x: hidden;
     transition: 0.5s;

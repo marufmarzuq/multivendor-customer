@@ -1,5 +1,7 @@
 import React from "react";
 import { groceries, product1, product2 } from "../../../../assets";
+import { AiFillStar } from "react-icons/ai";
+import { FaBalanceScaleLeft } from "react-icons/fa";
 const Featured = () => {
   return (
     <section className="featured-products my-4 mb-5">
@@ -49,7 +51,7 @@ const Featured = () => {
                         </a>
                         <div className="buttons-wrap">
                           <button>
-                            <i className="fas fa-balance-scale-right count-circle"></i>
+                            <FaBalanceScaleLeft />
                           </button>
                         </div>
                         <div className="badges">
@@ -71,11 +73,11 @@ const Featured = () => {
                           <span className="del">$ 180</span>
                         </div>
                         <div className="ratings">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
                         </div>
                       </div>
                     </div>
@@ -94,7 +96,7 @@ const Featured = () => {
                         </a>
                         <div className="buttons-wrap">
                           <button>
-                            <i className="fas fa-balance-scale-right count-circle"></i>
+                            <FaBalanceScaleLeft />
                           </button>
                         </div>
                         <div className="badges">
@@ -116,11 +118,11 @@ const Featured = () => {
                           <span className="del">$ 180</span>
                         </div>
                         <div className="ratings">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
                         </div>
                       </div>
                     </div>
@@ -139,7 +141,7 @@ const Featured = () => {
                         </a>
                         <div className="buttons-wrap">
                           <button>
-                            <i className="fas fa-balance-scale-right count-circle"></i>
+                            <FaBalanceScaleLeft />
                           </button>
                         </div>
                         <div className="badges">
@@ -161,11 +163,11 @@ const Featured = () => {
                           <span className="del">$ 180</span>
                         </div>
                         <div className="ratings">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
                         </div>
                       </div>
                     </div>

@@ -1,6 +1,8 @@
 import React from "react";
 import "./dailyDeals.css";
 import { product2, product1, groceries } from "../../../../assets";
+import { AiFillStar } from "react-icons/ai";
+import { FaBalanceScaleLeft } from "react-icons/fa";
 const MostPopular = () => {
   return (
     <section className="most-popular my-4">
@@ -50,7 +52,7 @@ const MostPopular = () => {
                         </a>
                         <div className="buttons-wrap">
                           <button>
-                            <i className="fas fa-balance-scale-right count-circle"></i>
+                            <FaBalanceScaleLeft />
                           </button>
                         </div>
                         <div className="badges">
@@ -79,11 +81,11 @@ const MostPopular = () => {
                           <span className="del">$ 180</span>
                         </div>
                         <div className="ratings">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
                         </div>
                       </div>
                     </div>
@@ -102,7 +104,7 @@ const MostPopular = () => {
                         </a>
                         <div className="buttons-wrap">
                           <button>
-                            <i className="fas fa-balance-scale-right count-circle"></i>
+                            <FaBalanceScaleLeft />
                           </button>
                         </div>
                         <div className="badges">
@@ -124,11 +126,11 @@ const MostPopular = () => {
                           <span className="del">$ 180</span>
                         </div>
                         <div className="ratings">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
                         </div>
                       </div>
                     </div>
@@ -147,7 +149,7 @@ const MostPopular = () => {
                         </a>
                         <div className="buttons-wrap">
                           <button>
-                            <i className="fas fa-balance-scale-right count-circle"></i>
+                            <FaBalanceScaleLeft />
                           </button>
                         </div>
                         <div className="badges">
@@ -169,11 +171,11 @@ const MostPopular = () => {
                           <span className="del">$ 180</span>
                         </div>
                         <div className="ratings">
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
-                          <i className="fas fa-star"></i>
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
+                          <AiFillStar />
                         </div>
                       </div>
                     </div>
