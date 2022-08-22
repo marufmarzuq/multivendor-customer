@@ -83,8 +83,6 @@ const Category = () => {
               <div class="row mb-4">
                 <div class="col-12 col-xs-9 col-md-9 my-2">
                   {/* <!-- Slider main container --> */}
-
-
                   <div className="category-slider">
                     <div class="swiper-wrapper">
                       <Swiper
