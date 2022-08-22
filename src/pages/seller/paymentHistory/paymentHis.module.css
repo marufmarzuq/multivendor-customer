@@ -10,9 +10,15 @@
   font-size: 0.9rem;
 }
 
+.tableData {
+  margin-top: 1rem;
+}
+
 .tableData thead th {
-  border-bottom: 1px solid rgba(215, 215, 215, 0.266);
-  padding-bottom: 20px !important;
+  border-top: 1px solid rgba(215, 215, 215, 0.796);
+  border-bottom: 1px solid rgba(215, 215, 215, 0.796);
+  padding-top: 13px;
+  padding-bottom: 13px;
 }
 .tableData table td {
   padding-top: 25px !important;

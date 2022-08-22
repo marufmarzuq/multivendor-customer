@@ -9,7 +9,6 @@ const SentRefund = () => {
       <div className={`${sentRefundStyle.background}`}>
         <section>
           <h5 className="px-md-4 pt-3 px-3 py-2">Applied Refund Request</h5>
-          <hr />
         </section>
 
         {/* <section>
@@ -54,10 +53,10 @@ const SentRefund = () => {
                 <th>
                   <small>Product</small>
                 </th>
-                <th>
+                <th className="text-end">
                   <small>Amount</small>
                 </th>
-                <th>
+                <th className="text-center">
                   <small>Status</small>
                 </th>
                 {/* <th>Reason</th> */}
@@ -78,10 +77,10 @@ const SentRefund = () => {
                 <td>
                   <small>Seller product</small>
                 </td>
-                <td>
+                <td className="text-end">
                   <small>৳100,000.000</small>
                 </td>
-                <td>
+                <td className="text-center">
                   <small>
                     <span className={sentRefundStyle.paid}>Paid</span>
                     <span className={sentRefundStyle.paid}>Accepted</span>
@@ -102,10 +101,10 @@ const SentRefund = () => {
                 <td>
                   <small>Seller product</small>
                 </td>
-                <td>
+                <td className="text-end">
                   <small>৳100,000.000</small>
                 </td>
-                <td>
+                <td className="text-center">
                   <small>
                     <span className={sentRefundStyle.unpaid}>UnPaid</span>
                     <span className={sentRefundStyle.unpaid}>Rjected</span>

@@ -6,15 +6,21 @@
   border-radius: 5px;
   padding-bottom: 30px;
 }
+.tableData {
+  margin-top: 1rem;
+}
 
+.tableData thead th {
+  /* padding-bottom: 20px !important; */
+  border-top: 1px solid rgba(215, 215, 215, 0.796);
+  border-bottom: 1px solid rgba(215, 215, 215, 0.796);
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
 .tableData small {
   font-size: 0.9rem;
 }
 
-.tableData thead th {
-  border-bottom: 1px solid rgba(215, 215, 215, 0.266);
-  padding-bottom: 20px !important;
-}
 .tableData table td {
   padding-top: 25px !important;
 }
@@ -42,21 +48,21 @@ p {
 }
 
 .unpaid {
-  background-color: #ef486a;
-  color: #fff;
+  color: #ef486a;
   padding: 2px 4px;
   border-radius: 3px;
   font-size: 0.9rem;
   margin-right: 0.2rem;
+  border: 1px solid #ef486a;
 }
 
 .paid {
   padding: 2px 4px;
   border-radius: 3px;
-  background-color: #65c23f;
-  color: #fff;
+  color: #65c23f;
   font-size: 0.9rem;
   margin-right: 0.2rem;
+  border: 1px solid #65c23f;
 }
 
 @media only screen and (min-width: 768px) {

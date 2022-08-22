@@ -7,7 +7,6 @@ const PaymentHistory = () => {
       <div className={`${paymentHisStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 py-2 pt-3">Payment History</h5>
-          <hr />
         </section>
 
         <section className={`px-4 ${paymentHisStyle.tableData}`}>

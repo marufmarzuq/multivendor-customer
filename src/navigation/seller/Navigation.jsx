@@ -49,7 +49,7 @@ const Navigation = ({ toggleF, toggle }) => {
   };
 
   const { pathname } = useLocation();
-  const firstPath = pathname.split("/")[1];
+  const firstPath = pathname.split("/")[2];
   const [activeMenu, setActiveMenu] = useState(firstPath || "");
 
   const handleDropdown = (type) => {
@@ -57,12 +57,12 @@ const Navigation = ({ toggleF, toggle }) => {
   };
 
   useEffect(() => {
-    if (pathName.pathname.split("/")[1] == "products") {
+    if (pathName.pathname.split("/")[2] == "products") {
       setProdColl(true);
-      setActiveMenu(pathName.pathname.split("/")[2]);
+      setActiveMenu(pathName.pathname.split("/")[3]);
     }
 
-    const firstPath = pathname.split("/")[1];
+    const firstPath = pathname.split("/")[2];
     if (
       firstPath == "sent-refund-request" ||
       firstPath == "received-refund-request"
@@ -103,7 +103,7 @@ const Navigation = ({ toggleF, toggle }) => {
               activeMenu == "dashboard" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/">
+            <NavLink onClick={() => closeNav()} to="/seller">
               <AiOutlineHome className={` ${navigationStyle.icon_green}`} />
               <span className="ps-1"> Dashboard</span>
             </NavLink>
@@ -135,7 +135,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   <NavLink
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="/products/all"
+                    to="/seller/products/all"
                   >
                     <RiVipDiamondLine className={navigationStyle.icon_green} />
                     <span className="ps-2">All Products</span>
@@ -150,7 +150,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   <NavLink
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="/products/digital/all"
+                    to="/seller/products/digital/all"
                   >
                     <VscCircuitBoard className={navigationStyle.icon_green} />
                     <span className="ps-2">Digital Products</span>
@@ -165,7 +165,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   <NavLink
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="/products/bulk-upload"
+                    to="/seller/products/bulk-upload"
                   >
                     <AiOutlineArrowUp className={navigationStyle.icon_green} />
                     <span className="ps-2">Product Bulk Upload</span>
@@ -180,7 +180,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   <NavLink
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="/products/wishlist"
+                    to="/seller/products/wishlist"
                   >
                     <MdOutlineFavoriteBorder
                       className={navigationStyle.icon_green}
@@ -197,7 +197,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   <NavLink
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="/products/reviews"
+                    to="/seller/products/reviews"
                   >
                     <IoIosStarHalf className={navigationStyle.icon_green} />
                     <span className="ps-2">Product Reviews</span>
@@ -213,7 +213,7 @@ const Navigation = ({ toggleF, toggle }) => {
               activeMenu == "orders" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/orders">
+            <NavLink onClick={() => closeNav()} to="/seller/orders">
               <HiOutlineTicket className={navigationStyle.icon_green} />
               <span className="ps-2">Orders</span>
             </NavLink>
@@ -249,7 +249,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   <NavLink
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="/sent-refund-request"
+                    to="/seller/sent-refund-request"
                   >
                     <AiOutlineSend className={navigationStyle.icon_green} />
                     <span className="ps-2">Sent Refund Request</span>
@@ -267,7 +267,7 @@ const Navigation = ({ toggleF, toggle }) => {
                   <NavLink
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="/received-refund-request"
+                    to="/seller/received-refund-request"
                   >
                     <AiOutlineRotateLeft
                       className={navigationStyle.icon_green}
@@ -296,7 +296,7 @@ const Navigation = ({ toggleF, toggle }) => {
               activeMenu == "withdraw" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/withdraw">
+            <NavLink onClick={() => closeNav()} to="/seller/withdraw">
               <FaMoneyBillWave className={navigationStyle.icon_green} />
               <span className="ps-2">Money Withdraw</span>
             </NavLink>
@@ -307,7 +307,7 @@ const Navigation = ({ toggleF, toggle }) => {
               activeMenu == "commission-history" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/commission-history">
+            <NavLink onClick={() => closeNav()} to="/seller/commission-history">
               <AiFillFileAdd className={navigationStyle.icon_green} />
               <span className="ps-2">Commission History</span>
             </NavLink>
@@ -318,7 +318,7 @@ const Navigation = ({ toggleF, toggle }) => {
               activeMenu == "my-wallet" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/my-wallet">
+            <NavLink onClick={() => closeNav()} to="/seller/my-wallet">
               <BsCurrencyDollar className={navigationStyle.icon_green} />
               <span className="ps-2">My Wallet</span>
             </NavLink>
@@ -329,7 +329,7 @@ const Navigation = ({ toggleF, toggle }) => {
               activeMenu == "payment-history" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/payment-history">
+            <NavLink onClick={() => closeNav()} to="/seller/payment-history">
               <GiBackwardTime className={navigationStyle.icon_green} />
               <span className="ps-2">Payment History</span>
             </NavLink>
@@ -340,7 +340,7 @@ const Navigation = ({ toggleF, toggle }) => {
               activeMenu == "setting" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/setting">
+            <NavLink onClick={() => closeNav()} to="/seller/setting">
               <FiSettings className={navigationStyle.icon_green} />
               <span className="ps-2">Shop setting</span>
             </NavLink>
@@ -351,7 +351,7 @@ const Navigation = ({ toggleF, toggle }) => {
               activeMenu == "manage-profile" ? navigationStyle.active : ""
             } `}
           >
-            <NavLink onClick={() => closeNav()} to="/manage-profile">
+            <NavLink onClick={() => closeNav()} to="/seller/manage-profile">
               <AiOutlineUser className={navigationStyle.icon_green} />
               <span className="ps-2">Manage profile</span>
             </NavLink>

@@ -8,7 +8,6 @@ const ReveivedRefund = () => {
       <div className={`${receivedRefundStyle.background}`}>
         <section>
           <h5 className="px-md-4 pt-3 px-3 py-2">Received Refund Request</h5>
-          <hr />
         </section>
         <section className={`px-4 ${receivedRefundStyle.tableData}`}>
           <Table borderless responsive>
@@ -26,17 +25,17 @@ const ReveivedRefund = () => {
                 <th>
                   <small>Product</small>
                 </th>
-                <th>
+                <th className="text-end">
                   <small>Amount</small>
                 </th>
-                <th>
+                <th className="text-center">
                   <small>Status</small>
                 </th>
                 {/* <th>Reason</th> */}
-                <th>
+                <th className="text-center">
                   <small>Approval</small>
                 </th>
-                <th>
+                <th className="text-center">
                   <small>Reject</small>
                 </th>
               </tr>
@@ -56,14 +55,14 @@ const ReveivedRefund = () => {
                 <td>
                   <small>Seller product</small>
                 </td>
-                <td>
+                <td className="text-end">
                   <small>৳100,000.000</small>
                 </td>
-                <td>
+                <td className="text-center">
                   <small className={receivedRefundStyle.paid}>Approved</small>
                 </td>
-                <td>
-                  <div className="form-check form-switch">
+                <td className="text-center">
+                  <div className="form-check d-flex justify-content-center form-switch">
                     <input
                       className="form-check-input"
                       type="checkbox"
@@ -72,8 +71,8 @@ const ReveivedRefund = () => {
                     />
                   </div>
                 </td>
-                <td>
-                  <div className="form-check form-switch">
+                <td className="text-center">
+                  <div className="form-checkv d-flex justify-content-center form-switch">
                     <input
                       className="form-check-input"
                       type="checkbox"
@@ -97,14 +96,14 @@ const ReveivedRefund = () => {
                 <td>
                   <small>Seller product</small>
                 </td>
-                <td>
+                <td className="text-end">
                   <small>৳100,000.000</small>
                 </td>
-                <td>
+                <td className="text-center">
                   <small className={receivedRefundStyle.paid}>Approved</small>
                 </td>
                 <td>
-                  <div className="form-check form-switch">
+                  <div className="form-check d-flex justify-content-center form-switch">
                     <input
                       className="form-check-input"
                       type="checkbox"
@@ -114,7 +113,7 @@ const ReveivedRefund = () => {
                   </div>
                 </td>
                 <td>
-                  <div className="form-check form-switch">
+                  <div className="form-check d-flex justify-content-center form-switch">
                     <input
                       className="form-check-input"
                       type="checkbox"

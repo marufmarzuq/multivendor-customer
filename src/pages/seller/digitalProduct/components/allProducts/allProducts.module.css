@@ -14,7 +14,11 @@ hr {
 .hide {
   display: none;
 }
-
+.header {
+  border-top: 1px dotted rgba(68, 68, 68, 0.371);
+  border-bottom: 1px dotted rgba(37, 37, 37, 0.371);
+  padding-top: 15px;
+}
 .header p {
   font-size: 0.9rem;
   font-weight: 600;

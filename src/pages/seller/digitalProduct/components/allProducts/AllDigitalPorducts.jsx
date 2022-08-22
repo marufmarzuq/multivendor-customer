@@ -10,14 +10,11 @@ const AllDigitalPorducts = () => {
     <Fragment>
       <div className={`${allProductsStyle.background}`}>
         <section>
-          <h5 className="px-md-4 px-3 py-2">All Digital Products</h5>
-          <hr />
+          <h5 className="px-md-4 px-3  pt-3">All Digital Products</h5>
         </section>
 
         <section>
-          <div
-            className={`row px-0 mx-0 ps-3 mt-4 pt-2 ${allProductsStyle.header}`}
-          >
+          <div className={`row px-0 mx-0 ps-3 mt-4 ${allProductsStyle.header}`}>
             <div className={`col-2 col-lg-1 `}>
               <p>#</p>
             </div>
@@ -43,11 +40,10 @@ const AllDigitalPorducts = () => {
               <p> Options</p>
             </div>
           </div>
-          <hr />
         </section>
 
         <section>
-          <div className="row px-0 mx-0 ps-3 mt-4 pt-2">
+          <div className="row px-0 mx-0 ps-3 mt-3 pt-2">
             <div className={`col-2 col-lg-1 `}>
               <p>1 </p>
             </div>
@@ -85,7 +81,7 @@ const AllDigitalPorducts = () => {
 
             <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
               <p>
-                <Link to="/products/digital/update">
+                <Link to="/seller/products/digital/update">
                   <button className={allProductsStyle.preview}>
                     <BiEdit />
                   </button>
