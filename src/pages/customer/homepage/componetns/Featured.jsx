@@ -1,6 +1,5 @@
 import React from "react";
 import { groceries, product1, product2 } from "../../../../assets";
-import "../home.css";
 const Featured = () => {
   return (
     <section className="featured-products my-4 mb-5">

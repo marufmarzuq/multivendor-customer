@@ -1,5 +1,5 @@
 import React from "react";
-import "../home.css";
+import "./dailyDeals.css";
 import { product1, product2 } from "../../../../assets";
 const DailyDeals = () => {
   return (

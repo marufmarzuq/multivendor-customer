@@ -1,0 +1,46 @@
+.most-popular .most-popular-tabs .nav-tabs,
+.most-popular .daily-deals-tabs .nav-tabs,
+.most-popular .featured-products-tabs .nav-tabs,
+.daily-deals .most-popular-tabs .nav-tabs,
+.daily-deals .daily-deals-tabs .nav-tabs,
+.daily-deals .featured-products-tabs .nav-tabs,
+featured-products .most-popular-tabs .nav-tabs,
+featured-products .daily-deals-tabs .nav-tabs,
+featured-products .featured-products-tabs .nav-tabs {
+  margin-bottom: 40px;
+}
+.most-popular .most-popular-tabs .nav-tabs .nav-link,
+.most-popular .daily-deals-tabs .nav-tabs .nav-link,
+.most-popular .featured-products-tabs .nav-tabs .nav-link,
+.daily-deals .most-popular-tabs .nav-tabs .nav-link,
+.daily-deals .daily-deals-tabs .nav-tabs .nav-link,
+.daily-deals .featured-products-tabs .nav-tabs .nav-link,
+featured-products .most-popular-tabs .nav-tabs .nav-link,
+featured-products .daily-deals-tabs .nav-tabs .nav-link,
+featured-products .featured-products-tabs .nav-tabs .nav-link {
+  color: #333333;
+}
+.most-popular .most-popular-tabs .nav-tabs .nav-link.active,
+.most-popular .daily-deals-tabs .nav-tabs .nav-link.active,
+.most-popular .featured-products-tabs .nav-tabs .nav-link.active,
+.daily-deals .most-popular-tabs .nav-tabs .nav-link.active,
+.daily-deals .daily-deals-tabs .nav-tabs .nav-link.active,
+.daily-deals .featured-products-tabs .nav-tabs .nav-link.active,
+featured-products .most-popular-tabs .nav-tabs .nav-link.active,
+featured-products .daily-deals-tabs .nav-tabs .nav-link.active,
+featured-products .featured-products-tabs .nav-tabs .nav-link.active {
+  color: #2e74e8;
+}
+.nav-tabs {
+  border: none;
+}
+.nav-tabs .nav-link {
+  border: none;
+}
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  border: none;
+}
+.nav-tabs .nav-link.active {
+  border: none;
+}
