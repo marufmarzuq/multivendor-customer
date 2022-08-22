@@ -2,8 +2,7 @@
   display: flex;
   align-items: center;
 }
-.brands .swiper-slide,
-.shops .swiper-slide {
+.brands .swiper-slide{
   height: 160px;
   display: flex;
   justify-content: center;
@@ -12,8 +11,7 @@
   overflow: hidden;
   padding: 20px;
 }
-.brands-slider .swiper-wrapper .swiper-slide a,
-.shops-slider .swiper-wrapper .swiper-slide a {
+.brands-slider .swiper-wrapper .swiper-slide a {
   max-width: 100%;
   display: flex;
   justify-content: center;
