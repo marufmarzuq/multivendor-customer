@@ -36,53 +36,39 @@ const Shops = () => {
             className="mySwiper"
           >
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <a href="">
                 <img src={slider1} />
               </a>
-              {/* </div> */}
             </SwiperSlide>
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <a href="">
                 <img src={product2} alt="" />
               </a>
-              {/* </div> */}
             </SwiperSlide>
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <a href="">
                 <img src={slider1} alt="" />
               </a>
-              {/* </div> */}
             </SwiperSlide>
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <a href="">
                 <img src={slider1} alt="" />
               </a>
-              {/* </div> */}
             </SwiperSlide>
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <a href="">
                 <img src={slider1} />
               </a>
-              {/* </div> */}
             </SwiperSlide>
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <a href="">
                 <img src={slider1} alt="" />
               </a>
-              {/* </div> */}
             </SwiperSlide>
             <SwiperSlide>
-              {/* <div className="swiper-slide"> */}
               <a href="">
                 <img src={slider1} alt="" />
               </a>
-              {/* </div> */}
             </SwiperSlide>
           </Swiper>
         </div>
