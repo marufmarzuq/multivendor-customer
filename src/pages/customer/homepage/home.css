@@ -629,10 +629,7 @@ body.show:after {
 
 /* ./Dropdown menu style */
 /* category wrapper style */
-/* .category-wrapper {
-  margin-bottom: 1rem !important;
-  background-color: red !important;
-} */
+
 .category-wrapper .category-list {
   padding: 35px 30px 35px 40px;
   border: 1px solid #d7d7d7;
@@ -979,9 +976,9 @@ body.show:after {
   margin-right: 50px;
 }
 .single-product-wrap
-  .product-details-container
-  .product-meta.radio-wrap
-  .radio-item {
+.product-details-container
+.product-meta.radio-wrap
+.radio-item {
   column-gap: 10px;
 }
 .single-product-wrap

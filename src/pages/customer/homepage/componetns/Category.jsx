@@ -84,7 +84,7 @@ const Category = () => {
                 <div class="col-12 col-xs-9 col-md-9 my-2">
                   {/* <!-- Slider main container --> */}
 
-                  {/* <div class="category-slider"> */}
+
                   <div className="category-slider">
                     <div class="swiper-wrapper">
                       <Swiper

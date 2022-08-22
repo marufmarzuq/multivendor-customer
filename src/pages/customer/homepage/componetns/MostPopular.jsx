@@ -1,5 +1,5 @@
 import React from "react";
-import "../home.css";
+import "./dailyDeals.css";
 import { product2, product1, groceries } from "../../../../assets";
 const MostPopular = () => {
   return (
