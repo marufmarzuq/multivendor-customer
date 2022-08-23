@@ -15,21 +15,21 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
 const Category = () => {
   return (
-    <section class="category-wrapper wrapper">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 col-xs-4 col-md-3 col-lg-4">
-            <div class="category-list">
+    <section className="category-wrapper wrapper">
+      <div className="container">
+        <div className="row">
+          <div className="col-12 col-xs-4 col-md-3 col-lg-4">
+            <div className="category-list">
               <ul>
                 <li>
                   <a href="#">
-                    <i class="icon-beauty"></i>
+                    <i className="icon-beauty"></i>
                     Beauty
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i class="icon-grocery"></i>
+                    <i className="icon-grocery"></i>
                     Groceries
                   </a>
 
@@ -47,45 +47,45 @@ const Category = () => {
                 </li>
                 <li>
                   <a href="#">
-                    <i class="icon-clothing"></i>
+                    <i className="icon-clothing"></i>
                     Clothing
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i class="icon-bags"></i>
+                    <i className="icon-bags"></i>
                     Bags & Shoes
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i class="icon-outdoor"></i>
+                    <i className="icon-outdoor"></i>
                     Outdoor Fun & Sports
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i class="icon-automobile"></i>
+                    <i className="icon-automobile"></i>
                     Automobile & Motorcycles
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i class="icon-toys"></i>
+                    <i className="icon-toys"></i>
                     Toys & Kids
                   </a>
                 </li>
               </ul>
             </div>
           </div>
-          <div class="col-12 col-xs-8 col-md-9 col-lg-8">
-            <div class="container-fluid">
-              <div class="row mb-4">
-                <div class="col-12 col-xs-9 col-md-9 my-2">
+          <div className="col-12 col-xs-8 col-md-9 col-lg-8">
+            <div className="container-fluid">
+              <div className="row mb-4">
+                <div className="col-12 col-xs-9 col-md-9 my-2">
                   {/* <!-- Slider main container --> */}
 
                   <div className="category-slider">
-                    <div class="swiper-wrapper">
+                    <div className="swiper-wrapper">
                       <Swiper
                         spaceBetween={30}
                         centeredSlides={true}
@@ -104,56 +104,56 @@ const Category = () => {
                         className="mySwiper"
                       >
                         <SwiperSlide>
-                          <div class="swiper-slide">
+                          <div className="swiper-slide">
                             <img src={catSlider1} alt="" />
-                            <div class="slider-content">
+                            <div className="slider-content">
                               <h3>
                                 Upto 30% Off on <br />
                                 Groceries
                               </h3>
-                              <a href="#" class="button-outline">
+                              <a href="#" className="button-outline">
                                 Shop Now
                               </a>
                             </div>
                           </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                          <div class="swiper-slide">
+                          <div className="swiper-slide">
                             <img src={catSlider1} alt="" />
-                            <div class="slider-content">
+                            <div className="slider-content">
                               <h3>
                                 Upto 30% Off on <br />
                                 Groceries
                               </h3>
-                              <a href="#" class="button-outline">
+                              <a href="#" className="button-outline">
                                 Shop Now
                               </a>
                             </div>
                           </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                          <div class="swiper-slide">
+                          <div className="swiper-slide">
                             <img src={catSlider1} alt="" />
-                            <div class="slider-content">
+                            <div className="slider-content">
                               <h3>
                                 Upto 30% Off on <br />
                                 Groceries
                               </h3>
-                              <a href="#" class="button-outline">
+                              <a href="#" className="button-outline">
                                 Shop Now
                               </a>
                             </div>
                           </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                          <div class="swiper-slide">
+                          <div className="swiper-slide">
                             <img src={catSlider1} alt="" />
-                            <div class="slider-content">
+                            <div className="slider-content">
                               <h3>
                                 Upto 30% Off on <br />
                                 Groceries
                               </h3>
-                              <a href="#" class="button-outline">
+                              <a href="#" className="button-outline">
                                 Shop Now
                               </a>
                             </div>
@@ -166,22 +166,22 @@ const Category = () => {
                   </div>
                 </div>
                 {/* <!-- ./Slider main container --> */}
-                <div class="col-12 col-xs-3 col-md-3 my-2">
-                  <div class="category-promotion">
+                <div className="col-12 col-xs-3 col-md-3 my-2">
+                  <div className="category-promotion">
                     <h4>Winter Flash Sale!</h4>
                     <h3>
                       Upto 65% <br /> On <br /> Baby Products
                     </h3>
-                    <a href="#" class="button-outline">
+                    <a href="#" className="button-outline">
                       Shop Now
                     </a>
                   </div>
                 </div>
               </div>
-              <div class="row ">
-                <div class="col-12 col-xs-12 col-md-12 category-thumbs-slider  ">
+              <div className="row ">
+                <div className="col-12 col-xs-12 col-md-12 category-thumbs-slider  ">
                   <div className="mb-3">
-                    <div class="swiper-wrapper ">
+                    <div className="swiper-wrapper ">
                       <Swiper
                         spaceBetween={10}
                         centeredSlides={true}
@@ -208,9 +208,9 @@ const Category = () => {
                         className="mySwiper"
                       >
                         <SwiperSlide>
-                          <div class="swiper-slide">
+                          <div className="swiper-slide">
                             <a href="#">
-                              <div class="thumb-image">
+                              <div className="thumb-image">
                                 <img src={beauty} alt="" />
                               </div>
                               <p>Beauty</p>
@@ -218,9 +218,9 @@ const Category = () => {
                           </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                          <div class="swiper-slide">
+                          <div className="swiper-slide">
                             <a href="#">
-                              <div class="thumb-image">
+                              <div className="thumb-image">
                                 <img src={groceries} alt="" />
                               </div>
                               <p>Groceries</p>
@@ -228,9 +228,9 @@ const Category = () => {
                           </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                          <div class="swiper-slide">
+                          <div className="swiper-slide">
                             <a href="#">
-                              <div class="thumb-image">
+                              <div className="thumb-image">
                                 <img src={clothing} alt="" />
                               </div>
                               <p>Clothing</p>
@@ -238,9 +238,9 @@ const Category = () => {
                           </div>
                         </SwiperSlide>
                         <SwiperSlide>
-                          <div class="swiper-slide">
+                          <div className="swiper-slide">
                             <a href="#">
-                              <div class="thumb-image">
+                              <div className="thumb-image">
                                 <img src={bagAndShoes} alt="" />
                               </div>
                               <p>Bags & Shoes</p>

@@ -13,7 +13,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
 const Brands = () => {
   return (
-    <div class="wrapper mb-5 pb-3">
+    <div className="wrapper mb-5 pb-3">
       {" "}
       <section className="brands my-4">
         <div className="container">
