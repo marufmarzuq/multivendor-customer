@@ -1,7 +1,5 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Route, Routes } from "react-router-dom";
-import CustomerHome from "../../pages/customer/customerHome/CustomerHome";
-import Login from "../../pages/Login";
 import NotFound from "../../pages/NotFound";
 import BulkUpload from "../../pages/seller/bulkUpload/BulkUpload";
 import CommissonHistory from "../../pages/seller/commissionHistory/CommissonHistory";
@@ -27,7 +25,6 @@ import Wishlist from "../../pages/seller/wishlist/Wishlist";
 import Layout from "./layouts/seller/Layout";
 import PrivateRoute from "./routeModels/PrivateRoute";
 import MoneyWithDraw from "../../pages/seller/moneyWithdraw/MoneyWithDraw";
-import Customers from "../../pages/seller/customers/Customers";
 import ShopSetting from "../../pages/seller/shopSetting/ShopSetting";
 import Home from "../../pages/customer/homepage/Home";
 import CustomerLayout from "./layouts/customer/CustomerLayout";

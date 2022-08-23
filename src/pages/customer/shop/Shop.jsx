@@ -3,9 +3,7 @@ import ShopCom from "./components/shopCom/ShopCom";
 
 const Shop = () => {
   return (
-    <div>
-      <ShopCom />
-    </div>
+    <ShopCom />
   );
 };
 

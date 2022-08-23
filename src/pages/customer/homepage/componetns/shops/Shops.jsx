@@ -1,11 +1,11 @@
 import React from "react";
-import { groceries, product1, product2, slider1 } from "../../../../../assets";
+import { product2, slider1 } from "../../../../../assets";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper";
 const Shops = () => {
   return (
     <section className="shops my-5 pb-3">

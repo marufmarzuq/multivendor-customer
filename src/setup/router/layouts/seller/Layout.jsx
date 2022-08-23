@@ -45,7 +45,7 @@ const Layout = () => {
 
         <div className={` ${layoutStyle.layoutContainer}`}>
           <div className={` m-0  px-0`}>
-            {/* Navigaions will be here */}
+            {/* Navigation will be here */}
 
             <div
               className={

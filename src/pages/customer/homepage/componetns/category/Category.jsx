@@ -12,7 +12,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper";
 const Category = () => {
   return (
     <section class="category-wrapper wrapper">
