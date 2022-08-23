@@ -5,10 +5,6 @@ import { useTranslation } from "react-i18next";
 const CustomerHome = () => {
   const { t, i18n } = useTranslation();
 
-  // changing language from dropdown
-  // https://www.tabnine.com/code/javascript/functions/react-i18next/i18n/changeLanguage
-  // remove the link after implementation it is for testing purpose
-
   const changeLanguage = (lang) => {
     localStorage.setItem("lang", lang);
     i18n.changeLanguage(lang);
