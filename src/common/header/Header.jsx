@@ -6,18 +6,17 @@ import { FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
-  console.log(mobileNav);
   return (
-    <header class="header">
+    <header className="header">
       {/* <!-- topbar --> */}
-      <div class="topbar">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-4 col-lg-6 col-xl-6 col-xxl-6 left-menu">
-              <ul class="d-flex">
-                <li class="dropdown">
+      <div className="topbar">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-4 col-lg-6 col-xl-6 col-xxl-6 left-menu">
+              <ul className="d-flex">
+                <li className="dropdown">
                   <a
-                    class="dropdown-toggle"
+                    className="dropdown-toggle"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -25,22 +24,22 @@ const Header = () => {
                     Euro
                   </a>
 
-                  <ul class="dropdown-menu">
+                  <ul className="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         USD
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         BDT
                       </a>
                     </li>
                   </ul>
                 </li>
-                <li class="dropdown">
+                <li className="dropdown">
                   <a
-                    class="dropdown-toggle"
+                    className="dropdown-toggle"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -48,14 +47,14 @@ const Header = () => {
                     En
                   </a>
 
-                  <ul class="dropdown-menu">
+                  <ul className="dropdown-menu">
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         Bn
                       </a>
                     </li>
                     <li>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         Ar
                       </a>
                     </li>
@@ -63,8 +62,8 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <div class="col-8 col-lg-6 col-xl-6 col-xxl-6 right-menu">
-              <ul class="d-flex justify-content-end">
+            <div className="col-8 col-lg-6 col-xl-6 col-xxl-6 right-menu">
+              <ul className="d-flex justify-content-end">
                 <li>
                   <a href="#">Be a Seller</a>
                 </li>
@@ -76,7 +75,7 @@ const Header = () => {
                 </li>
                 <li>
                   <a href="#">
-                    <i class="far fa-bell active-dot"></i>
+                    <i className="far fa-bell active-dot"></i>
                   </a>
                 </li>
               </ul>
@@ -87,62 +86,62 @@ const Header = () => {
       {/* <!-- ./topbar --> */}
 
       {/* <!-- main-header --> */}
-      <div class="main-header">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-6 col-md-3">
-              <div class="logo">
+      <div className="main-header">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="col-6 col-md-3">
+              <div className="logo">
                 <a href="#">
                   <img src={logo} alt="Website Logo" />
                 </a>
               </div>
             </div>
-            <div class="d-none d-md-block col-md-7 col-lg-6">
-              <div class="search-wrap">
-                <div class="input-group">
+            <div className="d-none d-md-block col-md-7 col-lg-6">
+              <div className="search-wrap">
+                <div className="input-group">
                   <input
                     type="text"
-                    class="form-control search-text"
+                    className="form-control search-text"
                     placeholder="Looking for..."
                   />
-                  <select name="" class="form-control search-select">
+                  <select name="" className="form-control search-select">
                     <option value="">Product</option>
                     <option value="">Option 2</option>
                   </select>
-                  <button type="button" class="btn search-button">
+                  <button type="button" className="btn search-button">
                     Search
                   </button>
                 </div>
               </div>
             </div>
-            <div class="col-6 col-md-2 col-lg-3">
-              <div class="menu-icons">
-                <ul class="d-flex justify-content-end">
+            <div className="col-6 col-md-2 col-lg-3">
+              <div className="menu-icons">
+                <ul className="d-flex justify-content-end">
                   {/* <li>
                     <a href="#">
-                      <i class="icon-balance count-circle">
+                      <i className="icon-balance count-circle">
                         <span>0</span>
                       </i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="icon-heart count-circle">
+                      <i className="icon-heart count-circle">
                         <span>0</span>
                       </i>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i class="icon-bascet count-circle">
+                      <i className="icon-bascet count-circle">
                         <span>10</span>
                       </i>
                     </a>
                   </li> */}
                   <li>
                     <a href="#">
-                      <i class="icon-user"></i>
-                      <span class="d-none d-md-inline-block">Login</span>
+                      <i className="icon-user"></i>
+                      <span className="d-none d-md-inline-block">Login</span>
                     </a>
                   </li>
                 </ul>
@@ -154,27 +153,27 @@ const Header = () => {
       {/* <!-- ./main-header --> */}
 
       {/* <!-- header-menu --> */}
-      <div class="header-menu">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="d-none d-md-block col-md-4">
-              <div class="categories">
-                <div class="dropdown-button">
-                  <i class="icon-bar"></i> Categories
-                  <div class="category-list">
+      <div className="header-menu">
+        <div className="container">
+          <div className="row align-items-center">
+            <div className="d-none d-md-block col-md-4">
+              <div className="categories">
+                <div className="dropdown-button">
+                  <i className="icon-bar"></i> Categories
+                  <div className="category-list">
                     <ul>
-                      <li class="see-all">
+                      <li className="see-all">
                         <a href="#">See All</a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="icon-beauty"></i>
+                          <i className="icon-beauty"></i>
                           Beauty
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="icon-grocery"></i>
+                          <i className="icon-grocery"></i>
                           Groceries
                         </a>
 
@@ -192,31 +191,31 @@ const Header = () => {
                       </li>
                       <li>
                         <a href="#">
-                          <i class="icon-clothing"></i>
+                          <i className="icon-clothing"></i>
                           Clothing
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="icon-bags"></i>
+                          <i className="icon-bags"></i>
                           Bags & Shoes
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="icon-outdoor"></i>
+                          <i className="icon-outdoor"></i>
                           Outdoor Fun & Sports
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="icon-automobile"></i>
+                          <i className="icon-automobile"></i>
                           Automobile & Motorcycles
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="icon-toys"></i>
+                          <i className="icon-toys"></i>
                           Toys & Kids
                         </a>
                       </li>
@@ -225,10 +224,10 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <div class="col-8">
-              <div class="shop-menu">
+            <div className="col-8">
+              <div className="shop-menu">
                 <ul
-                  class={`${
+                  className={`${
                     mobileNav
                       ? `d-flex flex-column flex-md-row side-navigation mobile-menu-open`
                       : `d-flex flex-column flex-md-row side-navigation`
@@ -237,7 +236,7 @@ const Header = () => {
                   <button
                     // href="javascript:void(0)"
 
-                    class="closebtn btn d-block d-md-none"
+                    className="closebtn btn d-block d-md-none"
                     onClick={() => setMobileNav(!mobileNav)}
                   >
                     <FaTimes />
@@ -260,7 +259,7 @@ const Header = () => {
                   </li>
                 </ul>
                 <span
-                  class="mobile-nav-open d-block d-md-none"
+                  className="mobile-nav-open d-block d-md-none"
                   onClick={() => setMobileNav(!mobileNav)}
                 >
                   <AiOutlineBars />

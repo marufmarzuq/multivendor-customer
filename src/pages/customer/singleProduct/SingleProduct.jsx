@@ -4,10 +4,10 @@ import ProductDetails from "./components/singleCom/ProductDetails";
 
 const SingleProduct = () => {
   return (
-    <section class="single-product-wrap my-4">
-        <div class="container">
-            <div class="row">
-								<div class="col-12 col-md-6 mb-5 mb-md-2 overflow-hidden">
+    <section className="single-product-wrap my-4">
+        <div className="container">
+            <div className="row">
+								<div className="col-12 col-md-6 mb-5 mb-md-2 overflow-hidden">
 									<Slider />
 									<ProductDetails />
 								</div>

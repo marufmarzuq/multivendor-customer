@@ -4,34 +4,34 @@ import { BiUser } from "react-icons/bi";
 import "./footer.css";
 const Footer = () => {
   return (
-    <footer class="footer">
-      <div class="container">
-        <div class="row footer-top align-items-center">
-          <div class="col-md-5">
-            <div class="footer-logo">
+    <footer className="footer">
+      <div className="container">
+        <div className="row footer-top align-items-center">
+          <div className="col-md-5">
+            <div className="footer-logo">
               <a href="#">
                 <img src="images/logo.png" alt="" />
               </a>
             </div>
           </div>
-          <div class="col-md-7">
-            <div class="newsletter">
+          <div className="col-md-7">
+            <div className="newsletter">
               <h3>Newsletter</h3>
-              <div class="input-group">
+              <div className="input-group">
                 <input
                   type="email"
-                  class="form-control search-text"
+                  className="form-control search-text"
                   placeholder="Email Address"
                 />
-                <button type="button" class="btn btn-primary search-button">
+                <button type="button" className="btn btn-primary search-button">
                   Search
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div class="row footer-main">
-          <div class="col-12 col-sm-5 col-lg-4 my-2 text-center text-sm-start">
+        <div className="row footer-main">
+          <div className="col-12 col-sm-5 col-lg-4 my-2 text-center text-sm-start">
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry. Lorem Ipsum has been the industry's standard dummy text
@@ -39,7 +39,7 @@ const Footer = () => {
               type and scrambled it to make a type specimen book.
             </p>
             <p>House -28, Road-7A, Dhanmondi, Dhaka.</p>
-            <ul class="vertical-menu">
+            <ul className="vertical-menu">
               <li>
                 <span>01234567890, 25678945</span>
               </li>
@@ -52,7 +52,7 @@ const Footer = () => {
                 <span>infosakira.com</span>
               </li>
             </ul>
-            <ul class="social-buttons">
+            <ul className="social-buttons">
               <li>
                 <a href="#">
                   <FaFacebookF />
@@ -70,9 +70,9 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class="col-12 col-sm-6 offset-sm-1 col-lg-2 offset-lg-1  my-2 text-center text-sm-start">
-            <h3 class="footer-title text-center text-sm-start">About Us</h3>
-            <ul class="vertical-menu">
+          <div className="col-12 col-sm-6 offset-sm-1 col-lg-2 offset-lg-1  my-2 text-center text-sm-start">
+            <h3 className="footer-title text-center text-sm-start">About Us</h3>
+            <ul className="vertical-menu">
               <li>
                 <a href="#">
                   <span>About Us</span>
@@ -110,9 +110,9 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class="col-12 col-sm-5 col-lg-2 offset-lg-1 my-2 text-center text-sm-start">
-            <h3 class="footer-title text-center text-sm-start">Products</h3>
-            <ul class="vertical-menu">
+          <div className="col-12 col-sm-5 col-lg-2 offset-lg-1 my-2 text-center text-sm-start">
+            <h3 className="footer-title text-center text-sm-start">Products</h3>
+            <ul className="vertical-menu">
               <li>
                 <a href="#">
                   <span>Womens Wear</span>
@@ -155,9 +155,9 @@ const Footer = () => {
               </li>
             </ul>
           </div>
-          <div class="col-12 col-sm-6 offset-sm-1 col-lg-2 offset-lg-0 my-2 text-center text-sm-start">
-            <h3 class="footer-title text-center text-sm-start">My Account</h3>
-            <ul class="vertical-menu">
+          <div className="col-12 col-sm-6 offset-sm-1 col-lg-2 offset-lg-0 my-2 text-center text-sm-start">
+            <h3 className="footer-title text-center text-sm-start">My Account</h3>
+            <ul className="vertical-menu">
               <li>
                 <a href="#">
                   <span>My Account</span>
@@ -182,8 +182,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div class="container-fluid footer-bottom">
-        <div class="row footer-copyright">
+      <div className="container-fluid footer-bottom">
+        <div className="row footer-copyright">
           <p>Copyright Sakira 2021. All rights reserved</p>
         </div>
       </div>
