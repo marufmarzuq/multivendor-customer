@@ -5,7 +5,6 @@ import Brands from "./componetns/brand/Brands";
 import Category from "./componetns/category/Category";
 import DailyDeals from "./componetns/dailyDeals/DailyDeals";
 import Featured from "./componetns/featured/Featured";
-
 import MostPopular from "./componetns/mostPopular/MostPopular";
 import Shops from "./componetns/shops/Shops";
 
@@ -13,7 +12,6 @@ const Home = () => {
   return (
     <>
       <div className="wrapper">
-        {/* <Header /> */}
         <Category />
         <MostPopular />
         <AddSection />
@@ -22,7 +20,6 @@ const Home = () => {
         <Featured />
         <Brands />
         <Shops />
-        {/* <Footer /> */}
       </div>
     </>
   );
