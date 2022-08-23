@@ -1,11 +1,7 @@
 import React from "react";
 import "./brands.css";
 import {
-  catSlider1,
-  beauty,
-  clothing,
   groceries,
-  bagAndShoes,
   product1,
   product2,
 } from "../../../../../assets";
@@ -14,7 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Autoplay, Pagination } from "swiper";
 const Brands = () => {
   return (
     <div class="wrapper mb-5 pb-3">

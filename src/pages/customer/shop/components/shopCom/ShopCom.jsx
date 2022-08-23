@@ -1,6 +1,6 @@
 import React from "react";
 import "./shopCom.css";
-import { product1, product2 } from "../../../../../assets";
+import { product2 } from "../../../../../assets";
 import { FaBalanceScale } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 
