@@ -2,7 +2,9 @@ import React from "react";
 import "./shopCom.css";
 import { product2 } from "../../../../../assets";
 import { FaBalanceScale } from "react-icons/fa";
-import { BiSearch } from "react-icons/bi";
+import { BiSearch, BiSquare } from "react-icons/bi";
+import { BsGrid3X3Gap } from "react-icons/bs";
+import { AiOutlineBars } from "react-icons/ai";
 
 const ShopCom = () => {
   return (
@@ -51,7 +53,11 @@ const ShopCom = () => {
                 </div>
                 <div className="sidebar-row brands-wrap">
                   <h4 className="sidebar-label">Brands</h4>
-                  <input type="text" className="sidebar-input" placeholder="Polo" />
+                  <input
+                    type="text"
+                    className="sidebar-input"
+                    placeholder="Polo"
+                  />
                 </div>
                 {/* <div className="sidebar-row price-wrap">
                   <h4 className="sidebar-label">Price</h4>
@@ -133,6 +139,26 @@ const ShopCom = () => {
               </div>
             </div>
             <div className="col-sm-12 col-md-9">
+              <div className="product-sort-bar">
+                <div className="sort-bar-left">
+                  <button>
+                    <BsGrid3X3Gap />
+                  </button>
+                  <button>
+                    <AiOutlineBars />
+                  </button>
+                </div>
+                <div className="sort-bar-right">
+                  <div class="form-group">
+                    <label for="">Sort By:</label>
+                    <select class="form-control" name="sort" id="sort">
+                      <option>Default</option>
+                      <option>Sale</option>
+                      <option>Price</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
               <div className="row products-wrap">
                 <div className="col-sm-6 col-md-3 mb-3">
                   <div className="single-product style-1">

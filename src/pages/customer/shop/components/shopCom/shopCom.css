@@ -1,3 +1,33 @@
+.product-sort-bar {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  padding-left: 5px;
+  align-items: center;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(128, 128, 128, 0.289);
+  padding: 2px;
+  border-radius: 5px;
+}
+.sort-bar-left button {
+  background-color: inherit;
+  padding: 3px;
+  height: 30px;
+  width: 30px;
+  font-size: 16px;
+  border: 1px solid rgba(128, 128, 128, 0.284);
+  margin-right: 10px;
+  border-radius: 5px;
+  color: #1164cb;
+}
+.sort-bar-right div {
+  display: grid;
+  grid-template-columns: 3fr 9fr;
+  align-items: center;
+}
+.sort-bar-right label {
+  display: block;
+}
+
 .shop-sidebar .radio-wrap .radio-item,
 .single-product-wrap .radio-wrap .radio-item {
   position: relative;

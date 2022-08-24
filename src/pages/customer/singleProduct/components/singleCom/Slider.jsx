@@ -1,49 +1,85 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "./singleCom.css";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
+import { FreeMode, Navigation, Thumbs } from "swiper";
 
 const Slider = () => {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
   return (
-		<div className="col-12 col-md-6 mb-5 mb-md-2 overflow-hidden">
-			<div className="product-gallery-container">
-					<div className="swiper-container gallery-main">
-							<div className="swiper-wrapper">
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide1/600/300" alt="Slide 01">
-									</div>
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide2/600/300" alt="Slide 02">
-									</div>
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide3/600/300" alt="Slide 03">
-									</div>
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide4/600/300" alt="Slide 04">
-									</div>
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide5/600/300" alt="Slide 05">
-									</div>
-							</div>
-					<div className="swiper-button-prev"></div>
-					<div className="swiper-button-next"></div>
-					</div>
-					<div className="swiper-container gallery-thumbs">
-							<div className="swiper-wrapper">
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide1/115/100" alt="Slide 01"></div>
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide2/115/100" alt="Slide 02"></div>
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide3/115/100" alt="Slide 03"></div>
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide4/115/100" alt="Slide 04">
-									</div>
-									<div className="swiper-slide d-flex justify-content-center align-items-center">
-											<img src="https://picsum.photos/seed/slide5/115/100" alt="Slide 05">
-									</div>
-							</div>
-					</div>
-			</div>
-		</div>
+    <>
+      <div className="col mb-5 mb-md-2 overflow-hidden">
+        <div className="product-gallery-container">
+          <div className="swiper-container gallery-main">
+            <Swiper
+              style={{
+                "--swiper-navigation-color": "#fff",
+                "--swiper-pagination-color": "#fff",
+              }}
+              spaceBetween={10}
+              navigation={true}
+              // thumbs={{ swiper: thumbsSwiper }}
+              thumbs={{
+                swiper:
+                  thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+              }}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="mySwiper2"
+            >
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+              </SwiperSlide>
+            </Swiper>
+          </div>
+          <div className="swiper-container gallery-thumbs">
+            <Swiper
+              onSwiper={setThumbsSwiper}
+              spaceBetween={10}
+              slidesPerView={4}
+              freeMode={true}
+              watchSlidesProgress={true}
+              modules={[FreeMode, Navigation, Thumbs]}
+              className="mySwiper"
+            >
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+              </SwiperSlide>
+            </Swiper>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

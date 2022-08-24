@@ -1,8 +1,25 @@
 import React, { useState } from "react";
 import "./header.css";
 import { logo } from "../../assets/index";
-import { AiOutlineBars } from "react-icons/ai";
-import { FaTimes } from "react-icons/fa";
+import {
+  AiFillCar,
+  AiOutlineBars,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
+import { RiUserLine } from "react-icons/ri";
+import {
+  FaBaby,
+  FaBalanceScale,
+  FaBalanceScaleLeft,
+  FaBalanceScaleRight,
+  FaRegHeart,
+  FaTimes,
+  FaUser,
+} from "react-icons/fa";
+
+import { BsBagDash, BsFlower2, BsTags } from "react-icons/bs";
+import { GiClothes, GiFruitBowl } from "react-icons/gi";
+import { BiBasketball } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
@@ -114,33 +131,30 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <div className="col-6 col-md-2 col-lg-3">
+            <div className="col-6 col-md-2 col-lg-3 ">
               <div className="menu-icons">
                 <ul className="d-flex justify-content-end">
-                  {/* <li>
+                  <li>
                     <a href="#">
-                      <i className="icon-balance count-circle">
-                        <span>0</span>
-                      </i>
+                      <FaBalanceScaleRight />
+                      <span>0</span>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i className="icon-heart count-circle">
-                        <span>0</span>
-                      </i>
+                      <FaRegHeart />
+                      <span>0</span>
                     </a>
                   </li>
                   <li>
                     <a href="#">
-                      <i className="icon-bascet count-circle">
-                        <span>10</span>
-                      </i>
+                      <AiOutlineShoppingCart />
+                      <span>0</span>
                     </a>
-                  </li> */}
-                  <li>
+                  </li>
+                  <li className="login">
                     <a href="#">
-                      <i className="icon-user"></i>
+                      <RiUserLine />
                       <span className="d-none d-md-inline-block">Login</span>
                     </a>
                   </li>
@@ -167,13 +181,18 @@ const Header = () => {
                       </li>
                       <li>
                         <a href="#">
-                          <i className="icon-beauty"></i>
+                          <i>
+                            {" "}
+                            <BsFlower2 />
+                          </i>
                           Beauty
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="icon-grocery"></i>
+                          <i>
+                            <GiFruitBowl />
+                          </i>
                           Groceries
                         </a>
 
@@ -191,31 +210,41 @@ const Header = () => {
                       </li>
                       <li>
                         <a href="#">
-                          <i className="icon-clothing"></i>
+                          <i>
+                            <GiClothes />
+                          </i>
                           Clothing
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="icon-bags"></i>
+                          <i>
+                            <BsBagDash />
+                          </i>
                           Bags & Shoes
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="icon-outdoor"></i>
+                          <i>
+                            <BiBasketball />
+                          </i>
                           Outdoor Fun & Sports
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="icon-automobile"></i>
+                          <i>
+                            <AiFillCar />
+                          </i>
                           Automobile & Motorcycles
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i className="icon-toys"></i>
+                          <i>
+                            <FaBaby />
+                          </i>
                           Toys & Kids
                         </a>
                       </li>

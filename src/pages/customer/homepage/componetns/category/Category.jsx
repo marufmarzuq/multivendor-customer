@@ -13,23 +13,33 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
+import { BsBagDash, BsFlower2 } from "react-icons/bs";
+import { GiClothes, GiFruitBowl } from "react-icons/gi";
+import { BiBasketball } from "react-icons/bi";
+import { AiFillCar } from "react-icons/ai";
+import { FaBaby } from "react-icons/fa";
 const Category = () => {
   return (
     <section className="category-wrapper wrapper">
       <div className="container">
         <div className="row">
-          <div className="col-12 col-xs-4 col-md-3 col-lg-4">
+          <div className="col-12 col-xs-4 col-md-3 col-lg-4 ">
             <div className="category-list">
               <ul>
                 <li>
                   <a href="#">
-                    <i className="icon-beauty"></i>
+                    <i>
+                      {" "}
+                      <BsFlower2 />
+                    </i>
                     Beauty
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i className="icon-grocery"></i>
+                    <i>
+                      <GiFruitBowl />
+                    </i>
                     Groceries
                   </a>
 
@@ -47,31 +57,41 @@ const Category = () => {
                 </li>
                 <li>
                   <a href="#">
-                    <i className="icon-clothing"></i>
+                    <i>
+                      <GiClothes />
+                    </i>
                     Clothing
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i className="icon-bags"></i>
+                    <i>
+                      <BsBagDash />
+                    </i>
                     Bags & Shoes
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i className="icon-outdoor"></i>
+                    <i>
+                      <BiBasketball />
+                    </i>
                     Outdoor Fun & Sports
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i className="icon-automobile"></i>
+                    <i>
+                      <AiFillCar />
+                    </i>
                     Automobile & Motorcycles
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <i className="icon-toys"></i>
+                    <i>
+                      <FaBaby />
+                    </i>
                     Toys & Kids
                   </a>
                 </li>

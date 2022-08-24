@@ -3,6 +3,9 @@
   border: 1px solid #d7d7d7;
   border-radius: 5px;
 }
+.category-list ul {
+  padding: 0 !important;
+}
 .category-wrapper .category-list a {
   text-decoration: none !important;
   color: #333333 !important;
@@ -23,18 +26,49 @@
   padding: 13px 0;
   display: block;
 }
-.category-list ul {
-  padding: 0;
+.category-wrapper .category-list ul {
+  padding: 0 !important;
+  z-index: 5 !important;
+  border-radius: 8px;
 }
 
 .category-wrapper .category-list > ul > li a i {
-  margin-right: 12px;
+  margin-right: 15px !important;
+  font-size: 18px;
 }
 .category-wrapper .category-list > ul > li > ul {
   display: none;
   transition: all 0.3s linear;
   position: absolute;
-  left: calc(100% + 25px);
+  left: calc(100% + 1px);
+  top: -1px;
+  border: 1px dotted rgba(0, 0, 0, 0.208);
+  background-color: #ffffff;
+
+  z-index: 999 !important;
+}
+
+.category-wrapper .category-list > ul > li > ul > li {
+  padding: 0px 25px !important;
+  padding-left: 25px !important;
+}
+.category-wrapper .category-list > ul > li:hover a i {
+  margin-right: 14px;
+  transition: all 0.3s linear;
+}
+.category-wrapper .category-list > ul > li:hover > ul {
+  display: block;
+}
+.category-wrapper .category-list > ul > li > ul > li:hover {
+  background-color: #d9e8fb !important;
+
+  display: block;
+}
+.category-wrapper .category-list > ul > li:hover > ul > li {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.208);
+}
+.category-wrapper .category-list > ul > li > ul > li:last-child {
+  border-bottom: 1px solid transparent;
 }
 .category-wrapper .category-list > ul > li:hover a i {
   margin-right: 14px;
@@ -107,6 +141,7 @@
   top: 50%;
 }
 .category-wrapper .category-promotion {
+  height: 100%;
   padding: 40px 15px 30px 15px;
   text-align: center;
   border-radius: 10px;
@@ -256,8 +291,8 @@
   z-index: 1;
 }
 .categories .dropdown-button i {
-  margin-right: 10px;
-  font-size: 13px;
+  margin-right: 13px;
+  font-size: 18px;
 }
 .categories .dropdown-button .category-list {
   border: 1px solid #d7d7d7;
@@ -267,6 +302,14 @@
   position: absolute;
   left: 0;
   top: 100%;
+}
+.categories .dropdown-button .category-list > ul {
+  position: relative;
+  padding: 0 !important;
+}
+.categories .dropdown-button .category-list > ul > ul {
+  /* position: relative; */
+  padding-left: 0 !important;
 }
 .categories .dropdown-button .category-list > ul > li {
   position: relative;
