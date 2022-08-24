@@ -30,7 +30,6 @@ import Home from "../../pages/customer/homepage/Home";
 import CustomerLayout from "./layouts/customer/CustomerLayout";
 import Shop from "../../pages/customer/shop/Shop";
 import SingleProduct from "../../pages/customer/singleProduct/SingleProduct";
-
 const Router = () => {
   return (
     <Routes>
