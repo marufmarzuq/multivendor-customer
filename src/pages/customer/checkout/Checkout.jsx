@@ -3,7 +3,11 @@ import CheckoutForm from "./components/checkoutCom/CheckoutForm";
 
 const Checkout = () => {
   return (
-			<CheckoutForm/>
+		<div className="wrapper">
+			<div className="container">
+				<CheckoutForm/>
+			</div>
+		</div>
   );
 };
 

@@ -10,7 +10,6 @@ import Shops from "./components/shops/Shops";
 
 const Home = () => {
   return (
-    <>
       <div className="wrapper">
         <Category />
         <MostPopular />
@@ -21,7 +20,6 @@ const Home = () => {
         <Brands />
         <Shops />
       </div>
-    </>
   );
 };
 

@@ -29,7 +29,6 @@ const MyWallet = () => {
               </div>
             </div>
           </section>
-          {/* <button className="btn btn-success"> Recharge Wallet</button> */}
         </section>
 
         <section>

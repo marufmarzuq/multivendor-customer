@@ -281,10 +281,10 @@ const Header = () => {
                     <NavLink to="/shop">Shop</NavLink>
                   </li>
                   <li>
-                    <a href="/checkout">Checkout</a>
-                  </li>
-                  <li>
                     <a href="/cart">Cart</a>
+                  </li>
+									<li>
+                    <a href="/checkout">Checkout</a>
                   </li>
                 </ul>
                 <span
