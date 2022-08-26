@@ -1,12 +1,12 @@
 import React from "react";
-import AddSection from "./componetns/addSection/AddSection";
-import AddSectionTwo from "./componetns/addSection/AddSectionTwo";
-import Brands from "./componetns/brand/Brands";
-import Category from "./componetns/category/Category";
-import DailyDeals from "./componetns/dailyDeals/DailyDeals";
-import Featured from "./componetns/featured/Featured";
-import MostPopular from "./componetns/mostPopular/MostPopular";
-import Shops from "./componetns/shops/Shops";
+import AddSection from "./components/addSection/AddSection";
+import AddSectionTwo from "./components/addSection/AddSectionTwo";
+import Brands from "./components/brand/Brands";
+import Category from "./components/category/Category";
+import DailyDeals from "./components/dailyDeals/DailyDeals";
+import Featured from "./components/featured/Featured";
+import MostPopular from "./components/mostPopular/MostPopular";
+import Shops from "./components/shops/Shops";
 
 const Home = () => {
   return (

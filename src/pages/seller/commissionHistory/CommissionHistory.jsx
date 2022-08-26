@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Table } from "react-bootstrap";
 import commissionStyle from "./commissionStyle.module.css";
-const CommissonHistory = () => {
+const CommissionHistory = () => {
   return (
     <Fragment>
       <div className={`${commissionStyle.background}`}>
@@ -75,4 +75,4 @@ const CommissonHistory = () => {
   );
 };
 
-export default CommissonHistory;
+export default CommissionHistory;
