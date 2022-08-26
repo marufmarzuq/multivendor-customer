@@ -28,6 +28,8 @@ import Shop from "../../pages/customer/shop/Shop";
 import SingleProduct from "../../pages/customer/singleProduct/SingleProduct";
 import Cart from "../../pages/customer/cart/Cart";
 import Checkout from "../../pages/customer/checkout/Checkout";
+import Support from "../../pages/customer/support/Support";
+import SellerRequest from "../../pages/customer/sellerRequest/SellerRequest";
 
 const Router = () => {
   return (
@@ -78,6 +80,8 @@ const Router = () => {
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="products/:id" element={<SingleProduct />} />
+				<Route path="support" element={<Support />} />
+				<Route path="seller-request" element={<SellerRequest />} />
       </Route>
 
       <Route path="/*" element={<NotFound />} />

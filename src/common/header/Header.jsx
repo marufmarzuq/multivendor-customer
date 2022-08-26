@@ -82,13 +82,13 @@ const Header = () => {
             <div className="col-8 col-lg-6 col-xl-6 col-xxl-6 right-menu">
               <ul className="d-flex justify-content-end">
                 <li>
-                  <a href="#">Be a Seller</a>
+									<NavLink to="/seller-request">Be a Seller</NavLink>
                 </li>
                 <li>
                   <a href="#">Register</a>
                 </li>
                 <li>
-                  <a href="#">Help and Support</a>
+									<NavLink to="/support">Help and Support</NavLink>
                 </li>
                 <li>
                   <a href="#">
