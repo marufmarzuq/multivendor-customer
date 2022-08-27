@@ -1,10 +1,10 @@
 import React from "react";
 import ProductTable from "./components/cartCom/ProductTable";
 
-const Cart = () => {
+const MiniCart = () => {
   return (
 			<ProductTable/>
   );
 };
 
-export default Cart;
+export default MiniCart;

@@ -1,4 +1,5 @@
-import React from "react";
+// translation
+import { useTranslation } from "react-i18next";
 import PageHeader from "./components/cartCom/PageHeader";
 import ProductTable from "./components/cartCom/ProductTable";
 import ActionButton from "./components/cartCom/ActionButton";
@@ -7,6 +8,8 @@ import CartTotal from "./components/cartCom/CartTotal";
 import OrderBump from "./components/cartCom/OrderBump";
 
 const Cart = () => {
+  const { t } = useTranslation();
+
   return (
 			<div className="wrapper">
 				<div className="container">

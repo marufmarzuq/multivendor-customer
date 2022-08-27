@@ -1,4 +1,3 @@
-import React from "react";
 import StoreList from "./components/storesCom/StoreList";
 
 const Checkout = () => {

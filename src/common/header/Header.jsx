@@ -134,17 +134,19 @@ const Header = () => {
             <div className="col-6 col-md-2 col-lg-3 ">
               <div className="menu-icons">
                 <ul className="d-flex justify-content-end">
+                	{/* Compare List */}
                   <li>
-                    <a href="#">
+										<NavLink to="/compare">
                       <FaBalanceScaleRight />
                       <span>0</span>
-                    </a>
+                    </NavLink>
                   </li>
+                  {/* WishList */}
                   <li>
-                    <a href="#">
+                    <NavLink to="/wishlist">
                       <FaRegHeart />
                       <span>0</span>
-                    </a>
+										</NavLink>
                   </li>
                   <li>
                     <a href="#">
