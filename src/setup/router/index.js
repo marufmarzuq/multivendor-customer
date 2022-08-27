@@ -25,6 +25,7 @@ import ShopSetting from "../../pages/seller/shopSetting/ShopSetting";
 import Home from "../../pages/customer/homepage/Home";
 import CustomerLayout from "./layouts/customer/CustomerLayout";
 import Shop from "../../pages/customer/shop/Shop";
+import Stores from "../../pages/customer/stores/Stores";
 import SingleProduct from "../../pages/customer/singleProduct/SingleProduct";
 import Cart from "../../pages/customer/cart/Cart";
 import Checkout from "../../pages/customer/checkout/Checkout";
@@ -77,6 +78,7 @@ const Router = () => {
       <Route path="/" element={<CustomerLayout />}>
         <Route path="" element={<Home />} />
         <Route path="shop" element={<Shop />} />
+        <Route path="stores" element={<Stores />} />
         <Route path="cart" element={<Cart />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="products/:id" element={<SingleProduct />} />

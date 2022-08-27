@@ -1,12 +1,12 @@
 .addBtn {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-right: 5rem;
   margin-top: 1rem;
 }
 .addDigitalProduct {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   margin-right: 7.2rem;
   margin-top: 1rem;
 }
