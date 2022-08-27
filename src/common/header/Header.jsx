@@ -82,13 +82,13 @@ const Header = () => {
             <div className="col-8 col-lg-6 col-xl-6 col-xxl-6 right-menu">
               <ul className="d-flex justify-content-end">
                 <li>
-									<NavLink to="/seller-request">Be a Seller</NavLink>
+                  <NavLink to="/seller-request">Be a Seller</NavLink>
                 </li>
                 <li>
                   <a href="#">Register</a>
                 </li>
                 <li>
-									<NavLink to="/support">Help and Support</NavLink>
+                  <NavLink to="/support">Help and Support</NavLink>
                 </li>
                 <li>
                   <a href="#">
@@ -172,7 +172,7 @@ const Header = () => {
           <div className="row align-items-center">
             <div className="d-none d-md-block col-md-4">
               <div className="categories">
-                <div className="dropdown-button">
+                <div className="dropdown-button px-0">
                   <i className="icon-bar"></i> Categories
                   <div className="category-list">
                     <ul>
@@ -275,16 +275,16 @@ const Header = () => {
                     <NavLink to="/">Home</NavLink>
                   </li>
                   <li>
-									<NavLink to="/stores">Stores</NavLink>
+                    <NavLink to="/stores">Stores</NavLink>
                   </li>
                   <li>
                     <NavLink to="/shop">Shop</NavLink>
                   </li>
                   <li>
-										<NavLink to="/cart">Cart</NavLink>
+                    <NavLink to="/cart">Cart</NavLink>
                   </li>
-									<li>
-										<NavLink to="/checkout">Checkout</NavLink>
+                  <li>
+                    <NavLink to="/checkout">Checkout</NavLink>
                   </li>
                 </ul>
                 <span

@@ -129,7 +129,7 @@ body.show:after {
   overflow: hidden;
 }
 .header {
-  margin-bottom: 38px;
+  /* margin-bottom: 38px; */
   padding: 0;
 }
 .header .topbar {
@@ -158,6 +158,9 @@ body.show:after {
   font-size: 13px;
   font-weight: 400;
   color: #333333;
+}
+.topbar ul {
+  padding-left: 0;
 }
 .header .topbar .left-menu ul li a.first-child,
 .header .topbar .right-menu ul li a.first-child {

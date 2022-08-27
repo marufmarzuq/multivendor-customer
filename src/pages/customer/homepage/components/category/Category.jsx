@@ -20,7 +20,7 @@ import { AiFillCar } from "react-icons/ai";
 import { FaBaby } from "react-icons/fa";
 const Category = () => {
   return (
-    <section className="category-wrapper wrapper">
+    <section className="category-wrapper mt-5 wrapper">
       <div className="container">
         <div className="row">
           <div className="col-12 col-xs-4 col-md-3 col-lg-4 ">

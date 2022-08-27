@@ -1,0 +1,115 @@
+.productTable thead {
+  background-color: #d9e8fb;
+}
+
+.productTable tr {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.176);
+}
+
+.productTable table tbody tr {
+  padding-left: 50px;
+}
+.quantity {
+  border: 1px solid rgba(128, 128, 128, 0.156);
+  display: inline;
+  padding: 10px 15px 10px 15px;
+  border-radius: 3px;
+}
+
+.quantity button {
+  border: none;
+  background-color: inherit;
+  padding: 0px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.quantity span {
+  padding: 0 15px;
+}
+.deleteBtn {
+  background-color: inherit;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.actionButton button {
+  color: rgba(0, 0, 0, 0.78);
+  margin-right: 1rem;
+  border: 1px solid gray;
+}
+
+.coupon h5 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem !important;
+}
+
+.coupon input {
+  width: 70%;
+  border-radius: 8px 0 0 8px;
+}
+.couponBtn {
+  padding: 11px 15px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background-color: #2e74e8;
+  color: #fff;
+}
+
+.couponBtn:hover {
+  color: #fff;
+}
+.cartTotalsRow span {
+  display: block;
+  font-weight: 500;
+}
+
+.cart_totals {
+  background-color: #f8f9fa;
+  padding: 1rem;
+}
+
+.cartTotalsRow {
+  display: grid;
+  grid-template-columns: 11fr 1fr;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.249);
+  padding: 15px 0;
+}
+.cartTotalsRowLast {
+  display: grid;
+  grid-template-columns: 11fr 1fr;
+  border-bottom: none !important;
+  padding: 15px 0;
+}
+.cartTotalsRowLast small {
+  font-size: 0.8rem;
+}
+
+.cart_totals h5 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem !important;
+}
+
+.proceedBtn button {
+  width: 100%;
+  padding: 12px;
+  background-color: #2e74e8;
+  border: none;
+  color: #fff;
+  border-radius: 6px;
+}
+@media only screen and (min-width: 768px) {
+  .coupon input {
+    width: 400px;
+    border-radius: 8px 0 0 8px;
+  }
+  .couponBtn {
+    padding: 11px 15px;
+    border: none;
+    border-radius: 0 8px 8px 0;
+    background-color: #2e74e8;
+    color: #fff;
+  }
+}
