@@ -50,11 +50,11 @@
   border-radius: 8px 0 0 8px;
 }
 .couponBtn {
-  padding: 11px 15px;
-  border: none;
-  border-radius: 0 8px 8px 0;
-  background-color: #2e74e8;
-  color: #fff;
+  padding: 10px 15px !important;
+  /* border: none; */
+  border-radius: 0 8px 8px 0 !important;
+  background-color: #2e74e8 !important;
+  color: #fff !important;
 }
 
 .couponBtn:hover {
@@ -106,10 +106,10 @@
     border-radius: 8px 0 0 8px;
   }
   .couponBtn {
-    padding: 11px 15px;
+    padding: 10px 15px !important;
     border: none;
-    border-radius: 0 8px 8px 0;
-    background-color: #2e74e8;
-    color: #fff;
+    border-radius: 0 8px 8px 0 !important;
+    background-color: #2e74e8 !important;
+    color: #fff !important;
   }
 }

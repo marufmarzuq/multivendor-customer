@@ -1,0 +1,70 @@
+.sotresContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sotresContainer img {
+  margin-top: 1rem;
+  width: 40%;
+  border-radius: 50%;
+  background-color: #fff;
+  display: block;
+}
+
+.sotresContainer .card {
+  border: 1px solid rgba(128, 128, 128, 0.279);
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.card:hover {
+  box-shadow: 1px 3px 7px rgba(180, 180, 180, 0.681);
+  /* border: none; */
+  cursor: pointer;
+}
+
+.sotresContainer .cardBody {
+  width: 100%;
+  padding-left: 1rem;
+}
+
+.cardBody h5 {
+  margin-top: 1rem;
+  font-weight: 500;
+  line-height: 5px;
+}
+
+.rattings {
+  font-size: 0.8rem;
+  color: gray;
+}
+
+.location span {
+  margin-right: 8px;
+}
+
+.phone span {
+  margin-right: 8px;
+}
+
+.email span {
+  margin-right: 8px;
+}
+
+@media only screen and (min-width: 768px) {
+  .sotresContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
