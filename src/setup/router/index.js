@@ -28,6 +28,8 @@ import Shop from "../../pages/customer/shop/Shop";
 import Stores from "../../pages/customer/stores/Stores";
 import SingleProduct from "../../pages/customer/singleProduct/SingleProduct";
 import Cart from "../../pages/customer/cart/Cart";
+import ProductCompare from "../../pages/customer/productCompare/ProductCompare";
+import CustomerWishlist from "../../pages/customer/wishlist/CustomerWishlist";
 import Checkout from "../../pages/customer/checkout/Checkout";
 import Support from "../../pages/customer/support/Support";
 import SellerRequest from "../../pages/customer/sellerRequest/SellerRequest";
@@ -80,6 +82,8 @@ const Router = () => {
         <Route path="shop" element={<Shop />} />
         <Route path="stores" element={<Stores />} />
         <Route path="cart" element={<Cart />} />
+        <Route path="compare" element={<ProductCompare />} />
+        <Route path="wishlist" element={<CustomerWishlist />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="products/:id" element={<SingleProduct />} />
 				<Route path="support" element={<Support />} />
