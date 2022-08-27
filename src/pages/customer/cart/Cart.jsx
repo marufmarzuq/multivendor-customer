@@ -1,4 +1,5 @@
 import React from "react";
+import PageHeader from "./components/cartCom/PageHeader";
 import ProductTable from "./components/cartCom/ProductTable";
 import ActionButton from "./components/cartCom/ActionButton";
 import Coupon from "./components/cartCom/Coupon";
@@ -9,6 +10,7 @@ const Cart = () => {
   return (
 			<div className="wrapper">
 				<div className="container">
+					<PageHeader/>
 					<ProductTable/>
 					<ActionButton/>
 					<div className="row">
