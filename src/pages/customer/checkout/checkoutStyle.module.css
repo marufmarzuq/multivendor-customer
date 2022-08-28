@@ -6,10 +6,27 @@
   grid-gap: 1rem;
 }
 
+.cartDetails {
+  order: 1;
+  margin-bottom: 2rem;
+}
+.checkoutForm {
+  order: 2;
+}
+
 @media only screen and (min-width: 768px) {
   .checkoutContainer {
     display: grid;
     grid-template-columns: 4fr 3fr;
-    grid-gap: 1rem;
+    grid-gap: 2rem;
+  }
+
+  .cartDetails {
+    margin-bottom: 0;
+    margin-top: 0;
+    order: 2;
+  }
+  .checkoutForm {
+    order: 1;
   }
 }

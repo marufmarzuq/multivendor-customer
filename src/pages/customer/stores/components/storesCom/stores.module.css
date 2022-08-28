@@ -59,6 +59,65 @@
   margin-right: 8px;
 }
 
+.sortBar {
+  display: grid;
+  grid-template-columns: 10fr 5fr;
+  border: 1px solid rgba(128, 128, 128, 0.279);
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  padding: 10px 10px;
+}
+.sortInput {
+  border: 1px solid rgba(128, 128, 128, 0.279);
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  padding: 0;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: -1;
+  /* display: none; */
+}
+.sortInput button {
+  background-color: transparent !important;
+}
+
+.sortInputShow {
+  border: 1px solid rgba(128, 128, 128, 0.279);
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  padding: 20px 30px;
+  height: 150px;
+  width: 100%;
+  opacity: 1;
+  /* display: block; */
+  transition: all 0.3s;
+}
+
+.sortBarLeft {
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  padding-top: 5px;
+  padding-left: 1rem;
+}
+.sortBarLeft h6 {
+  font-size: 1.2rem;
+  color: rgb(86, 86, 86);
+}
+.sortBarRight {
+  display: flex;
+  justify-content: end;
+}
+
+.filterBtn {
+  padding: 3px 15px 3px 10px;
+  /* background-color: blue; */
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+}
 @media only screen and (min-width: 768px) {
   .sotresContainer {
     display: grid;
@@ -66,5 +125,14 @@
     grid-gap: 1rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
+  }
+
+  .sortBar {
+    display: grid;
+    grid-template-columns: 10fr 2fr;
+    border: 1px solid rgba(128, 128, 128, 0.279);
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    padding: 10px 10px;
   }
 }

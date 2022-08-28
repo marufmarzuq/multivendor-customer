@@ -4,6 +4,7 @@ import { AiOutlineArrowLeft } from "react-icons/ai";
 const CheckoutForm = () => {
   return (
     <div className="">
+      <h4 className="mb-4">Shipping Information</h4>
       {/* Billing details */}
       <div className={checkoutStyle.name}>
         {/* <label htmlFor="name"> Name : </label> */}

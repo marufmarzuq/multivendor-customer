@@ -24,7 +24,7 @@ const Cart = () => {
             <Coupon />
           </div>
           <div className="">
-            <CartTotal />
+            <CartTotal proceedKey="cart" />
           </div>
         </div>
 

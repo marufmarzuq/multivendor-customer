@@ -1,6 +1,7 @@
 import React from "react";
 import cartStyle from "./cart.module.css";
-const CartTotal = () => {
+const CartTotal = ({ proceedKey }) => {
+  console.log(proceedKey);
   return (
     <div>
       <div className={cartStyle.cart_totals}>
@@ -33,9 +34,13 @@ const CartTotal = () => {
           </div>
         </div>
 
-        <div className={`my-4  ${cartStyle.proceedBtn}`}>
-          <button className="btn btn-primary">Proceed to checkout</button>
-        </div>
+        {proceedKey == "cart" ? (
+          <div className={`my-4  ${cartStyle.proceedBtn}`}>
+            <button className="btn btn-primary">Proceed to checkout</button>
+          </div>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

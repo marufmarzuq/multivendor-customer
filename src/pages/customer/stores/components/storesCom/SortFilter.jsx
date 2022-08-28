@@ -1,21 +1,57 @@
-import { BsGrid3X3Gap } from "react-icons/bs";
+import { BsFilter } from "react-icons/bs";
 import { AiOutlineBars } from "react-icons/ai";
+
+import sortStyle from "./stores.module.css";
+import { useState } from "react";
 const SortFilter = () => {
+  const [sortInputShow, setSortInputShow] = useState(false);
   return (
-		<div className="sort-bar mt-4">
-			<div className="sort-bar-left"> Total stores: 8</div>
-			<div className="sort-bar-right">
-				<button>
-					Filter
-				</button>
-				<button>
+    <div>
+      <div className={` mt-4 ${sortStyle.sortBar}`}>
+        <div className={sortStyle.sortBarLeft}>
+          <h6>Total stores: 8</h6>
+        </div>
+        <div className={sortStyle.sortBarRight}>
+          <button
+            onClick={() => setSortInputShow(!sortInputShow)}
+            className={`btn btn-primary ${sortStyle.filterBtn}`}
+          >
+            <BsFilter /> Filter
+          </button>
+          {/* <button>
 					<BsGrid3X3Gap />
 				</button>
 				<button>
 					<AiOutlineBars />
-				</button>
-			</div>
-	</div>
+				</button> */}
+        </div>
+      </div>
+
+      <div
+        className={` mt-2 ${
+          sortInputShow ? sortStyle.sortInputShow : sortStyle.sortInput
+        }`}
+      >
+        <div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control"
+              name=""
+              id=""
+              aria-describedby="helpId"
+              placeholder="Search Store..."
+            />
+          </div>
+
+          <div className={sortStyle.sortBarRight}>
+            <button className={`btn btn-primary mt-3 ${sortStyle.filterBtn}`}>
+              <BsFilter /> Apply
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

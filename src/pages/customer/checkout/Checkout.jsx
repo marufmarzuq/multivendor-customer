@@ -8,8 +8,12 @@ const Checkout = () => {
     <div className="wrapper">
       <BreadCumb data={"Checkout"} />
       <div className={`container ${checkoutStyle.checkoutContainer}`}>
-        <CheckoutForm />
-        <CartDetails />
+        <div className={checkoutStyle.checkoutForm}>
+          <CheckoutForm />
+        </div>
+        <div className={checkoutStyle.cartDetails}>
+          <CartDetails />
+        </div>
       </div>
     </div>
   );

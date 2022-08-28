@@ -23,6 +23,19 @@
 .submitBtn a {
   text-decoration: none;
 }
+
+.shopName {
+  background-color: #d9e8fb;
+  padding: 8px 1rem;
+}
+.shopName h4 {
+  font-size: 1rem;
+  padding-top: 5px;
+}
+
+/* .cartDetails {
+  margin-top: 54px;
+} */
 @media only screen and (min-width: 768px) {
   .name {
     display: grid;
