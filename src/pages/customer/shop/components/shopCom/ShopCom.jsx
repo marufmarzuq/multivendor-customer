@@ -94,34 +94,34 @@ const ShopCom = () => {
                   <h4 className="sidebar-label">Size</h4>
                   <div className="radio-item">
                     <input type="radio" name="" value="L" id="L" />
-                    <label for="L">L</label>
+                    <label htmlFor="L">L</label>
                   </div>
                   <div className="radio-item">
                     <input type="radio" name="" value="XL" id="XL" />
-                    <label for="XL">XL</label>
+                    <label htmlFor="XL">XL</label>
                   </div>
                   <div className="radio-item">
                     <input type="radio" name="" value="M" id="M" />
-                    <label for="M">M</label>
+                    <label htmlFor="M">M</label>
                   </div>
                 </div>
                 <div className="sidebar-row radio-wrap color-wrap">
                   <h4 className="sidebar-label">Color</h4>
                   <div className="radio-item">
                     <input type="radio" name="" value="L" id="red" />
-                    <label for="red" style={{ backgroundColor: "red" }}></label>
+                    <label htmlFor="red" style={{ backgroundColor: "red" }}></label>
                   </div>
                   <div className="radio-item">
                     <input type="radio" name="" value="L" id="green" />
                     <label
-                      for="green"
+                      htmlFor="green"
                       style={{ backgroundColor: "green" }}
                     ></label>
                   </div>
                   <div className="radio-item">
                     <input type="radio" name="" value="L" id="blue" />
                     <label
-                      for="blue"
+                      htmlFor="blue"
                       style={{ backgroundColor: "blue" }}
                     ></label>
                   </div>
@@ -139,7 +139,7 @@ const ShopCom = () => {
               </div>
             </div>
             <div className="col-sm-12 col-md-9">
-              <div className="product-sort-bar">
+              <div className="sort-bar">
                 <div className="sort-bar-left">
                   <button>
                     <BsGrid3X3Gap />
@@ -149,9 +149,9 @@ const ShopCom = () => {
                   </button>
                 </div>
                 <div className="sort-bar-right">
-                  <div class="form-group">
-                    <label for="">Sort By:</label>
-                    <select class="form-control" name="sort" id="sort">
+                  <div className="form-group">
+                    <label htmlFor="">Sort By:</label>
+                    <select className="form-control" name="sort" id="sort">
                       <option>Default</option>
                       <option>Sale</option>
                       <option>Price</option>
