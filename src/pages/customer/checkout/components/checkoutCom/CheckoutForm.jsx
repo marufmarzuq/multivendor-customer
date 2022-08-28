@@ -2,13 +2,15 @@ import React from "react";
 
 const CheckoutForm = () => {
   return (
-		<div className=''>
+		<div className="">
+			<h2 className="">Shipping Information</h2>
+			<div>Already have an account? <NavLink to='login'>Login</NavLink></div>
 			{/* Billing details */}
 			<div className="">
 				<label htmlFor='name'> Name : </label>
 				<input type='text' placeholder='Enter your Name' id='name'/>
 			</div>
-			<div className='d-flex'>
+			<div className="d-flex">
 				<label htmlFor='email'> Email : </label>
 				<input type='email' placeholder='Enter your Email' id='email'/>
 				<label htmlFor='phone'> Phone : </label>
@@ -29,6 +31,7 @@ const CheckoutForm = () => {
 				<label htmlFor='order_notes'> Order Notes : </label>
 				<textarea rows='5' cols='5' placeholder='Notes about your order' id='order_notes'></textarea>
 			</div>
+			<button>Place Order</button>
 		</div>
   );
 };

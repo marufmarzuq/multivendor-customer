@@ -1,6 +1,7 @@
 import React from "react";
 import CheckoutForm from "./components/checkoutCom/CheckoutForm";
 import CartDetails from "./components/checkoutCom/CartDetails";
+import { NavLink } from "react-router-dom";
 
 const Checkout = () => {
   return (
