@@ -1,7 +1,6 @@
 import React from "react";
 import "./shopCom.css";
-import { product2 } from "../../../../../assets";
-import { FaBalanceScale } from "react-icons/fa";
+import GridOne from "../../../../../common/productView/GridOne";
 import { BiSearch, BiSquare } from "react-icons/bi";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { AiOutlineBars } from "react-icons/ai";
@@ -59,37 +58,7 @@ const ShopCom = () => {
                     placeholder="Polo"
                   />
                 </div>
-                {/* <div className="sidebar-row price-wrap">
-                  <h4 className="sidebar-label">Price</h4>
-                  <div className="price-range">
-                    <div className="range-container">
-                      <div className="slider-track"></div>
-                      <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value="30"
-                        id="slider-1"
-                        oninput="slideOne()"
-                      />
-                      <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value="70"
-                        id="slider-2"
-                        oninput="slideTwo()"
-                      />
-                    </div>
-                    <div className="range-values">
-                      <span>Price:</span>
-                      <input type="number" id="range1" value="0" />
-                      <span>-</span>
-                      <input type="number" id="range2" value="100" />
-                      <button className="range-go">Go</button>
-                    </div>
-                  </div>
-                </div> */}
+
                 <div className="sidebar-row radio-wrap">
                   <h4 className="sidebar-label">Size</h4>
                   <div className="radio-item">
@@ -160,45 +129,7 @@ const ShopCom = () => {
                 </div>
               </div>
               <div className="row products-wrap">
-                <div className="col-sm-6 col-md-3 mb-3">
-                  <div className="single-product style-1">
-                    <div className="image-wrap">
-                      <a href="#">
-                        <img src={product2} alt="Locket New" />
-                      </a>
-                      <div className="buttons-wrap">
-                        <button>
-                          <FaBalanceScale />
-                        </button>
-                      </div>
-                      <div className="badges">
-                        <div className="badge sale-badge">
-                          <span>10%</span>
-                        </div>
-
-                        <div className="badge tag-badge">
-                          <span>Sale</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="content-wrap">
-                      <h3 className="product-title">
-                        <a href="#">Locket New</a>
-                      </h3>
-                      <div className="price">
-                        <span className="sale">$ 200</span>
-                        <span className="del">$ 180</span>
-                      </div>
-                      <div className="ratings">
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                        <i className="fas fa-star"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+								<GridOne/>
               </div>
             </div>
           </div>

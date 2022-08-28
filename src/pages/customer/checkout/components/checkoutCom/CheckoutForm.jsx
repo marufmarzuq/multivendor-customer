@@ -14,6 +14,10 @@ const CheckoutForm = () => {
 				<label htmlFor='phone'> Phone : </label>
 				<input type='email' placeholder='Enter your Email' id='phone'/>
 			</div>
+			<div className="">
+				<label htmlFor='address'> Address : </label>
+				<textarea rows='5' cols='5' placeholder='Enter your address' id='address'></textarea>
+			</div>
 			{/* Payment method */}
 			<ul>
 				<li><input type='radio'/><span>Cache on delivery (COD)</span></li>
