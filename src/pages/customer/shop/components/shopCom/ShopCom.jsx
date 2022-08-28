@@ -118,9 +118,9 @@ const ShopCom = () => {
                   </button>
                 </div>
                 <div className="sort-bar-right">
-                  <div class="form-group">
+                  <div className=="form-group">
                     <label for="">Sort By:</label>
-                    <select class="form-control" name="sort" id="sort">
+                    <select className=="form-control" name="sort" id="sort">
                       <option>Default</option>
                       <option>Sale</option>
                       <option>Price</option>
