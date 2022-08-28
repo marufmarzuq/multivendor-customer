@@ -1,5 +1,6 @@
 import { AiOutlineShop } from "react-icons/ai";
 import CartTotal from "../../../cart/components/cartCom/CartTotal";
+
 import cartDeailsStyle from "./checkout.module.css";
 const CartDetails = () => {
   return (
@@ -34,9 +35,16 @@ const CartDetails = () => {
           <CartTotal />
         </div>
         {/* <div className="">
-				<div><img src="#"/><span>Store Name</span></div>
-				<CartTotal/>
-			</div> */}
+=======
+import Coupon from "../../../cart/components/cartCom/Coupon";
+import ProductDetails from "./ProductDetails";
+
+const CartDetails = () => {
+  return (
+  <div>
+		<h3>Cart Total</h3>
+		<div className="marketplace-products">
+			{/* Store wise total */}
       </div>
     </div>
   );
