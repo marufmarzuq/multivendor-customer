@@ -1,4 +1,3 @@
-import React from "react";
 import { FaStar } from "react-icons/fa";
 import "./singleCom.css";
 
@@ -13,7 +12,6 @@ const ProductDetails = () => {
           <FaStar />
           <FaStar />
           <FaStar />
-
           <span>(2 reviews)</span>
         </div>
         <div className="price">

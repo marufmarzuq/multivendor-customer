@@ -1,6 +1,8 @@
 import React from "react";
 import Slider from "./components/singleCom/Slider";
 import ProductDetails from "./components/singleCom/ProductDetails";
+import RelatedProducts from "./components/singleCom/RelatedProducts";
+import Reviews from "./components/singleCom/Reviews";
 
 const SingleProduct = () => {
   return (
@@ -9,14 +11,14 @@ const SingleProduct = () => {
         <div className="row">
           <div className="col-12 col-md-6 mb-5 mb-md-2 overflow-hidden">
             <Slider />
-            {/* <ProductDetails /> */}
           </div>
           <div className="col-12 col-md-6 mb-5 mb-md-2 overflow-hidden">
-            {/* <Slider /> */}
             <ProductDetails />
           </div>
         </div>
-      </div>
+				<RelatedProducts/>
+				<Reviews/>
+			</div>
     </section>
   );
 };
