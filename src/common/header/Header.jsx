@@ -6,7 +6,6 @@ import {
   AiOutlineBars,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { RiUserLine } from "react-icons/ri";
 import {
   FaBaby,
   FaBalanceScale,
@@ -88,6 +87,9 @@ const Header = () => {
 									<NavLink to="/register">Register</NavLink>
                 </li>
                 <li>
+									<NavLink to="/login">Login</NavLink>
+                </li>
+                <li>
                   <NavLink to="/support">Help and Support</NavLink>
                 </li>
                 <li>
@@ -152,12 +154,6 @@ const Header = () => {
                     <a href="#">
                       <AiOutlineShoppingCart />
                       <span>0</span>
-                    </a>
-                  </li>
-                  <li className="login">
-                    <a href="#">
-                      <RiUserLine />
-                      <span className="d-none d-md-inline-block">Login</span>
                     </a>
                   </li>
                 </ul>

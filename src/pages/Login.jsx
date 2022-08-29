@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { RiUserLine } from "react-icons/ri";
 import BreadCumb from "../common/breadcumb/BreadCumb";
 
 const Login = () => {
@@ -9,9 +10,14 @@ const Login = () => {
 				<h2>Login</h2>
 				<div>
 					<div>
-						<svg stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 24 24" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><g><path fill="none" d="M0 0h24v24H0z"></path><path d="M4 22a8 8 0 1 1 16 0h-2a6 6 0 1 0-12 0H4zm8-9c-3.315 0-6-2.685-6-6s2.685-6 6-6 6 2.685 6 6-2.685 6-6 6zm0-2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"></path></g></svg>
+						<RiUserLine />
 					</div>
 					<NavLink to="register">Have an account</NavLink>
+				</div>
+				<div className="d-flex">
+					<div>Login as</div>
+					<div><input type="radio" name="login_as"/>Vendor</div>
+					<div><input type="radio" name="login_as"/>Customer</div>
 				</div>
 				<div>
 					<label htmlFor="email">Email</label>
