@@ -1,7 +1,10 @@
-import { NavLink } from "react-bootstrap";
+
+import BreadCumb from "../common/breadcumb/BreadCumb";
 
 const ResetPassword = () => {
 	return (
+	<div>
+		<BreadCumb data={"Reset Password"} />
 		<div className="text-center">
 			<h2>Reset Password</h2>
 			<div>
@@ -13,6 +16,7 @@ const ResetPassword = () => {
 				<button type="button" name="button">Submit</button>
 			</div>
 		</div>
+	</div>
   );
 };
 

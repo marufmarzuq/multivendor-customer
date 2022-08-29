@@ -35,6 +35,7 @@ import Support from "../../pages/customer/support/Support";
 import SellerRequest from "../../pages/customer/sellerRequest/SellerRequest";
 import SellerShop from "../../pages/customer/sellerShop/SellerShop";
 import Login from "../../pages/Login";
+import Register from "../../pages/Register";
 import ResetPassword from "../../pages/ResetPassword";
 
 const Router = () => {
@@ -93,6 +94,7 @@ const Router = () => {
         <Route path="seller-request" element={<SellerRequest />} />
         <Route path="seller-shop" element={<SellerShop />} />
         {/* Login */}
+        <Route path="register" element={<Register/>} />
         <Route path="login" element={<Login/>} />
         <Route path="reset-password" element={<ResetPassword/>} />
       </Route>

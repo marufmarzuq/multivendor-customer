@@ -85,7 +85,7 @@ const Header = () => {
                   <NavLink to="/seller-request">Be a Seller</NavLink>
                 </li>
                 <li>
-                  <a href="#">Register</a>
+									<NavLink to="/register">Register</NavLink>
                 </li>
                 <li>
                   <NavLink to="/support">Help and Support</NavLink>
