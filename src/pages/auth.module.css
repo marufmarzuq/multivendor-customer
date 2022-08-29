@@ -1,0 +1,107 @@
+.authContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.auth {
+  width: 95%;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.auth hr {
+  opacity: 0.2;
+}
+
+.auth label {
+  margin-bottom: 0.4rem;
+}
+.auth input {
+  margin-bottom: 1rem;
+}
+
+.auth button {
+  width: 100%;
+  margin-top: 1rem;
+  padding: 10px;
+}
+.radioBtn {
+  display: grid;
+  grid-template-columns: 4fr 4fr 4fr;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.radioBtn input {
+  margin-bottom: 0;
+}
+
+.radioBtn label {
+  margin-top: 5px;
+  margin-bottom: 0;
+  padding-left: 7px;
+}
+.agree {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  justify-content: start;
+  padding: 0;
+}
+.agree input {
+  margin: 0;
+  padding: 0;
+}
+
+.agree label {
+  margin: 0;
+  padding: 0;
+}
+
+.alreadyAccount p {
+  text-align: center;
+  margin-top: 1rem;
+}
+.alreadyAccount a {
+  text-decoration: none;
+  padding-left: 5px;
+}
+
+.loginLogo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.loginLogo div {
+  background-color: #d9e8fb;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 1.8rem;
+}
+
+.forgotPass a {
+  text-decoration: none;
+}
+
+@media only screen and (min-width: 1200px) {
+  .auth {
+    width: 30%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .auth {
+    width: 30%;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    padding: 2rem;
+  }
+}

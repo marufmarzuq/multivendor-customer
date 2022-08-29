@@ -15,7 +15,7 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
             <span>Subtotal:</span>
           </div>
           <div>
-            <span>30$</span>
+            <span>$ 30</span>
           </div>
         </div>
         <div className={cartStyle.cartTotalsRow}>
@@ -24,7 +24,7 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
           </div>
           <div>
             {" "}
-            <span>30$</span>
+            <span>$ 30</span>
           </div>
         </div>
         <div className={cartStyle.cartTotalsRowLast}>
@@ -34,11 +34,11 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
           </div>
           <div>
             {" "}
-            <span>30$</span>
+            <span>$ 30</span>
           </div>
         </div>
 
-        {cartTotalTitle == "checkout" ? (
+        {proceedKey == "checkout" ? (
           <div class="form-group mt-3 ">
             <h6
               className="pb-1"
