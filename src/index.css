@@ -1,22 +1,10 @@
-/* ::-webkit-scrollbar {
-  width: 3px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: #f2f3f8;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.29);
-} */
-
 body {
   background-color: #f2f3f8 !important;
   margin: 0;
 }
 
 * {
-  font-family: "Work Sans", "Source Sans Pro", "Roboto", sans-serif;
+  font-family: "Work Sans", "Source Sans Pro", sans-serif !important;
   margin: 0;
   padding: 0;
   box-sizing: border-box;

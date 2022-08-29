@@ -4,6 +4,7 @@ import { logo } from "../../assets/index";
 import {
   AiFillCar,
   AiOutlineBars,
+  AiOutlineHeart,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import {
@@ -84,10 +85,10 @@ const Header = () => {
                   <NavLink to="/seller-request">Be a Seller</NavLink>
                 </li>
                 <li>
-									<NavLink to="/register">Register</NavLink>
+                  <NavLink to="/register">Register</NavLink>
                 </li>
                 <li>
-									<NavLink to="/login">Login</NavLink>
+                  <NavLink to="/login">Login</NavLink>
                 </li>
                 <li>
                   <NavLink to="/support">Help and Support</NavLink>
@@ -136,9 +137,9 @@ const Header = () => {
             <div className="col-6 col-md-2 col-lg-3 ">
               <div className="menu-icons">
                 <ul className="d-flex justify-content-end">
-                	{/* Compare List */}
+                  {/* Compare List */}
                   <li>
-										<NavLink to="/compare">
+                    <NavLink to="/compare">
                       <FaBalanceScaleRight />
                       <span>0</span>
                     </NavLink>
@@ -146,9 +147,9 @@ const Header = () => {
                   {/* WishList */}
                   <li>
                     <NavLink to="/wishlist">
-                      <FaRegHeart />
+                      <AiOutlineHeart />
                       <span>0</span>
-										</NavLink>
+                    </NavLink>
                   </li>
                   <li>
                     <a href="#">
@@ -171,7 +172,10 @@ const Header = () => {
             <div className="d-none d-md-block col-md-4">
               <div className="categories">
                 <div className="dropdown-button px-0">
-                  <i className="icon-bar"></i> Categories
+                  <span className="d-flex align-items-center">
+                    <AiOutlineBars className="me-2 mt-0" />{" "}
+                    <span className="mt-1">Categories</span>
+                  </span>
                   <div className="category-list">
                     <ul>
                       <li className="see-all">

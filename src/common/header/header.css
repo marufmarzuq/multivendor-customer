@@ -1,7 +1,6 @@
 body {
   font-family: "Work Sans", "Source Sans Pro", "Roboto", sans-serif;
   font-size: 14px;
-  font-family: 400;
   position: relative;
 }
 * {
@@ -9,6 +8,9 @@ body {
   padding: 0;
 }
 
+button {
+  font-weight: 100 !important;
+}
 dl,
 ol,
 ul,
@@ -132,6 +134,12 @@ body.show:after {
   /* margin-bottom: 38px; */
   padding: 0;
 }
+.header button {
+  font-weight: 100 !important;
+}
+.header h2 {
+  font-weight: 100 !important;
+}
 .header .topbar {
   background: #e1e1e1;
 }
@@ -248,12 +256,12 @@ body.show:after {
   list-style: none;
   cursor: pointer;
 }
-.header .main-header .menu-icons ul li a {
+.menu-icons a {
   display: inline-block;
   padding: 0 8px;
   text-decoration: none;
   font-size: 18px;
-  font-weight: 400;
+
   color: #333333;
   position: relative;
   margin-right: 18px;
@@ -271,12 +279,12 @@ body.show:after {
   background-color: #2e74e8;
   color: #fff;
   position: absolute;
-  left: 15px;
-  bottom: 10px;
-  padding: 0px 5px;
+  left: 12px;
+  bottom: 13px;
+  padding: 0px 6px;
   border-radius: 50%;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 100;
 }
 .header .main-header .menu-icons ul .login a {
   font-size: 1.2rem;
