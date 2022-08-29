@@ -1,0 +1,19 @@
+.reviews {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.reviewContainer {
+  border: 1px solid rgba(128, 128, 128, 0.355);
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.progressBar {
+  display: grid;
+  grid-template-columns: 4fr 10fr 3fr;
+  align-items: center;
+}

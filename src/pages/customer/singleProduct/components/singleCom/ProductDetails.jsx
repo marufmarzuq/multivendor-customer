@@ -1,4 +1,4 @@
-import { FaStar } from "react-icons/fa";
+import { FaInstagram, FaLinkedin, FaStar, FaTwitter } from "react-icons/fa";
 import "./singleCom.css";
 
 const ProductDetails = () => {
@@ -82,13 +82,13 @@ const ProductDetails = () => {
         <div className="social-share-wrap">
           <p>Share: </p>
           <a href="#" target="_blank">
-            <i className="fab fa-twitter"></i>
+            <FaTwitter />
           </a>
           <a href="#" target="_blank">
-            <i className="fab fa-linkedin"></i>
+            <FaLinkedin />
           </a>
           <a href="#" target="_blank">
-            <i className="fab fa-instagram"></i>
+            <FaInstagram />
           </a>
         </div>
       </div>
