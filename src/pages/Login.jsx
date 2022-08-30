@@ -5,7 +5,7 @@ import authStyle from "./auth.module.css";
 import { useState } from "react";
 const Login = () => {
   const [formLayout, setFormLayout] = useState("customer");
-  console.log(formLayout);
+
   return (
     <div>
       <BreadCumb data={"Login"} />

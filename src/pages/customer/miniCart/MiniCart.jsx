@@ -2,9 +2,7 @@ import React from "react";
 import ProductTable from "./components/cartCom/ProductTable";
 
 const MiniCart = () => {
-  return (
-			<ProductTable/>
-  );
+  return <ProductTable />;
 };
 
 export default MiniCart;

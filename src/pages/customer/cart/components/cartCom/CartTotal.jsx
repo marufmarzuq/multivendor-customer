@@ -1,7 +1,6 @@
 import React from "react";
 import cartStyle from "./cart.module.css";
 const CartTotal = ({ proceedKey, cartTotalTitle }) => {
-  console.log(proceedKey);
   return (
     <div>
       <div className={cartStyle.cart_totals}>
@@ -14,7 +13,7 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
           <div>
             <span>Subtotal:</span>
           </div>
-          <div>
+          <div className="d-flex justify-content-end">
             <span>$ 30</span>
           </div>
         </div>
@@ -22,7 +21,7 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
           <div>
             <span>Tax:</span>
           </div>
-          <div>
+          <div className="d-flex justify-content-end">
             {" "}
             <span>$ 30</span>
           </div>
@@ -32,7 +31,7 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
             <span>Total:</span>
             <small>(Shipping fees not included)</small>
           </div>
-          <div>
+          <div className="d-flex justify-content-end">
             {" "}
             <span>$ 30</span>
           </div>

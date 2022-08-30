@@ -45,7 +45,7 @@
   border: 1px dotted rgba(0, 0, 0, 0.208);
   background-color: #ffffff;
 
-  z-index: 999 !important;
+  z-index: 100 !important;
 }
 
 .category-wrapper .category-list > ul > li > ul > li {
@@ -84,6 +84,7 @@
 .category-wrapper .category-slider {
   height: 100%;
 }
+
 .category-wrapper .category-slider .swiper-slide {
   height: 100%;
   border: none;

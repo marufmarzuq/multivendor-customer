@@ -1,3 +1,40 @@
+.sotresContainerList {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sotresContainerList .image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sotresContainerList img {
+  width: 70%;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.sotresContainerList .card {
+  border: 1px solid rgba(128, 128, 128, 0.279);
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  display: grid;
+  grid-template-columns: 4fr 9fr;
+  transition: all 0.2s;
+}
+.sotresContainerList .cardBody {
+  padding-top: 0.8rem;
+  padding-bottom: 0.1rem;
+  display: grid;
+  grid-template-columns: 6fr 4fr;
+}
+.sotresContainerList .visitBtn {
+  padding-left: 2rem;
+  padding-top: 2rem;
+}
 .sotresContainer {
   display: grid;
   grid-template-columns: 1fr;
@@ -6,9 +43,16 @@
   margin-bottom: 2rem;
 }
 
-.sotresContainer img {
+.sotresContainer .image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.sotresContainer .image img {
   margin-top: 1rem;
-  width: 40%;
+  width: 50%;
   border-radius: 50%;
   background-color: #fff;
   display: block;
@@ -61,7 +105,7 @@
 
 .sortBar {
   display: grid;
-  grid-template-columns: 10fr 5fr;
+  grid-template-columns: 5fr 5fr;
   border: 1px solid rgba(128, 128, 128, 0.279);
   border-radius: 5px;
   background-color: #f8f9fa;
@@ -118,10 +162,24 @@
   border: none;
   border-radius: 3px;
 }
+
+.layoutBtn {
+  margin-left: 1rem;
+  font-size: 1rem;
+  display: none !important;
+}
 @media only screen and (min-width: 768px) {
   .sotresContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .sotresContainerList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -134,5 +192,11 @@
     border-radius: 5px;
     background-color: #f8f9fa;
     padding: 10px 10px;
+  }
+
+  .layoutBtn {
+    margin-left: 1rem;
+    font-size: 1rem;
+    display: block !important;
   }
 }

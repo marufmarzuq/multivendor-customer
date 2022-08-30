@@ -1,9 +1,9 @@
-import { BsFilter } from "react-icons/bs";
+import { BsFilter, BsGrid3X3Gap } from "react-icons/bs";
 import { AiOutlineBars } from "react-icons/ai";
 
 import sortStyle from "./stores.module.css";
 import { useState } from "react";
-const SortFilter = () => {
+const SortFilter = ({ setLayout }) => {
   const [sortInputShow, setSortInputShow] = useState(false);
   return (
     <div>
@@ -18,12 +18,18 @@ const SortFilter = () => {
           >
             <BsFilter /> Filter
           </button>
-          {/* <button>
-					<BsGrid3X3Gap />
-				</button>
-				<button>
-					<AiOutlineBars />
-				</button> */}
+          <button
+            onClick={() => setLayout("grid")}
+            className={`btn btn-outline-primary ${sortStyle.layoutBtn}`}
+          >
+            <BsGrid3X3Gap />
+          </button>
+          <button
+            onClick={() => setLayout("list")}
+            className={`btn btn-outline-primary ${sortStyle.layoutBtn}`}
+          >
+            <AiOutlineBars />
+          </button>
         </div>
       </div>
 

@@ -72,13 +72,13 @@
 
 .cartTotalsRow {
   display: grid;
-  grid-template-columns: 11fr 1fr;
+  grid-template-columns: 7fr 3fr;
   border-bottom: 1px solid rgba(128, 128, 128, 0.249);
   padding: 15px 0;
 }
 .cartTotalsRowLast {
   display: grid;
-  grid-template-columns: 11fr 1fr;
+  grid-template-columns: 7fr 3fr;
   border-bottom: none !important;
   padding: 15px 0;
 }

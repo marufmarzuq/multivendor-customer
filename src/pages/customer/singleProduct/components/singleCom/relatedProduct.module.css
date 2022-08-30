@@ -1,19 +1,121 @@
 .reviews {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-gap: 1rem;
 }
 
 .reviewContainer {
-  border: 1px solid rgba(128, 128, 128, 0.355);
+  /* border: 1px solid rgba(128, 128, 128, 0.355); */
   border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
   padding-bottom: 2rem;
+}
+.reviews span {
+  color: gray;
+}
+
+.stars {
+  display: flex;
+}
+.stars span {
+  color: #0b5ed7;
+  margin-right: 3px;
+}
+.stars p {
+  color: gray;
+  padding-top: 3px;
 }
 
 .progressBar {
   display: grid;
   grid-template-columns: 4fr 10fr 3fr;
   align-items: center;
+  margin-top: 8px;
+  color: gray;
+}
+
+.review {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid rgba(128, 128, 128, 0.347);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.review img {
+  width: 60%;
+}
+.review .image {
+  padding-top: 5px;
+  text-align: center;
+}
+.review .stars {
+  display: block;
+}
+.review h5 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 15px;
+}
+.review h6 {
+  font-size: 0.9rem;
+  color: gray;
+  margin-bottom: 1rem;
+}
+
+.addReview {
+  background-color: rgba(128, 128, 128, 0.154);
+  margin-top: 2rem;
+  padding: 2rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 3rem;
+}
+.addReview p {
+  color: gray;
+}
+.addReview .stars p {
+  color: rgba(0, 0, 0, 0.624);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.addReview .nameEmail {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* grid-gap: 1rem; */
+}
+.addReview input,
+.addReview textarea {
+  margin-bottom: 2rem;
+  padding: 0.7rem 2rem;
+}
+@media only screen and (min-width: 768px) {
+  .review {
+    display: grid;
+    grid-template-columns: 2fr 7fr 3fr;
+    border: 1px solid rgba(128, 128, 128, 0.347);
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .review img {
+    width: 50%;
+  }
+  .reviews {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }
+
+  .addReview {
+    background-color: rgba(128, 128, 128, 0.154);
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+
+  .addReview .nameEmail {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
 }

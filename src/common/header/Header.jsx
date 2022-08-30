@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./header.css";
 import { logo } from "../../assets/index";
+import MiniCart from "../../pages/customer/miniCart/MiniCart";
 import {
   AiFillCar,
   AiOutlineBars,
@@ -106,8 +107,8 @@ const Header = () => {
       {/* <!-- ./topbar --> */}
 
       {/* <!-- main-header --> */}
-      <div className="main-header">
-        <div className="container">
+      <div className=" main-header">
+        <div className="container ">
           <div className="row align-items-center">
             <div className="col-6 col-md-3">
               <div className="logo">
@@ -151,11 +152,14 @@ const Header = () => {
                       <span>0</span>
                     </NavLink>
                   </li>
-                  <li>
-                    <a href="#">
+                  <li className="headerMiniCartIcon">
+                    <NavLink to="/cart">
                       <AiOutlineShoppingCart />
                       <span>0</span>
-                    </a>
+                    </NavLink>
+                    <li className="headerMiniCart">
+                      <MiniCart />
+                    </li>
                   </li>
                 </ul>
               </div>
