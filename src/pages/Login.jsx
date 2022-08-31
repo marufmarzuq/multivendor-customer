@@ -53,17 +53,6 @@ const Login = () => {
               </div>
             </div>
 
-            {/* <div className="d-flex">
-              <div>Login as</div>
-              <div>
-                <input type="radio" name="login_as" />
-                Vendor
-              </div>
-              <div>
-                <input type="radio" name="login_as" />
-                Customer
-              </div>
-            </div> */}
             <div>
               <label htmlFor="email">Email</label>
               <input type="email" name="email" placeholder="Enter your email" />
@@ -77,17 +66,12 @@ const Login = () => {
               />
             </div>
             <div>
-              {/* <div className="">
-                <input type="radio" name="remember_me" />
-                <span>Remember me?</span>
-              </div> */}
               <div className={authStyle.forgotPass}>
                 <NavLink to="/reset-password">Forgot Password?</NavLink>
               </div>
             </div>
 
             <div className={authStyle.agree}>
-              {/* <div class="form-group form-check"> */}
               <input
                 type="checkbox"
                 class="form-check-input"
@@ -96,7 +80,6 @@ const Login = () => {
               <label class=" ps-2 mt-1" for="exampleCheck1">
                 Remember Me
               </label>
-              {/* </div> */}
             </div>
             <div>
               <button className="btn btn-primary" type="button" name="button">

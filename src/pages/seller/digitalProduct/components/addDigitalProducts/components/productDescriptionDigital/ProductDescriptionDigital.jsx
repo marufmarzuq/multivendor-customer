@@ -13,8 +13,7 @@ const ProductDescriptionDigital = () => {
       <div className="widget-title">Product Description</div>
       <div className="widget-content-container">
         <div className="ap-single-content-des">
-          {/* <p className="product-des-title">Description</p> */}
-          <div className="prod-desc-container">
+          <div className="tiny-desc-container">
             <Editor
               editorState={editorState}
               toolbarClassName="toolbarClassName"
