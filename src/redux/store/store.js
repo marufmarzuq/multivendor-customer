@@ -1,5 +1,9 @@
-import { createStore } from "redux";
-import { rootReducer } from "../reducers";
-import { updateDuration } from "../reducers/updateDuraionReducer";
+import { configureStore } from "@reduxjs/toolkit";
 
-export const store = createStore(updateDuration);
+import userReducer from "../slices/userSlice";
+
+export const store = configureStore({
+  reducer: {
+    userReducer: userReducer,
+  },
+});

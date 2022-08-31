@@ -37,10 +37,12 @@ import SellerShop from "../../pages/customer/sellerShop/SellerShop";
 import Login from "../../pages/Login";
 import Register from "../../pages/Register";
 import ResetPassword from "../../pages/ResetPassword";
+import CustomerHome from "../../pages/customer/customerHome/CustomerHome";
 
 const Router = () => {
   return (
     <Routes>
+      <Route path="/customer-home" element={<CustomerHome />} />
       {/* Vendor Dashboard */}
       <Route
         path="/seller"

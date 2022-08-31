@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 // translation
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData, getApi } from "../../../api/apiCall";
+import { setUser } from "../../../redux/slices/userSlice";
 
 const CustomerHome = () => {
   const { t, i18n } = useTranslation();
@@ -9,6 +12,13 @@ const CustomerHome = () => {
     localStorage.setItem("lang", lang);
     i18n.changeLanguage(lang);
   };
+
+  const { users, loading, error } = useSelector((state) => state.userReducer);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getApi("users", setUser);
+  }, []);
 
   return (
     <div>
@@ -49,6 +59,23 @@ const CustomerHome = () => {
       >
         It
       </button>
+
+      <section>
+        <h5 className="mt-5 ms-1">Data Coming from redux state</h5>
+
+        {error ? <h1>{error}</h1> : ""}
+
+        {loading ? (
+          <h3>Loading</h3>
+        ) : (
+          <div>
+            {users?.length > 0 &&
+              users.map((item) => {
+                return <h2 key={item.id}>{item.name}</h2>;
+              })}
+          </div>
+        )}
+      </section>
     </div>
   );
 };
