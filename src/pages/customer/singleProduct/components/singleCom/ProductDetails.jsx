@@ -1,4 +1,5 @@
 import { FaInstagram, FaLinkedin, FaStar, FaTwitter } from "react-icons/fa";
+import { useParams } from "react-router-dom";
 import "./singleCom.css";
 
 const ProductDetails = () => {
@@ -45,30 +46,30 @@ const ProductDetails = () => {
           <span className="label">Color : </span>
           <div className="radio-item">
             <input type="radio" name="" value="L" id="red" />
-            <label for="red" style={{ backgroundColor: "red" }}></label>
+            <label htmlFor="red" style={{ backgroundColor: "red" }}></label>
           </div>
           <div className="radio-item">
             <input type="radio" name="" value="L" id="green" />
-            <label for="green" style={{ backgroundColor: "green" }}></label>
+            <label htmlFor="green" style={{ backgroundColor: "green" }}></label>
           </div>
           <div className="radio-item">
             <input type="radio" name="" value="L" id="blue" />
-            <label for="blue" style={{ backgroundColor: "blue" }}></label>
+            <label htmlFor="blue" style={{ backgroundColor: "blue" }}></label>
           </div>
         </div>
         <div className="product-meta radio-wrap d-inline-flex align-items-center">
           <span className="label">Size : </span>
           <div className="radio-item">
             <input type="radio" name="" value="L" id="L" />
-            <label for="L">L</label>
+            <label htmlFor="L">L</label>
           </div>
           <div className="radio-item">
             <input type="radio" name="" value="XL" id="XL" />
-            <label for="XL">XL</label>
+            <label htmlFor="XL">XL</label>
           </div>
           <div className="radio-item">
             <input type="radio" name="" value="M" id="M" />
-            <label for="M">M</label>
+            <label htmlFor="M">M</label>
           </div>
         </div>
         <div className="cart-buttons-wrap">

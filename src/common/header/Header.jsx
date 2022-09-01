@@ -157,9 +157,9 @@ const Header = () => {
                       <AiOutlineShoppingCart />
                       <span>0</span>
                     </NavLink>
-                    <li className="headerMiniCart">
+                    <span className="headerMiniCart">
                       <MiniCart />
-                    </li>
+                    </span>
                   </li>
                 </ul>
               </div>
