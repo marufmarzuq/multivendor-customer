@@ -53,6 +53,7 @@ export const signleProductSlice = createSlice({
 });
 
 export const { setUser } = userSlice.actions;
+
 export const { setProducts } = productSlice.actions;
 export const { setSignleProduct } = signleProductSlice.actions;
 // export default userSlice.reducer;
