@@ -1,17 +1,36 @@
-import React, { Fragment } from "react";
+import React, { Fragment , useEffect } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
 
 import { BiCopy, BiEdit, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
-const AllPorducts = () => {
+import { useSelector } from "react-redux";
+import { getApi } from "../../../../../api/apiCall";
+import { setProducts } from "../../../../../redux/slices/seller/productSlice";
+
+const AllProducts = () => {
+
+  const { products, loading, error } = useSelector((state) => state.productSlice);
+  useEffect(() => {
+    getApi("users", setProducts);
+  }, []);
+
   return (
     <Fragment>
+        {/* {loading ? (
+          <h3>Loading</h3>
+        ) : (
+          <div>
+            {products?.length > 0 &&
+              products.map((item) => {
+                return <h2 key={item.id}>{item.name}</h2>;
+              })}
+          </div>
+        )} */}
       <div className={`${allProductsStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 py-2 pt-3">All Products</h5>
-          {/* <hr /> */}
         </section>
 
         <section>
@@ -43,7 +62,6 @@ const AllPorducts = () => {
               <p> Options</p>
             </div>
           </div>
-          {/* <hr /> */}
         </section>
 
         <section>
@@ -108,4 +126,4 @@ const AllPorducts = () => {
   );
 };
 
-export default AllPorducts;
+export default AllProducts;
