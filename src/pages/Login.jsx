@@ -3,6 +3,7 @@ import { RiUserLine } from "react-icons/ri";
 import BreadCumb from "../common/breadcumb/BreadCumb";
 import authStyle from "./auth.module.css";
 import { useState } from "react";
+import { AiOutlineLogin } from "react-icons/ai";
 const Login = () => {
   const [formLayout, setFormLayout] = useState("customer");
 
@@ -83,7 +84,7 @@ const Login = () => {
             </div>
             <div>
               <button className="btn btn-primary" type="button" name="button">
-                Login
+                <AiOutlineLogin /> Login
               </button>
             </div>
 

@@ -1,5 +1,5 @@
 import { BsFilter, BsGrid3X3Gap } from "react-icons/bs";
-import { AiOutlineBars } from "react-icons/ai";
+import { AiOutlineBars, AiOutlineCheckCircle } from "react-icons/ai";
 
 import sortStyle from "./stores.module.css";
 import { useState } from "react";
@@ -52,7 +52,7 @@ const SortFilter = ({ setLayout }) => {
 
           <div className={sortStyle.sortBarRight}>
             <button className={`btn btn-primary mt-3 ${sortStyle.filterBtn}`}>
-              <BsFilter /> Apply
+              <AiOutlineCheckCircle /> Apply
             </button>
           </div>
         </div>

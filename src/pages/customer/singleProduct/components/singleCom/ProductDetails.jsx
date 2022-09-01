@@ -1,4 +1,12 @@
+import {
+  AiOutlineHeart,
+  AiOutlineMessage,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { FaInstagram, FaLinkedin, FaStar, FaTwitter } from "react-icons/fa";
+import { BiShoppingBag } from "react-icons/bi";
+import { IoIosGitCompare } from "react-icons/io";
+import { useParams } from "react-router-dom";
 import "./singleCom.css";
 
 const ProductDetails = () => {
@@ -31,7 +39,7 @@ const ProductDetails = () => {
           <span className="label">Sold By : </span>
           <span className="content">One Mart</span>
           <button className="btn ms-2 btn-primary search-button">
-            Message Seller
+            <AiOutlineMessage /> Message Seller
           </button>
         </div>
         <div className="product-meta d-flex align-items-center clear-both">
@@ -45,39 +53,51 @@ const ProductDetails = () => {
           <span className="label">Color : </span>
           <div className="radio-item">
             <input type="radio" name="" value="L" id="red" />
-            <label for="red" style={{ backgroundColor: "red" }}></label>
+            <label htmlFor="red" style={{ backgroundColor: "red" }}></label>
           </div>
           <div className="radio-item">
             <input type="radio" name="" value="L" id="green" />
-            <label for="green" style={{ backgroundColor: "green" }}></label>
+            <label htmlFor="green" style={{ backgroundColor: "green" }}></label>
           </div>
           <div className="radio-item">
             <input type="radio" name="" value="L" id="blue" />
-            <label for="blue" style={{ backgroundColor: "blue" }}></label>
+            <label htmlFor="blue" style={{ backgroundColor: "blue" }}></label>
           </div>
         </div>
         <div className="product-meta radio-wrap d-inline-flex align-items-center">
           <span className="label">Size : </span>
           <div className="radio-item">
             <input type="radio" name="" value="L" id="L" />
-            <label for="L">L</label>
+            <label htmlFor="L">L</label>
           </div>
           <div className="radio-item">
             <input type="radio" name="" value="XL" id="XL" />
-            <label for="XL">XL</label>
+            <label htmlFor="XL">XL</label>
           </div>
           <div className="radio-item">
             <input type="radio" name="" value="M" id="M" />
-            <label for="M">M</label>
+            <label htmlFor="M">M</label>
           </div>
         </div>
         <div className="cart-buttons-wrap">
-          <button className="btn btn-primary">Add to Cart</button>
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary ">
+            {" "}
+            <AiOutlineShoppingCart /> Add to Cart
+          </button>
+          <button className="btn btn-primary">
+            {" "}
+            <BiShoppingBag /> Buy Now
+          </button>
         </div>
         <div className="wishlist-compare-wrap">
-          <button className="btn btn-link">Add to Cart</button>
-          <button className="btn btn-link">Buy Now</button>
+          <button className="btn me-3 ">
+            <IoIosGitCompare />
+            Compare{" "}
+          </button>
+          <button className="btn ps-2">
+            {" "}
+            <AiOutlineHeart /> Wishlist{" "}
+          </button>
         </div>
         <div className="social-share-wrap">
           <p>Share: </p>

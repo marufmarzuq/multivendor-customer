@@ -1,4 +1,5 @@
 import React from "react";
+import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import cartStyle from "./cart.module.css";
 const CartTotal = ({ proceedKey, cartTotalTitle }) => {
   return (
@@ -60,7 +61,10 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
 
         {proceedKey == "cart" ? (
           <div className={`my-4  ${cartStyle.proceedBtn}`}>
-            <button className="btn btn-primary">Proceed to checkout</button>
+            <button className="btn btn-primary">
+              {" "}
+              <AiOutlineDeliveredProcedure /> Proceed to checkout
+            </button>
           </div>
         ) : (
           ""

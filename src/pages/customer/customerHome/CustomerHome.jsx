@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 // translation
 import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchData, getApi } from "../../../api/apiCall";
+import { useSelector } from "react-redux";
+import { getApi } from "../../../api/apiCall";
 import { setUser } from "../../../redux/slices/userSlice";
 
 const CustomerHome = () => {
@@ -14,10 +14,9 @@ const CustomerHome = () => {
   };
 
   const { users, loading, error } = useSelector((state) => state.userReducer);
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    getApi("users", setUser);
+    getApi("/data/users.json", setUser);
   }, []);
 
   return (

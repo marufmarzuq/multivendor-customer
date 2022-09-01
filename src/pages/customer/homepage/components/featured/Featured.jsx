@@ -2,6 +2,7 @@ import React from "react";
 import { groceries, product1, product2 } from "../../../../../assets";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft } from "react-icons/fa";
+import { MdOutlineViewInAr } from "react-icons/md";
 const Featured = () => {
   return (
     <section className="featured-products my-4 mb-5">
@@ -181,7 +182,7 @@ const Featured = () => {
         </div>
         <div className="d-flex  justify-content-center my-2">
           <a href="#" className="btn btn-primary">
-            View More
+            <MdOutlineViewInAr /> View More
           </a>
         </div>
       </div>

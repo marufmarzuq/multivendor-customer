@@ -13,8 +13,11 @@ export const getApi = async (url, setState) => {
         data: [],
       })
     );
+    // this one will be use for actual api call
+    // const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/${url}`);
 
-    const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/${url}`);
+    // this line is now using for json file
+    const res = await axios.get(url);
     const data = await res.data;
     store.dispatch(
       setState({

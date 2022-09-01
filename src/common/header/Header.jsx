@@ -6,6 +6,7 @@ import {
   AiFillCar,
   AiOutlineBars,
   AiOutlineHeart,
+  AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import {
@@ -22,6 +23,7 @@ import { BsBagDash, BsFlower2, BsTags } from "react-icons/bs";
 import { GiClothes, GiFruitBowl } from "react-icons/gi";
 import { BiBasketball } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
+import { IoIosGitCompare } from "react-icons/io";
 const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
   return (
@@ -130,7 +132,7 @@ const Header = () => {
                     <option value="">Option 2</option>
                   </select>
                   <button type="button" className="btn search-button">
-                    Search
+                    Search <AiOutlineSearch />
                   </button>
                 </div>
               </div>
@@ -141,7 +143,8 @@ const Header = () => {
                   {/* Compare List */}
                   <li>
                     <NavLink to="/compare">
-                      <FaBalanceScaleRight />
+                      {/* <FaBalanceScaleRight /> */}
+                      <IoIosGitCompare />
                       <span>0</span>
                     </NavLink>
                   </li>
@@ -157,9 +160,9 @@ const Header = () => {
                       <AiOutlineShoppingCart />
                       <span>0</span>
                     </NavLink>
-                    <li className="headerMiniCart">
+                    <span className="headerMiniCart">
                       <MiniCart />
-                    </li>
+                    </span>
                   </li>
                 </ul>
               </div>

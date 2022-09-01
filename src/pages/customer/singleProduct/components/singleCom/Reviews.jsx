@@ -35,9 +35,9 @@ const Reviews = () => {
             </div>
             <div className={reviewStyle.progressBar}>
               <div className="">5 Starts</div>
-              <div class="progress">
+              <div className="progress">
                 <div
-                  class="progress-bar"
+                  className="progress-bar"
                   role="progressbar"
                   style={{ width: "80%" }}
                   aria-valuenow="25"
@@ -50,9 +50,9 @@ const Reviews = () => {
 
             <div className={reviewStyle.progressBar}>
               <div className="">4 Starts</div>
-              <div class="progress">
+              <div className="progress">
                 <div
-                  class="progress-bar"
+                  className="progress-bar"
                   role="progressbar"
                   style={{ width: "20%" }}
                   aria-valuenow="25"
@@ -65,9 +65,9 @@ const Reviews = () => {
 
             <div className={reviewStyle.progressBar}>
               <div className="">3 Starts</div>
-              <div class="progress">
+              <div className="progress">
                 <div
-                  class="progress-bar"
+                  className="progress-bar"
                   role="progressbar"
                   style={{ width: "15%" }}
                   aria-valuenow="25"
@@ -80,9 +80,9 @@ const Reviews = () => {
 
             <div className={reviewStyle.progressBar}>
               <div className="">2 Starts</div>
-              <div class="progress">
+              <div className="progress">
                 <div
-                  class="progress-bar"
+                  className="progress-bar"
                   role="progressbar"
                   style={{ width: "5%" }}
                   aria-valuenow="25"
