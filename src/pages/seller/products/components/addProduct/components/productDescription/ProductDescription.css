@@ -1,4 +1,4 @@
-.prod-desc-container {
+.tiny-desc-container {
   min-height: 400px;
   border: 1px solid #ddd;
   padding: 8px;
@@ -11,7 +11,7 @@
 }
 
 @media only screen and (min-width: 540px) {
-  .prod-desc-container {
+  .tiny-desc-container {
     min-height: 300px;
     border: 1px solid #ddd;
     padding: 8px;

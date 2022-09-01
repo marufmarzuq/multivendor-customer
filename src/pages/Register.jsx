@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import BreadCumb from "../common/breadcumb/BreadCumb";
 import authStyle from "./auth.module.css";
@@ -48,76 +47,7 @@ const Register = () => {
                   placeholder="Password Confirmation"
                 />
               </div>
-              {/* <div className={authStyle.sellerPart}>
-                <div>
-                  <label htmlFor="email">Shop Name *</label>
-                  <input
-                    type="text"
-                    name="shop"
-                    id="shop"
-                    placeholder="Shop Name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email">Shop URL *</label>
-                  <input
-                    type="text"
-                    name="shop"
-                    id="shop"
-                    placeholder="Shop URL"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email">Phone Number *</label>
-                  <input
-                    type="number"
-                    name="phone"
-                    id="phone"
-                    placeholder="Phone Number"
-                  />
-                </div>
-              </div> */}
-
-              {/* <div className={authStyle.radioBtn}>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault1"
-                    checked={formLayout == "customer"}
-                    value={"customer"}
-                    onChange={(e) => setFormLayout(e.target.value)}
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexRadioDefault1"
-                  >
-                    I am a Customer
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="flexRadioDefault"
-                    id="flexRadioDefault2"
-                    checked={formLayout == "seller"}
-                    onChange={(e) => setFormLayout(e.target.value)}
-                    value={"seller"}
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexRadioDefault2"
-                  >
-                    I am a Seller
-                  </label>
-                </div>
-              </div> */}
               <div className={authStyle.agree}>
-                {/* <div class="form-group form-check"> */}
                 <input
                   type="checkbox"
                   class="form-check-input"
@@ -126,7 +56,6 @@ const Register = () => {
                 <label class=" ps-2 mt-1" for="exampleCheck1">
                   I agree to terms & Policy.
                 </label>
-                {/* </div> */}
               </div>
               <div>
                 <button className="btn btn-primary" type="button" name="button">
