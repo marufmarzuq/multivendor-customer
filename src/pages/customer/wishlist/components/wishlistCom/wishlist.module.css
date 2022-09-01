@@ -1,0 +1,39 @@
+.wishTable {
+  margin-bottom: 3rem;
+}
+.wishTable table {
+  width: 700px;
+  border: 1px solid rgba(128, 128, 128, 0.301);
+}
+
+.wishTable thead {
+  background-color: #f5f5f5;
+}
+
+.wishTable th {
+  padding: 0.7rem 0;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+.wishTable td {
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.wishTable .image {
+  width: 100px;
+}
+
+.wishTable .image img {
+  width: 80%;
+}
+
+.deletebtn {
+  font-size: 1.5rem !important;
+  padding: 0;
+}
+@media only screen and (min-width: 768px) {
+  .wishTable table {
+    width: 100%;
+  }
+}

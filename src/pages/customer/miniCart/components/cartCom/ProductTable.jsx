@@ -1,4 +1,8 @@
-import { AiOutlineDelete } from "react-icons/ai";
+import {
+  AiOutlineCheckCircle,
+  AiOutlineDelete,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import CartTotal from "../../../cart/components/cartCom/CartTotal";
 import miniCartStyle from "../../miniCart.module.css";
@@ -75,13 +79,24 @@ const ProductTable = () => {
               <CartTotal cartTotalTitle="checkout" />
             </div>
             <div className={miniCartStyle.buttons}>
-              <button className="btn btn-primary">
-                <NavLink to="cart">View Cart</NavLink>
-              </button>
+              <div>
+                {" "}
+                <button className="btn btn-primary">
+                  <NavLink to="cart">
+                    {" "}
+                    <AiOutlineShoppingCart /> View Cart
+                  </NavLink>
+                </button>
+              </div>
 
-              <button className="btn btn-primary">
-                <NavLink to="/checkout">Checkout</NavLink>
-              </button>
+              <div className="d-flex justify-content-end">
+                <button className="btn btn-primary">
+                  <NavLink to="/checkout">
+                    {" "}
+                    <AiOutlineCheckCircle /> Checkout
+                  </NavLink>
+                </button>
+              </div>
             </div>
           </section>
         </div>

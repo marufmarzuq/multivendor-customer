@@ -1,8 +1,10 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
+import { AiOutlineSearch } from "react-icons/ai";
 import "./footer.css";
 import { NavLink } from "react-router-dom";
+import { logo } from "../../assets/index";
 const Footer = () => {
   return (
     <footer className="footer">
@@ -11,7 +13,7 @@ const Footer = () => {
           <div className="col-md-5">
             <div className="footer-logo">
               <a href="#">
-                <img src="images/logo.png" alt="" />
+                <img src={logo} alt="" />
               </a>
             </div>
           </div>
@@ -24,8 +26,11 @@ const Footer = () => {
                   className="form-control search-text"
                   placeholder="Email Address"
                 />
-                <button type="button" className="btn btn-primary search-button">
-                  Search
+                <button
+                  type="button"
+                  className="btn btn-primary px-1 ps-2 px-md-3 search-button"
+                >
+                  Search <AiOutlineSearch />
                 </button>
               </div>
             </div>
@@ -155,7 +160,9 @@ const Footer = () => {
             </ul>
           </div>
           <div className="col-12 col-sm-6 offset-sm-1 col-lg-2 offset-lg-0 my-2 text-center text-sm-start">
-            <h3 className="footer-title text-center text-sm-start">My Account</h3>
+            <h3 className="footer-title text-center text-sm-start">
+              My Account
+            </h3>
             <ul className="vertical-menu">
               <li>
                 <a href="#">

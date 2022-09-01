@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 import checkoutStyle from "./checkout.module.css";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineArrowLeft, AiOutlineCheckCircle } from "react-icons/ai";
 const CheckoutForm = () => {
   return (
     <div className="">
@@ -80,7 +80,9 @@ const CheckoutForm = () => {
         </div>
 
         <div className="d-flex justify-content-end">
-          <button className="btn btn-primary">Checkout</button>
+          <button className="btn btn-primary">
+            <AiOutlineCheckCircle /> Checkout
+          </button>
         </div>
       </div>
     </div>

@@ -41,17 +41,18 @@
 }
 
 .miniCartContainer .buttons {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: space-between;
-  padding: 0 3rem;
+  padding: 0 1rem;
   color: #fff;
   margin-bottom: 2rem;
 }
 
-.buttons button {
+/* .buttons {
   display: flex;
   justify-content: center;
-}
+} */
 .buttons a {
   margin-left: 15px;
   font-size: 1rem;

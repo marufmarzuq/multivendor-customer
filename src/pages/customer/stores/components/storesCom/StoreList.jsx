@@ -1,7 +1,7 @@
 import storeStyle from "./stores.module.css";
 import { FaStar } from "react-icons/fa";
 import { MdLocationOn, MdOutlineLocationCity } from "react-icons/md";
-import { BsFillTelephonePlusFill } from "react-icons/bs";
+import { IoStorefrontOutline } from "react-icons/io5";
 import { AiOutlineMail, AiOutlinePhone, AiTwotoneMail } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
@@ -55,7 +55,7 @@ const StoreList = ({ layout }) => {
             </div>
             <div className={storeStyle.visitBtn}>
               <NavLink to="/seller-shop" className="btn btn-primary mb-4">
-                Visit Store
+                <IoStorefrontOutline /> Visit Store
               </NavLink>
             </div>
           </div>
@@ -101,7 +101,7 @@ const StoreList = ({ layout }) => {
             </div>
             <div className={storeStyle.visitBtn}>
               <NavLink to="/seller-shop" className="btn btn-primary mb-4">
-                Visit Store
+                <IoStorefrontOutline /> Visit Store
               </NavLink>
             </div>
           </div>
@@ -146,7 +146,7 @@ const StoreList = ({ layout }) => {
             </div>
             <div className={storeStyle.visitBtn}>
               <NavLink to="/seller-shop" className="btn btn-primary mb-4">
-                Visit Store
+                <IoStorefrontOutline /> Visit Store
               </NavLink>
             </div>
           </div>
@@ -191,7 +191,7 @@ const StoreList = ({ layout }) => {
             </div>
             <div className={storeStyle.visitBtn}>
               <NavLink to="/seller-shop" className="btn btn-primary mb-4">
-                Visit Store
+                <IoStorefrontOutline /> Visit Store
               </NavLink>
             </div>
           </div>

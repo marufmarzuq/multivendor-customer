@@ -8,7 +8,8 @@ import { useEffect } from "react";
 import { getApi } from "../../../api/apiCall";
 import { setSignleProduct } from "../../../redux/slices/userSlice";
 import { useSelector } from "react-redux";
-
+import ProductDescription from "./components/productDes/PorductDesctiption";
+import ProductInformation from "./components/ProductInfo/ProductInformation";
 const SingleProduct = () => {
   const { id } = useParams();
 
@@ -35,6 +36,8 @@ const SingleProduct = () => {
             <ProductDetails />
           </div>
         </div>
+        <ProductDescription />
+        <ProductInformation />
         <RelatedProducts />
         <Reviews />
       </div>

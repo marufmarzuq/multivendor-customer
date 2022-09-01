@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import BreadCumb from "../common/breadcumb/BreadCumb";
 import authStyle from "./auth.module.css";
+import { FaRegEdit } from "react-icons/fa";
 const Register = () => {
   return (
     <div>
@@ -59,7 +60,7 @@ const Register = () => {
               </div>
               <div>
                 <button className="btn btn-primary" type="button" name="button">
-                  Register
+                  <FaRegEdit /> Register
                 </button>
               </div>
 

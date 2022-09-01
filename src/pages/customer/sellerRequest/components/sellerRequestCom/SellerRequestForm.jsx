@@ -1,4 +1,5 @@
 import React from "react";
+import { FaRegEdit } from "react-icons/fa";
 import sellerRequestStyle from "./sellerRequest.module.css";
 
 const SellerRequestForm = () => {
@@ -64,7 +65,7 @@ const SellerRequestForm = () => {
           </div>
           <div>
             <button className="btn btn-primary" type="button" name="button">
-              Register
+              <FaRegEdit /> Register
             </button>
           </div>
         </div>

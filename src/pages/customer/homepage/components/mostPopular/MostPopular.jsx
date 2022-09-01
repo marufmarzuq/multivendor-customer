@@ -3,6 +3,7 @@ import "../dailyDeals/dailyDeals.css";
 import { product2, product1, groceries } from "../../../../../assets";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft } from "react-icons/fa";
+import { MdOutlineViewInAr } from "react-icons/md";
 const MostPopular = () => {
   return (
     <section className="most-popular my-4">
@@ -187,7 +188,7 @@ const MostPopular = () => {
         </div>
         <div className="d-flex justify-content-center my-2">
           <a href="#" className="btn btn-primary">
-            View More
+            <MdOutlineViewInAr /> View More
           </a>
         </div>
       </div>

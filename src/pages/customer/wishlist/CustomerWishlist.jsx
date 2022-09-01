@@ -1,9 +1,7 @@
-import ProductTable from "./components/wishlistCom/wishlistTable";
+import WishListTable from "./components/wishlistCom/WishListTable";
 
 const CustomerWishlist = () => {
-  return (
-			<ProductTable/>
-  );
+  return <WishListTable />;
 };
 
 export default CustomerWishlist;

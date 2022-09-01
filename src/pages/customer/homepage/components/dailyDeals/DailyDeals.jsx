@@ -3,6 +3,7 @@ import "./dailyDeals.css";
 import { product1, product2 } from "../../../../../assets";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft } from "react-icons/fa";
+import { MdOutlineViewInAr } from "react-icons/md";
 const DailyDeals = () => {
   return (
     <section className="daily-deals my-4">
@@ -180,7 +181,7 @@ const DailyDeals = () => {
         </div>
         <div className="d-flex justify-content-center my-2">
           <a href="#" className="btn btn-primary">
-            View More
+            <MdOutlineViewInAr /> View More
           </a>
         </div>
       </div>

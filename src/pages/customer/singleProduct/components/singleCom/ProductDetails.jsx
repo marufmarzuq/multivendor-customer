@@ -1,4 +1,11 @@
+import {
+  AiOutlineHeart,
+  AiOutlineMessage,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { FaInstagram, FaLinkedin, FaStar, FaTwitter } from "react-icons/fa";
+import { BiShoppingBag } from "react-icons/bi";
+import { IoIosGitCompare } from "react-icons/io";
 import { useParams } from "react-router-dom";
 import "./singleCom.css";
 
@@ -32,7 +39,7 @@ const ProductDetails = () => {
           <span className="label">Sold By : </span>
           <span className="content">One Mart</span>
           <button className="btn ms-2 btn-primary search-button">
-            Message Seller
+            <AiOutlineMessage /> Message Seller
           </button>
         </div>
         <div className="product-meta d-flex align-items-center clear-both">
@@ -73,12 +80,24 @@ const ProductDetails = () => {
           </div>
         </div>
         <div className="cart-buttons-wrap">
-          <button className="btn btn-primary">Add to Cart</button>
-          <button className="btn btn-primary">Buy Now</button>
+          <button className="btn btn-primary ">
+            {" "}
+            <AiOutlineShoppingCart /> Add to Cart
+          </button>
+          <button className="btn btn-primary">
+            {" "}
+            <BiShoppingBag /> Buy Now
+          </button>
         </div>
         <div className="wishlist-compare-wrap">
-          <button className="btn btn-link">Add to Cart</button>
-          <button className="btn btn-link">Buy Now</button>
+          <button className="btn me-3 ">
+            <IoIosGitCompare />
+            Compare{" "}
+          </button>
+          <button className="btn ps-2">
+            {" "}
+            <AiOutlineHeart /> Wishlist{" "}
+          </button>
         </div>
         <div className="social-share-wrap">
           <p>Share: </p>

@@ -1,0 +1,33 @@
+.desContainer {
+  margin-top: 1rem;
+}
+
+.desContainer h4 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.desContainer .image {
+  max-height: 450px;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.desContainer .image img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.desContainer p {
+  font-size: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  text-align: justify;
+}
+
+@media only screen and (min-width: 768px) {
+  .desContainer {
+    margin-top: 3rem;
+  }
+}
