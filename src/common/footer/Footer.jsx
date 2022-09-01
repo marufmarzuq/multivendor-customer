@@ -2,6 +2,7 @@ import React from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
 import "./footer.css";
+import { NavLink } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="footer">
@@ -104,9 +105,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <span>Blog</span>
-                </a>
+                <NavLink to="/blog">Blog</NavLink>
               </li>
             </ul>
           </div>
