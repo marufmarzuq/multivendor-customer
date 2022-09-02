@@ -18,7 +18,6 @@ const options2 = [
   { value: "delivered", label: "Delivered" },
 ];
 const OrderModal = ({ page, show, setShow }) => {
-  console.log(page);
   return (
     <>
       <Modal
