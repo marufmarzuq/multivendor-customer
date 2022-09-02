@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
-import { setUser } from "../../../redux/slices/userSlice";
+import { setProducts } from "../../../redux/slices/seller/products";
 
 const CustomerHome = () => {
   const { t, i18n } = useTranslation();
@@ -13,10 +13,10 @@ const CustomerHome = () => {
     i18n.changeLanguage(lang);
   };
 
-  const { users, loading, error } = useSelector((state) => state.userReducer);
+  const { products, loading, error } = useSelector((state) => state.productSlice);
 
   useEffect(() => {
-    getApi("/data/users.json", setUser);
+    getApi("products.json", setProducts );
   }, []);
 
   return (
@@ -68,8 +68,8 @@ const CustomerHome = () => {
           <h3>Loading</h3>
         ) : (
           <div>
-            {users?.length > 0 &&
-              users.map((item) => {
+            {products?.length > 0 &&
+              products.map((item) => {
                 return <h2 key={item.id}>{item.name}</h2>;
               })}
           </div>

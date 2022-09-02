@@ -1,0 +1,62 @@
+/* Table pagination css */
+.table-pagination-container {
+  border-top: 1px solid #ddd;
+  padding: 15px 20px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.table-pagination-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.table-pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.table-pagination button {
+  font-size: 28px;
+  height: 35px;
+  width: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  transition: 0.3s;
+}
+
+.table-pagination button:hover {
+  background-color: #4788ff;
+  color: #ddd;
+}
+
+.table-pagination-container p {
+  font-size: 14px;
+}
+.disabled-btn {
+  color: #bbb !important;
+  pointer-events: none;
+}
+.table-pagination-right select {
+  border: 1px solid #ddd;
+  padding: 5px 15px;
+  border-radius: 2px;
+  color: #333;
+  font-size: 14px;
+}
+.table-pagination-right select:focus {
+  outline: none;
+  border: 1px solid #999;
+}
+
+/* Table pagination css */
