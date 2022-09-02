@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import tablePagination from "./tablePagination.css";
 import {
   MdFirstPage,
   MdNavigateBefore,
@@ -24,7 +25,7 @@ const TablePagination = () => {
     { value: 20, label: 20 },
   ];
 
-  console.log(pageSize);
+  // console.log(pageSize);
 
   return (
     <>

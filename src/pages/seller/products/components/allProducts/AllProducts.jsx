@@ -1,13 +1,12 @@
 import React, { Fragment , useEffect } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
-
+import Select from "react-select";
 import { BiCopy, BiEdit, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
-
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
-import { setProducts,setSingleProduct } from "../../../../../redux/slices/seller/products";
+import { setProducts } from "../../../../../redux/slices/seller/products";
 import TablePagination from "../../../../../common/tablePagination/TablePagination";
 
 const AllProducts = () => {
@@ -16,7 +15,7 @@ const AllProducts = () => {
 
   useEffect(() => {
     getApi("products.json", setProducts);
-    // getApi("v1/seller/products/search=''&page=1&limit=1", setProducts);
+    // getApi("v1/seller/products/search=''", setProducts);
   }, []);
 
   return (
@@ -30,6 +29,14 @@ const AllProducts = () => {
 					<div className={`${allProductsStyle.background}`}>
 						<section>
 							<h5 className="px-md-4 px-3 py-2 pt-3">All Products</h5>
+							<div className="table-filters">
+								<Select placeholder="Sort By" />
+								<input
+									type="text"
+									className="table-search-input"
+									placeholder="Search product by name"
+								/>
+							</div>
 						</section>
 
 						<section>
