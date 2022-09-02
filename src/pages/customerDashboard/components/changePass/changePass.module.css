@@ -1,0 +1,15 @@
+.profileContainer {
+  border: 1px solid rgba(128, 128, 128, 0.205);
+  padding: 0.9rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.profileContainer input {
+  height: 35px;
+  margin-bottom: 15px;
+}
+
+.profileContainer label {
+  margin-bottom: 5px;
+}

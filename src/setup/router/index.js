@@ -40,6 +40,12 @@ import ResetPassword from "../../pages/ResetPassword";
 import CustomerHome from "../../pages/customer/customerHome/CustomerHome";
 import Blog from "../../pages/customer/blog/Blog";
 
+import DashboardLayout from "../../pages/customerDashboard/DashboardLayout";
+import Profile from "../../pages/customerDashboard/components/profile/Profile";
+import UserOrder from "../../pages/customerDashboard/components/orders/UserOrder";
+import UserOrderReturns from "../../pages/customerDashboard/components/orderReturns/UserOrderReturns";
+import ChangePass from "../../pages/customerDashboard/components/changePass/ChangePass";
+
 const Router = () => {
   return (
     <Routes>
@@ -101,6 +107,12 @@ const Router = () => {
         <Route path="register" element={<Register />} />
         <Route path="login" element={<Login />} />
         <Route path="reset-password" element={<ResetPassword />} />
+        <Route path="dashboard" element={<DashboardLayout />}>
+          <Route path="" element={<Profile />} />
+          <Route path="orders" element={<UserOrder />} />
+          <Route path="order-returns" element={<UserOrderReturns />} />
+          <Route path="password-change" element={<ChangePass />} />
+        </Route>
       </Route>
 
       <Route path="/*" element={<NotFound />} />

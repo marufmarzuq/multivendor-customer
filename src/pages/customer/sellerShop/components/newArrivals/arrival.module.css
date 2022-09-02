@@ -1,0 +1,38 @@
+.productsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 1rem;
+}
+
+.titles h1 {
+  position: relative;
+}
+.titles h1::after {
+  content: "";
+  height: 0;
+  width: 0;
+  background-color: rgba(53, 53, 53, 0.647);
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .productsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .titles h1::after {
+    content: "";
+    height: 2px;
+    width: 190px;
+    background-color: rgba(53, 53, 53, 0.647);
+    position: absolute;
+    bottom: -10px;
+    left: 43%;
+  }
+}
