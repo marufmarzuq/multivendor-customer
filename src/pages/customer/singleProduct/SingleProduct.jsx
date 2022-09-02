@@ -6,24 +6,23 @@ import Reviews from "./components/singleCom/Reviews";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { getApi } from "../../../api/apiCall";
-import { setSignleProduct } from "../../../redux/slices/userSlice";
+import { setSingleProduct } from "../../../redux/slices/seller/products";
 import { useSelector } from "react-redux";
-import ProductDescription from "./components/productDes/PorductDesctiption";
+import ProductDescription from "./components/productDes/ProductDescription";
 import ProductInformation from "./components/ProductInfo/ProductInformation";
+
 const SingleProduct = () => {
   const { id } = useParams();
 
   useEffect(() => {
     // this is for actual api call
-    // getApi(`products/${id}`, setSignleProduct);
+    // getApi(`products/${id}`, setSingleProduct);
 
     // this one is for json file from local
-    getApi("/data/singleProduct.json", setSignleProduct);
+    getApi(`singleProduct.json/${id}`, setSingleProduct);
   }, []);
 
-  const { product } = useSelector((state) => state.singleProdcutReducer);
-  console.log(id);
-  console.log(product);
+  const { product } = useSelector((state) => state.singleProductReducer);
 
   return (
     <section className="single-product-wrap my-4">

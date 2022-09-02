@@ -7,27 +7,31 @@ import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
-import { setProducts } from "../../../../../redux/slices/seller/productSlice";
+import { setProducts,setSingleProduct } from "../../../../../redux/slices/seller/products";
 
 const AllProducts = () => {
 
-  const { products, loading, error } = useSelector((state) => state.productSlice);
+  const { users , loading, error } = useSelector((state) => state.userReducer);
+
+  console.log(users);
   useEffect(() => {
-    getApi("users", setProducts);
+    getApi("products.json", setProducts);
   }, []);
 
   return (
     <Fragment>
-        {/* {loading ? (
-          <h3>Loading</h3>
-        ) : (
-          <div>
-            {products?.length > 0 &&
-              products.map((item) => {
-                return <h2 key={item.id}>{item.name}</h2>;
-              })}
-          </div>
-        )} */}
+      {/* {error ? <h1>{error}</h1> : ""}
+
+			{loading ? (
+				<h3>Loading</h3>
+			) : (
+				<div>
+					{users?.length > 0 &&
+						users.map((item) => {
+							return <h2 key={item.id}>{item.name}</h2>;
+						})}
+				</div>
+			)} */}
       <div className={`${allProductsStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 py-2 pt-3">All Products</h5>

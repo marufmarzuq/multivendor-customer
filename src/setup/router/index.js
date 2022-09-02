@@ -35,7 +35,7 @@ import Support from "../../pages/customer/support/Support";
 import SellerRequest from "../../pages/customer/sellerRequest/SellerRequest";
 import SellerShop from "../../pages/customer/sellerShop/SellerShop";
 import Login from "../../pages/Login";
-import Register from "../../pages/Register";
+import CustomerRegister from "../../pages/customer/customerRegister/CustomerRegister";
 import ResetPassword from "../../pages/ResetPassword";
 import CustomerHome from "../../pages/customer/customerHome/CustomerHome";
 import Blog from "../../pages/customer/blog/Blog";
@@ -98,7 +98,7 @@ const Router = () => {
         <Route path="seller-shop" element={<SellerShop />} />
         <Route path="blog" element={<Blog />} />
         {/* Login */}
-        <Route path="register" element={<Register />} />
+        <Route path="register" element={<CustomerRegister />} />
         <Route path="login" element={<Login />} />
         <Route path="reset-password" element={<ResetPassword />} />
       </Route>

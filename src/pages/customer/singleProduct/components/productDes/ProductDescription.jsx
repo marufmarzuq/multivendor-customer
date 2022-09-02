@@ -1,7 +1,7 @@
 import React from "react";
 import desStyle from "./productDes.module.css";
 import { singleProduct1, singleProduct2 } from "../../../../../assets/index";
-const PorductDesctiption = () => {
+const ProductDescription = () => {
   return (
     <div className={desStyle.desContainer}>
       <h4>Description:</h4>
@@ -32,4 +32,4 @@ const PorductDesctiption = () => {
   );
 };
 
-export default PorductDesctiption;
+export default ProductDescription;

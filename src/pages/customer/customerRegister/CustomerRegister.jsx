@@ -1,8 +1,9 @@
 import { NavLink } from "react-router-dom";
-import BreadCumb from "../common/breadcumb/BreadCumb";
-import authStyle from "./auth.module.css";
+import BreadCumb from "../../../common/breadcumb/BreadCumb";
+import authStyle from "../../auth.module.css";
 import { FaRegEdit } from "react-icons/fa";
-const Register = () => {
+
+const CustomerRegister = () => {
   return (
     <div>
       <BreadCumb data={"Register"} />
@@ -78,4 +79,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default CustomerRegister;
