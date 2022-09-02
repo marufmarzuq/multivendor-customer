@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
 import { setProducts,setSingleProduct } from "../../../../../redux/slices/seller/products";
+import TablePagination from "../../../../../common/tablePagination/TablePagination";
 
 const AllProducts = () => {
 
@@ -15,11 +16,8 @@ const AllProducts = () => {
 
   useEffect(() => {
     getApi("products.json", setProducts);
+    // getApi("v1/seller/products/search=''&page=1&limit=1", setProducts);
   }, []);
-  if ( typeof products !=="undefined" ) {
-		console.log(products.length);
-		console.log(loading);
-	}
 
   return (
     <Fragment>
@@ -64,67 +62,78 @@ const AllProducts = () => {
 								</div>
 							</div>
 						</section>
-
 						<section>
-						{ ( typeof products !=="undefined" && products.length > 0 ) &&
-							products.map((item) => {
-							<div className="row px-0 mx-0 ps-3 mt-3 pt-2">
-								<div className={`col-2 col-lg-1 `}>
-									<p>{item.id}</p>
-								</div>
-								<div className={`col-6 col-lg-2`}>
-									<p>{item.title}</p>
-								</div>
-								<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-									<p>Baby</p>
-								</div>
-								<div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
-									<p>9899</p>
-								</div>
-								<div className={`col-4 col-lg-2 `}>
-									<p> 10000.00</p>
-								</div>
-								<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-									<div className="form-check form-switch">
-										<input
-											className="form-check-input"
-											type="checkbox"
-											role="switch"
-											id="flexSwitchCheckDefault"
-										/>
+						{ products.length > 0 &&
+							products.map((item,key) => {
+								return (
+								<div className="row px-0 mx-0 ps-3 mt-3 pt-2" key={key}>
+									<div className={`col-2 col-lg-1 `}>
+										<p>{item.id}</p>
 									</div>
-								</div>
-
-								<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-									<div className="form-check form-switch">
-										<input
-											className="form-check-input"
-											type="checkbox"
-											role="switch"
-											id="flexSwitchCheckDefault"
-										/>
+									<div className={`col-6 col-lg-2`}>
+										<p>{item.title}</p>
 									</div>
-								</div>
+									<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+										{ item.categories.length > 0 &&
+												item.categories.map((category,i) => {
+												return (
+													<div key={i}>
+														<li>{category.cat_name}</li>
+													</div>
+												)
+										})}
+									</div>
+									<div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
+										<p>{item.current_qty}</p>
+									</div>
+									<div className={`col-4 col-lg-2 `}>
+										<p> {item.price}</p>
+									</div>
+									<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+										<div className="form-check form-switch">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												role="switch"
+												id="flexSwitchCheckDefault"
+												defaultChecked={item.published}
+											/>
+										</div>
+									</div>
 
-								<div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
-									<p>
-										<Link to="/seller/products/update">
+									<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+										<div className="form-check form-switch">
+											<input
+												className="form-check-input"
+												type="checkbox"
+												role="switch"
+												id="flexSwitchCheckDefault"
+												defaultChecked={item.featured}
+											/>
+										</div>
+									</div>
+
+									<div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
+										<p>
+											<Link to="/seller/products/update">
+												<button className={allProductsStyle.preview}>
+													<BiEdit />
+												</button>
+											</Link>
+
 											<button className={allProductsStyle.preview}>
-												<BiEdit />
+												<BiCopy />
 											</button>
-										</Link>
-
-										<button className={allProductsStyle.preview}>
-											<BiCopy />
-										</button>
-										<button className={allProductsStyle.del}>
-											<RiDeleteBin2Line />
-										</button>
-									</p>
+											<button className={allProductsStyle.del}>
+												<RiDeleteBin2Line />
+											</button>
+										</p>
+									</div>
 								</div>
-							</div>
+								)
 						})}
 						</section>
+						<TablePagination/>
 					</div>
 				</div>
 			)}

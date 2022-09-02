@@ -12,7 +12,7 @@ export const productSlice = createSlice({
     setProducts: (state, action) => {
       state.loading   = action.payload.loading;
       state.error     = action.payload.error;
-      state.products  = action.payload.data.products;
+      state.products  = typeof action.payload.data.products !=="undefined" ? action.payload.data.products : [];
     },
   },
 });

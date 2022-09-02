@@ -62,18 +62,18 @@ const CustomerHome = () => {
       <section>
         <h5 className="mt-5 ms-1">Data Coming from redux state</h5>
 
-        {/* {error ? <h1>{error}</h1> : ""}
+        {error ? <h1>{error}</h1> : ""}
 
         {loading ? (
           <h3>Loading</h3>
         ) : (
           <div>
-            {users?.length > 0 &&
-              users.map((item) => {
+            {products?.length > 0 &&
+              products.map((item) => {
                 return <h2 key={item.id}>{item.name}</h2>;
               })}
           </div>
-        )} */}
+        )}
       </section>
     </div>
   );
