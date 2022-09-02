@@ -16,7 +16,7 @@ const CustomerHome = () => {
   const { products, loading, error } = useSelector((state) => state.productSlice);
 
   useEffect(() => {
-    getApi("products.json", setProducts);
+    getApi("products.json", setProducts );
   }, []);
 
   return (

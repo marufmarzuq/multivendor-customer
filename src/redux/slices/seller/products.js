@@ -10,10 +10,9 @@ export const productSlice = createSlice({
   },
   reducers: {
     setProducts: (state, action) => {
-			console.log(action);
-			state.loading = action.payload.loading;
-			state.error = action.payload.error;
-			state.products = action.payload.data;
+      state.loading   = action.payload.loading;
+      state.error     = action.payload.error;
+      state.products  = action.payload.data.products;
     },
   },
 });

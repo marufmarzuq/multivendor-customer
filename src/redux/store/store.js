@@ -7,7 +7,7 @@ import {
 
 export const store = configureStore({
   reducer: {
-    productReducer: productSlice.reducer,
+    productSlice: productSlice.reducer,
     singleProductReducer: singleProductSlice.reducer,
   },
 });
