@@ -1,0 +1,24 @@
+.linksContainer {
+  background-color: #f3f3f3;
+}
+
+.linksContainer ul {
+  padding: 0;
+  /* padding-top: 1rem; */
+  /* padding-bottom: 1rem; */
+}
+
+.linksContainer ul li a {
+  text-decoration: none;
+  padding-left: 2rem;
+  color: rgba(0, 0, 0, 0.899);
+  font-size: 1rem;
+  /* background-color: red; */
+  display: block;
+  padding: 12px 25px;
+}
+
+.linksContainer ul li {
+  padding-bottom: 0;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.192);
+}

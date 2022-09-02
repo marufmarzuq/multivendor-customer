@@ -35,10 +35,16 @@ import Support from "../../pages/customer/support/Support";
 import SellerRequest from "../../pages/customer/sellerRequest/SellerRequest";
 import SellerShop from "../../pages/customer/sellerShop/SellerShop";
 import Login from "../../pages/Login";
-import Register from "../../pages/Register";
+import CustomerRegister from "../../pages/customer/customerRegister/CustomerRegister";
 import ResetPassword from "../../pages/ResetPassword";
 import CustomerHome from "../../pages/customer/customerHome/CustomerHome";
 import Blog from "../../pages/customer/blog/Blog";
+
+import DashboardLayout from "../../pages/customerDashboard/DashboardLayout";
+import Profile from "../../pages/customerDashboard/components/profile/Profile";
+import UserOrder from "../../pages/customerDashboard/components/orders/UserOrder";
+import UserOrderReturns from "../../pages/customerDashboard/components/orderReturns/UserOrderReturns";
+import ChangePass from "../../pages/customerDashboard/components/changePass/ChangePass";
 
 const Router = () => {
   return (
@@ -98,9 +104,15 @@ const Router = () => {
         <Route path="seller-shop" element={<SellerShop />} />
         <Route path="blog" element={<Blog />} />
         {/* Login */}
-        <Route path="register" element={<Register />} />
+        <Route path="register" element={<CustomerRegister />} />
         <Route path="login" element={<Login />} />
         <Route path="reset-password" element={<ResetPassword />} />
+        <Route path="dashboard" element={<DashboardLayout />}>
+          <Route path="" element={<Profile />} />
+          <Route path="orders" element={<UserOrder />} />
+          <Route path="order-returns" element={<UserOrderReturns />} />
+          <Route path="password-change" element={<ChangePass />} />
+        </Route>
       </Route>
 
       <Route path="/*" element={<NotFound />} />
