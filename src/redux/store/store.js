@@ -9,10 +9,16 @@ import {
   orderSlice,
 } from "../slices/seller/orders";
 
+import {
+  sentRefundsSlice,
+} from "../slices/seller/refunds";
+
+
 export const store = configureStore({
   reducer: {
-    productSlice: productSlice.reducer,
+    productSlice        : productSlice.reducer,
     singleProductReducer: singleProductSlice.reducer,
-    orderSlice: orderSlice.reducer,
+    orderSlice          : orderSlice.reducer,
+    sentRefundsSlice    : sentRefundsSlice.reducer,
   },
 });
