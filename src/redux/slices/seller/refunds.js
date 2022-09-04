@@ -12,7 +12,7 @@ export const sentRefundsSlice = createSlice({
     setSentRefunds: (state, action) => {
       state.loading   = action.payload.loading;
       state.error     = action.payload.error;
-      state.sentRefunds  = typeof action.payload.data.sentRefunds !=="undefined" ? action.payload.data.sentRefunds : [];
+      state.sentRefunds  = typeof action.payload.data.data !=="undefined" ? action.payload.data.data : [];
     },
   },
 });

@@ -74,7 +74,7 @@ console.log(orders);
 												<p className={orderListStyle.code}>{item.code}</p>
 											</div>
 											<div className={` ${orderListStyle.hide}`}>
-												<p>{item.totalProducts} </p>
+												<p>{item.num_of_product}</p>
 											</div>
 											<div className={` ${orderListStyle.hide}`}>
 												<p>{item.grand_total} </p>
