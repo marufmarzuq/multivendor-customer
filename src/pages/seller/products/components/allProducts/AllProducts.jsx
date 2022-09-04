@@ -22,7 +22,6 @@ const AllProducts = () => {
     <Fragment>
 				<div>
 					<div className={`${allProductsStyle.background}`}>
-
 						<section>
 							<h5 className="px-md-4 px-3 py-2 pt-3">All Products</h5>
 							<div className="table-filters">
@@ -77,23 +76,17 @@ const AllProducts = () => {
 													<p>{item.id}</p>
 												</div>
 												<div className={`col-6 col-lg-2`}>
-													<p>{item.title}</p>
+													<p>{item.name}</p>
 												</div>
 												<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-													{ item.products.length > 0 &&
-															item.products.map((product,i) => {
-															return (
-																<div key={i}>
-																	<li>{product.cat_name}</li>
-																</div>
-															)
-													})}
+													{ item.category }
+													<div>Sub category : { item.sub_category } </div>
 												</div>
 												<div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
-													<p>{item.current_qty}</p>
+													<p>{item.current_stock}</p>
 												</div>
 												<div className={`col-4 col-lg-2 `}>
-													<p> {item.price}</p>
+													<p> {item.unit_price}</p>
 												</div>
 												<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
 													<div className="form-check form-switch">

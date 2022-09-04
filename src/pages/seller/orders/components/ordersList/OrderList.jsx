@@ -71,22 +71,22 @@ console.log(orders);
 												<p>{item.id}</p>
 											</div>
 											<div onClick={() => setShow(!show)}>
-												<p className={orderListStyle.code}>{item.orderCode}</p>
+												<p className={orderListStyle.code}>{item.code}</p>
 											</div>
 											<div className={` ${orderListStyle.hide}`}>
 												<p>{item.totalProducts} </p>
 											</div>
 											<div className={` ${orderListStyle.hide}`}>
-												<p>{item.amount} </p>
+												<p>{item.grand_total} </p>
 											</div>
 											<div className={`${orderListStyle.hide}`}>
-												<span> {item.orderDate} </span>
+												<span> {item.customer_name} </span>
 											</div>
 											<div className={`text-center ${orderListStyle.hide}`}>
-												<span> {item.deliveryStatus} </span>
+												<span> {item.delivery_status} </span>
 											</div>
 											<div className="text-center">
-												<span className={orderListStyle.unpaid}>{item.paymentStatus}</span>
+												<span className={orderListStyle.unpaid}>{item.payment_status}</span>
 											</div>
 											<div className="text-center">
 												<button
