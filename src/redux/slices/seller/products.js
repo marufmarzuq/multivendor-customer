@@ -12,7 +12,41 @@ export const productSlice = createSlice({
     setProducts: (state, action) => {
       state.loading   = action.payload.loading;
       state.error     = action.payload.error;
-      state.products  = typeof action.payload.data.products !=="undefined" ? action.payload.data.products : [];
+      state.products  = typeof action.payload.data.data !=="undefined" ? action.payload.data.data : [];
+    },
+  },
+});
+
+// products wishlist
+export const wishlistSlice = createSlice({
+  name: "wishlist",
+  initialState: {
+    wishlist: [],
+    loading: false,
+    error: "",
+  },
+  reducers: {
+    setWishlist: (state, action) => {
+      state.loading   = action.payload.loading;
+      state.error     = action.payload.error;
+      state.wishlist  = typeof action.payload.data.data !=="undefined" ? action.payload.data.data : [];
+    },
+  },
+});
+
+// products reviews
+export const reviewSlice = createSlice({
+  name: "reviews",
+  initialState: {
+    reviews: [],
+    loading: false,
+    error: "",
+  },
+  reducers: {
+    setReviews: (state, action) => {
+      state.loading   = action.payload.loading;
+      state.error     = action.payload.error;
+      state.reviews   = typeof action.payload.data.data !=="undefined" ? action.payload.data.data : [];
     },
   },
 });
@@ -35,5 +69,7 @@ export const singleProductSlice = createSlice({
   },
 });
 
-export const { setProducts } = productSlice.actions;
+export const { setProducts }      = productSlice.actions;
 export const { setSingleProduct } = singleProductSlice.actions;
+export const { setWishlist }      = wishlistSlice.actions;
+export const { setReviews }       = reviewSlice.actions;

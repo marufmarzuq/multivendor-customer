@@ -1,7 +1,18 @@
-import React, { Fragment } from "react";
+import { useEffect,Fragment } from "react";
 import { Table } from "react-bootstrap";
+import { setReviews } from "../../../redux/slices/seller/products";
 import reviewsStyle from "./productReviews.module.css";
+import { useSelector } from "react-redux";
+import { getApi } from "../../../api/apiCall";
+
 const ProductReviews = () => {
+
+	const { reviews , loading, error } = useSelector((state) => state.reviewSlice);
+
+	useEffect(() => {
+		getApi("productReviews.json", setReviews);
+	}, []);
+
   return (
     <Fragment>
       <div className={`${reviewsStyle.background}`}>
@@ -33,51 +44,28 @@ const ProductReviews = () => {
                 </th>
               </tr>
             </thead>
-
+						{ error ? <h1>{error}</h1> : ""}
+						{loading ? ( <h3>Loading</h3>)
+						: (
             <tbody>
-              <tr>
+            { reviews.length > 0 &&
+							reviews.map((item,key) => {
+							return (
+              <tr key={key}>
                 <td>
-                  <small>1</small>
+                  <small>{item.id}</small>
                 </td>
                 <td>
-                  <small>20220801-23454823</small>
+                  <small>{item.title}</small>
                 </td>
                 <td>
-                  <small>Mr. Cusomer </small>
+                  <small>{item.customer_name} </small>
                 </td>
                 <td>
-                  <small>4.5</small>
+                  <small>{item.rating}</small>
                 </td>
                 <td>
-                  <small> Test Comment</small>
-                </td>
-                <td>
-                  <div className="form-check form-switch">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      role="switch"
-                      id="flexSwitchCheckDefault"
-                    />
-                  </div>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <small>2</small>
-                </td>
-                <td>
-                  <small>20220801-23454823</small>
-                </td>
-                <td>
-                  <small>Mr. Cusomer </small>
-                </td>
-                <td>
-                  <small>4.5</small>
-                </td>
-                <td>
-                  <small> Test Comment</small>
+                  <small>{item.comment}</small>
                 </td>
                 <td>
                   <div className="form-check form-switch">
@@ -86,11 +74,15 @@ const ProductReviews = () => {
                       type="checkbox"
                       role="switch"
                       id="flexSwitchCheckDefault"
-                    />
+											defaultChecked={item.published}
+											/>
                   </div>
                 </td>
               </tr>
+              )
+							})}
             </tbody>
+            )}
           </Table>
         </section>
       </div>

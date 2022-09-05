@@ -12,7 +12,7 @@ export const orderSlice = createSlice({
     setOrders: (state, action) => {
       state.loading   = action.payload.loading;
       state.error     = action.payload.error;
-      state.orders  = typeof action.payload.data.orders !=="undefined" ? action.payload.data.orders : [];
+      state.orders  = typeof action.payload.data.data !=="undefined" ? action.payload.data.data : [];
     },
   },
 });

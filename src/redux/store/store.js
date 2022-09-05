@@ -3,6 +3,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import {
   productSlice,
   singleProductSlice,
+  wishlistSlice,
+  reviewSlice,
 } from "../slices/seller/products";
 
 import {
@@ -20,5 +22,7 @@ export const store = configureStore({
     singleProductReducer: singleProductSlice.reducer,
     orderSlice          : orderSlice.reducer,
     sentRefundsSlice    : sentRefundsSlice.reducer,
+    wishlistSlice       : wishlistSlice.reducer,
+    reviewSlice         : reviewSlice.reducer,
   },
 });

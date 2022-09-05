@@ -1,8 +1,17 @@
-import React, { Fragment } from "react";
+import { useEffect,Fragment } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import wishlistStyle from "./wishlistCom.module.css";
+import { useSelector } from "react-redux";
+import { getApi } from "../../../../api/apiCall";
+import { setWishlist } from "../../../../redux/slices/seller/products";
 
 const WishlistCom = () => {
+  const { wishlist , loading, error } = useSelector((state) => state.wishlistSlice);
+
+  useEffect(() => {
+    getApi("wishlist.json", setWishlist);
+  }, []);
+
   return (
     <Fragment>
       <div className={` ms-4 ${wishlistStyle.background}`}>
@@ -26,46 +35,34 @@ const WishlistCom = () => {
             </div>
           </div>
         </section>
+				{ error ? <h1>{error}</h1> : ""}
+				{loading ? ( <h3>Loading</h3>)
+				: (
+				<section>
+						{ wishlist.length > 0 &&
+							wishlist.map((item,key) => {
+							return (
+											<div className="row px-0 mx-0 ps-3 mt-3 pt-2" key={key}>
+												<div className="col-4 col-lg-3">
+													<p className={wishlistStyle.code}>{item.title}</p>
+												</div>
+												<div className={`col-4 col-lg-3 ${wishlistStyle.hide}`}>
+													<p> {item.last_wish} </p>
+												</div>
+												<div className="col-4 col-lg-3">
+													<p> {item.total_wish} </p>
+												</div>
 
-        <section>
-          <div className="row px-0 mx-0 ps-3 mt-3 pt-2">
-            <div className="col-4 col-lg-3">
-              <p className={wishlistStyle.code}>20210518-5869</p>
-            </div>
-            <div className={`col-4 col-lg-3 ${wishlistStyle.hide}`}>
-              <p>18-05-2022 ----- 09:51 AM </p>
-            </div>
-            <div className="col-4 col-lg-3">
-              <p> 15 </p>
-            </div>
-
-            <div className="col-4 col-lg-3">
-              <button className={wishlistStyle.del}>
-                <RiDeleteBin2Line />
-              </button>
-            </div>
-          </div>
-        </section>
-
-        <section>
-          <div className="row px-0 mx-0 ps-3 mt-3 pt-2">
-            <div className="col-4 col-lg-3">
-              <p className={wishlistStyle.code}>20210518-44545</p>
-            </div>
-            <div className={`col-4 col-lg-3 ${wishlistStyle.hide}`}>
-              <p>18-05-2022 ----- 09:51 AM </p>
-            </div>
-            <div className="col-4 col-lg-3">
-              <p> 31 </p>
-            </div>
-
-            <div className="col-4 col-lg-3">
-              <button className={wishlistStyle.del}>
-                <RiDeleteBin2Line />
-              </button>
-            </div>
-          </div>
-        </section>
+												<div className="col-4 col-lg-3">
+													<button className={wishlistStyle.del}>
+														<RiDeleteBin2Line />
+													</button>
+												</div>
+											</div>
+											)
+						})}
+				</section>
+				)}
       </div>
     </Fragment>
   );

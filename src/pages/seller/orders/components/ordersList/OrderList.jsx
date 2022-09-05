@@ -18,7 +18,6 @@ const OrderList = () => {
     getApi("orders.json", setOrders);
     // getApi("v1/seller/orders/search=''", setOrders);
   }, []);
-  console.log(orders);
   return (
     <Fragment>
       <div className={`${orderListStyle.background}`}>
@@ -57,63 +56,57 @@ const OrderList = () => {
           </div>
         </section>
 
-        {error ? <h1>{error}</h1> : ""}
-        {loading ? (
-          <h3>Loading</h3>
-        ) : (
-          <Fragment>
-            <section>
-              {orders.length > 0 &&
-                orders.map((item, key) => {
-                  return (
-                    <div
-                      className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-4 pt-2 `}
-                      key={key}
-                    >
-                      <div>
-                        <p>{item.id}</p>
-                      </div>
-                      <div onClick={() => setShow(!show)}>
-                        <p className={orderListStyle.code}>{item.orderCode}</p>
-                      </div>
-                      <div className={` ${orderListStyle.hide}`}>
-                        <p>{item.totalProducts} </p>
-                      </div>
-                      <div className={` ${orderListStyle.hide}`}>
-                        <p>{item.amount} </p>
-                      </div>
-                      <div className={`${orderListStyle.hide}`}>
-                        <span> {item.orderDate} </span>
-                      </div>
-                      <div className={`text-center ${orderListStyle.hide}`}>
-                        <span> {item.deliveryStatus} </span>
-                      </div>
-                      <div className="text-center">
-                        <span className={orderListStyle.unpaid}>
-                          {item.paymentStatus}
-                        </span>
-                      </div>
-                      <div className="text-center">
-                        <button
-                          onClick={() => setShow(!show)}
-                          className={orderListStyle.preview}
-                        >
-                          <BsEyeFill />
-                        </button>
-                        <button
-                          onClick={() => setPdfShow(!pdfShow)}
-                          className={orderListStyle.invoice}
-                        >
-                          <BsDownload />
-                        </button>
-                      </div>
-                    </div>
-                  );
-                })}
-            </section>
-            <TablePagination />
-          </Fragment>
-        )}
+				{ error ? <h1>{error}</h1> : ""}
+						{ loading ? ( <h3>Loading</h3>)
+						: (
+							<Fragment>
+								<section>
+								{ orders.length > 0 &&
+									orders.map((item,key) => {
+										return (
+										<div className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-4 pt-2 `} key={key}>
+											<div>
+												<p>{item.id}</p>
+											</div>
+											<div onClick={() => setShow(!show)}>
+												<p className={orderListStyle.code}>{item.code}</p>
+											</div>
+											<div className={` ${orderListStyle.hide}`}>
+												<p>{item.num_of_product}</p>
+											</div>
+											<div className={` ${orderListStyle.hide}`}>
+												<p>{item.grand_total} </p>
+											</div>
+											<div className={`${orderListStyle.hide}`}>
+												<span> {item.customer_name} </span>
+											</div>
+											<div className={`text-center ${orderListStyle.hide}`}>
+												<span> {item.delivery_status} </span>
+											</div>
+											<div className="text-center">
+												<span className={orderListStyle.unpaid}>{item.payment_status}</span>
+											</div>
+											<div className="text-center">
+												<button
+													onClick={() => setShow(!show)}
+													className={orderListStyle.preview}
+												>
+													<BsEyeFill />
+												</button>
+												<button
+													onClick={() => setPdfShow(!pdfShow)}
+													className={orderListStyle.invoice}
+												>
+													<BsDownload />
+												</button>
+											</div>
+										</div>
+										)
+									})}
+								</section>
+								<TablePagination/>
+							</Fragment>
+						)}
         <PdfModal show={pdfShow} setShow={setPdfShow} />
         <OrderModal page="order" show={show} setShow={setShow} />
       </div>
