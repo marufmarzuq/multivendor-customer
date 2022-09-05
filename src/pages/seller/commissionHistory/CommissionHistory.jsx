@@ -1,7 +1,15 @@
-import React, { Fragment } from "react";
+import React, { useEffect, Fragment } from "react";
 import { Table } from "react-bootstrap";
 import commissionStyle from "./commissionStyle.module.css";
+import { useSelector } from "react-redux";
+import { getApi } from "../../../api/apiCall";
+import { setCommissionHis } from "../../../redux/slices/seller/payments";
 const CommissionHistory = () => {
+	const { commissionHis ,loading, error } = useSelector((state) => state.commissionHisSlice);
+  useEffect(() => {
+    getApi("commissionHistory.json", setCommissionHis);
+  }, []);
+
   return (
     <Fragment>
       <div className={`${commissionStyle.background}`}>
@@ -30,44 +38,34 @@ const CommissionHistory = () => {
                 </th>
               </tr>
             </thead>
-
-            <tbody>
-              <tr>
-                <td>
-                  <small>1</small>
-                </td>
-                <td>
-                  <small>20220801-23454823</small>
-                </td>
-                <td>
-                  <small> 20000.00 </small>
-                </td>
-                <td>
-                  <small>80000.00</small>
-                </td>
-                <td>
-                  <small> 2022-08-01 23:46:29</small>
-                </td>
-              </tr>
-
-              <tr>
-                <td>
-                  <small>1</small>
-                </td>
-                <td>
-                  <small>20220801-23454823</small>
-                </td>
-                <td>
-                  <small> 20000.00 </small>
-                </td>
-                <td>
-                  <small>80000.00</small>
-                </td>
-                <td>
-                  <small> 2022-08-01 23:46:29</small>
-                </td>
-              </tr>
-            </tbody>
+						{ error ? <h1>{error}</h1> : ""}
+						{loading ? ( <tbody><tr><td>Loading</td></tr></tbody> )
+						: (
+							<tbody>
+						{ commissionHis.length > 0 &&
+						commissionHis.map((item,key) => {
+							return (
+								<tr key={key}>
+									<td>
+										<small>{item.id}</small>
+									</td>
+									<td>
+										<small>{item.order_code}</small>
+									</td>
+									<td>
+										<small>{item.admin_commission}</small>
+									</td>
+									<td>
+										<small>{item.seller_earning}</small>
+									</td>
+									<td>
+										<small>{item.created_at}</small>
+									</td>
+								</tr>
+							)
+							})}
+							</tbody>
+            )}
           </Table>
         </section>
       </div>

@@ -12,7 +12,6 @@ const SentRefund = () => {
     getApi("sentRefunds.json", setSentRefunds);
     // getApi("v1/seller/sent-refunds/search=''", setSentRefunds);
   }, []);
-console.log(sentRefunds);
   return (
     <Fragment>
       <div className={`${sentRefundStyle.background}`}>
@@ -50,11 +49,11 @@ console.log(sentRefunds);
 													<small>{item.order_code}</small>
 												</td>
 												<td>
-												{ item.product_name.length > 0 &&
-															item.product_name.map((product,i) => {
+												{ item.products.length > 0 &&
+															item.products.map((product,i) => {
 															return (
 																<div key={i}>
-																	<small>{product}</small>
+																	<small>{product.name}</small>
 																</div>
 															)
 													})}

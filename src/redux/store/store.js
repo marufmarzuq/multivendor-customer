@@ -13,8 +13,13 @@ import {
 
 import {
   sentRefundsSlice,
+	receivedRefundsSlice,
 } from "../slices/seller/refunds";
 
+import {
+  moneyWithdrawSlice,
+  commissionHisSlice,
+} from "../slices/seller/payments";
 
 export const store = configureStore({
   reducer: {
@@ -22,7 +27,10 @@ export const store = configureStore({
     singleProductReducer: singleProductSlice.reducer,
     orderSlice          : orderSlice.reducer,
     sentRefundsSlice    : sentRefundsSlice.reducer,
+    receivedRefundsSlice: receivedRefundsSlice.reducer,
     wishlistSlice       : wishlistSlice.reducer,
     reviewSlice         : reviewSlice.reducer,
+    moneyWithdrawSlice  : moneyWithdrawSlice.reducer,
+    commissionHisSlice  : commissionHisSlice.reducer,
   },
 });

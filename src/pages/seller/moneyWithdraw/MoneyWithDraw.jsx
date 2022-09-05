@@ -1,11 +1,21 @@
-import React, { Fragment } from "react";
+import { useEffect , Fragment } from "react";
 import { useState } from "react";
 import { Table } from "react-bootstrap";
 import { BsCurrencyDollar } from "react-icons/bs";
 import withdrawStyle from "./moneyWithdraw.module.css";
 import WithdrawModal from "./WithdrawModal";
+import { useSelector } from "react-redux";
+import { getApi } from "../../../api/apiCall";
+import { setMoneyWithdraw } from "../../../redux/slices/seller/payments";
+
 const MoneyWithDraw = () => {
   const [show, setShow] = useState(false);
+	const { moneyWithdraw , pendingBalance,loading, error } = useSelector((state) => state.moneyWithdrawSlice);
+
+  useEffect(() => {
+    getApi("moneyWithdraw.json", setMoneyWithdraw);
+  }, []);
+
   return (
     <Fragment>
       <div className={`${withdrawStyle.background}`}>
@@ -27,7 +37,7 @@ const MoneyWithDraw = () => {
                 </span>
               </div>
               <div>
-                <h5>$0.00</h5>
+                <h5>{pendingBalance}</h5>
               </div>
             </div>
           </section>
@@ -65,26 +75,34 @@ const MoneyWithDraw = () => {
                 </th>
               </tr>
             </thead>
-
+						{ error ? <h1>{error}</h1> : ""}
+						{loading ? ( <tbody><tr><td>Loading</td></tr></tbody> )
+						: (
             <tbody>
-              <tr>
+						{ moneyWithdraw.length > 0 &&
+						moneyWithdraw.map((item,key) => {
+							return (
+              <tr key={key}>
                 <td>
-                  <small>1</small>
+                  <small>{item.id}</small>
                 </td>
                 <td>
-                  <small>01-08-2022</small>
+                  <small>{item.created_at}</small>
                 </td>
                 <td>
-                  <small> 20000.00 </small>
+                  <small>{item.amount}</small>
                 </td>
                 <td>
-                  <small className={withdrawStyle.paid}> Approved </small>
+                  <small className={withdrawStyle.paid}> {item.status} </small>
                 </td>
                 <td>
-                  <small> please approve </small>
+                  <small> {item.message} </small>
                 </td>
               </tr>
+              )
+						})}
             </tbody>
+            )}
           </Table>
         </section>
       </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import ReceivedRefund from "./components/ReveivedRefund";
+import ReceivedRefunds from "./components/ReceivedRefunds";
 const ReceivedRefundReq = () => {
   return (
     <div>
-      <ReceivedRefund />
+      <ReceivedRefunds />
     </div>
   );
 };
