@@ -44,13 +44,13 @@ const WishlistCom = () => {
 							return (
 											<div className="row px-0 mx-0 ps-3 mt-3 pt-2" key={key}>
 												<div className="col-4 col-lg-3">
-													<p className={wishlistStyle.code}>{item.title}</p>
+													<p className={wishlistStyle.code}>{item.product_name}</p>
 												</div>
 												<div className={`col-4 col-lg-3 ${wishlistStyle.hide}`}>
-													<p> {item.last_wish} </p>
+													<p> {item.last_wishlist} </p>
 												</div>
 												<div className="col-4 col-lg-3">
-													<p> {item.total_wish} </p>
+													<p> {item.total_wishlist} </p>
 												</div>
 
 												<div className="col-4 col-lg-3">

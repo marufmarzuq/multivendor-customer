@@ -12,7 +12,7 @@ const SentRefund = () => {
     getApi("sentRefunds.json", setSentRefunds);
     // getApi("v1/seller/sent-refunds/search=''", setSentRefunds);
   }, []);
-
+console.log(sentRefunds);
   return (
     <Fragment>
       <div className={`${sentRefundStyle.background}`}>
@@ -29,7 +29,7 @@ const SentRefund = () => {
                 <th><small>Product</small></th>
                 <th className="text-end"><small>Amount</small></th>
                 <th><small>Reason</small></th>
-								<th className="text-center"><small>Status</small></th>
+								<th className="text-center"><small>Reject Reason</small></th>
               </tr>
             </thead>
 						{ error ? <h1>{error}</h1> : ""}
@@ -44,34 +44,27 @@ const SentRefund = () => {
 													<small>{item.id}</small>
 												</td>
 												<td>
-													<small>{item.orderDate}</small>
+													<small>{item.created_at}</small>
 												</td>
 												<td>
-													<small>{item.orderCode}</small>
+													<small>{item.order_code}</small>
 												</td>
 												<td>
-												{ item.products.length > 0 &&
-															item.products.map((product,i) => {
+												{ item.product_name.length > 0 &&
+															item.product_name.map((product,i) => {
 															return (
 																<div key={i}>
-																	<small>{product.name}</small>
+																	<small>{product}</small>
 																</div>
 															)
 													})}
 												</td>
 												<td className="text-end">
-													<small>{item.amount}</small>
+													<small>{item.refund_amount}</small>
 												</td>
 												<td>{item.reason}</td>
 												<td className="text-center">
-												{ item.status.length > 0 &&
-															item.status.map((child,j) => {
-															return (
-																<small key={j}>
-																	<span className={sentRefundStyle.paid}>{child.name}</span>
-																</small>
-															)
-													})}
+													<small>{item.reject_reason}</small>
 												</td>
 											</tr>
 										)

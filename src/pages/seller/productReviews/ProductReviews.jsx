@@ -56,7 +56,7 @@ const ProductReviews = () => {
                   <small>{item.id}</small>
                 </td>
                 <td>
-                  <small>{item.title}</small>
+                  <small>{item.product_name}</small>
                 </td>
                 <td>
                   <small>{item.customer_name} </small>

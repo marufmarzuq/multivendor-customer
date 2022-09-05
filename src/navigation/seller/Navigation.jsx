@@ -64,7 +64,7 @@ const Navigation = ({ toggleF, toggle }) => {
 
     const firstPath = pathname.split("/")[2];
     if (
-      firstPath == "sent-refund-request" ||
+      firstPath == "approved-refund-request" ||
       firstPath == "received-refund-request"
     ) {
       setRefundProdColl(true);
@@ -239,9 +239,9 @@ const Navigation = ({ toggleF, toggle }) => {
             >
               <ul className={navigationStyle.insideNavUl}>
                 <li
-                  onClick={() => handleDropdown("sent-refund-request")}
+                  onClick={() => handleDropdown("approved-refund-request")}
                   className={` mt-2 ${
-                    activeMenu == "sent-refund-request"
+                    activeMenu == "approved-refund-request"
                       ? navigationStyle.active
                       : ""
                   } `}
@@ -249,10 +249,10 @@ const Navigation = ({ toggleF, toggle }) => {
                   <NavLink
                     className={navigationStyle.inside_nav}
                     onClick={() => closeNav()}
-                    to="/seller/sent-refund-request"
+                    to="/seller/approved-refund-request"
                   >
                     <AiOutlineSend className={navigationStyle.icon_green} />
-                    <span className="ps-2">Sent Refund Request</span>
+                    <span className="ps-2">Approved Refund</span>
                   </NavLink>
                 </li>
 

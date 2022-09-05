@@ -61,7 +61,7 @@ const Router = () => {
       >
         <Route path="" element={<Dashboard />} />
         <Route path="orders" element={<Orders />} />
-        <Route path="sent-refund-request" element={<SentRefundReq />} />
+        <Route path="approved-refund-request" element={<SentRefundReq />} />
         <Route path="received-refund-request" element={<ReceivedRefundReq />} />
         <Route path="payment-history" element={<PaymentHistory />} />
         <Route path="commission-history" element={<CommissionHistory />} />
