@@ -1,4 +1,4 @@
-import React, { Fragment , useEffect } from "react";
+import { Fragment , useEffect } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
 import Select from "react-select";
