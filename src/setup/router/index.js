@@ -45,38 +45,35 @@ import Profile from "../../pages/customerDashboard/components/profile/Profile";
 import UserOrder from "../../pages/customerDashboard/components/orders/UserOrder";
 import UserOrderReturns from "../../pages/customerDashboard/components/orderReturns/UserOrderReturns";
 import ChangePass from "../../pages/customerDashboard/components/changePass/ChangePass";
+import PrivateRoutes from "./routeModels/PrivateRoute";
 
 const Router = () => {
   return (
     <Routes>
       <Route path="/customer-home" element={<CustomerHome />} />
       {/* Vendor Dashboard */}
-      <Route
-        path="/seller"
-        element={
-          <PrivateRoute>
-            <Layout />
-          </PrivateRoute>
-        }
-      >
-        <Route path="" element={<Dashboard />} />
-        <Route path="orders" element={<Orders />} />
-        <Route path="approved-refund-request" element={<SentRefundReq />} />
-        <Route path="received-refund-request" element={<ReceivedRefundReq />} />
-        <Route path="payment-history" element={<PaymentHistory />} />
-        <Route path="commission-history" element={<CommissionHistory />} />
-        <Route path="my-wallet" element={<MyWallet />} />
-        <Route path="withdraw" element={<MoneyWithDraw />} />
-        <Route path="manage-profile" element={<ManageProfile />} />
-        <Route path="setting" element={<ShopSetting />} />
-      </Route>
-
-      <Route
+      <Route element={<PrivateRoutes />}>
+        <Route
+          path="/seller"
+          element={
+              <Layout />
+          }
+        >
+          <Route path="" element={<Dashboard />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="approved-refund-request" element={<SentRefundReq />} />
+          <Route path="received-refund-request" element={<ReceivedRefundReq />} />
+          <Route path="payment-history" element={<PaymentHistory />} />
+          <Route path="commission-history" element={<CommissionHistory />} />
+          <Route path="my-wallet" element={<MyWallet />} />
+          <Route path="withdraw" element={<MoneyWithDraw />} />
+          <Route path="manage-profile" element={<ManageProfile />} />
+          <Route path="setting" element={<ShopSetting />} />
+        </Route>
+        <Route
         path="seller/products/"
         element={
-          <PrivateRoute>
             <Layout />
-          </PrivateRoute>
         }
       >
         <Route path="all" element={<Products />} />
@@ -89,6 +86,8 @@ const Router = () => {
         <Route path="digital/add" element={<AddDigitalProducts />} />
         <Route path="digital/update" element={<UpdateDigitalProduct />} />
       </Route>
+      </Route>
+    
       {/* Customer homepage */}
       <Route path="/" element={<CustomerLayout />}>
         <Route path="" element={<Home />} />
