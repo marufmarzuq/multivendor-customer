@@ -4,66 +4,91 @@ import { useState } from "react";
 import orderListStyle from "./orderList.module.css";
 import PdfModal from "../../../../../common/pdfModal/PdfModal";
 import OrderModal from "../orderModal/OrderModal";
+import Select from "react-select";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
 import { setOrders } from "../../../../../redux/slices/seller/orders";
 import TablePagination from "../../../../../common/tablePagination/TablePagination";
+import ReactPaginate from 'react-paginate';
 
-const OrderList = () => {
-  const { orders, loading, error } = useSelector((state) => state.orderSlice);
-  const [show, setShow] = useState(false);
-  const [pdfShow, setPdfShow] = useState(false);
+const OrderList = ({ orderData, loading }) => {
+  	const [show, setShow] 					= useState(false);
+  	const [pdfShow, setPdfShow] 			= useState(false);
+  	const [currentItems, setCurrentItems]  	= useState([]);
+	const [pageCount, setPageCount]         = useState(0);
+    const [itemOffset, setItemOffset]       = useState(0);
+	const [orderSearch, setOrderSearch]     = useState("");
+    const itemsPerPage                      = 6;
 
-  useEffect(() => {
-    getApi("orders.json", setOrders);
-    // getApi("v1/seller/orders/search=''", setOrders);
-  }, []);
-  return (
-    <Fragment>
-      <div className={`${orderListStyle.background}`}>
-        <section>
-          <h5 className="px-md-4 px-3 pt-3 py-2">Orders</h5>
-        </section>
+	const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemsPerPage) % orderData.length;
+        setItemOffset(newOffset);
+    };
 
-        <section>
-          <div
-            className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-3 ${orderListStyle.header}`}
-          >
-            <div>
-              <p>#</p>
-            </div>
-            <div>
-              <p>Order Code</p>
-            </div>
-            <div className={` ${orderListStyle.hide}`}>
-              <p>Num. of Products</p>
-            </div>
-            <div className={` ${orderListStyle.hide}`}>
-              <p>Amount</p>
-            </div>
-            <div className={` ${orderListStyle.hide}`}>
-              <p>Customer</p>
-            </div>
-            <div className={` text-center ${orderListStyle.hide}`}>
-              <p>Delivery Status</p>
-            </div>
-            <div className="text-center">
-              <p> Payment Status</p>
-            </div>
-            <div className="text-center">
-              <p>Options</p>
-            </div>
-          </div>
-        </section>
 
-				{ error ? <h1>{error}</h1> : ""}
-						{ loading ? ( <h3>Loading</h3>)
-						: (
-							<Fragment>
-								<section>
-								{ orders.length > 0 &&
-									orders.map((item,key) => {
-										return (
+	useEffect(() => {
+		const endOffset = itemOffset + itemsPerPage;
+        setCurrentItems(orderData.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(orderData.length / itemsPerPage));
+	}, [orderData, itemOffset, setCurrentItems]);
+  
+	return (
+		<Fragment>
+		<div className={`${orderListStyle.background}`}>
+			<section>
+			<div className="table-top-header d-flex justify-content-between">
+          		<div className="table-title"><h5 className="px-md-4 px-3 pt-3 py-2">Orders</h5></div>
+				<div className="table-filters px-md-4 px-3 pt-3 py-2">
+					<input
+						type="text"
+						className="table-search-input"
+						placeholder="Search by customer name"
+						value={orderSearch}  
+                    	onChange={(e) => setOrderSearch(e.target.value)}
+					/>
+				</div>
+			</div>
+			</section>
+
+			<section>
+
+			<div
+				className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-3 ${orderListStyle.header}`}
+			>
+				<div>
+				<p>#</p>
+				</div>
+				<div>
+				<p>Order Code</p>
+				</div>
+				<div className={` ${orderListStyle.hide}`}>
+				<p>Num. of Products</p>
+				</div>
+				<div className={` ${orderListStyle.hide}`}>
+				<p>Amount</p>
+				</div>
+				<div className={` ${orderListStyle.hide}`}>
+				<p>Customer</p>
+				</div>
+				<div className={` text-center ${orderListStyle.hide}`}>
+				<p>Delivery Status</p>
+				</div>
+				<div className="text-center">
+				<p> Payment Status</p>
+				</div>
+				<div className="text-center">
+				<p>Options</p>
+				</div>
+			</div>
+			</section>
+			{ loading ? <h3>Loading...</h3>
+				: (
+					<Fragment>
+						<section>
+						{ currentItems.length > 0 &&
+							currentItems.map((item, key) => {
+								return (
+									item?.customer_name?.toLocaleLowerCase().includes(orderSearch.toLowerCase()) && (
 										<div className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-4 pt-2 `} key={key}>
 											<div>
 												<p>{item.id}</p>
@@ -101,17 +126,30 @@ const OrderList = () => {
 												</button>
 											</div>
 										</div>
-										)
-									})}
-								</section>
-								<TablePagination/>
-							</Fragment>
-						)}
-        <PdfModal show={pdfShow} setShow={setPdfShow} />
-        <OrderModal page="order" show={show} setShow={setShow} />
-      </div>
-    </Fragment>
-  );
+									)
+								)
+							})}
+						</section>
+					</Fragment>
+				)}
+			<div className="d-flex justify-content-end pe-3">
+				<ReactPaginate
+					breakLabel="..."
+					nextLabel="Next 🡢"
+					onPageChange={handlePageClick}
+					pageRangeDisplayed={5}
+					pageCount={pageCount}
+					previousLabel="🡠 Previous"
+					containerClassName="pagination"
+					pageClassName="page__count"
+					activeLinkClassName="active"
+				/>
+			</div>
+			<PdfModal show={pdfShow} setShow={setPdfShow} />
+			<OrderModal page="order" show={show} setShow={setShow} />
+		</div>
+		</Fragment>
+	);
 };
 
 export default OrderList;
