@@ -1,41 +1,50 @@
 import { Fragment , useEffect, useState } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
-import Select from "react-select";
+import Select from 'react-select'
 import { BiCopy, BiEdit, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import TablePagination from "../../../../../common/tablePagination/TablePagination";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
 import { setProducts } from "../../../../../redux/slices/seller/products";
+import ReactPaginate from 'react-paginate';
 
 const AllProducts = () => {
 
   const { products , total , per_page ,loading, error } = useSelector((state) => state.productSlice);
-	const [page, setCurrentPage] = useState(null);
+	const [currentPage, setCurrentPage] = useState(null);
+	const [perPage, setPerPage] = useState(per_page);
+	const [search, setSearch]     = useState('');
 
   useEffect(() => {
     // getApi("products.json", setProducts);
-    getApi("v1/seller/products?search_value="+`${null}`+"&sort_by=price_high_to_low&per_page="+`${10}`+"&page="+`${page}`, setProducts);
+    getApi("v1/seller/products?search_value="+`${search}`+"&sort_by=price_high_to_low&per_page="+`${perPage}`+"&page="+`${currentPage}`, setProducts);
   },[]);
 
-	const handlePageClick = (pages) => {
-	console.log(pages);
-		setCurrentPage(pages.selected)
+	const handlePageClick = (event) => {
+		setCurrentPage(event.selected+1)
 	};
+	const options = [
+		{ value: '5', label: '5' },
+		{ value: '10', label: '10' },
+		{ value: '15', label: '15' },
+		{ value: '20', label: '20' }
+	]
   return (
     <Fragment>
 				<div>
 					<div className={`${allProductsStyle.background}`}>
 						<section>
 							<h5 className="px-md-4 px-3 py-2 pt-3">All Products</h5>
-							<div className="table-filters">
-								<Select placeholder="Sort By" />
-								<input
-									type="text"
-									className="table-search-input"
-									placeholder="Search product by name"
-								/>
+							<div className="table-filters px-md-4 px-3 pt-3 py-2">
+									<Select options={options} />
+									<input
+										type="text"
+										className="table-search-input"
+										placeholder="Search by product name"
+										value={search}
+														onChange={(e) => setSearch(e.target.value)}
+									/>
 							</div>
 						</section>
 						<section>
@@ -137,7 +146,19 @@ const AllProducts = () => {
 										)
 								})}
 								</section>
-								<TablePagination handlePageClick={handlePageClick} total={total} per_page={per_page}/>
+								<div className="d-flex justify-content-end pe-3">
+									<ReactPaginate
+										breakLabel="..."
+										nextLabel="next >"
+										onPageChange={handlePageClick}
+										pageRangeDisplayed={per_page}
+										pageCount={total}
+										previousLabel="< previous"
+										containerClassName="pagination"
+										pageClassName="page__count"
+										activeLinkClassName="active"
+									/>
+								</div>
 							</Fragment>
 						)}
 					</div>
