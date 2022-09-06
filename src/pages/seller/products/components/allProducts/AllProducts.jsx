@@ -1,4 +1,4 @@
-import { Fragment , useEffect } from "react";
+import { Fragment , useEffect, useState } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
 import Select from "react-select";
@@ -11,13 +11,18 @@ import { setProducts } from "../../../../../redux/slices/seller/products";
 
 const AllProducts = () => {
 
-  const { products , loading, error } = useSelector((state) => state.productSlice);
+  const { products , total , per_page ,loading, error } = useSelector((state) => state.productSlice);
+	const [page, setCurrentPage] = useState(null);
 
   useEffect(() => {
-    getApi("products.json", setProducts);
-    // getApi("v1/seller/products/search=''", setProducts);
-  }, []);
+    // getApi("products.json", setProducts);
+    getApi("v1/seller/products?search_value="+`${null}`+"&sort_by=price_high_to_low&per_page="+`${10}`+"&page="+`${page}`, setProducts);
+  },[]);
 
+	const handlePageClick = (pages) => {
+	console.log(pages);
+		setCurrentPage(pages.selected)
+	};
   return (
     <Fragment>
 				<div>
@@ -132,7 +137,7 @@ const AllProducts = () => {
 										)
 								})}
 								</section>
-								<TablePagination/>
+								<TablePagination handlePageClick={handlePageClick} total={total} per_page={per_page}/>
 							</Fragment>
 						)}
 					</div>

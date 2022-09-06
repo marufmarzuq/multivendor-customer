@@ -1,6 +1,5 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useEffect, useState, Fragment } from "react";
 import { BsDownload, BsEyeFill } from "react-icons/bs";
-import { useState } from "react";
 import orderListStyle from "./orderList.module.css";
 import PdfModal from "../../../../../common/pdfModal/PdfModal";
 import OrderModal from "../orderModal/OrderModal";
@@ -8,17 +7,16 @@ import Select from "react-select";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
 import { setOrders } from "../../../../../redux/slices/seller/orders";
-import TablePagination from "../../../../../common/tablePagination/TablePagination";
 import ReactPaginate from 'react-paginate';
 
 const OrderList = ({ orderData, loading }) => {
-  	const [show, setShow] 					= useState(false);
-  	const [pdfShow, setPdfShow] 			= useState(false);
-  	const [currentItems, setCurrentItems]  	= useState([]);
+	const [show, setShow] 					= useState(false);
+	const [pdfShow, setPdfShow] 			= useState(false);
+	const itemsPerPage                      = 6;
+	const [currentItems, setCurrentItems]  	= useState([]);
 	const [pageCount, setPageCount]         = useState(0);
-    const [itemOffset, setItemOffset]       = useState(0);
+	const [itemOffset, setItemOffset]       = useState(0);
 	const [orderSearch, setOrderSearch]     = useState("");
-    const itemsPerPage                      = 6;
 
 	const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % orderData.length;
@@ -31,20 +29,20 @@ const OrderList = ({ orderData, loading }) => {
         setCurrentItems(orderData.slice(itemOffset, endOffset));
         setPageCount(Math.ceil(orderData.length / itemsPerPage));
 	}, [orderData, itemOffset, setCurrentItems]);
-  
+
 	return (
 		<Fragment>
 		<div className={`${orderListStyle.background}`}>
 			<section>
 			<div className="table-top-header d-flex justify-content-between">
-          		<div className="table-title"><h5 className="px-md-4 px-3 pt-3 py-2">Orders</h5></div>
+        <div className="table-title"><h5 className="px-md-4 px-3 pt-3 py-2">Orders</h5></div>
 				<div className="table-filters px-md-4 px-3 pt-3 py-2">
 					<input
 						type="text"
 						className="table-search-input"
 						placeholder="Search by customer name"
-						value={orderSearch}  
-                    	onChange={(e) => setOrderSearch(e.target.value)}
+						value={orderSearch}
+                    onChange={(e) => setOrderSearch(e.target.value)}
 					/>
 				</div>
 			</div>
