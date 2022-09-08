@@ -80,9 +80,9 @@ const CheckoutForm = () => {
         </div>
 
         <div className="d-flex justify-content-end">
-          <button className="btn btn-primary">
+          <NavLink to="/thank-you" className="btn btn-primary">
             <AiOutlineCheckCircle /> Checkout
-          </button>
+          </NavLink>
         </div>
       </div>
     </div>

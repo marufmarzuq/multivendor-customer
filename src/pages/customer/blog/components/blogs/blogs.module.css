@@ -1,0 +1,50 @@
+.blogsContainer a {
+  text-decoration: none;
+  color: black;
+}
+
+.blogsContainer a:hover {
+  color: black;
+}
+.BlogCardContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.368);
+  margin-bottom: 3rem;
+}
+.BlogCardContainer img {
+  width: 100%;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.BlogCardContainer h3 {
+  margin-top: 1rem;
+}
+
+.BlogCardContainer h3:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .BlogCardContainer {
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    grid-gap: 1rem;
+    /* padding-right: 5rem; */
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.368);
+    margin-bottom: 3rem;
+  }
+  .BlogCardContainer img {
+    width: 95%;
+    cursor: pointer;
+    margin-top: 0;
+  }
+
+  .BlogCardContainer h3 {
+    margin-top: 0;
+  }
+}
