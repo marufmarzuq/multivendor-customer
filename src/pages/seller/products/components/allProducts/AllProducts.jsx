@@ -18,7 +18,7 @@ const AllProducts = () => {
 
   useEffect(() => {
     // getApi("products.json", setProducts);
-    getApi("v1/seller/products?search_value="+`${search}`+"&sort_by=price_high_to_low&per_page="+`${perPage}`+"&page="+`${currentPage}`, setProducts);
+    getApi("seller/products?search_value="+`${search}`+"&sort_by=price_high_to_low&per_page="+`${perPage}`+"&page="+`${currentPage}`, setProducts);
   },[]);
 
 	const handlePageClick = (event) => {
@@ -80,86 +80,89 @@ const AllProducts = () => {
 						{ error ? <h1>{error}</h1> : ""}
 						{loading ? ( <h3>Loading</h3>)
 						: (
-							<Fragment>
-								<section>
+							<section>
 								{ products.length > 0 &&
-									products.map((item,key) => {
-										return (
-											<div className="row px-0 mx-0 ps-3 mt-3 pt-2" key={key}>
-												<div className={`col-2 col-lg-1 `}>
-													<p>{item.id}</p>
-												</div>
-												<div className={`col-6 col-lg-2`}>
-													<p>{item.name}</p>
-												</div>
-												<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-													{ item.category }
-													<div>Sub category : { item.sub_category } </div>
-												</div>
-												<div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
-													<p>{item.current_stock}</p>
-												</div>
-												<div className={`col-4 col-lg-2 `}>
-													<p> {item.unit_price}</p>
-												</div>
-												<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-													<div className="form-check form-switch">
-														<input
-															className="form-check-input"
-															type="checkbox"
-															role="switch"
-															id="flexSwitchCheckDefault"
-															defaultChecked={item.published}
-														/>
+									<Fragment>
+									{
+										products.map((item,key) => {
+											return (
+												<div className="row px-0 mx-0 ps-3 mt-3 pt-2" key={key}>
+													<div className={`col-2 col-lg-1 `}>
+														<p>{item.id}</p>
 													</div>
-												</div>
-
-												<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-													<div className="form-check form-switch">
-														<input
-															className="form-check-input"
-															type="checkbox"
-															role="switch"
-															id="flexSwitchCheckDefault"
-															defaultChecked={item.featured}
-														/>
+													<div className={`col-6 col-lg-2`}>
+														<p>{item.name}</p>
 													</div>
-												</div>
+													<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+														{ item.category }
+														<div> Sub category : { item.sub_category } </div>
+													</div>
+													<div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
+														<p>{item.current_stock}</p>
+													</div>
+													<div className={`col-4 col-lg-2 `}>
+														<p> {item.unit_price}</p>
+													</div>
+													<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+														<div className="form-check form-switch">
+															<input
+																className="form-check-input"
+																type="checkbox"
+																role="switch"
+																id="flexSwitchCheckDefault"
+																defaultChecked={item.published}
+															/>
+														</div>
+													</div>
 
-												<div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
-													<p>
-														<Link to="/seller/products/update">
+													<div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+														<div className="form-check form-switch">
+															<input
+																className="form-check-input"
+																type="checkbox"
+																role="switch"
+																id="flexSwitchCheckDefault"
+																defaultChecked={item.featured}
+															/>
+														</div>
+													</div>
+
+													<div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
+														<p>
+															<Link to="/seller/products/update">
+																<button className={allProductsStyle.preview}>
+																	<BiEdit />
+																</button>
+															</Link>
+
 															<button className={allProductsStyle.preview}>
-																<BiEdit />
+																<BiCopy />
 															</button>
-														</Link>
-
-														<button className={allProductsStyle.preview}>
-															<BiCopy />
-														</button>
-														<button className={allProductsStyle.del}>
-															<RiDeleteBin2Line />
-														</button>
-													</p>
+															<button className={allProductsStyle.del}>
+																<RiDeleteBin2Line />
+															</button>
+														</p>
+													</div>
 												</div>
-											</div>
-										)
-								})}
-								</section>
-								<div className="d-flex justify-content-end pe-3">
-									<ReactPaginate
-										breakLabel="..."
-										nextLabel="next >"
-										onPageChange={handlePageClick}
-										pageRangeDisplayed={per_page}
-										pageCount={total}
-										previousLabel="< previous"
-										containerClassName="pagination"
-										pageClassName="page__count"
-										activeLinkClassName="active"
-									/>
-								</div>
-							</Fragment>
+											)
+									})
+									}
+									<div className="d-flex justify-content-end pe-3">
+										<ReactPaginate
+											breakLabel="..."
+											nextLabel="Next >"
+											onPageChange={handlePageClick}
+											pageRangeDisplayed={per_page}
+											pageCount={total}
+											previousLabel="< Previous"
+											containerClassName="pagination"
+											pageClassName="page__count"
+											activeLinkClassName="active"
+										/>
+									</div>
+									</Fragment>
+								}
+							</section>
 						)}
 					</div>
 				</div>

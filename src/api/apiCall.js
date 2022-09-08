@@ -31,7 +31,7 @@ export const getApi = async (url, setState) => {
     // this one will be use for actual api call
     // const res = await axios.get(`${process.env.REACT_APP_BASE_URL}/${url}`);
     // const baseUrl = 'http://localhost:3000/data/';
-    const baseUrl = 'https://api.markutos.com/api/';
+    const baseUrl = 'https://api.markutos.com/api/v1/';
 
     // this line is now using for json file
     const res = await axios.get( baseUrl + url,{
