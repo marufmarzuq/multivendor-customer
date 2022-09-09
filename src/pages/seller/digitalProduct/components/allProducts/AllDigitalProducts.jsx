@@ -1,4 +1,4 @@
-import { Fragment , useEffect } from "react";
+import { Fragment , useEffect, useState } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
 import { BiCopy, BiEdit, BiX } from "react-icons/bi";
@@ -6,14 +6,28 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
 import { setProducts } from "../../../../../redux/slices/seller/products";
+import ReactPaginate from 'react-paginate';
 
 const AllDigitalProducts = () => {
-  const { products , loading, error } = useSelector((state) => state.productSlice);
+  const { products , total , per_page ,loading, error } = useSelector((state) => state.productSlice);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [perPage, setPerPage] = useState(per_page);
+	const [search, setSearch]     = useState(null);
 
   useEffect(() => {
-    getApi("products.json", setProducts);
-    // getApi("v1/seller/products/search=''", setProducts);
-  }, []);
+		getApi(`products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`, setProducts);
+
+  },[]);
+
+	const handlePageClick = (event) => {
+		setCurrentPage(event.selected+1)
+	};
+	const options = [
+		{ value: '5', label: '5' },
+		{ value: '10', label: '10' },
+		{ value: '15', label: '15' },
+		{ value: '20', label: '20' }
+	]
 
   return (
     <Fragment>
@@ -121,6 +135,19 @@ const AllDigitalProducts = () => {
 									)
 							})}
 							</section>
+							<div className="d-flex justify-content-end pe-3">
+									<ReactPaginate
+										breakLabel="..."
+										nextLabel="Next >"
+										onPageChange={handlePageClick}
+										pageRangeDisplayed={per_page}
+										pageCount={total}
+										previousLabel="< Previous"
+										containerClassName="pagination"
+										pageClassName="page__count"
+										activeLinkClassName="active"
+									/>
+								</div>
 						</Fragment>
 					)}
         </section>

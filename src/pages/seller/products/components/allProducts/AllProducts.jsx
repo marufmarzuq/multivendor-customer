@@ -12,9 +12,9 @@ import ReactPaginate from 'react-paginate';
 const AllProducts = () => {
 
   const { products , total , per_page ,loading, error } = useSelector((state) => state.productSlice);
-	const [currentPage, setCurrentPage] = useState(null);
+	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(per_page);
-	const [search, setSearch]     = useState('');
+	const [search, setSearch]     = useState(null);
 
   useEffect(() => {
 		getApi(`products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`, setProducts);

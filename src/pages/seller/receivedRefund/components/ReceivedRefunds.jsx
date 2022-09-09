@@ -1,17 +1,31 @@
-import {useEffect} from "react";
+import {useEffect,useState,Fragment} from "react";
 import { Table } from "react-bootstrap";
 import receivedRefundStyle from "./receivedRefund.module.css";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setReceivedRefunds } from "../../../../redux/slices/seller/refunds";
+import ReactPaginate from 'react-paginate';
 
 const ReceivedRefunds = () => {
-  const { receivedRefunds , loading, error } = useSelector((state) => state.receivedRefundsSlice);
+	const { receivedRefunds , total , per_page ,loading, error } = useSelector((state) => state.receivedRefundsSlice);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [perPage, setPerPage] = useState(per_page);
+	const [search, setSearch]     = useState(null);
 
   useEffect(() => {
-    getApi("receivedRefunds.json", setReceivedRefunds);
+		// getApi(`refund-requests?search_value=${search}&sort_by=created_at&per_page=${perPage}&page=${currentPage}`, setSentRefunds);
+		getApi(`refund-requests?per_page=${perPage}`, setReceivedRefunds);
   }, []);
 
+	const handlePageClick = (event) => {
+		setCurrentPage(event.selected+1)
+	};
+	const options = [
+		{ value: '5', label: '5' },
+		{ value: '10', label: '10' },
+		{ value: '15', label: '15' },
+		{ value: '20', label: '20' }
+	]
   return (
     <div>
       <div className={`${receivedRefundStyle.background}`}>
@@ -52,6 +66,7 @@ const ReceivedRefunds = () => {
 						{ error ? <h1>{error}</h1> : ""}
 						{loading ? ( <tbody><tr><td>Loading</td></tr></tbody> )
 						: (
+						<Fragment>
 							<tbody>
 							{ receivedRefunds.length > 0 &&
 							receivedRefunds.map((item,key) => {
@@ -106,6 +121,20 @@ const ReceivedRefunds = () => {
 								)
 							})}
 							</tbody>
+							<div className="d-flex justify-content-end pe-3">
+									<ReactPaginate
+										breakLabel="..."
+										nextLabel="Next >"
+										onPageChange={handlePageClick}
+										pageRangeDisplayed={per_page}
+										pageCount={total}
+										previousLabel="< Previous"
+										containerClassName="pagination"
+										pageClassName="page__count"
+										activeLinkClassName="active"
+									/>
+								</div>
+						</Fragment>
             )}
           </Table>
         </section>
