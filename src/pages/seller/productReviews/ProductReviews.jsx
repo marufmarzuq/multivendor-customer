@@ -11,7 +11,7 @@ const ProductReviews = () => {
 	const { reviews , total , per_page ,loading, error} = useSelector((state) => state.reviewSlice);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(per_page);
-	const [search, setSearch]     = useState('');
+	const [search, setSearch]     = useState(null);
 
 	useEffect(() => {
 		getApi(`reviews?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`, setReviews);
