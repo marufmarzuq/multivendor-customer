@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
 import { setProducts } from "../../../../../redux/slices/seller/products";
 import ReactPaginate from "react-paginate";
-import TablePagination from "../../../../../common/tablePagination/TablePaginationcopy";
+import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 
 const AllProducts = () => {
   const { products, total, per_page, loading, error } = useSelector(
@@ -110,9 +110,8 @@ const AllProducts = () => {
             </div>
           </section>
           {error ? <h1>{error}</h1> : ""}
-          {loading ? (
-            <h3>Loading</h3>
-          ) : (
+          {loading ? (<SimpleLoading/>) :
+          (
             <section>
               {products.length > 0 && (
                 <Fragment>
@@ -205,10 +204,6 @@ const AllProducts = () => {
               )}
             </section>
           )}
-
-          <section>
-            <TablePagination />
-          </section>
         </div>
       </div>
     </Fragment>
