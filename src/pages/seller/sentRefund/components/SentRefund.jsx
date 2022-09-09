@@ -86,24 +86,27 @@ const SentRefund = () => {
 										)
 									})
 								}
-								<div className="d-flex justify-content-end pe-3">
-									<ReactPaginate
-										breakLabel="..."
-										nextLabel="Next >"
-										onPageChange={handlePageClick}
-										pageRangeDisplayed={per_page}
-										pageCount={total}
-										previousLabel="< Previous"
-										containerClassName="pagination"
-										pageClassName="page__count"
-										activeLinkClassName="active"
-									/>
-								</div>
 								</Fragment>
 								}
 							</tbody>
             )}
           </Table>
+          {
+          sentRefunds.length > 0 &&
+						<div className="d-flex justify-content-end pe-3">
+							<ReactPaginate
+								breakLabel="..."
+								nextLabel="Next >"
+								onPageChange={handlePageClick}
+								pageRangeDisplayed={per_page}
+								pageCount={total}
+								previousLabel="< Previous"
+								containerClassName="pagination"
+								pageClassName="page__count"
+								activeLinkClassName="active"
+							/>
+						</div>
+          }
         </section>
       </div>
     </Fragment>

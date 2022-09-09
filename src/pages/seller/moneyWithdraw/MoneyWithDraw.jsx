@@ -1,5 +1,4 @@
-import { useEffect , Fragment } from "react";
-import { useState } from "react";
+import { useEffect , Fragment , useState } from "react";
 import { Table } from "react-bootstrap";
 import { BsCurrencyDollar } from "react-icons/bs";
 import withdrawStyle from "./moneyWithdraw.module.css";
@@ -7,15 +6,28 @@ import WithdrawModal from "./WithdrawModal";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
 import { setMoneyWithdraw } from "../../../redux/slices/seller/payments";
+import ReactPaginate from 'react-paginate';
 
 const MoneyWithDraw = () => {
   const [show, setShow] = useState(false);
-	const { moneyWithdraw , pendingBalance,loading, error } = useSelector((state) => state.moneyWithdrawSlice);
-
+	const { moneyWithdraw , pendingBalance, total , per_page ,loading,error } = useSelector((state) => state.moneyWithdrawSlice);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [perPage, setPerPage] = useState(per_page);
+	const [search, setSearch]     = useState(null);
   useEffect(() => {
-    getApi("moneyWithdraw.json", setMoneyWithdraw);
+    // getApi("moneyWithdraw.json", setMoneyWithdraw);
+		getApi(`withdrawal-requests?per_page=${perPage}&page=${currentPage}`, setMoneyWithdraw);
+		// getApi(`payment-histories?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`, setMoneyWithdraw);
   }, []);
-
+	const handlePageClick = (event) => {
+		setCurrentPage(event.selected+1)
+	};
+	const options = [
+		{ value: '5', label: '5' },
+		{ value: '10', label: '10' },
+		{ value: '15', label: '15' },
+		{ value: '20', label: '20' }
+	]
   return (
     <Fragment>
       <div className={`${withdrawStyle.background}`}>
@@ -78,32 +90,51 @@ const MoneyWithDraw = () => {
 						{ error ? <h1>{error}</h1> : ""}
 						{loading ? ( <tbody><tr><td>Loading</td></tr></tbody> )
 						: (
-            <tbody>
+            <Fragment>
 						{ moneyWithdraw.length > 0 &&
-						moneyWithdraw.map((item,key) => {
-							return (
-              <tr key={key}>
-                <td>
-                  <small>{item.id}</small>
-                </td>
-                <td>
-                  <small>{item.created_at}</small>
-                </td>
-                <td>
-                  <small>{item.amount}</small>
-                </td>
-                <td>
-                  <small className={withdrawStyle.paid}> {item.status} </small>
-                </td>
-                <td>
-                  <small> {item.message} </small>
-                </td>
-              </tr>
-              )
-						})}
-            </tbody>
+							<tbody>
+							{
+							moneyWithdraw.map((item,key) => {
+								return (
+								<tr key={key}>
+									<td>
+										<small>{item.id}</small>
+									</td>
+									<td>
+										<small>{item.created_at}</small>
+									</td>
+									<td>
+										<small>{item.amount}</small>
+									</td>
+									<td>
+										<small className={withdrawStyle.paid}> {item.status} </small>
+									</td>
+									<td>
+										<small> {item.message} </small>
+									</td>
+								</tr>
+								)
+							})}
+							</tbody>
+						}
+            </Fragment>
             )}
           </Table>
+          { moneyWithdraw.length > 0 &&
+						<div className="d-flex justify-content-end pe-3">
+							<ReactPaginate
+								breakLabel="..."
+								nextLabel="Next >"
+								onPageChange={handlePageClick}
+								pageRangeDisplayed={per_page}
+								pageCount={total}
+								previousLabel="< Previous"
+								containerClassName="pagination"
+								pageClassName="page__count"
+								activeLinkClassName="active"
+							/>
+						</div>
+					}
         </section>
       </div>
     </Fragment>

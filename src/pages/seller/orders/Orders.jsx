@@ -12,7 +12,7 @@ const Orders = () => {
     useEffect(() => {
 			setLoading(true);
 
-			axios.get(`${API_URL}/orders?search_value=${''}&sort_by=price_high_to_low&per_page=${10}&page=${1}`, {
+			axios.get(`${API_URL}/orders?search_value=${null}&sort_by=price_high_to_low&per_page=${10}&page=${1}`, {
 				headers: {
 				"Authorization": authHeader(),
 				}
