@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import OrderList from "./components/ordersList/OrderList";
 import ordersStyle from "./orders.module.css";
+import { API_URL } from "../services/Api/api";
+import authHeader from "../services/auth-header";
 
 const Orders = () => {
     const [orderData, setOrderData] = useState([]);
@@ -21,7 +24,7 @@ const Orders = () => {
 
     return (
 		<div className={ordersStyle.spacing}>
-			<OrderList />
+			<OrderList orderData={orderData} loading={loading}/>
 		</div>
     );
 };
