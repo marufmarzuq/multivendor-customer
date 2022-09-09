@@ -66,7 +66,6 @@ const ReceivedRefunds = () => {
 						{ error ? <h1>{error}</h1> : ""}
 						{loading ? ( <tbody><tr><td>Loading</td></tr></tbody> )
 						: (
-						<Fragment>
 							<tbody>
 							{ receivedRefunds.length > 0 &&
 							receivedRefunds.map((item,key) => {
@@ -121,22 +120,24 @@ const ReceivedRefunds = () => {
 								)
 							})}
 							</tbody>
-							<div className="d-flex justify-content-end pe-3">
-									<ReactPaginate
-										breakLabel="..."
-										nextLabel="Next >"
-										onPageChange={handlePageClick}
-										pageRangeDisplayed={per_page}
-										pageCount={total}
-										previousLabel="< Previous"
-										containerClassName="pagination"
-										pageClassName="page__count"
-										activeLinkClassName="active"
-									/>
-								</div>
-						</Fragment>
             )}
           </Table>
+						{
+						receivedRefunds.length > 0 &&
+							<div className="d-flex justify-content-end pe-3">
+								<ReactPaginate
+									breakLabel="..."
+									nextLabel="Next >"
+									onPageChange={handlePageClick}
+									pageRangeDisplayed={per_page}
+									pageCount={total}
+									previousLabel="< Previous"
+									containerClassName="pagination"
+									pageClassName="page__count"
+									activeLinkClassName="active"
+								/>
+							</div>
+						}
         </section>
       </div>
     </div>
