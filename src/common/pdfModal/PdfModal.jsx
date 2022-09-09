@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import modalStyle from "./pdfModal.module.css";
 import PdfGen from "../pdfGenerator/PdfGen";
 
-const PdfModal = ({ show, setShow }) => {
+const PdfModal = ({ com, show, setShow }) => {
   return (
     <>
       <Modal
@@ -18,7 +18,7 @@ const PdfModal = ({ show, setShow }) => {
           <Modal.Title id="example-custom-modal-styling-title"></Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <PdfGen />
+          <PdfGen com={com} />
         </Modal.Body>
       </Modal>
     </>

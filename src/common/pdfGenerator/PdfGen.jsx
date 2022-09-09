@@ -3,21 +3,27 @@ import ReactToPrint from "react-to-print";
 import Invoice from "../invoice/Invoice";
 import pdfStyle from "./pdfGen.module.css";
 
-const PdfGen = ({ setRef }) => {
+const PdfGen = ({ com, setRef }) => {
   const componentRef = useRef();
 
   return (
     <div>
       <ReactToPrint
         trigger={() => (
-          <button className={`${pdfStyle.right} btn btn-outline-primary`}>
+          <button
+            className={`${
+              com
+                ? `${pdfStyle.bottom} btn btn-primary`
+                : `${pdfStyle.right} btn btn-primary`
+            }`}
+          >
             Print this out!
           </button>
         )}
         content={() => componentRef.current}
       />
       <div className={pdfStyle.hide} ref={componentRef}>
-        <Invoice />
+        {com ? com : <Invoice />}
       </div>
     </div>
   );

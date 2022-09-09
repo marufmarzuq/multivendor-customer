@@ -46,6 +46,8 @@ import UserOrder from "../../pages/customerDashboard/components/orders/UserOrder
 import UserOrderReturns from "../../pages/customerDashboard/components/orderReturns/UserOrderReturns";
 import ChangePass from "../../pages/customerDashboard/components/changePass/ChangePass";
 import PrivateRoutes from "./routeModels/PrivateRoute";
+import BlogDetails from "../../pages/customer/blog/components/blogDetails/BlogDetails";
+import ThankYou from "../../pages/customer/thankYou/ThankYou";
 
 const Router = () => {
   return (
@@ -53,16 +55,14 @@ const Router = () => {
       <Route path="/customer-home" element={<CustomerHome />} />
       {/* Vendor Dashboard */}
       <Route element={<PrivateRoutes />}>
-        <Route
-          path="/seller"
-          element={
-              <Layout />
-          }
-        >
+        <Route path="/seller" element={<Layout />}>
           <Route path="" element={<Dashboard />} />
           <Route path="orders" element={<Orders />} />
           <Route path="approved-refund-request" element={<SentRefundReq />} />
-          <Route path="received-refund-request" element={<ReceivedRefundReq />} />
+          <Route
+            path="received-refund-request"
+            element={<ReceivedRefundReq />}
+          />
           <Route path="payment-history" element={<PaymentHistory />} />
           <Route path="commission-history" element={<CommissionHistory />} />
           <Route path="my-wallet" element={<MyWallet />} />
@@ -70,24 +70,19 @@ const Router = () => {
           <Route path="manage-profile" element={<ManageProfile />} />
           <Route path="setting" element={<ShopSetting />} />
         </Route>
-        <Route
-        path="seller/products/"
-        element={
-            <Layout />
-        }
-      >
-        <Route path="all" element={<Products />} />
-        <Route path="reviews" element={<ProductReviews />} />
-        <Route path="add" element={<AddProducts />} />
-        <Route path="update" element={<UpdateProduct />} />
-        <Route path="bulk-upload" element={<BulkUpload />} />
-        <Route path="wishlist" element={<Wishlist />} />
-        <Route path="digital/all" element={<DigitalProduct />} />
-        <Route path="digital/add" element={<AddDigitalProducts />} />
-        <Route path="digital/update" element={<UpdateDigitalProduct />} />
+        <Route path="seller/products/" element={<Layout />}>
+          <Route path="all" element={<Products />} />
+          <Route path="reviews" element={<ProductReviews />} />
+          <Route path="add" element={<AddProducts />} />
+          <Route path="update" element={<UpdateProduct />} />
+          <Route path="bulk-upload" element={<BulkUpload />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="digital/all" element={<DigitalProduct />} />
+          <Route path="digital/add" element={<AddDigitalProducts />} />
+          <Route path="digital/update" element={<UpdateDigitalProduct />} />
+        </Route>
       </Route>
-      </Route>
-    
+
       {/* Customer homepage */}
       <Route path="/" element={<CustomerLayout />}>
         <Route path="" element={<Home />} />
@@ -102,6 +97,8 @@ const Router = () => {
         <Route path="seller-request" element={<SellerRequest />} />
         <Route path="seller-shop" element={<SellerShop />} />
         <Route path="blog" element={<Blog />} />
+        <Route path="blog/:id" element={<BlogDetails />} />
+        <Route path="thank-you" element={<ThankYou />} />
         {/* Login */}
         <Route path="register" element={<CustomerRegister />} />
         <Route path="login" element={<Login />} />
