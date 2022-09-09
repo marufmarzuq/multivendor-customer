@@ -1,25 +1,3 @@
-.tableFilters {
-  display: flex;
-  justify-content: end;
-}
-.tableFilters input {
-  width: 250px;
-  margin-right: 1rem;
-  height: auto;
-  margin-bottom: 1rem;
-  padding: 7px;
-  transition: all 0.3s;
-}
-.searchSelect {
-  width: 200px;
-  margin-right: 2rem;
-  height: 45px;
-  padding: 2px;
-}
-.tableFilters input:focus {
-  width: 350px;
-}
-
 .background {
   background-color: white;
   margin-top: 12px;

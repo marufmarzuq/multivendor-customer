@@ -14,7 +14,7 @@ import {
 import { RiFileCopyLine } from "react-icons/ri";
 import DragNdrop from "./dragNdrop/DragNdrop";
 
-const OrderModal = ({ show, setShow }) => {
+const OrderModal = ({ show, setShow, values, imageFor }) => {
   let [files, setFiles] = useState([]);
   const [view, setView] = useState("select");
   const [currIndex, setCurrIndex] = useState(null);
@@ -25,7 +25,11 @@ const OrderModal = ({ show, setShow }) => {
 
   const submitFiles = () => {
     setShow(!show);
-    console.log(files);
+    values[imageFor] = files[0]?.name;
+  };
+  const selectFile = (file) => {
+    values[imageFor] = file.name;
+    setShow(!show);
   };
 
   return (
@@ -77,13 +81,20 @@ const OrderModal = ({ show, setShow }) => {
                 </div>
                 <div className="uploaded-files-container mb-1">
                   {uploadedFiles.map((file, index) => (
-                    <div key={index} className="single-uploaded-file">
+                    <div
+                      style={{ cursor: "pointer" }}
+                      name="shopLogo"
+                      id="shopLogo"
+                      onClick={() => selectFile(file)}
+                      key={index}
+                      className="single-uploaded-file"
+                    >
                       <div className="file-img-container">
                         <img src={file.img} alt="" />
                       </div>
                       <div className="file-name">{file.name}</div>
                       <div className="file-size">{file.size}</div>
-                      <div
+                      {/* <div
                         className="file-options"
                         onClick={() => handleOptions(index)}
                       >
@@ -110,7 +121,7 @@ const OrderModal = ({ show, setShow }) => {
                             </div>
                           )}
                         </div>
-                      </div>
+                      </div> */}
                     </div>
                   ))}
                 </div>
