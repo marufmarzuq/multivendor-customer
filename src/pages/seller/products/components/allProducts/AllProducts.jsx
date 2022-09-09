@@ -17,8 +17,8 @@ const AllProducts = () => {
 	const [search, setSearch]     = useState('');
 
   useEffect(() => {
-    // getApi("products.json", setProducts);
-    getApi("seller/products?search_value="+`${search}`+"&sort_by=price_high_to_low&per_page="+`${perPage}`+"&page="+`${currentPage}`, setProducts);
+		getApi(`products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`, setProducts);
+
   },[]);
 
 	const handlePageClick = (event) => {
