@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
 import { setProducts } from "../../../../../redux/slices/seller/products";
 import ReactPaginate from 'react-paginate';
+import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 
 const AllDigitalProducts = () => {
   const { products , total , per_page ,loading, error } = useSelector((state) => state.productSlice);
@@ -67,7 +68,7 @@ const AllDigitalProducts = () => {
 
         <section>
 					{ error ? <h1>{error}</h1> : ""}
-					{loading ? ( <h3>Loading</h3>)
+					{loading ? ( <SimpleLoading/> )
 					: (
 						<Fragment>
 							<section>

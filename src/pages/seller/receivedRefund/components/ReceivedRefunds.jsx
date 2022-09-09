@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setReceivedRefunds } from "../../../../redux/slices/seller/refunds";
 import ReactPaginate from 'react-paginate';
+import SimpleLoading from "../../../../common/loading/SimpleLoading";
 
 const ReceivedRefunds = () => {
 	const { receivedRefunds , total , per_page ,loading, error } = useSelector((state) => state.receivedRefundsSlice);
@@ -64,7 +65,7 @@ const ReceivedRefunds = () => {
               </tr>
             </thead>
 						{ error ? <h1>{error}</h1> : ""}
-						{loading ? ( <tbody><tr><td>Loading</td></tr></tbody> )
+						{loading ? ( <tbody><tr><td><SimpleLoading/></td></tr></tbody> )
 						: (
 							<tbody>
 							{ receivedRefunds.length > 0 &&

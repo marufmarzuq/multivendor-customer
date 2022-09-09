@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setWishlist } from "../../../../redux/slices/seller/products";
 import ReactPaginate from 'react-paginate';
+import SimpleLoading from "../../../../common/loading/SimpleLoading";
 
 const WishlistCom = () => {
 	const { wishlist , total , per_page ,loading, error} = useSelector((state) => state.wishlistSlice);
@@ -50,7 +51,7 @@ const WishlistCom = () => {
           </div>
         </section>
 				{ error ? <h1>{error}</h1> : ""}
-				{loading ? ( <h3>Loading</h3>)
+				{loading ? ( <SimpleLoading/> )
 				: (
 				<section>
 						{ wishlist.length > 0 &&

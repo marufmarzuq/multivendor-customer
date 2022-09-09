@@ -5,6 +5,7 @@ import reviewsStyle from "./productReviews.module.css";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
 import ReactPaginate from 'react-paginate';
+import SimpleLoading from "../../../common/loading/SimpleLoading";
 
 const ProductReviews = () => {
 
@@ -58,7 +59,7 @@ const ProductReviews = () => {
               </tr>
             </thead>
 						{ error ? <h1>{error}</h1> : ""}
-						{loading ? ( <h3>Loading</h3>)
+						{loading ? ( <SimpleLoading/> )
 						: (
 						<Fragment>
 							<tbody>

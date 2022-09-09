@@ -5,6 +5,9 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
 import { setCommissionHis } from "../../../redux/slices/seller/payments";
 import ReactPaginate from 'react-paginate';
+import DateRangeSelector from "../../../common/ui/dateRangeSelector";
+import { FiFilter } from "react-icons/fi";
+import SimpleLoading from "../../../common/loading/SimpleLoading";
 
 const CommissionHistory = () => {
 	const { commissionHis ,loading,total,per_page, error } = useSelector((state) => state.commissionHisSlice);
@@ -29,6 +32,12 @@ const CommissionHistory = () => {
       <div className={`${commissionStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 py-2 pt-3">Commission History</h5>
+          <div>
+              <DateRangeSelector />
+              <button className="table-filter-btn">
+                <FiFilter />
+              </button>
+          </div>
         </section>
 
         <section className={`px-4 ${commissionStyle.tableData}`}>
@@ -53,7 +62,7 @@ const CommissionHistory = () => {
               </tr>
             </thead>
 						{ error ? <h1>{error}</h1> : ""}
-						{loading ? ( <tbody><tr><td>Loading</td></tr></tbody> )
+						{loading ? ( <tbody><tr><td><SimpleLoading/></td></tr></tbody> )
 						: (
 						commissionHis.length > 0 &&
 							<tbody>

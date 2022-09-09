@@ -6,7 +6,7 @@ import orderListStyle from "./orderList.module.css";
 import PdfModal from "../../../../../common/pdfModal/PdfModal";
 import OrderModal from "../orderModal/OrderModal";
 import ReactPaginate from 'react-paginate';
-import SimpleLoading from "../../../../../pages/SimpleLoading";
+import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import { API_URL } from "../../../services/Api/api";
 import authHeader from "../../../services/auth-header";
 import { useDebounce } from "../../../hooks/useDebounce";
@@ -21,7 +21,7 @@ const OrderList = () => {
 	const [total, setTotal] 				= useState(0);
 	const debouncedSearchTerm               = useDebounce(orderSearch, 500);
 
-	let limit = 10;	
+	let limit = 10;
 
     useEffect(() => {
 		setLoading(true);

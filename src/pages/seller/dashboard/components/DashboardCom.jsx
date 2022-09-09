@@ -8,6 +8,7 @@ import { Table } from "react-bootstrap";
 import SaleHistory from "./SaleHistory";
 import { API_URL } from "../../services/Api/api";
 import authHeader from "../../services/auth-header";
+import SimpleLoading from "../../../../common/loading/SimpleLoading";
 
 const DashboardCom = () => {
 	const [allData, setData] = useState({});
@@ -306,7 +307,7 @@ const DashboardCom = () => {
   return (
     <Fragment>
       <div className="px-4 py-2">
-			{ loading ? <h3>Loading...</h3>
+			{ loading ? <SimpleLoading/>
 				:(
 				<Fragment>
 				{

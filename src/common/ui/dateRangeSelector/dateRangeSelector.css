@@ -1,0 +1,18 @@
+.DateInput_input {
+  font-weight: 400 !important;
+  font-family: "Poppins" !important;
+  font-size: 15px !important;
+  line-height: 16px !important;
+  color: #555 !important;
+  background-color: #fff !important;
+  width: 100%;
+  padding: 10px 11px 8px !important;
+  border-bottom: 2px solid transparent;
+}
+.DateRangePickerInput_clearDates_default:focus,
+.DateRangePickerInput_clearDates_default:hover {
+  background: none !important;
+}
+.DateInput {
+  width: 110px !important;
+}
