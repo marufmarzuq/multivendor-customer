@@ -6,6 +6,7 @@ import { getApi } from "../../../../api/apiCall";
 import { setWishlist } from "../../../../redux/slices/seller/products";
 import ReactPaginate from 'react-paginate';
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
+import Select from "react-select";
 
 const WishlistCom = () => {
 	const { wishlist , total , per_page ,loading, error} = useSelector((state) => state.wishlistSlice);
@@ -32,6 +33,11 @@ const WishlistCom = () => {
       <div className={` ms-4 ${wishlistStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 pt-3 pb-3">Wishlist</h5>
+					<input
+						type="text"
+						className="table-search-input"
+						placeholder="Search product by name"
+					/>
         </section>
 
         <section>
@@ -82,6 +88,12 @@ const WishlistCom = () => {
 								}
 							</Fragment>
 						<div className="d-flex justify-content-end pe-3">
+							<Select
+								options={options}
+								className={""}
+								defaultValue={{ label: 10, value: 10 }}
+								onChange={(e) => setPerPage(e.value)}
+							/>
 							<ReactPaginate
 								breakLabel="..."
 								nextLabel="Next >"

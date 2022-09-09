@@ -10,6 +10,7 @@ import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import { API_URL } from "../../../services/Api/api";
 import authHeader from "../../../services/auth-header";
 import { useDebounce } from "../../../hooks/useDebounce";
+import Select from "react-select";
 
 const OrderList = () => {
   	const [show, setShow] 					= useState(false);
@@ -20,6 +21,7 @@ const OrderList = () => {
 	const [loading, setLoading] 			= useState(false);
 	const [total, setTotal] 				= useState(0);
 	const debouncedSearchTerm               = useDebounce(orderSearch, 500);
+	const [perPage, setPerPage] = useState(10);
 
 	let limit = 10;
 
@@ -50,7 +52,12 @@ const OrderList = () => {
 			setCurrentItems(response?.data?.data);
 		})
 	};
-  
+	const options = [
+		{ value: '5', label: '5' },
+		{ value: '10', label: '10' },
+		{ value: '15', label: '15' },
+		{ value: '20', label: '20' }
+	]
 	return (
 		<Fragment>
 		<div className={`${orderListStyle.background}`}>
@@ -150,6 +157,12 @@ const OrderList = () => {
 					</Fragment>
 				)}
 			<div className="d-flex justify-content-end pe-3">
+				<Select
+					options={options}
+					className={""}
+					defaultValue={{ label: 10, value: 10 }}
+					onChange={(e) => setPerPage(e.value)}
+				/>
 				<ReactPaginate
 					breakLabel="..."
 					nextLabel="Next 🡢"

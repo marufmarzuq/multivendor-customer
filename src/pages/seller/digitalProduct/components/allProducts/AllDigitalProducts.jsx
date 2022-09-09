@@ -8,6 +8,7 @@ import { getApi } from "../../../../../api/apiCall";
 import { setProducts } from "../../../../../redux/slices/seller/products";
 import ReactPaginate from 'react-paginate';
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
+import Select from "react-select";
 
 const AllDigitalProducts = () => {
   const { products , total , per_page ,loading, error } = useSelector((state) => state.productSlice);
@@ -33,8 +34,15 @@ const AllDigitalProducts = () => {
   return (
     <Fragment>
       <div className={`${allProductsStyle.background}`}>
-        <section>
-          <h5 className="px-md-4 px-3  pt-3">All Digital Products</h5>
+				<section>
+            <h5 className="px-md-4 px-3 py-2 pt-3">All Digital Products</h5>
+            <div className={allProductsStyle.tableFilters}>
+              <input
+                type="text"
+                className="table-search-input"
+                placeholder="Search product by name"
+              />
+            </div>
         </section>
 
         <section>
@@ -137,6 +145,12 @@ const AllDigitalProducts = () => {
 							})}
 							</section>
 							<div className="d-flex justify-content-end pe-3">
+									<Select
+										options={options}
+										className={allProductsStyle.searchSelect}
+										defaultValue={{ label: 10, value: 10 }}
+										onChange={(e) => setPerPage(e.value)}
+									/>
 									<ReactPaginate
 										breakLabel="..."
 										nextLabel="Next >"

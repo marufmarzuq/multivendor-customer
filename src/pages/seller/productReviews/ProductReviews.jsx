@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
 import ReactPaginate from 'react-paginate';
 import SimpleLoading from "../../../common/loading/SimpleLoading";
+import Select from "react-select";
 
 const ProductReviews = () => {
 
@@ -32,6 +33,11 @@ const ProductReviews = () => {
       <div className={`${reviewsStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 py-2 pt-3">Product Reviews</h5>
+					<input
+						type="text"
+						className="table-search-input"
+						placeholder="Search product by name"
+					/>
         </section>
 
         <section className={`px-4 ${reviewsStyle.tableData}`}>
@@ -97,7 +103,15 @@ const ProductReviews = () => {
 								)
 								})}
 							</tbody>
-							<div className="d-flex justify-content-end pe-3">
+						</Fragment>
+            )}
+            <div className="d-flex justify-content-end pe-3">
+								<Select
+									options={options}
+									className={""}
+									defaultValue={{ label: 10, value: 10 }}
+									onChange={(e) => setPerPage(e.value)}
+								/>
 								<ReactPaginate
 									breakLabel="..."
 									nextLabel="Next >"
@@ -109,9 +123,7 @@ const ProductReviews = () => {
 									pageClassName="page__count"
 									activeLinkClassName="active"
 								/>
-							</div>
-						</Fragment>
-            )}
+						</div>
           </Table>
         </section>
       </div>
