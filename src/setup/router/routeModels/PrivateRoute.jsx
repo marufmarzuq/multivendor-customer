@@ -1,11 +1,11 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import AuthService from "../../../pages/seller/services/auth.service";
+import { loadFromLocalStorage } from "../../../utils/manageLocalStorage";
 
 const PrivateRoutes  = () => {
-    let auth = AuthService.getCurrentUser();
+    let user = loadFromLocalStorage();
     return (
-        auth ? <Outlet/> : <Navigate to='/login'/>
+        user ? <Outlet/> : <Navigate to='/login'/>
     )
 }
 

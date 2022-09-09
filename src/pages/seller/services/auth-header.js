@@ -1,10 +1,12 @@
+import { loadFromLocalStorage } from "../../../utils/manageLocalStorage";
+
 export default function authHeader(){
     if (typeof window !== 'undefined') {
         // Perform localStorage action
-        const userStr = localStorage.getItem('markutosSaler');
+        const userStr = loadFromLocalStorage();
         let user = null;
         if (userStr)
-            user = JSON.parse(userStr);
+            user = (userStr);
         if (user && user) {
             return 'Bearer ' + user.toString();
         } else {
