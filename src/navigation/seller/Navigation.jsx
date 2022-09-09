@@ -109,7 +109,6 @@ const Navigation = ({ toggleF, toggle }) => {
             </NavLink>
           </li>
           <li>
-            {/* <NavLink onClick={() => closeNav()} to=""> */}
             <div onClick={() => collapse("products")}>
               <RiVipDiamondLine className={navigationStyle.icon_green} />
               <span className="ps-2 ">Products</span>
@@ -356,6 +355,12 @@ const Navigation = ({ toggleF, toggle }) => {
               <span className="ps-2">Manage profile</span>
             </NavLink>
           </li>
+					<li>
+            <NavLink to="/">
+							<AiOutlineUser className={navigationStyle.icon_green} />
+              <span className="ps-2">Log Out</span>
+            </NavLink>
+            </li>
         </ul>
       </div>
     </Fragment>
