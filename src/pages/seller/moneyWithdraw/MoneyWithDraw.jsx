@@ -10,6 +10,7 @@ import ReactPaginate from 'react-paginate';
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
 import { FiFilter } from "react-icons/fi";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
+import Select from "react-select";
 
 const MoneyWithDraw = () => {
   const [show, setShow] = useState(false);
@@ -130,6 +131,12 @@ const MoneyWithDraw = () => {
           </Table>
           { moneyWithdraw.length > 0 &&
 						<div className="d-flex justify-content-end pe-3">
+							<Select
+								options={options}
+								className={""}
+								defaultValue={{ label: 10, value: 10 }}
+								onChange={(e) => setPerPage(e.value)}
+							/>
 							<ReactPaginate
 								breakLabel="..."
 								nextLabel="Next >"

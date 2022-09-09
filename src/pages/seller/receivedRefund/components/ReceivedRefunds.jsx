@@ -6,6 +6,8 @@ import { getApi } from "../../../../api/apiCall";
 import { setReceivedRefunds } from "../../../../redux/slices/seller/refunds";
 import ReactPaginate from 'react-paginate';
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
+import Select from "react-select";
+
 
 const ReceivedRefunds = () => {
 	const { receivedRefunds , total , per_page ,loading, error } = useSelector((state) => state.receivedRefundsSlice);
@@ -32,6 +34,11 @@ const ReceivedRefunds = () => {
       <div className={`${receivedRefundStyle.background}`}>
         <section>
           <h5 className="px-md-4 pt-3 px-3 py-2">Received Refund Request</h5>
+					<input
+                type="text"
+                className="table-search-input"
+                placeholder="Search product by name"
+              />
         </section>
         <section className={`px-4 ${receivedRefundStyle.tableData}`}>
           <Table borderless responsive>
@@ -126,6 +133,12 @@ const ReceivedRefunds = () => {
 						{
 						receivedRefunds.length > 0 &&
 							<div className="d-flex justify-content-end pe-3">
+								<Select
+									options={options}
+									className={""}
+									defaultValue={{ label: 10, value: 10 }}
+									onChange={(e) => setPerPage(e.value)}
+								/>
 								<ReactPaginate
 									breakLabel="..."
 									nextLabel="Next >"

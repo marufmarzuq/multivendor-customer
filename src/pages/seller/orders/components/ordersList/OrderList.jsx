@@ -13,9 +13,9 @@ import { useDebounce } from "../../../hooks/useDebounce";
 import Select from "react-select";
 
 const OrderList = () => {
-  	const [show, setShow] 					= useState(false);
-  	const [pdfShow, setPdfShow] 			= useState(false);
-  	const [currentItems, setCurrentItems]  	= useState([]);
+  const [show, setShow] 					= useState(false);
+  const [pdfShow, setPdfShow] 			= useState(false);
+  const [currentItems, setCurrentItems]  	= useState([]);
 	const [pageCount, setPageCount]         = useState(0);
 	const [orderSearch, setOrderSearch]     = useState("");
 	const [loading, setLoading] 			= useState(false);
