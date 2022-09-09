@@ -25,8 +25,6 @@ const TablePagination = () => {
     { value: 20, label: 20 },
   ];
 
-  // console.log(pageSize);
-
   return (
     <>
       {true ? (

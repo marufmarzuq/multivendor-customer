@@ -1,15 +1,16 @@
-import { useEffect,Fragment } from "react";
+import { useEffect,useState,Fragment } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import wishlistStyle from "./wishlistCom.module.css";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setWishlist } from "../../../../redux/slices/seller/products";
+import ReactPaginate from 'react-paginate';
 
 const WishlistCom = () => {
   const { wishlist , loading, error } = useSelector((state) => state.wishlistSlice);
 
   useEffect(() => {
-    getApi("wishlist.json", setWishlist);
+    getApi("wishlists", setWishlist);
   }, []);
 
   return (

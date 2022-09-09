@@ -1,0 +1,31 @@
+.blogDetailsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+.BlogInfoContainer img {
+  width: 100%;
+}
+
+.BlogInfoContainer span {
+  color: black;
+}
+
+.BlogInfoContainer a {
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.BlogInfoContainer .title {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.235);
+}
+
+@media only screen and (min-width: 768px) {
+  .blogDetailsContainer {
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+    grid-gap: 3rem;
+  }
+}
