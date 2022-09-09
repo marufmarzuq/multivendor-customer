@@ -7,6 +7,9 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
 import { setMoneyWithdraw } from "../../../redux/slices/seller/payments";
 import ReactPaginate from 'react-paginate';
+import DateRangeSelector from "../../../common/ui/dateRangeSelector";
+import { FiFilter } from "react-icons/fi";
+import SimpleLoading from "../../../common/loading/SimpleLoading";
 
 const MoneyWithDraw = () => {
   const [show, setShow] = useState(false);
@@ -15,7 +18,6 @@ const MoneyWithDraw = () => {
 	const [perPage, setPerPage] = useState(per_page);
 	const [search, setSearch]     = useState(null);
   useEffect(() => {
-    // getApi("moneyWithdraw.json", setMoneyWithdraw);
 		getApi(`withdrawal-requests?per_page=${perPage}&page=${currentPage}`, setMoneyWithdraw);
 		// getApi(`payment-histories?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`, setMoneyWithdraw);
   }, []);
@@ -64,6 +66,12 @@ const MoneyWithDraw = () => {
 
         <section>
           <h3 className="px-md-4 px-3 py-2 pt-3">Withdraw Request history </h3>
+					<div>
+              <DateRangeSelector />
+              <button className="table-filter-btn">
+                <FiFilter />
+              </button>
+          </div>
         </section>
 
         <section className={`px-4 ${withdrawStyle.tableData}`}>
@@ -88,7 +96,7 @@ const MoneyWithDraw = () => {
               </tr>
             </thead>
 						{ error ? <h1>{error}</h1> : ""}
-						{loading ? ( <tbody><tr><td>Loading</td></tr></tbody> )
+						{loading ? ( <tbody><tr><td><SimpleLoading/></td></tr></tbody> )
 						: (
             <Fragment>
 						{ moneyWithdraw.length > 0 &&
