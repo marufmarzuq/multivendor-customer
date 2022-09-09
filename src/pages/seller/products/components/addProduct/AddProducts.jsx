@@ -49,10 +49,7 @@ const AddProducts = () => {
         </div>
       </div>
       <div className="mt-4">
-        <button className="btn btn-lg btn-outline-success">
-          {" "}
-          Save Product{" "}
-        </button>
+        <button className="btn btn-lg btn-outline-success">Save Product</button>
       </div>
     </div>
   );
