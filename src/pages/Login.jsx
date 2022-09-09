@@ -22,6 +22,7 @@ const Login = () => {
 	const [loading, setLoading]             = useState(false);
   	const notify                            = (text) => toast(text);
 	const navigate 							= useNavigate();
+	const [checked, setChecked] 			= useState(true);
 
     const { register, handleSubmit } = useForm({
         resolver: yupResolver(schema),
@@ -30,7 +31,7 @@ const Login = () => {
     const submitForm = (data) => {
 		setLoading(true);
         const { email, password } = data;
-        AuthService.login(email, password)
+        AuthService.login(email, password, checked ? 1 : 0)
             .then((response) => {
                     localStorage.setItem("markutosSaler", JSON.stringify(response?.access_token));
                     navigate("/seller");
@@ -118,6 +119,8 @@ const Login = () => {
 								type="checkbox"
 								className="form-check-input"
 								id="exampleCheck1"
+								defaultChecked={checked}
+        						onChange={() => setChecked(!checked)}
 							/>
 							<label class=" ps-2 mt-1" for="exampleCheck1">
 								Remember Me

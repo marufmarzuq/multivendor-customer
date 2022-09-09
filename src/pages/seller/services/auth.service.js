@@ -1,10 +1,11 @@
 import axios from "axios";
 import { API_URL } from "./Api/api";
 class AuthService {
-	async login(email, password) {
+	async login(email, password, remember_me) {
 		const response = await axios.post(API_URL + "/login", {
 			email,
-			password
+			password, 
+			remember_me
 		});
 		if (response.data.token) {
 			localStorage.setItem("markutosSaler", JSON.stringify(response.data));

@@ -1,30 +1,41 @@
-import { Fragment, useEffect } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
 import Select from "react-select";
 import { BiCopy, BiEdit, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import TablePagination from "../../../../../common/tablePagination/TablePagination";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
 import { setProducts } from "../../../../../redux/slices/seller/products";
+import ReactPaginate from "react-paginate";
+import TablePagination from "../../../../../common/tablePagination/TablePaginationcopy";
 
 const AllProducts = () => {
-  const { products, loading, error } = useSelector(
+  const { products, total, per_page, loading, error } = useSelector(
     (state) => state.productSlice
   );
+  const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setPerPage] = useState(per_page);
+  const [search, setSearch] = useState(null);
 
   useEffect(() => {
-    getApi("products.json", setProducts);
-    // getApi("v1/seller/products/search=''", setProducts);
+    getApi(
+      `products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
+      setProducts
+    );
   }, []);
 
+  const handlePageClick = (event) => {
+    setCurrentPage(event.selected + 1);
+  };
   const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
+    { value: "5", label: "5" },
+    { value: "10", label: "10" },
+    { value: "15", label: "15" },
+    { value: "20", label: "20" },
   ];
 
+  console.log(perPage);
   return (
     <Fragment>
       <div>
@@ -36,6 +47,7 @@ const AllProducts = () => {
                 options={options}
                 className={allProductsStyle.searchSelect}
                 placeholder="Sort By"
+                onChange={(e) => setPerPage(e.value)}
               />
 
               <input
@@ -45,6 +57,34 @@ const AllProducts = () => {
               />
             </div>
           </section>
+          {/* <section>
+            <div className={`row px-0 mx-0 ps-3  ${allProductsStyle.header}`}>
+              <div className={`col-2 col-lg-1 `}>
+                <p>#</p>
+              </div>
+              <div className={`col-6 col-lg-2`}>
+                <p>Name</p>
+              </div>
+              <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+                <p>Category</p>
+              </div>
+              <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
+                <p>Current Qty</p>
+              </div>
+              <div className={`col-4 col-lg-2 `}>
+                <p> Base Price</p>
+              </div>
+              <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+                <p> Published</p>
+              </div>
+
+              <input
+                type="text"
+                className="table-search-input"
+                placeholder="Search product by name"
+              />
+            </div>
+          </section> */}
           <section>
             <div className={`row px-0 mx-0 ps-3  ${allProductsStyle.header}`}>
               <div className={`col-2 col-lg-1 `}>
@@ -66,10 +106,6 @@ const AllProducts = () => {
                 <p> Published</p>
               </div>
 
-              <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-                <p> Featured</p>
-              </div>
-
               <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
                 <p> Options</p>
               </div>
@@ -79,10 +115,10 @@ const AllProducts = () => {
           {loading ? (
             <h3>Loading</h3>
           ) : (
-            <Fragment>
-              <section>
-                {products.length > 0 &&
-                  products.map((item, key) => {
+            <section>
+              {products.length > 0 && (
+                <Fragment>
+                  {products.map((item, key) => {
                     return (
                       <div className="row px-0 mx-0 ps-3 mt-3 pt-2" key={key}>
                         <div className={`col-2 col-lg-1 `}>
@@ -95,7 +131,7 @@ const AllProducts = () => {
                           className={`col-4 col-lg-1 ${allProductsStyle.hide}`}
                         >
                           {item.category}
-                          <div>Sub category : {item.sub_category} </div>
+                          <div> Sub category : {item.sub_category} </div>
                         </div>
                         <div
                           className={`col-4 col-lg-2 ${allProductsStyle.hide}`}
@@ -154,10 +190,27 @@ const AllProducts = () => {
                       </div>
                     );
                   })}
-              </section>
-              <TablePagination />
-            </Fragment>
+                  <div className="d-flex justify-content-end pe-3">
+                    <ReactPaginate
+                      breakLabel="..."
+                      nextLabel="Next >"
+                      onPageChange={handlePageClick}
+                      pageRangeDisplayed={per_page}
+                      pageCount={total}
+                      previousLabel="< Previous"
+                      containerClassName="pagination"
+                      pageClassName="page__count"
+                      activeLinkClassName="active"
+                    />
+                  </div>
+                </Fragment>
+              )}
+            </section>
           )}
+
+          <section>
+            <TablePagination />
+          </section>
         </div>
       </div>
     </Fragment>
