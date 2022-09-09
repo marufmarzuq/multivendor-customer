@@ -20,6 +20,7 @@ const OrderList = () => {
 	const [loading, setLoading] 			= useState(false);
 	const [total, setTotal] 				= useState(0);
 	const debouncedSearchTerm               = useDebounce(orderSearch, 500);
+	console.log("items", currentItems);
 
 	let limit = 10;	
 
@@ -50,6 +51,27 @@ const OrderList = () => {
 			setCurrentItems(response?.data?.data);
 		})
 	};
+
+	useEffect(() => {
+        if (debouncedSearchTerm) {
+            orderListSearch(debouncedSearchTerm);
+        } else {
+            setCurrentItems([]);
+        }
+    }, [debouncedSearchTerm]);
+
+	const orderListSearch = (query) => {
+		setLoading(true);
+		axios.get(`${API_URL}/orders?search_value=${query}`, {
+            headers: {
+                "Authorization": authHeader(),
+                "Content-Type": "multipart/form-data",
+            }
+        }).then((response) => {
+			setCurrentItems(response?.data?.data);
+			setLoading(false);
+		}).catch(error => {})
+	}
   
 	return (
 		<Fragment>
@@ -102,50 +124,51 @@ const OrderList = () => {
 				: (
 					<Fragment>
 						<section>
-						{ currentItems.length > 0 &&
+						{ currentItems.length > 0 ? (
 							currentItems.map((item, key) => {
 								return (
-									item?.customer_name?.toLocaleLowerCase().includes(orderSearch.toLowerCase()) && (
-										<div className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-4 pt-2 `} key={key}>
-											<div>
-												<p>{item.id}</p>
-											</div>
-											<div onClick={() => setShow(!show)}>
-												<p className={orderListStyle.code}>{item.code}</p>
-											</div>
-											<div className={` ${orderListStyle.hide}`}>
-												<p>{item.num_of_product}</p>
-											</div>
-											<div className={` ${orderListStyle.hide}`}>
-												<p>{item.grand_total} </p>
-											</div>
-											<div className={`${orderListStyle.hide}`}>
-												<span> {item.customer_name} </span>
-											</div>
-											<div className={`text-center ${orderListStyle.hide}`}>
-												<span> {item.delivery_status} </span>
-											</div>
-											<div className="text-center">
-												<span className={orderListStyle.unpaid}>{item.payment_status}</span>
-											</div>
-											<div className="text-center">
-												<button
-													onClick={() => setShow(!show)}
-													className={orderListStyle.preview}
-												>
-													<BsEyeFill />
-												</button>
-												<button
-													onClick={() => setPdfShow(!pdfShow)}
-													className={orderListStyle.invoice}
-												>
-													<BsDownload />
-												</button>
-											</div>
+									<div className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-4 pt-2 `} key={key}>
+										<div>
+											<p>{item.id}</p>
 										</div>
-									)
+										<div onClick={() => setShow(!show)}>
+											<p className={orderListStyle.code}>{item.code}</p>
+										</div>
+										<div className={` ${orderListStyle.hide}`}>
+											<p>{item.num_of_product}</p>
+										</div>
+										<div className={` ${orderListStyle.hide}`}>
+											<p>{item.grand_total} </p>
+										</div>
+										<div className={`${orderListStyle.hide}`}>
+											<span> {item.customer_name} </span>
+										</div>
+										<div className={`text-center ${orderListStyle.hide}`}>
+											<span> {item.delivery_status} </span>
+										</div>
+										<div className="text-center">
+											<span className={orderListStyle.unpaid}>{item.payment_status}</span>
+										</div>
+										<div className="text-center">
+											<button
+												onClick={() => setShow(!show)}
+												className={orderListStyle.preview}
+											>
+												<BsEyeFill />
+											</button>
+											<button
+												onClick={() => setPdfShow(!pdfShow)}
+												className={orderListStyle.invoice}
+											>
+												<BsDownload />
+											</button>
+										</div>
+									</div>
 								)
-							})}
+							}))
+							: 
+							<p className="text-center">There is no item</p>
+						}
 						</section>
 					</Fragment>
 				)}
