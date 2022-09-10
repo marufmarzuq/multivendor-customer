@@ -1,0 +1,54 @@
+import React from "react";
+import ReactPaginate from "react-paginate";
+import Select from "react-select";
+import {
+  AiOutlineDoubleLeft,
+  AiOutlineDoubleRight,
+  AiOutlineRight,
+} from "react-icons/ai";
+import paginationStyle from "./pagination.module.css";
+const PaginationCom = ({
+  currentItem,
+  perPage,
+  pageCount,
+  currentPage,
+  options,
+  setPerPage,
+  setCurrentPage,
+}) => {
+  return (
+    <>
+      {currentItem.length > 0 && (
+        <div className={paginationStyle.paginationContainer}>
+          <Select
+            options={options}
+            className={paginationStyle.paginationSelect}
+            defaultValue={{ label: 10, value: 10 }}
+            onChange={(e) => setPerPage(e.value)}
+          />
+
+          <ReactPaginate
+            previousLinkClassName={paginationStyle.prevBtn}
+            nextLinkClassName={paginationStyle.nextBtn}
+            activeClassName={paginationStyle.activeBtn}
+            breakLabel="..."
+            nextLabel={<AiOutlineDoubleRight />}
+            marginPagesDisplayed={2}
+            onPageChange={(e) => {
+              setCurrentPage(e.selected + 1);
+            }}
+            pageRangeDisplayed={perPage}
+            pageCount={Math.ceil(pageCount)}
+            previousLabel={<AiOutlineDoubleLeft />}
+            containerClassName="pagination"
+            pageClassName="page__count"
+            activeLinkClassName="active"
+            forcePage={currentPage - 1}
+          />
+        </div>
+      )}
+    </>
+  );
+};
+
+export default PaginationCom;
