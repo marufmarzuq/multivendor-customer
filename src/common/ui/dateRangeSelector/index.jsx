@@ -9,8 +9,6 @@ const DateRangeSelector = ({startDate , endDate, setStartDate, setEndDate }) => 
   const handleDatesChange = ({ startDate, endDate }) => {
     setStartDate(startDate);
     setEndDate(endDate);
-    console.log(startDate);
-    console.log(endDate);
   };
   return (
     <DateRangePicker

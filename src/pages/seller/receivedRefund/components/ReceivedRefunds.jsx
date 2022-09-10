@@ -8,31 +8,27 @@ import ReactPaginate from 'react-paginate';
 import TableLoading from "../../../../common/loading/TableLoading";
 import Select from "react-select";
 import DateRangeSelector from "../../../../common/ui/dateRangeSelector";
-import { FiFilter } from "react-icons/fi";
 
 const ReceivedRefunds = () => {
-	const { receivedRefunds , total , per_page ,loading, error } = useSelector((state) => state.receivedRefundsSlice);
-	const [currentPage, setCurrentPage] = useState(1);
-	const [perPage, setPerPage] = useState(per_page);
-	const [search, setSearch]     = useState(null);
+  const { receivedRefunds, last_page, per_page, current_page , loading, error  } = useSelector((state) => state.receivedRefundsSlice);
+  const [perPage, setPerPage] = useState(per_page);
+	const [currentPage, setCurrentPage] = useState(current_page);
+  const [search, setSearch] = useState("");
 	const [startDate, setStartDate] = useState(null);
 	const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
-		// getApi(`refund-requests?search_value=${search}&sort_by=created_at&per_page=${perPage}&page=${currentPage}`, setSentRefunds);
-		getApi(`refund-requests?per_page=${perPage}`, setReceivedRefunds);
-  }, []);
+		getApi(`refund-requests?date_from=${startDate}&date_to=${endDate}&sort_by=null&per_page=${perPage}&page=${currentPage}`, setReceivedRefunds);
+  }, [perPage,currentPage,search]);
 
-	const handlePageClick = (event) => {
-		setCurrentPage(event.selected+1)
-	};
+
 	const options = [
 		{ value: '5', label: '5' },
 		{ value: '10', label: '10' },
 		{ value: '15', label: '15' },
 		{ value: '20', label: '20' }
 	]
-	
+
   return (
     <div>
       <div className={`${receivedRefundStyle.background}`}>
@@ -40,9 +36,6 @@ const ReceivedRefunds = () => {
           <h5 className="px-md-4 pt-3 px-3 py-2">Received Refund Request</h5>
 					<div>
 						<DateRangeSelector startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}/>
-						<button className="table-filter-btn">
-							<FiFilter />
-						</button>
           </div>
         </section>
         <section className={`px-4 ${receivedRefundStyle.tableData}`}>
@@ -144,17 +137,18 @@ const ReceivedRefunds = () => {
 									defaultValue={{ label: 10, value: 10 }}
 									onChange={(e) => setPerPage(e.value)}
 								/>
-								<ReactPaginate
-									breakLabel="..."
-									nextLabel="Next >"
-									onPageChange={handlePageClick}
-									pageRangeDisplayed={per_page}
-									pageCount={total}
-									previousLabel="< Previous"
-									containerClassName="pagination"
-									pageClassName="page__count"
-									activeLinkClassName="active"
-								/>
+									<ReactPaginate
+										breakLabel="..."
+										nextLabel="Next >"
+										onPageChange={(e)=>{setCurrentPage(e.selected + 1)}}
+										pageRangeDisplayed={per_page}
+										pageCount={Math.ceil(last_page)}
+										previousLabel="< Previous"
+										containerClassName="pagination"
+										pageClassName="page__count"
+										activeLinkClassName="active"
+										forcePage={currentPage-1}
+									/>
 							</div>
 						}
         </section>
