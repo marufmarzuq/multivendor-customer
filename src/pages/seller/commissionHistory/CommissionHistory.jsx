@@ -102,7 +102,7 @@ const CommissionHistory = () => {
 									nextLabel="Next >"
 									onPageChange={(e)=>setCurrentPage(e.selected+1)}
 									pageRangeDisplayed={per_page}
-									pageCount={total}
+									pageCount={Math.ceil(total) }
 									previousLabel="< Previous"
 									containerClassName="pagination"
 									pageClassName="page__count"
