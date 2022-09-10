@@ -48,34 +48,6 @@ const AllProducts = () => {
               />
             </div>
           </section>
-          {/* <section>
-            <div className={`row px-0 mx-0 ps-3  ${allProductsStyle.header}`}>
-              <div className={`col-2 col-lg-1 `}>
-                <p>#</p>
-              </div>
-              <div className={`col-6 col-lg-2`}>
-                <p>Name</p>
-              </div>
-              <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-                <p>Category</p>
-              </div>
-              <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
-                <p>Current Qty</p>
-              </div>
-              <div className={`col-4 col-lg-2 `}>
-                <p> Base Price</p>
-              </div>
-              <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
-                <p> Published</p>
-              </div>
-
-              <input
-                type="text"
-                className="table-search-input"
-                placeholder="Search product by name"
-              />
-            </div>
-          </section> */}
           <section>
             <div className={`row px-0 mx-0 ps-3  ${allProductsStyle.header}`}>
               <div className={`col-2 col-lg-1 `}>
