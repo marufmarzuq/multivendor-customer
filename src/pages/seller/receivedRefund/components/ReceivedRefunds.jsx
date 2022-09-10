@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setReceivedRefunds } from "../../../../redux/slices/seller/refunds";
 import ReactPaginate from 'react-paginate';
-import SimpleLoading from "../../../../common/loading/SimpleLoading";
+import TableLoading from "../../../../common/loading/TableLoading";
 import Select from "react-select";
 import DateRangeSelector from "../../../../common/ui/dateRangeSelector";
 import { FiFilter } from "react-icons/fi";
@@ -81,7 +81,7 @@ const ReceivedRefunds = () => {
               </tr>
             </thead>
 						{ error ? <h1>{error}</h1> : ""}
-						{loading ? ( <tbody><tr><td><SimpleLoading/></td></tr></tbody> )
+						{loading ? ( <TableLoading/> )
 						: (
 							<tbody>
 							{ receivedRefunds.length > 0 &&
