@@ -5,8 +5,8 @@ import { useState } from "react";
 import orderListStyle from "./orderList.module.css";
 import PdfModal from "../../../../../common/pdfModal/PdfModal";
 import OrderModal from "../orderModal/OrderModal";
-import ReactPaginate from 'react-paginate';
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
+import ReactPaginate from 'react-paginate';
 import { API_URL } from "../../../services/Api/api";
 import authHeader from "../../../services/auth-header";
 import { useDebounce } from "../../../../../hooks/useDebounce";
@@ -22,10 +22,12 @@ const OrderList = () => {
 	const debouncedSearchTerm         = useDebounce(search, 500);
 	const [perPage, setPerPage]       = useState(10);
 	const [currentPage, setCurrentPage] = useState(1);
+	const [getPayStatus, setPayStatus] = useState('');
+	const [getDeliveryStatus, setDeliveryStatus] = useState('');
 
     useEffect(() => {
 		setLoading(true);
-		axios.get(`${API_URL}/orders?search_value=${search}&sort_payment=&sort_delivery=&per_page=${perPage}&page=${currentPage}`, {
+		axios.get(`${API_URL}/orders?search_value=${search}&sort_payment=${getPayStatus}&sort_delivery=${getDeliveryStatus}&per_page=${perPage}&page=${currentPage}`, {
 			headers: {
 			"Authorization": authHeader(),
 			}
@@ -36,13 +38,22 @@ const OrderList = () => {
 			setPerPage(response?.data?.per_page);
 			setPageCount(response?.data?.last_page);
 		})
-    }, [perPage,currentPage,search]);
+    }, [perPage,currentPage,search,getPayStatus,getDeliveryStatus]);
 
 	const options = [
 		{ value: '5', label: '5' },
 		{ value: '10', label: '10' },
 		{ value: '15', label: '15' },
 		{ value: '20', label: '20' }
+	]
+	const payStatus = [
+		{ value: 'paid', label: 'Paid' },
+		{ value: 'unpaid', label: 'UnPaid' },
+		{ value: 'refund', label: 'Refund' },
+	]
+	const deliveryStatus = [
+		{ value: 'delivered', label: 'Delivered' },
+		{ value: 'reject', label: 'Reject' },
 	]
 
 	useEffect(() => {
@@ -60,6 +71,18 @@ const OrderList = () => {
 				<div className="table-top-header d-flex justify-content-between">
 					<div className="table-title"><h5 className="px-md-4 px-3 pt-3 py-2">Orders</h5></div>
 					<div className="table-filters px-md-4 px-3 pt-3 py-2 tableFilters">
+						<Select
+							options={payStatus}
+							className={""}
+							placeholder={"Sort by Payment Status"}
+							onChange={(e) => setPayStatus(e.value)}
+						/>
+						<Select
+							options={deliveryStatus}
+							className={""}
+							placeholder={"Sort by Delivery Status"}
+							onChange={(e) => setDeliveryStatus(e.value)}
+						/>
 						<input
 							type="text"
 							className="table-search-input"

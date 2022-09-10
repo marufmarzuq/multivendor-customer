@@ -2,10 +2,8 @@ import React, { Fragment } from "react";
 import purchaseStyle from "./purchaseHis.module.css";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { BsDownload, BsEyeFill } from "react-icons/bs";
-
 import { useState } from "react";
 import OrderModal from "../orderModal/OrderModal";
-
 import PdfModal from "../../../../../common/pdfModal/PdfModal";
 
 const PurchaseHis = () => {
