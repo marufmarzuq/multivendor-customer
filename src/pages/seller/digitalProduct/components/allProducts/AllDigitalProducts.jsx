@@ -11,7 +11,7 @@ import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import Select from "react-select";
 
 const AllDigitalProducts = () => {
-  const { products , total , per_page ,loading, error } = useSelector((state) => state.productSlice);
+  const { products , last_page , per_page ,loading, error } = useSelector((state) => state.productSlice);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(per_page);
 	const [search, setSearch]     = useState(null);
@@ -156,7 +156,7 @@ const AllDigitalProducts = () => {
 										nextLabel="Next >"
 										onPageChange={handlePageClick}
 										pageRangeDisplayed={per_page}
-										pageCount={total}
+										pageCount={last_page}
 										previousLabel="< Previous"
 										containerClassName="pagination"
 										pageClassName="page__count"

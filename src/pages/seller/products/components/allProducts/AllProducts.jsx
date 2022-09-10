@@ -11,29 +11,42 @@ import ReactPaginate from "react-paginate";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 
 const AllProducts = () => {
-  const { products, total, per_page, loading, error } = useSelector(
-    (state) => state.productSlice
-  );
-  const [currentPage, setCurrentPage] = useState(1);
+  const { products, last_page, per_page, current_page , loading, error  } = useSelector((state) => state.productSlice);
   const [perPage, setPerPage] = useState(per_page);
-  const [search, setSearch] = useState(null);
+	const [currentPage, setCurrentPage] = useState(current_page);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     getApi(
       `products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
       setProducts
     );
-  }, []);
+  }, [perPage]);
 
   const handlePageClick = (event) => {
-    setCurrentPage(event.selected + 1);
+		var current_page = event.selected + 1;
+		setCurrentPage(current_page);
+		getApi(
+				`products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${current_page}`,
+				setProducts
+			);
   };
+
+	const listSearch = (search) => {
+		setSearch(search);
+		getApi(
+			`products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
+			setProducts
+		);
+	}
+
   const options = [
     { value: "5", label: "5" },
     { value: "10", label: "10" },
     { value: "15", label: "15" },
     { value: "20", label: "20" },
   ];
+
   return (
     <Fragment>
       <div>
@@ -45,6 +58,8 @@ const AllProducts = () => {
                 type="text"
                 className="table-search-input"
                 placeholder="Search product by name"
+								value={search}
+								onChange={(e) => listSearch(e.target.value)}
               />
             </div>
           </section>
@@ -164,11 +179,12 @@ const AllProducts = () => {
                       nextLabel="Next >"
                       onPageChange={handlePageClick}
                       pageRangeDisplayed={per_page}
-                      pageCount={total}
+                      pageCount={last_page}
                       previousLabel="< Previous"
                       containerClassName="pagination"
                       pageClassName="page__count"
                       activeLinkClassName="active"
+                      forcePage={currentPage-1}
                     />
                   </div>
                 </Fragment>
