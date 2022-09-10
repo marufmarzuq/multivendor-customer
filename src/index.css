@@ -54,3 +54,25 @@ h3.confi-widget-title {
 .color-main {
   color: #4782da;
 }
+
+.tableFilters {
+  display: flex;
+  justify-content: end;
+}
+.tableFilters input {
+  width: 220px;
+  margin-right: 1rem;
+  height: auto;
+  margin-bottom: 1rem;
+  padding: 7px;
+  transition: all 0.3s;
+}
+.searchSelect {
+  width: 115px;
+  margin-right: 1rem;
+  height: 45px;
+  padding: 2px;
+}
+.tableFilters input:focus {
+  width: 300px;
+}

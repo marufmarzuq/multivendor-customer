@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./ProductImages.css";
 import UploadFilesModal from "../../../UploadFiles/UploadFilesModal";
-const SettingBanner = () => {
+const SettingBanner = ({ values, handleSubmit }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -18,7 +18,7 @@ const SettingBanner = () => {
             <div>
               <div onClick={() => setShow(!show)} className="custom-browse">
                 <div>Browse</div>
-                <div>Choose File</div>
+                <div> {values.sliders ? values.sliders : "Choose File"} </div>
               </div>
               <span className="helper-text">
                 We had to limit height to maintian consistancy. In some device
@@ -27,10 +27,22 @@ const SettingBanner = () => {
             </div>
           </div>
 
-          <UploadFilesModal show={show} setShow={setShow} />
+          <UploadFilesModal
+            values={values}
+            imageFor="sliders"
+            show={show}
+            setShow={setShow}
+          />
 
           <div className="d-flex justify-content-end">
-            <div className="btn btn-success"> Save </div>
+            <button
+              type="submit"
+              onClick={() => handleSubmit()}
+              className="btn btn-success"
+            >
+              {" "}
+              Save{" "}
+            </button>
           </div>
         </div>
       </div>
