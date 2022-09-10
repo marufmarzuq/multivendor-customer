@@ -16,7 +16,6 @@ const DashboardCom = () => {
 
 	useEffect(() => {
 		setLoading(true);
-
 		axios.get(`${API_URL}/dashboard`, {
 			headers: {
 			"Authorization": authHeader(),

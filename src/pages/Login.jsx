@@ -10,6 +10,7 @@ import * as yup from "yup";
 import AuthService from "./seller/services/auth.service";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import { saveToLocalStorage } from "../utils/manageLocalStorage";
 
 
 const schema = yup.object().shape({
@@ -33,7 +34,7 @@ const Login = () => {
         const { email, password } = data;
         AuthService.login(email, password, checked ? 1 : 0)
             .then((response) => {
-                    localStorage.setItem("markutosSaler", JSON.stringify(response?.access_token));
+					saveToLocalStorage(response?.access_token);
                     navigate("/seller");
                     notify('Welcome to Markutos Saler');
                 },

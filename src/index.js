@@ -5,7 +5,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import "react-toastify/dist/ReactToastify.css";
-// import "../src/styles/sass/style.scss";
+import "../src/styles/sass/style.scss";
 import AppProviders from "./setup/providers";
 import { ToastContainer } from "react-toastify";
 
