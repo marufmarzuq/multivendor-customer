@@ -22,7 +22,7 @@ const OrderList = () => {
 	const debouncedSearchTerm         = useDebounce(search, 500);
 	const [perPage, setPerPage]       = useState(10);
 	const [currentPage, setCurrentPage] = useState(1);
-
+// console.log(perPage);
     useEffect(() => {
 		setLoading(true);
 		axios.get(`${API_URL}/orders?search_value=${search}&sort_payment=&sort_delivery=&per_page=${perPage}&page=${currentPage}`, {
@@ -31,6 +31,7 @@ const OrderList = () => {
 			}
 		}).then((response) => {
 			setLoading(false);
+			// console.log(response.data);
 			setCurrentItems(response?.data?.data);
 			setCurrentPage(response?.data?.current_page);
 			setPerPage(response?.data?.per_page);
