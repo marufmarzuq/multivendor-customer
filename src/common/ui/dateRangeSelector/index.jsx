@@ -4,14 +4,11 @@ import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
 
-const DateRangeSelector = () => {
+const DateRangeSelector = ({handleDatesChange}) => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [focusedInput, setFocusedInput] = useState(null);
-  const handleDatesChange = ({ startDate, endDate }) => {
-    setStartDate(startDate);
-    setEndDate(endDate);
-  };
+
   return (
     <DateRangePicker
       startDate={startDate}

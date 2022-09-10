@@ -15,7 +15,8 @@ const ReceivedRefunds = () => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(per_page);
 	const [search, setSearch]     = useState(null);
-
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   useEffect(() => {
 		// getApi(`refund-requests?search_value=${search}&sort_by=created_at&per_page=${perPage}&page=${currentPage}`, setSentRefunds);
 		getApi(`refund-requests?per_page=${perPage}`, setReceivedRefunds);
@@ -30,13 +31,19 @@ const ReceivedRefunds = () => {
 		{ value: '15', label: '15' },
 		{ value: '20', label: '20' }
 	]
+	const handleDatesChange = ({ startDate, endDate }) => {
+    setStartDate(startDate);
+    setEndDate(endDate);
+    console.log(startDate);
+    console.log(endDate);
+  };
   return (
     <div>
       <div className={`${receivedRefundStyle.background}`}>
         <section>
           <h5 className="px-md-4 pt-3 px-3 py-2">Received Refund Request</h5>
 					<div>
-						<DateRangeSelector />
+						<DateRangeSelector handleDatesChange={handleDatesChange}/>
 						<button className="table-filter-btn">
 							<FiFilter />
 						</button>

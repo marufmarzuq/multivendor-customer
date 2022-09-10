@@ -91,7 +91,7 @@ const OrderList = () => {
 							type="text"
 							className="table-search-input"
 							placeholder="Search by customer name"
-							value={orderSearch}  
+							value={orderSearch}
 							onChange={(e) => setOrderSearch(e.target.value)}
 						/>
 					</div>
