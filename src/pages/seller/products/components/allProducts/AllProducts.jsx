@@ -41,13 +41,6 @@ const AllProducts = () => {
           <section>
             <h5 className="px-md-4 px-3 py-2 pt-3">All Products</h5>
             <div className="tableFilters">
-              <Select
-                options={options}
-                className="searchSelect"
-                placeholder="Sort By"
-                onChange={(e) => setPerPage(e.value)}
-              />
-
               <input
                 type="text"
                 className="table-search-input"
