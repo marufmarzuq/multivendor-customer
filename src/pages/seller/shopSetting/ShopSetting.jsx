@@ -9,11 +9,15 @@ import { setShopSetting } from "../../../redux/slices/seller/shopSetting";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
+import axios from "axios";
+import { useState } from "react";
 
 const ShopSetting = () => {
   const { setting, loading, error } = useSelector(
     (state) => state.shopSettingReducer
   );
+  // const [setting, setSetting] = useState({});
+  // const [loading, setLoading] = useState(false);
 
   const { values, handleChange, touched, errors, handleSubmit } = useFormik({
     validationSchema: shopSettingSchema,
@@ -28,7 +32,7 @@ const ShopSetting = () => {
       youtube: setting?.youtube || "",
       instagram: setting?.instagram || "",
     },
-
+    enableReinitialize: true,
     onSubmit: (values, action) => {
       console.log(values);
       action.resetForm();
@@ -38,6 +42,24 @@ const ShopSetting = () => {
     getApi("shop-setting", setShopSetting);
   }, []);
 
+  // useEffect(() => {
+  //   setLoading(true);
+  //   axios
+  //     .get(`https://api.markutos.com/api/v1/seller/shop-setting`, {
+  //       headers: {
+  //         Authorization: authHeader(),
+  //       },
+  //     })
+  //     .then((response) => {
+  //       setSetting(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((e) => {
+  //       setLoading(false);
+  //     });
+  // }, []);
+
+  console.log(setting);
   return (
     <>
       {loading ? (

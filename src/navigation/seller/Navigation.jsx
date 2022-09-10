@@ -7,6 +7,7 @@ import {
   AiFillFileAdd,
   AiOutlineUser,
   AiOutlineArrowUp,
+  AiOutlineLogout,
 } from "react-icons/ai";
 
 import { IoMdCheckmarkCircleOutline, IoIosStarHalf } from "react-icons/io";
@@ -355,12 +356,12 @@ const Navigation = ({ toggleF, toggle }) => {
               <span className="ps-2">Manage profile</span>
             </NavLink>
           </li>
-					<li>
+          <li>
             <NavLink to="/">
-							<AiOutlineUser className={navigationStyle.icon_green} />
+              <BiLogOutCircle className={navigationStyle.icon_green} />
               <span className="ps-2">Log Out</span>
             </NavLink>
-            </li>
+          </li>
         </ul>
       </div>
     </Fragment>
