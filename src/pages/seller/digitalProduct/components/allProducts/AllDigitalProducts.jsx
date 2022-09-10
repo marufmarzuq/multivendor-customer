@@ -36,7 +36,7 @@ const AllDigitalProducts = () => {
       <div className={`${allProductsStyle.background}`}>
 				<section>
             <h5 className="px-md-4 px-3 py-2 pt-3">All Digital Products</h5>
-            <div className={allProductsStyle.tableFilters}>
+            <div className="tableFilters">
               <input
                 type="text"
                 className="table-search-input"

@@ -87,7 +87,7 @@ const OrderList = () => {
 			<section>
 				<div className="table-top-header d-flex justify-content-between">
 					<div className="table-title"><h5 className="px-md-4 px-3 pt-3 py-2">Orders</h5></div>
-					<div className="table-filters px-md-4 px-3 pt-3 py-2">
+					<div className="table-filters px-md-4 px-3 pt-3 py-2 tableFilters">
 						<input
 							type="text"
 							className="table-search-input"

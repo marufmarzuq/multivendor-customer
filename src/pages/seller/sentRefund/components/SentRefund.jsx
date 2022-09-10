@@ -7,7 +7,8 @@ import { setSentRefunds } from "../../../../redux/slices/seller/refunds";
 import ReactPaginate from 'react-paginate';
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
 import Select from "react-select";
-
+import DateRangeSelector from "../../../../common/ui/dateRangeSelector";
+import { FiFilter } from "react-icons/fi";
 
 const SentRefund = () => {
 	const { sentRefunds , total , per_page ,loading, error } = useSelector((state) => state.sentRefundsSlice);
@@ -35,11 +36,12 @@ const SentRefund = () => {
       <div className={`${sentRefundStyle.background}`}>
         <section>
           <h5 className="px-md-4 pt-3 px-3 py-2">Applied Refund Request</h5>
-					<input
-                type="text"
-                className="table-search-input"
-                placeholder="Search product by name"
-              />
+					<div>
+              <DateRangeSelector />
+              <button className="table-filter-btn">
+                <FiFilter />
+              </button>
+          </div>
         </section>
         <section className={`px-4 ${sentRefundStyle.tableData}`}>
           <Table borderless responsive>

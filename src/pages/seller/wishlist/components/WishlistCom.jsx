@@ -33,11 +33,13 @@ const WishlistCom = () => {
       <div className={` ms-4 ${wishlistStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 pt-3 pb-3">Wishlist</h5>
-					<input
-						type="text"
-						className="table-search-input"
-						placeholder="Search product by name"
-					/>
+          <div className="tableFilters">
+						<input
+							type="text"
+							className="table-search-input"
+							placeholder="Search product by name"
+						/>
+					</div>
         </section>
 
         <section>

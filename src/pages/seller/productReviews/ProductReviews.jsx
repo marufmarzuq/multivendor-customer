@@ -33,11 +33,13 @@ const ProductReviews = () => {
       <div className={`${reviewsStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 py-2 pt-3">Product Reviews</h5>
-					<input
-						type="text"
-						className="table-search-input"
-						placeholder="Search product by name"
-					/>
+          <div className="tableFilters">
+						<input
+							type="text"
+							className="table-search-input"
+							placeholder="Search product by name"
+						/>
+					</div>
         </section>
 
         <section className={`px-4 ${reviewsStyle.tableData}`}>
