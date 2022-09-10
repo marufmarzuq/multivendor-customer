@@ -21,24 +21,7 @@ const AllProducts = () => {
       `products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
       setProducts
     );
-  }, [perPage]);
-
-  const handlePageClick = (event) => {
-		var current_page = event.selected + 1;
-		setCurrentPage(current_page);
-		getApi(
-				`products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${current_page}`,
-				setProducts
-			);
-  };
-
-	const listSearch = (search) => {
-		setSearch(search);
-		getApi(
-			`products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
-			setProducts
-		);
-	}
+  }, [perPage,currentPage,search]);
 
   const options = [
     { value: "5", label: "5" },
@@ -59,7 +42,7 @@ const AllProducts = () => {
                 className="table-search-input"
                 placeholder="Search product by name"
 								value={search}
-								onChange={(e) => listSearch(e.target.value)}
+								onChange={(e) => setSearch(e.target.value)}
               />
             </div>
           </section>
@@ -177,9 +160,9 @@ const AllProducts = () => {
                     <ReactPaginate
                       breakLabel="..."
                       nextLabel="Next >"
-                      onPageChange={handlePageClick}
+                      onPageChange={(e)=>{setCurrentPage(e.selected + 1)}}
                       pageRangeDisplayed={per_page}
-                      pageCount={last_page}
+											pageCount={Math.ceil(last_page)}
                       previousLabel="< Previous"
                       containerClassName="pagination"
                       pageClassName="page__count"

@@ -9,18 +9,18 @@ import SimpleLoading from "../../../../common/loading/SimpleLoading";
 import Select from "react-select";
 
 const WishlistCom = () => {
-	const { wishlist , total , per_page ,loading, error} = useSelector((state) => state.wishlistSlice);
-	const [currentPage, setCurrentPage] = useState(1);
-	const [perPage, setPerPage] = useState(per_page);
-	const [search, setSearch]     = useState(null);
+  const { wishlist , last_page , per_page , current_page  ,loading, error } = useSelector((state) => state.wishlistSlice);
+  const [perPage, setPerPage] = useState(per_page);
+	const [currentPage, setCurrentPage] = useState(current_page);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
-    getApi("wishlists", setWishlist);
-  }, []);
+    getApi(
+      `wishlists?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
+      setWishlist
+    );
+  }, [perPage,currentPage,search]);
 
-	const handlePageClick = (event) => {
-		setCurrentPage(event.selected+1)
-	};
 	const options = [
 		{ value: '5', label: '5' },
 		{ value: '10', label: '10' },
@@ -35,10 +35,12 @@ const WishlistCom = () => {
           <h5 className="px-md-4 px-3 pt-3 pb-3">Wishlist</h5>
           <div className="tableFilters">
 						<input
-							type="text"
-							className="table-search-input"
-							placeholder="Search product by name"
-						/>
+                type="text"
+                className="table-search-input"
+                placeholder="Search product by name"
+								value={search}
+								onChange={(e) => setSearch(e.target.value)}
+              />
 					</div>
         </section>
 
@@ -99,13 +101,14 @@ const WishlistCom = () => {
 							<ReactPaginate
 								breakLabel="..."
 								nextLabel="Next >"
-								onPageChange={handlePageClick}
+								onPageChange={(e)=>{setCurrentPage(e.selected + 1)}}
 								pageRangeDisplayed={per_page}
-								pageCount={total}
+								pageCount={Math.ceil(last_page)}
 								previousLabel="< Previous"
 								containerClassName="pagination"
 								pageClassName="page__count"
 								activeLinkClassName="active"
+								forcePage={currentPage-1}
 							/>
 						</div>
 					</Fragment>

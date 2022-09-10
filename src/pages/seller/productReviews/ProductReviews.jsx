@@ -10,18 +10,16 @@ import Select from "react-select";
 
 const ProductReviews = () => {
 
-	const { reviews , total , per_page ,loading, error} = useSelector((state) => state.reviewSlice);
-	const [currentPage, setCurrentPage] = useState(1);
-	const [perPage, setPerPage] = useState(per_page);
-	const [search, setSearch]     = useState(null);
+	const { reviews , total , per_page , last_page, current_page ,loading, error} = useSelector((state) => state.reviewSlice);
+  const [perPage, setPerPage] = useState(per_page);
+	const [currentPage, setCurrentPage] = useState(current_page);
+  const [search, setSearch] = useState("");
 
 	useEffect(() => {
 		getApi(`reviews?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`, setReviews);
-	}, []);
+  }, [perPage,currentPage,search]);
 
-	const handlePageClick = (event) => {
-		setCurrentPage(event.selected+1)
-	};
+
 	const options = [
 		{ value: '5', label: '5' },
 		{ value: '10', label: '10' },
@@ -35,10 +33,12 @@ const ProductReviews = () => {
           <h5 className="px-md-4 px-3 py-2 pt-3">Product Reviews</h5>
           <div className="tableFilters">
 						<input
-							type="text"
-							className="table-search-input"
-							placeholder="Search product by name"
-						/>
+                type="text"
+                className="table-search-input"
+                placeholder="Search product by name"
+								value={search}
+								onChange={(e) => setSearch(e.target.value)}
+              />
 					</div>
         </section>
 
@@ -66,7 +66,7 @@ const ProductReviews = () => {
                 </th>
               </tr>
             </thead>
-						{ error ? <h1>{error}</h1> : ""}
+						{ error ? <h3>{error}</h3> : ""}
 						{loading ? ( <SimpleLoading/> )
 						: (
 						<Fragment>
@@ -107,26 +107,30 @@ const ProductReviews = () => {
 							</tbody>
 						</Fragment>
             )}
-            <div className="d-flex justify-content-end pe-3">
-								<Select
-									options={options}
-									className={""}
-									defaultValue={{ label: 10, value: 10 }}
-									onChange={(e) => setPerPage(e.value)}
-								/>
-								<ReactPaginate
-									breakLabel="..."
-									nextLabel="Next >"
-									onPageChange={handlePageClick}
-									pageRangeDisplayed={per_page}
-									pageCount={total}
-									previousLabel="< Previous"
-									containerClassName="pagination"
-									pageClassName="page__count"
-									activeLinkClassName="active"
-								/>
-						</div>
           </Table>
+          {
+          reviews.length > 0 &&
+						<div className="d-flex justify-content-end pe-3">
+							<Select
+								options={options}
+								className={""}
+								defaultValue={{ label: 10, value: 10 }}
+								onChange={(e) => setPerPage(e.value)}
+							/>
+							<ReactPaginate
+								breakLabel="..."
+								nextLabel="Next >"
+								onPageChange={(e)=>{setCurrentPage(e.selected + 1)}}
+								pageRangeDisplayed={per_page}
+								pageCount={Math.ceil(last_page)}
+								previousLabel="< Previous"
+								containerClassName="pagination"
+								pageClassName="page__count"
+								activeLinkClassName="active"
+								forcePage={currentPage-1}
+							/>
+					</div>
+          }
         </section>
       </div>
     </Fragment>

@@ -18,6 +18,7 @@ export const productSlice = createSlice({
       state.products  = typeof action.payload.data.data !=="undefined" && action.payload.data.data;
       state.last_page     = typeof action.payload.data.last_page !=="undefined" && action.payload.data.last_page;
       state.per_page  = typeof action.payload.data.per_page !=="undefined" && action.payload.data.per_page;
+      state.current_page  = typeof action.payload.data.current_page !=="undefined" && action.payload.data.current_page;
     },
   },
 });
@@ -40,6 +41,7 @@ export const wishlistSlice = createSlice({
       state.wishlist  = typeof action.payload.data.data !=="undefined" && action.payload.data.data;
 			state.last_page     = typeof action.payload.data.last_page !=="undefined" && action.payload.data.last_page;
       state.per_page  = typeof action.payload.data.per_page !=="undefined" && action.payload.data.per_page;
+			state.current_page  = typeof action.payload.data.current_page !=="undefined" && action.payload.data.current_page;
     },
   },
 });
@@ -62,6 +64,7 @@ export const reviewSlice = createSlice({
       state.reviews   = typeof action.payload.data.data !=="undefined" && action.payload.data.data;
 			state.last_page     = typeof action.payload.data.last_page !=="undefined" && action.payload.data.last_page;
       state.per_page  = typeof action.payload.data.per_page !=="undefined" && action.payload.data.per_page;
+			state.current_page  = typeof action.payload.data.current_page !=="undefined" && action.payload.data.current_page;
     },
   },
 });
