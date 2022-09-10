@@ -58,7 +58,6 @@ const ReceivedRefunds = () => {
                 <th className="text-center">
                   <small>Status</small>
                 </th>
-                {/* <th>Reason</th> */}
                 <th className="text-center">
                   <small>Approval</small>
                 </th>

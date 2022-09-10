@@ -68,7 +68,7 @@ const PaymentHistory = () => {
                 </th>
               </tr>
             </thead>
-						{loading ? ( <TableLoading/> )
+						{loading ? (<tbody className="d-flex justify-content-center pt-3"><tr><TableLoading/></tr></tbody>)
 						: (
 							<tbody>
 								{ currentItems.length > 0 &&

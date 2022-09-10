@@ -1,6 +1,6 @@
 const TableLoading = () => {
     return (
-        <tbody className="d-flex justify-content-center pt-3">
+        // <tbody className="d-flex justify-content-center pt-3">
             <tr>
                 <td className="spinner-grow spinner-grow-sm" role="status">
                     <span className="visually-hidden">Loading...</span>
@@ -12,7 +12,7 @@ const TableLoading = () => {
                     <span className="visually-hidden">Loading...</span>
                 </td>
             </tr>
-        </tbody>
+        // </tbody>
     )
 }
 
