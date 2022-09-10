@@ -20,7 +20,7 @@ const MoneyWithDraw = () => {
 	const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
-		getApi(`withdrawal-requests?date_from=''&date_to=''&per_page=${perPage}&page=${currentPage}`, setMoneyWithdraw);
+		getApi(`withdrawal-requests?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`, setMoneyWithdraw);
   }, [perPage,currentPage,startDate,endDate]);
 
 	const options = [

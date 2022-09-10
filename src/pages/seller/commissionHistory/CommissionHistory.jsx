@@ -13,12 +13,11 @@ const CommissionHistory = () => {
 	const { commissionHis ,loading,total,per_page, error } = useSelector((state) => state.commissionHisSlice);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(per_page);
-	const [search, setSearch]     = useState(null);
 	const [startDate, setStartDate] = useState(null);
 	const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
-		getApi(`commission-histories?date_from=''&date_to=''&per_page=${perPage}&page=${currentPage}`, setCommissionHis);
+		getApi(`commission-histories?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`, setCommissionHis);
   }, [perPage,currentPage,startDate,endDate]);
 
 	const options = [

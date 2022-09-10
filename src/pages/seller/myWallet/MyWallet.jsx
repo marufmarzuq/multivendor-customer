@@ -21,7 +21,7 @@ const MyWallet = () => {
 
 	useEffect(() => {
 		setLoading(true);
-		axios.get(`${API_URL}/wallet?date_from=${''}&date_to=${''}&per_page=${perPage}&page=${currentPage}`, {
+		axios.get(`${API_URL}/wallet?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`, {
 			headers: {
 			"Authorization": authHeader(),
 			}
