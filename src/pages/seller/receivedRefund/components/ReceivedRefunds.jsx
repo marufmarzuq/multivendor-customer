@@ -13,14 +13,12 @@ const ReceivedRefunds = () => {
   const { receivedRefunds, last_page, per_page, current_page , loading, error  } = useSelector((state) => state.receivedRefundsSlice);
   const [perPage, setPerPage] = useState(per_page);
 	const [currentPage, setCurrentPage] = useState(current_page);
-  const [search, setSearch] = useState("");
 	const [startDate, setStartDate] = useState(null);
 	const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
-		getApi(`refund-requests?date_from=${startDate}&date_to=${endDate}&sort_by=null&per_page=${perPage}&page=${currentPage}`, setReceivedRefunds);
-  }, [perPage,currentPage,search]);
-
+		getApi(`refund-requests?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`, setReceivedRefunds);
+  }, [perPage,startDate,endDate,currentPage]);
 
 	const options = [
 		{ value: '5', label: '5' },

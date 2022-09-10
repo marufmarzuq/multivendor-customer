@@ -5,13 +5,13 @@ import paymentHisStyle from "./paymentHis.module.css";
 import Select from "react-select";
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
 import ReactPaginate from 'react-paginate';
-import { API_URL } from "../services/Api/api";
-import authHeader from "../services/auth-header";
+import { API_URL } from "../../services/Api/api";
+import authHeader from "../../services/auth-header";
 import TableLoading from "../../../common/loading/TableLoading";
 
 const PaymentHistory = () => {
   const [currentItems, setCurrentItems]  	= useState([]);
-	const [pageCount, setPageCount]         = useState(0);
+	const [pageCount, setPageCount]         = useState(1);
 	const [loading, setLoading] 			= useState(false);
 	const [perPage, setPerPage]       = useState(10);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +25,6 @@ const PaymentHistory = () => {
 			"Authorization": authHeader(),
 			}
 		}).then((response) => {
-			console.log(response);
 			setLoading(false);
 			setCurrentItems(response?.data?.data);
 			setCurrentPage(response?.data?.current_page);

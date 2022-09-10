@@ -7,7 +7,7 @@ import { useState } from "react";
 import { AiOutlineLogin } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
-import AuthService from "./seller/services/auth.service";
+import AuthService from "./services/auth.service";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import { saveToLocalStorage } from "../utils/manageLocalStorage";

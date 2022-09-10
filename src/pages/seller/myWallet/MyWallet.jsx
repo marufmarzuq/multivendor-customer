@@ -6,14 +6,13 @@ import walletStyle from "./myWallet.module.css";
 import Select from "react-select";
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
 import ReactPaginate from 'react-paginate';
-import { API_URL } from "../services/Api/api";
-import authHeader from "../services/auth-header";
-import { useDebounce } from "../../../hooks/useDebounce";
+import { API_URL } from "../../services/Api/api";
+import authHeader from "../../services/auth-header";
 
 const MyWallet = () => {
   const [balance, setBalance]  	= useState(0);
   const [currentItems, setCurrentItems]  	= useState([]);
-	const [pageCount, setPageCount]         = useState(0);
+	const [pageCount, setPageCount]         = useState(1);
 	const [loading, setLoading] 			= useState(false);
 	const [perPage, setPerPage]       = useState(10);
 	const [currentPage, setCurrentPage] = useState(1);

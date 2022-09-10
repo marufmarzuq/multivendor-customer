@@ -7,8 +7,8 @@ import PdfModal from "../../../../../common/pdfModal/PdfModal";
 import OrderModal from "../orderModal/OrderModal";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import ReactPaginate from 'react-paginate';
-import { API_URL } from "../../../services/Api/api";
-import authHeader from "../../../services/auth-header";
+import { API_URL } from "../../../../services/Api/api";
+import authHeader from "../../../../services/auth-header";
 import { useDebounce } from "../../../../../hooks/useDebounce";
 import Select from "react-select";
 
@@ -16,7 +16,7 @@ const OrderList = () => {
   const [show, setShow] 					= useState(false);
   const [pdfShow, setPdfShow] 			= useState(false);
   const [currentItems, setCurrentItems]  	= useState([]);
-	const [pageCount, setPageCount]         = useState(0);
+	const [pageCount, setPageCount]         = useState(1);
 	const [search, setSearch]         = useState("");
 	const [loading, setLoading] 			= useState(false);
 	const debouncedSearchTerm         = useDebounce(search, 500);
@@ -49,11 +49,13 @@ const OrderList = () => {
 	const payStatus = [
 		{ value: 'paid', label: 'Paid' },
 		{ value: 'unpaid', label: 'UnPaid' },
-		{ value: 'refund', label: 'Refund' },
 	]
 	const deliveryStatus = [
-		{ value: 'delivered', label: 'Delivered' },
-		{ value: 'reject', label: 'Reject' },
+		{ value: 'Pending', label: 'Pending' },
+		{ value: 'Confirmed', label: 'Confirmed' },
+		{ value: 'Delivered', label: 'Delivered' },
+		{ value: 'On delivery', label: 'On delivery' },
+		{ value: 'Canceled', label: 'Canceled' },
 	]
 
 	useEffect(() => {

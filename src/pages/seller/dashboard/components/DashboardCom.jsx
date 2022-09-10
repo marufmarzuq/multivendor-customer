@@ -6,8 +6,8 @@ import { AiOutlineShoppingCart, AiOutlineShop } from "react-icons/ai";
 import { HiOutlineReceiptRefund } from "react-icons/hi";
 import { Table } from "react-bootstrap";
 import SaleHistory from "./SaleHistory";
-import { API_URL } from "../../services/Api/api";
-import authHeader from "../../services/auth-header";
+import { API_URL } from "../../../services/Api/api";
+import authHeader from "../../../services/auth-header";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
 
 const DashboardCom = () => {
