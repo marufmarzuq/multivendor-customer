@@ -17,41 +17,27 @@ const OrderList = () => {
   const [pdfShow, setPdfShow] 			= useState(false);
   const [currentItems, setCurrentItems]  	= useState([]);
 	const [pageCount, setPageCount]         = useState(0);
-	const [orderSearch, setOrderSearch]     = useState("");
+	const [search, setSearch]         = useState("");
 	const [loading, setLoading] 			= useState(false);
-	const [total, setTotal] 				  = useState(0);
-	const debouncedSearchTerm         = useDebounce(orderSearch, 500);
+	const debouncedSearchTerm         = useDebounce(search, 500);
 	const [perPage, setPerPage]       = useState(10);
-
-	let limit = 10;
+	const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
 		setLoading(true);
-		axios.get(`${API_URL}/orders?page=1&per_page=${limit}`, {
+		axios.get(`${API_URL}/orders?search_value=${search}&sort_payment=&sort_delivery=&per_page=${perPage}&page=${currentPage}`, {
 			headers: {
 			"Authorization": authHeader(),
 			}
 		}).then((response) => {
 			setLoading(false);
 			setCurrentItems(response?.data?.data);
-			setTotal(response?.data?.total);
+			setCurrentPage(response?.data?.current_page);
+			setPerPage(response?.data?.per_page);
+			setPageCount(response?.data?.last_page);
 		})
-    }, [limit]);
+    }, [perPage,currentPage,search]);
 
-	useEffect(() => {
-		setPageCount(Math.ceil(total/ limit));
-	}, [total, limit]);
-
-	const handlePageClick = async (data) => {
-		let currentPage = data.selected + 1;
-		axios.get(`${API_URL}/orders?page=${currentPage}&per_page=${limit}`, {
-			headers: {
-				"Authorization": authHeader(),
-			}
-		}).then((response) => {
-			setCurrentItems(response?.data?.data);
-		})
-	};
 	const options = [
 		{ value: '5', label: '5' },
 		{ value: '10', label: '10' },
@@ -61,24 +47,11 @@ const OrderList = () => {
 
 	useEffect(() => {
         if (debouncedSearchTerm) {
-            orderListSearch(debouncedSearchTerm);
+            setSearch(debouncedSearchTerm);
         } else {
             setCurrentItems([]);
         }
     }, [debouncedSearchTerm]);
-
-	const orderListSearch = (query) => {
-		setLoading(true);
-		axios.get(`${API_URL}/orders?search_value=${query}`, {
-            headers: {
-                "Authorization": authHeader(),
-                "Content-Type": "multipart/form-data",
-            }
-        }).then((response) => {
-			setCurrentItems(response?.data?.data);
-			setLoading(false);
-		}).catch(error => {})
-	}
 
 	return (
 		<Fragment>
@@ -91,8 +64,8 @@ const OrderList = () => {
 							type="text"
 							className="table-search-input"
 							placeholder="Search by customer name"
-							value={orderSearch}
-							onChange={(e) => setOrderSearch(e.target.value)}
+							value={search}
+							onChange={(e) => setSearch(e.target.value)}
 						/>
 					</div>
 				</div>
@@ -188,15 +161,16 @@ const OrderList = () => {
 				/>
 				<ReactPaginate
 					breakLabel="..."
-					nextLabel="Next 🡢"
-					onPageChange={handlePageClick}
-					pageRangeDisplayed={5}
+					nextLabel="Next >"
 					marginPagesDisplayed={2}
-					pageCount={pageCount}
-					previousLabel="🡠 Previous"
+					onPageChange={(e)=>{setCurrentPage(e.selected + 1)}}
+					pageRangeDisplayed={perPage}
+					pageCount={Math.ceil(pageCount)}
+					previousLabel="< Previous"
 					containerClassName="pagination"
 					pageClassName="page__count"
 					activeLinkClassName="active"
+					forcePage={currentPage-1}
 				/>
 			</div>
 			<PdfModal show={pdfShow} setShow={setPdfShow} />

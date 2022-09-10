@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setSentRefunds } from "../../../../redux/slices/seller/refunds";
 import ReactPaginate from 'react-paginate';
-import TableLoading from "../../../../common/loading/SimpleLoading";
+import TableLoading from "../../../../common/loading/TableLoading";
 import Select from "react-select";
 import DateRangeSelector from "../../../../common/ui/dateRangeSelector";
 import { FiFilter } from "react-icons/fi";
