@@ -5,7 +5,7 @@ export const sentRefundsSlice = createSlice({
   name: "sentRefunds",
   initialState: {
     sentRefunds: [],
-		total: 10,
+		last_page: 10,
     per_page: 10,
     loading: false,
     error: "",
@@ -15,7 +15,7 @@ export const sentRefundsSlice = createSlice({
       state.loading   = action.payload.loading;
       state.error     = action.payload.error;
       state.sentRefunds = typeof action.payload.data.data !=="undefined" && action.payload.data.data;
-			state.total     = typeof action.payload.data.total !=="undefined" && action.payload.data.total;
+			state.last_page     = typeof action.payload.data.last_page !=="undefined" && action.payload.data.last_page;
       state.per_page  = typeof action.payload.data.per_page !=="undefined" && action.payload.data.per_page;
     },
   },
@@ -26,7 +26,7 @@ export const receivedRefundsSlice = createSlice({
   name: "receivedRefunds",
   initialState: {
     receivedRefunds: [],
-		total: 10,
+		last_page: 10,
     per_page: 10,
     loading: false,
     error: "",
@@ -36,7 +36,7 @@ export const receivedRefundsSlice = createSlice({
       state.loading   = action.payload.loading;
       state.error     = action.payload.error;
       state.receivedRefunds = typeof action.payload.data.data !=="undefined" && action.payload.data.data;
-			state.total     = typeof action.payload.data.total !=="undefined" && action.payload.data.total;
+			state.last_page     = typeof action.payload.data.last_page !=="undefined" && action.payload.data.last_page;
       state.per_page  = typeof action.payload.data.per_page !=="undefined" && action.payload.data.per_page;
     },
   },

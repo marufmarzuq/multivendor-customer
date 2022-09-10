@@ -5,8 +5,9 @@ export const productSlice = createSlice({
   name: "products",
   initialState: {
     products: [],
-    total: 10,
+    last_page: 10,
     per_page: 10,
+    current_page: 1,
     loading: false,
     error: "",
   },
@@ -15,7 +16,7 @@ export const productSlice = createSlice({
       state.loading   = action.payload.loading;
       state.error     = action.payload.error;
       state.products  = typeof action.payload.data.data !=="undefined" && action.payload.data.data;
-      state.total     = typeof action.payload.data.total !=="undefined" && action.payload.data.total;
+      state.last_page     = typeof action.payload.data.last_page !=="undefined" && action.payload.data.last_page;
       state.per_page  = typeof action.payload.data.per_page !=="undefined" && action.payload.data.per_page;
     },
   },
@@ -26,8 +27,9 @@ export const wishlistSlice = createSlice({
   name: "wishlist",
   initialState: {
     wishlist: [],
-		total: 10,
+		last_page: 10,
     per_page: 10,
+		current_page: 1,
     loading: false,
     error: "",
   },
@@ -36,7 +38,7 @@ export const wishlistSlice = createSlice({
       state.loading   = action.payload.loading;
       state.error     = action.payload.error;
       state.wishlist  = typeof action.payload.data.data !=="undefined" && action.payload.data.data;
-			state.total     = typeof action.payload.data.total !=="undefined" && action.payload.data.total;
+			state.last_page     = typeof action.payload.data.last_page !=="undefined" && action.payload.data.last_page;
       state.per_page  = typeof action.payload.data.per_page !=="undefined" && action.payload.data.per_page;
     },
   },
@@ -47,8 +49,9 @@ export const reviewSlice = createSlice({
   name: "reviews",
   initialState: {
     reviews: [],
-		total: 10,
+		last_page: 10,
     per_page: 10,
+		current_page: 1,
     loading: false,
     error: "",
   },
@@ -57,7 +60,7 @@ export const reviewSlice = createSlice({
       state.loading   = action.payload.loading;
       state.error     = action.payload.error;
       state.reviews   = typeof action.payload.data.data !=="undefined" && action.payload.data.data;
-			state.total     = typeof action.payload.data.total !=="undefined" && action.payload.data.total;
+			state.last_page     = typeof action.payload.data.last_page !=="undefined" && action.payload.data.last_page;
       state.per_page  = typeof action.payload.data.per_page !=="undefined" && action.payload.data.per_page;
     },
   },

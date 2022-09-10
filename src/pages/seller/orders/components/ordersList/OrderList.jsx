@@ -9,7 +9,7 @@ import ReactPaginate from 'react-paginate';
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import { API_URL } from "../../../services/Api/api";
 import authHeader from "../../../services/auth-header";
-import { useDebounce } from "../../../hooks/useDebounce";
+import { useDebounce } from "../../../../../hooks/useDebounce";
 import Select from "react-select";
 
 const OrderList = () => {
@@ -19,10 +19,9 @@ const OrderList = () => {
 	const [pageCount, setPageCount]         = useState(0);
 	const [orderSearch, setOrderSearch]     = useState("");
 	const [loading, setLoading] 			= useState(false);
-	const [total, setTotal] 				= useState(0);
-	const debouncedSearchTerm               = useDebounce(orderSearch, 500);
-	const [perPage, setPerPage] = useState(10);
-	console.log("items", currentItems);
+	const [total, setTotal] 				  = useState(0);
+	const debouncedSearchTerm         = useDebounce(orderSearch, 500);
+	const [perPage, setPerPage]       = useState(10);
 
 	let limit = 10;
 
@@ -80,7 +79,7 @@ const OrderList = () => {
 			setLoading(false);
 		}).catch(error => {})
 	}
-  
+
 	return (
 		<Fragment>
 		<div className={`${orderListStyle.background}`}>
