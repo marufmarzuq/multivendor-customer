@@ -22,7 +22,6 @@ const OrderList = () => {
 	const debouncedSearchTerm         = useDebounce(search, 500);
 	const [perPage, setPerPage]       = useState(10);
 	const [currentPage, setCurrentPage] = useState(1);
-// console.log(perPage);
 
     useEffect(() => {
 		setLoading(true);
@@ -32,7 +31,6 @@ const OrderList = () => {
 			}
 		}).then((response) => {
 			setLoading(false);
-			// console.log(response.data);
 			setCurrentItems(response?.data?.data);
 			setCurrentPage(response?.data?.current_page);
 			setPerPage(response?.data?.per_page);
@@ -65,7 +63,7 @@ const OrderList = () => {
 						<input
 							type="text"
 							className="table-search-input"
-							placeholder="Search by customer name"
+							placeholder="Search by Order Code"
 							value={search}
 							onChange={(e) => setSearch(e.target.value)}
 						/>
