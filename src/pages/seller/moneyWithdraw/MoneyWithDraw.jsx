@@ -8,7 +8,6 @@ import { getApi } from "../../../api/apiCall";
 import { setMoneyWithdraw } from "../../../redux/slices/seller/payments";
 import ReactPaginate from 'react-paginate';
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
-import { FiFilter } from "react-icons/fi";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
 import Select from "react-select";
 
@@ -17,14 +16,13 @@ const MoneyWithDraw = () => {
 	const { moneyWithdraw , pendingBalance, total , per_page ,loading,error } = useSelector((state) => state.moneyWithdrawSlice);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(per_page);
-	const [search, setSearch]     = useState(null);
+	const [startDate, setStartDate] = useState(null);
+	const [endDate, setEndDate] = useState(null);
+
   useEffect(() => {
-		getApi(`withdrawal-requests?per_page=${perPage}&page=${currentPage}`, setMoneyWithdraw);
-		// getApi(`payment-histories?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`, setMoneyWithdraw);
-  }, []);
-	const handlePageClick = (event) => {
-		setCurrentPage(event.selected+1)
-	};
+		getApi(`withdrawal-requests?date_from=''&date_to=''&per_page=${perPage}&page=${currentPage}`, setMoneyWithdraw);
+  }, [perPage,currentPage,startDate,endDate]);
+
 	const options = [
 		{ value: '5', label: '5' },
 		{ value: '10', label: '10' },
@@ -68,10 +66,7 @@ const MoneyWithDraw = () => {
         <section>
           <h3 className="px-md-4 px-3 py-2 pt-3">Withdraw Request history </h3>
 					<div>
-              <DateRangeSelector />
-              <button className="table-filter-btn">
-                <FiFilter />
-              </button>
+						<DateRangeSelector startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}/>
           </div>
         </section>
 
@@ -140,7 +135,7 @@ const MoneyWithDraw = () => {
 							<ReactPaginate
 								breakLabel="..."
 								nextLabel="Next >"
-								onPageChange={handlePageClick}
+								onPageChange={(e)=>setCurrentPage(e.selected+1)}
 								pageRangeDisplayed={per_page}
 								pageCount={total}
 								previousLabel="< Previous"
