@@ -79,27 +79,32 @@ const OrderList = () => {
             <div className="table-title">
               <h5 className="px-md-4 px-3 pt-3 py-2">Orders</h5>
             </div>
-            <div className="table-filters px-md-4 px-3 pt-3 py-2 tableFilters">
-              <Select
-                options={payStatus}
-                className="me-3"
-                placeholder={"Sort by Payment Status"}
-                onChange={(e) => setPayStatus(e.value)}
-              />
-              <Select
-                options={deliveryStatus}
-                className="me-3"
-                placeholder={"Sort by Delivery Status"}
-                onChange={(e) => setDeliveryStatus(e.value)}
-              />
-              <input
-                type="text"
-                className="table-search-input"
-                placeholder="Search by Order Code"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
+          </div>
+        </section>
+
+        <section>
+          <div
+            className={`table-filters px-md-4 px-3 pt-3 py-2 tableFilters ${orderListStyle.filterContainer} `}
+          >
+            <Select
+              options={payStatus}
+              className="me-0 me-md-3 mb-1 mb-md-0"
+              placeholder={"Sort by Payment Status"}
+              onChange={(e) => setPayStatus(e.value)}
+            />
+            <Select
+              options={deliveryStatus}
+              className="me-0 me-md-3 mb-1 mb-md-0"
+              placeholder={"Sort by Delivery Status"}
+              onChange={(e) => setDeliveryStatus(e.value)}
+            />
+            <input
+              type="text"
+              className={`table-search-input`}
+              placeholder="Search by Order Code"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
         </section>
         <section>

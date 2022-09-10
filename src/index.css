@@ -73,6 +73,9 @@ h3.confi-widget-title {
   height: 45px;
   padding: 2px;
 }
-.tableFilters input:focus {
-  width: 300px;
+
+@media only screen and (min-width: 768px) {
+  .tableFilters input:focus {
+    width: 300px;
+  }
 }

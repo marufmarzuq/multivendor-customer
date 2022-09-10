@@ -87,7 +87,7 @@ const data = [
   },
 ];
 
-const SaleHistory = () => {
+const SaleHistory = ({data}) => {
   return (
     <div className="saleHistory">
       <h6 className="my-3 ms-3 mb-4">Sale History</h6>
