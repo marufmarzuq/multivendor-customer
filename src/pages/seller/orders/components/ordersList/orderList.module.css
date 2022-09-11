@@ -94,7 +94,29 @@ p {
   background-color: #fbbe08;
   color: #fff;
 }
+
+.filterContainer {
+  display: block;
+  flex-direction: column;
+}
+.filterContainer input {
+  width: 100%;
+}
+/* .filterContainer input:focus {
+  width: 100% !important;
+} */
+
 @media only screen and (min-width: 768px) {
+  .filterContainer {
+    display: block;
+    flex-direction: row;
+  }
+  .filterContainer input {
+    width: auto;
+  }
+  /* .filterContainer input:last-child:focus {
+    width: 300px !important;
+  } */
   .orderRow {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 3fr 2fr 3fr 3fr 2fr;

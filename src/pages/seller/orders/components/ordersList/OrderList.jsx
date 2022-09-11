@@ -6,7 +6,7 @@ import orderListStyle from "./orderList.module.css";
 import PdfModal from "../../../../../common/pdfModal/PdfModal";
 import OrderModal from "../orderModal/OrderModal";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
-import ReactPaginate from "react-paginate";
+import PaginationCom from "../../../../../common/pagination/PaginationCom";
 import { API_URL } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import { useDebounce } from "../../../../../hooks/useDebounce";
@@ -45,12 +45,7 @@ const OrderList = () => {
       });
   }, [perPage, currentPage, search, getPayStatus, getDeliveryStatus]);
 
-  const options = [
-    { value: "5", label: "5" },
-    { value: "10", label: "10" },
-    { value: "15", label: "15" },
-    { value: "20", label: "20" },
-  ];
+
   const payStatus = [
     { value: "paid", label: "Paid" },
     { value: "unpaid", label: "UnPaid" },
@@ -79,27 +74,32 @@ const OrderList = () => {
             <div className="table-title">
               <h5 className="px-md-4 px-3 pt-3 py-2">Orders</h5>
             </div>
-            <div className="table-filters px-md-4 px-3 pt-3 py-2 tableFilters">
-              <Select
-                options={payStatus}
-                className="me-3"
-                placeholder={"Sort by Payment Status"}
-                onChange={(e) => setPayStatus(e.value)}
-              />
-              <Select
-                options={deliveryStatus}
-                className="me-3"
-                placeholder={"Sort by Delivery Status"}
-                onChange={(e) => setDeliveryStatus(e.value)}
-              />
-              <input
-                type="text"
-                className="table-search-input"
-                placeholder="Search by Order Code"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </div>
+          </div>
+        </section>
+
+        <section>
+          <div
+            className={`table-filters px-md-4 px-3 pt-3 py-2 tableFilters ${orderListStyle.filterContainer} `}
+          >
+            <Select
+              options={payStatus}
+              className="me-0 me-md-3 mb-1 mb-md-0"
+              placeholder={"Sort by Payment Status"}
+              onChange={(e) => setPayStatus(e.value)}
+            />
+            <Select
+              options={deliveryStatus}
+              className="me-0 me-md-3 mb-1 mb-md-0"
+              placeholder={"Sort by Delivery Status"}
+              onChange={(e) => setDeliveryStatus(e.value)}
+            />
+            <input
+              type="text"
+              className={`table-search-input`}
+              placeholder="Search by Order Code"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
           </div>
         </section>
         <section>
@@ -190,29 +190,17 @@ const OrderList = () => {
             </section>
           </Fragment>
         )}
-        {/* <div className="d-flex justify-content-end pe-3">
-          <Select
-            options={options}
-            className={""}
-            defaultValue={{ label: 10, value: 10 }}
-            onChange={(e) => setPerPage(e.value)}
-          />
-          <ReactPaginate
-            breakLabel="..."
-            nextLabel="Next >"
-            marginPagesDisplayed={2}
-            onPageChange={(e) => {
-              setCurrentPage(e.selected + 1);
-            }}
-            pageRangeDisplayed={perPage}
-            pageCount={Math.ceil(pageCount)}
-            previousLabel="< Previous"
-            containerClassName="pagination"
-            pageClassName="page__count"
-            activeLinkClassName="active"
-            forcePage={currentPage - 1}
-          />
-        </div> */}
+        {
+          currentItems.length > 0 &&
+						<PaginationCom
+						currentItem={currentItems}
+						perPage={perPage}
+						pageCount={pageCount}
+						currentPage={currentPage}
+						setPerPage={setPerPage}
+						setCurrentPage={setCurrentPage}
+					/>
+        }
         <PdfModal show={pdfShow} setShow={setPdfShow} />
         <OrderModal page="order" show={show} setShow={setShow} />
       </div>
