@@ -26,7 +26,7 @@ const WishlistCom = () => {
 
 	const removeItem =(id)=>{
 		axios
-			.delete(
+			.get(
 				`${API_URL}/wishlists/delete?product_id=${id}`,
 				{
 					headers: {

@@ -27,7 +27,7 @@ const AllDigitalProducts = () => {
 
 	const removeItem =(id)=>{
 		axios
-			.delete(
+			.get(
 				`${API_URL}/digital-products/delete?product_id=${id}`,
 				{
 					headers: {
