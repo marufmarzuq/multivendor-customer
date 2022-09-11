@@ -1,7 +1,6 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import authService from "../../../pages/services/auth.service";
-import { loadFromLocalStorage } from "../../../utils/manageLocalStorage";
+import { loadFromLocalStorage } from "../../../utils/seller/manageLocalStorage";
 
 const PrivateRoutes = () => {
   let user = loadFromLocalStorage();

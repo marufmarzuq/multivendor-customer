@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./header.css";
 import { logo } from "../../assets/index";
 import MiniCart from "../../pages/customer/miniCart/MiniCart";
+import { useNavigate } from "react-router-dom";
+import AuthService from "../../pages/customer/services/auth.service"
 import {
   AiFillCar,
   AiOutlineBars,
@@ -24,8 +26,16 @@ import { GiClothes, GiFruitBowl } from "react-icons/gi";
 import { BiBasketball } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { IoIosGitCompare } from "react-icons/io";
+import { loadFromLocalStorage } from "../../utils/user/manageLocalStorage";
 const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
+  const navigate 		= useNavigate();
+	const logout = () => {
+		navigate('/login');
+		AuthService.logout();
+	}
+  const user = loadFromLocalStorage();
+
   return (
     <header className="header">
       {/* <!-- topbar --> */}
@@ -91,7 +101,7 @@ const Header = () => {
                   <NavLink to="/register">Register</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/login">Login</NavLink>
+                  {user ? <NavLink to="/" onClick={logout}>Logout</NavLink> :  <NavLink to="/login">Login</NavLink>}
                 </li>
                 <li>
                   <NavLink to="/support">Help and Support</NavLink>
