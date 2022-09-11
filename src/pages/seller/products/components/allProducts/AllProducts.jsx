@@ -1,7 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
-import Select from "react-select";
 import { BiCopy, BiEdit, BiX } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -9,6 +8,9 @@ import { getApi } from "../../../../../api/apiCall";
 import { setProducts } from "../../../../../redux/slices/seller/products";
 import PaginationCom from "../../../../../common/pagination/PaginationCom";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
+import axios from "axios";
+import authHeader from "../../../../services/auth-header";
+import { API_URL } from "../../../../services/Api/api";
 
 const AllProducts = () => {
   const { products, last_page, per_page, current_page , loading, error  } = useSelector((state) => state.productSlice);
@@ -22,6 +24,19 @@ const AllProducts = () => {
       setProducts
     );
   }, [perPage,currentPage,search]);
+
+	const removeItem =(id)=>{
+	axios
+		.get(
+			`${API_URL}/products/delete?product_id=${id}`,
+			{
+				headers: {
+					Authorization: authHeader(),
+				},
+			})
+		.then((response) => {
+		});
+	}
 
   return (
     <Fragment>
@@ -135,7 +150,7 @@ const AllProducts = () => {
                             <button className={allProductsStyle.preview}>
                               <BiCopy />
                             </button>
-                            <button className={allProductsStyle.del}>
+                            <button className={allProductsStyle.del} onClick={() =>removeItem(item.id)}>
                               <RiDeleteBin2Line />
                             </button>
                           </p>
@@ -143,14 +158,16 @@ const AllProducts = () => {
                       </div>
                     );
                   })}
-                <PaginationCom
-                  currentItem={products}
-                  perPage={per_page}
-                  pageCount={last_page}
-                  currentPage={currentPage}
-                  setPerPage={setPerPage}
-                  setCurrentPage={setCurrentPage}
-                />
+                { products.length > 0 &&
+									<PaginationCom
+										currentItem={products}
+										perPage={per_page}
+										pageCount={last_page}
+										currentPage={currentPage}
+										setPerPage={setPerPage}
+										setCurrentPage={setCurrentPage}
+									/>
+								}
                 </Fragment>
               )}
             </section>

@@ -4,13 +4,12 @@ import commissionStyle from "./commissionStyle.module.css";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
 import { setCommissionHis } from "../../../redux/slices/seller/payments";
-import ReactPaginate from 'react-paginate';
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
-import Select from "react-select";
+import PaginationCom from "../../../common/pagination/PaginationCom";
 
 const CommissionHistory = () => {
-	const { commissionHis ,loading,total,per_page, error } = useSelector((state) => state.commissionHisSlice);
+	const { commissionHis ,loading,per_page,last_page, error } = useSelector((state) => state.commissionHisSlice);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [perPage, setPerPage] = useState(per_page);
 	const [startDate, setStartDate] = useState(null);
@@ -20,12 +19,6 @@ const CommissionHistory = () => {
 		getApi(`commission-histories?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`, setCommissionHis);
   }, [perPage,currentPage,startDate,endDate]);
 
-	const options = [
-		{ value: '5', label: '5' },
-		{ value: '10', label: '10' },
-		{ value: '15', label: '15' },
-		{ value: '20', label: '20' }
-	]
   return (
     <Fragment>
       <div className={`${commissionStyle.background}`}>
@@ -89,25 +82,14 @@ const CommissionHistory = () => {
             )}
           </Table>
           { commissionHis.length > 0 &&
-							<div className="d-flex justify-content-end pe-3">
-								<Select
-									options={options}
-									className={""}
-									defaultValue={{ label: 10, value: 10 }}
-									onChange={(e) => setPerPage(e.value)}
-								/>
-								<ReactPaginate
-									breakLabel="..."
-									nextLabel="Next >"
-									onPageChange={(e)=>setCurrentPage(e.selected+1)}
-									pageRangeDisplayed={per_page}
-									pageCount={Math.ceil(total) }
-									previousLabel="< Previous"
-									containerClassName="pagination"
-									pageClassName="page__count"
-									activeLinkClassName="active"
-								/>
-							</div>
+              <PaginationCom
+								currentItem={commissionHis}
+								perPage={per_page}
+								pageCount={last_page}
+								currentPage={currentPage}
+								setPerPage={setPerPage}
+								setCurrentPage={setCurrentPage}
+							/>
 						}
         </section>
       </div>

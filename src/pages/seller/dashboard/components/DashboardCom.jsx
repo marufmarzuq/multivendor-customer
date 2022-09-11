@@ -144,7 +144,7 @@ const DashboardCom = () => {
 			setData(response?.data);
 		})
 	}, []);
-console.log(allData);
+
 	function dashboard_data(allData) {
 		return (
 			<Fragment>
@@ -264,28 +264,27 @@ console.log(allData);
 										</th>
 									</tr>
 								</thead>
-
 								<tbody>
-								{ allData.recent_orders.length > 0 && (
+									{ allData.recent_orders.length > 0 && (
 									allData.recent_orders.map((item, key) => {
-										return (
-											<tr key={key}>
-												<td>
-													<small>{item.code}</small>
-												</td>
-												<td>
-													<small> {item.code} </small>
-												</td>
-												<td>
-													<small> {item.created_at} </small>
-												</td>
-												<td>
-													<small> {item.delivery_status}</small>
-												</td>
-											</tr>
-										)
-									})
-									) }
+											return (
+												<tr key={key}>
+													<td>
+														<small>{item.code}</small>
+													</td>
+													<td>
+														<small> {item.code} </small>
+													</td>
+													<td>
+														<small> {item.created_at} </small>
+													</td>
+													<td>
+														<small> {item.delivery_status}</small>
+													</td>
+												</tr>
+											)
+										})
+									)}
 								</tbody>
 							</Table>
 						</div>
@@ -364,42 +363,29 @@ console.log(allData);
 									</thead>
 
 									<tbody>
-										<tr>
-											<td>
-												<small> 101 </small>
-											</td>
-											<td>
-												<small> Mobile phone </small>
-											</td>
-											<td>
-												<small> Electronics</small>
-											</td>
-
-											<td>
-												<small>$ 250</small>
-											</td>
-											<td>
-												<small>10</small>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<small> 101 </small>
-											</td>
-											<td>
-												<small> Mobile phone </small>
-											</td>
-											<td>
-												<small> Electronics</small>
-											</td>
-
-											<td>
-												<small>$ 250</small>
-											</td>
-											<td>
-												<small>10</small>
-											</td>
-										</tr>
+									{ allData.popular_products.length > 0 && (
+									allData.popular_products.map((item, key) => {
+											return (
+												<tr key={key}>
+													<td>
+														<small>{item.id}</small>
+													</td>
+													<td>
+														<small> {item.name} </small>
+													</td>
+													<td>
+														<small> {item.category} </small>
+													</td>
+													<td>
+														<small> {item.unit_price}</small>
+													</td>
+													<td>
+														<small> {item.current_stock}</small>
+													</td>
+												</tr>
+											)
+										})
+									)}
 									</tbody>
 								</Table>
 							</div>

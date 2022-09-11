@@ -5,8 +5,10 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setWishlist } from "../../../../redux/slices/seller/products";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
-import Select from "react-select";
 import PaginationCom from "../../../../common/pagination/PaginationCom";
+import axios from "axios";
+import authHeader from "../../../services/auth-header";
+import { API_URL } from "../../../services/Api/api";
 
 const WishlistCom = () => {
   const { wishlist, last_page, per_page, current_page, loading, error } =
@@ -21,6 +23,19 @@ const WishlistCom = () => {
       setWishlist
     );
   }, [perPage, currentPage, search]);
+
+	const removeItem =(id)=>{
+		axios
+			.get(
+				`${API_URL}/wishlists/delete?product_id=${id}`,
+				{
+					headers: {
+						Authorization: authHeader(),
+					},
+				})
+			.then((response) => {
+			});
+	}
 
   return (
     <Fragment>
@@ -80,7 +95,7 @@ const WishlistCom = () => {
                         </div>
 
                         <div className="col-4 col-lg-2 text-center">
-                          <button className={wishlistStyle.del}>
+                          <button className={wishlistStyle.del} onClick={() =>removeItem(item.id)}>
                             <RiDeleteBin2Line />
                           </button>
                         </div>
