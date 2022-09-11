@@ -11,11 +11,14 @@ import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import axios from "axios";
 import authHeader from "../../../../services/auth-header";
 import { API_URL } from "../../../../services/Api/api";
+import { toast } from "react-toastify";
+import Swal from "sweetalert2";
 
 const AllProducts = () => {
-  const { products, last_page, per_page, current_page , loading, error  } = useSelector((state) => state.productSlice);
+  const { products, last_page, per_page, current_page, loading, error } =
+    useSelector((state) => state.productSlice);
   const [perPage, setPerPage] = useState(per_page);
-	const [currentPage, setCurrentPage] = useState(current_page);
+  const [currentPage, setCurrentPage] = useState(current_page);
   const [search, setSearch] = useState("");
 
   useEffect(() => {
@@ -23,20 +26,35 @@ const AllProducts = () => {
       `products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
       setProducts
     );
-  }, [perPage,currentPage,search]);
+  }, [perPage, currentPage, search]);
 
-	const removeItem =(id)=>{
-	axios
-		.get(
-			`${API_URL}/products/delete?product_id=${id}`,
-			{
-				headers: {
-					Authorization: authHeader(),
-				},
-			})
-		.then((response) => {
-		});
-	}
+  const removeItem = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .get(`${API_URL}/delete-product?product_id=${id}`, {
+            headers: {
+              Authorization: authHeader(),
+            },
+          })
+          .then((response) => {
+            toast(response.data.message);
+            getApi(
+              `products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
+              setProducts
+            );
+          });
+      }
+    });
+  };
 
   return (
     <Fragment>
@@ -49,8 +67,8 @@ const AllProducts = () => {
                 type="text"
                 className="table-search-input"
                 placeholder="Search product by name"
-								value={search}
-								onChange={(e) => setSearch(e.target.value)}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
             </div>
           </section>
@@ -81,8 +99,9 @@ const AllProducts = () => {
             </div>
           </section>
           {error ? <h1>{error}</h1> : ""}
-          {loading ? (<SimpleLoading/>) :
-          (
+          {loading ? (
+            <SimpleLoading />
+          ) : (
             <section>
               {products.length > 0 && (
                 <Fragment>
@@ -150,7 +169,10 @@ const AllProducts = () => {
                             <button className={allProductsStyle.preview}>
                               <BiCopy />
                             </button>
-                            <button className={allProductsStyle.del} onClick={() =>removeItem(item.id)}>
+                            <button
+                              className={allProductsStyle.del}
+                              onClick={() => removeItem(item.id)}
+                            >
                               <RiDeleteBin2Line />
                             </button>
                           </p>
@@ -158,16 +180,16 @@ const AllProducts = () => {
                       </div>
                     );
                   })}
-                { products.length > 0 &&
-									<PaginationCom
-										currentItem={products}
-										perPage={per_page}
-										pageCount={last_page}
-										currentPage={currentPage}
-										setPerPage={setPerPage}
-										setCurrentPage={setCurrentPage}
-									/>
-								}
+                  {products.length > 0 && (
+                    <PaginationCom
+                      currentItem={products}
+                      perPage={per_page}
+                      pageCount={last_page}
+                      currentPage={currentPage}
+                      setPerPage={setPerPage}
+                      setCurrentPage={setCurrentPage}
+                    />
+                  )}
                 </Fragment>
               )}
             </section>

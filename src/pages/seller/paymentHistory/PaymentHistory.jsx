@@ -42,7 +42,9 @@ const PaymentHistory = () => {
       <div className={`${paymentHisStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 py-2 pt-3">Payment History</h5>
-          <div>
+        </section>
+        <section>
+          <div className="text-end pe-4 ">
             <DateRangeSelector
               startDate={startDate}
               endDate={endDate}
@@ -51,7 +53,6 @@ const PaymentHistory = () => {
             />
           </div>
         </section>
-
         <section className={`px-4 ${paymentHisStyle.tableData}`}>
           {(loading || currentItems.length <= 0) && (
             <Table borderless responsive>
