@@ -8,7 +8,9 @@ import { getApi } from "../../../../../api/apiCall";
 import { setProducts } from "../../../../../redux/slices/seller/products";
 import PaginationCom from "../../../../../common/pagination/PaginationCom";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
-import Select from "react-select";
+import axios from "axios";
+import authHeader from "../../../../services/auth-header";
+import { API_URL } from "../../../../services/Api/api";
 
 const AllDigitalProducts = () => {
   const { products , last_page , per_page , current_page ,loading, error } = useSelector((state) => state.productSlice);
@@ -18,10 +20,23 @@ const AllDigitalProducts = () => {
 
   useEffect(() => {
     getApi(
-      `products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
+      `digital-products?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
       setProducts
     );
   }, [perPage,currentPage,search]);
+
+	const removeItem =(id)=>{
+		axios
+			.delete(
+				`${API_URL}/digital-products/delete?product_id=${id}`,
+				{
+					headers: {
+						Authorization: authHeader(),
+					},
+				})
+			.then((response) => {
+			});
+	}
 
   return (
     <Fragment>
@@ -129,7 +144,7 @@ const AllDigitalProducts = () => {
 													<button className={allProductsStyle.preview}>
 														<BiCopy />
 													</button>
-													<button className={allProductsStyle.del}>
+													<button className={allProductsStyle.del} onClick={() =>removeItem(item.id)}>
 														<RiDeleteBin2Line />
 													</button>
 												</p>
