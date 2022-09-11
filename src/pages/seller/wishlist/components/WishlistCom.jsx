@@ -4,7 +4,6 @@ import wishlistStyle from "./wishlistCom.module.css";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setWishlist } from "../../../../redux/slices/seller/products";
-import ReactPaginate from "react-paginate";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
 import Select from "react-select";
 import PaginationCom from "../../../../common/pagination/PaginationCom";
@@ -22,13 +21,6 @@ const WishlistCom = () => {
       setWishlist
     );
   }, [perPage, currentPage, search]);
-
-  const options = [
-    { value: "5", label: "5" },
-    { value: "10", label: "10" },
-    { value: "15", label: "15" },
-    { value: "20", label: "20" },
-  ];
 
   return (
     <Fragment>
@@ -96,33 +88,11 @@ const WishlistCom = () => {
                     );
                   })}
                 </Fragment>
-                {/* <div className="d-flex justify-content-end pe-3">
-							<Select
-								options={options}
-								className={""}
-								defaultValue={{ label: 10, value: 10 }}
-								onChange={(e) => setPerPage(e.value)}
-							/>
-							<ReactPaginate
-								breakLabel="..."
-								nextLabel="Next >"
-								onPageChange={(e)=>{setCurrentPage(e.selected + 1)}}
-								pageRangeDisplayed={per_page}
-								pageCount={Math.ceil(last_page)}
-								previousLabel="< Previous"
-								containerClassName="pagination"
-								pageClassName="page__count"
-								activeLinkClassName="active"
-								forcePage={currentPage-1}
-							/>
-						</div> */}
-
                 <PaginationCom
                   currentItem={wishlist}
                   perPage={per_page}
                   pageCount={last_page}
                   currentPage={currentPage}
-                  options={options}
                   setPerPage={setPerPage}
                   setCurrentPage={setCurrentPage}
                 />

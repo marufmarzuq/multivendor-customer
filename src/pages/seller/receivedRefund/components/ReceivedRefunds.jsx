@@ -4,9 +4,8 @@ import receivedRefundStyle from "./receivedRefund.module.css";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setReceivedRefunds } from "../../../../redux/slices/seller/refunds";
-import ReactPaginate from 'react-paginate';
+import PaginationCom from "../../../../common/pagination/PaginationCom";
 import TableLoading from "../../../../common/loading/TableLoading";
-import Select from "react-select";
 import DateRangeSelector from "../../../../common/ui/dateRangeSelector";
 
 const ReceivedRefunds = () => {
@@ -19,13 +18,6 @@ const ReceivedRefunds = () => {
   useEffect(() => {
 		getApi(`refund-requests?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`, setReceivedRefunds);
   }, [perPage,startDate,endDate,currentPage]);
-
-	const options = [
-		{ value: '5', label: '5' },
-		{ value: '10', label: '10' },
-		{ value: '15', label: '15' },
-		{ value: '20', label: '20' }
-	]
 
   return (
     <div>
@@ -127,26 +119,14 @@ const ReceivedRefunds = () => {
           </Table>
 						{
 						receivedRefunds.length > 0 &&
-							<div className="d-flex justify-content-end pe-3">
-								<Select
-									options={options}
-									className={""}
-									defaultValue={{ label: 10, value: 10 }}
-									onChange={(e) => setPerPage(e.value)}
-								/>
-									<ReactPaginate
-										breakLabel="..."
-										nextLabel="Next >"
-										onPageChange={(e)=>{setCurrentPage(e.selected + 1)}}
-										pageRangeDisplayed={per_page}
-										pageCount={Math.ceil(last_page)}
-										previousLabel="< Previous"
-										containerClassName="pagination"
-										pageClassName="page__count"
-										activeLinkClassName="active"
-										forcePage={currentPage-1}
-									/>
-							</div>
+							<PaginationCom
+							currentItem={receivedRefunds}
+							perPage={per_page}
+							pageCount={last_page}
+							currentPage={currentPage}
+							setPerPage={setPerPage}
+							setCurrentPage={setCurrentPage}
+							/>
 						}
         </section>
       </div>
