@@ -6,6 +6,9 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
 import PaginationCom from "../../../common/pagination/PaginationCom";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
+import axios from "axios";
+import authHeader from "../../services/auth-header";
+import { API_URL } from "../../services/Api/api";
 
 const ProductReviews = () => {
 
@@ -59,7 +62,7 @@ const ProductReviews = () => {
               </tr>
             </thead>
 						{ error ? <h3>{error}</h3> : ""}
-						{loading ? ( <SimpleLoading/> )
+						{loading ? ( <tbody><tr><td><SimpleLoading/></td></tr></tbody> )
 						: (
 						<Fragment>
 							<tbody>

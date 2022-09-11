@@ -28,7 +28,7 @@ const AllProducts = () => {
 	const removeItem =(id)=>{
 	axios
 		.delete(
-			`${API_URL}/products/delete?id=${id}`,
+			`${API_URL}/products/delete?product_id=${id}`,
 			{
 				headers: {
 					Authorization: authHeader(),

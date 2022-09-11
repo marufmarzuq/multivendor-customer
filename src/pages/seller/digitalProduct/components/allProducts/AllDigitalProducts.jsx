@@ -28,7 +28,7 @@ const AllDigitalProducts = () => {
 	const removeItem =(id)=>{
 		axios
 			.delete(
-				`${API_URL}/digital-products/delete?id=${id}`,
+				`${API_URL}/digital-products/delete?product_id=${id}`,
 				{
 					headers: {
 						Authorization: authHeader(),
@@ -36,7 +36,7 @@ const AllDigitalProducts = () => {
 				})
 			.then((response) => {
 			});
-		}
+	}
 
   return (
     <Fragment>
