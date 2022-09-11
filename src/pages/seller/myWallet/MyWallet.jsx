@@ -3,9 +3,8 @@ import axios from 'axios';
 import { Table } from "react-bootstrap";
 import { BsCurrencyDollar } from "react-icons/bs";
 import walletStyle from "./myWallet.module.css";
-import Select from "react-select";
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
-import ReactPaginate from 'react-paginate';
+import PaginationCom from "../../../common/pagination/PaginationCom";
 import { API_URL } from "../../services/Api/api";
 import authHeader from "../../services/auth-header";
 
@@ -35,12 +34,6 @@ const MyWallet = () => {
 		})
     }, [perPage,currentPage,startDate,endDate]);
 
-	const options = [
-		{ value: '5', label: '5' },
-		{ value: '10', label: '10' },
-		{ value: '15', label: '15' },
-		{ value: '20', label: '20' }
-	]
   return (
     <Fragment>
       <div className={`${walletStyle.background}`}>
@@ -116,30 +109,17 @@ const MyWallet = () => {
               </tr>
             </tbody>
           </Table>
-          {
+					{
           currentItems.length > 0 &&
-						<div className="d-flex justify-content-end pe-3">
-							<Select
-								options={options}
-								className={""}
-								defaultValue={{ label: 10, value: 10 }}
-								onChange={(e) => setPerPage(e.value)}
-							/>
-							<ReactPaginate
-								breakLabel="..."
-								nextLabel="Next >"
-								marginPagesDisplayed={2}
-								onPageChange={(e)=>{setCurrentPage(e.selected + 1)}}
-								pageRangeDisplayed={perPage}
-								pageCount={Math.ceil(pageCount)}
-								previousLabel="< Previous"
-								containerClassName="pagination"
-								pageClassName="page__count"
-								activeLinkClassName="active"
-								forcePage={currentPage-1}
-							/>
-						</div>
-          }
+						<PaginationCom
+						currentItem={currentItems}
+						perPage={perPage}
+						pageCount={pageCount}
+						currentPage={currentPage}
+						setPerPage={setPerPage}
+						setCurrentPage={setCurrentPage}
+					/>
+        }
         </section>
       </div>
     </Fragment>
