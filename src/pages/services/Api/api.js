@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 // Production
 export const API_URL = "https://api.markutos.com/api/v1/seller";
 
@@ -9,6 +8,6 @@ export const API_URL = "https://api.markutos.com/api/v1/seller";
 
 // process.env.greetMyPetEndpoint = "https://api.greetmypet.goldeninfotech.com.bd/api";
 
-export const markutosAdminApi = axios.create({
-    baseURL: API_URL
+export const markutosSellerApi = axios.create({
+  baseURL: API_URL,
 });

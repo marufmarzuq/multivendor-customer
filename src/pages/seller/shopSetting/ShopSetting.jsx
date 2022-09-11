@@ -16,8 +16,6 @@ const ShopSetting = () => {
   const { setting, loading, error } = useSelector(
     (state) => state.shopSettingReducer
   );
-  // const [setting, setSetting] = useState({});
-  // const [loading, setLoading] = useState(false);
 
   const { values, handleChange, touched, errors, handleSubmit } = useFormik({
     validationSchema: shopSettingSchema,
@@ -41,23 +39,6 @@ const ShopSetting = () => {
   useEffect(() => {
     getApi("shop-setting", setShopSetting);
   }, []);
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   axios
-  //     .get(`https://api.markutos.com/api/v1/seller/shop-setting`, {
-  //       headers: {
-  //         Authorization: authHeader(),
-  //       },
-  //     })
-  //     .then((response) => {
-  //       setSetting(response.data);
-  //       setLoading(false);
-  //     })
-  //     .catch((e) => {
-  //       setLoading(false);
-  //     });
-  // }, []);
 
   console.log(setting);
   return (
