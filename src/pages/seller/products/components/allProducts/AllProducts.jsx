@@ -143,14 +143,16 @@ const AllProducts = () => {
                       </div>
                     );
                   })}
-                <PaginationCom
-                  currentItem={products}
-                  perPage={per_page}
-                  pageCount={last_page}
-                  currentPage={currentPage}
-                  setPerPage={setPerPage}
-                  setCurrentPage={setCurrentPage}
-                />
+                { products.length > 0 &&
+									<PaginationCom
+										currentItem={products}
+										perPage={per_page}
+										pageCount={last_page}
+										currentPage={currentPage}
+										setPerPage={setPerPage}
+										setCurrentPage={setCurrentPage}
+									/>
+								}
                 </Fragment>
               )}
             </section>

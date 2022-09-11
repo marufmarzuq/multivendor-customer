@@ -118,15 +118,15 @@ const MoneyWithDraw = () => {
             )}
           </Table>
 					{
-          moneyWithdraw.length > 0 &&
-						<PaginationCom
-						currentItem={moneyWithdraw}
-						perPage={perPage}
-						pageCount={last_page}
-						currentPage={currentPage}
-						setPerPage={setPerPage}
-						setCurrentPage={setCurrentPage}
-					/>
+						moneyWithdraw.length > 0 &&
+							<PaginationCom
+							currentItem={moneyWithdraw}
+							perPage={perPage}
+							pageCount={last_page}
+							currentPage={currentPage}
+							setPerPage={setPerPage}
+							setCurrentPage={setCurrentPage}
+						/>
           }
         </section>
       </div>

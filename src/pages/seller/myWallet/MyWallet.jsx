@@ -110,16 +110,16 @@ const MyWallet = () => {
             </tbody>
           </Table>
 					{
-          currentItems.length > 0 &&
-						<PaginationCom
-						currentItem={currentItems}
-						perPage={perPage}
-						pageCount={pageCount}
-						currentPage={currentPage}
-						setPerPage={setPerPage}
-						setCurrentPage={setCurrentPage}
-					/>
-        }
+						currentItems.length > 0 &&
+							<PaginationCom
+							currentItem={currentItems}
+							perPage={perPage}
+							pageCount={pageCount}
+							currentPage={currentPage}
+							setPerPage={setPerPage}
+							setCurrentPage={setCurrentPage}
+						/>
+					}
         </section>
       </div>
     </Fragment>
