@@ -1,4 +1,4 @@
-import { loadFromLocalStorage } from "../../utils/seller/manageLocalStorage";
+import { loadFromLocalStorage } from "../../utils/user/loadFromLocalStorage";
 
 export default function authHeader() {
   if (typeof window !== "undefined") {
