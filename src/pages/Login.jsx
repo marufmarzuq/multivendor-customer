@@ -149,7 +149,7 @@ const Login = () => {
 								</label>
 							</div>
 							<div>
-								<button className="btn btn-primary" type="submit">
+								<button className="btn btn-primary" type="submit" disabled={loading}>
 									{loading && <span className="spinner-grow spinner-grow-sm"></span>}
 									<AiOutlineLogin /> Login
 								</button>

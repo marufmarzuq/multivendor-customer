@@ -63,7 +63,7 @@ const ResetPassword = () => {
                     <div>You will get a password reset link in email</div>
                   </div>
                   <div>
-                    <button className="btn btn-primary" type="submit">
+                    <button className="btn btn-primary" type="submit" disabled={loading}>
 						{loading && <span className="spinner-grow spinner-grow-sm"></span>}
                       	Submit
                     </button>

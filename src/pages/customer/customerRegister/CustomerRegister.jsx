@@ -50,7 +50,7 @@ const CustomerRegister = () => {
         },
       })
       .then((response) => {
-        saveToLocalStorage(response?.access_token);
+        saveToLocalStorage(response?.data?.access_token);
         setLoading(false);
         notify(response?.data?.message);
         navigate("/");
@@ -146,7 +146,7 @@ const CustomerRegister = () => {
               </label>
             </div>
             <div>
-              <button className="btn btn-primary" type="submit">
+              <button className="btn btn-primary" type="submit" disabled={loading}>
                 {loading && (
                   <span className="spinner-grow spinner-grow-sm"></span>
                 )}
