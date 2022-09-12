@@ -175,7 +175,7 @@ const AllDigitalProducts = () => {
                             </button>
                             <button
                               className={allProductsStyle.del}
-                              onClick={() => removeItem(item.id)}
+                              onClick={() => removeItem(item.product_id)}
                             >
                               <RiDeleteBin2Line />
                             </button>
