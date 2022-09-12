@@ -1,17 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductInformation.css";
 import Select from "react-select";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
-
-const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
-];
-
+import { markutosSellerApi } from "../../../../../../services/Api/api";
+import authHeader from "../../../../../../services/auth-header";
 const ProductInformation = () => {
   const [tags, setTags] = useState(["example tag"]);
+  const [categoryOptions, setCategoryOptions] = useState([]);
+  const [brandOptions, setBrandOptions] = useState([]);
+
+  useEffect(() => {
+    markutosSellerApi
+      .get("/get-categories", {
+        headers: {
+          Authorization: authHeader(),
+        },
+      })
+      .then((res) => {
+        const category = [];
+        res.data.map((item) => {
+          const singleCategory = { value: item.name, label: item.name };
+          category.push(singleCategory);
+        });
+        setCategoryOptions(category);
+      })
+      .catch((e) => {});
+
+    markutosSellerApi
+      .get("/get-brands", {
+        headers: {
+          Authorization: authHeader(),
+        },
+      })
+      .then((res) => {
+        const brands = [];
+        res.data.map((item) => {
+          const singleBrand = { value: item.name, label: item.name };
+          brands.push(singleBrand);
+        });
+        setBrandOptions(brands);
+      })
+      .catch((e) => {});
+  }, []);
 
   return (
     <div className="add-product-single-widget">
@@ -27,21 +58,29 @@ const ProductInformation = () => {
             <span>Category</span>
             <i>*</i>
           </label>
-          <Select options={options} placeholder="All Categories" />
+          <Select
+            id="product_category"
+            options={categoryOptions}
+            placeholder="Categories"
+          />
           <label htmlFor="product__Brand">
             <span>Brand</span>
           </label>
-          <Select options={options} placeholder="All Categories" />
+          <Select
+            id="product__Brand"
+            options={brandOptions}
+            placeholder="Brands"
+          />
           <label htmlFor="product__unit">
             <span>Unit</span>
             <i>*</i>
           </label>
           <input id="product__unit" type="text" />
-          <label htmlFor="product__unit">
+          <label htmlFor="minimum_qnty">
             <span>Minimum Qty</span>
             <i>*</i>
           </label>
-          <input id="product__unit" type="number" min={1} defaultValue={1} />
+          <input id="minimum_qnty" type="number" min={1} defaultValue={1} />
           <label>
             <span>Tags</span>
             <i>*</i>
@@ -51,10 +90,10 @@ const ProductInformation = () => {
             removeOnBackspace={true}
             onChange={(newTags) => setTags(newTags)}
           />
-          <label htmlFor="product__Brand">
+          <label htmlFor="barcode">
             <span>Barcode</span>
           </label>
-          <input id="product__Brand" type="text" />
+          <input id="barcode" type="text" />
           <label>
             <span>Refundable</span>
           </label>

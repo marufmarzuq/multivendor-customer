@@ -1,18 +1,27 @@
+@font-face {
+  font-family: "Cascadia Code";
+
+  src: url("./fonts/CascadiaCode.woff2");
+  font-weight: 300;
+  font-size: normal;
+}
+
 body {
   background-color: #f2f3f8 !important;
   margin: 0;
 }
 
 * {
-  font-family: "Work Sans", "Source Sans Pro", sans-serif !important;
+  /* font-family: "Work Sans", "Source Sans Pro", sans-serif !important; */
+  /* font-family: "PT Sans", sans-serif; */
+  font-family: "Source Sans Pro", sans-serif;
+  /* font-family: "Cascadia Code"; */
+  /* font-family: "Myriad Pro"; */
+  /* font-family: "Maven Pro", sans-serif; */
+  /* font-family: "PT Sans", sans-serif; */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 /* bootstrap accordion edited */
@@ -24,33 +33,6 @@ code {
   width: 0px;
 }
 
-/* cofig css */
-/* .page-title {
-  text-align: center;
-  font-size: 24px;
-  color: #585858;
-  font-weight: 500;
-  margin-bottom: 20px;
-}
-.pos-activation-widget {
-  width: 100%;
-  max-width: 350px;
-  background-color: white;
-  border-radius: 3px;
-}
-h3.confi-widget-title {
-  text-align: center;
-  font-weight: 500;
-  font-size: 16px;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-.confi-widget-body {
-  min-height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
 .color-main {
   color: #4782da;
 }

@@ -259,13 +259,19 @@
   flex-direction: column;
   overflow: hidden;
 }
-.products-wrap .single-product.style-1 .image-wrap {
+.single-product {
+  /* background-color: red; */
+  height: 380px !important;
+}
+.products-wrap .style-1 .image-wrap {
   flex: 3;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+  /* background-color: rebeccapurple; */
+  /* height: 500px; */
 }
 .products-wrap .single-product.style-1 .image-wrap img {
   width: 100%;

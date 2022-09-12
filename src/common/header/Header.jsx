@@ -93,14 +93,18 @@ const Header = () => {
                 <li>
                   <NavLink to="/login">Login</NavLink>
                 </li>
-                <li>
+                <li
+                  style={{
+                    marginRight: "6px",
+                  }}
+                >
                   <NavLink to="/support">Help and Support</NavLink>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#">
                     <i className="far fa-bell active-dot"></i>
                   </a>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>

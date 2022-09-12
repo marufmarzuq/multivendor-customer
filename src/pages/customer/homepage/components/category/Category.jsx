@@ -18,14 +18,92 @@ import { GiClothes, GiFruitBowl } from "react-icons/gi";
 import { BiBasketball } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import { FaBaby } from "react-icons/fa";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { Next, Prev } from "react-bootstrap/esm/PageItem";
+
+const NextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "green" }}
+      onClick={onClick}
+    />
+  );
+};
+const PrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        // ...style,
+        display: "block",
+
+        background: "#2E74E8",
+        borderRadius: "50%",
+      }}
+      onClick={onClick}
+    >
+      hello
+    </div>
+  );
+};
+
 const Category = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 200,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    arrows: true,
+    pauseOnFocus: true,
+    // nextArrow: <NextArrow />,
+    // prevArrow: <PrevArrow />,
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
   return (
     <section className="category-wrapper mt-5 wrapper">
       <div className="container">
         <div className="row">
           <div className="col-12 col-xs-4 col-md-3 col-lg-4 ">
-            <div className="category-list">
-              <ul>
+            <div className="category-list pt-3 pb-2">
+              <ul
+                style={{
+                  marginBottom: "10px",
+                }}
+              >
                 <li>
                   <a href="#">
                     <i>
@@ -98,7 +176,12 @@ const Category = () => {
               </ul>
             </div>
           </div>
-          <div className="col-12 col-xs-8 col-md-9 col-lg-8">
+          <div
+            style={{
+              marginTop: "-7px",
+            }}
+            className="col-12 col-xs-8 col-md-9 col-lg-8 "
+          >
             <div className="container-fluid">
               <div className="row mb-4">
                 <div className="col-12 col-xs-9 col-md-9 my-2">
@@ -199,9 +282,72 @@ const Category = () => {
                 </div>
               </div>
               <div className="row ">
-                <div className="col-12 col-xs-12 col-md-12 category-thumbs-slider  ">
-                  <div className="mb-3">
-                    <div className="swiper-wrapper ">
+                <div className="col-12 col-xs-12 col-md-12  ">
+                  <div className="mb-5">
+                    <Slider {...settings}>
+                      <div className="mini-slide">
+                        <a href="#">
+                          <div className="image">
+                            <img src={beauty} alt="" />
+                          </div>
+                          <p>Beauty</p>
+                        </a>
+                      </div>
+
+                      <div className="mini-slide">
+                        <a href="#">
+                          <div className="image">
+                            <img src={clothing} alt="" />
+                          </div>
+                          <p>Clothing</p>
+                        </a>
+                      </div>
+                      <div className="mini-slide">
+                        <a href="#">
+                          <div className="image">
+                            <img src={beauty} alt="" />
+                          </div>
+                          <p>Beauty</p>
+                        </a>
+                      </div>
+                      <div className="mini-slide">
+                        <a href="#">
+                          <div className="image">
+                            <img src={bagAndShoes} alt="" />
+                          </div>
+                          <p>Bag and Shoes</p>
+                        </a>
+                      </div>
+
+                      <div className="mini-slide">
+                        <a href="#">
+                          <div className="image">
+                            <img src={groceries} alt="" />
+                          </div>
+                          <p>Groceries</p>
+                        </a>
+                      </div>
+
+                      <div className="mini-slide">
+                        <a href="#">
+                          <div className="image">
+                            <img src={clothing} alt="" />
+                          </div>
+                          <p>Clothing</p>
+                        </a>
+                      </div>
+
+                      <div className="mini-slide">
+                        <a href="#">
+                          <div className="image">
+                            <img src={bagAndShoes} alt="" />
+                          </div>
+                          <p>Bag and Shoes</p>
+                        </a>
+                      </div>
+                    </Slider>
+
+                    {/* <div className="swiper-wrapper ">
                       <Swiper
                         spaceBetween={10}
                         centeredSlides={true}
@@ -268,7 +414,7 @@ const Category = () => {
                           </div>
                         </SwiperSlide>
                       </Swiper>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>
