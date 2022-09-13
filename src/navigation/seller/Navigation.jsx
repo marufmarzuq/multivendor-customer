@@ -23,12 +23,16 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { VscCircuitBoard } from "react-icons/vsc";
 import { AiOutlineSend, AiOutlineRotateLeft } from "react-icons/ai";
 import { useState } from "react";
+import { loadFromLocalStorage } from "../../utils/seller/manageLocalStorage";
 
 const Navigation = ({ toggleF, toggle }) => {
   const logOut = () => {
     toggleF(!toggle);
     console.log("signout ");
   };
+
+  const user = loadFromLocalStorage();
+  console.log("user", user);
 
   const pathName = useLocation();
   const [prodCollap, setProdColl] = useState(false);
@@ -90,7 +94,7 @@ const Navigation = ({ toggleF, toggle }) => {
           </h1>
 
           <h5>
-            Mr. Seller
+            {user?.user?.first_name} {user?.user?.last_name}
             <IoMdCheckmarkCircleOutline
               className={navigationStyle.icon_green}
             />

@@ -8,17 +8,17 @@ class AuthService {
       remember_me,
     });
     if (response.data.token) {
-      localStorage.setItem("markutosSaler", JSON.stringify(response.data));
+      localStorage.setItem("markutosSeller", JSON.stringify(response.data));
     }
     return response.data;
   }
   logout() {
-    localStorage.removeItem("markutosSaler");
+    localStorage.removeItem("markutosSeller");
   }
   getCurrentUser() {
     if (typeof window !== "undefined") {
       // Perform localStorage action
-      const userStr = localStorage.getItem("markutosSaler");
+      const userStr = localStorage.getItem("markutosSeller");
       if (userStr) return JSON.parse(userStr);
       return null;
     }

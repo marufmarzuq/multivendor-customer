@@ -140,11 +140,15 @@ const Header = () => {
                   <NavLink to="/seller-request">Be a Seller</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/register">Register</NavLink>
+                  {user ? (
+                    <NavLink to="/dashboard">{user?.user?.first_name}</NavLink>
+                  ) : (
+                    <NavLink to="/register">Register</NavLink>
+                  )}
                 </li>
                 <li>
                   {user ? (
-                    <NavLink to="/" onClick={logout}>
+                    <NavLink to="/login" onClick={logout}>
                       Logout
                     </NavLink>
                   ) : (

@@ -48,7 +48,7 @@ const SellerRequestForm = () => {
                 }
             })
             .then((response) => {
-                saveToLocalStorage(response?.access_token);
+                saveToLocalStorage(response?.data);
                 setLoading(false);
                 notify(response?.data?.message);
                 navigate("/seller");
@@ -135,7 +135,7 @@ const SellerRequestForm = () => {
 					{errors.shop_address && <p className="error"> {errors.shop_address?.message} </p>}
 				</div>
 				<div>
-					<button className="btn btn-primary" type="submit">
+					<button className="btn btn-primary" type="submit" disabled={loading}>
 						{loading && <span className="spinner-grow spinner-grow-sm"></span>}
 						<FaRegEdit /> Register
 					</button>
