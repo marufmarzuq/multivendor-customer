@@ -5,7 +5,7 @@ import { loadFromLocalStorage } from "../../../utils/seller/manageLocalStorage";
 const PrivateRoutes = () => {
   let user = loadFromLocalStorage();
   // let user = true;
-  return user ? <Outlet /> : <Navigate to="/login" />;
+  return user?.access_token ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default PrivateRoutes;

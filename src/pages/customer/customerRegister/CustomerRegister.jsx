@@ -50,10 +50,10 @@ const CustomerRegister = () => {
         },
       })
       .then((response) => {
-        saveToLocalStorage(response?.data?.access_token);
+        saveToLocalStorage(response?.data);
         setLoading(false);
         notify(response?.data?.message);
-        navigate("/");
+        navigate("/dashboard");
       })
       .catch((error) => {
         setLoading(false);

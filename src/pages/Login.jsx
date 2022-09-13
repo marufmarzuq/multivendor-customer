@@ -51,7 +51,7 @@ const Login = () => {
 					navigate("/dashboard");
 					notify("Welcome to Markutos Customer");
 				} else {
-					saveToLocalStorage(response?.data?.access_token);
+					saveToLocalStorage(response?.data);
 					setLoading(false);
 					navigate("/seller");
 					notify("Welcome to Markutos Seller");

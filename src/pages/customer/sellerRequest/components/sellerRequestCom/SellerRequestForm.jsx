@@ -48,7 +48,7 @@ const SellerRequestForm = () => {
                 }
             })
             .then((response) => {
-                saveToLocalStorage(response?.data?.access_token);
+                saveToLocalStorage(response?.data);
                 setLoading(false);
                 notify(response?.data?.message);
                 navigate("/seller");
