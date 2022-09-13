@@ -4,7 +4,7 @@ import { product2, product1, groceries } from "../../../../../assets";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
-import "animate.css";
+
 const MostPopular = () => {
   return (
     <section className="most-popular my-4">
