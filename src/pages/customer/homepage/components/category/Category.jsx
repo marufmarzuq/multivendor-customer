@@ -15,46 +15,76 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
 import { BsBagDash, BsFlower2 } from "react-icons/bs";
 import { GiClothes, GiFruitBowl } from "react-icons/gi";
-import { BiBasketball } from "react-icons/bi";
+import { BiArrowBack, BiBasketball } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import { FaBaby } from "react-icons/fa";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Next, Prev } from "react-bootstrap/esm/PageItem";
+import { FcNext, FcPrevious } from "react-icons/fc";
 
-const NextArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "green" }}
-      onClick={onClick}
-    />
-  );
-};
-const PrevArrow = (props) => {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{
-        // ...style,
-        display: "block",
+// const ArrowButtonPrevious = ({ onClick }) => {
+//   return (
+//     <button
+//       onClick={onClick}
+//       style={{
+//         backgroundColor: "transparent",
+//         border: "none",
+//         paddingLeft: "20px",
+//       }}
+//     >
+//       <FcPrevious />
+//     </button>
+//   );
+// };
 
-        background: "#2E74E8",
-        borderRadius: "50%",
-      }}
-      onClick={onClick}
-    >
-      hello
-    </div>
-  );
-};
+// const ArrowButtonNext = ({ style, className, onClick }) => {
+//   return (
+//     <button
+//       // className={className}
+//       className="miniSliderNextBtn"
+//       onClick={onClick}
+//       // style={{
+//       //   ...style,
+
+//       // }}
+//     >
+//       <FcNext />
+//     </button>
+//   );
+// };
+
+// function SampleNextArrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{ ...style, display: "block", background: "red" }}
+//       onClick={onClick}
+//     />
+//   );
+// }
+
+// function SamplePrevArrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{
+//         ...style,
+//         display: "block",
+//         background: "green",
+//         paddingLeft: "10px",
+//       }}
+//       onClick={onClick}
+//     />
+//   );
+// }
 
 const Category = () => {
   const settings = {
-    dots: true,
+    // dots: true,
     infinite: true,
     speed: 200,
     slidesToShow: 4,
@@ -63,8 +93,8 @@ const Category = () => {
     autoplaySpeed: 2000,
     arrows: true,
     pauseOnFocus: true,
-    // nextArrow: <NextArrow />,
-    // prevArrow: <PrevArrow />,
+    // nextArrow: <SampleNextArrow />,
+    // prevArrow: <SamplePrevArrow />,
 
     responsive: [
       {
@@ -73,7 +103,7 @@ const Category = () => {
           slidesToShow: 4,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
+          // dots: true,
         },
       },
       {
@@ -281,7 +311,13 @@ const Category = () => {
                   </div>
                 </div>
               </div>
-              <div className="row ">
+              <div
+                style={{
+                  overflowX: "hidden",
+                  width: "100%",
+                }}
+                className="row mx-0 px-0"
+              >
                 <div className="col-12 col-xs-12 col-md-12  ">
                   <div className="mb-5">
                     <Slider {...settings}>

@@ -4,6 +4,7 @@ import { product2, product1, groceries } from "../../../../../assets";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
+import "animate.css";
 const MostPopular = () => {
   return (
     <section className="most-popular my-4">
@@ -94,6 +95,7 @@ const MostPopular = () => {
                 </div>
               </div>
             </div>
+
             <div className="tab-pane fade" id="mp-beauty">
               <div className="container">
                 <div className="row products-wrap">
@@ -186,8 +188,8 @@ const MostPopular = () => {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-center my-2">
-          <a href="#" className="btn btn-primary">
+        <div className="d-flex justify-content-center my-2 ">
+          <a href="#" className="btn btn-primary ">
             <MdOutlineViewInAr /> View More
           </a>
         </div>

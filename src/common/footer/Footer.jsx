@@ -23,7 +23,7 @@ const Footer = () => {
               <div className="input-group">
                 <input
                   type="email"
-                  className="form-control search-text"
+                  className=" search-text"
                   placeholder="Email Address"
                 />
                 <button

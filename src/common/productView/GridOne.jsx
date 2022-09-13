@@ -4,7 +4,7 @@ import { product2 } from "../../assets";
 const GridOne = () => {
   return (
     <div className="col-sm-6 col-md-3 mb-3">
-      <div className="single-product style-1">
+      <div className="single-product single-product-min style-1">
         <div className="image-wrap">
           <a href="#">
             <img src={product2} alt="Locket New" />

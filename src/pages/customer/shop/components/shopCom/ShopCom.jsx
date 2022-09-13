@@ -3,14 +3,21 @@ import GridOne from "../../../../../common/productView/GridOne";
 import { BiSearch, BiSquare } from "react-icons/bi";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { AiOutlineBars } from "react-icons/ai";
-
+import Select from "react-select";
+import { FaBalanceScale, FaStar } from "react-icons/fa";
+import { product2 } from "../../../../../assets/index";
 const ShopCom = () => {
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
   return (
     <div>
       <section className="shop-wrap my-4">
         <div className="container">
-          <div className="row">
-            <div className="col-sm-12 col-md-3">
+          <div className="shopContainer">
+            <div className="">
               <div className="shop-sidebar">
                 <div className="sidebar-row search-wrap">
                   <form action="" className="search-form">
@@ -77,7 +84,10 @@ const ShopCom = () => {
                   <h4 className="sidebar-label">Color</h4>
                   <div className="radio-item">
                     <input type="radio" name="" value="L" id="red" />
-                    <label htmlFor="red" style={{ backgroundColor: "red" }}></label>
+                    <label
+                      htmlFor="red"
+                      style={{ backgroundColor: "red" }}
+                    ></label>
                   </div>
                   <div className="radio-item">
                     <input type="radio" name="" value="L" id="green" />
@@ -106,15 +116,20 @@ const ShopCom = () => {
                 </div>
               </div>
             </div>
-            <div className="col-sm-12 col-md-9">
+            <div className="">
               <div className="sort-bar">
                 <div className="sort-bar-left">
-                  <button>
-                    <BsGrid3X3Gap />
-                  </button>
-                  <button>
-                    <AiOutlineBars />
-                  </button>
+                  <div>
+                    <button className="">
+                      <BsGrid3X3Gap />
+                    </button>
+                  </div>
+
+                  <div>
+                    <button>
+                      <AiOutlineBars />
+                    </button>
+                  </div>
                 </div>
                 <div className="sort-bar-right">
                   <div className="form-group">
@@ -124,11 +139,59 @@ const ShopCom = () => {
                       <option>Sale</option>
                       <option>Price</option>
                     </select>
+
+                    {/* <div>
+                      <Select
+                        styles={customStyles}
+                        options={options}
+                    
+                      />
+                    </div> */}
                   </div>
                 </div>
               </div>
-              <div className="row products-wrap">
-								<GridOne/>
+              <div className="row products-wrap shop">
+                <section>
+                  <div className="col-sm-6 col-md-3 mb-3">
+                    <div className="single-product single-product-min style-1">
+                      <div className="image-wrap">
+                        <a href="#">
+                          <img src={product2} alt="Locket New" />
+                        </a>
+                        <div className="buttons-wrap">
+                          <button>
+                            <FaBalanceScale />
+                          </button>
+                        </div>
+                        <div className="badges">
+                          <div className="badge sale-badge">
+                            <span>10%</span>
+                          </div>
+
+                          <div className="badge tag-badge">
+                            <span>Sale</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="content-wrap">
+                        <h3 className="product-title">
+                          <a href="#">Locket New</a>
+                        </h3>
+                        <div className="price">
+                          <span className="sale">$ 200</span>
+                          <span className="del">$ 180</span>
+                        </div>
+                        <div className="ratings">
+                          <FaStar />
+                          <FaStar />
+                          <FaStar />
+                          <FaStar />
+                          <FaStar />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
               </div>
             </div>
           </div>
