@@ -3,7 +3,7 @@ import "./header.css";
 import { logo } from "../../assets/index";
 import MiniCart from "../../pages/customer/miniCart/MiniCart";
 import { useNavigate } from "react-router-dom";
-import AuthService from "../../pages/customer/services/auth.service"
+import AuthService from "../../pages/customer/services/auth.service";
 import {
   AiFillCar,
   AiOutlineBars,
@@ -27,19 +27,61 @@ import { BiBasketball } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { IoIosGitCompare } from "react-icons/io";
 import { loadFromLocalStorage } from "../../utils/user/manageLocalStorage";
+
+import Select from "react-select";
+
+const customStyles = {
+  // option: (provided, state) => ({
+  //   ...provided,
+  //   zIndex: 99999,
+  // }),
+
+  menuPortal: (base) => ({ ...base, zIndex: 9999, background: "red" }),
+
+  valueContainer: (provided) => ({
+    ...provided,
+    width: 200,
+    height: "auto",
+  }),
+  control: (base) => ({
+    ...base,
+    width: 200,
+    height: 40,
+    borderRadius: "0px",
+    boxShadow: "none",
+  }),
+  placeholder: (defaultStyles) => ({
+    ...defaultStyles,
+    marginTop: -12,
+  }),
+
+  singleValue: (styles) => ({ ...styles, marginTop: -12 }),
+  dropdownIndicator: (styles) => ({
+    marginTop: -12,
+    paddingRight: 15,
+    color: "gray",
+  }),
+};
+
 const Header = () => {
   const [mobileNav, setMobileNav] = useState(false);
-  const navigate 		= useNavigate();
-	const logout = () => {
-		navigate('/login');
-		AuthService.logout();
-	}
+  const navigate = useNavigate();
+  const logout = () => {
+    navigate("/login");
+    AuthService.logout();
+  };
   const user = loadFromLocalStorage();
+
+  const options = [
+    { value: "chocolate", label: "Chocolate" },
+    { value: "strawberry", label: "Strawberry" },
+    { value: "vanilla", label: "Vanilla" },
+  ];
 
   return (
     <header className="header">
       {/* <!-- topbar --> */}
-      <div className="topbar">
+      <div className="topbar ">
         <div className="container">
           <div className="row align-items-center">
             <div className="col-4 col-lg-6 col-xl-6 col-xxl-6 left-menu">
@@ -106,11 +148,18 @@ const Header = () => {
                 <li>
                   {user ? (
                     <NavLink to="/dashboard">{user?.user?.first_name}</NavLink>
-                    ): (<NavLink to="/register">Register</NavLink>)
-                  }
+                  ) : (
+                    <NavLink to="/register">Register</NavLink>
+                  )}
                 </li>
                 <li>
-                  {user ? <NavLink to="/login" onClick={logout}>Logout</NavLink> :  <NavLink to="/login">Login</NavLink>}
+                  {user ? (
+                    <NavLink to="/login" onClick={logout}>
+                      Logout
+                    </NavLink>
+                  ) : (
+                    <NavLink to="/login">Login</NavLink>
+                  )}
                 </li>
                 <li
                   style={{
@@ -147,13 +196,16 @@ const Header = () => {
                 <div className="input-group">
                   <input
                     type="text"
-                    className="form-control search-text"
+                    className=" search-text "
                     placeholder="Looking for..."
                   />
-                  <select name="" className="form-control search-select">
-                    <option value="">Product</option>
-                    <option value="">Option 2</option>
-                  </select>
+
+                  <Select
+                    styles={customStyles}
+                    options={options}
+                    // placeholder="Options"
+                  />
+
                   <button type="button" className="btn search-button">
                     Search <AiOutlineSearch />
                   </button>
@@ -285,7 +337,7 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <div className="col-8">
+            <div className="col-8  d-flex align-items-center">
               <div className="shop-menu">
                 <ul
                   className={`${
