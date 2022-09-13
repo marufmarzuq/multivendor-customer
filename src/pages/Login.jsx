@@ -12,6 +12,7 @@ import * as yup from "yup";
 import axios from "axios";
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import Cookies from 'universal-cookie';
 import { saveToLocalStorage } from "../utils/seller/manageLocalStorage";
 import { saveToLocalStorage as saveToLocalStorageUser } from "../utils/user/manageLocalStorage";
 
@@ -27,6 +28,12 @@ const Login = () => {
   	const notify                            = (text) => toast(text);
 	const navigate 							= useNavigate();
 	const [checked, setChecked] 			= useState(true);
+	const [message, setMessage]   			= useState('');
+	const cookies 							= new Cookies();
+	const saveCustomerEmail 				= cookies.get('customerEmail');
+	const saveCustomerPassword 				= cookies.get('customerPassword');
+	const saveSellerEmail 					= cookies.get('sellerEmail');
+	const saveSellerPassword 				= cookies.get('sellerPassword');
 
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
@@ -38,7 +45,6 @@ const Login = () => {
 		formData.append('email', data.email);
         formData.append('password',data.password);
         formData.append('remember_me', checked ? 1 : 0);
-
 		axios.post(`${formLayout === 'customer' ? USER_API : API_URL }/login`, formData, {
 			headers: {
 				"Content-Type":  "multipart/form-data",
@@ -46,11 +52,20 @@ const Login = () => {
 			}
 		}).then((response) => {
 				if(formLayout === "customer") {
+					if(checked) {
+						cookies.set('customerEmail', data.email, { path: '/' });
+						cookies.set('customerPassword', data.password, { path: '/' });
+					}
 					saveToLocalStorageUser(response?.data);
 					setLoading(false);
 					navigate("/dashboard");
+					navigate(0);
 					notify("Welcome to Markutos Customer");
 				} else {
+					if(checked) {
+						cookies.set('sellerEmail', data.email, { path: '/' });
+						cookies.set('sellerPassword', data.password, { path: '/' });
+					}
 					saveToLocalStorage(response?.data);
 					setLoading(false);
 					navigate("/seller");
@@ -59,6 +74,7 @@ const Login = () => {
 			},
 			error => {
 				notify(error.response.data.error[0]);
+				setMessage(error.response.data.error[0])
 				setLoading(false);
 			}
 		);
@@ -115,7 +131,8 @@ const Login = () => {
 							<div>
 								<label htmlFor="email">Email</label>
 								<input 
-									type="email" 
+									type="email"
+									value={formLayout === "customer" ? saveCustomerEmail : saveSellerEmail} 
 									{...register('email', { required: true })} 
 									placeholder="Enter your email" 
 								/>
@@ -125,6 +142,7 @@ const Login = () => {
 								<label htmlFor="password">Password</label>
 								<input
 									type="password"
+									value={formLayout === "customer" ? saveCustomerPassword : saveSellerPassword}
 									{...register('password', { required: true })}
 									placeholder="Enter your password"
 								/>
@@ -153,6 +171,7 @@ const Login = () => {
 									{loading && <span className="spinner-grow spinner-grow-sm"></span>}
 									<AiOutlineLogin /> Login
 								</button>
+								{message && <p className="error pt-2">{message}</p>}
 							</div>
 
 							<div className={authStyle.alreadyAccount}>

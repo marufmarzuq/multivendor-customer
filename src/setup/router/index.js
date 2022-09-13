@@ -49,7 +49,7 @@ import PrivateRoutes from "./routeModels/PrivateRoute";
 import BlogDetails from "../../pages/customer/blog/components/blogDetails/BlogDetails";
 import ThankYou from "../../pages/customer/thankYou/ThankYou";
 import { loadFromLocalStorage } from "../../utils/user/manageLocalStorage";
-// import CustomerPrivateRoutes from "./routeModels/CustomerPrivateRoutes";
+import CustomerPrivateRoutes from "./routeModels/CustomerPrivateRoutes";
 
 const Router = () => {
   const user = loadFromLocalStorage();
@@ -106,14 +106,18 @@ const Router = () => {
         <Route path="register" element={<CustomerRegister />} />
         <Route path="login" element={<Login />} />
         <Route path="reset-password" element={<ResetPassword />} />
-        {user && (
-          <Route path="dashboard" element={<DashboardLayout />}>
-            <Route path="" element={<Profile />} />
-            <Route path="orders" element={<UserOrder />} />
-            <Route path="order-returns" element={<UserOrderReturns />} />
-            <Route path="password-change" element={<ChangePass />} />
-          </Route>
-        )}
+        {
+          user ? (
+            <Route path="dashboard" element={<DashboardLayout />}>
+              <Route path="" element={<Profile />} />
+              <Route path="orders" element={<UserOrder />} />
+              <Route path="order-returns" element={<UserOrderReturns />} />
+              <Route path="password-change" element={<ChangePass />} />
+            </Route>
+          )
+          : 
+          <Route path="" element={<Home />} />
+        }   
       </Route>
 
       <Route path="/*" element={<NotFound />} />

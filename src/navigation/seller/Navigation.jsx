@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import navigationStyle from "./navigation.module.css";
+import { useNavigate } from "react-router-dom";
+import AuthService from "../../pages/seller/services/auth.service";
+
 
 import {
   AiOutlineHome,
@@ -26,13 +29,18 @@ import { useState } from "react";
 import { loadFromLocalStorage } from "../../utils/seller/manageLocalStorage";
 
 const Navigation = ({ toggleF, toggle }) => {
+  const navigate 		= useNavigate();
   const logOut = () => {
     toggleF(!toggle);
     console.log("signout ");
   };
 
+  const sellerLogout = () => {
+    navigate('/login');
+		AuthService.logout();
+  }
+
   const user = loadFromLocalStorage();
-  console.log("user", user);
 
   const pathName = useLocation();
   const [prodCollap, setProdColl] = useState(false);
@@ -361,7 +369,7 @@ const Navigation = ({ toggleF, toggle }) => {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/">
+            <NavLink to="/login" onClick={sellerLogout}>
               <BiLogOutCircle className={navigationStyle.icon_green} />
               <span className="ps-2">Log Out</span>
             </NavLink>
