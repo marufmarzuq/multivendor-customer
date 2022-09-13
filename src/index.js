@@ -15,7 +15,7 @@ const root = ReactDOMClient.createRoot(container);
 root.render(
   <React.StrictMode>
     <AppProviders>
-      <App />
+        <App />
       <ToastContainer />
     </AppProviders>
   </React.StrictMode>

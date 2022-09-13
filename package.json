@@ -39,6 +39,7 @@
     "slick-carousel": "^1.8.1",
     "sweetalert2": "^11.4.32",
     "swiper": "^8.3.2",
+    "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },

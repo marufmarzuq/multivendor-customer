@@ -95,7 +95,13 @@ const Header = () => {
             <div className="col-8 col-lg-6 col-xl-6 col-xxl-6 right-menu">
               <ul className="d-flex justify-content-end">
                 <li>
-                  <NavLink to="/seller-request">Be a Seller</NavLink>
+                  {
+                    user ? (
+                      <NavLink to="/dashboard">Dashboard</NavLink>
+                    ) : (
+                      <NavLink to="/seller-request">Be a Seller</NavLink>
+                    )
+                  }
                 </li>
                 <li>
                   {user ? (
