@@ -5,7 +5,7 @@ export default function authHeader() {
     // Perform localStorage action
     const userStr = loadFromLocalStorage();
     let user = null;
-    if (userStr) user = userStr;
+    if (userStr) user = userStr?.access_token;
     if (user && user) {
       return "Bearer " + user.toString();
     } else {
