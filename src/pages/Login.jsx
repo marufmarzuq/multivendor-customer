@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 });
 
 const Login = () => {
-  	const [formLayout, setFormLayout] 		= useState("customer");
+  	const [formLayout, setFormLayout] 		= useState("seller");
 	const [loading, setLoading]             = useState(false);
   	const notify                            = (text) => toast(text);
 	const navigate 							= useNavigate();
@@ -46,9 +46,9 @@ const Login = () => {
 			}
 		}).then((response) => {
 				if(formLayout === "customer") {
-					saveToLocalStorageUser(response?.data?.access_token);
+					saveToLocalStorageUser(response?.data);
 					setLoading(false);
-					navigate("/");
+					navigate("/dashboard");
 					notify("Welcome to Markutos Customer");
 				} else {
 					saveToLocalStorage(response?.data?.access_token);
@@ -87,20 +87,6 @@ const Login = () => {
 									className="form-check-input"
 									type="radio"
 									name="flexRadioDefault"
-									id="flexRadioDefault1"
-									checked={formLayout === "customer"}
-									value={"customer"}
-									onChange={(e) => setFormLayout(e.target.value)}
-								/>
-								<label className="form-check-label" htmlFor="flexRadioDefault1">
-									Customer
-								</label>
-							</div>
-							<div className="form-check">
-								<input
-									className="form-check-input"
-									type="radio"
-									name="flexRadioDefault"
 									id="flexRadioDefault2"
 									checked={formLayout === "seller"}
 									onChange={(e) => setFormLayout(e.target.value)}
@@ -108,6 +94,20 @@ const Login = () => {
 								/>
 								<label className="form-check-label" htmlFor="flexRadioDefault2">
 									Seller
+								</label>
+							</div>
+							<div className="form-check">
+								<input
+									className="form-check-input"
+									type="radio"
+									name="flexRadioDefault"
+									id="flexRadioDefault1"
+									checked={formLayout === "customer"}
+									value={"customer"}
+									onChange={(e) => setFormLayout(e.target.value)}
+								/>
+								<label className="form-check-label" htmlFor="flexRadioDefault1">
+									Customer
 								</label>
 							</div>
 							</div>
