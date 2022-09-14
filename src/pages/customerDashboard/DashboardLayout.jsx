@@ -1,5 +1,6 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import BreadCumb from "../../common/breadcumb/BreadCumb";
 import DashboardLinks from "./components/links/DashboardLinks";
 import layoutStyle from "./layout.module.css";

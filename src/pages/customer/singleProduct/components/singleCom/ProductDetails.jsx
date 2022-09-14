@@ -13,18 +13,23 @@ const ProductDetails = () => {
   return (
     <div className="col-12 mb-md-2">
       <div className="product-details-container">
-        <h2 className="product-title">Travel Laptop Backpack</h2>
+        <h2 className="product-title">Laptop Backpack</h2>
         <div className="ratings">
           <FaStar />
           <FaStar />
           <FaStar />
           <FaStar />
           <FaStar />
-          <span>(2 reviews)</span>
+          <span className="ms-2">(2 reviews)</span>
         </div>
-        <div className="price">
+        <div
+          style={{
+            marginTop: "-10px",
+          }}
+          className="price"
+        >
           <span className="sale">$ 200</span>
-          <span className="del">$ 180</span>
+          <span className="del ms-2">$ 180</span>
         </div>
         <p className="excerpt">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -35,12 +40,16 @@ const ProductDetails = () => {
           <span className="label">Availability :</span>
           <span className="content">In Stock</span>
         </div>
-        <div className="product-meta d-block">
-          <span className="label">Sold By : </span>
-          <span className="content">One Mart</span>
-          <button className="btn ms-2 btn-primary search-button">
-            <AiOutlineMessage /> Message Seller
-          </button>
+        <div className="product-meta d-flex align-items-center">
+          <div className="d-block">
+            <span className="label">Sold By : </span>
+            <span className="content me-2 me-md-0">One Mart</span>
+          </div>
+          <div>
+            <button className="btn ms-0 ms-md-5 btn-primary search-button">
+              <AiOutlineMessage className="me-1" /> Message Seller
+            </button>
+          </div>
         </div>
         <div className="product-meta d-flex align-items-center clear-both">
           <span className="label">Color : </span>

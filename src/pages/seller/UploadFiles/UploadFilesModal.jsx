@@ -14,8 +14,16 @@ import {
 import { RiFileCopyLine } from "react-icons/ri";
 import DragNdrop from "./dragNdrop/DragNdrop";
 
-const OrderModal = ({ show, setShow, values, imageFor }) => {
+const OrderModal = ({
+  show,
+  setShow,
+  values,
+  imageFor,
+  format,
+  setFieldValue,
+}) => {
   let [files, setFiles] = useState([]);
+  let [selectedGallery, setSellectedGallery] = useState([]);
   const [view, setView] = useState("select");
   const [currIndex, setCurrIndex] = useState(null);
   const handleOptions = (index) => {
@@ -24,12 +32,50 @@ const OrderModal = ({ show, setShow, values, imageFor }) => {
   };
 
   const submitFiles = () => {
+    // console.log([...selectedGallery, ...files.map((item) => item?.name)]);
+
+    // if (format == "array") {
+    //   values[imageFor] = files.map((item) => item.name);
+    // } else {
+    //   values[imageFor] = files[0]?.name;
+    // }
+    if (format == "array") {
+      // values[imageFor] = fileArray;
+
+      setFieldValue(imageFor, [
+        ...selectedGallery,
+        ...files.map((item) => item?.name),
+      ]);
+      // values[imageFor] = [
+      //   ...selectedGallery,
+      //   ...files.map((item) => item.name),
+      // ];
+    } else {
+      setFieldValue(imageFor, selectedGallery[0] || files[0]?.name);
+      // values[imageFor] = selectedGallery[0] || files[0].name;
+    }
+
     setShow(!show);
-    values[imageFor] = files[0]?.name;
+    setSellectedGallery([]);
+    setFiles([]);
   };
+
   const selectFile = (file) => {
-    values[imageFor] = file.name;
-    setShow(!show);
+    // const fileArray = [];
+    // fileArray.push(file.name);
+    if (selectedGallery.includes(file.name)) {
+      const afterRemoved = selectedGallery.filter((item) => {
+        return item != file.name;
+      });
+
+      setSellectedGallery(afterRemoved);
+    } else {
+      setSellectedGallery((state) => {
+        return [...state, file.name];
+      });
+    }
+
+    // setShow(!show);
   };
 
   return (
@@ -87,7 +133,10 @@ const OrderModal = ({ show, setShow, values, imageFor }) => {
                       id="shopLogo"
                       onClick={() => selectFile(file)}
                       key={index}
-                      className="single-uploaded-file"
+                      className={`single-uploaded-file ${
+                        selectedGallery.includes(file.name) &&
+                        uploadModalStyle.selected
+                      }`}
                     >
                       <div className="file-img-container">
                         <img src={file.img} alt="" />

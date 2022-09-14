@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./ProductImages.css";
 import UploadFilesModal from "../../../UploadFiles/UploadFilesModal";
-const SettingBanner = ({ values, handleSubmit }) => {
+const SettingBanner = ({ values, handleSubmit, setFieldValue }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -28,6 +28,7 @@ const SettingBanner = ({ values, handleSubmit }) => {
           </div>
 
           <UploadFilesModal
+            setFieldValue={setFieldValue}
             values={values}
             imageFor="sliders"
             show={show}

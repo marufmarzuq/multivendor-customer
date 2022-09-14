@@ -17,30 +17,31 @@ const ShopSetting = () => {
     (state) => state.shopSettingReducer
   );
 
-  const { values, handleChange, touched, errors, handleSubmit } = useFormik({
-    validationSchema: shopSettingSchema,
-    initialValues: {
-      name: setting?.name || "",
-      address: setting?.address || "",
-      logo: setting?.logo || "",
-      sliders: setting?.sliders || "",
-      facebook: setting?.facebook || "",
-      twitter: setting?.twitter || "",
-      google: setting?.google || "",
-      youtube: setting?.youtube || "",
-      instagram: setting?.instagram || "",
-    },
-    enableReinitialize: true,
-    onSubmit: (values, action) => {
-      console.log(values);
-      action.resetForm();
-    },
-  });
+  const { values, handleChange, touched, errors, handleSubmit, setFieldValue } =
+    useFormik({
+      validationSchema: shopSettingSchema,
+      initialValues: {
+        name: setting?.name || "",
+        address: setting?.address || "",
+        logo: setting?.logo || "",
+        sliders: setting?.sliders || "",
+        facebook: setting?.facebook || "",
+        twitter: setting?.twitter || "",
+        google: setting?.google || "",
+        youtube: setting?.youtube || "",
+        instagram: setting?.instagram || "",
+      },
+      enableReinitialize: true,
+      onSubmit: (values, action) => {
+        console.log(values);
+        action.resetForm();
+      },
+    });
   useEffect(() => {
     getApi("shop-setting", setShopSetting);
   }, []);
 
-  console.log(setting);
+  // console.log(setting);
   return (
     <>
       {loading ? (
@@ -60,9 +61,14 @@ const ShopSetting = () => {
               values={values}
               handleChange={handleChange}
               handleSubmit={handleSubmit}
+              setFieldValue={setFieldValue}
               errors={errors}
             />
-            <SettingBanner values={values} handleSubmit={handleSubmit} />
+            <SettingBanner
+              setFieldValue={setFieldValue}
+              values={values}
+              handleSubmit={handleSubmit}
+            />
             <SettingSocialLinks
               values={values}
               handleChange={handleChange}

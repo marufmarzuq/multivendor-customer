@@ -143,6 +143,7 @@
   line-height: 32px;
   color: #333333;
   margin-bottom: 15px;
+  margin-left: -2px;
 }
 .single-product-wrap .product-details-container .price {
   font-size: 16px;
@@ -181,6 +182,13 @@
   margin-bottom: 15px;
   /* size radio button style */
   /* ./size radio button style */
+}
+
+.product-meta .search-button {
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .single-product-wrap .product-details-container .product-meta.radio-wrap {
   margin-right: 50px;

@@ -17,6 +17,7 @@ const SettingInfo = ({
   values,
   errors,
   touched,
+  setFieldValue,
 }) => {
   const [tags, setTags] = useState(["example tag"]);
   const [show, setShow] = useState(false);
@@ -62,6 +63,8 @@ const SettingInfo = ({
               <div>{values.logo ? values.logo : "Choose File"}</div>
             </div>
             <UploadFilesModal
+              format="string"
+              setFieldValue={setFieldValue}
               imageFor="logo"
               values={values}
               show={show}

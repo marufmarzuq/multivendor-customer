@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import NotFound from "../../pages/NotFound";
 import BulkUpload from "../../pages/seller/bulkUpload/BulkUpload";
 import CommissionHistory from "../../pages/seller/commissionHistory/CommissionHistory";
@@ -50,6 +50,7 @@ import BlogDetails from "../../pages/customer/blog/components/blogDetails/BlogDe
 import ThankYou from "../../pages/customer/thankYou/ThankYou";
 import { loadFromLocalStorage } from "../../utils/user/manageLocalStorage";
 import CustomerPrivateRoutes from "./routeModels/CustomerPrivateRoutes";
+import BeVendor from "../../pages/customerDashboard/components/becomeVendor/BeVendor";
 
 const Router = () => {
   const user = loadFromLocalStorage();
@@ -106,18 +107,31 @@ const Router = () => {
         <Route path="register" element={<CustomerRegister />} />
         <Route path="login" element={<Login />} />
         <Route path="reset-password" element={<ResetPassword />} />
-        {
-          user ? (
-            <Route path="dashboard" element={<DashboardLayout />}>
-              <Route path="" element={<Profile />} />
-              <Route path="orders" element={<UserOrder />} />
-              <Route path="order-returns" element={<UserOrderReturns />} />
-              <Route path="password-change" element={<ChangePass />} />
-            </Route>
-          )
-          : 
-          <Route path="" element={<Home />} />
-        }   
+
+        <Route element={<CustomerPrivateRoutes />}>
+          <Route path="dashboard" element={<DashboardLayout />}>
+            <Route path="" element={<Profile />} />
+            <Route path="orders" element={<UserOrder />} />
+            <Route path="order-returns" element={<UserOrderReturns />} />
+            <Route path="password-change" element={<ChangePass />} />
+            <Route path="become-vendor" element={<BeVendor />} />
+          </Route>
+        </Route>
+
+        {/* {user ? (
+          <Route path="dashboard" element={<DashboardLayout />}>
+            <Route path="" element={<Profile />} />
+            <Route path="orders" element={<UserOrder />} />
+            <Route path="order-returns" element={<UserOrderReturns />} />
+            <Route path="password-change" element={<ChangePass />} />
+            <Route path="become-vendor" element={<BeVendor />} />
+          </Route>
+        ) : (
+          <Route>
+            <Navigate to="/login" />
+          </Route>
+          // <Route path="" element={<Home />} />
+        )} */}
       </Route>
 
       <Route path="/*" element={<NotFound />} />

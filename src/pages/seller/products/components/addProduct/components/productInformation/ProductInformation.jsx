@@ -5,8 +5,17 @@ import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import { markutosSellerApi } from "../../../../../../services/Api/api";
 import authHeader from "../../../../../../services/auth-header";
-const ProductInformation = () => {
-  const [tags, setTags] = useState(["example tag"]);
+import { Field } from "formik";
+const ProductInformation = ({
+  values,
+  handleBlur,
+  handleChange,
+  errors,
+  touched,
+
+  setFieldValue,
+}) => {
+  // const [tags, setTags] = useState(["example tag"]);
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [brandOptions, setBrandOptions] = useState([]);
 
@@ -20,7 +29,11 @@ const ProductInformation = () => {
       .then((res) => {
         const category = [];
         res.data.map((item) => {
-          const singleCategory = { value: item.name, label: item.name };
+          const singleCategory = {
+            id: item.id,
+            value: item.name,
+            label: item.name,
+          };
           category.push(singleCategory);
         });
         setCategoryOptions(category);
@@ -36,7 +49,11 @@ const ProductInformation = () => {
       .then((res) => {
         const brands = [];
         res.data.map((item) => {
-          const singleBrand = { value: item.name, label: item.name };
+          const singleBrand = {
+            id: item.id,
+            value: item.name,
+            label: item.name,
+          };
           brands.push(singleBrand);
         });
         setBrandOptions(brands);
@@ -53,54 +70,130 @@ const ProductInformation = () => {
             <span>Product Name</span>
             <i>*</i>
           </label>
-          <input id="product__name" type="text" />
-          <label htmlFor="product__category">
+          <div>
+            <input
+              value={values.name}
+              onChange={handleChange}
+              name="name"
+              id="product__name"
+              type="text"
+              onBlur={handleBlur}
+            />
+            {errors.name && touched.name && (
+              <small className="text-danger"> {errors.name} </small>
+            )}
+          </div>
+          <label htmlFor="category_id">
             <span>Category</span>
             <i>*</i>
           </label>
-          <Select
-            id="product_category"
-            options={categoryOptions}
-            placeholder="Categories"
-          />
+          <div>
+            <Select
+              onBlur={handleBlur}
+              name="category_id"
+              onChange={(option) => setFieldValue("category_id", option.id)}
+              id="category_id"
+              options={categoryOptions}
+              placeholder="Categories"
+            />
+            {errors.category_id && touched.category_id && (
+              <small className="text-danger"> {errors.category_id} </small>
+            )}
+          </div>
           <label htmlFor="product__Brand">
             <span>Brand</span>
           </label>
-          <Select
-            id="product__Brand"
-            options={brandOptions}
-            placeholder="Brands"
-          />
+          <div>
+            <Select
+              onBlur={handleBlur}
+              id="brand_id"
+              name="brand_id"
+              onChange={(option) => setFieldValue("brand_id", option.id)}
+              options={brandOptions}
+              placeholder="Brands"
+            />
+          </div>
           <label htmlFor="product__unit">
             <span>Unit</span>
             <i>*</i>
           </label>
-          <input id="product__unit" type="text" />
+          <div>
+            <input
+              onBlur={handleBlur}
+              name="unit"
+              value={values.unit}
+              onChange={handleChange}
+              id="product__unit"
+              type="number"
+            />
+
+            {errors.unit && touched.unit && (
+              <small className="text-danger"> {errors.unit} </small>
+            )}
+          </div>
           <label htmlFor="minimum_qnty">
             <span>Minimum Qty</span>
             <i>*</i>
           </label>
-          <input id="minimum_qnty" type="number" min={1} defaultValue={1} />
+          <div>
+            <input
+              onBlur={handleBlur}
+              name="minimum_quantity"
+              value={values.minimum_quantity}
+              onChange={handleChange}
+              id="minimum_qnty"
+              type="number"
+              min={1}
+            />
+            {errors.minimum_quantity && touched.minimum_quantity && (
+              <small className="text-danger"> {errors.minimum_quantity} </small>
+            )}
+          </div>
           <label>
             <span>Tags</span>
             <i>*</i>
           </label>
-          <ReactTagInput
-            tags={tags}
-            removeOnBackspace={true}
-            onChange={(newTags) => setTags(newTags)}
-          />
+          <div>
+            <ReactTagInput
+              name="tags"
+              tags={values.tags}
+              removeOnBackspace={true}
+              onChange={(newTags) => setFieldValue("tags", newTags)}
+            />
+          </div>
           <label htmlFor="barcode">
             <span>Barcode</span>
           </label>
-          <input id="barcode" type="text" />
+          <div>
+            <input
+              name="barcode"
+              onChange={handleChange}
+              value={values.barcode}
+              id="barcode"
+              type="text"
+            />
+          </div>
           <label>
             <span>Refundable</span>
           </label>
-          <label className="confi-switch">
-            <input type="checkbox" />
-            <span className="slider round"></span>
-          </label>
+          <div>
+            <label className="confi-switch">
+              <input
+                name="refundable"
+                value={values.refundable}
+                onChange={(e) => setFieldValue("refundable", e.target.checked)}
+                checked={values.refundable}
+                type="checkbox"
+              />
+              {/* <input
+                {...Field}
+                className="mr-2 leading-tight"
+                type="checkbox"
+              /> */}
+              <span className="slider round"></span>
+            </label>
+            <br />
+          </div>
         </div>
       </div>
     </div>

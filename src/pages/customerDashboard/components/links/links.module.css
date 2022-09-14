@@ -1,5 +1,11 @@
+.activeLink {
+  background-color: #d9e8fb;
+  border-bottom: 1px solid #d9e8fb !important;
+}
+
 .linksContainer {
-  background-color: #f3f3f3;
+  /* background-color: #f3f3f3; */
+  background-color: #f8f9fa;
 }
 
 .linksContainer ul {
@@ -20,5 +26,5 @@
 
 .linksContainer ul li {
   padding-bottom: 0;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.192);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.089);
 }
