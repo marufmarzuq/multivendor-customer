@@ -57,8 +57,8 @@ const Login = () => {
 						cookies.set('customerEmail', data.email, { path: '/' });
 						cookies.set('customerPassword', data.password, { path: '/' });
 					} else {
-						cookies.set('customerEmail', null, { path: '/' });
-						cookies.set('customerPassword', null, { path: '/' });
+						cookies.set('customerEmail', '', { path: '/' });
+						cookies.set('customerPassword', '', { path: '/' });
 					}
 					saveToLocalStorageUser(response?.data);
 					setLoading(false);
@@ -69,8 +69,8 @@ const Login = () => {
 						cookies.set('sellerEmail', data.email, { path: '/' });
 						cookies.set('sellerPassword', data.password, { path: '/' });
 					} else {
-						cookies.set('sellerEmail', null, { path: '/' });
-						cookies.set('sellerPassword', null, { path: '/' });
+						cookies.set('sellerEmail', '', { path: '/' });
+						cookies.set('sellerPassword', '', { path: '/' });
 					}
 					saveToLocalStorage(response?.data);
 					setLoading(false);
