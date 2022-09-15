@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from 'universal-cookie';
 import { saveToLocalStorage } from "../utils/seller/manageLocalStorage";
 import { saveToLocalStorage as saveToLocalStorageUser } from "../utils/user/manageLocalStorage";
+import { useEffect } from "react";
 
 
 const schema = yup.object().shape({
@@ -35,7 +36,7 @@ const Login = () => {
 	const saveSellerEmail 					= cookies.get('sellerEmail');
 	const saveSellerPassword 				= cookies.get('sellerPassword');
 
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, setValue, formState: { errors } } = useForm({
         resolver: yupResolver(schema),
     });
     
@@ -55,16 +56,21 @@ const Login = () => {
 					if(checked) {
 						cookies.set('customerEmail', data.email, { path: '/' });
 						cookies.set('customerPassword', data.password, { path: '/' });
+					} else {
+						cookies.set('customerEmail', null, { path: '/' });
+						cookies.set('customerPassword', null, { path: '/' });
 					}
 					saveToLocalStorageUser(response?.data);
 					setLoading(false);
 					navigate("/dashboard");
-					navigate(0);
 					notify("Welcome to Markutos Customer");
 				} else {
 					if(checked) {
 						cookies.set('sellerEmail', data.email, { path: '/' });
 						cookies.set('sellerPassword', data.password, { path: '/' });
+					} else {
+						cookies.set('sellerEmail', null, { path: '/' });
+						cookies.set('sellerPassword', null, { path: '/' });
 					}
 					saveToLocalStorage(response?.data);
 					setLoading(false);
@@ -79,6 +85,11 @@ const Login = () => {
 			}
 		);
     }
+
+	useEffect(() => {
+		setValue('email', formLayout === "customer" ? saveCustomerEmail : saveSellerEmail);
+		setValue('password', formLayout === "customer" ? saveCustomerPassword : saveSellerPassword);
+	}, [formLayout, saveCustomerEmail, saveCustomerPassword, saveSellerEmail, saveSellerPassword, setValue])
 
 	return (
 		<div>
@@ -131,8 +142,7 @@ const Login = () => {
 							<div>
 								<label htmlFor="email">Email</label>
 								<input 
-									type="email"
-									value={formLayout === "customer" ? saveCustomerEmail : saveSellerEmail} 
+									type="email" 
 									{...register('email', { required: true })} 
 									placeholder="Enter your email" 
 								/>
@@ -142,7 +152,6 @@ const Login = () => {
 								<label htmlFor="password">Password</label>
 								<input
 									type="password"
-									value={formLayout === "customer" ? saveCustomerPassword : saveSellerPassword}
 									{...register('password', { required: true })}
 									placeholder="Enter your password"
 								/>
