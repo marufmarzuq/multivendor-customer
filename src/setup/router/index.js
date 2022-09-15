@@ -48,12 +48,10 @@ import ChangePass from "../../pages/customerDashboard/components/changePass/Chan
 import PrivateRoutes from "./routeModels/PrivateRoute";
 import BlogDetails from "../../pages/customer/blog/components/blogDetails/BlogDetails";
 import ThankYou from "../../pages/customer/thankYou/ThankYou";
-import { loadFromLocalStorage } from "../../utils/user/manageLocalStorage";
 import CustomerPrivateRoutes from "./routeModels/CustomerPrivateRoutes";
 import BeVendor from "../../pages/customerDashboard/components/becomeVendor/BeVendor";
 
 const Router = () => {
-  const user = loadFromLocalStorage();
   return (
     <Routes>
       <Route path="/customer-home" element={<CustomerHome />} />
@@ -117,21 +115,6 @@ const Router = () => {
             <Route path="become-vendor" element={<BeVendor />} />
           </Route>
         </Route>
-
-        {/* {user ? (
-          <Route path="dashboard" element={<DashboardLayout />}>
-            <Route path="" element={<Profile />} />
-            <Route path="orders" element={<UserOrder />} />
-            <Route path="order-returns" element={<UserOrderReturns />} />
-            <Route path="password-change" element={<ChangePass />} />
-            <Route path="become-vendor" element={<BeVendor />} />
-          </Route>
-        ) : (
-          <Route>
-            <Navigate to="/login" />
-          </Route>
-          // <Route path="" element={<Home />} />
-        )} */}
       </Route>
 
       <Route path="/*" element={<NotFound />} />
