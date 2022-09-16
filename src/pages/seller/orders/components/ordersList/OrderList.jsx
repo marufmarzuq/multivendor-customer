@@ -24,7 +24,6 @@ const OrderList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [getPayStatus, setPayStatus] = useState("");
   const [getDeliveryStatus, setDeliveryStatus] = useState("");
-
   useEffect(() => {
     setLoading(true);
     axios
