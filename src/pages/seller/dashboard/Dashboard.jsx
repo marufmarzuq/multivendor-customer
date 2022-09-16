@@ -1,12 +1,11 @@
-import React, { Fragment, useEffect } from "react";
+import axios from "axios";
+import React, { Fragment, useEffect, useState } from "react";
 import DashboardCom from "./components/DashboardCom";
+import { API_URL } from "../../services/Api/api";
+import authHeader from "../../services/auth-header";
 
 const Dashboard = () => {
-  return (
-    <Fragment>
-      <DashboardCom />
-    </Fragment>
-  );
+  return <DashboardCom />;
 };
 
 export default Dashboard;
