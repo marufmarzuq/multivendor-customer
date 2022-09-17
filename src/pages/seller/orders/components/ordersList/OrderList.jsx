@@ -39,11 +39,10 @@ const OrderList = () => {
         setLoading(false);
         setCurrentItems(response?.data?.data);
         setCurrentPage(response?.data?.current_page);
-        setPerPage(response?.data?.per_page);
+        // setPerPage(response?.data?.per_page);
         setPageCount(response?.data?.last_page);
       });
-  }, [perPage, currentPage, search, getPayStatus, getDeliveryStatus]);
-
+  }, [currentPage, perPage, search, getPayStatus, getDeliveryStatus]);
 
   const payStatus = [
     { value: "paid", label: "Paid" },
@@ -189,17 +188,16 @@ const OrderList = () => {
             </section>
           </Fragment>
         )}
-        {
-          currentItems.length > 0 &&
-						<PaginationCom
-						currentItem={currentItems}
-						perPage={perPage}
-						pageCount={pageCount}
-						currentPage={currentPage}
-						setPerPage={setPerPage}
-						setCurrentPage={setCurrentPage}
-					/>
-        }
+        {currentItems.length > 0 && (
+          <PaginationCom
+            currentItem={currentItems}
+            perPage={perPage}
+            pageCount={pageCount}
+            currentPage={currentPage}
+            setPerPage={setPerPage}
+            setCurrentPage={setCurrentPage}
+          />
+        )}
         <PdfModal show={pdfShow} setShow={setPdfShow} />
         <OrderModal page="order" show={show} setShow={setShow} />
       </div>
