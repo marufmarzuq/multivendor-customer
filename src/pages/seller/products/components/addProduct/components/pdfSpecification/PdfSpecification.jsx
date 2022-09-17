@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
-const PdfSpecification = () => {
+const PdfSpecification = ({
+  values,
+  handleBlur,
+  handleChange,
+  errors,
+  touched,
+  setFieldValue,
+}) => {
   const [show, setShow] = useState(false);
   return (
     <div className="add-product-single-widget">
@@ -13,10 +20,21 @@ const PdfSpecification = () => {
           <div>
             <div onClick={() => setShow(!show)} className="custom-browse">
               <div>Browse</div>
-              <div>Choose File</div>
+              <div>
+                {values.product_specification
+                  ? values.product_specification
+                  : "Choose File"}
+              </div>
             </div>
 
-            <UploadFilesModal show={show} setShow={setShow} />
+            <UploadFilesModal
+              setFieldValue={setFieldValue}
+              format="pdf"
+              values={values}
+              imageFor="pdf"
+              show={show}
+              setShow={setShow}
+            />
           </div>
         </div>
       </div>

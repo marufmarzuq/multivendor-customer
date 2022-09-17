@@ -54,6 +54,7 @@ const AddProducts = () => {
       tax_type: "",
       discount: "",
       discount_type: "",
+      quantity: "",
       colors: [],
       choice_no: "",
       choice_options: [],
@@ -62,6 +63,7 @@ const AddProducts = () => {
       variant_sku: [],
       variant_quantity: [],
       variant_images: [],
+      product_specification: "",
       shipping_type: "",
       est_shipping_days: "",
       meta_title: "",
@@ -69,6 +71,8 @@ const AddProducts = () => {
       meta_img: "",
       pdf: "",
       cash_on_delivery: true,
+      featured: true,
+      todays_deal: true,
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
@@ -113,6 +117,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <ProductVideos
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}
@@ -129,6 +134,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <ProductPriceStock
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}
@@ -145,6 +151,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <PdfSpecification
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}
@@ -153,6 +160,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <ProductSEO
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}
@@ -179,6 +187,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <StockVisibility
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}
@@ -187,6 +196,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <CashOnDelivery
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}
@@ -195,6 +205,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <Featured
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}
@@ -203,6 +214,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <TodaysDeal
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}

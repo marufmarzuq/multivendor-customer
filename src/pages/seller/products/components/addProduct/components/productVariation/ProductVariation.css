@@ -1,0 +1,10 @@
+.widget-content-container-variation {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+
+  font-size: 14px !important;
+}
+
+.widget-content-container-variation .add-product-toggles-container span {
+  font-size: 16px;
+}
