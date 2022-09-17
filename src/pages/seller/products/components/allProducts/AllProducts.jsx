@@ -183,7 +183,7 @@ const AllProducts = () => {
                   {products.length > 0 && (
                     <PaginationCom
                       currentItem={products}
-                      perPage={per_page}
+                      perPage={perPage}
                       pageCount={last_page}
                       currentPage={currentPage}
                       setPerPage={setPerPage}

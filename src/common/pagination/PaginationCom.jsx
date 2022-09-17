@@ -15,7 +15,6 @@ const PaginationCom = ({
   setPerPage,
   setCurrentPage,
 }) => {
-
   const options = [
     { value: "5", label: "5" },
     { value: "10", label: "10" },
@@ -30,6 +29,7 @@ const PaginationCom = ({
           <Select
             options={options}
             className={paginationStyle.paginationSelect}
+            value={{ label: perPage, value: perPage }}
             defaultValue={{ label: 10, value: 10 }}
             onChange={(e) => setPerPage(e.value)}
           />

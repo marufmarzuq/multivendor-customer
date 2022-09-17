@@ -37,12 +37,12 @@ const ProductDetails = () => {
           since the 1500s, when an unknown printer took a galley of type.
         </p>
         <div className="product-meta d-block">
-          <span className="label">Availability :</span>
+          <span className="label me-1">Availability :</span>
           <span className="content">In Stock</span>
         </div>
         <div className="product-meta d-flex align-items-center">
           <div className="d-block">
-            <span className="label">Sold By : </span>
+            <span className="label me-1">Sold By : </span>
             <span className="content me-2 me-md-0">One Mart</span>
           </div>
           <div>
@@ -90,22 +90,20 @@ const ProductDetails = () => {
         </div>
         <div className="cart-buttons-wrap">
           <button className="btn btn-primary ">
-            {" "}
-            <AiOutlineShoppingCart /> Add to Cart
+            <AiOutlineShoppingCart className="me-1" />{" "}
+            <small>Add to Cart</small>
           </button>
           <button className="btn btn-primary">
-            {" "}
-            <BiShoppingBag /> Buy Now
+            <BiShoppingBag className="me-1" /> <small>Buy Now</small>
           </button>
         </div>
         <div className="wishlist-compare-wrap">
           <button className="btn me-3 ">
             <IoIosGitCompare />
-            Compare{" "}
+            Compare
           </button>
           <button className="btn ps-2">
-            {" "}
-            <AiOutlineHeart /> Wishlist{" "}
+            <AiOutlineHeart /> Wishlist
           </button>
         </div>
         <div className="social-share-wrap">

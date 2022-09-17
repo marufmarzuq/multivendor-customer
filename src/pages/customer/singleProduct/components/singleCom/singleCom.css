@@ -228,10 +228,15 @@
 }
 .single-product-wrap .product-details-container .cart-buttons-wrap {
   margin-bottom: 15px;
+  display: flex;
 }
+
 .single-product-wrap .product-details-container .cart-buttons-wrap button {
   margin: 10px 20px 10px 0;
   padding: 6px 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .single-product-wrap .product-details-container .wishlist-compare-wrap {
   margin-bottom: 15px;
