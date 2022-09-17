@@ -32,27 +32,15 @@ const OrderModal = ({
   };
 
   const submitFiles = () => {
-    // console.log([...selectedGallery, ...files.map((item) => item?.name)]);
-
-    // if (format == "array") {
-    //   values[imageFor] = files.map((item) => item.name);
-    // } else {
-    //   values[imageFor] = files[0]?.name;
-    // }
-    if (format == "array") {
-      // values[imageFor] = fileArray;
-
+    if (format == "pdf") {
+      setFieldValue(imageFor, files[0]?.name);
+    } else if (format == "array") {
       setFieldValue(imageFor, [
         ...selectedGallery,
         ...files.map((item) => item?.name),
       ]);
-      // values[imageFor] = [
-      //   ...selectedGallery,
-      //   ...files.map((item) => item.name),
-      // ];
     } else {
       setFieldValue(imageFor, selectedGallery[0] || files[0]?.name);
-      // values[imageFor] = selectedGallery[0] || files[0].name;
     }
 
     setShow(!show);
@@ -61,8 +49,6 @@ const OrderModal = ({
   };
 
   const selectFile = (file) => {
-    // const fileArray = [];
-    // fileArray.push(file.name);
     if (selectedGallery.includes(file.name)) {
       const afterRemoved = selectedGallery.filter((item) => {
         return item != file.name;
