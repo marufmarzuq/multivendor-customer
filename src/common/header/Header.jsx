@@ -27,6 +27,7 @@ import { BiBasketball } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { IoIosGitCompare } from "react-icons/io";
 import { loadFromLocalStorage } from "../../utils/user/manageLocalStorage";
+import { loadFromLocalStorage as loadSellerData } from "../../utils/seller/manageLocalStorage";
 
 import Select from "react-select";
 
@@ -71,6 +72,7 @@ const Header = () => {
     AuthService.logout();
   };
   const user = loadFromLocalStorage();
+  const seller = loadSellerData();  
 
   const options = [
     { value: "chocolate", label: "Chocolate" },
@@ -141,7 +143,7 @@ const Header = () => {
                     user ? (
                       <NavLink to="/dashboard">Dashboard</NavLink>
                     ) : (
-                      <NavLink to="/seller-request">Be a Seller</NavLink>
+                      <NavLink to={seller ? "/seller" : "/seller-request"}>Be a Seller</NavLink>
                     )
                   }
                 </li>
