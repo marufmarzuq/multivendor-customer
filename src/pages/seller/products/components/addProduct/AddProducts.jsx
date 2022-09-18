@@ -56,6 +56,7 @@ const AddProducts = () => {
       discount_type: "",
       quantity: "",
       colors: [],
+      size: [],
       choice_no: "",
       choice_options: [],
       variants: [],
@@ -126,6 +127,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <ProductVariation
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}
@@ -143,6 +145,7 @@ const AddProducts = () => {
               touched={touched}
             />
             <ProductDescription
+              setFieldValue={setFieldValue}
               values={values}
               handleBlur={handleBlur}
               handleChange={handleChange}
