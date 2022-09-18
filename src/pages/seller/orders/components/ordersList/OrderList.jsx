@@ -1,10 +1,13 @@
 import React, { useEffect, Fragment } from "react";
 import axios from "axios";
 import { BsDownload, BsEyeFill } from "react-icons/bs";
+import { HiOutlineChevronRight } from "react-icons/hi";
+import { Table } from "react-bootstrap";
 import { useState } from "react";
 import orderListStyle from "./orderList.module.css";
 import PdfModal from "../../../../../common/pdfModal/PdfModal";
 import OrderModal from "../orderModal/OrderModal";
+import DateRangeSelector from "../../../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import PaginationCom from "../../../../../common/pagination/PaginationCom";
 import { API_URL } from "../../../../services/Api/api";
@@ -20,15 +23,23 @@ const OrderList = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const debouncedSearchTerm = useDebounce(search, 500);
+	const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const [perPage, setPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [getPayStatus, setPayStatus] = useState("");
   const [getDeliveryStatus, setDeliveryStatus] = useState("");
+	const [current, setCurrent] = useState(null);
+	const toggle = (index) => {
+    if (index === current) setCurrent(null);
+    else setCurrent(index);
+  };
+
   useEffect(() => {
     setLoading(true);
     axios
       .get(
-        `${API_URL}/orders?search_value=${search}&sort_payment=${getPayStatus}&sort_delivery=${getDeliveryStatus}&per_page=${perPage}&page=${currentPage}`,
+        `${API_URL}/orders?search_value=${search}&sort_payment=${getPayStatus}&sort_delivery=${getDeliveryStatus}&date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`,
         {
           headers: {
             Authorization: authHeader(),
@@ -41,7 +52,7 @@ const OrderList = () => {
         setCurrentPage(response?.data?.current_page);
         setPageCount(response?.data?.last_page);
       });
-  }, [currentPage, perPage, search, getPayStatus, getDeliveryStatus]);
+  }, [currentPage, perPage, search, getPayStatus, getDeliveryStatus,startDate,endDate]);
 
   const payStatus = [
     { value: "paid", label: "Paid" },
@@ -97,6 +108,14 @@ const OrderList = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
+            <div className="">
+							<DateRangeSelector
+								startDate={startDate}
+								endDate={endDate}
+								setStartDate={setStartDate}
+								setEndDate={setEndDate}
+							/>
+						</div>
           </div>
         </section>
         <section>
@@ -141,9 +160,13 @@ const OrderList = () => {
                       className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-4 pt-2 `}
                       key={key}
                     >
-                      <div>
-                        <p>{item.id}</p>
-                      </div>
+											<div
+												className="action-column"
+												style={{ cursor: "pointer" }}
+												onClick={() => toggle(key)}
+											>
+												<HiOutlineChevronRight />
+											</div>
                       <div onClick={() => setShow(!show)}>
                         <p className={orderListStyle.code}>{item.code}</p>
                       </div>
@@ -178,6 +201,30 @@ const OrderList = () => {
                           <BsDownload />
                         </button>
                       </div>
+                      {current === key && (
+                      <div  className="row-extra-row">
+                      	<div>Product details</div>
+												<Table bordered>
+													<thead>
+														<tr>
+															<th>Name</th>
+															<th>Quantity</th>
+															<th>Price</th>
+														</tr>
+													</thead>
+													<tbody>
+													{ item.products?.map((order, j ) => (
+														<tr key={j}>
+															<td>{order.product_name}</td>
+															<td>{order.quantity}</td>
+															<td>{order.price}</td>
+														</tr>
+													))
+													}
+													</tbody>
+												</Table>
+                      </div>
+                      )}
                     </div>
                   );
                 })
