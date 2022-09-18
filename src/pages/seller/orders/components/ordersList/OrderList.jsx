@@ -39,7 +39,6 @@ const OrderList = () => {
         setLoading(false);
         setCurrentItems(response?.data?.data);
         setCurrentPage(response?.data?.current_page);
-        // setPerPage(response?.data?.per_page);
         setPageCount(response?.data?.last_page);
       });
   }, [currentPage, perPage, search, getPayStatus, getDeliveryStatus]);
