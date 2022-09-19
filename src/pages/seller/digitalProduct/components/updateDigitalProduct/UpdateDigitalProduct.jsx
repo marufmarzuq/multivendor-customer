@@ -14,7 +14,7 @@ const UpdateDigitalProduct = () => {
   return (
     <div className="add-product mx-3 mb-5">
       <div className=" d-flex justify-content-between me-md-5 pe-md-4 me-0 pe-0 mt-3 mb-3">
-        <h4>Add New Digital product</h4>
+        <h4>Update Digital product</h4>
         <button className="btn me-md-5  me-0 btn-outline-success">
           Save Product
         </button>
