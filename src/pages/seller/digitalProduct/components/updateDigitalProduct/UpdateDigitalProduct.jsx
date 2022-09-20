@@ -28,8 +28,7 @@ const UpdateDigitalProduct = () => {
       </div>
       <div className="mt-4">
         <button className="btn  btn-lg btn-outline-success">
-          {" "}
-          Save Product{" "}
+          Save Product
         </button>
       </div>
     </div>
