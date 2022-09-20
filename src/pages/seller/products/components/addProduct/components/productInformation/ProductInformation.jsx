@@ -72,12 +72,12 @@ const ProductInformation = ({
           </label>
           <div>
             <input
+              name="name"
               value={values.name}
               onChange={handleChange}
-              name="name"
+              onBlur={handleBlur}
               id="product__name"
               type="text"
-              onBlur={handleBlur}
             />
             {errors.name && touched.name && (
               <small className="text-danger"> {errors.name} </small>
@@ -157,8 +157,8 @@ const ProductInformation = ({
             <ReactTagInput
               name="tags"
               tags={values.tags}
-              removeOnBackspace={true}
               onChange={(newTags) => setFieldValue("tags", newTags)}
+              removeOnBackspace={true}
             />
           </div>
           <label htmlFor="barcode">

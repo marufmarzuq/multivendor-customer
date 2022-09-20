@@ -13,10 +13,8 @@ const container = document.getElementById("root");
 const root = ReactDOMClient.createRoot(container);
 
 root.render(
-  <React.StrictMode>
-    <AppProviders>
-        <App />
-      <ToastContainer />
-    </AppProviders>
-  </React.StrictMode>
+  <AppProviders>
+    <App />
+    <ToastContainer />
+  </AppProviders>
 );

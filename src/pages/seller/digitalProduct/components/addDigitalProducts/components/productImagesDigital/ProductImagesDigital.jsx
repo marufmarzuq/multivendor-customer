@@ -3,8 +3,30 @@ import { useState } from "react";
 import "./ProductImages.css";
 import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
 
-const ProductImagesDigital = () => {
+const ProductImagesDigital = ({
+  values,
+  handleBlur,
+  handleChange,
+  errors,
+  touched,
+  setFieldValue,
+}) => {
   const [show, setShow] = useState(false);
+
+  const [imageFor, setImageFor] = useState("");
+  const [format, setFormat] = useState("");
+
+  const openGalleryImg = () => {
+    setImageFor("photos");
+    setFormat("array");
+    setShow(!show);
+  };
+
+  const openThumbnail = () => {
+    setImageFor("thumbnail_img");
+    setFormat("string");
+    setShow(!show);
+  };
 
   return (
     <div className="add-product-single-widget">
@@ -17,9 +39,17 @@ const ProductImagesDigital = () => {
               <span className="helper-text">(600x600)</span>
             </div>
             <div>
-              <div onClick={() => setShow(!show)} className="custom-browse">
+              <div onClick={openGalleryImg} className="custom-browse">
                 <div>Browse</div>
-                <div>Choose File</div>
+                <div>
+                  {values.photos.length > 0
+                    ? values.photos.map((item) => (
+                        <small key={item} className="me-2">
+                          {item},
+                        </small>
+                      ))
+                    : "Choose File"}
+                </div>
               </div>
               <span className="helper-text">
                 These images are visible in product details page gallery. Use
@@ -33,9 +63,11 @@ const ProductImagesDigital = () => {
               <span className="helper-text">((300x300)</span>
             </div>
             <div>
-              <div onClick={() => setShow(!show)} className="custom-browse">
+              <div onClick={openThumbnail} className="custom-browse">
                 <div>Browse</div>
-                <div>Choose File</div>
+                <div>
+                  {values.thumbnail_img ? values.thumbnail_img : "Choose File"}
+                </div>
               </div>
               <span className="helper-text">
                 This image is visible in all product box. Use 300x300 sizes
@@ -43,7 +75,14 @@ const ProductImagesDigital = () => {
                 we had to crop some edge in different devices to make it
                 responsive.
               </span>
-              <UploadFilesModal show={show} setShow={setShow} />
+              <UploadFilesModal
+                setFieldValue={setFieldValue}
+                format={format}
+                values={values}
+                imageFor={imageFor}
+                show={show}
+                setShow={setShow}
+              />
             </div>
           </div>
         </div>
