@@ -16,14 +16,12 @@ const ProductDescriptionDigital = ({
       <div className="widget-title">Product Description</div>
       <div className="widget-content-container">
         <div className="ap-single-content-des">
-          <div className="tiny-desc-container">
-            <CustomTextEditor
-              setFieldValue={setFieldValue}
-              textFor="description"
-              setContent={setEditorState}
-              content={editorState}
-            />
-          </div>
+          <CustomTextEditor
+            setFieldValue={setFieldValue}
+            textFor="description"
+            setContent={setEditorState}
+            content={editorState}
+          />
         </div>
       </div>
     </div>
