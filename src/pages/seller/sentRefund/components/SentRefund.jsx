@@ -41,7 +41,7 @@ const SentRefund = () => {
           </div>
         </section>
 
-        {(loading || error) && (
+        {(  !loading ) && (
           <section className={`px-4 ${sentRefundStyle.tableData}`}>
             <Table borderless responsive>
               <thead>
