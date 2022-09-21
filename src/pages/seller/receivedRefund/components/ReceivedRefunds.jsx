@@ -8,6 +8,7 @@ import PaginationCom from "../../../../common/pagination/PaginationCom";
 import TableLoading from "../../../../common/loading/TableLoading";
 import DateRangeSelector from "../../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
+import DetailsModal from "./refundDetialsModal/DetailsModal";
 
 const ReceivedRefunds = () => {
   const { receivedRefunds, last_page, per_page, current_page, loading, error } =
@@ -16,6 +17,7 @@ const ReceivedRefunds = () => {
   const [currentPage, setCurrentPage] = useState(current_page);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     getApi(
@@ -123,7 +125,10 @@ const ReceivedRefunds = () => {
                         <td>
                           <small>{item.created_at}</small>
                         </td>
-                        <td>
+                        <td
+                          className={receivedRefundStyle.modalOpen}
+                          onClick={() => setShow(!show)}
+                        >
                           <small>{item.order_code}</small>
                         </td>
                         <td>
@@ -169,7 +174,7 @@ const ReceivedRefunds = () => {
                   })}
               </tbody>
             </Table>
-
+            <DetailsModal show={show} setShow={setShow} />
             <PaginationCom
               currentItem={receivedRefunds}
               perPage={per_page}

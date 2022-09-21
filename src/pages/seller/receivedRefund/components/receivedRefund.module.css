@@ -65,6 +65,11 @@ p {
   border: 1px solid #65c23f;
 }
 
+.modalOpen {
+  color: #65c23f;
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 768px) {
   .background {
     background-color: white;
