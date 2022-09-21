@@ -15,7 +15,6 @@ const ProductInformation = ({
 
   setFieldValue,
 }) => {
-  // const [tags, setTags] = useState(["example tag"]);
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [brandOptions, setBrandOptions] = useState([]);
 
