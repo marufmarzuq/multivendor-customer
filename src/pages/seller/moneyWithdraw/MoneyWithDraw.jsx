@@ -9,6 +9,7 @@ import { setMoneyWithdraw } from "../../../redux/slices/seller/payments";
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
 import PaginationCom from "../../../common/pagination/PaginationCom";
+import {priceFormat} from "../../../hooks/helper";
 
 const MoneyWithDraw = () => {
   const [show, setShow] = useState(false);
@@ -47,7 +48,7 @@ const MoneyWithDraw = () => {
                 </span>
               </div>
               <div>
-                <h5>{pendingBalance}</h5>
+                <h5>{priceFormat(pendingBalance)}</h5>
               </div>
             </div>
           </section>
@@ -138,7 +139,7 @@ const MoneyWithDraw = () => {
                         <small>{item.created_at}</small>
                       </td>
                       <td>
-                        <small>{item.amount}</small>
+                        <small>{priceFormat(item.amount)}</small>
                       </td>
                       <td>
                         <small className={withdrawStyle.paid}>

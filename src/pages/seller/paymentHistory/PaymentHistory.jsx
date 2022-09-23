@@ -5,8 +5,9 @@ import paymentHisStyle from "./paymentHis.module.css";
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
 import { API_URL } from "../../services/Api/api";
 import authHeader from "../../services/auth-header";
-import TableLoading from "../../../common/loading/TableLoading";
+import SimpleLoading from "../../../common/loading/SimpleLoading";
 import PaginationCom from "../../../common/pagination/PaginationCom";
+import { priceFormat } from "../../../hooks/helper";
 
 const PaymentHistory = () => {
   const [currentItems, setCurrentItems] = useState([]);
@@ -106,7 +107,7 @@ const PaymentHistory = () => {
                             <small>{item.created_at}</small>
                           </td>
                           <td>
-                            <small>{item.amount}</small>
+                            <small>{priceFormat(item.amount)}</small>
                           </td>
                           <td className="text-center">
                             <small>{item.payment_method}</small>
@@ -119,7 +120,7 @@ const PaymentHistory = () => {
               </tbody>
             </Table>
           ) : (
-            <TableLoading />
+            <SimpleLoading />
           )}
 
           {!loading && (

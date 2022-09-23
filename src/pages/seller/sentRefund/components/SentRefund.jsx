@@ -7,6 +7,7 @@ import { setSentRefunds } from "../../../../redux/slices/seller/refunds";
 import PaginationCom from "../../../../common/pagination/PaginationCom";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
 import DateRangeSelector from "../../../../common/ui/dateRangeSelector";
+import {priceFormat} from "../../../../hooks/helper";
 
 const SentRefund = () => {
   const { sentRefunds, last_page, per_page, current_page, loading, error } =
@@ -40,38 +41,6 @@ const SentRefund = () => {
             />
           </div>
         </section>
-
-        {(  !loading ) && (
-          <section className={`px-4 ${sentRefundStyle.tableData}`}>
-            <Table borderless responsive>
-              <thead>
-                <tr>
-                  <th>
-                    <small>#</small>
-                  </th>
-                  <th>
-                    <small>Date</small>
-                  </th>
-                  <th>
-                    <small>Order Id</small>
-                  </th>
-                  <th>
-                    <small>Product</small>
-                  </th>
-                  <th className="text-end">
-                    <small>Amount</small>
-                  </th>
-                  <th>
-                    <small>Reason</small>
-                  </th>
-                  <th className="text-center">
-                    <small>Reject Reason</small>
-                  </th>
-                </tr>
-              </thead>
-            </Table>
-          </section>
-        )}
 
         {loading && <SimpleLoading />}
         {error ? <h1 className="text-center">{error}</h1> : ""}
@@ -130,7 +99,7 @@ const SentRefund = () => {
                             })}
                         </td>
                         <td className="text-end">
-                          <small>{item.refund_amount}</small>
+                          <small>{priceFormat(item.refund_amount)}</small>
                         </td>
                         <td>{item.reason}</td>
                         <td className="text-center">

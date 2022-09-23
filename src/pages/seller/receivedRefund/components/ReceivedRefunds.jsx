@@ -9,6 +9,7 @@ import TableLoading from "../../../../common/loading/TableLoading";
 import DateRangeSelector from "../../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
 import DetailsModal from "./refundDetialsModal/DetailsModal";
+import {priceFormat} from "../../../../hooks/helper";
 
 const ReceivedRefunds = () => {
   const { receivedRefunds, last_page, per_page, current_page, loading, error } =
@@ -44,41 +45,6 @@ const ReceivedRefunds = () => {
           </div>
         </section>
 
-        {(loading || error) && (
-          <section className={`px-4 ${receivedRefundStyle.tableData}`}>
-            <Table borderless responsive>
-              <thead>
-                <tr>
-                  <th>
-                    <small>#</small>
-                  </th>
-                  <th>
-                    <small>Date</small>
-                  </th>
-                  <th>
-                    <small>Order Id</small>
-                  </th>
-                  <th>
-                    <small>Product</small>
-                  </th>
-                  <th className="text-end">
-                    <small>Amount</small>
-                  </th>
-                  <th className="text-center">
-                    <small>Status</small>
-                  </th>
-                  <th className="text-center">
-                    <small>Approval</small>
-                  </th>
-                  <th className="text-center">
-                    <small>Reject</small>
-                  </th>
-                </tr>
-              </thead>
-            </Table>
-          </section>
-        )}
-
         {loading && <SimpleLoading />}
         {error ? <h1 className="text-center">{error}</h1> : ""}
 
@@ -106,10 +72,10 @@ const ReceivedRefunds = () => {
                     <small>Status</small>
                   </th>
                   <th className="text-center">
-                    <small>Approval</small>
+                    <small>Admin Approval</small>
                   </th>
                   <th className="text-center">
-                    <small>Reject</small>
+                    <small>Seller Approval</small>
                   </th>
                 </tr>
               </thead>
@@ -142,7 +108,7 @@ const ReceivedRefunds = () => {
                             })}
                         </td>
                         <td className="text-end">
-                          <small>{item.refund_amount}</small>
+													<small>{priceFormat(item.refund_amount)}</small>
                         </td>
                         <td className="text-center">
                           <small className={receivedRefundStyle.paid}>
@@ -150,24 +116,10 @@ const ReceivedRefunds = () => {
                           </small>
                         </td>
                         <td className="text-center">
-                          <div className="form-check d-flex justify-content-center form-switch">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              role="switch"
-                              id="flexSwitchCheckDefault"
-                            />
-                          </div>
+													{item.admin_approval}
                         </td>
                         <td className="text-center">
-                          <div className="form-checkv d-flex justify-content-center form-switch">
-                            <input
-                              className="form-check-input"
-                              type="checkbox"
-                              role="switch"
-                              id="flexSwitchCheckDefault"
-                            />
-                          </div>
+                          {item.seller_approval}
                         </td>
                       </tr>
                     );

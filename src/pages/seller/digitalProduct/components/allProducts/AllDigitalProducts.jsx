@@ -13,6 +13,7 @@ import authHeader from "../../../../services/auth-header";
 import { API_URL } from "../../../../services/Api/api";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import {priceFormat} from "../../../../../hooks/helper";
 
 const AllDigitalProducts = () => {
   const { products, last_page, per_page, current_page, loading, error } =
@@ -130,7 +131,7 @@ const AllDigitalProducts = () => {
                           <p>{item.current_stock}</p>
                         </div>
                         <div className={`col-4 col-lg-2 `}>
-                          <p> {item.unit_price}</p>
+													<p> {priceFormat(item.unit_price)}</p>
                         </div>
                         <div
                           className={`col-4 col-lg-1 ${allProductsStyle.hide}`}

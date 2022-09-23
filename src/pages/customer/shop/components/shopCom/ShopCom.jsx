@@ -3,7 +3,6 @@ import GridOne from "../../../../../common/productView/GridOne";
 import { BiSearch, BiSquare } from "react-icons/bi";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { AiOutlineBars } from "react-icons/ai";
-import Select from "react-select";
 import { FaBalanceScale, FaStar } from "react-icons/fa";
 import { product2 } from "../../../../../assets/index";
 const ShopCom = () => {

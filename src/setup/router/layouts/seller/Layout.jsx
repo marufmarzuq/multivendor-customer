@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
-
+import React, { useState } from "react";
+import { Link, NavLink, Outlet } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import layoutStyle from "./layout.module.css";
+import Select from "react-select";
 
 import {
   AiOutlineHome,
@@ -13,7 +14,14 @@ import Navigation from "../../../../navigation/seller/Navigation";
 
 const Layout = () => {
   const [toggle, setToggle] = useState(false);
-
+  const [selectedLang, setSelectedLang] = useState({code:'en-US',currency:'USD'});
+	const { t, i18n } = useTranslation();
+  const changeLanguage = (lang) => {
+    localStorage.setItem("sellerLang", JSON.stringify(lang));
+    setSelectedLang(lang);
+    // i18n.changeLanguage(lang);
+  };
+  const languages = [{label:'EN',value:{code:'en-US',currency:'USD'}},{label:'FR',value:{code:'de-DE',currency:'EUR'}}];
   return (
     <>
       <div className="container-fluid ">
@@ -57,9 +65,15 @@ const Layout = () => {
               <Navigation toggle={toggle} toggleF={setToggle} />
             </div>
           </div>
-          <div className=" px-0 mx-0">
+          <div className="px-0 mx-0">
+						<section>
+							<menu>
+								<Select   defaultValue={selectedLang}
+								options={ languages } onChange={(e) => changeLanguage(e.value)} />
+								<NavLink to={"/"}>Go to Frontend</NavLink>
+							</menu>
+						</section>
             {/* Container for showing content */}
-
             <div className={`pt-4  ${layoutStyle.content}`}>
               <Outlet />
             </div>

@@ -7,6 +7,8 @@ import DateRangeSelector from "../../../common/ui/dateRangeSelector";
 import PaginationCom from "../../../common/pagination/PaginationCom";
 import { API_URL } from "../../services/Api/api";
 import authHeader from "../../services/auth-header";
+import {priceFormat} from "../../../hooks/helper";
+import SimpleLoading from "../../../common/loading/SimpleLoading";
 
 const MyWallet = () => {
   const [balance, setBalance] = useState(0);
@@ -59,7 +61,7 @@ const MyWallet = () => {
                 </span>
               </div>
               <div>
-                <h5>${balance}</h5>
+                <h5>{priceFormat(balance)}</h5>
               </div>
             </div>
           </section>
@@ -99,25 +101,31 @@ const MyWallet = () => {
                 </th>
               </tr>
             </thead>
-
+						{loading && <tbody><tr><td><SimpleLoading /></td></tr></tbody>}
             <tbody>
-              <tr>
-                <td>
-                  <small>1</small>
-                </td>
-                <td>
-                  <small>01-08-2022</small>
-                </td>
-                <td>
-                  <small> 20000.00 </small>
-                </td>
-                <td>
-                  <small> Card </small>
-                </td>
-                <td>
-                  <small> Pending </small>
-                </td>
-              </tr>
+            {!loading && (
+							currentItems.map((item, key) => {
+								return (
+									<tr key={key}>
+										<td>
+											<small>{item.id}</small>
+										</td>
+										<td>
+											<small>{item.created_at}</small>
+										</td>
+										<td>
+											<small>{priceFormat(item.seller_earning)}</small>
+										</td>
+										<td>
+											<small>{item.earning_method}</small>
+										</td>
+										<td>
+											<small>{item.approval}</small>
+										</td>
+									</tr>
+								);
+							})
+            )}
             </tbody>
           </Table>
           {currentItems.length > 0 && (

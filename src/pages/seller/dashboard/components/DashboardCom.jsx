@@ -9,6 +9,7 @@ import SaleHistory from "./SaleHistory";
 import { API_URL } from "../../../services/Api/api";
 import authHeader from "../../../services/auth-header";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
+import { priceFormat } from "../../../../hooks/helper";
 
 const DashboardCom = () => {
 	const [allData, setAllData] = useState();
@@ -52,7 +53,7 @@ const DashboardCom = () => {
 								</span>
 							</div>
 							<div>
-								{loading ? <SimpleLoading /> : <h5>{allData?.card_items.total_revenue}</h5>}
+								{loading ? <SimpleLoading /> : <h5>{priceFormat(allData?.card_items.total_revenue)}</h5>}
 							</div>
 						</div>
 					</div>
@@ -87,7 +88,7 @@ const DashboardCom = () => {
 								</span>
 							</div>
 							<div>
-								<h5>{allData?.card_items?.todays_revenue}</h5>
+								<h5>{priceFormat(allData?.card_items?.todays_revenue)}</h5>
 							</div>
 						</div>
 					</div>
@@ -104,7 +105,7 @@ const DashboardCom = () => {
 								</span>
 							</div>
 							<div>
-								<h5>{allData?.card_items?.todays_refund}</h5>
+								<h5>{priceFormat(allData?.card_items?.todays_refund)}</h5>
 							</div>
 						</div>
 					</div>
@@ -133,7 +134,7 @@ const DashboardCom = () => {
 											<small> Tracking Number</small>
 										</th>
 										<th>
-											<small> Total </small>
+											<small> Total Amount</small>
 										</th>
 										<th>
 											<small> Order Date </small>
@@ -152,7 +153,7 @@ const DashboardCom = () => {
 														<small>{item.code}</small>
 													</td>
 													<td>
-														<small> {item.code} </small>
+														<small> {priceFormat(item.code)} </small>
 													</td>
 													<td>
 														<small> {item.created_at} </small>
@@ -193,7 +194,7 @@ const DashboardCom = () => {
 										return (
 											<tr key={key}>
 												<td>
-													<small>{item.amount}</small>
+													<small>{priceFormat(item.amount)}</small>
 												</td>
 												<td>
 													<small> {item.status} </small>
@@ -256,7 +257,7 @@ const DashboardCom = () => {
 														<small> {item.category} </small>
 													</td>
 													<td>
-														<small> {item.unit_price}</small>
+														<small> {priceFormat(item.unit_price)}</small>
 													</td>
 													<td>
 														<small> {item.current_stock}</small>

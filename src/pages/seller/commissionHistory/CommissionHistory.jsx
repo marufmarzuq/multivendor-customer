@@ -7,6 +7,7 @@ import { setCommissionHis } from "../../../redux/slices/seller/payments";
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
 import PaginationCom from "../../../common/pagination/PaginationCom";
+import {priceFormat} from "../../../hooks/helper";
 
 const CommissionHistory = () => {
   const { commissionHis, loading, per_page, last_page, error } = useSelector(
@@ -107,7 +108,7 @@ const CommissionHistory = () => {
                         <small>{item.admin_commission}</small>
                       </td>
                       <td>
-                        <small>{item.seller_earning}</small>
+                        <small>{priceFormat(item.seller_earning)}</small>
                       </td>
                       <td>
                         <small>{item.created_at}</small>

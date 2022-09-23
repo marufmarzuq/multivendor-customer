@@ -14,6 +14,7 @@ import { API_URL } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import { useDebounce } from "../../../../../hooks/useDebounce";
 import Select from "react-select";
+import {priceFormat} from "../../../../../hooks/helper";
 
 const OrderList = () => {
   const [show, setShow] = useState(false);
@@ -29,11 +30,6 @@ const OrderList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [getPayStatus, setPayStatus] = useState("");
   const [getDeliveryStatus, setDeliveryStatus] = useState("");
-	const [current, setCurrent] = useState(null);
-	const toggle = (index) => {
-    if (index === current) setCurrent(null);
-    else setCurrent(index);
-  };
 
   useEffect(() => {
     setLoading(true);
@@ -160,12 +156,8 @@ const OrderList = () => {
                       className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-4 pt-2 `}
                       key={key}
                     >
-											<div
-												className="action-column"
-												style={{ cursor: "pointer" }}
-												onClick={() => toggle(key)}
-											>
-												<HiOutlineChevronRight />
+											<div className="action-column">
+												{item.id}
 											</div>
                       <div onClick={() => setShow(!show)}>
                         <p className={orderListStyle.code}>{item.code}</p>
@@ -174,7 +166,7 @@ const OrderList = () => {
                         <p>{item.num_of_product}</p>
                       </div>
                       <div className={` ${orderListStyle.hide}`}>
-                        <p>{item.grand_total} </p>
+                        <p>{priceFormat(item.grand_total)} </p>
                       </div>
                       <div className={`${orderListStyle.hide}`}>
                         <span> {item.customer_name} </span>
@@ -201,30 +193,6 @@ const OrderList = () => {
                           <BsDownload />
                         </button>
                       </div>
-                      {current === key && (
-                      <div  className="row-extra-row">
-                      	<div>Product details</div>
-												<Table bordered>
-													<thead>
-														<tr>
-															<th>Name</th>
-															<th>Quantity</th>
-															<th>Price</th>
-														</tr>
-													</thead>
-													<tbody>
-													{ item.products?.map((order, j ) => (
-														<tr key={j}>
-															<td>{order.product_name}</td>
-															<td>{order.quantity}</td>
-															<td>{order.price}</td>
-														</tr>
-													))
-													}
-													</tbody>
-												</Table>
-                      </div>
-                      )}
                     </div>
                   );
                 })
