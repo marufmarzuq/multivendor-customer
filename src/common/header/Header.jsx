@@ -139,17 +139,11 @@ const Header = () => {
             <div className="col-8 col-lg-6 col-xl-6 col-xxl-6 right-menu">
               <ul className="d-flex justify-content-end">
                 <li>
-                  {
-                    user ? (
-                      <NavLink to="/dashboard">Dashboard</NavLink>
-                    ) : (
-                      <NavLink to={seller ? "/seller" : "/seller-request"}>Be a Seller</NavLink>
-                    )
-                  }
+                  <NavLink to={seller ? "/seller" : "/seller-request"}>{seller ? "Seller Dashboard" : "Be a Seller"}</NavLink>
                 </li>
                 <li>
                   {user ? (
-                    <NavLink to="/dashboard">{user?.user?.first_name}</NavLink>
+                    <NavLink to="/dashboard">{user?.user?.first_name}{user?.user?.last_name}</NavLink>
                   ) : (
                     <NavLink to="/register">Register</NavLink>
                   )}

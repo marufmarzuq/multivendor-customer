@@ -32,7 +32,7 @@ const CheckoutForm = () => {
             name="flexRadioDefault"
             id="flexRadioDefault1"
           />
-          <label class="form-check-label ms-2 my-2" for="flexRadioDefault1">
+          <label class="form-check-label ms-2 my-2" htmlFor="flexRadioDefault1">
             Stripe
           </label>
         </div>
@@ -44,7 +44,7 @@ const CheckoutForm = () => {
             id="flexRadioDefault2"
             checked
           />
-          <label class="form-check-label ms-2 my-2" for="flexRadioDefault2">
+          <label class="form-check-label ms-2 my-2" htmlFor="flexRadioDefault2">
             Cache on delivery (COD)
           </label>
         </div>
@@ -55,7 +55,7 @@ const CheckoutForm = () => {
             name="flexRadioDefault"
             id="flexRadioDefault3"
           />
-          <label class="form-check-label ms-2 my-2" for="flexRadioDefault3">
+          <label class="form-check-label ms-2 my-2" htmlFor="flexRadioDefault3">
             Paypal
           </label>
         </div>

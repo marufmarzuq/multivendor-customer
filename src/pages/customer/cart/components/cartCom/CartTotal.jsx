@@ -45,7 +45,7 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
               style={{
                 fontWeight: "bold",
               }}
-              for=""
+              htmlFor=""
             >
               Shipping Method:
             </h6>

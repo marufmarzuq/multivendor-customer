@@ -141,7 +141,7 @@ const CustomerRegister = () => {
                 className="form-check-input"
                 id="exampleCheck1"
               />
-              <label className="ps-2 mt-1" for="exampleCheck1">
+              <label className="ps-2 mt-1" htmlFor="exampleCheck1">
                 I agree to terms & Policy.
               </label>
             </div>

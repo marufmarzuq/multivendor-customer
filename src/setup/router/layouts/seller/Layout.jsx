@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from 'react-i18next';
 import layoutStyle from "./layout.module.css";
 import Select from "react-select";
 
@@ -15,11 +15,12 @@ import Navigation from "../../../../navigation/seller/Navigation";
 const Layout = () => {
   const [toggle, setToggle] = useState(false);
   const [selectedLang, setSelectedLang] = useState({code:'en-US',currency:'USD'});
-	const { t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const changeLanguage = (lang) => {
     localStorage.setItem("sellerLang", JSON.stringify(lang));
     setSelectedLang(lang);
-    // i18n.changeLanguage(lang);
+    console.log(i18n);
+    i18n.changeLanguage(lang);
   };
   const languages = [{label:'EN',value:{code:'en-US',currency:'USD'}},{label:'FR',value:{code:'de-DE',currency:'EUR'}}];
   return (
