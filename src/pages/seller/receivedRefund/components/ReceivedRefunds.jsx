@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../../api/apiCall";
 import { setReceivedRefunds } from "../../../../redux/slices/seller/refunds";
 import PaginationCom from "../../../../common/pagination/PaginationCom";
-import TableLoading from "../../../../common/loading/TableLoading";
 import DateRangeSelector from "../../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
 import DetailsModal from "./refundDetialsModal/DetailsModal";
