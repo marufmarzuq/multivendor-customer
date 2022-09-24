@@ -13,7 +13,6 @@
   border-radius: 6px;
   padding-bottom: 1rem;
   height: 100vh;
-
   overflow-y: scroll;
 }
 
@@ -110,7 +109,7 @@
   .nav_links {
     padding-bottom: 0;
     margin: 0;
-    height: 98vh;
+    height: 100vh;
   }
 
   .nav_links .seller_info h1 {

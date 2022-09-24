@@ -10,13 +10,21 @@ const CustomerHome = () => {
 
   const changeLanguage = (lang) => {
     localStorage.setItem("lang", lang);
-    i18n.changeLanguage(lang);
+    // i18n.changeLanguage(lang);
+    i18n
+      .changeLanguage(lang)
+      .then(() => console.log("changed"))
+      .catch((e) => {
+        console.log("failed change");
+      });
   };
 
-  const { products, loading, error } = useSelector((state) => state.productSlice);
+  const { products, loading, error } = useSelector(
+    (state) => state.productSlice
+  );
 
   useEffect(() => {
-    getApi("products.json", setProducts );
+    getApi("products.json", setProducts);
   }, []);
 
   return (

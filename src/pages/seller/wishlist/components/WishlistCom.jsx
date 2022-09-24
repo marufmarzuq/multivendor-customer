@@ -26,8 +26,7 @@ const WishlistCom = () => {
     );
   }, [perPage, currentPage, search]);
 
-
-	const removeItem = (id) => {
+  const removeItem = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -47,8 +46,8 @@ const WishlistCom = () => {
           .then((response) => {
             toast(response.data.message);
             getApi(
-							`wishlists?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
-							setWishlist
+              `wishlists?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
+              setWishlist
             );
           });
       }
@@ -57,7 +56,7 @@ const WishlistCom = () => {
 
   return (
     <Fragment>
-      <div className={` ms-4 ${wishlistStyle.background}`}>
+      <div className={`${wishlistStyle.background}`}>
         <section>
           <h5 className="px-md-4 px-3 pt-3 pb-3">Wishlist</h5>
           <div className="tableFilters">
@@ -113,7 +112,10 @@ const WishlistCom = () => {
                         </div>
 
                         <div className="col-4 col-lg-2 text-center">
-                          <button className={wishlistStyle.del} onClick={() =>removeItem(item.product_id)}>
+                          <button
+                            className={wishlistStyle.del}
+                            onClick={() => removeItem(item.product_id)}
+                          >
                             <RiDeleteBin2Line />
                           </button>
                         </div>

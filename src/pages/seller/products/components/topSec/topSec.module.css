@@ -4,8 +4,7 @@
   align-items: center;
   height: auto !important;
   margin-right: 0.3rem;
-  margin-top: -25px;
-  padding-left: 12px;
+  margin-top: 1rem;
 }
 
 .addBtnParent a {
@@ -40,6 +39,7 @@
 @media only screen and (min-width: 768px) {
   .addBtnParent {
     height: 15rem;
+    margin-top: -1rem;
   }
 
   .addBtn {

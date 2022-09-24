@@ -6,7 +6,7 @@ const TopSecDigital = () => {
   return (
     <div>
       <div className={topSecStyle.addBtnParent}>
-        <h5>Digital Products</h5>
+        <h5 className="mt-3">Digital Products</h5>
         <NavLink className="btn btn-success" to="/seller/products/digital/add">
           Add New Digital Product
         </NavLink>

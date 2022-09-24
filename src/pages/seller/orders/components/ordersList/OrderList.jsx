@@ -14,7 +14,7 @@ import { API_URL } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import { useDebounce } from "../../../../../hooks/useDebounce";
 import Select from "react-select";
-import {priceFormat} from "../../../../../hooks/helper";
+import { priceFormat } from "../../../../../hooks/helper";
 
 const OrderList = () => {
   const [show, setShow] = useState(false);
@@ -24,7 +24,7 @@ const OrderList = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
   const debouncedSearchTerm = useDebounce(search, 500);
-	const [startDate, setStartDate] = useState(null);
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [perPage, setPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,7 +48,15 @@ const OrderList = () => {
         setCurrentPage(response?.data?.current_page);
         setPageCount(response?.data?.last_page);
       });
-  }, [currentPage, perPage, search, getPayStatus, getDeliveryStatus,startDate,endDate]);
+  }, [
+    currentPage,
+    perPage,
+    search,
+    getPayStatus,
+    getDeliveryStatus,
+    startDate,
+    endDate,
+  ]);
 
   const payStatus = [
     { value: "paid", label: "Paid" },
@@ -105,15 +113,16 @@ const OrderList = () => {
               onChange={(e) => setSearch(e.target.value)}
             />
             <div className="">
-							<DateRangeSelector
-								startDate={startDate}
-								endDate={endDate}
-								setStartDate={setStartDate}
-								setEndDate={setEndDate}
-							/>
-						</div>
+              <DateRangeSelector
+                startDate={startDate}
+                endDate={endDate}
+                setStartDate={setStartDate}
+                setEndDate={setEndDate}
+              />
+            </div>
           </div>
         </section>
+
         <section>
           <div
             className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-3 ${orderListStyle.header}`}
@@ -156,9 +165,7 @@ const OrderList = () => {
                       className={` ${orderListStyle.orderRow} px-0 mx-0 ps-3 mt-4 pt-2 `}
                       key={key}
                     >
-											<div className="action-column">
-												{item.id}
-											</div>
+                      <div className="action-column">{item.id}</div>
                       <div onClick={() => setShow(!show)}>
                         <p className={orderListStyle.code}>{item.code}</p>
                       </div>
@@ -202,6 +209,7 @@ const OrderList = () => {
             </section>
           </Fragment>
         )}
+
         {currentItems.length > 0 && (
           <PaginationCom
             currentItem={currentItems}
