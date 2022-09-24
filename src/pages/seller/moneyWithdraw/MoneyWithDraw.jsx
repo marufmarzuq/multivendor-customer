@@ -104,8 +104,6 @@ const MoneyWithDraw = () => {
 
         {loading && <SimpleLoading />}
         {error ? <h1 className="text-center">{error}</h1> : ""}
-
-        {!loading && moneyWithdraw?.length > 0 && !error && (
           <section className={`px-4 ${withdrawStyle.tableData}`}>
             <Table borderless responsive>
               <thead>
@@ -129,7 +127,8 @@ const MoneyWithDraw = () => {
               </thead>
 
               <tbody>
-                {moneyWithdraw.map((item, key) => {
+								{ loading && <tr><td><SimpleLoading/></td></tr>}
+                { moneyWithdraw.length > 0 && moneyWithdraw.map((item, key) => {
                   return (
                     <tr key={key}>
                       <td>
@@ -155,17 +154,18 @@ const MoneyWithDraw = () => {
                 })}
               </tbody>
             </Table>
-
-            <PaginationCom
-              currentItem={moneyWithdraw}
-              perPage={perPage}
-              pageCount={last_page}
-              currentPage={currentPage}
-              setPerPage={setPerPage}
-              setCurrentPage={setCurrentPage}
-            />
+						{moneyWithdraw.length > 0 &&
+							<PaginationCom
+								currentItem={moneyWithdraw}
+								perPage={perPage}
+								pageCount={last_page}
+								currentPage={currentPage}
+								setPerPage={setPerPage}
+								setCurrentPage={setCurrentPage}
+							/>
+						}
           </section>
-        )}
+
       </div>
     </Fragment>
   );

@@ -43,93 +43,66 @@ const CommissionHistory = () => {
           </div>
         </section>
 
-        {(loading || error) && (
-          <section className={`px-4 ${commissionStyle.tableData}`}>
-            <Table borderless responsive>
-              <thead>
-                <tr>
-                  <th>
-                    <small>#</small>
-                  </th>
-                  <th>
-                    <small>Order Code</small>
-                  </th>
-                  <th>
-                    <small>Admin Commission</small>
-                  </th>
-                  <th>
-                    <small>Seller Earning</small>
-                  </th>
-                  <th>
-                    <small>Created At</small>
-                  </th>
-                </tr>
-              </thead>
-            </Table>
-          </section>
-        )}
-        {loading && <SimpleLoading />}
         {error ? <h1 className="text-center">{error}</h1> : ""}
 
-        {!loading && !error > 0 && (
-          <section className={`px-4 ${commissionStyle.tableData}`}>
-            <Table borderless responsive>
-              <thead>
-                <tr>
-                  <th>
-                    <small>#</small>
-                  </th>
-                  <th>
-                    <small>Order Code</small>
-                  </th>
-                  <th>
-                    <small>Admin Commission</small>
-                  </th>
-                  <th>
-                    <small>Seller Earning</small>
-                  </th>
-                  <th>
-                    <small>Created At</small>
-                  </th>
-                </tr>
-              </thead>
+				<section className={`px-4 ${commissionStyle.tableData}`}>
+					<Table borderless responsive>
+						<thead>
+							<tr>
+								<th>
+									<small>#</small>
+								</th>
+								<th>
+									<small>Order Code</small>
+								</th>
+								<th>
+									<small>Admin Commission</small>
+								</th>
+								<th>
+									<small>Seller Earning</small>
+								</th>
+								<th>
+									<small>Created At</small>
+								</th>
+							</tr>
+						</thead>
 
-              <tbody>
-                {commissionHis.map((item, key) => {
-                  return (
-                    <tr key={key}>
-                      <td>
-                        <small>{item.id}</small>
-                      </td>
-                      <td>
-                        <small>{item.order_code}</small>
-                      </td>
-                      <td>
-                        <small>{item.admin_commission}</small>
-                      </td>
-                      <td>
-                        <small>{priceFormat(item.seller_earning)}</small>
-                      </td>
-                      <td>
-                        <small>{item.created_at}</small>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </Table>
-            {commissionHis.length > 0 && (
-              <PaginationCom
-                currentItem={commissionHis}
-                perPage={per_page}
-                pageCount={last_page}
-                currentPage={currentPage}
-                setPerPage={setPerPage}
-                setCurrentPage={setCurrentPage}
-              />
-            )}
-          </section>
-        )}
+						<tbody>
+							{ loading && <tr><td><SimpleLoading/></td></tr>}
+							{commissionHis.length>0 &&commissionHis.map((item, key) => {
+								return (
+									<tr key={key}>
+										<td>
+											<small>{item.id}</small>
+										</td>
+										<td>
+											<small>{item.order_code}</small>
+										</td>
+										<td>
+											<small>{item.admin_commission}</small>
+										</td>
+										<td>
+											<small>{priceFormat(item.seller_earning)}</small>
+										</td>
+										<td>
+											<small>{item.created_at}</small>
+										</td>
+									</tr>
+								);
+							})}
+						</tbody>
+					</Table>
+					{commissionHis.length > 0 && (
+						<PaginationCom
+							currentItem={commissionHis}
+							perPage={per_page}
+							pageCount={last_page}
+							currentPage={currentPage}
+							setPerPage={setPerPage}
+							setCurrentPage={setCurrentPage}
+						/>
+					)}
+				</section>
       </div>
     </Fragment>
   );
