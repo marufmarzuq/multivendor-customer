@@ -153,7 +153,7 @@ const DashboardCom = () => {
 														<small>{item.code}</small>
 													</td>
 													<td>
-														<small> {priceFormat(item.code)} </small>
+														<small> {priceFormat(item.total_amount)} </small>
 													</td>
 													<td>
 														<small> {item.created_at} </small>
