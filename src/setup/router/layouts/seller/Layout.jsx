@@ -22,20 +22,19 @@ const Layout = () => {
   const { t, i18n } = useTranslation();
   const changeLanguage = (lang) => {
     localStorage.setItem("sellerLang", JSON.stringify(lang));
-    // setSelectedLang(lang);
-    // console.log(i18n);
-    i18n.changeLanguage(lang);
+    i18n.changeLanguage(lang.code);
   };
-  // const languages = [
-  //   { label: "EN", value: { code: "en-US", currency: "USD" } },
-  //   { label: "FR", value: { code: "de-DE", currency: "EUR" } },
-  // ];
 
-  console.log(i18n.language);
   const languages = [
-    { label: "EN", value: "en" },
-    { label: "FR", value: "fr" },
+    { label: "EN", value: { code: "en-US", currency: "USD" } , code : 'en' },
+    { label: "FR", value: { code: "de-DE", currency: "EUR" } , code : 'fr'},
   ];
+
+  // console.log(i18n.language);
+  // const languages = [
+  //   { label: "EN", value: "en" },
+  //   { label: "FR", value: "fr" },
+  // ];
   return (
     <>
       <div className="container-fluid m-0 p-0 mb-0">
