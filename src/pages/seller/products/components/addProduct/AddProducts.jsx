@@ -18,6 +18,8 @@ import LowStockQuantity from "./components/lowStockQuantity/LowStockQuantity";
 import ShippingConfiguration from "./components/shippingConfiguration/ShippingConfiguration";
 import { addProductSchema } from "../../../../../schema/productSchema";
 import { useFormik } from "formik";
+import { markutosSellerApi } from "../../../../services/Api/api";
+import authHeader from "../../../../services/auth-header";
 
 const AddProducts = () => {
   const {
@@ -78,7 +80,21 @@ const AddProducts = () => {
     enableReinitialize: true,
     onSubmit: (values, action) => {
       console.log(values);
-      action.resetForm();
+
+      markutosSellerApi
+        .post("/add-new-product", values, {
+          headers: {
+            Authorization: authHeader(),
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((e) => {
+          console.log(e.message);
+        });
+
+      // action.resetForm();
     },
   });
 

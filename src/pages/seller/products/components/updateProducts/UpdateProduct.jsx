@@ -1,6 +1,8 @@
 import { useFormik } from "formik";
 import React from "react";
 import { updateProductSchema } from "../../../../../schema/productSchema";
+import { markutosSellerApi } from "../../../../services/Api/api";
+import authHeader from "../../../../services/auth-header";
 import AddProducts from "../addProduct/AddProducts";
 import CashOnDelivery from "../addProduct/components/cashOnDelivery/CashOnDelivery";
 import Featured from "../addProduct/components/featured/Featured";
@@ -76,8 +78,23 @@ const UpdateProduct = () => {
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
-      console.log(values);
-      action.resetForm();
+      const finalValues = values;
+      finalValues.product_id = 10;
+
+      markutosSellerApi
+        .post("/update-product", finalValues, {
+          headers: {
+            Authorization: authHeader(),
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((e) => {
+          console.log(e.message);
+        });
+
+      console.log(finalValues);
     },
   });
 

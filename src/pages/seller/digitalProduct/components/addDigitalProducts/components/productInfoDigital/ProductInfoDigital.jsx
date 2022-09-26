@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductInformation.css";
 import Select from "react-select";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
+import { markutosSellerApi } from "../../../../../../services/Api/api";
+import authHeader from "../../../../../../services/auth-header";
 
 const options = [
   { value: "chocolate", label: "Chocolate" },
@@ -22,6 +24,31 @@ const ProductInfoDigital = ({
 }) => {
   const [tags, setTags] = useState(["example tag"]);
   const [show, setShow] = useState(false);
+  const [categoryOptions, setCategoryOptions] = useState([]);
+  const [brandOptions, setBrandOptions] = useState([]);
+
+  useEffect(() => {
+    markutosSellerApi
+      .get("/get-digital-categories", {
+        headers: {
+          Authorization: authHeader(),
+        },
+      })
+      .then((res) => {
+        // console.log(res.data);
+        const category = [];
+        res.data.map((item) => {
+          const singleCategory = {
+            id: item.value,
+            value: item.label,
+            label: item.label,
+          };
+          category.push(singleCategory);
+        });
+        setCategoryOptions(category);
+      })
+      .catch((e) => {});
+  }, []);
 
   return (
     <div className="add-product-single-widget">
@@ -60,7 +87,7 @@ const ProductInfoDigital = ({
               name="category_id"
               onChange={(option) => setFieldValue("category_id", option.value)}
               id="category_id"
-              options={options}
+              options={categoryOptions}
               placeholder="All Categories"
             />
 
@@ -91,25 +118,31 @@ const ProductInfoDigital = ({
             <div onClick={() => setShow(!show)} className="custom-browse">
               <div>Browse</div>
               <div>
-                {values.files.length > 0
-                  ? values.files.map((item) => (
+                {/* {values.file.length > 0
+                  ? values.file.map((item) => (
                       <small key={item} className="me-2">
                         {item},
                       </small>
                     ))
-                  : "Choose File"}
+                  : "Choose File"} */}
+
+                {values.file ? (
+                  <small className="me-2">{values.file},</small>
+                ) : (
+                  "Choose File"
+                )}
               </div>
             </div>
 
-            {errors.files && touched.files && (
-              <small className="text-danger"> {errors.files} </small>
+            {errors.file && touched.file && (
+              <small className="text-danger"> {errors.file} </small>
             )}
           </div>
           <UploadFilesModal
             setFieldValue={setFieldValue}
-            format="array"
+            format="file"
             values={values}
-            imageFor={"files"}
+            imageFor={"file"}
             show={show}
             setShow={setShow}
           />

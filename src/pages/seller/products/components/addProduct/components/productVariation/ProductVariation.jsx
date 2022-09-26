@@ -144,8 +144,6 @@ const ProductVariation = ({
     setVariations(newVariation);
   };
 
-  console.log(values);
-
   return (
     <>
       <section>

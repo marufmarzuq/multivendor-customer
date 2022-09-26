@@ -20,16 +20,12 @@ const PdfSpecification = ({
           <div>
             <div onClick={() => setShow(!show)} className="custom-browse">
               <div>Browse</div>
-              <div>
-                {values.product_specification
-                  ? values.product_specification
-                  : "Choose File"}
-              </div>
+              <div>{values.pdf ? values.pdf : "Choose File"}</div>
             </div>
 
             <UploadFilesModal
               setFieldValue={setFieldValue}
-              format="pdf"
+              format="string"
               values={values}
               imageFor="pdf"
               show={show}

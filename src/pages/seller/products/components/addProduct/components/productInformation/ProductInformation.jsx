@@ -5,7 +5,6 @@ import ReactTagInput from "@pathofdev/react-tag-input";
 import "@pathofdev/react-tag-input/build/index.css";
 import { markutosSellerApi } from "../../../../../../services/Api/api";
 import authHeader from "../../../../../../services/auth-header";
-import { Field } from "formik";
 const ProductInformation = ({
   values,
   handleBlur,
@@ -27,11 +26,12 @@ const ProductInformation = ({
       })
       .then((res) => {
         const category = [];
+
         res.data.map((item) => {
           const singleCategory = {
-            id: item.id,
-            value: item.name,
-            label: item.name,
+            id: item.value,
+            value: item.label,
+            label: item.label,
           };
           category.push(singleCategory);
         });
@@ -50,8 +50,8 @@ const ProductInformation = ({
         res.data.map((item) => {
           const singleBrand = {
             id: item.id,
-            value: item.name,
-            label: item.name,
+            value: item.label,
+            label: item.label,
           };
           brands.push(singleBrand);
         });

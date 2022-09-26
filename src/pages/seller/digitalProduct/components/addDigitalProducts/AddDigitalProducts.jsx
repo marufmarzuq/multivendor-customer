@@ -10,6 +10,9 @@ import {
   addProductSchema,
 } from "../../../../../schema/productSchema";
 import { useFormik } from "formik";
+import { markutosSellerApi } from "../../../../services/Api/api";
+import authHeader from "../../../../services/auth-header";
+import axios from "axios";
 
 const AddDigitalProducts = () => {
   const {
@@ -27,13 +30,15 @@ const AddDigitalProducts = () => {
       name: "",
       category_id: "",
       tags: ["example"],
-      files: [],
+      file: "",
       thumbnail_img: "",
       photos: [],
       unit_price: "",
       purchase_price: "",
       discount_type: "",
       discount: "",
+      tax: "",
+      tax_type: "",
       quantity: "",
       description: "",
       meta_title: "",
@@ -42,8 +47,40 @@ const AddDigitalProducts = () => {
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
+      // markutosSellerApi
+      //   .post("/add-new-digital-product", values, {
+      //     headers: {
+      //       Authorization: authHeader(),
+      //     },
+      //   })
+      //   .then((res) => {
+      //     console.log(res.data);
+      //   })
+      //   .catch((e) => {
+      //     console.log(e.message);
+      //   });
+      const finalValues = values;
+      // finalValues.photos = finalValues.photos.toString();
+      // finalValues.tags = finalValues.tags.toString();
+
+      axios
+        .post(
+          "https://api.markutos.com/api/v1/seller/add-new-digital-product",
+          finalValues,
+          {
+            headers: {
+              Authorization: authHeader(),
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((e) => {
+          console.log(e.message);
+        });
       console.log(values);
-      action.resetForm();
+      // action.resetForm();
     },
   });
 

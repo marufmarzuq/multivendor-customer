@@ -1,6 +1,8 @@
+import axios from "axios";
 import { useFormik } from "formik";
 import React, { useEffect } from "react";
 import { addDigitalProductSchema } from "../../../../../schema/productSchema";
+import authHeader from "../../../../services/auth-header";
 import DigtalProductSEO from "../addDigitalProducts/components/digitalProductSEO/DigitalProductSEO";
 import ProductDescriptionDigital from "../addDigitalProducts/components/productDescriptionDigital/ProductDescriptionDigital";
 import ProductImagesDigital from "../addDigitalProducts/components/productImagesDigital/ProductImagesDigital";
@@ -40,7 +42,27 @@ const UpdateDigitalProduct = () => {
     enableReinitialize: true,
     onSubmit: (values, action) => {
       console.log(values);
-      action.resetForm();
+      const finalValues = values;
+      finalValues.product_id = "10";
+
+      axios
+        .post(
+          "https://api.markutos.com/api/v1/seller/update-digital-product",
+          finalValues,
+          {
+            headers: {
+              Authorization: authHeader(),
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((e) => {
+          console.log(e.message);
+        });
+
+      console.log(finalValues);
     },
   });
 

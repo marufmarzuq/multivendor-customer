@@ -41,12 +41,14 @@ const OrderModal = ({ page, show, setShow }) => {
                 <Select options={options} placeholder="Payment Status" />
 
                 <Select options={options2} placeholder="Delivery Status" />
+
+                <button className="btn btn-outline-success"> Confirm </button>
               </div>
             ) : (
               ""
             )}
             <div className={modalStyle.orderSummary}>
-              <h6>Order Summary</h6>
+              <h6>Order Status</h6>
 
               <div className={modalStyle.orderBody}>
                 <Row>
