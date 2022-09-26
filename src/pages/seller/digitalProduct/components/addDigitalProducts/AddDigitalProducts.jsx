@@ -13,6 +13,7 @@ import { useFormik } from "formik";
 import { markutosSellerApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddDigitalProducts = () => {
   const {
@@ -59,14 +60,11 @@ const AddDigitalProducts = () => {
       //   .catch((e) => {
       //     console.log(e.message);
       //   });
-      const finalValues = values;
-      // finalValues.photos = finalValues.photos.toString();
-      // finalValues.tags = finalValues.tags.toString();
 
       axios
         .post(
           "https://api.markutos.com/api/v1/seller/add-new-digital-product",
-          finalValues,
+          values,
           {
             headers: {
               Authorization: authHeader(),
@@ -74,13 +72,16 @@ const AddDigitalProducts = () => {
           }
         )
         .then((res) => {
-          console.log(res.data);
+          if (res.data.message == "New digital product added successfully") {
+            toast.success(res.data.message);
+          }
         })
         .catch((e) => {
-          console.log(e.message);
+          toast.error(e.message);
         });
+
       console.log(values);
-      // action.resetForm();
+      action.resetForm();
     },
   });
 

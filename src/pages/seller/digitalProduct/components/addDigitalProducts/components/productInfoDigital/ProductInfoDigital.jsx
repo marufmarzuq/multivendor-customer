@@ -37,6 +37,7 @@ const ProductInfoDigital = ({
       .then((res) => {
         // console.log(res.data);
         const category = [];
+
         res.data.map((item) => {
           const singleCategory = {
             id: item.value,
@@ -85,7 +86,7 @@ const ProductInfoDigital = ({
             <Select
               onBlur={handleBlur}
               name="category_id"
-              onChange={(option) => setFieldValue("category_id", option.value)}
+              onChange={(option) => setFieldValue("category_id", option.id)}
               id="category_id"
               options={categoryOptions}
               placeholder="All Categories"
