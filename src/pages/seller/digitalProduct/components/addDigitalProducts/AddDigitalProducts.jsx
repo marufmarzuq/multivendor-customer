@@ -14,23 +14,14 @@ import { markutosSellerApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import { FocusError } from "focus-formik-error";
 const AddDigitalProducts = () => {
-  const {
-    values,
-    setErrors,
-    handleChange,
-    touched,
-    errors,
-    handleSubmit,
-    handleBlur,
-    setFieldValue,
-  } = useFormik({
+  const formik = useFormik({
     validationSchema: addDigitalProductSchema,
     initialValues: {
       name: "",
       category_id: "",
-      tags: ["example"],
+      tags: [],
       file: "",
       thumbnail_img: "",
       photos: [],
@@ -48,46 +39,58 @@ const AddDigitalProducts = () => {
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
-      // markutosSellerApi
-      //   .post("/add-new-digital-product", values, {
-      //     headers: {
-      //       Authorization: authHeader(),
-      //     },
-      //   })
-      //   .then((res) => {
-      //     console.log(res.data);
-      //   })
-      //   .catch((e) => {
-      //     console.log(e.message);
-      //   });
-
-      axios
-        .post(
-          "https://api.markutos.com/api/v1/seller/add-new-digital-product",
-          values,
-          {
-            headers: {
-              Authorization: authHeader(),
-            },
-          }
-        )
+      markutosSellerApi
+        .post("/add-new-digital-product", values, {
+          headers: {
+            Authorization: authHeader(),
+          },
+        })
         .then((res) => {
           if (res.data.message == "New digital product added successfully") {
             toast.success(res.data.message);
+            action.resetForm();
           }
         })
         .catch((e) => {
           toast.error(e.message);
         });
 
-      console.log(values);
-      action.resetForm();
+      // axios
+      //   .post(
+      //     "https://api.markutos.com/api/v1/seller/add-new-digital-product",
+      //     values,
+      //     {
+      //       headers: {
+      //         Authorization: authHeader(),
+      //       },
+      //     }
+      //   )
+      //   .then((res) => {
+      //     if (res.data.message == "New digital product added successfully") {
+      //       toast.success(res.data.message);
+      //     }
+      //   })
+      //   .catch((e) => {
+      //     toast.error(e.message);
+      //   });
     },
   });
+
+  const {
+    values,
+    setErrors,
+    handleChange,
+    touched,
+    errors,
+    handleSubmit,
+    handleBlur,
+    setFieldValue,
+  } = formik;
 
   return (
     <div className="add-product mx-3 mb-5">
       <form onSubmit={(e) => e.preventDefault()} action="">
+        <FocusError formik={formik} />
         <div className=" d-flex justify-content-between me-md-5 pe-md-4 me-0 pe-0 mt-3 mb-3">
           <h4>Add New Digital product</h4>
           <button

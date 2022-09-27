@@ -40,7 +40,10 @@ const OrderModal = ({
         ...files.map((item) => item?.name),
       ]);
     } else {
-      setFieldValue(imageFor, selectedGallery[0] || files[0]?.name);
+      setFieldValue(
+        imageFor,
+        selectedGallery.length > 0 ? selectedGallery[0] || files[0]?.name : ""
+      );
     }
 
     setShow(!show);

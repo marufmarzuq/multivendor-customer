@@ -76,12 +76,12 @@ const Router = () => {
           <Route path="all" element={<Products />} />
           <Route path="reviews" element={<ProductReviews />} />
           <Route path="add" element={<AddProducts />} />
-          <Route path="update" element={<UpdateProduct />} />
+          <Route path="update/:id" element={<UpdateProduct />} />
           <Route path="bulk-upload" element={<BulkUpload />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="digital/all" element={<DigitalProduct />} />
           <Route path="digital/add" element={<AddDigitalProducts />} />
-          <Route path="digital/update" element={<UpdateDigitalProduct />} />
+          <Route path="digital/update/:id" element={<UpdateDigitalProduct />} />
         </Route>
       </Route>
 

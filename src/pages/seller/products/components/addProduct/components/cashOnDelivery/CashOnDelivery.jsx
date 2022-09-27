@@ -19,9 +19,9 @@ const CashOnDelivery = ({
             <label className="confi-switch">
               <input
                 name="cash_on_delivery"
-                checked={values.cash_on_delivery}
+                checked={values.cash_on_delivery == 1 ? true : false}
                 onChange={(e) =>
-                  setFieldValue("cash_on_delivery", e.target.checked)
+                  setFieldValue("cash_on_delivery", e.target.checked ? 1 : 0)
                 }
                 type="checkbox"
               />

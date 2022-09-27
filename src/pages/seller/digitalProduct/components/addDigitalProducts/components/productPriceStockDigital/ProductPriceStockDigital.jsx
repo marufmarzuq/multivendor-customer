@@ -58,6 +58,9 @@ const ProductPriceStockDigital = ({
             <Select
               name="discount_type"
               onBlur={handleBlur}
+              value={discountOptions.find((option) => {
+                return option.value == values.discount_type;
+              })}
               id="discount_type"
               onChange={(option) =>
                 setFieldValue("discount_type", option.value)

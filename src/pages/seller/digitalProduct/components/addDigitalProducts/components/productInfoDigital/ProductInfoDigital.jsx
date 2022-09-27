@@ -89,6 +89,9 @@ const ProductInfoDigital = ({
               onChange={(option) => setFieldValue("category_id", option.id)}
               id="category_id"
               options={categoryOptions}
+              value={categoryOptions.find((option) => {
+                return option.id == values.category_id;
+              })}
               placeholder="All Categories"
             />
 
@@ -99,7 +102,7 @@ const ProductInfoDigital = ({
 
           <div>
             <label>
-              <span>Tags</span>
+              <span>Tags *</span>
             </label>
           </div>
           <div>
@@ -109,10 +112,14 @@ const ProductInfoDigital = ({
               onChange={(newTags) => setFieldValue("tags", newTags)}
               removeOnBackspace={true}
             />
+
+            {errors.tags && touched.tags && (
+              <small className="text-danger">{errors.tags}</small>
+            )}
           </div>
           <div>
             <label>
-              <span> Add Files</span>
+              <span> Add Files *</span>
             </label>
           </div>
           <div>

@@ -19,6 +19,7 @@ const StockVisibility = ({
               type="radio"
               name="stock_visibility_state"
               value="quantity"
+              checked={values.stock_visibility_state == "quantity"}
               onChange={(e) =>
                 setFieldValue("stock_visibility_state", e.target.value)
               }
@@ -34,6 +35,7 @@ const StockVisibility = ({
               type="radio"
               name="stock_visibility_state"
               value="text"
+              checked={values.stock_visibility_state == "text"}
             />
             <span className="slider round"></span>
           </label>
@@ -46,6 +48,7 @@ const StockVisibility = ({
               type="radio"
               name="stock_visibility_state"
               value="hide"
+              checked={values.stock_visibility_state == "hide"}
             />
             <span className="slider round"></span>
           </label>

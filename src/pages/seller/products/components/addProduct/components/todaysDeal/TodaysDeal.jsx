@@ -17,9 +17,11 @@ const TodaysDeal = ({
           <div>
             <label className="confi-switch">
               <input
-                checked={values.todays_deal}
+                checked={values.todays_deal == 1 ? true : false}
                 name="todays_deal"
-                onChange={(e) => setFieldValue("todays_deal", e.target.checked)}
+                onChange={(e) =>
+                  setFieldValue("todays_deal", e.target.checked ? 1 : 0)
+                }
                 type="checkbox"
               />
               <span className="slider round"></span>

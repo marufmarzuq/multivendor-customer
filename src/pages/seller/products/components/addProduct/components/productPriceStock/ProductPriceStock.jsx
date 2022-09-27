@@ -56,6 +56,9 @@ const ProductPriceStock = ({
           <p>Discount type *</p>
           <div>
             <Select
+              value={discountOptions.find((option) => {
+                return option.value == values.discount_type;
+              })}
               name="discount_type"
               onBlur={handleBlur}
               id="discount_type"
@@ -88,19 +91,19 @@ const ProductPriceStock = ({
           </div>
         </div>
         <div className="ap-single-content">
-          <p>Quantity *</p>
+          <p>Current Stock *</p>
           <div>
             <input
-              name="quantity"
+              name="current_stock"
               onBlur={handleBlur}
-              value={values.quantity}
+              value={values.current_stock}
               onChange={handleChange}
               type="number"
               min={0}
             />
 
-            {errors.quantity && touched.quantity && (
-              <small className="text-danger"> {errors.quantity} </small>
+            {errors.current_stock && touched.current_stock && (
+              <small className="text-danger"> {errors.current_stock} </small>
             )}
           </div>
         </div>

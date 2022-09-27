@@ -30,13 +30,19 @@
 .custom-browse > div:first-child {
   background-color: #ddd;
   padding: 10px;
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   color: #555;
 }
 .custom-browse > div:last-child {
   padding: 10px;
   color: #777;
+  width: 98%;
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: auto auto;
 }
 .helper-text {
   font-size: 12px;

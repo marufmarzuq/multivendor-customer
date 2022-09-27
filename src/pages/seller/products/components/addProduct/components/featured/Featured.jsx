@@ -17,8 +17,10 @@ const Featured = ({
           <div>
             <label className="confi-switch">
               <input
-                checked={values.featured}
-                onChange={(e) => setFieldValue("featured", e.target.checked)}
+                checked={values.featured == 1 ? true : false}
+                onChange={(e) =>
+                  setFieldValue("featured", e.target.checked ? 1 : 0)
+                }
                 name="featured"
                 type="checkbox"
               />

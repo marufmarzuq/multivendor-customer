@@ -11,7 +11,7 @@ const ShippingTime = ({
 }) => {
   return (
     <div className="add-product-single-widget">
-      <div className="widget-title">Estimate Shipping Time</div>
+      <div className="widget-title">Estimate Shipping Time *</div>
       <div className="widget-content-container">
         <div className="shipping-input-container">
           <input

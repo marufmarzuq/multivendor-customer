@@ -94,6 +94,9 @@ const ProductInformation = ({
               id="category_id"
               options={categoryOptions}
               placeholder="Categories"
+              value={categoryOptions.find((option) => {
+                return option.id == values.category_id;
+              })}
             />
             {errors.category_id && touched.category_id && (
               <small className="text-danger"> {errors.category_id} </small>
@@ -110,6 +113,9 @@ const ProductInformation = ({
               onChange={(option) => setFieldValue("brand_id", option.id)}
               options={brandOptions}
               placeholder="Brands"
+              value={brandOptions.find((option) => {
+                return option.id == values.brand_id;
+              })}
             />
           </div>
           <label htmlFor="product__unit">
@@ -159,6 +165,10 @@ const ProductInformation = ({
               onChange={(newTags) => setFieldValue("tags", newTags)}
               removeOnBackspace={true}
             />
+
+            {errors.tags && touched.tags && (
+              <small className="text-danger"> {errors.tags} </small>
+            )}
           </div>
           <label htmlFor="barcode">
             <span>Barcode</span>
@@ -180,15 +190,13 @@ const ProductInformation = ({
               <input
                 name="refundable"
                 value={values.refundable}
-                onChange={(e) => setFieldValue("refundable", e.target.checked)}
-                checked={values.refundable}
+                onChange={(e) =>
+                  setFieldValue("refundable", e.target.checked ? 1 : 0)
+                }
+                checked={values.refundable == 1 ? true : false}
                 type="checkbox"
               />
-              {/* <input
-                {...Field}
-                className="mr-2 leading-tight"
-                type="checkbox"
-              /> */}
+
               <span className="slider round"></span>
             </label>
             <br />

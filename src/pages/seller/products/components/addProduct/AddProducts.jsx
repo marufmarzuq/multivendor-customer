@@ -20,18 +20,11 @@ import { addProductSchema } from "../../../../../schema/productSchema";
 import { useFormik } from "formik";
 import { markutosSellerApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
+import { FocusError } from "focus-formik-error";
+import { toast } from "react-toastify";
 
 const AddProducts = () => {
-  const {
-    values,
-    setErrors,
-    handleChange,
-    touched,
-    errors,
-    handleSubmit,
-    handleBlur,
-    setFieldValue,
-  } = useFormik({
+  const formik = useFormik({
     validationSchema: addProductSchema,
     initialValues: {
       name: "",
@@ -40,42 +33,41 @@ const AddProducts = () => {
       current_stock: "",
       unit: "",
       minimum_quantity: "",
-      tags: ["example tag"],
+      tags: [],
       barcode: "",
-      refundable: false,
+      refundable: 0,
       thumbnail_img: "",
       photos: [],
       video_provider: "",
       video_link: "",
       low_stock_quantity: "",
-      stock_visibility_state: "",
+      stock_visibility_state: "text",
       description: "",
       unit_price: "",
       purchase_price: "",
-      tax: "",
-      tax_type: "",
+      tax: "0",
+      tax_type: "flat",
       discount: "",
       discount_type: "",
-      quantity: "",
-      colors: [],
-      size: [],
-      choice_no: "",
-      choice_options: [],
-      variants: [],
-      variant_price: [],
-      variant_sku: [],
-      variant_quantity: [],
-      variant_images: [],
+      colors: ["red"],
+      size: ["M"],
+      choice_no: ["1"],
+      choice_options_1: ["M"],
+      variants: ["Red-M"],
+      variant_price: ["100"],
+      variant_sku: ["sku-100"],
+      variant_quantity: ["100"],
+      variant_images: ["image-test"],
       product_specification: "",
-      shipping_type: "",
+      shipping_type: "test",
       est_shipping_days: "",
       meta_title: "",
       meta_description: "",
       meta_img: "",
       pdf: "",
-      cash_on_delivery: true,
-      featured: true,
-      todays_deal: true,
+      cash_on_delivery: 1,
+      featured: 1,
+      todays_deal: 1,
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
@@ -88,19 +80,34 @@ const AddProducts = () => {
           },
         })
         .then((res) => {
-          console.log(res.data);
+          if (res.data.message == "New product added successfully") {
+            toast.success(res.data.message);
+          }
+
+          action.resetForm();
         })
         .catch((e) => {
+          toast.error(e.message);
           console.log(e.message);
         });
-
-      // action.resetForm();
     },
   });
+
+  const {
+    values,
+    setErrors,
+    handleChange,
+    touched,
+    errors,
+    handleSubmit,
+    handleBlur,
+    setFieldValue,
+  } = formik;
 
   return (
     <div className="add-product mx-3 mb-5">
       <form onSubmit={(e) => e.preventDefault()}>
+        <FocusError formik={formik} />
         <div className=" d-flex justify-content-between mt-3 mb-3">
           <h4>Add New product</h4>
           <button

@@ -43,7 +43,9 @@ const ProductImages = ({
                 <div>
                   {values.photos.length > 0
                     ? values.photos.map((item) => (
-                        <small className="me-2">{item},</small>
+                        <small key={item} className="me-2">
+                          {item},
+                        </small>
                       ))
                     : "Choose File"}
                 </div>
@@ -56,7 +58,7 @@ const ProductImages = ({
           </div>
           <div className="ap-single-content">
             <div>
-              <p>Thumbnail Image</p>
+              <p>Thumbnail Image *</p>
               <span className="helper-text">((300x300)</span>
             </div>
             <div>
@@ -65,6 +67,11 @@ const ProductImages = ({
                 <div>
                   {values.thumbnail_img ? values.thumbnail_img : "Choose File"}
                 </div>
+              </div>
+              <div>
+                {errors.thumbnail_img && touched.thumbnail_img && (
+                  <small className="text-danger">{errors.thumbnail_img}</small>
+                )}
               </div>
               <span className="helper-text">
                 This image is visible in all product box. Use 300x300 sizes

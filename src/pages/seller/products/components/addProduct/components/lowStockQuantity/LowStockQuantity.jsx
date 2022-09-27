@@ -12,7 +12,7 @@ const LowStockQuantity = ({
       <div className="widget-title"> Low Stock Quantity Warning</div>
       <div className="widget-content-container">
         <label className="mb-2" htmlFor="low-stock">
-          <small>Quantity</small>
+          <small>Quantity *</small>
         </label>
         <div>
           <input

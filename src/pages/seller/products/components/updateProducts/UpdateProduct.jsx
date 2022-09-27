@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { updateProductSchema } from "../../../../../schema/productSchema";
 import { markutosSellerApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
@@ -19,8 +19,101 @@ import ShippingConfiguration from "../addProduct/components/shippingConfiguratio
 import ShippingTime from "../addProduct/components/shippingTime/ShippingTime";
 import StockVisibility from "../addProduct/components/stockVisibility/StockVisibility";
 import TodaysDeal from "../addProduct/components/todaysDeal/TodaysDeal";
+import { FocusError } from "focus-formik-error";
+import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const UpdateProduct = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState({});
+
+  const formik = useFormik({
+    validationSchema: updateProductSchema,
+    initialValues: {
+      name: product?.name || "",
+      category_id: product?.category_id || "",
+      brand_id: product?.brand_id || "",
+      current_stock: product?.current_stock || "",
+      unit: product?.unit || "",
+      minimum_quantity: product?.min_qty || "",
+      tags: product?.tags || [],
+      barcode: product?.barcode || "",
+      refundable: product?.refundable || 0,
+      thumbnail_img: product?.thumbnail_img || "",
+      photos: product?.photos || [],
+      video_provider: product?.video_provider || "",
+      video_link: product?.video_link || "",
+      low_stock_quantity: product?.low_stock_quantity || "",
+      stock_visibility_state: product?.stock_visibility_state || "text",
+      description: product?.description || "",
+      unit_price: product?.unit_price || "",
+      purchase_price: product?.purchase_price || "",
+      tax: product?.tax || "0",
+      tax_type: product?.tax_type || "flat",
+      discount: product?.discount || "",
+      discount_type: product?.discount_type || "",
+      colors: product?.colors || ["red"],
+      size: product?.size || ["M"],
+      choice_no: product?.choice_no || ["1"],
+      choice_options_1: product?.choice_options || ["M"],
+      variants: product?.variants || ["Red-M"],
+      variant_price: product?.variant_price || ["100"],
+      variant_sku: product?.variant_sku || ["sku-100"],
+      variant_quantity: product?.variant_quantity || ["100"],
+      variant_images: product?.variant_images || ["image-test"],
+      product_specification: product?.product_specification || "",
+      shipping_type: product?.shipping_type || "test",
+      est_shipping_days: product?.est_shipping_days || "",
+      meta_title: product?.meta_title || "",
+      meta_description: product?.meta_description || "",
+      meta_img: product?.meta_img || "",
+      pdf: product?.pdf || "",
+      cash_on_delivery: product?.cash_on_delivery || 0,
+      featured: product?.featured || 1,
+      todays_deal: product?.todays_deal || 1,
+    },
+    enableReinitialize: true,
+    onSubmit: (values, action) => {
+      const finalValues = values;
+      finalValues.product_id = id;
+
+      markutosSellerApi
+        .post("/update-product", finalValues, {
+          headers: {
+            Authorization: authHeader(),
+          },
+        })
+        .then((res) => {
+          if (res.data.message == "Product updated successfully") {
+            toast.success(res.data.message);
+            getProduct();
+          }
+        })
+        .catch((e) => {
+          toast.error(e.message);
+        });
+    },
+  });
+
+  const getProduct = () => {
+    markutosSellerApi
+      .get(`edit-product?product_id=${id}`, {
+        headers: {
+          Authorization: authHeader(),
+        },
+      })
+      .then((res) => {
+        setProduct(res.data.product);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  useEffect(() => {
+    getProduct();
+  }, []);
+
   const {
     values,
     setErrors,
@@ -30,109 +123,13 @@ const UpdateProduct = () => {
     handleSubmit,
     handleBlur,
     setFieldValue,
-  } = useFormik({
-    validationSchema: updateProductSchema,
-    initialValues: {
-      name: "",
-      category_id: "",
-      brand_id: "",
-      current_stock: "",
-      unit: "",
-      minimum_quantity: "",
-      tags: ["example tag"],
-      barcode: "",
-      refundable: false,
-      thumbnail_img: "",
-      photos: [],
-      video_provider: "",
-      video_link: "",
-      low_stock_quantity: "",
-      stock_visibility_state: "",
-      description: "",
-      unit_price: "",
-      purchase_price: "",
-      tax: "",
-      tax_type: "",
-      discount: "",
-      discount_type: "",
-      quantity: "",
-      colors: [],
-      size: [],
-      choice_no: "",
-      choice_options: [],
-      variants: [],
-      variant_price: [],
-      variant_sku: [],
-      variant_quantity: [],
-      variant_images: [],
-      product_specification: "",
-      shipping_type: "",
-      est_shipping_days: "",
-      meta_title: "",
-      meta_description: "",
-      meta_img: "",
-      pdf: "",
-      cash_on_delivery: true,
-      featured: true,
-      todays_deal: true,
-    },
-    enableReinitialize: true,
-    onSubmit: (values, action) => {
-      const finalValues = values;
-      finalValues.product_id = 10;
-
-      markutosSellerApi
-        .post("/update-product", finalValues, {
-          headers: {
-            Authorization: authHeader(),
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((e) => {
-          console.log(e.message);
-        });
-
-      console.log(finalValues);
-    },
-  });
+  } = formik;
 
   return (
     <div>
       <div className="add-product mx-3 mb-5">
-        {/* <div className=" d-flex justify-content-between mt-3 mb-3">
-          <h4>Update product</h4>
-          <button className="btn btn-outline-success"> Save Product </button>
-        </div>
-        <div className="add-product-widget-container">
-          <div className="">
-            <ProductInformation />
-            <ProductImages />
-            <ProductVideos />
-            <ProductVariation />
-            <ProductPriceStock />
-            <ProductDescription />
-            <PdfSpecification />
-            <ProductSEO />
-          </div>
-          <div className="">
-            <ShippingConfiguration />
-            <LowStockQuantity />
-            <StockVisibility />
-            <CashOnDelivery />
-            <Featured />
-            <TodaysDeal />
-            <ShippingTime />
-          </div>
-        </div>
-        <div className="mt-4">
-          <button className="btn btn-lg btn-outline-success">
-            Save Product
-          </button>
-        </div> */}
-
         <form onSubmit={(e) => e.preventDefault()}>
+          <FocusError formik={formik} />
           <div className=" d-flex justify-content-between mt-3 mb-3">
             <h4>Update product</h4>
             <button

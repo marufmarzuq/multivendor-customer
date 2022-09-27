@@ -22,6 +22,9 @@ const ProductVideos = ({
         <div className="ap-single-content">
           <p>Video Provider</p>
           <Select
+            value={options.find((option) => {
+              return option.value == values.video_provider;
+            })}
             name="video_provider"
             onBlur={handleBlur}
             onChange={(e) => setFieldValue("video_provider", e.value)}

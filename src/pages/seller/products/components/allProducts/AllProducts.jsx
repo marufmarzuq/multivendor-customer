@@ -13,7 +13,7 @@ import authHeader from "../../../../services/auth-header";
 import { API_URL } from "../../../../services/Api/api";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
-import {priceFormat} from "../../../../../hooks/helper";
+import { priceFormat } from "../../../../../hooks/helper";
 
 const AllProducts = () => {
   const { products, last_page, per_page, current_page, loading, error } =
@@ -161,7 +161,7 @@ const AllProducts = () => {
                           className={`col-4 col-lg-2 ${allProductsStyle.hide}`}
                         >
                           <p>
-                            <Link to="/seller/products/update">
+                            <Link to={`/seller/products/update/${item.id}`}>
                               <button className={allProductsStyle.preview}>
                                 <BiEdit />
                               </button>
