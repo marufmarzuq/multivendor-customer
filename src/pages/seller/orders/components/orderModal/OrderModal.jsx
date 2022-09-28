@@ -38,7 +38,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
         toast.success(res.data.message);
       })
       .catch((err) => {
-        console.log(err.message);
+        toast.error(err.message);
       });
   };
 
