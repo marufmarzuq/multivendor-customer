@@ -28,10 +28,11 @@ const AddDigitalProducts = () => {
       unit_price: "",
       purchase_price: "",
       discount_type: "",
-      discount: "",
+      discount: 0,
       tax: "",
       tax_type: "",
-      quantity: "",
+      quantity: 0,
+      current_stock: 0,
       description: "",
       meta_title: "",
       meta_description: "",
@@ -39,6 +40,10 @@ const AddDigitalProducts = () => {
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
+      if (values.discount_type == "no discount") {
+        values.discount = 0;
+      }
+
       markutosSellerApi
         .post("/add-new-digital-product", values, {
           headers: {

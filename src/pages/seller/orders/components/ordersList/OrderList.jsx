@@ -30,6 +30,7 @@ const OrderList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [getPayStatus, setPayStatus] = useState("");
   const [getDeliveryStatus, setDeliveryStatus] = useState("");
+  const [currentOrderId, setCurrentOrderId] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -69,6 +70,11 @@ const OrderList = () => {
     { value: "On delivery", label: "On delivery" },
     { value: "Canceled", label: "Canceled" },
   ];
+
+  const modalOpen = (id) => {
+    setCurrentOrderId(id);
+    setShow(!show);
+  };
 
   useEffect(() => {
     if (debouncedSearchTerm) {
@@ -166,7 +172,7 @@ const OrderList = () => {
                       key={key}
                     >
                       <div className="action-column">{item.id}</div>
-                      <div onClick={() => setShow(!show)}>
+                      <div onClick={() => modalOpen(item.id)}>
                         <p className={orderListStyle.code}>{item.code}</p>
                       </div>
                       <div className={` ${orderListStyle.hide}`}>
@@ -188,7 +194,7 @@ const OrderList = () => {
                       </div>
                       <div className="text-center">
                         <button
-                          onClick={() => setShow(!show)}
+                          onClick={() => modalOpen(item.id)}
                           className={orderListStyle.preview}
                         >
                           <BsEyeFill />
@@ -221,7 +227,13 @@ const OrderList = () => {
           />
         )}
         <PdfModal show={pdfShow} setShow={setPdfShow} />
-        <OrderModal page="order" show={show} setShow={setShow} />
+        <OrderModal
+          orderId={currentOrderId}
+          page="order"
+          show={show}
+          setShow={setShow}
+          time={new Date()}
+        />
       </div>
     </Fragment>
   );

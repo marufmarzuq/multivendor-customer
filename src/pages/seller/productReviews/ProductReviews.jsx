@@ -8,7 +8,8 @@ import PaginationCom from "../../../common/pagination/PaginationCom";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
 import axios from "axios";
 import authHeader from "../../services/auth-header";
-import { API_URL } from "../../services/Api/api";
+import { API_URL, markutosSellerApi } from "../../services/Api/api";
+import { toast } from "react-toastify";
 
 const ProductReviews = () => {
   const { reviews, total, per_page, last_page, current_page, loading, error } =
@@ -16,6 +17,21 @@ const ProductReviews = () => {
   const [perPage, setPerPage] = useState(per_page);
   const [currentPage, setCurrentPage] = useState(current_page);
   const [search, setSearch] = useState("");
+
+  const changeStatus = (item) => {
+    markutosSellerApi
+      .get(`reviews/change-status?review_id=${item.id}`, {
+        headers: {
+          Authorization: authHeader(),
+        },
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
 
   useEffect(() => {
     getApi(
@@ -120,11 +136,13 @@ const ProductReviews = () => {
                         <td>
                           <div className="form-check form-switch">
                             <input
+                              onChange={() => changeStatus(item)}
                               className="form-check-input"
                               type="checkbox"
                               role="switch"
                               id="flexSwitchCheckDefault"
-                              defaultChecked={item.published}
+                              value={item.status == 1 ? true : false}
+                              defaultChecked={item.status == 1 ? true : false}
                             />
                           </div>
                         </td>

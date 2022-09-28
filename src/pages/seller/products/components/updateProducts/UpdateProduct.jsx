@@ -76,9 +76,12 @@ const UpdateProduct = () => {
     onSubmit: (values, action) => {
       const finalValues = values;
       finalValues.product_id = id;
+      if (finalValues.discount_type == "no discount") {
+        values.discount = 0;
+      }
 
       markutosSellerApi
-        .post("/update-product", finalValues, {
+        .post("/update-product", values, {
           headers: {
             Authorization: authHeader(),
           },
@@ -124,6 +127,9 @@ const UpdateProduct = () => {
     handleBlur,
     setFieldValue,
   } = formik;
+
+  console.log(values.discount_type);
+  console.log(values.discount);
 
   return (
     <div>

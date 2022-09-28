@@ -13,7 +13,7 @@ const ProductDescriptionDigital = ({
   const [editorState, setEditorState] = useState("");
   return (
     <div className="add-product-single-widget">
-      <div className="widget-title">Product Description</div>
+      <div className="widget-title">Product Description *</div>
       <div className="widget-content-container">
         <div className="ap-single-content-des">
           {/* <CustomTextEditor

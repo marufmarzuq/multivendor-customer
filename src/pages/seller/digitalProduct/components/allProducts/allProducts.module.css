@@ -12,7 +12,7 @@ hr {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 .header {
   border-top: 1px dotted rgba(68, 68, 68, 0.371);
@@ -112,6 +112,6 @@ p {
 
 @media only screen and (min-width: 1024px) {
   .hide {
-    display: block;
+    display: block !important;
   }
 }
