@@ -81,20 +81,31 @@ const AllProducts = () => {
               <div className={`col-6 col-lg-2`}>
                 <p>Name</p>
               </div>
-              <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+              <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
                 <p>Category</p>
               </div>
-              <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
-                <p>Current Qty</p>
+              <div
+                className={`col-4 col-lg-1 text-center ${allProductsStyle.hide}`}
+              >
+                <p>Stock</p>
               </div>
-              <div className={`col-4 col-lg-2 `}>
+              <div className={`col-4 col-lg-2 text-center`}>
                 <p> Base Price</p>
               </div>
-              <div className={`col-4 col-lg-1 ${allProductsStyle.hide}`}>
+              <div
+                className={`col-4 col-lg-1 text-center ${allProductsStyle.hide}`}
+              >
                 <p> Published</p>
               </div>
+              <div
+                className={`col-4 col-lg-1 text-center ${allProductsStyle.hide}`}
+              >
+                <p> Featured</p>
+              </div>
 
-              <div className={`col-4 col-lg-2 ${allProductsStyle.hide}`}>
+              <div
+                className={`col-4 col-lg-2  text-center ${allProductsStyle.hide}`}
+              >
                 <p> Options</p>
               </div>
             </div>
@@ -116,21 +127,21 @@ const AllProducts = () => {
                           <p>{item.name}</p>
                         </div>
                         <div
-                          className={`col-4 col-lg-1 ${allProductsStyle.hide}`}
+                          className={`col-4 col-lg-2 ${allProductsStyle.hide}`}
                         >
                           {item.category}
                           <div> Sub category : {item.sub_category} </div>
                         </div>
                         <div
-                          className={`col-4 col-lg-2 ${allProductsStyle.hide}`}
+                          className={`col-4 col-lg-1 text-center ${allProductsStyle.hide}`}
                         >
                           <p>{item.current_stock}</p>
                         </div>
-                        <div className={`col-4 col-lg-2 `}>
+                        <div className={`col-4 col-lg-2 text-center`}>
                           <p> {priceFormat(item.unit_price)}</p>
                         </div>
                         <div
-                          className={`col-4 col-lg-1 ${allProductsStyle.hide}`}
+                          className={`col-4 col-lg-1 d-none d-lg-flex justify-content-center ${allProductsStyle.hide}`}
                         >
                           <div className="form-check form-switch">
                             <input
@@ -144,7 +155,11 @@ const AllProducts = () => {
                         </div>
 
                         <div
-                          className={`col-4 col-lg-1 ${allProductsStyle.hide}`}
+                          className={`col-4 col-lg-1
+                          
+                          d-none d-lg-flex justify-content-center
+                          
+                          ${allProductsStyle.hide}`}
                         >
                           <div className="form-check form-switch">
                             <input
@@ -158,7 +173,7 @@ const AllProducts = () => {
                         </div>
 
                         <div
-                          className={`col-4 col-lg-2 ${allProductsStyle.hide}`}
+                          className={`col-4 col-lg-2 text-center ${allProductsStyle.hide}`}
                         >
                           <p>
                             <Link to={`/seller/products/update/${item.id}`}>

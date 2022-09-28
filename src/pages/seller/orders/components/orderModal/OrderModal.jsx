@@ -1,23 +1,66 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import Select from "react-select";
 import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal";
 import modalStyle from "./modal.module.css";
 import Timeline from "../timeline/Timeline";
-const options = [
-  { value: "payment_status", label: "Payment Status" },
+import { useState } from "react";
+import { markutosSellerApi } from "../../../../services/Api/api";
+import authHeader from "../../../../services/auth-header";
+import { toast } from "react-toastify";
+const paymentOptions = [
   { value: "paid", label: "Paid" },
   { value: "unpaid", label: "UnPaid" },
 ];
-const options2 = [
-  { value: "Delivery_status", label: "Delivery Status" },
+const deliveryOptions = [
   { value: "pending", label: "Pending" },
   { value: "confirmed", label: "Confirmed" },
   { value: "on_delivery", label: "On Delivery" },
   { value: "delivered", label: "Delivered" },
 ];
-const OrderModal = ({ page, show, setShow }) => {
+const OrderModal = ({ page, show, setShow, orderId, time }) => {
+  const [orderDetails, setOrderDetails] = useState({});
+  const [deliveryStatus, setDeliveryStatus] = useState("");
+  const [paymentStatus, setPaymentStatus] = useState("");
+
+  const updateStatus = () => {
+    markutosSellerApi
+      .get(
+        `orders/order-details/change-status?order_id=${orderId}&payment_status=${paymentStatus}&delivery_status=${deliveryStatus}`,
+        {
+          headers: {
+            Authorization: authHeader(),
+          },
+        }
+      )
+      .then((res) => {
+        toast.success(res.data.message);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
+
+  useEffect(() => {
+    if (page == "order" && orderId) {
+      markutosSellerApi
+        .get(`orders/order-details?order_id=${orderId}`, {
+          headers: {
+            Authorization: authHeader(),
+          },
+        })
+        .then((res) => {
+          setOrderDetails(res.data);
+          setDeliveryStatus(res.data.order.delivery_status);
+          setPaymentStatus(res.data.order.payment_status);
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
+    }
+  }, [orderId, time]);
+
   return (
     <>
       <Modal
@@ -30,7 +73,7 @@ const OrderModal = ({ page, show, setShow }) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-custom-modal-styling-title">
-            Order Id: 22454548751
+            Order Id: {orderDetails?.order?.id}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -38,11 +81,39 @@ const OrderModal = ({ page, show, setShow }) => {
             <Timeline />
             {page == "order" ? (
               <div className={modalStyle.statusDropdown}>
-                <Select options={options} placeholder="Payment Status" />
+                <Select
+                  defaultValue={{
+                    value: "payment_status",
+                    label: "Payment Status",
+                  }}
+                  onChange={(e) => setPaymentStatus(e.value)}
+                  value={paymentOptions.find((option) => {
+                    return option.value == paymentStatus;
+                  })}
+                  options={paymentOptions}
+                  placeholder="Payment Status"
+                />
 
-                <Select options={options2} placeholder="Delivery Status" />
+                <Select
+                  defaultValue={{
+                    value: "Delivery_status",
+                    label: "Delivery Status",
+                  }}
+                  options={deliveryOptions}
+                  onChange={(e) => setDeliveryStatus(e.value)}
+                  value={deliveryOptions.find((option) => {
+                    return option.value == deliveryStatus;
+                  })}
+                  placeholder="Delivery Status"
+                />
 
-                <button className="btn btn-outline-success"> Confirm </button>
+                <button
+                  onClick={updateStatus}
+                  className="btn btn-outline-success"
+                >
+                  {" "}
+                  Confirm{" "}
+                </button>
               </div>
             ) : (
               ""
@@ -59,15 +130,10 @@ const OrderModal = ({ page, show, setShow }) => {
                     <h6>Shipping Address:</h6>
                   </Col>
                   <Col xs="7" md="5">
-                    <h5> 20210518-23373084</h5>
-                    <h5> Mr. Customer</h5>
+                    <h5> {orderDetails?.order?.id} </h5>
+                    <h5> {orderDetails?.order?.customer_name}</h5>
                     <h5> customer@email.com</h5>
-                    <h5>
-                      House# Gazi Bari,Village: Luterchar, Post Office:
-                      Luterchar, Post Office: Luterchar, Post Office: Luterchar,
-                      Post Office: Luterchar Post Office: Luterchar, Meghna,
-                      3516, Bangladesh
-                    </h5>
+                    <h5>{orderDetails?.order?.shipping_address}</h5>
                   </Col>
                   <Col xs="7" md="2">
                     <h6>Order Date:</h6>
@@ -77,11 +143,11 @@ const OrderModal = ({ page, show, setShow }) => {
                     <h6>Payment Method:</h6>
                   </Col>
                   <Col xs="5" md="3">
-                    <h5>18-05-2021 23:37 PM</h5>
+                    <h5>{orderDetails?.order?.created_at}</h5>
                     <h5> pending </h5>
-                    <h5> ৳1,000.000 </h5>
+                    <h5>{orderDetails?.order?.grand_total} </h5>
                     <h5> Flat shipping rate</h5>
-                    <h5> Cash on delivery</h5>
+                    <h5>{orderDetails?.order?.payment_type}</h5>
                   </Col>
                 </Row>
               </div>
@@ -100,24 +166,27 @@ const OrderModal = ({ page, show, setShow }) => {
                         <tr className="mb-5">
                           <th>#</th>
                           <th>Product</th>
-                          <th>Variation</th>
+
                           <th>Quantity</th>
                           <th>Delivery Type</th>
 
                           <th>Price</th>
-                          <th>Refund</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Nokia </td>
-                          <td>var one</td>
-                          <td>1</td>
-                          <td>Home Delivery</td>
-                          <td>৳1,000.000</td>
-                          <td> N/A</td>
-                        </tr>
+                        {orderDetails?.order_details?.length > 0 &&
+                          orderDetails.order_details.map((item) => {
+                            return (
+                              <tr key={item.id}>
+                                <td> {item.id} </td>
+                                <td>{item.product_name} </td>
+
+                                <td> {item.quantity} </td>
+                                <td> {item.shipping_type} </td>
+                                <td> {item.price} </td>
+                              </tr>
+                            );
+                          })}
                       </tbody>
                     </Table>
                   </div>

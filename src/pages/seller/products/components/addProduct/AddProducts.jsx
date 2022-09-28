@@ -47,7 +47,7 @@ const AddProducts = () => {
       purchase_price: "",
       tax: "0",
       tax_type: "flat",
-      discount: "",
+      discount: 0,
       discount_type: "",
       colors: ["red"],
       size: ["M"],
@@ -71,10 +71,14 @@ const AddProducts = () => {
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
-      console.log(values);
+      const finalValues = values;
+
+      if (finalValues.discount == "no discount") {
+        finalValues.discount = 0;
+      }
 
       markutosSellerApi
-        .post("/add-new-product", values, {
+        .post("/add-new-product", finalValues, {
           headers: {
             Authorization: authHeader(),
           },

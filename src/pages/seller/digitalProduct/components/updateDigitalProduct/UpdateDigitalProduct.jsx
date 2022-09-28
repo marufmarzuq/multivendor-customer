@@ -31,8 +31,9 @@ const UpdateDigitalProduct = () => {
       unit_price: digitalProduct.unit_price || "",
       purchase_price: digitalProduct.purchase_price || "",
       discount_type: digitalProduct.discount_type || "",
-      discount: digitalProduct.discount || "",
-      quantity: digitalProduct.quantity || "",
+      discount: digitalProduct.discount || 0,
+      quantity: digitalProduct.quantity || 0,
+      current_stock: digitalProduct.current_stock || 0,
       description: digitalProduct.description || "",
       meta_title: digitalProduct.meta_title || "",
       meta_description: digitalProduct.meta_description || "",
@@ -40,9 +41,12 @@ const UpdateDigitalProduct = () => {
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
-      console.log(values);
       const finalValues = values;
       finalValues.product_id = id;
+
+      if (finalValues.discount_type == "no discount") {
+        finalValues.discount = 0;
+      }
 
       markutosSellerApi
         .post(`/update-digital-product`, finalValues, {
@@ -82,6 +86,7 @@ const UpdateDigitalProduct = () => {
       })
       .then((res) => {
         setDigitalProduct(res.data);
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error.message);

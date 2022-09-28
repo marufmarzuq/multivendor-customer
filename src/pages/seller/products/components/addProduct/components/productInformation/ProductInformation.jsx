@@ -130,6 +130,7 @@ const ProductInformation = ({
               onChange={handleChange}
               id="product__unit"
               type="number"
+              min={1}
             />
 
             {errors.unit && touched.unit && (

@@ -4,9 +4,9 @@ export const addProductSchema = yup.object({
   name: yup.string().required("Plese enter product name"),
 
   category_id: yup.string().required("Please select category"),
-  current_stock: yup.number().required("Please enter current stock"),
+  current_stock: yup.number().min(1).required("Please enter current stock"),
   brand_id: yup.string(),
-  unit: yup.number().required("Please enter unit"),
+  unit: yup.number().min(1).required("Please enter unit"),
 
   minimum_quantity: yup.number().required("Please enter minimum quantity"),
 
@@ -20,15 +20,21 @@ export const addProductSchema = yup.object({
   video_provider: yup.string(),
   video_link: yup.string(),
 
-  low_stock_quantity: yup.number().required("Please enter low stock quantity"),
+  low_stock_quantity: yup
+    .number()
+    .lessThan(yup.ref("current_stock"), "Must be less than current stock")
+    .required("Please enter low stock quantity"),
   stock_visibility_state: yup.string(),
   description: yup.string().required("Description is required"),
 
-  unit_price: yup.number().required("Please enter unit price"),
   purchase_price: yup.number().required("Please enter purchase price"),
+  unit_price: yup
+    .number()
+    .moreThan(yup.ref("purchase_price"), "Must be greater than purchase price")
+    .required("Please enter unit price"),
   tax: yup.number(),
   tax_type: yup.string(),
-  discount: yup.number().required("Please enter discount"),
+  discount: yup.number(),
   discount_type: yup.string().required("Please select discount type"),
   colors: yup.array(),
   size: yup.array(),
@@ -46,7 +52,7 @@ export const addProductSchema = yup.object({
   meta_description: yup.string().required("Please enter meta description"),
   meta_img: yup.string().required("Please provide meta image"),
 
-  est_shipping_days: yup.number().required("Please enter shipping time"),
+  est_shipping_days: yup.number(),
   pdf: yup.string(),
   shipping_type: yup.string(),
   cash_on_delivery: yup.number(),
@@ -60,7 +66,7 @@ export const updateProductSchema = yup.object({
   category_id: yup.string().required("Please select category"),
   current_stock: yup.number().required("Please enter current stock"),
   brand_id: yup.string(),
-  unit: yup.number().required("Please enter unit"),
+  unit: yup.number().min(1).required("Please enter unit"),
 
   minimum_quantity: yup.number().required("Please enter minimum quantity"),
 
@@ -74,15 +80,21 @@ export const updateProductSchema = yup.object({
   video_provider: yup.string(),
   video_link: yup.string(),
 
-  low_stock_quantity: yup.number().required("Please enter low stock quantity"),
+  low_stock_quantity: yup
+    .number()
+    .lessThan(yup.ref("current_stock"), "Must be less than current stock")
+    .required("Please enter low stock quantity"),
   stock_visibility_state: yup.string(),
   description: yup.string().required("Description is required"),
 
-  unit_price: yup.number().required("Please enter unit price"),
   purchase_price: yup.number().required("Please enter purchase price"),
+  unit_price: yup
+    .number()
+    .moreThan(yup.ref("purchase_price"), "Must be greater than purchase price")
+    .required("Please enter unit price"),
   tax: yup.number(),
   tax_type: yup.string(),
-  discount: yup.number().required("Please enter discount"),
+  discount: yup.number(),
   discount_type: yup.string().required("Please select discount type"),
   colors: yup.array(),
   size: yup.array(),
@@ -100,7 +112,7 @@ export const updateProductSchema = yup.object({
   meta_description: yup.string().required("Please enter meta description"),
   meta_img: yup.string().required("Please provide meta image"),
 
-  est_shipping_days: yup.number().required("Please enter shipping time"),
+  est_shipping_days: yup.number(),
   pdf: yup.string(),
   shipping_type: yup.string(),
   cash_on_delivery: yup.number(),
@@ -117,14 +129,18 @@ export const addDigitalProductSchema = yup.object({
   thumbnail_img: yup.string().required("Please select thumbnail image"),
   photos: yup.array(),
 
-  unit_price: yup.number().required("Please enter unit price"),
   purchase_price: yup.number().required("Please enter purchase price"),
+  unit_price: yup
+    .number()
+    .moreThan(yup.ref("purchase_price"), "Must be more than purchase price")
+    .required("Please enter unit price"),
   discount_type: yup.string().required("Please select discount type"),
   tax: yup.string(),
   tax_type: yup.string(),
-  discount: yup.number().required("Please enter discount"),
+  discount: yup.number(),
   quantity: yup.number().required("Please enter quantity"),
-  desription: yup.string(),
+  current_stock: yup.number().required("Please enter current stock"),
+  description: yup.string().required("Please enter product description"),
   meta_title: yup.string().required("Please enter meta title"),
   meta_description: yup.string().required("Please enter meta description"),
   meta_img: yup.string().required("Please provide meta image"),

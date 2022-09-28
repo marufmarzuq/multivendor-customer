@@ -11,6 +11,7 @@ const ProductPriceStock = ({
   setFieldValue,
 }) => {
   const discountOptions = [
+    { value: "no discount", label: "No Discount" },
     { value: "flat", label: "Flat" },
     { value: "percent", label: "Percent" },
   ];
@@ -18,23 +19,6 @@ const ProductPriceStock = ({
     <div className="add-product-single-widget">
       <div className="widget-title">Product Price + Stock</div>
       <div className="widget-content-container">
-        <div className="ap-single-content">
-          <p>Unit price *</p>
-          <div>
-            <input
-              name="unit_price"
-              onBlur={handleBlur}
-              value={values.unit_price}
-              onChange={handleChange}
-              type="number"
-              min={0}
-            />
-
-            {errors.unit_price && touched.unit_price && (
-              <small className="text-danger"> {errors.unit_price} </small>
-            )}
-          </div>
-        </div>
         <div className="ap-single-content">
           <p>Purchase price *</p>
           <div>
@@ -49,6 +33,24 @@ const ProductPriceStock = ({
 
             {errors.purchase_price && touched.purchase_price && (
               <small className="text-danger"> {errors.purchase_price} </small>
+            )}
+          </div>
+        </div>
+
+        <div className="ap-single-content">
+          <p>Unit price *</p>
+          <div>
+            <input
+              name="unit_price"
+              onBlur={handleBlur}
+              value={values.unit_price}
+              onChange={handleChange}
+              type="number"
+              min={0}
+            />
+
+            {errors.unit_price && touched.unit_price && (
+              <small className="text-danger"> {errors.unit_price} </small>
             )}
           </div>
         </div>
@@ -73,23 +75,25 @@ const ProductPriceStock = ({
             )}
           </div>
         </div>
-        <div className="ap-single-content">
-          <p>Discount *</p>
-          <div>
-            <input
-              name="discount"
-              onBlur={handleBlur}
-              value={values.discount}
-              onChange={handleChange}
-              type="number"
-              min={0}
-            />
+        {values.discount_type != "no discount" && (
+          <div className="ap-single-content">
+            <p>Discount </p>
+            <div>
+              <input
+                name="discount"
+                onBlur={handleBlur}
+                value={values.discount}
+                onChange={handleChange}
+                type="number"
+                min={0}
+              />
 
-            {errors.discount && touched.discount && (
-              <small className="text-danger"> {errors.discount} </small>
-            )}
+              {errors.discount && touched.discount && (
+                <small className="text-danger"> {errors.discount} </small>
+              )}
+            </div>
           </div>
-        </div>
+        )}
         <div className="ap-single-content">
           <p>Current Stock *</p>
           <div>
