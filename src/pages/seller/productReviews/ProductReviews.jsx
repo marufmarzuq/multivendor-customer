@@ -109,6 +109,7 @@ const ProductReviews = () => {
                   </th>
                   <th>
                     <small>Published</small>
+										<div>Active switch to show Reviews in the frontend</div>
                   </th>
                 </tr>
               </thead>

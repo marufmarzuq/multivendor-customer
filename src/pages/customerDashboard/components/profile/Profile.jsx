@@ -7,15 +7,20 @@ const Profile = () => {
       <h4>Profile</h4>
       <div className={profileStyle.profileContainer}>
         <label htmlFor=""> Full Name: </label>
-        <input type="text" />
+        <input type="text" name="name" />
 
         <label htmlFor=""> Date of Birth</label>
-        <input type="date" name="" id="" />
+        <input type="date" name="dob" id="" />
 
         <label htmlFor=""> Email </label>
-        <input type="email" />
+        <input type="email" name="email" />
+
         <label htmlFor=""> Phone </label>
-        <input type="number" />
+        <input type="tel" name="phone" />
+
+				<label htmlFor=""> Address </label>
+        <textarea cols={"5"} rows={"5"} name="address"></textarea>
+
       </div>
       <button className="btn btn-primary mt-2 ">
         {" "}
