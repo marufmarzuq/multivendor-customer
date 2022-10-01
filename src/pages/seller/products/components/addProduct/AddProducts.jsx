@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
 import ProductInformation from "./components/productInformation/ProductInformation";
-
 import ProductImages from "./components/productImages/ProductImages";
 import ProductVideos from "./components/productVideos/ProductVideos";
 import ProductVariation from "./components/productVariation/ProductVariation";
@@ -24,6 +22,7 @@ import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
 
 const AddProducts = () => {
+
   const formik = useFormik({
     validationSchema: addProductSchema,
     initialValues: {
@@ -71,6 +70,7 @@ const AddProducts = () => {
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
+
       const finalValues = values;
 
       if (finalValues.discount == "no discount") {
