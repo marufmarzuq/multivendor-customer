@@ -17,8 +17,10 @@ const ProductReviews = () => {
   const [perPage, setPerPage] = useState(per_page);
   const [currentPage, setCurrentPage] = useState(current_page);
   const [search, setSearch] = useState("");
+  const [submiting, setSubmitting] = useState(false);
 
   const changeStatus = (item) => {
+    setSubmitting(true);
     markutosSellerApi
       .get(`reviews/change-status?review_id=${item.id}`, {
         headers: {
@@ -27,9 +29,15 @@ const ProductReviews = () => {
       })
       .then((res) => {
         toast.success(res.data.message);
+        // getApi(
+        //   `reviews?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
+        //   setReviews
+        // );
+        setSubmitting(false);
       })
       .catch((err) => {
         toast.error(err.message);
+        setSubmitting(false);
       });
   };
 
@@ -134,7 +142,17 @@ const ProductReviews = () => {
                         <td>
                           <small>{item.comment}</small>
                         </td>
-                        <td>
+                        <td className="text-center">
+                          {/* {submiting ? (
+                            <div
+                              className="spinner-border spinner-border-sm me-1"
+                              role="status"
+                            >
+                              <span className="visually-hidden">
+                                Loading...
+                              </span>
+                            </div>
+                          ) : ( */}
                           <div className="form-check form-switch">
                             <input
                               onChange={() => changeStatus(item)}
@@ -146,6 +164,7 @@ const ProductReviews = () => {
                               defaultChecked={item.status == 1 ? true : false}
                             />
                           </div>
+                          {/* )} */}
                         </td>
                       </tr>
                     );

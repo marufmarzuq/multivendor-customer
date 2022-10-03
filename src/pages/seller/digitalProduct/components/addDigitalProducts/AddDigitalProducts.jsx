@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import digitalProductStyle from "./addDigitalProduct.module.css";
 import ProductInfoDigital from "./components/productInfoDigital/ProductInfoDigital";
 import ProductImagesDigital from "./components/productImagesDigital/ProductImagesDigital";
@@ -16,6 +16,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { FocusError } from "focus-formik-error";
 const AddDigitalProducts = () => {
+  const [submiting, setSubmitting] = useState(false);
+
   const formik = useFormik({
     validationSchema: addDigitalProductSchema,
     initialValues: {
@@ -44,6 +46,7 @@ const AddDigitalProducts = () => {
         values.discount = 0;
       }
 
+      setSubmitting(true);
       markutosSellerApi
         .post("/add-new-digital-product", values, {
           headers: {
@@ -54,10 +57,12 @@ const AddDigitalProducts = () => {
           if (res.data.message == "New digital product added successfully") {
             toast.success(res.data.message);
             action.resetForm();
+            setSubmitting(false);
           }
         })
         .catch((e) => {
           toast.error(e.message);
+          setSubmitting(false);
         });
 
       // axios
@@ -99,11 +104,24 @@ const AddDigitalProducts = () => {
         <div className=" d-flex justify-content-between me-md-5 pe-md-4 me-0 pe-0 mt-3 mb-3">
           <h4>Add New Digital product</h4>
           <button
+            disabled={submiting}
             onClick={handleSubmit}
             type="submit"
             className="btn me-md-5  me-0 btn-outline-success"
           >
-            Save Product
+            {submiting ? (
+              <div>
+                <div
+                  className="spinner-border spinner-border-sm me-1"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+                Save Product
+              </div>
+            ) : (
+              "Save Product"
+            )}
           </button>
         </div>
         <div className={digitalProductStyle.add_product_widget_container}>
@@ -160,11 +178,24 @@ const AddDigitalProducts = () => {
         </div>
         <div className="mt-4">
           <button
+            disabled={submiting}
             onClick={handleSubmit}
             type="submit"
-            className="btn  btn-lg btn-outline-success"
+            className="btn me-md-5  me-0 btn-outline-success"
           >
-            Save Product
+            {submiting ? (
+              <div>
+                <div
+                  className="spinner-border spinner-border-sm me-1"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+                Save Product
+              </div>
+            ) : (
+              "Save Product"
+            )}
           </button>
         </div>
       </form>

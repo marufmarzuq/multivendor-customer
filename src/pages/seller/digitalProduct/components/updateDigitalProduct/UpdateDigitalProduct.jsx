@@ -18,6 +18,7 @@ import { FocusError } from "focus-formik-error";
 const UpdateDigitalProduct = () => {
   const { id } = useParams();
   const [digitalProduct, setDigitalProduct] = useState({});
+  const [submiting, setSubmitting] = useState(false);
 
   const formik = useFormik({
     validationSchema: addDigitalProductSchema,
@@ -48,6 +49,7 @@ const UpdateDigitalProduct = () => {
         finalValues.discount = 0;
       }
 
+      setSubmitting(true);
       markutosSellerApi
         .post(`/update-digital-product`, finalValues, {
           headers: {
@@ -58,10 +60,12 @@ const UpdateDigitalProduct = () => {
           if (res.data.message == "Product updated successfully") {
             toast.success(res.data.message);
             getDigitalProduct();
+            setSubmitting(false);
           }
         })
         .catch((error) => {
           toast.error(error.message);
+          setSubmitting(false);
         });
     },
   });
@@ -104,11 +108,24 @@ const UpdateDigitalProduct = () => {
         <div className=" d-flex justify-content-between me-md-5 pe-md-4 me-0 pe-0 mt-3 mb-3">
           <h4>Update Digital product</h4>
           <button
+            disabled={submiting}
             onClick={handleSubmit}
             type="submit"
             className="btn me-md-5  me-0 btn-outline-success"
           >
-            Save Product
+            {submiting ? (
+              <div>
+                <div
+                  className="spinner-border spinner-border-sm me-1"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+                Save Product
+              </div>
+            ) : (
+              "Save Product"
+            )}
           </button>
         </div>
         <div className={digitalProductStyle.add_product_widget_container}>
@@ -165,11 +182,24 @@ const UpdateDigitalProduct = () => {
         </div>
         <div className="mt-4">
           <button
+            disabled={submiting}
             onClick={handleSubmit}
             type="submit"
-            className="btn  btn-lg btn-outline-success"
+            className="btn me-md-5  me-0 btn-outline-success"
           >
-            Save Product
+            {submiting ? (
+              <div>
+                <div
+                  className="spinner-border spinner-border-sm me-1"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+                Save Product
+              </div>
+            ) : (
+              "Save Product"
+            )}
           </button>
         </div>
       </form>

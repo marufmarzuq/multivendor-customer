@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import ProductInformation from "./components/productInformation/ProductInformation";
 import ProductImages from "./components/productImages/ProductImages";
 import ProductVideos from "./components/productVideos/ProductVideos";
@@ -22,7 +23,7 @@ import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
 
 const AddProducts = () => {
-
+  const [submiting, setSubmitting] = useState(false);
   const formik = useFormik({
     validationSchema: addProductSchema,
     initialValues: {
@@ -70,13 +71,13 @@ const AddProducts = () => {
     },
     enableReinitialize: true,
     onSubmit: (values, action) => {
-
       const finalValues = values;
 
       if (finalValues.discount == "no discount") {
         finalValues.discount = 0;
       }
 
+      setSubmitting(true);
       markutosSellerApi
         .post("/add-new-product", finalValues, {
           headers: {
@@ -86,13 +87,14 @@ const AddProducts = () => {
         .then((res) => {
           if (res.data.message == "New product added successfully") {
             toast.success(res.data.message);
+            setSubmitting(false);
           }
 
           action.resetForm();
         })
         .catch((e) => {
           toast.error(e.message);
-          console.log(e.message);
+          setSubmitting(false);
         });
     },
   });
@@ -115,11 +117,24 @@ const AddProducts = () => {
         <div className=" d-flex justify-content-between mt-3 mb-3">
           <h4>Add New product</h4>
           <button
+            disabled={submiting}
             onClick={handleSubmit}
             type="submit"
             className="btn btn-outline-success"
           >
-            Save Product
+            {submiting ? (
+              <div>
+                <div
+                  className="spinner-border spinner-border-sm me-1"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+                Save Product
+              </div>
+            ) : (
+              "Save Product"
+            )}
           </button>
         </div>
 
@@ -265,11 +280,24 @@ const AddProducts = () => {
 
         <div className="mt-4">
           <button
+            disabled={submiting}
             onClick={handleSubmit}
             type="submit"
-            className="btn  btn-outline-success"
+            className="btn btn-outline-success"
           >
-            Save Product
+            {submiting ? (
+              <div>
+                <div
+                  className="spinner-border spinner-border-sm me-1"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+                Save Product
+              </div>
+            ) : (
+              "Save Product"
+            )}
           </button>
         </div>
       </form>
