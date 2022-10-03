@@ -26,6 +26,7 @@ import { toast } from "react-toastify";
 const UpdateProduct = () => {
   const { id } = useParams();
   const [product, setProduct] = useState({});
+  const [submiting, setSubmitting] = useState(false);
 
   const formik = useFormik({
     validationSchema: updateProductSchema,
@@ -80,6 +81,7 @@ const UpdateProduct = () => {
         values.discount = 0;
       }
 
+      setSubmitting(true);
       markutosSellerApi
         .post("/update-product", values, {
           headers: {
@@ -90,10 +92,12 @@ const UpdateProduct = () => {
           if (res.data.message == "Product updated successfully") {
             toast.success(res.data.message);
             getProduct();
+            setSubmitting(false);
           }
         })
         .catch((e) => {
           toast.error(e.message);
+          setSubmitting(false);
         });
     },
   });
@@ -139,11 +143,24 @@ const UpdateProduct = () => {
           <div className=" d-flex justify-content-between mt-3 mb-3">
             <h4>Update product</h4>
             <button
+              disabled={submiting}
               onClick={handleSubmit}
               type="submit"
               className="btn btn-outline-success"
             >
-              Save Product
+              {submiting ? (
+                <div>
+                  <div
+                    className="spinner-border spinner-border-sm me-1"
+                    role="status"
+                  >
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  Save Product
+                </div>
+              ) : (
+                "Save Product"
+              )}
             </button>
           </div>
 
@@ -289,11 +306,24 @@ const UpdateProduct = () => {
 
           <div className="mt-4">
             <button
+              disabled={submiting}
               onClick={handleSubmit}
               type="submit"
-              className="btn  btn-outline-success"
+              className="btn btn-outline-success"
             >
-              Save Product
+              {submiting ? (
+                <div>
+                  <div
+                    className="spinner-border spinner-border-sm me-1"
+                    role="status"
+                  >
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  Save Product
+                </div>
+              ) : (
+                "Save Product"
+              )}
             </button>
           </div>
         </form>

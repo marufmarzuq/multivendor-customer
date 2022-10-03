@@ -1,7 +1,9 @@
+import { FocusError } from "focus-formik-error";
 import { useFormik } from "formik";
 import React, { Fragment } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { toast } from "react-toastify";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
 import { manageProfileSchema } from "../../../schema";
 import { markutosSellerApi } from "../../services/Api/api";
@@ -10,38 +12,55 @@ import authHeader from "../../services/auth-header";
 import profileStyle from "./profile.module.css";
 const ManageProfile = () => {
   const [profileInfo, setProfileInfo] = useState({});
+  const [submiting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const [error, setError] = useState("");
 
-  const { values, handleChange, touched, errors, handleSubmit, handleBlur } =
-    useFormik({
-      validationSchema: manageProfileSchema,
-      initialValues: {
-        first_name: profileInfo.first_name || "",
-        last_name: profileInfo.last_name || "",
-        phone: profileInfo.phone || "",
-        avatar: profileInfo.avatar || "",
-        email: profileInfo.email || "",
-        country: profileInfo.country || "",
-        city: profileInfo.city || "",
-        area: profileInfo.area || "",
-        pin_code: profileInfo.pin_code || "",
-        account_number: profileInfo.account_number || "",
-        bank_name: profileInfo.bank_name || "",
-        branch_name: profileInfo.branch_name || "",
-        routing_number: profileInfo.routing_number || "",
-        swift: profileInfo.swift || "",
-        account_holder: profileInfo.account_holder || "",
-        password: "",
-      },
-      enableReinitialize: true,
-      onSubmit: (values, action) => {
-        console.log(values);
-        action.resetForm();
-      },
-    });
+  const formik = useFormik({
+    validationSchema: manageProfileSchema,
+    initialValues: {
+      first_name: profileInfo.first_name || "",
+      last_name: profileInfo.last_name || "",
+      phone: profileInfo.phone || "",
+      avatar: profileInfo.avatar || "",
+      email: profileInfo.email || "",
+      country: profileInfo.country || "",
+      city: profileInfo.city || "",
+      area: profileInfo.area || "",
+      pin_code: profileInfo.pin_code || "",
+      account_number: profileInfo.account_number || "",
+      bank_name: profileInfo.bank_name || "",
+      branch_name: profileInfo.branch_name || "",
+      routing_number: profileInfo.routing_number || "",
+      swift: profileInfo.swift || "",
+      account_holder: profileInfo.account_holder || "",
+      password: "",
+    },
+    enableReinitialize: true,
+    onSubmit: (values, action) => {
+      setSubmitting(true);
+      markutosSellerApi
+        .post(`/profile/update`, values, {
+          headers: {
+            Authorization: authHeader(),
+          },
+        })
+        .then((res) => {
+          toast.success(res.data.message);
+          getData();
+          setSubmitting(false);
+        })
+        .catch((err) => {
+          toast.error(err.message);
+          setSubmitting(false);
+        });
 
-  useEffect(() => {
+      action.resetForm();
+    },
+  });
+
+  const getData = () => {
     setLoading(true);
     markutosSellerApi
       .get("/profile", {
@@ -58,7 +77,14 @@ const ManageProfile = () => {
         setLoading(false);
         setError(e.message);
       });
+  };
+
+  useEffect(() => {
+    getData();
   }, []);
+
+  const { values, handleChange, touched, errors, handleSubmit, handleBlur } =
+    formik;
 
   return (
     <Fragment>
@@ -73,6 +99,7 @@ const ManageProfile = () => {
         ) : (
           <section>
             <form onSubmit={handleSubmit}>
+              <FocusError formik={formik} />
               <div className="mx-md-5 mx-0 ">
                 <div className={profileStyle.infoContainer}>
                   <p
@@ -101,7 +128,7 @@ const ManageProfile = () => {
                       ""
                     )}
                   </div>
-                  <label htmlFor="last_name"> Last Name </label>
+                  <label htmlFor="last_name"> Last Name *</label>
                   <div>
                     <input
                       name="last_name"
@@ -359,11 +386,24 @@ const ManageProfile = () => {
                 </div>
                 <div>
                   <button
+                    disabled={submiting}
                     onSubmit={handleSubmit}
                     type="submit"
                     className="btn mt-4 btn-outline-success"
                   >
-                    Update Infromation
+                    {submiting ? (
+                      <div>
+                        <div
+                          className="spinner-border spinner-border-sm me-1"
+                          role="status"
+                        >
+                          <span className="visually-hidden">Loading...</span>
+                        </div>
+                        Update Infromation
+                      </div>
+                    ) : (
+                      "Update Infromation"
+                    )}
                   </button>
                 </div>
               </div>

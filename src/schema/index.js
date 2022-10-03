@@ -24,7 +24,7 @@ export const shopSettingSchema = yup.object({
 
 export const manageProfileSchema = yup.object({
   first_name: yup.string().required("Name is required"),
-  last_name: yup.string(),
+  last_name: yup.string().required("Last Name is required"),
 
   phone: yup
     .string()
@@ -44,11 +44,9 @@ export const manageProfileSchema = yup.object({
   routing_number: yup.number().required("Routing number is required"),
   swift: yup.string().required("Swift is required"),
   account_holder: yup.string().required("Account holder name is required"),
-  password: yup
-    .string()
-    .required("Please Enter your password")
-    .matches(
-      passwordRegExp,
-      "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
-    ),
+  password: yup.string().required("Password is required"),
+  // .matches(
+  //   passwordRegExp,
+  //   "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+  // )
 });
