@@ -10,9 +10,14 @@ import { markutosSellerApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import { toast } from "react-toastify";
 import { priceFormat } from "../../../../../hooks/helper";
-const paymentOptions = [
-  { value: "paid", label: "Paid" },
-  { value: "unpaid", label: "UnPaid" },
+const orderOptions = [
+  { value: "confirmed", label: "Confirmed" },
+  { value: "processing", label: "Processing" },
+	{ value: "completed", label: "Completed" },
+  { value: "cancelled", label: "Cancelled" },
+  { value: "pending_payment", label: "Pending Payment" },
+  { value: "failed", label: "Failed" },
+  { value: "draft", label: "Draft" },
 ];
 const deliveryOptions = [
   { value: "pending", label: "Pending" },
@@ -23,12 +28,12 @@ const deliveryOptions = [
 const OrderModal = ({ page, show, setShow, orderId, time }) => {
   const [orderDetails, setOrderDetails] = useState({});
   const [deliveryStatus, setDeliveryStatus] = useState("");
-  const [paymentStatus, setPaymentStatus] = useState("");
+  const [orderStatus, setOrderStatus] = useState("");
 
   const updateStatus = () => {
     markutosSellerApi
       .get(
-        `orders/order-details/change-status?order_id=${orderId}&payment_status=${paymentStatus}&delivery_status=${deliveryStatus}`,
+        `orders/order-details/change-status?order_id=${orderId}&order_status=${orderStatus}&delivery_status=${deliveryStatus}`,
         {
           headers: {
             Authorization: authHeader(),
@@ -54,7 +59,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
         .then((res) => {
           setOrderDetails(res.data);
           setDeliveryStatus(res.data.order.delivery_status);
-          setPaymentStatus(res.data.order.payment_status);
+          setOrderStatus(res.data.order.order_status);
         })
         .catch((err) => {
           console.log(err.message);
@@ -85,15 +90,15 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
               	<label>Order Status</label>
                 <Select
                   defaultValue={{
-                    value: "payment_status",
-                    label: "Payment Status",
+                    value: "pending",
+                    label: "Pending",
                   }}
-                  onChange={(e) => setPaymentStatus(e.value)}
-                  value={paymentOptions.find((option) => {
-                    return option.value == paymentStatus;
+                  onChange={(e) => setOrderStatus(e.value)}
+                  value={orderOptions.find((option) => {
+                    return option.value == orderStatus;
                   })}
-                  options={paymentOptions}
-                  placeholder="Payment Status"
+                  options={orderOptions}
+                  placeholder="Order Status"
                 />
 								<label>Delivery Status</label>
                 <Select
@@ -116,6 +121,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                   {" "}
                   Confirm{" "}
                 </button>
+                <button>Print</button>
               </div>
             ) : (
               ""
