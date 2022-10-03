@@ -152,7 +152,7 @@ const OrderList = () => {
               <p>Delivery Status</p>
             </div>
             <div className="text-center">
-              <p> Payment Status</p>
+              <p> Order Status</p>
             </div>
             <div className="text-center">
               <p>Options</p>
@@ -189,7 +189,7 @@ const OrderList = () => {
                       </div>
                       <div className="text-center">
                         <span className={orderListStyle.unpaid}>
-                          {item.payment_status}
+                          {item.order_status}
                         </span>
                       </div>
                       <div className="text-center">

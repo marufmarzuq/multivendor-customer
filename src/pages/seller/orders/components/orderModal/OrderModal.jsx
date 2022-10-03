@@ -9,6 +9,7 @@ import { useState } from "react";
 import { markutosSellerApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import { toast } from "react-toastify";
+import { priceFormat } from "../../../../../hooks/helper";
 const paymentOptions = [
   { value: "paid", label: "Paid" },
   { value: "unpaid", label: "UnPaid" },
@@ -81,6 +82,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
             <Timeline />
             {page == "order" ? (
               <div className={modalStyle.statusDropdown}>
+              	<label>Order Status</label>
                 <Select
                   defaultValue={{
                     value: "payment_status",
@@ -93,7 +95,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                   options={paymentOptions}
                   placeholder="Payment Status"
                 />
-
+								<label>Delivery Status</label>
                 <Select
                   defaultValue={{
                     value: "Delivery_status",
@@ -130,23 +132,25 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                     <h6>Shipping Address:</h6>
                   </Col>
                   <Col xs="7" md="5">
-                    <h5> {orderDetails?.order?.id} </h5>
-                    <h5> {orderDetails?.order?.customer_name}</h5>
-                    <h5> customer@email.com</h5>
+                    <h5>{orderDetails?.order?.id} </h5>
+                    <h5>{orderDetails?.order?.customer_name}</h5>
+                    <h5>{orderDetails?.order?.customer_email}</h5>
                     <h5>{orderDetails?.order?.shipping_address}</h5>
                   </Col>
                   <Col xs="7" md="2">
                     <h6>Order Date:</h6>
                     <h6>Order Status:</h6>
                     <h6>Total Order amount:</h6>
+                    <h6>Shipping Type:</h6>
                     <h6>Shipping Method:</h6>
                     <h6>Payment Method:</h6>
                   </Col>
                   <Col xs="5" md="3">
                     <h5>{orderDetails?.order?.created_at}</h5>
-                    <h5> pending </h5>
+                    <h5> {orderDetails?.order?.order_status} </h5>
                     <h5>{orderDetails?.order?.grand_total} </h5>
-                    <h5> Flat shipping rate</h5>
+                    <h5>{orderDetails?.order?.shipping_type}</h5>
+                    <h5>{orderDetails?.order?.shipping_method}</h5>
                     <h5>{orderDetails?.order?.payment_type}</h5>
                   </Col>
                 </Row>
@@ -166,10 +170,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                         <tr className="mb-5">
                           <th>#</th>
                           <th>Product</th>
-
                           <th>Quantity</th>
-                          <th>Delivery Type</th>
-
                           <th>Price</th>
                         </tr>
                       </thead>
@@ -180,10 +181,8 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                               <tr key={item.id}>
                                 <td> {item.id} </td>
                                 <td>{item.product_name} </td>
-
-                                <td> {item.quantity} </td>
-                                <td> {item.shipping_type} </td>
-                                <td> {item.price} </td>
+                                <td>{item.quantity} </td>
+                                <td>{item.price} </td>
                               </tr>
                             );
                           })}
@@ -202,7 +201,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                         <h6>Subtotal</h6>
                       </Col>
                       <Col>
-                        <h5> ৳1,000.000 </h5>
+                        <h5> {priceFormat(orderDetails?.sub_total)}</h5>
                       </Col>
                     </Row>
                     <Row>
@@ -210,7 +209,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                         <h6>Shipping</h6>
                       </Col>
                       <Col>
-                        <h5> ৳0.00 </h5>
+                        <h5> {priceFormat(orderDetails?.shipping)} </h5>
                       </Col>
                     </Row>
                     <Row>
@@ -218,7 +217,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                         <h6>Tax</h6>
                       </Col>
                       <Col>
-                        <h5> ৳0.00 </h5>
+                        <h5> {priceFormat(orderDetails?.tax)} </h5>
                       </Col>
                     </Row>
 
@@ -227,7 +226,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                         <h6>Coupon</h6>
                       </Col>
                       <Col>
-                        <h5> ৳0.00</h5>
+                        <h5> {priceFormat(orderDetails?.tax)} </h5>
                       </Col>
                     </Row>
 
@@ -236,7 +235,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                         <h6>Total</h6>
                       </Col>
                       <Col>
-                        <h5> ৳1,000.000 </h5>
+                        <h5> {priceFormat(orderDetails?.total)} </h5>
                       </Col>
                     </Row>
                   </div>
