@@ -1,13 +1,15 @@
 import React from "react";
 import blogStyle from "./blogs.module.css";
-const BlogCard = () => {
+
+const BlogCard = (props) => {
+
   return (
     <div className={blogStyle.BlogCardContainer}>
       <div>
-        <img src="https://farmart.botble.com/storage/news/1.jpg" alt="" />
+        <img src={props.item?.banner} alt={props.item?.title} />
       </div>
       <div>
-        <h3>4 Expert Tips On How To Choose The Right Men’s Wallet</h3>
+        <h3>{props.item?.title}</h3>
         <span
           style={{
             opacity: "0.6",
@@ -29,7 +31,7 @@ const BlogCard = () => {
             marginLeft: "5px",
           }}
         >
-          on Jan 20, 2021
+          on { props.item?.created_at }
         </span>
         <p
           style={{
@@ -38,10 +40,7 @@ const BlogCard = () => {
             textAlign: "justify",
           }}
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-          voluptates vel adipisci qui, placeat odit at praesentium impedit
-          aspernatur natus enim ex nemo maiores voluptatibus dignissimos
-          possimus soluta, laborum itaque!
+          {props.item?.short_description}
         </p>
       </div>
     </div>

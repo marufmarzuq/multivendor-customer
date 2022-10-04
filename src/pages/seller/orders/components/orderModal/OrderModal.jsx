@@ -119,7 +119,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                   className="btn btn-outline-success"
                 >
                   {" "}
-                  Confirm{" "}
+                  Confirm{" "} Order
                 </button>
                 <button>Print</button>
               </div>

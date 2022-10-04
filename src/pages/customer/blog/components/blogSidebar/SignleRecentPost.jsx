@@ -1,10 +1,10 @@
 import React from "react";
 import recentPostStyle from "./blogSidebar.module.css";
-const SignleRecentPost = () => {
+const SignleRecentPost = (props) => {
   return (
     <div className={recentPostStyle.recentPostCard}>
       <div>
-        <img src="https://farmart.botble.com/storage/news/2.jpg" alt="" />
+        <img src={props.item?.banner} alt={props.item?.title} />
       </div>
       <div>
         <small
@@ -12,7 +12,7 @@ const SignleRecentPost = () => {
             opacity: "0.5",
           }}
         >
-          Jan 25, 2022 by
+          {props.item?.created_at} by
         </small>
         <small className="text-primary"> System Admin </small>
         <p
@@ -21,7 +21,7 @@ const SignleRecentPost = () => {
             marginTop: "5px",
           }}
         >
-          The Top 2020 Handbag Trends to Know
+          {props.item?.title}
         </p>
       </div>
     </div>

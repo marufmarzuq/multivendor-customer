@@ -2,6 +2,9 @@ import BreadCumb from "../../../../../common/breadcumb/BreadCumb";
 import BlogSidebar from "../blogSidebar/BlogSidebar";
 import blogDetailsStyle from "./blogDetails.module.css";
 import BlogInfo from "./BlogInfo";
+import { markutosSellerApi } from "../../../services/Api/api";
+import authHeader from "../../../../services/auth-header";
+
 const BlogDetails = () => {
   return (
     <div>
