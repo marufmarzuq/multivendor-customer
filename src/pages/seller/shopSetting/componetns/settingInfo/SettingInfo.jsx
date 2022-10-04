@@ -12,6 +12,7 @@ const options = [
 ];
 
 const SettingInfo = ({
+  submiting,
   handleSubmit,
   handleChange,
   values,
@@ -95,11 +96,24 @@ const SettingInfo = ({
 
           <div className="d-flex justify-content-end mt-4 ">
             <button
+              disabled={submiting}
               onClick={() => handleSubmit()}
               type="submit"
               className="btn btn-success"
             >
-              Save
+              {submiting ? (
+                <div>
+                  <div
+                    className="spinner-border spinner-border-sm me-1"
+                    role="status"
+                  >
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  Save
+                </div>
+              ) : (
+                "Save"
+              )}
             </button>
           </div>
         </div>

@@ -4,15 +4,19 @@ import SettingSocialLinks from "./componetns/settingSocialLinks/SettingSocialLin
 import settingStyle from "./shopSetting.module.css";
 import { useFormik } from "formik";
 import { shopSettingSchema } from "../../../schema";
-import { authHeader, getApi } from "../../../api/apiCall";
+import { getApi } from "../../../api/apiCall";
 import { setShopSetting } from "../../../redux/slices/seller/shopSetting";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
 import axios from "axios";
 import { useState } from "react";
+import { markutosSellerApi } from "../../services/Api/api";
+import { toast } from "react-toastify";
+import authHeader from "../../services/auth-header";
 
 const ShopSetting = () => {
+  const [submiting, setSubmitting] = useState(false);
   const { setting, loading, error } = useSelector(
     (state) => state.shopSettingReducer
   );
@@ -33,7 +37,22 @@ const ShopSetting = () => {
       },
       enableReinitialize: true,
       onSubmit: (values, action) => {
-        console.log(values);
+        setSubmitting(true);
+        markutosSellerApi
+          .post(`/update-shop-setting`, values, {
+            headers: {
+              Authorization: authHeader(),
+            },
+          })
+          .then((res) => {
+            toast.success(res.data.message);
+            getApi("shop-setting", setShopSetting);
+            setSubmitting(false);
+          })
+          .catch((err) => {
+            toast.error(err.message);
+            setSubmitting(false);
+          });
         action.resetForm();
       },
     });
@@ -41,7 +60,6 @@ const ShopSetting = () => {
     getApi("shop-setting", setShopSetting);
   }, []);
 
-  // console.log(setting);
   return (
     <>
       {loading ? (
@@ -57,6 +75,7 @@ const ShopSetting = () => {
 
           <div className={settingStyle.add_product_widget_container}>
             <SettingInfo
+              submiting={submiting}
               touched={touched}
               values={values}
               handleChange={handleChange}
@@ -65,11 +84,13 @@ const ShopSetting = () => {
               errors={errors}
             />
             <SettingBanner
+              submiting={submiting}
               setFieldValue={setFieldValue}
               values={values}
               handleSubmit={handleSubmit}
             />
             <SettingSocialLinks
+              submiting={submiting}
               values={values}
               handleChange={handleChange}
               handleSubmit={handleSubmit}

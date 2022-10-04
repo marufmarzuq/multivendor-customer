@@ -2,7 +2,12 @@ import React from "react";
 import "./ProductPriceStock.css";
 import Select from "react-select";
 
-const SettingSocialLinks = ({ values, handleSubmit, handleChange }) => {
+const SettingSocialLinks = ({
+  values,
+  handleSubmit,
+  handleChange,
+  submiting,
+}) => {
   const discountOptions = [
     { value: "flat", label: "Flat" },
     { value: "percent", label: "Percent" },
@@ -81,11 +86,24 @@ const SettingSocialLinks = ({ values, handleSubmit, handleChange }) => {
 
           <div className="d-flex justify-content-end">
             <button
+              disabled={submiting}
               onClick={() => handleSubmit()}
               type="submit"
               className="btn btn-success"
             >
-              Save
+              {submiting ? (
+                <div>
+                  <div
+                    className="spinner-border spinner-border-sm me-1"
+                    role="status"
+                  >
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  Save
+                </div>
+              ) : (
+                "Save"
+              )}
             </button>
           </div>
         </div>

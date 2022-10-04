@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import "./ProductImages.css";
 import UploadFilesModal from "../../../UploadFiles/UploadFilesModal";
-const SettingBanner = ({ values, handleSubmit, setFieldValue }) => {
+const SettingBanner = ({ values, handleSubmit, setFieldValue, submiting }) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -37,12 +37,24 @@ const SettingBanner = ({ values, handleSubmit, setFieldValue }) => {
 
           <div className="d-flex justify-content-end">
             <button
-              type="submit"
+              disabled={submiting}
               onClick={() => handleSubmit()}
+              type="submit"
               className="btn btn-success"
             >
-              {" "}
-              Save{" "}
+              {submiting ? (
+                <div>
+                  <div
+                    className="spinner-border spinner-border-sm me-1"
+                    role="status"
+                  >
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  Save
+                </div>
+              ) : (
+                "Save"
+              )}
             </button>
           </div>
         </div>

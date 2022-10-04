@@ -79,12 +79,36 @@ const ManageProfile = () => {
       });
   };
 
+  const passGenerate = () => {
+    const alpha = "abcdefghijklmnopqrstuvwxyz";
+    const calpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const num = "1234567890";
+    const specials = ",.!@#$%^&*";
+    const options = [alpha, alpha, alpha, calpha, calpha, num, num, specials];
+    let opt, choose;
+    let pass = "";
+    for (let i = 0; i < 8; i++) {
+      opt = Math.floor(Math.random() * options.length);
+      choose = Math.floor(Math.random() * options[opt].length);
+      pass = pass + options[opt][choose];
+      options.splice(opt, 1);
+    }
+    setFieldValue("password", pass);
+  };
+
   useEffect(() => {
     getData();
   }, []);
 
-  const { values, handleChange, touched, errors, handleSubmit, handleBlur } =
-    formik;
+  const {
+    values,
+    handleChange,
+    touched,
+    errors,
+    handleSubmit,
+    handleBlur,
+    setFieldValue,
+  } = formik;
 
   return (
     <Fragment>
@@ -373,7 +397,7 @@ const ManageProfile = () => {
                       value={values.password}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      type="text"
+                      type="password"
                       id="password"
                     />
 
@@ -404,6 +428,14 @@ const ManageProfile = () => {
                     ) : (
                       "Update Infromation"
                     )}
+                  </button>
+
+                  <button
+                    onClick={passGenerate}
+                    type="button"
+                    className="btn mx-3 mt-4 btn-outline-success"
+                  >
+                    Generate Password
                   </button>
                 </div>
               </div>
