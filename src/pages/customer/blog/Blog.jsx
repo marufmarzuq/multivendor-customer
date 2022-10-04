@@ -59,7 +59,7 @@ const Blog = () => {
 				setPopularTags(response?.data?.popular_tags)
 				setRecentPosts(response?.data?.recent_posts)
       });
-  }, []);
+  });
 
   return (
     <>
@@ -86,6 +86,7 @@ const Blog = () => {
           popularTags={popularTags}
           setSearch={setSearch}
           setTag={setTag}
+          setCategory={setCategory}
           search={search}
           />
         </div>
