@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import uploadModalStyle from "./uploadModal.module.css";
 import "./uploadFiles.css";
-import { uploadedFiles } from "../../../utils/data";
+// import { uploadedFiles } from "../../../utils/data";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiUploadCloud } from "react-icons/fi";
 import {
@@ -13,7 +13,10 @@ import {
 } from "react-icons/ai";
 import { RiFileCopyLine } from "react-icons/ri";
 import DragNdrop from "./dragNdrop/DragNdrop";
-
+import { markutosSellerApi } from "../../services/Api/api";
+import authHeader from "../../services/auth-header";
+import { toast } from "react-toastify";
+import SimpleLoading from "../../../common/loading/SimpleLoading";
 const OrderModal = ({
   show,
   setShow,
@@ -26,46 +29,115 @@ const OrderModal = ({
   let [selectedGallery, setSellectedGallery] = useState([]);
   const [view, setView] = useState("select");
   const [currIndex, setCurrIndex] = useState(null);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [uploading, setUploading] = useState(false);
+  const [fetchingfile, setFetchingFile] = useState(false);
   const handleOptions = (index) => {
     if (index === currIndex) setCurrIndex(null);
     else setCurrIndex(index);
   };
 
   const submitFiles = () => {
-    if (format == "pdf") {
-      setFieldValue(imageFor, files[0]?.name);
-    } else if (format == "array") {
-      setFieldValue(imageFor, [
-        ...selectedGallery,
-        ...files.map((item) => item?.name),
-      ]);
-    } else {
-      setFieldValue(
-        imageFor,
-        selectedGallery.length > 0 ? selectedGallery[0] || files[0]?.name : ""
-      );
-    }
+    if (files.length > 0) {
+      const formData = new FormData();
+      for (let i = 0; i < files.length; i++) {
+        formData.append("files[]", files[i]);
+      }
 
-    setShow(!show);
-    setSellectedGallery([]);
-    setFiles([]);
+      setUploading(true);
+      markutosSellerApi
+        .post("/uploads/new-file-upload", formData, {
+          headers: {
+            Authorization: authHeader(),
+          },
+        })
+        .then((res) => {
+          getFiles();
+          toast.success(res.data.message);
+          setUploading(false);
+          setFiles([]);
+          setView("select");
+          // setShow(!show);
+        })
+        .catch((err) => {
+          toast.error(err.message);
+          setUploading(false);
+          // setShow(!show);
+        });
+    } else {
+      if (format == "pdf") {
+        setFieldValue(imageFor, files[0]?.name);
+      } else if (format == "array") {
+        setFieldValue(imageFor, [
+          ...selectedGallery,
+          ...files.map((item) => item?.name),
+        ]);
+      } else {
+        setFieldValue(
+          imageFor,
+          selectedGallery.length > 0 ? selectedGallery[0] || files[0]?.name : ""
+        );
+      }
+
+      setShow(!show);
+      setSellectedGallery([]);
+      setFiles([]);
+    }
   };
 
   const selectFile = (file) => {
-    if (selectedGallery.includes(file.name)) {
+    if (selectedGallery.includes(file.file_original_name)) {
       const afterRemoved = selectedGallery.filter((item) => {
-        return item != file.name;
+        return item != file.file_original_name;
       });
 
       setSellectedGallery(afterRemoved);
     } else {
       setSellectedGallery((state) => {
-        return [...state, file.name];
+        return [...state, file.file_original_name];
       });
     }
 
     // setShow(!show);
   };
+
+  const getFiles = () => {
+    setFetchingFile(true);
+    markutosSellerApi
+      .get("/uploads?search_value=&per_page=40", {
+        headers: {
+          Authorization: authHeader(),
+        },
+      })
+      .then((res) => {
+        setUploadedFiles(res.data.data);
+        setFetchingFile(false);
+      })
+      .catch((err) => {
+        console.log(err.message);
+        setFetchingFile(false);
+      });
+  };
+
+  const deleteFile = (id) => {
+    markutosSellerApi
+      .get(`/uploads/delete-file?file_id=${id}`, {
+        headers: {
+          Authorization: authHeader(),
+        },
+      })
+      .then((res) => {
+        toast.success(res.data.message);
+        getFiles();
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
+
+  useEffect(() => {
+    getFiles();
+  }, []);
 
   return (
     <>
@@ -114,6 +186,9 @@ const OrderModal = ({
                     </div> */}
                   </div>
                 </div>
+                {/* {fetchingfile ? (
+                  <SimpleLoading />
+                ) : ( */}
                 <div className="uploaded-files-container mb-1">
                   {uploadedFiles.map((file, index) => (
                     <div
@@ -123,16 +198,16 @@ const OrderModal = ({
                       onClick={() => selectFile(file)}
                       key={index}
                       className={`single-uploaded-file ${
-                        selectedGallery.includes(file.name) &&
+                        selectedGallery.includes(file.file_original_name) &&
                         uploadModalStyle.selected
                       }`}
                     >
                       <div className="file-img-container">
-                        <img src={file.img} alt="" />
+                        <img src={file.file_url} alt="" />
                       </div>
-                      <div className="file-name">{file.name}</div>
-                      <div className="file-size">{file.size}</div>
-                      {/* <div
+                      {/* <div className="file-name">{file.name}</div>
+                    <div className="file-size">{file.size}</div> */}
+                      <div
                         className="file-options"
                         onClick={() => handleOptions(index)}
                       >
@@ -140,29 +215,49 @@ const OrderModal = ({
                           <BsThreeDotsVertical />
                           {currIndex === index && (
                             <div className="file-options-box">
-                              <div className="single-file-option">
-                                <AiOutlineInfoCircle />
-                                <span>Details Info</span>
-                              </div>
-                              <div className="single-file-option">
-                                <AiOutlineDownload />
-                                <span>Download</span>
-                              </div>
-                              <div className="single-file-option">
-                                <RiFileCopyLine />
-                                <span>Copy Link</span>
-                              </div>
-                              <div className="single-file-option">
+                              {/* <div className="single-file-option">
+                              <AiOutlineInfoCircle />
+                              <span>Details Info</span>
+                            </div> */}
+                              {/* <div className="single-file-option">
+                              <AiOutlineDownload />
+                              <span>Download</span>
+                            </div>
+                            <div className="single-file-option">
+                              <RiFileCopyLine />
+                              <span>Copy Link</span>
+                            </div> */}
+                              <div
+                                onClick={() => deleteFile(file.id)}
+                                className="single-file-option"
+                              >
                                 <AiOutlineDelete />
                                 <span>Delete</span>
                               </div>
                             </div>
                           )}
                         </div>
+
+                        {/* <div className="file-options-icon-container">
+                        {currIndex === index && (
+                          <div className="file-options-box">
+                            <div className="single-file-option">
+                              <small>Name: {file.file_original_name}</small>
+                              <small>size: {file.file_size} KB</small>
+
+                              <small>
+                                Uploaded By:
+                                {file.uploaded_by}
+                              </small>
+                            </div>
+                          </div>
+                        )}
                       </div> */}
+                      </div>
                     </div>
                   ))}
                 </div>
+                {/* )} */}
               </div>
             </section>
           ) : (
@@ -173,8 +268,24 @@ const OrderModal = ({
         </Modal.Body>
 
         <Modal.Footer>
-          <Button onClick={submitFiles} variant="outline-success">
-            Save File
+          <Button
+            disabled={uploading}
+            onClick={submitFiles}
+            variant="outline-success"
+          >
+            {uploading ? (
+              <div>
+                <div
+                  className="spinner-border spinner-border-sm me-1"
+                  role="status"
+                >
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+                Uploading
+              </div>
+            ) : (
+              "  Save File"
+            )}
           </Button>
         </Modal.Footer>
       </Modal>

@@ -1,3 +1,7 @@
+.file_options_icon_container {
+  background-color: transparent !important;
+}
+
 .selected {
   border: 1px solid blue !important;
 }
