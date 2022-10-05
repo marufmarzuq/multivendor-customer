@@ -1,6 +1,7 @@
 import * as yup from "yup";
 
 export const addProductSchema = yup.object({
+  product_type: yup.string().required("Please select product type"),
   name: yup.string().required("Please enter product name"),
 
   category_id: yup.string().required("Please select category"),
@@ -61,6 +62,7 @@ export const addProductSchema = yup.object({
 });
 
 export const updateProductSchema = yup.object({
+  product_type: yup.string().required("Please select product type"),
   name: yup.string().required("Please enter product name"),
 
   category_id: yup.string().required("Please select category"),
@@ -121,6 +123,7 @@ export const updateProductSchema = yup.object({
 });
 
 export const addDigitalProductSchema = yup.object({
+  product_type: yup.string().required("Please select product type"),
   name: yup.string().required("Please enter product name"),
 
   category_id: yup.string().required("Please select category"),

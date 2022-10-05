@@ -1,7 +1,5 @@
-import React , { useState } from "react";
-// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { EditorState,convertToRaw } from "draft-js";
-import draftToHtml from 'draftjs-to-html';
+import React, { useRef, useState } from "react";
+import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import authStyle from "../../../../auth.module.css";
@@ -13,23 +11,50 @@ import { markutosSellerApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
+import CustomTextEditor from "../../../../../common/editor/CustomTextEditor";
+import JoditEditor from "jodit-react";
 
 const SupportForm = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [editorData, setEditorData] = useState("");
+  // const editor = React.useRef(null);
+  // function focusEditor() {
+  //   editor.current.focus();
+  // }
+  const { t } = useTranslation();
 
-	const handleEditorChange = (state) => {
-		setEditorState(state);
-		sendContent();
-	};
+  const editorChanging = (editorState) => {
+    setEditorData(editorState.blocks[0].text);
+    console.log(editorState.blocks);
+  };
 
-	const sendContent = () => {
-		setEditorData( draftToHtml(convertToRaw(editorState.getCurrentContent())) )
-	};
+  const editor = useRef(null);
 
-	console.log(editorData);
+  //   const config = useMemo(
+  //     {
+  //       readonly: false, // all options from https://xdsoft.net/jodit/doc/,
+  //       placeholder: "Start typings...",
+  //     },
+  //     []
+  //   );
 
-	const { t } = useTranslation();
+  const handleEditorChange = (newContent) => {
+    // setContent(newContent);
+
+    if (newContent == "<p><br></p>" || newContent == "") {
+      setFieldValue("message", "");
+    } else {
+      setFieldValue("message", newContent);
+    }
+  };
+
+  const handleBlurEditorChange = (content) => {
+    if (content == "<p><br></p>" || content == "") {
+      setFieldValue("message", "");
+    } else {
+      setFieldValue("message", content);
+    }
+  };
 
   const formik = useFormik({
     validationSchema: addSupportSchema,
@@ -44,9 +69,11 @@ const SupportForm = () => {
       const finalValues = values;
       // console.log(editorData);
       // if ( editorData == "" ) {
-			// 	errors.message ="err";
-			// 	setErrors(errors)
-			// }
+      // 	errors.message ="err";
+      // 	setErrors(errors)
+      // }
+
+      console.log(finalValues);
       markutosSellerApi
         .post("/submit-support-request", finalValues, {
           headers: {
@@ -54,9 +81,12 @@ const SupportForm = () => {
           },
         })
         .then((res) => {
-          if (res.data.message !== "Support request submitted successfully") {
-            toast.success("Support request submitted successfully.Check your email to get further reply.You will also get update in your dashboard.");
-          }
+          // if (res.data.message == "New product added successfully") {
+          //   toast.success(res.data.message);
+          // }
+
+          toast.success(res.data.message);
+          console.log(res.data);
           action.resetForm();
         })
         .catch((e) => {
@@ -84,36 +114,42 @@ const SupportForm = () => {
           <h4 className="text-center mb-3">{t("support_request")}</h4>
           <hr className="mb-4" />
           <form onSubmit={(e) => e.preventDefault()}>
-						<FocusError formik={formik} />
+            <FocusError formik={formik} />
             <div>
-              <label htmlFor="name"><span>Name</span><i>*</i></label>
+              <label htmlFor="name">
+                <span>Name</span>
+                <i>*</i>
+              </label>
               <input
                 type="text"
                 name="name"
                 id="name"
                 placeholder="Enter your name"
-								value={values.name}
-								onChange={handleChange}
-								onBlur={handleBlur}
+                value={values.name}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
-							{errors.name && touched.name && (
-								<small className="text-danger"> {errors.name} </small>
-							)}
+              {errors.name && touched.name && (
+                <small className="text-danger"> {errors.name} </small>
+              )}
             </div>
             <div>
-              <label htmlFor="email"><span>Email</span><i>*</i></label>
+              <label htmlFor="email">
+                <span>Email</span>
+                <i>*</i>
+              </label>
               <input
                 type="email"
                 name="email"
                 id="email"
                 placeholder="Enter your email"
-								value={values.email}
-								onChange={handleChange}
-								onBlur={handleBlur}
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
-							{errors.email && touched.email && (
-								<small className="text-danger"> {errors.email} </small>
-							)}
+              {errors.email && touched.email && (
+                <small className="text-danger"> {errors.email} </small>
+              )}
             </div>
             <div>
               <label htmlFor="url">Website URL</label>
@@ -125,21 +161,39 @@ const SupportForm = () => {
               />
             </div>
             <div>
-              <label htmlFor="subject"><span>Subject</span><i>*</i></label>
+              <label htmlFor="subject">
+                <span>Subject</span>
+                <i>*</i>
+              </label>
               <input
                 type="text"
                 name="subject"
                 id="subject"
                 placeholder="Enter support topics"
-								value={values.subject}
-								onChange={handleChange}
-								onBlur={handleBlur}
+                value={values.subject}
+                onChange={handleChange}
+                onBlur={handleBlur}
               />
               {errors.subject && touched.subject && (
-								<small className="text-danger"> {errors.subject} </small>
-							)}
+                <small className="text-danger"> {errors.subject} </small>
+              )}
             </div>
-            <div className="tiny-desc-container">
+
+            <div>
+              <JoditEditor
+                ref={editor}
+                value={values.message}
+                //   config={config}
+                tabIndex={1} // tabIndex of textarea
+                onBlur={(newContent) => handleBlurEditorChange(newContent)} // preferred to use only this option to update the content for performance reasons
+                onChange={(newContent) => handleEditorChange(newContent)}
+              />
+
+              {errors.message && touched.message && (
+                <small className="text-danger"> {errors.message} </small>
+              )}
+            </div>
+            {/* <div className="tiny-desc-container">
               <Editor
               	type="text"
                 init={{ height: 500 }}
@@ -152,10 +206,14 @@ const SupportForm = () => {
               {errors.message && touched.message && (
 								<small className="text-danger"> {errors.message} </small>
 							)}
-            </div>
+            </div> */}
             <div>
-              <button onClick={handleSubmit}
-								className="btn btn-primary" type="submit" name="button">
+              <button
+                onClick={handleSubmit}
+                className="btn btn-primary"
+                type="submit"
+                name="button"
+              >
                 <FaRegEnvelope /> Submit
               </button>
             </div>

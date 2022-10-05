@@ -10,10 +10,11 @@ import { markutosSellerApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import { toast } from "react-toastify";
 import { priceFormat } from "../../../../../hooks/helper";
+import PdfModal from "../../../../../common/pdfModal/PdfModal";
 const orderOptions = [
   { value: "confirmed", label: "Confirmed" },
   { value: "processing", label: "Processing" },
-	{ value: "completed", label: "Completed" },
+  { value: "completed", label: "Completed" },
   { value: "cancelled", label: "Cancelled" },
   { value: "pending_payment", label: "Pending Payment" },
   { value: "failed", label: "Failed" },
@@ -29,8 +30,11 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
   const [orderDetails, setOrderDetails] = useState({});
   const [deliveryStatus, setDeliveryStatus] = useState("");
   const [orderStatus, setOrderStatus] = useState("");
+  const [submiting, setSubmiting] = useState(false);
+  const [pdfShow, setPdfShow] = useState(false);
 
   const updateStatus = () => {
+    setSubmiting(true);
     markutosSellerApi
       .get(
         `orders/order-details/change-status?order_id=${orderId}&order_status=${orderStatus}&delivery_status=${deliveryStatus}`,
@@ -42,9 +46,11 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
       )
       .then((res) => {
         toast.success(res.data.message);
+        setSubmiting(false);
       })
       .catch((err) => {
         toast.error(err.message);
+        setSubmiting(false);
       });
   };
 
@@ -87,41 +93,63 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
             <Timeline />
             {page == "order" ? (
               <div className={modalStyle.statusDropdown}>
-              	<label>Order Status</label>
-                <Select
-                  defaultValue={{
-                    value: "pending",
-                    label: "Pending",
-                  }}
-                  onChange={(e) => setOrderStatus(e.value)}
-                  value={orderOptions.find((option) => {
-                    return option.value == orderStatus;
-                  })}
-                  options={orderOptions}
-                  placeholder="Order Status"
-                />
-								<label>Delivery Status</label>
-                <Select
-                  defaultValue={{
-                    value: "Delivery_status",
-                    label: "Delivery Status",
-                  }}
-                  options={deliveryOptions}
-                  onChange={(e) => setDeliveryStatus(e.value)}
-                  value={deliveryOptions.find((option) => {
-                    return option.value == deliveryStatus;
-                  })}
-                  placeholder="Delivery Status"
-                />
+                <div>
+                  <label>Order Status</label>
+                  <Select
+                    defaultValue={{
+                      value: "pending",
+                      label: "Pending",
+                    }}
+                    onChange={(e) => setOrderStatus(e.value)}
+                    value={orderOptions.find((option) => {
+                      return option.value == orderStatus;
+                    })}
+                    options={orderOptions}
+                    placeholder="Order Status"
+                  />
+                </div>
+                <div>
+                  <label>Delivery Status</label>
+                  <Select
+                    defaultValue={{
+                      value: "Delivery_status",
+                      label: "Delivery Status",
+                    }}
+                    options={deliveryOptions}
+                    onChange={(e) => setDeliveryStatus(e.value)}
+                    value={deliveryOptions.find((option) => {
+                      return option.value == deliveryStatus;
+                    })}
+                    placeholder="Delivery Status"
+                  />
+                </div>
 
                 <button
+                  disabled={submiting}
                   onClick={updateStatus}
                   className="btn btn-outline-success"
                 >
-                  {" "}
-                  Confirm{" "} Order
+                  {submiting ? (
+                    <div>
+                      <div
+                        className="spinner-border spinner-border-sm me-1"
+                        role="status"
+                      >
+                        <span className="visually-hidden">Loading...</span>
+                      </div>
+                      Confirm Order
+                    </div>
+                  ) : (
+                    "Confirm Order"
+                  )}
                 </button>
-                <button>Print</button>
+                <button
+                  onClick={() => setPdfShow(!pdfShow)}
+                  className="btn btn-outline-primary"
+                >
+                  Preview Invoice
+                </button>
+                <PdfModal show={pdfShow} setShow={setPdfShow} />
               </div>
             ) : (
               ""

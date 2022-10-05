@@ -16,6 +16,13 @@ const ProductInformation = ({
 }) => {
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [brandOptions, setBrandOptions] = useState([]);
+  const productTypeOptions = [
+    { label: "Normal product", value: "normal_product" },
+    {
+      label: "Digital product",
+      value: "digital_product",
+    },
+  ];
 
   useEffect(() => {
     markutosSellerApi
@@ -65,6 +72,27 @@ const ProductInformation = ({
       <div className="widget-title">Product Information</div>
       <div className="widget-content-container">
         <div className="product-informaiton-form">
+          <label htmlFor="product__name">
+            <span>Product Type</span>
+            <i>*</i>
+          </label>
+          <div>
+            <Select
+              onBlur={handleBlur}
+              name="product_type"
+              onChange={(option) => setFieldValue("product_type", option.value)}
+              id="product_type"
+              options={productTypeOptions}
+              placeholder="Product Type"
+              value={productTypeOptions.find((option) => {
+                return option.value == values.product_type;
+              })}
+            />
+            {errors.product_type && touched.product_type && (
+              <small className="text-danger"> {errors.product_type} </small>
+            )}
+          </div>
+
           <label htmlFor="product__name">
             <span>Product Name</span>
             <i>*</i>

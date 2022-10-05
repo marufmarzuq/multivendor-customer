@@ -3,10 +3,17 @@
 }
 .statusDropdown {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto auto auto;
   grid-gap: 2rem;
   margin-bottom: 3rem;
   justify-content: center;
+  align-items: flex-end;
+}
+
+.statusDropdown label {
+  text-align: center;
+  display: block;
+  padding-bottom: 0.5rem;
 }
 
 .orderSummary {
