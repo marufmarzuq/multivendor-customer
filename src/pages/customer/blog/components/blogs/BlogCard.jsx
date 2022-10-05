@@ -17,7 +17,7 @@ const BlogCard = (props) => {
         >
           By
         </span>
-        <span className="text-primary"> System Admin </span>
+        <span className="text-primary"> {props.item?.author} </span>
         <span
           style={{
             fontWeight: "600",
@@ -31,7 +31,7 @@ const BlogCard = (props) => {
             marginLeft: "5px",
           }}
         >
-          on { props.item?.created_at }
+          on { props.item?.created_date }
         </span>
         <p
           style={{

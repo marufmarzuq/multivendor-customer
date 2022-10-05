@@ -12,9 +12,9 @@ const SignleRecentPost = (props) => {
             opacity: "0.5",
           }}
         >
-          {props.item?.created_at} by
+          {props.item?.created_date} by
         </small>
-        <small className="text-primary"> System Admin </small>
+        <small className="text-primary"> {props.item?.author} </small>
         <p
           style={{
             fontWeight: "600",

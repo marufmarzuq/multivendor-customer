@@ -48,14 +48,14 @@ const SupportForm = () => {
 			// 	setErrors(errors)
 			// }
       markutosSellerApi
-        .post("/add-new-product", finalValues, {
+        .post("/submit-support-request", finalValues, {
           headers: {
             Authorization: authHeader(),
           },
         })
         .then((res) => {
-          if (res.data.message == "New product added successfully") {
-            toast.success(res.data.message);
+          if (res.data.message !== "Support request submitted successfully") {
+            toast.success("Support request submitted successfully.Check your email to get further reply.You will also get update in your dashboard.");
           }
           action.resetForm();
         })
