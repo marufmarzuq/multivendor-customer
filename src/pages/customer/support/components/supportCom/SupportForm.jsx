@@ -1,5 +1,7 @@
 import React , { useState } from "react";
-import { EditorState } from "draft-js";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { EditorState,convertToRaw } from "draft-js";
+import draftToHtml from 'draftjs-to-html';
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import authStyle from "../../../../auth.module.css";
@@ -15,16 +17,19 @@ import { toast } from "react-toastify";
 const SupportForm = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [editorData, setEditorData] = useState("");
-  // const editor = React.useRef(null);
-  // function focusEditor() {
-  //   editor.current.focus();
-  // }
-	const { t } = useTranslation();
 
-	const editorChanging = (editorState) => {
-		setEditorData(editorState.blocks[0].text);
-		console.log(editorState.blocks);
-	}
+	const handleEditorChange = (state) => {
+		setEditorState(state);
+		sendContent();
+	};
+
+	const sendContent = () => {
+		setEditorData( draftToHtml(convertToRaw(editorState.getCurrentContent())) )
+	};
+
+	console.log(editorData);
+
+	const { t } = useTranslation();
 
   const formik = useFormik({
     validationSchema: addSupportSchema,
@@ -141,11 +146,8 @@ const SupportForm = () => {
                 toolbarClassName="toolbarClassName"
                 wrapperClassName="wrapperClassName"
                 editorClassName="editorClassName"
-                onEditorStateChange={(value) => setEditorState(value)}
-								// ref={editor}
-								// editorState={editorState}
-								// onChange={(e)=>handleChange(editorState => setEditorState(editorState))}
-								onChange={editorChanging}
+                // onEditorStateChange={(value) => setEditorState(value)}
+                onEditorStateChange={handleEditorChange}
 								/>
               {errors.message && touched.message && (
 								<small className="text-danger"> {errors.message} </small>

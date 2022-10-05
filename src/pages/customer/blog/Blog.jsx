@@ -59,7 +59,7 @@ const Blog = () => {
 				setPopularTags(response?.data?.popular_tags)
 				setRecentPosts(response?.data?.recent_posts)
       });
-  });
+  },[]);
 
   return (
     <>
