@@ -21,6 +21,7 @@ const AddDigitalProducts = () => {
   const formik = useFormik({
     validationSchema: addDigitalProductSchema,
     initialValues: {
+      product_type: "",
       name: "",
       category_id: "",
       tags: [],

@@ -199,12 +199,12 @@ const OrderList = () => {
                         >
                           <BsEyeFill />
                         </button>
-                        <button
+                        {/* <button
                           onClick={() => setPdfShow(!pdfShow)}
                           className={orderListStyle.invoice}
                         >
                           <BsDownload />
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   );

@@ -31,6 +31,7 @@ const UpdateProduct = () => {
   const formik = useFormik({
     validationSchema: updateProductSchema,
     initialValues: {
+      product_type: product?.product_type || "",
       name: product?.name || "",
       category_id: product?.category_id || "",
       brand_id: product?.brand_id || "",
