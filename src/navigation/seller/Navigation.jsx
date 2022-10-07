@@ -183,11 +183,35 @@ const Navigation = ({ toggleF, toggle }) => {
                     <span className="ps-2">Product Bulk Upload</span>
                   </NavLink>
                 </li>
+								<li
+                  onClick={() => handleDropdown("categories")}
+                  className={`  ${activeMenu == "categories" ? navigationStyle.active : ""} `}
+                >
+                  <NavLink
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to="/seller/products/categories"
+                  >
+                    <IoIosStarHalf className={navigationStyle.icon_green} />
+                    <span className="ps-2">Category</span>
+                  </NavLink>
+                </li>
+								<li
+                  onClick={() => handleDropdown("attributes")}
+                  className={`  ${activeMenu == "attributes" ? navigationStyle.active : ""} `}
+                >
+                  <NavLink
+                    className={navigationStyle.inside_nav}
+                    onClick={() => closeNav()}
+                    to="/seller/products/attributes"
+                  >
+                    <IoIosStarHalf className={navigationStyle.icon_green} />
+                    <span className="ps-2">Attributes</span>
+                  </NavLink>
+                </li>
                 <li
                   onClick={() => handleDropdown("wishlist")}
-                  className={`  ${
-                    activeMenu == "wishlist" ? navigationStyle.active : ""
-                  } `}
+                  className={`  ${ activeMenu == "wishlist" ? navigationStyle.active : ""} `}
                 >
                   <NavLink
                     className={navigationStyle.inside_nav}
@@ -202,9 +226,7 @@ const Navigation = ({ toggleF, toggle }) => {
                 </li>
                 <li
                   onClick={() => handleDropdown("reviews")}
-                  className={`  ${
-                    activeMenu == "reviews" ? navigationStyle.active : ""
-                  } `}
+                  className={`  ${activeMenu == "reviews" ? navigationStyle.active : ""} `}
                 >
                   <NavLink
                     className={navigationStyle.inside_nav}

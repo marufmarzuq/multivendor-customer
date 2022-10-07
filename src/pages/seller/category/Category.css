@@ -1,0 +1,12 @@
+.prod-grid-container {
+  display: grid;
+  grid-template-columns: auto 420px;
+  gap: 20px;
+}
+.background {
+  background-color: white;
+  margin-top: 12px;
+  margin-right: 5px;
+  border-radius: 5px;
+  padding-bottom: 30px;
+}
