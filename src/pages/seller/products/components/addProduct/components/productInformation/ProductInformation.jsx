@@ -11,17 +11,13 @@ const ProductInformation = ({
   handleChange,
   errors,
   touched,
-
   setFieldValue,
 }) => {
   const [categoryOptions, setCategoryOptions] = useState([]);
   const [brandOptions, setBrandOptions] = useState([]);
   const productTypeOptions = [
-    { label: "Normal product", value: "normal_product" },
-    {
-      label: "Digital product",
-      value: "digital_product",
-    },
+    { label: "Simple", value: "simple" },
+    { label: "Variable", value: "variable" },
   ];
 
   useEffect(() => {
@@ -83,7 +79,6 @@ const ProductInformation = ({
               onChange={(option) => setFieldValue("product_type", option.value)}
               id="product_type"
               options={productTypeOptions}
-              placeholder="Product Type"
               value={productTypeOptions.find((option) => {
                 return option.value == values.product_type;
               })}
@@ -157,8 +152,7 @@ const ProductInformation = ({
               value={values.unit}
               onChange={handleChange}
               id="product__unit"
-              type="number"
-              min={1}
+              type="text"
             />
 
             {errors.unit && touched.unit && (
