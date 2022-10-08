@@ -38,12 +38,8 @@ const OrderModal = ({
   const submitFiles = () => {
     if (files.length > 0) {
       const formData = new FormData();
-      for (let i = 0; i < files.length; i++) {
-        formData.append("files[]", files[i]);
-      }
-			// _.forEach(files,file=>{
-			// 	formData.append("files[]", file );
-			// });
+
+      formData.append("files[]", files);
 
       setUploading(true);
       markutosSellerApi
