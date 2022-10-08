@@ -10,12 +10,11 @@ import {
   AiOutlineDownload,
   AiOutlineDelete,
 } from "react-icons/ai";
-import { RiFileCopyLine } from "react-icons/ri";
 import DragNdrop from "./dragNdrop/DragNdrop";
 import { markutosSellerApi } from "../../services/Api/api";
 import authHeader from "../../services/auth-header";
 import { toast } from "react-toastify";
-import _ from "lodash";
+
 const OrderModal = ({
   show,
   setShow,
@@ -39,13 +38,12 @@ const OrderModal = ({
   const submitFiles = () => {
     if (files.length > 0) {
       const formData = new FormData();
-      // for (let i = 0; i < files.length; i++) {
-      //   formData.append("files[]", files[i]);
-      // }
-			_.forEach(files,file=>{
-			console.log(file);
-			  formData.append("files[]", file );
-			});
+      for (let i = 0; i < files.length; i++) {
+        formData.append("files[]", files[i]);
+      }
+			// _.forEach(files,file=>{
+			// 	formData.append("files[]", file );
+			// });
 
       setUploading(true);
       markutosSellerApi
