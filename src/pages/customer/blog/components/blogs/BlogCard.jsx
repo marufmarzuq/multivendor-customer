@@ -23,7 +23,7 @@ const BlogCard = (props) => {
             fontWeight: "600",
           }}
         >
-          in Ecommerce, Commercial
+          in {props.item?.category}
         </span>
         <span
           style={{
