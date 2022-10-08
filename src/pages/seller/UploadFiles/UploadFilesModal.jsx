@@ -54,12 +54,14 @@ const OrderModal = ({
         .then((res) => {
           getFiles();
           toast.success(res.data.message);
+          console.log(res.data);
           setUploading(false);
           setFiles([]);
           setView("select");
           // setShow(!show);
         })
         .catch((err) => {
+          console.log(err.message);
           toast.error(err.message);
           setUploading(false);
           // setShow(!show);
