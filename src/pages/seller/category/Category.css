@@ -1,0 +1,13 @@
+.prod-grid-container {
+  display: grid;
+  grid-template-columns: auto 420px;
+  gap: 20px;
+}
+.background {
+  background-color: #f2f3f8;
+  margin-top: 12px;
+  /* margin-right: 5px; */
+  border-radius: 5px;
+  padding-bottom: 30px;
+  /* margin-left: 0rem; */
+}

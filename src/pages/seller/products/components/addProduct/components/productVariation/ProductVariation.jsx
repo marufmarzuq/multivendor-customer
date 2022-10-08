@@ -146,24 +146,7 @@ const ProductVariation = ({
 
   return (
     <>
-      <section>
-        <div className="add-product-single-widget">
-          <div className="widget-title"> Variation</div>
-          <div className="widget-content-container">
-            <div className="ap-single-content">
-              <p>Status</p>
-              <label className="confi-switch">
-                <input
-                  onChange={(e) => setVariationState(e.target.checked)}
-                  type="checkbox"
-                />
-                <span className="slider round"></span>
-              </label>
-            </div>
-          </div>
-        </div>
-      </section>
-      {variationState && (
+      {values.product_type == "variable" && (
         <section>
           <div className="add-product-single-widget">
             <div className="widget-title">Product Variation</div>

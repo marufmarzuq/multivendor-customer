@@ -7,8 +7,7 @@ export const addProductSchema = yup.object({
   category_id: yup.string().required("Please select category"),
   current_stock: yup.number().min(1).required("Please enter current stock"),
   brand_id: yup.string(),
-  unit: yup.number().min(1).required("Please enter unit"),
-
+  unit: yup.string().required("Please enter unit"),
   minimum_quantity: yup.number().required("Please enter minimum quantity"),
 
   tags: yup.array().min(1, "Tags are required").required("Tags are required"),

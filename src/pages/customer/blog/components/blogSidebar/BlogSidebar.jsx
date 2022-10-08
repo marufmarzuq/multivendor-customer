@@ -3,50 +3,33 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import sidebarStyle from "./blogSidebar.module.css";
 import SignleRecentPost from "./SignleRecentPost";
-const BlogSidebar = () => {
+
+const BlogSidebar = (props) => {
   return (
     <div className={sidebarStyle.BlogSidebarContainer}>
       <div className={sidebarStyle.search}>
-        <input type="text" placeholder="Search..." name="" id="" />
+        <input type="text" placeholder="Search..." name="search" value={props.search} onChange={(e)=>props.setSearch(e.target.value)} />
         <button>
           <AiOutlineSearch />
         </button>
       </div>
-
+			{/* Categories */}
       <section>
         <div className={sidebarStyle.categories}>
           <h4>Categories</h4>
-          <NavLink to="/"> Ecommerce </NavLink>
-          <NavLink to="/"> Fashion </NavLink>
-          <NavLink to="/"> Electronic </NavLink>
-          <NavLink to="/"> Commercial </NavLink>
+          {
+						props.categories.length > 0 && (
+						props.categories.map((item, key) => {
+								return (
+										<NavLink to="#" onClick={(e)=>props.setCategory(item.label)} key={key}> {item.label} </NavLink>
+									);
+								})
+							)
+          }
         </div>
       </section>
-
-      <section>
-        <div className={sidebarStyle.recentPost}>
-          <h4>Recent Posts</h4>
-          <div>
-            <NavLink to="/blog/1">
-              <SignleRecentPost />
-            </NavLink>
-            <NavLink to="/blog/2">
-              <SignleRecentPost />
-            </NavLink>
-            <NavLink to="/blog/3">
-              <SignleRecentPost />
-            </NavLink>
-            <NavLink to="/blog/4">
-              <SignleRecentPost />
-            </NavLink>
-            <NavLink to="/blog/5">
-              <SignleRecentPost />
-            </NavLink>
-          </div>
-        </div>
-      </section>
-
-      <section>
+			{/* Tags */}
+			<section>
         <div className={sidebarStyle.tags}>
           <h4>Popupar Tags</h4>
           <div
@@ -56,14 +39,38 @@ const BlogSidebar = () => {
               gridGap: "7px",
             }}
           >
-            <NavLink to="/">General</NavLink>
-            <NavLink to="/">Design</NavLink>
-            <NavLink to="/">Fashion</NavLink>
-            <NavLink to="/">Branding</NavLink>
-            <NavLink to="/">Modern</NavLink>
+          {
+						props.popularTags.length > 0 && (
+						props.popularTags.map((item, key) => {
+								return (
+										<NavLink to="#" key={key} onClick={(e)=>props.setTag(item.tag)}> {item.tag} </NavLink>
+									);
+								})
+							)
+          }
           </div>
         </div>
       </section>
+      {/* Recent Posts */}
+      <section>
+        <div className={sidebarStyle.recentPost}>
+          <h4>Recent Posts</h4>
+          <div>
+						{
+						props.recentPosts.length > 0 && (
+						props.recentPosts.map((item, key) => {
+								return (
+										<NavLink to={`/blog/${item.id}`} key={key}>
+											<SignleRecentPost item={item} />
+										</NavLink>
+									);
+								})
+							)
+          }
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };

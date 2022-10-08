@@ -200,11 +200,8 @@ const SupportForm = () => {
                 toolbarClassName="toolbarClassName"
                 wrapperClassName="wrapperClassName"
                 editorClassName="editorClassName"
-                onEditorStateChange={(value) => setEditorState(value)}
-								// ref={editor}
-								// editorState={editorState}
-								// onChange={(e)=>handleChange(editorState => setEditorState(editorState))}
-								onChange={editorChanging}
+                // onEditorStateChange={(value) => setEditorState(value)}
+                onEditorStateChange={handleEditorChange}
 								/>
               {errors.message && touched.message && (
 								<small className="text-danger"> {errors.message} </small>

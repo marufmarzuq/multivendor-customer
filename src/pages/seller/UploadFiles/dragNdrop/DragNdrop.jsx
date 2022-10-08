@@ -4,14 +4,17 @@ import { pdfLogo } from "../../../../assets";
 import dragDropStyle from "./dragNdrop.module.css";
 
 const DragNdrop = ({ files, setFiles }) => {
-  let onFile = (e) => {
-    if (e.target.files[0]) {
-      let newFile = e.target.files[0];
-      let newFiles = [...files, newFile];
-      setFiles(newFiles);
-    }
-  };
 
+  let onFile = (e) => {
+		const chosenFiles = Array.prototype.slice.call(e.target.files)
+    if ( chosenFiles.length>0 ) {
+			for(var i=0;i<chosenFiles.length;i++){
+				let newFile = chosenFiles[i];
+				setFiles(files => [newFile,...files] );
+			}
+    }
+
+  };
   let removeImg = (id) => {
     let newFiles = files.filter((file, i) => {
       return i != id;
@@ -25,7 +28,7 @@ const DragNdrop = ({ files, setFiles }) => {
       <div className={dragDropStyle.dragContainer}>
         <div className={dragDropStyle.imageInput}>
           <h2>Drop files here or click to browse</h2>
-          <input onChange={onFile} type="file" />{" "}
+          <input onChange={onFile} type="file" multiple  />{" "}
         </div>
         <div className={dragDropStyle.imageContainer}>
           {files?.map((item, index) => {

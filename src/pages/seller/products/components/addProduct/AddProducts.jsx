@@ -26,8 +26,9 @@ const AddProducts = () => {
   const [submiting, setSubmitting] = useState(false);
   const formik = useFormik({
     validationSchema: addProductSchema,
+
     initialValues: {
-      product_type: "",
+      product_type: "simple",
       name: "",
       category_id: "",
       brand_id: "",
@@ -70,6 +71,7 @@ const AddProducts = () => {
       featured: 1,
       todays_deal: 1,
     },
+
     enableReinitialize: true,
     onSubmit: (values, action) => {
       const finalValues = values;
