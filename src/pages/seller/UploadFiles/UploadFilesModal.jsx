@@ -3,7 +3,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import uploadModalStyle from "./uploadModal.module.css";
 import "./uploadFiles.css";
-// import { uploadedFiles } from "../../../utils/data";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { FiUploadCloud } from "react-icons/fi";
 import {
@@ -11,12 +10,11 @@ import {
   AiOutlineDownload,
   AiOutlineDelete,
 } from "react-icons/ai";
-import { RiFileCopyLine } from "react-icons/ri";
 import DragNdrop from "./dragNdrop/DragNdrop";
 import { markutosSellerApi } from "../../services/Api/api";
 import authHeader from "../../services/auth-header";
 import { toast } from "react-toastify";
-import SimpleLoading from "../../../common/loading/SimpleLoading";
+
 const OrderModal = ({
   show,
   setShow,
@@ -43,6 +41,9 @@ const OrderModal = ({
       for (let i = 0; i < files.length; i++) {
         formData.append("files[]", files[i]);
       }
+			// _.forEach(files,file=>{
+			// 	formData.append("files[]", file );
+			// });
 
       setUploading(true);
       markutosSellerApi
