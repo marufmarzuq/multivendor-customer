@@ -22,7 +22,7 @@ const Blog = () => {
   useEffect(() => {
     setLoading(true);
     markutosFrontendApi
-      .get(`/all-blogs?per_page=${perPage}&search_value=${search}&tag=${tag}&per_page=${perPage}&page=${currentPage}`,
+      .get(`/all-blogs?per_page=${perPage}&search_value=${search}&tag=${tag}&category_id=${category}&per_page=${perPage}&page=${currentPage}`,
         {
           headers: {
             Authorization: authHeader(),
