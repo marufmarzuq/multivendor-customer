@@ -2,9 +2,9 @@ import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
-import { groceries, product2 } from "../../../../../assets";
+import { product2 } from "../../../../../assets";
 import arrivalStyle from "./arrival.module.css";
-const NewArriavals = () => {
+const NewArrivals = () => {
   return (
     <div className="container">
       <div className={arrivalStyle.titles}>
@@ -196,4 +196,4 @@ const NewArriavals = () => {
   );
 };
 
-export default NewArriavals;
+export default NewArrivals;
