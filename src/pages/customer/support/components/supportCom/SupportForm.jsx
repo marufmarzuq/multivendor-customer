@@ -7,7 +7,7 @@ import { FaRegEnvelope } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { addSupportSchema } from "../../../../../schema/supportSchema";
 import { useFormik } from "formik";
-import { markutosSellerApi } from "../../../../services/Api/api";
+import { markutosFrontendApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
@@ -17,29 +17,11 @@ import JoditEditor from "jodit-react";
 const SupportForm = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [editorData, setEditorData] = useState("");
-  // const editor = React.useRef(null);
-  // function focusEditor() {
-  //   editor.current.focus();
-  // }
+
   const { t } = useTranslation();
 
-  const editorChanging = (editorState) => {
-    setEditorData(editorState.blocks[0].text);
-    console.log(editorState.blocks);
-  };
-
   const editor = useRef(null);
-
-  //   const config = useMemo(
-  //     {
-  //       readonly: false, // all options from https://xdsoft.net/jodit/doc/,
-  //       placeholder: "Start typings...",
-  //     },
-  //     []
-  //   );
-
   const handleEditorChange = (newContent) => {
-    // setContent(newContent);
 
     if (newContent == "<p><br></p>" || newContent == "") {
       setFieldValue("message", "");
@@ -67,14 +49,8 @@ const SupportForm = () => {
     enableReinitialize: true,
     onSubmit: (values, action) => {
       const finalValues = values;
-      // console.log(editorData);
-      // if ( editorData == "" ) {
-      // 	errors.message ="err";
-      // 	setErrors(errors)
-      // }
 
-      console.log(finalValues);
-      markutosSellerApi
+      markutosFrontendApi
         .post("/submit-support-request", finalValues, {
           headers: {
             Authorization: authHeader(),
