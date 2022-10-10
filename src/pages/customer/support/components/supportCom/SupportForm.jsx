@@ -49,7 +49,7 @@ const SupportForm = () => {
     enableReinitialize: true,
     onSubmit: (values, action) => {
       const finalValues = values;
-
+			finalValues.user_id = "";
       markutosFrontendApi
         .post("/submit-support-request", finalValues, {
           headers: {
@@ -57,12 +57,7 @@ const SupportForm = () => {
           },
         })
         .then((res) => {
-          // if (res.data.message == "New product added successfully") {
-          //   toast.success(res.data.message);
-          // }
-
           toast.success(res.data.message);
-          console.log(res.data);
           action.resetForm();
         })
         .catch((e) => {

@@ -43,7 +43,7 @@ const StoreList = ({ layout , currentItems , loading }) => {
 									</span>
 									{item.address}
 								</p>
-								<p className={` d-flex ${storeStyle.phone}`}>
+								{/* <p className={` d-flex ${storeStyle.phone}`}>
 									<span>
 										<AiOutlinePhone />
 									</span>
@@ -54,7 +54,7 @@ const StoreList = ({ layout , currentItems , loading }) => {
 										<AiOutlineMail />
 									</span>
 									test@gmail.com
-								</p>
+								</p> */}
 							</div>
 							<div className={storeStyle.visitBtn}>
 								<NavLink to={`/seller-shop/${item.seller_id}`} className="btn btn-primary mb-4">

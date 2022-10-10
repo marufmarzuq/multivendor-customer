@@ -28,7 +28,7 @@ const OrderList = () => {
   const [endDate, setEndDate] = useState(null);
   const [perPage, setPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
-  const [getPayStatus, setPayStatus] = useState("");
+  const [getOrderStatus, setOrderStatus] = useState("");
   const [getDeliveryStatus, setDeliveryStatus] = useState("");
   const [currentOrderId, setCurrentOrderId] = useState(null);
 
@@ -36,7 +36,7 @@ const OrderList = () => {
     setLoading(true);
     axios
       .get(
-        `${API_URL}/orders?search_value=${search}&sort_payment=${getPayStatus}&sort_delivery=${getDeliveryStatus}&date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`,
+        `${API_URL}/orders?search_value=${search}&sort_order_status=${getOrderStatus}&sort_delivery=${getDeliveryStatus}&date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`,
         {
           headers: {
             Authorization: authHeader(),
@@ -53,16 +53,22 @@ const OrderList = () => {
     currentPage,
     perPage,
     search,
-    getPayStatus,
+    getOrderStatus,
     getDeliveryStatus,
     startDate,
     endDate,
   ]);
 
-  const payStatus = [
-    { value: "paid", label: "Paid" },
-    { value: "unpaid", label: "UnPaid" },
-  ];
+  const orderOptions = [
+		{ value: "confirmed", label: "Confirmed" },
+		{ value: "processing", label: "Processing" },
+		{ value: "completed", label: "Completed" },
+		{ value: "cancelled", label: "Cancelled" },
+		{ value: "pending_payment", label: "Pending Payment" },
+		{ value: "failed", label: "Failed" },
+		{ value: "draft", label: "Draft" },
+	];
+
   const deliveryStatus = [
     { value: "Pending", label: "Pending" },
     { value: "Confirmed", label: "Confirmed" },
@@ -100,10 +106,10 @@ const OrderList = () => {
             className={`table-filters px-md-4 px-3 pt-3 py-2 tableFilters ${orderListStyle.filterContainer} `}
           >
             <Select
-              options={payStatus}
+              options={orderOptions}
               className="me-0 me-md-3 mb-1 mb-md-0"
-              placeholder={"Sort by Payment Status"}
-              onChange={(e) => setPayStatus(e.value)}
+              placeholder={"Sort by Order Status"}
+              onChange={(e) => setOrderStatus(e.value)}
             />
             <Select
               options={deliveryStatus}
