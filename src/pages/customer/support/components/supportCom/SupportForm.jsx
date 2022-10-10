@@ -11,8 +11,8 @@ import { markutosFrontendApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
-import CustomTextEditor from "../../../../../common/editor/CustomTextEditor";
 import JoditEditor from "jodit-react";
+import { loadFromLocalStorage } from "../../../../../utils/seller/manageLocalStorage";
 
 const SupportForm = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -21,6 +21,8 @@ const SupportForm = () => {
   const { t } = useTranslation();
 
   const editor = useRef(null);
+	const user = loadFromLocalStorage();
+
   const handleEditorChange = (newContent) => {
 
     if (newContent == "<p><br></p>" || newContent == "") {
@@ -49,7 +51,8 @@ const SupportForm = () => {
     enableReinitialize: true,
     onSubmit: (values, action) => {
       const finalValues = values;
-			finalValues.user_id = "";
+			finalValues.user_id = user ? user?.user?.id : null;
+
       markutosFrontendApi
         .post("/submit-support-request", finalValues, {
           headers: {
@@ -62,7 +65,6 @@ const SupportForm = () => {
         })
         .catch((e) => {
           toast.error(e.message);
-          console.log(e.message);
         });
     },
   });

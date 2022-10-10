@@ -12,7 +12,6 @@ const DashboardLinks = () => {
       setPathName("profile");
     }
   }, [location.pathname]);
-  console.log(pathName);
   return (
     <div className={linkStyle.linksContainer}>
       <ul>
