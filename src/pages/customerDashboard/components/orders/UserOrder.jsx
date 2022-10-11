@@ -1,7 +1,7 @@
 import React from "react";
-import { Table } from "react-bootstrap";
 import orderStyle from "./userOrder.module.css";
-import { AiOutlineDelete } from "react-icons/ai";
+import { BsEyeFill } from "react-icons/bs";
+
 const UserOrder = () => {
   return (
     <div>
@@ -45,7 +45,7 @@ const UserOrder = () => {
               <td className="text-center">
                 <small>
                   <button className="btn">
-                    <AiOutlineDelete />
+										<BsEyeFill />
                   </button>
                 </small>
               </td>

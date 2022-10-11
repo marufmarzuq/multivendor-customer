@@ -30,12 +30,12 @@ const DashboardLinks = () => {
             Order Return Requests
           </NavLink>
         </li>
-
+				{/*
         <li
           className={pathName == "password-change" ? linkStyle.activeLink : ""}
         >
           <NavLink to="/dashboard/password-change"> Change Password</NavLink>
-        </li>
+        </li> */}
         <li className={pathName == "become-vendor" ? linkStyle.activeLink : ""}>
           <NavLink to="/dashboard/become-vendor"> Become A Vendor </NavLink>
         </li>
