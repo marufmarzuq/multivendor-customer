@@ -2,7 +2,6 @@ import React from "react";
 import blogStyle from "./blogs.module.css";
 
 const BlogCard = (props) => {
-
   return (
     <div className={blogStyle.BlogCardContainer}>
       <div>
@@ -23,7 +22,7 @@ const BlogCard = (props) => {
             fontWeight: "600",
           }}
         >
-          in {props.item?.category}
+          in {props.item?.category?.map((item,key)=>{ return( <span key={key}>{item}</span>) }) }
         </span>
         <span
           style={{

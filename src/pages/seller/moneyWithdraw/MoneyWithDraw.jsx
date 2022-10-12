@@ -9,9 +9,10 @@ import { setMoneyWithdraw } from "../../../redux/slices/seller/payments";
 import DateRangeSelector from "../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
 import PaginationCom from "../../../common/pagination/PaginationCom";
-import {priceFormat} from "../../../hooks/helper";
+import { priceFormat } from "../../../hooks/helper";
 
 const MoneyWithDraw = () => {
+  const [withdrawalReqSent, setWithdrawalReqSent] = useState(false);
   const [show, setShow] = useState(false);
   const { moneyWithdraw, pendingBalance, per_page, last_page, loading, error } =
     useSelector((state) => state.moneyWithdrawSlice);
@@ -25,7 +26,7 @@ const MoneyWithDraw = () => {
       `withdrawal-requests?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`,
       setMoneyWithdraw
     );
-  }, [perPage, currentPage, startDate, endDate]);
+  }, [perPage, currentPage, startDate, endDate, withdrawalReqSent]);
 
   return (
     <Fragment>
@@ -58,7 +59,13 @@ const MoneyWithDraw = () => {
             </button>
           </div>
 
-          <WithdrawModal show={show} setShow={setShow} />
+          <WithdrawModal
+            pendingBalance={pendingBalance}
+            show={show}
+            setShow={setShow}
+            setWithdrawalReqSent={setWithdrawalReqSent}
+            withdrawalReqSent={withdrawalReqSent}
+          />
         </section>
 
         <section>
@@ -104,31 +111,38 @@ const MoneyWithDraw = () => {
 
         {loading && <SimpleLoading />}
         {error ? <h1 className="text-center">{error}</h1> : ""}
-          <section className={`px-4 ${withdrawStyle.tableData}`}>
-            <Table borderless responsive>
-              <thead>
-                <tr>
-                  <th>
-                    <small>#</small>
-                  </th>
-                  <th>
-                    <small>Date</small>
-                  </th>
-                  <th>
-                    <small>Amount</small>
-                  </th>
-                  <th>
-                    <small> Status </small>
-                  </th>
-                  <th>
-                    <small>Message</small>
-                  </th>
-                </tr>
-              </thead>
+        <section className={`px-4 ${withdrawStyle.tableData}`}>
+          <Table borderless responsive>
+            <thead>
+              <tr>
+                <th>
+                  <small>#</small>
+                </th>
+                <th>
+                  <small>Date</small>
+                </th>
+                <th>
+                  <small>Amount</small>
+                </th>
+                <th>
+                  <small> Status </small>
+                </th>
+                <th>
+                  <small>Message</small>
+                </th>
+              </tr>
+            </thead>
 
-              <tbody>
-								{ loading && <tr><td><SimpleLoading/></td></tr>}
-                { moneyWithdraw.length > 0 && moneyWithdraw.map((item, key) => {
+            <tbody>
+              {loading && (
+                <tr>
+                  <td>
+                    <SimpleLoading />
+                  </td>
+                </tr>
+              )}
+              {moneyWithdraw.length > 0 &&
+                moneyWithdraw.map((item, key) => {
                   return (
                     <tr key={key}>
                       <td>
@@ -152,20 +166,19 @@ const MoneyWithDraw = () => {
                     </tr>
                   );
                 })}
-              </tbody>
-            </Table>
-						{moneyWithdraw.length > 0 &&
-							<PaginationCom
-								currentItem={moneyWithdraw}
-								perPage={perPage}
-								pageCount={last_page}
-								currentPage={currentPage}
-								setPerPage={setPerPage}
-								setCurrentPage={setCurrentPage}
-							/>
-						}
-          </section>
-
+            </tbody>
+          </Table>
+          {moneyWithdraw.length > 0 && (
+            <PaginationCom
+              currentItem={moneyWithdraw}
+              perPage={perPage}
+              pageCount={last_page}
+              currentPage={currentPage}
+              setPerPage={setPerPage}
+              setCurrentPage={setCurrentPage}
+            />
+          )}
+        </section>
       </div>
     </Fragment>
   );

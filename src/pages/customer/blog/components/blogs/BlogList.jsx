@@ -29,7 +29,6 @@ const BlogList = (props) => {
           perPage={props.perPage}
           pageCount={props.pageCount}
           currentPage={props.currentPage}
-          setPerPage={props.setPerPage}
           setCurrentPage={props.setCurrentPage}
         />
       )}

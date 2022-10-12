@@ -21,6 +21,12 @@ const Profile = () => {
 				<label htmlFor=""> Address </label>
         <textarea cols={"5"} rows={"5"} name="address"></textarea>
 
+        <label htmlFor=""> New Password </label>
+        <input type="text" name="password" placeholder="New Password" />
+
+        <label htmlFor=""> Password Confirmation </label>
+        <input type="text" name="confirm_password"  placeholder="Password Confirmation" />
+
       </div>
       <button className="btn btn-primary mt-2 ">
         {" "}

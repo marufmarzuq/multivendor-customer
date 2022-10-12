@@ -8,7 +8,7 @@ import PaginationCom from "../../../../../common/pagination/PaginationCom";
 import DateRangeSelector from "../../../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import DetailsModal from "./refundDetialsModal/DetailsModal";
-import {priceFormat} from "../../../../../hooks/helper";
+import { priceFormat } from "../../../../../hooks/helper";
 
 const ReceivedRefunds = () => {
   const { receivedRefunds, last_page, per_page, current_page, loading, error } =
@@ -18,13 +18,20 @@ const ReceivedRefunds = () => {
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [show, setShow] = useState(false);
+  const [refund, setRefund] = useState({});
+  const [statusUpdate, setStatusUpdate] = useState(false);
+
+  const setModalOpen = (refund) => {
+    setRefund(refund);
+    setShow(!show);
+  };
 
   useEffect(() => {
     getApi(
       `refund-requests?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`,
       setReceivedRefunds
     );
-  }, [perPage, startDate, endDate, currentPage]);
+  }, [perPage, startDate, endDate, currentPage, statusUpdate]);
 
   return (
     <div>
@@ -45,94 +52,103 @@ const ReceivedRefunds = () => {
         </section>
 
         {error ? <h1 className="text-center">{error}</h1> : ""}
-          <section className={`px-4 ${receivedRefundStyle.tableData}`}>
-            <Table borderless responsive>
-              <thead>
+        <section className={`px-4 ${receivedRefundStyle.tableData}`}>
+          <Table borderless responsive>
+            <thead>
+              <tr>
+                <th>
+                  <small>#</small>
+                </th>
+                <th>
+                  <small>Date</small>
+                </th>
+                <th>
+                  <small>Order Id</small>
+                </th>
+                <th>
+                  <small>Product</small>
+                </th>
+                <th className="text-end">
+                  <small>Amount</small>
+                </th>
+                <th className="text-center">
+                  <small>Status</small>
+                </th>
+                <th className="text-center">
+                  <small>Admin Approval</small>
+                </th>
+                <th className="text-center">
+                  <small>Seller Approval</small>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {loading && (
                 <tr>
-                  <th>
-                    <small>#</small>
-                  </th>
-                  <th>
-                    <small>Date</small>
-                  </th>
-                  <th>
-                    <small>Order Id</small>
-                  </th>
-                  <th>
-                    <small>Product</small>
-                  </th>
-                  <th className="text-end">
-                    <small>Amount</small>
-                  </th>
-                  <th className="text-center">
-                    <small>Status</small>
-                  </th>
-                  <th className="text-center">
-                    <small>Admin Approval</small>
-                  </th>
-                  <th className="text-center">
-                    <small>Seller Approval</small>
-                  </th>
+                  <td>
+                    <SimpleLoading />
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-              	{ loading && <tr><td><SimpleLoading/></td></tr>}
-								{
-									receivedRefunds.length>0 && receivedRefunds.map((item, key) => {
-										return (
-											<tr key={key}>
-												<td>
-													<small>{item.id}</small>
-												</td>
-												<td>
-													<small>{item.created_at}</small>
-												</td>
-												<td
-													className={receivedRefundStyle.modalOpen}
-													onClick={() => setShow(!show)}
-												>
-													<small>{item.order_code}</small>
-												</td>
-												<td>
-													{item.products.length > 0 &&
-														item.products.map((product, i) => {
-															return (
-																<div key={i}>
-																	<small>{product.name}</small>
-																</div>
-															);
-														})}
-												</td>
-												<td className="text-end">
-													<small>{priceFormat(item.refund_amount)}</small>
-												</td>
-												<td className="text-center">
-													<small className={receivedRefundStyle.paid}>
-														{item.refund_status}
-													</small>
-												</td>
-												<td className="text-center">
-													{item.admin_approval}
-												</td>
-												<td className="text-center">
-													{item.seller_approval}
-												</td>
-											</tr>
-										);
-									})
-								}
-              </tbody>
-            </Table>
-            <DetailsModal show={show} setShow={setShow} />
-            <PaginationCom
-              currentItem={receivedRefunds}
-              perPage={per_page}
-              pageCount={last_page}
-              currentPage={currentPage}
-              setPerPage={setPerPage}
-              setCurrentPage={setCurrentPage}
-            />
-          </section>
+              )}
+              {receivedRefunds.length > 0 &&
+                receivedRefunds.map((item, key) => {
+                  return (
+                    <tr key={key}>
+                      <td>
+                        <small>{item.id}</small>
+                      </td>
+                      <td>
+                        <small>{item.created_at}</small>
+                      </td>
+                      <td
+                        className={receivedRefundStyle.modalOpen}
+                        onClick={() => setModalOpen(item)}
+                      >
+                        <small>{item.order_code}</small>
+                      </td>
+                      <td>
+                        {item.products.length > 0 &&
+                          item.products.map((product, i) => {
+                            return (
+                              <div key={i}>
+                                <small>{product.name}</small>
+                              </div>
+                            );
+                          })}
+                      </td>
+                      <td className="text-end">
+                        <small>{priceFormat(item.refund_amount)}</small>
+                      </td>
+                      <td className="text-center">
+                        <small className={receivedRefundStyle.paid}>
+                          {item.refund_status}
+                        </small>
+                      </td>
+                      <td className="text-center">{item.admin_approval}</td>
+                      <td className="text-center">{item.seller_approval}</td>
+                      <td></td>
+                    </tr>
+                  );
+                })}
+            </tbody>
+          </Table>
+          <DetailsModal
+            refund={refund}
+            show={show}
+            setShow={setShow}
+            date={new Date()}
+            statusUpdate={statusUpdate}
+            setStatusUpdate={setStatusUpdate}
+          />
+          <PaginationCom
+            currentItem={receivedRefunds}
+            perPage={per_page}
+            pageCount={last_page}
+            currentPage={currentPage}
+            setPerPage={setPerPage}
+            setCurrentPage={setCurrentPage}
+          />
+        </section>
       </div>
     </div>
   );

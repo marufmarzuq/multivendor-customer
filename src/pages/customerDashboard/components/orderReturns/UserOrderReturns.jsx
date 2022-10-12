@@ -1,64 +1,21 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import orderStyle from "./orderReturns.module.css";
-import { AiOutlineDelete } from "react-icons/ai";
+import { BsArrowRightCircle } from "react-icons/bs";
+
 const UserOrderReturns = () => {
   return (
     <div>
       <h4>Order Return Requests</h4>
-      <section className={` ${orderStyle.tableData}`}>
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <small>ID Number</small>
-              </th>
-              <th>
-                <small> Order ID Number</small>
-              </th>
-              <th className="text-center">
-                <small>Items Count</small>
-              </th>
-              <th>
-                <small>Date</small>
-              </th>
-              <th>
-                <small> Status</small>
-              </th>
-              <th className="text-center">
-                <small>Actions</small>
-              </th>
-            </tr>
-          </thead>
+			<div className={orderStyle.container}>
+        <label htmlFor=""> Order ID</label>
+        <input type="text" placeholder="Type Order ID" />
 
-          <tbody>
-            <tr>
-              <td>
-                <small>1484-4454174</small>
-              </td>
-              <td>
-                <small>4545-411544454</small>
-              </td>
-              <td className="text-center">
-                <small> 5 </small>
-              </td>
-              <td>
-                <small>01-08-2022</small>
-              </td>
-              <td>
-                <small className="text-danger"> Pending </small>
-              </td>
-              <td className="text-center">
-                <small>
-                  <button className="btn">
-                    <AiOutlineDelete />
-                  </button>
-                </small>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+        <label htmlFor=""> Refund Reason </label>
+        <textarea cols={"5"} rows={"5"} name="refund_reason" placeholder="Please type refund reason"></textarea>
+
+      </div>
+      <button className="btn btn-primary mt-2 "> {" "} Update <BsArrowRightCircle /></button>
     </div>
   );
 };

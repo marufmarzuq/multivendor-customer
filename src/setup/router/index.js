@@ -102,7 +102,7 @@ const Router = () => {
         <Route path="products/:id" element={<SingleProduct />} />
         <Route path="support" element={<Support />} />
         <Route path="seller-request" element={<SellerRequest />} />
-        <Route path="seller-shop" element={<SellerShop />} />
+        <Route path="seller-shop/:id" element={<SellerShop />} />
         <Route path="blog" element={<Blog />} />
         <Route path="blog/:id" element={<BlogDetails />} />
         <Route path="thank-you" element={<ThankYou />} />

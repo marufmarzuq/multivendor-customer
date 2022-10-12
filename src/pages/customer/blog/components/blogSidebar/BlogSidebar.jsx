@@ -21,7 +21,7 @@ const BlogSidebar = (props) => {
 						props.categories.length > 0 && (
 						props.categories.map((item, key) => {
 								return (
-										<NavLink to="#" onClick={(e)=>props.setCategory(item.label)} key={key}> {item.label} </NavLink>
+										<NavLink to="#" onClick={(e)=>props.setCategory(item.value)} key={key}> {item.label} </NavLink>
 									);
 								})
 							)

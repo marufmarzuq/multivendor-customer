@@ -7,12 +7,31 @@
   border: 1px solid rgba(128, 128, 128, 0.196);
   border-radius: 8px;
 }
+.orderSummary .topBar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.196);
+  padding-bottom: 0.5rem;
+}
+
+.approveButtonsContainer {
+  display: grid;
+  grid-template-columns: 150px 150px;
+  grid-gap: 1rem;
+  justify-content: end;
+  padding-right: 1rem;
+}
 
 .orderSummary h6 {
   border-bottom: 1px solid rgba(128, 128, 128, 0.196);
   padding: 0 1rem;
   padding-bottom: 1rem;
   font-weight: 600;
+}
+
+.topBar h6 {
+  padding-bottom: 0;
+  border: none;
 }
 
 .orderBody {

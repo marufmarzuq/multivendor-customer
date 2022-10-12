@@ -42,14 +42,18 @@
   min-width: 50vw !important;
 }
 .infoContainer {
-  display: grid;
-  grid-template-columns: 20% auto;
-  grid-gap: 1rem;
   padding-left: 0;
   padding-right: 0;
   padding-top: 3rem;
 
-  padding-bottom: 10rem;
+  padding-bottom: 1rem;
+}
+
+.inputContainer {
+  grid-gap: 1rem;
+  display: grid;
+  grid-template-columns: 120px auto;
+  margin-bottom: 1rem;
 }
 
 .background {
@@ -148,14 +152,18 @@ hr {
   }
 
   .infoContainer {
-    display: grid;
-    grid-template-columns: 20% auto;
-    grid-gap: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     padding-top: 3rem;
 
-    padding-bottom: 5rem;
+    padding-bottom: 1rem;
+  }
+
+  .inputContainer {
+    display: grid;
+    grid-template-columns: 170px auto;
+    grid-gap: 1rem;
+    margin-bottom: 1rem;
   }
   .background {
     background-color: white;
