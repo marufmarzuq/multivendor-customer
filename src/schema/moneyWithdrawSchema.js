@@ -5,7 +5,7 @@ export const moneyWithdrawSchema = yup.object({
 
   amount: yup
     .number()
-    .lessThan(yup.ref("pendingBalance"), `Must be less than pending balance`)
+    .lessThan(yup.ref("pendingBalance"), `Must be less than withdrawn balance`)
     .required("Please enter amount"),
 
   payment_method: yup.string().required("Please select payment method"),

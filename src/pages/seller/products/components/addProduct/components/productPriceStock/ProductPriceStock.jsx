@@ -19,41 +19,46 @@ const ProductPriceStock = ({
     <div className="add-product-single-widget">
       <div className="widget-title">Product Price + Stock</div>
       <div className="widget-content-container">
-        <div className="ap-single-content">
-          <p>Purchase price *</p>
-          <div>
-            <input
-              name="purchase_price"
-              onBlur={handleBlur}
-              value={values.purchase_price}
-              onChange={handleChange}
-              type="number"
-              min={0}
-            />
+        {values.product_type == "simple" && (
+          <div className="ap-single-content">
+            <p>Purchase price *</p>
+            <div>
+              <input
+                name="purchase_price"
+                onBlur={handleBlur}
+                value={values.purchase_price}
+                onChange={handleChange}
+                type="number"
+                min={0}
+              />
 
-            {errors.purchase_price && touched.purchase_price && (
-              <small className="text-danger"> {errors.purchase_price} </small>
-            )}
+              {errors.purchase_price && touched.purchase_price && (
+                <small className="text-danger"> {errors.purchase_price} </small>
+              )}
+            </div>
           </div>
-        </div>
+        )}
 
-        <div className="ap-single-content">
-          <p>Unit price *</p>
-          <div>
-            <input
-              name="unit_price"
-              onBlur={handleBlur}
-              value={values.unit_price}
-              onChange={handleChange}
-              type="number"
-              min={0}
-            />
+        {values.product_type == "simple" && (
+          <div className="ap-single-content">
+            <p>Unit price *</p>
+            <div>
+              <input
+                name="unit_price"
+                onBlur={handleBlur}
+                value={values.unit_price}
+                onChange={handleChange}
+                type="number"
+                min={0}
+              />
 
-            {errors.unit_price && touched.unit_price && (
-              <small className="text-danger"> {errors.unit_price} </small>
-            )}
+              {errors.unit_price && touched.unit_price && (
+                <small className="text-danger"> {errors.unit_price} </small>
+              )}
+            </div>
           </div>
-        </div>
+        )}
+
         <div className="ap-single-content">
           <p>Discount type *</p>
           <div>

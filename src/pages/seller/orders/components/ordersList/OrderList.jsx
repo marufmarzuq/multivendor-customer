@@ -60,14 +60,14 @@ const OrderList = () => {
   ]);
 
   const orderOptions = [
-		{ value: "confirmed", label: "Confirmed" },
-		{ value: "processing", label: "Processing" },
-		{ value: "completed", label: "Completed" },
-		{ value: "cancelled", label: "Cancelled" },
-		{ value: "pending_payment", label: "Pending Payment" },
-		{ value: "failed", label: "Failed" },
-		{ value: "draft", label: "Draft" },
-	];
+    { value: "confirmed", label: "Confirmed" },
+    { value: "processing", label: "Processing" },
+    { value: "completed", label: "Completed" },
+    { value: "cancelled", label: "Cancelled" },
+    { value: "pending_payment", label: "Pending Payment" },
+    { value: "failed", label: "Failed" },
+    { value: "draft", label: "Draft" },
+  ];
 
   const deliveryStatus = [
     { value: "Pending", label: "Pending" },
@@ -102,8 +102,12 @@ const OrderList = () => {
         </section>
 
         <section>
-          <div
+          {/* <div
             className={`table-filters px-md-4 px-3 pt-3 py-2 tableFilters ${orderListStyle.filterContainer} `}
+          > */}
+
+          <div
+            className={` px-md-4 px-3 pt-3 table-filters ${orderListStyle.filterContainer}`}
           >
             <Select
               options={orderOptions}
@@ -124,7 +128,7 @@ const OrderList = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
-            <div className="">
+            <div>
               <DateRangeSelector
                 startDate={startDate}
                 endDate={endDate}

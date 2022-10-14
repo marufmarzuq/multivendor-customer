@@ -96,6 +96,39 @@ const WithdrawModal = ({
         <form onSubmit={(e) => e.preventDefault()}>
           <FocusError formik={formik} />
           <div className={modalStyle.infoContainer}>
+            <div
+              style={{
+                marginTop: "-35px",
+                marginBottom: "25px",
+                fontWeight: "600",
+              }}
+              className={modalStyle.inputContainer}
+            >
+              <label htmlFor="amount">Withdrawn Balance</label>
+              <div>
+                <h5
+                  style={{
+                    fontWeight: "600",
+                    marginTop: "1px",
+                  }}
+                >
+                  {pendingBalance}
+                </h5>
+                {/* <input
+                  name="amount"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.amount}
+                  type="number"
+                  min={0}
+                  id="amount"
+                />
+                {errors.amount && touched.amount && (
+                  <small className="text-danger"> {errors.amount} </small>
+                )} */}
+              </div>
+            </div>
+
             <div className={modalStyle.inputContainer}>
               <label htmlFor="amount">Amount</label>
               <div>

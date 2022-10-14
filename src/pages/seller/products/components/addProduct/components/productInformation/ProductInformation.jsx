@@ -32,9 +32,9 @@ const ProductInformation = ({
 
         res.data.map((item) => {
           const singleCategory = {
-            id: item.value,
-            value: item.label,
-            label: item.label,
+            id: item.id,
+            value: item.name,
+            label: item.name,
           };
           category.push(singleCategory);
         });

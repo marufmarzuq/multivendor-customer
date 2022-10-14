@@ -101,21 +101,15 @@ p {
 .filterContainer input {
   width: 100%;
 }
-/* .filterContainer input:focus {
-  width: 100% !important;
-} */
 
 @media only screen and (min-width: 768px) {
   .filterContainer {
-    display: block;
+    display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
   }
-  .filterContainer input {
-    width: auto;
-  }
-  /* .filterContainer input:last-child:focus {
-    width: 300px !important;
-  } */
+
   .orderRow {
     display: grid;
     grid-template-columns: 1fr 3fr 3fr 3fr 2fr 3fr 3fr 2fr;

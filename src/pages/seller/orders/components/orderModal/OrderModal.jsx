@@ -11,7 +11,7 @@ import authHeader from "../../../../services/auth-header";
 import { toast } from "react-toastify";
 import { priceFormat } from "../../../../../hooks/helper";
 import PdfModal from "../../../../../common/pdfModal/PdfModal";
-import {printDiv} from "../../../../../common/print/printDiv";
+import { printDiv } from "../../../../../common/print/printDiv";
 
 const orderOptions = [
   { value: "confirmed", label: "Confirmed" },
@@ -147,7 +147,7 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                 </button>
                 <button
                   onClick={() => printDiv("print_area")}
-                  className="btn btn-outline-primary"
+                  className="btn btn-outline-success"
                 >
                   Print Invoice
                 </button>
@@ -164,129 +164,129 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
             )}
           </section>
           <div id="print_area">
-						<section>
-							<div className={modalStyle.orderSummary}>
-								<h6>Order Status</h6>
+            <section>
+              <div className={modalStyle.orderSummary}>
+                <h6>Order Status</h6>
 
-								<div className={modalStyle.orderBody}>
-									<Row>
-										<Col xs="5" md="2">
-											<h6>Order ID:</h6>
-											<h6>Customer:</h6>
-											<h6>Email:</h6>
-											<h6>Shipping Address:</h6>
-										</Col>
-										<Col xs="7" md="5">
-											<h5>{orderDetails?.order?.id} </h5>
-											<h5>{orderDetails?.order?.customer_name}</h5>
-											<h5>{orderDetails?.order?.customer_email}</h5>
-											<h5>{orderDetails?.order?.shipping_address}</h5>
-										</Col>
-										<Col xs="7" md="2">
-											<h6>Order Date:</h6>
-											<h6>Order Status:</h6>
-											<h6>Total Order amount:</h6>
-											<h6>Shipping Type:</h6>
-											<h6>Shipping Method:</h6>
-											<h6>Payment Method:</h6>
-										</Col>
-										<Col xs="5" md="3">
-											<h5>{orderDetails?.order?.created_at}</h5>
-											<h5> {orderDetails?.order?.order_status} </h5>
-											<h5>{orderDetails?.order?.grand_total} </h5>
-											<h5>{orderDetails?.order?.shipping_type}</h5>
-											<h5>{orderDetails?.order?.shipping_method}</h5>
-											<h5>{orderDetails?.order?.payment_type}</h5>
-										</Col>
-									</Row>
-								</div>
-							</div>
-						</section>
-						<section>
-							<div className="row mt-5">
-								<div className="col-12 col-md-9">
-									<div className={modalStyle.orderSummary}>
-										<h6>Order Details</h6>
+                <div className={modalStyle.orderBody}>
+                  <Row>
+                    <Col xs="5" md="2">
+                      <h6>Order ID:</h6>
+                      <h6>Customer:</h6>
+                      <h6>Email:</h6>
+                      <h6>Shipping Address:</h6>
+                    </Col>
+                    <Col xs="7" md="5">
+                      <h5>{orderDetails?.order?.id} </h5>
+                      <h5>{orderDetails?.order?.customer_name}</h5>
+                      <h5>{orderDetails?.order?.customer_email}</h5>
+                      <h5>{orderDetails?.order?.shipping_address}</h5>
+                    </Col>
+                    <Col xs="7" md="2">
+                      <h6>Order Date:</h6>
+                      <h6>Order Status:</h6>
+                      <h6>Total Order amount:</h6>
+                      <h6>Shipping Type:</h6>
+                      <h6>Shipping Method:</h6>
+                      <h6>Payment Method:</h6>
+                    </Col>
+                    <Col xs="5" md="3">
+                      <h5>{orderDetails?.order?.created_at}</h5>
+                      <h5> {orderDetails?.order?.order_status} </h5>
+                      <h5>{orderDetails?.order?.grand_total} </h5>
+                      <h5>{orderDetails?.order?.shipping_type}</h5>
+                      <h5>{orderDetails?.order?.shipping_method}</h5>
+                      <h5>{orderDetails?.order?.payment_type}</h5>
+                    </Col>
+                  </Row>
+                </div>
+              </div>
+            </section>
+            <section>
+              <div className="row mt-5">
+                <div className="col-12 col-md-9">
+                  <div className={modalStyle.orderSummary}>
+                    <h6>Order Details</h6>
 
-										<div className={modalStyle.orderBody}>
-											<Table borderless responsive>
-												<thead>
-													<tr className="mb-5">
-														<th>#</th>
-														<th>Product</th>
-														<th>Quantity</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													{orderDetails?.order_details?.length > 0 &&
-														orderDetails.order_details.map((item) => {
-															return (
-																<tr key={item.id}>
-																	<td> {item.id} </td>
-																	<td>{item.product_name} </td>
-																	<td>{item.quantity} </td>
-																	<td>{item.price} </td>
-																</tr>
-															);
-														})}
-												</tbody>
-											</Table>
-										</div>
-									</div>
-								</div>
-								<div className="col-12 col-md-3 mt-4 mt-md-0">
-									<div className={modalStyle.orderSummary}>
-										<h6>Order Ammount</h6>
+                    <div className={modalStyle.orderBody}>
+                      <Table borderless responsive>
+                        <thead>
+                          <tr className="mb-5">
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {orderDetails?.order_details?.length > 0 &&
+                            orderDetails.order_details.map((item) => {
+                              return (
+                                <tr key={item.id}>
+                                  <td> {item.id} </td>
+                                  <td>{item.product_name} </td>
+                                  <td>{item.quantity} </td>
+                                  <td>{item.price} </td>
+                                </tr>
+                              );
+                            })}
+                        </tbody>
+                      </Table>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-12 col-md-3 mt-4 mt-md-0">
+                  <div className={modalStyle.orderSummary}>
+                    <h6>Order Ammount</h6>
 
-										<div className={modalStyle.orderBody}>
-											<Row>
-												<Col>
-													<h6>Subtotal</h6>
-												</Col>
-												<Col>
-													<h5> {priceFormat(orderDetails?.sub_total)}</h5>
-												</Col>
-											</Row>
-											<Row>
-												<Col>
-													<h6>Shipping</h6>
-												</Col>
-												<Col>
-													<h5> {priceFormat(orderDetails?.shipping)} </h5>
-												</Col>
-											</Row>
-											<Row>
-												<Col>
-													<h6>Tax</h6>
-												</Col>
-												<Col>
-													<h5> {priceFormat(orderDetails?.tax)} </h5>
-												</Col>
-											</Row>
+                    <div className={modalStyle.orderBody}>
+                      <Row>
+                        <Col>
+                          <h6>Subtotal</h6>
+                        </Col>
+                        <Col>
+                          <h5> {priceFormat(orderDetails?.sub_total)}</h5>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col>
+                          <h6>Shipping</h6>
+                        </Col>
+                        <Col>
+                          <h5> {priceFormat(orderDetails?.shipping)} </h5>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col>
+                          <h6>Tax</h6>
+                        </Col>
+                        <Col>
+                          <h5> {priceFormat(orderDetails?.tax)} </h5>
+                        </Col>
+                      </Row>
 
-											<Row>
-												<Col>
-													<h6>Coupon</h6>
-												</Col>
-												<Col>
-													<h5> {priceFormat(orderDetails?.tax)} </h5>
-												</Col>
-											</Row>
+                      <Row>
+                        <Col>
+                          <h6>Coupon</h6>
+                        </Col>
+                        <Col>
+                          <h5> {priceFormat(orderDetails?.tax)} </h5>
+                        </Col>
+                      </Row>
 
-											<Row>
-												<Col>
-													<h6>Total</h6>
-												</Col>
-												<Col>
-													<h5> {priceFormat(orderDetails?.total)} </h5>
-												</Col>
-											</Row>
-										</div>
-									</div>
-								</div>
-							</div>
-						</section>
+                      <Row>
+                        <Col>
+                          <h6>Total</h6>
+                        </Col>
+                        <Col>
+                          <h5> {priceFormat(orderDetails?.total)} </h5>
+                        </Col>
+                      </Row>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </Modal.Body>
       </Modal>

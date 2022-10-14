@@ -27,11 +27,22 @@ export const addProductSchema = yup.object({
   stock_visibility_state: yup.string(),
   description: yup.string().required("Description is required"),
 
-  purchase_price: yup.number().required("Please enter purchase price"),
-  unit_price: yup
-    .number()
-    .moreThan(yup.ref("purchase_price"), "Must be greater than purchase price")
-    .required("Please enter unit price"),
+  purchase_price: yup.number().when("product_type", {
+    is: (product_type) => product_type == "simple",
+    then: yup.number().required("Please enter purchase price"),
+  }),
+
+  unit_price: yup.number().when("product_type", {
+    is: (product_type) => product_type == "simple",
+    then: yup
+      .number()
+      .moreThan(
+        yup.ref("purchase_price"),
+        "Must be greater than purchase price"
+      )
+      .required("Please enter unit price"),
+  }),
+
   tax: yup.number(),
   tax_type: yup.string(),
   discount: yup.number(),
