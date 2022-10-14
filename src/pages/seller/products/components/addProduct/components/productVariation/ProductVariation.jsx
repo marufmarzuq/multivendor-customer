@@ -12,6 +12,9 @@ const ProductVariation = ({
   touched,
   setFieldValue,
 }) => {
+  const [colors, setColors] = useState([]);
+  const [attributes, setAttributes] = useState([]);
+  const [attributeValues, setAttributeValues] = useState({});
   const [tags, setTags] = useState(["Black", "Red", "Blue", "Green"]);
   const [size, setSize] = useState([]);
   const [variationState, setVariationState] = useState(false);
@@ -40,8 +43,36 @@ const ProductVariation = ({
   const attributesOptions = [
     { value: "size", label: "Size" },
     { value: "fabric", label: "Fabric" },
-    { value: "bag", label: "Bag" },
   ];
+
+  const handleColorChange = (colors) => {
+    const addedColors = colors.map((color) => {
+      return color.label;
+    });
+    setColors(addedColors);
+  };
+  const handleAttributesChange = (att) => {
+    const addedAttributes = att.map((item) => {
+      setAttributeValues((attributeValues) => {
+        if (!attributeValues[item.label]) {
+          attributeValues[item.label] = [];
+        }
+        return attributeValues;
+      });
+
+      return item.label;
+    });
+    setAttributes(addedAttributes);
+  };
+
+  const setAttributeSingleValue = (newTags, item) => {
+    const tempAttriValues = attributeValues;
+    tempAttriValues[item] = newTags;
+
+    setAttributeValues({
+      ...tempAttriValues,
+    });
+  };
 
   const setValus = (name, newTags) => {
     const newVarition = variations?.map((item) => {
@@ -172,7 +203,55 @@ const ProductVariation = ({
                 />
               </div> */}
 
-              <section className="mb-3">
+              <section>
+                <div className="ap-single-content mb-3">
+                  <p> Colors </p>
+                  <Select
+                    onChange={(e) => handleColorChange(e)}
+                    // defaultValue={[colourOptions[2], colourOptions[3]]}
+                    isMulti
+                    name="colors"
+                    options={colorsOptions}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                  />
+                </div>
+              </section>
+
+              <section>
+                <div className="ap-single-content mb-3">
+                  <p> Attributes </p>
+                  <Select
+                    onChange={(e) => handleAttributesChange(e)}
+                    // defaultValue={[colourOptions[2], colourOptions[3]]}
+                    isMulti
+                    name="colors"
+                    options={attributesOptions}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                  />
+                </div>
+              </section>
+
+              <section>
+                {attributes?.map((item) => {
+                  return (
+                    <div key={item} className="ap-single-content mb-3">
+                      <p> {item} </p>
+                      <ReactTagInput
+                        tags={attributeValues[item] || []}
+                        removeOnBackspace={true}
+                        onChange={
+                          // (newTags) => (setAttributeValues[item] = newTags)
+                          (newTags) => setAttributeSingleValue(newTags, item)
+                        }
+                      />
+                    </div>
+                  );
+                })}
+              </section>
+
+              {/* <section className="mb-3">
                 {variations.map((item, i) => {
                   if (item.name != "allVariations")
                     return (
@@ -186,18 +265,10 @@ const ProductVariation = ({
                         />
                       </div>
 
-                      //   {item.values.map((value, i) => {
-                      //     return (
-                      //       <div key={value} className="ap-single-content mb-3">
-                      //         <p> Price-{value} </p>
-                      //         <input style={{ height: "38px" }} type="number" />
-                      //       </div>
-                      //     );
-                      //   })}
-                      // </div>
+                     
                     );
                 })}
-              </section>
+              </section> */}
 
               <section>
                 {variations.map((item) => {
