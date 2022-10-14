@@ -89,11 +89,11 @@ const AddProducts = () => {
         })
         .then((res) => {
           if (res.data.message == "New product added successfully") {
-            toast.success(res.data.message);
-            setSubmitting(false);
+            action.resetForm();
           }
-
-          action.resetForm();
+          console.log(res.data);
+          toast.success(res.data.message);
+          setSubmitting(false);
         })
         .catch((e) => {
           toast.error(e.message);
