@@ -13,19 +13,19 @@ const MostPopular = () => {
       id: 1,
       name: "Canon Camera",
       price: 9900,
-      quantity: 1,
+      // quantity: 1,
     },
     {
       id: 2,
       name: "Table Fan",
       price: 16500,
-      quantity: 5,
+      // quantity: 5,
     },
     {
       id: 3,
       name: "Water Heater",
       price: 4500,
-      quantity: 1,
+      // quantity: 1,
     },
   ];
   return (
