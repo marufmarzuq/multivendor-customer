@@ -1,15 +1,22 @@
+.noItem {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
 .miniCartContainer {
   width: 400px;
   background-color: #fff;
   border: 1px solid rgba(128, 128, 128, 0.535);
-
+  min-height: 300px;
   /* z-index: 99 !important; */
 }
 
 .miniCartContainer .miniCart {
   padding: 0.1rem 1rem;
   display: grid;
-  grid-template-columns: 3fr 5fr 2fr;
+  grid-template-columns: 3fr 3fr 3fr;
   align-items: center;
   border-bottom: 1px solid rgba(128, 128, 128, 0.535);
 }
@@ -61,4 +68,15 @@
 
 .buttons button:hover a {
   color: #fff;
+}
+.cartIncreaseButton {
+  display: flex;
+  justify-content: end;
+}
+.cartIncreaseButton button {
+  margin-left: 8px;
+  /* margin-right: 8px; */
+  width: 25px;
+
+  /* border: 1px solid rgba(128, 128, 128, 0.33) !important; */
 }
