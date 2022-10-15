@@ -2,10 +2,32 @@ import React from "react";
 import "../dailyDeals/dailyDeals.css";
 import { product2, product1, groceries } from "../../../../../assets";
 import { AiFillStar } from "react-icons/ai";
-import { FaBalanceScaleLeft } from "react-icons/fa";
+import { FaBalanceScaleLeft, FaCartPlus } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
+import { useCart } from "react-use-cart";
 
 const MostPopular = () => {
+  const { addItem, onItemAdd } = useCart();
+  const products = [
+    {
+      id: 1,
+      name: "Canon Camera",
+      price: 9900,
+      quantity: 1,
+    },
+    {
+      id: 2,
+      name: "Table Fan",
+      price: 16500,
+      quantity: 5,
+    },
+    {
+      id: 3,
+      name: "Water Heater",
+      price: 4500,
+      quantity: 1,
+    },
+  ];
   return (
     <section className="most-popular my-4">
       <div className="container">
@@ -46,52 +68,59 @@ const MostPopular = () => {
             <div className="tab-pane fade show active" id="mp-all">
               <div className="container">
                 <div className="row products-wrap">
-                  <div className="col-sm-6 col-md-3 mb-3">
-                    <div className="single-product style-1">
-                      <div className="image-wrap">
-                        <a href="#">
-                          <img src={product2} alt="Locket New" />
-                        </a>
-                        <div className="buttons-wrap">
-                          <button>
-                            <FaBalanceScaleLeft />
-                          </button>
-                        </div>
-                        <div className="badges">
-                          <div className="badge sale-badge">
-                            <span>10%</span>
-                          </div>
+                  {products.map((product) => {
+                    return (
+                      <div className="col-sm-6 col-md-3 mb-3">
+                        <div className="single-product style-1">
+                          <div className="image-wrap">
+                            <a href="#">
+                              <img src={product2} alt="Locket New" />
+                            </a>
+                            <div className="buttons-wrap">
+                              <button>
+                                <FaBalanceScaleLeft />
+                              </button>
+                              <button onClick={() => addItem(product)}>
+                                <FaCartPlus />
+                              </button>
+                            </div>
+                            <div className="badges">
+                              <div className="badge sale-badge">
+                                <span>10%</span>
+                              </div>
 
-                          <div className="badge tag-badge">
-                            <span>Sale</span>
+                              <div className="badge tag-badge">
+                                <span>Sale</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="content-wrap">
+                            <div className="variations d-flex flex-column">
+                              <div className="variation d-flex justify-content-center">
+                                <span className="variation-name">1 KG</span>
+                                <span>5 KG</span>
+                                <span>10 KG</span>
+                              </div>
+                            </div>
+                            <h3 className="product-title">
+                              <a href="#"> {product.name} </a>
+                            </h3>
+                            <div className="price">
+                              <span className="sale">$ 200</span>
+                              <span className="del">$ 180</span>
+                            </div>
+                            <div className="ratings">
+                              <AiFillStar />
+                              <AiFillStar />
+                              <AiFillStar />
+                              <AiFillStar />
+                              <AiFillStar />
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div className="content-wrap">
-                        <div className="variations d-flex flex-column">
-                          <div className="variation d-flex justify-content-center">
-                            <span className="variation-name">1 KG</span>
-                            <span>5 KG</span>
-                            <span>10 KG</span>
-                          </div>
-                        </div>
-                        <h3 className="product-title">
-                          <a href="#">Locket New</a>
-                        </h3>
-                        <div className="price">
-                          <span className="sale">$ 200</span>
-                          <span className="del">$ 180</span>
-                        </div>
-                        <div className="ratings">
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

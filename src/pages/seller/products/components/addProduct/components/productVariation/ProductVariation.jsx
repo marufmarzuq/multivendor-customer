@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ProductVariation.css";
 import Select from "react-select";
 import ReactTagInput from "@pathofdev/react-tag-input";
 import { date, object } from "yup";
-
+import UploadFilesModal from "../../../../../UploadFiles/UploadFilesModal";
 const ProductVariation = ({
   values,
   handleBlur,
@@ -14,7 +14,13 @@ const ProductVariation = ({
 }) => {
   const [colors, setColors] = useState([]);
   const [attributes, setAttributes] = useState([]);
-  const [attributeValues, setAttributeValues] = useState({});
+  const [attributeValues, setAttributeValues] = useState({
+    Size: [],
+    Fabric: [],
+  });
+  const [variants, setVariants] = useState({});
+  const [finalVariants, setFinalVariants] = useState({});
+  const [show, setShow] = useState(false);
   const [tags, setTags] = useState(["Black", "Red", "Blue", "Green"]);
   const [size, setSize] = useState([]);
   const [variationState, setVariationState] = useState(false);
@@ -35,6 +41,41 @@ const ProductVariation = ({
       quantity: {},
     },
   ]);
+
+  useEffect(() => {
+    const keys = Object.keys(attributeValues);
+    const attributesArray = [];
+
+    keys.map((key) => {
+      attributesArray.push(attributeValues[key]);
+    });
+
+    let final = [];
+    if (attributesArray[0]?.length > 0 && attributesArray[1]?.length <= 0) {
+      for (let i = 0; i < attributesArray[0].length; i++) {
+        final.push(attributesArray[0][i]);
+      }
+    } else if (
+      attributesArray[1]?.length > 0 &&
+      attributesArray[0]?.length <= 0
+    ) {
+      for (let i = 0; i < attributesArray[1]?.length; i++) {
+        final.push(attributesArray[1][i]);
+      }
+    } else {
+      for (let i = 0; i < attributesArray[0]?.length; i++) {
+        for (let j = 0; j < attributesArray[1]?.length; j++) {
+          final.push(attributesArray[0][i] + "-" + attributesArray[1][j]);
+        }
+      }
+    }
+    final.map((varr) => {
+      finalVariants[varr] = {};
+    });
+
+    setVariants(final);
+  }, [attributeValues]);
+
   const colorsOptions = [
     { value: "red", label: "Red" },
     { value: "blue", label: "Blue" },
@@ -72,6 +113,10 @@ const ProductVariation = ({
     setAttributeValues({
       ...tempAttriValues,
     });
+  };
+
+  const handleVarinatValue = (e, variant, which) => {
+    finalVariants[variants][which] = e.target.value;
   };
 
   const setValus = (name, newTags) => {
@@ -175,6 +220,9 @@ const ProductVariation = ({
     setVariations(newVariation);
   };
 
+  console.log(variants);
+  console.log(finalVariants);
+
   return (
     <>
       {values.product_type == "variable" && (
@@ -271,35 +319,57 @@ const ProductVariation = ({
               </section> */}
 
               <section>
-                {variations.map((item) => {
+                {variants?.map((varr) => {
                   return (
-                    item.name == "allVariations" &&
-                    item.values?.map((price) => (
-                      // <div>
-                      <div>
-                        <div
-                          key={new date()}
-                          className="ap-single-content mb-3"
-                        >
-                          <p> {price.toUpperCase() + "  " + "Price"} </p>
-                          <input
-                            onChange={(e) => priceUpdate(e, price)}
-                            type="number"
-                            min={1}
-                          />
-                        </div>
+                    <div key={varr}>
+                      <div className="ap-single-content mb-3">
+                        <p> {varr}-Price</p>
+                        <input
+                          onChange={(e) => handleVarinatValue(e, varr, "price")}
+                          type="number"
+                          min={1}
+                        />
+                      </div>
 
-                        <div key={price} className="ap-single-content mb-3">
-                          <p> {price.toUpperCase() + "  " + "Quantity"} </p>
-                          <input
-                            defaultValue={""}
-                            onChange={(e) => priceUpdate(e, price, "quantity")}
-                            type="number"
-                            min={1}
+                      <div className="ap-single-content mb-3">
+                        <p> {varr}-Quantity </p>
+                        <input
+                          onChange={(e) =>
+                            handleVarinatValue(e, varr, "quantity")
+                          }
+                          defaultValue={""}
+                          type="number"
+                          min={1}
+                        />
+                      </div>
+
+                      <div className="ap-single-content mb-3">
+                        <div>
+                          <p>{varr}-Image</p>
+                        </div>
+                        <div>
+                          <div
+                            onClick={() => setShow(!show)}
+                            className="custom-browse"
+                          >
+                            <div>Browse</div>
+                            <div>
+                              {/* {values?.pdf ? values?.pdf : "Choose File"} */}
+                              choose file
+                            </div>
+                          </div>
+
+                          <UploadFilesModal
+                            // setFieldValue={setFieldValue}
+                            format="string"
+                            // values={values}
+                            imageFor="pdf"
+                            show={show}
+                            setShow={setShow}
                           />
                         </div>
                       </div>
-                    ))
+                    </div>
                   );
                 })}
               </section>
