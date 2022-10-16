@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import FrontendPagination from "../../../../../common/pagination/frontend/FrontendPagination";
-import PaginationCom from "../../../../../common/pagination/PaginationCom";
 import BlogCard from "./BlogCard";
 import blogsStyle from "./blogs.module.css";
 

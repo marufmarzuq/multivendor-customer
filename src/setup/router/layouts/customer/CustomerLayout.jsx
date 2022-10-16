@@ -3,7 +3,6 @@ import { Outlet } from "react-router-dom";
 import Footer from "../../../../common/footer/Footer";
 import Header from "../../../../common/header/Header";
 import { markutosFrontendApi } from "../../../../pages/services/Api/api";
-import authHeader from "../../../../pages/services/auth-header";
 
 const CustomerLayout = () => {
   const [loading, setLoading] = useState(false);
@@ -12,23 +11,18 @@ const CustomerLayout = () => {
   useEffect(() => {
     setLoading(true);
     markutosFrontendApi
-      .get(`/settings`,
-        {
-          headers: {
-            Authorization: authHeader(),
-          },
-        }
-      )
+      .get(`/settings`)
       .then((response) => {
         setLoading(false);
-				setCurrentItems(response?.data?.data);
+				setCurrentItems(response?.data);
       });
   }, []);
+
   return (
     <div className="wrapper">
-      <Header />
+      <Header headerLogo={ currentItems.header_logo ? currentItems.header_logo : "" }/>
       <Outlet />
-      <Footer />
+      <Footer footerData={currentItems}/>
     </div>
   );
 };

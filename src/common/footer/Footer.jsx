@@ -5,7 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import "./footer.css";
 import { NavLink } from "react-router-dom";
 import { logo } from "../../assets/index";
-const Footer = () => {
+const Footer = ({footerData}) => {
   return (
     <footer className="footer">
       <div className="container">
@@ -13,7 +13,8 @@ const Footer = () => {
           <div className="col-md-5">
             <div className="footer-logo">
               <a href="#">
-                <img src={logo} alt="" />
+                <img src={ footerData.footer_logo ? footerData.footer_logo : ""} alt="MARKUTOS" />
+
               </a>
             </div>
           </div>
@@ -39,38 +40,29 @@ const Footer = () => {
         <div className="row footer-main">
           <div className="col-12 col-sm-5 col-lg-4 my-2 text-center text-sm-start">
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+              { footerData.footer_about_text ? footerData.footer_about_text : ""}
             </p>
-            <p>House -28, Road-7A, Dhanmondi, Dhaka.</p>
+            <p>{ footerData.address ? footerData.address : ""}</p>
             <ul className="vertical-menu">
-              <li>
-                <span>01234567890, 25678945</span>
-              </li>
+              <li>{ footerData.phone ? footerData.phone : ""}</li>
               <li>
                 <BiUser />
-                <span>info@sakira.com</span>
-              </li>
-              <li>
-                <BiUser />
-                <span>infosakira.com</span>
+                <span>{ footerData.email ? footerData.email : ""}</span>
               </li>
             </ul>
             <ul className="social-buttons">
               <li>
-                <a href="#">
+                <a href={ footerData.facebook ? footerData.facebook : "#" }>
                   <FaFacebookF />
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href={ footerData.twitter ? footerData.twitter : "#" }>
                   <FaTwitter />
                 </a>
               </li>
               <li>
-                <a href="#">
+                <a href={ footerData.linkedin ? footerData.linkedin : "#" }>
                   <FaLinkedinIn />
                 </a>
               </li>

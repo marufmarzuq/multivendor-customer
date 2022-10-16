@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPaginate from "react-paginate";
-import Select from "react-select";
+
 import {
   AiOutlineDoubleLeft,
   AiOutlineDoubleRight,

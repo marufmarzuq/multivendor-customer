@@ -68,9 +68,9 @@ const MostPopular = () => {
             <div className="tab-pane fade show active" id="mp-all">
               <div className="container">
                 <div className="row products-wrap">
-                  {products.map((product) => {
+                  {products.map((product,key) => {
                     return (
-                      <div className="col-sm-6 col-md-3 mb-3">
+                      <div className="col-sm-6 col-md-3 mb-3" key={key}>
                         <div className="single-product style-1">
                           <div className="image-wrap">
                             <a href="#">

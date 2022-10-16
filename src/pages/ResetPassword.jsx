@@ -22,7 +22,7 @@ const ResetPassword = () => {
     });
 
 	const submitForm = (data) => {
-		console.log("data", data);
+
 		setLoading(true);
 		let formData = new FormData();
 		formData.append('email', data.email);
@@ -56,7 +56,7 @@ const ResetPassword = () => {
                     <label htmlFor="email">Email</label>
                     <input
                       type="email"
-					  {...register('email', { required: true })} 
+					  {...register('email', { required: true })}
                       placeholder="Enter your email"
                     />
 					{errors.email && <p className="error"> {errors.email?.message} </p>}

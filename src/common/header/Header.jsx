@@ -64,7 +64,7 @@ const customStyles = {
   }),
 };
 
-const Header = () => {
+const Header = ({headerLogo}) => {
   const [mobileNav, setMobileNav] = useState(false);
   const navigate = useNavigate();
   const logout = () => {
@@ -72,7 +72,7 @@ const Header = () => {
     AuthService.logout();
   };
   const user = loadFromLocalStorage();
-  const seller = loadSellerData();  
+  const seller = loadSellerData();
 
   const options = [
     { value: "chocolate", label: "Chocolate" },
@@ -183,7 +183,7 @@ const Header = () => {
             <div className="col-6 col-md-3">
               <div className="logo">
                 <a href="#">
-                  <img src={logo} alt="Website Logo" />
+                  <img src={headerLogo ? headerLogo : logo} alt="MARKUTOS" />
                 </a>
               </div>
             </div>
