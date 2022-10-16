@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import cartStyle from "./cart.module.css";
-const CartTotal = ({ proceedKey, cartTotalTitle }) => {
+const CartTotal = ({ proceedKey, cartTotalTitle, total = 0 }) => {
   return (
     <div>
       <div className={cartStyle.cart_totals}>
@@ -15,16 +15,15 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
             <span>Subtotal:</span>
           </div>
           <div className="d-flex justify-content-end">
-            <span>$ 30</span>
+            <span>$ {total}</span>
           </div>
         </div>
         <div className={cartStyle.cartTotalsRow}>
           <div>
-            <span>Tax:</span>
+            <span>Tax (2%):</span>
           </div>
           <div className="d-flex justify-content-end">
-            {" "}
-            <span>$ 30</span>
+            <span>$ {(total * 2) / 100} </span>
           </div>
         </div>
         <div className={cartStyle.cartTotalsRowLast}>
@@ -33,8 +32,7 @@ const CartTotal = ({ proceedKey, cartTotalTitle }) => {
             <small>(Shipping fees not included)</small>
           </div>
           <div className="d-flex justify-content-end">
-            {" "}
-            <span>$ 30</span>
+            <span>$ {total + (total * 2) / 100}</span>
           </div>
         </div>
 

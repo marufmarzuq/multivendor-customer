@@ -30,6 +30,7 @@ import { loadFromLocalStorage } from "../../utils/user/manageLocalStorage";
 import { loadFromLocalStorage as loadSellerData } from "../../utils/seller/manageLocalStorage";
 
 import Select from "react-select";
+import { useCart } from "react-use-cart";
 
 const customStyles = {
   // option: (provided, state) => ({
@@ -64,7 +65,7 @@ const customStyles = {
   }),
 };
 
-const Header = ({headerLogo}) => {
+const Header = ({ headerLogo }) => {
   const [mobileNav, setMobileNav] = useState(false);
   const navigate = useNavigate();
   const logout = () => {
@@ -74,6 +75,7 @@ const Header = ({headerLogo}) => {
   const user = loadFromLocalStorage();
   const seller = loadSellerData();
 
+  const { totalItems } = useCart();
   const options = [
     { value: "chocolate", label: "Chocolate" },
     { value: "strawberry", label: "Strawberry" },
@@ -139,11 +141,16 @@ const Header = ({headerLogo}) => {
             <div className="col-8 col-lg-6 col-xl-6 col-xxl-6 right-menu">
               <ul className="d-flex justify-content-end">
                 <li>
-                  <NavLink to={seller ? "/seller" : "/seller-request"}>{seller ? "Seller Dashboard" : "Be a Seller"}</NavLink>
+                  <NavLink to={seller ? "/seller" : "/seller-request"}>
+                    {seller ? "Seller Dashboard" : "Be a Seller"}
+                  </NavLink>
                 </li>
                 <li>
                   {user ? (
-                    <NavLink to="/dashboard">{user?.user?.first_name}{user?.user?.last_name}</NavLink>
+                    <NavLink to="/dashboard">
+                      {user?.user?.first_name}
+                      {user?.user?.last_name}
+                    </NavLink>
                   ) : (
                     <NavLink to="/register">Register</NavLink>
                   )}
@@ -229,7 +236,7 @@ const Header = ({headerLogo}) => {
                   <li className="headerMiniCartIcon">
                     <NavLink to="/cart">
                       <AiOutlineShoppingCart />
-                      <span>0</span>
+                      <span> {totalItems} </span>
                     </NavLink>
                     <span className="headerMiniCart">
                       <MiniCart />

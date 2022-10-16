@@ -11,8 +11,28 @@ const AppProviders = ({ children }) => {
       <BrowserRouter>
         <CartProvider
           // onItemUpdate={() => toast.warning("Product already in cart")}
-          onItemAdd={() => toast.success("Product added to cart")}
-          onItemRemove={() => toast.success("Product removed from cart")}
+          onItemAdd={() =>
+            toast.info("Product added to cart", {
+              position: "bottom-right",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              theme: "light",
+            })
+          }
+          onItemRemove={() =>
+            toast.info("Product removed from cart", {
+              position: "bottom-right",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: false,
+              draggable: true,
+              theme: "light",
+            })
+          }
         >
           {children}
         </CartProvider>

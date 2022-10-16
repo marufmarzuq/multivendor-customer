@@ -11,8 +11,14 @@ import { useCart } from "react-use-cart";
 import CartTotal from "../../../cart/components/cartCom/CartTotal";
 import miniCartStyle from "../../miniCart.module.css";
 const ProductTable = () => {
-  const { isEmpty, totalUniqueItems, items, updateItemQuantity, removeItem } =
-    useCart();
+  const {
+    isEmpty,
+    totalUniqueItems,
+    items,
+    updateItemQuantity,
+    removeItem,
+    cartTotal,
+  } = useCart();
 
   return (
     <>
@@ -27,7 +33,7 @@ const ProductTable = () => {
             <div>
               {items.map((item) => {
                 return (
-                  <section>
+                  <section key={item.id}>
                     <div className={miniCartStyle.miniCart}>
                       <div>
                         <img
@@ -38,8 +44,10 @@ const ProductTable = () => {
                       <div className={miniCartStyle.content}>
                         <h5>{item.name}</h5>
                         <h5>(x {item.quantity})</h5>
-                        <h6> $ {item.price} </h6>
-                        <small>( color: black )</small>
+                        <h6> $ {item.itemTotal} </h6>
+                        <small>
+                          {item?.variant ? `( Variant: ${item?.variant} )` : ""}
+                        </small>
                       </div>
                       <div className={miniCartStyle.cartIncreaseButton}>
                         <button
@@ -67,7 +75,7 @@ const ProductTable = () => {
               })}
               <section>
                 <div className="mb-4">
-                  <CartTotal cartTotalTitle="checkout" />
+                  <CartTotal total={cartTotal} cartTotalTitle="checkout" />
                 </div>
                 <div className={miniCartStyle.buttons}>
                   <div>
