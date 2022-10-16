@@ -7,7 +7,6 @@ import DailyDeals from "./components/dailyDeals/DailyDeals";
 import Featured from "./components/featured/Featured";
 import MostPopular from "./components/mostPopular/MostPopular";
 import Shops from "./components/shops/Shops";
-import SimpleLoading from "../../../common/loading/SimpleLoading";
 import { markutosFrontendApi } from "../../services/Api/api";
 
 const Home = () => {
@@ -27,22 +26,14 @@ const Home = () => {
 console.log(currentItems);
   return (
     <div className="wrapper">
-			{
-			loading ? <SimpleLoading /> : 
-				(
-					<Fragment>
-						<Category />
-						<MostPopular />
-						<AddSection />
-						<DailyDeals />
-						<AddSectionTwo />
-						<Featured />
-						<Brands />
-						<Shops />`
-				</Fragment>
-				)
-			}
-
+			<Category />
+			<MostPopular />
+			<AddSection />
+			<DailyDeals />
+			<AddSectionTwo />
+			<Featured />
+			<Brands />
+			<Shops />
     </div>
   );
 };
