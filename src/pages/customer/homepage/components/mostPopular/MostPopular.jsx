@@ -8,7 +8,8 @@ import { useCart } from "react-use-cart";
 import { useState } from "react";
 
 const MostPopular = ({popularProducts}) => {
-console.log(popularProducts);
+// console.log(popularProducts);
+	const [active, setActive] = useState("");
   const [selectVariant, setSelcetVariant] = useState("");
   const { addItem, onItemAdd } = useCart();
   const [products, setProducts] = useState([
@@ -80,7 +81,7 @@ console.log(popularProducts);
           <ul className="nav nav-tabs justify-content-center" role="tablist">
 						{ popularProducts && Object.keys(popularProducts).map((category_name, index) => {
 							return (
-								<li className="nav-item" key={index}>
+								<li className={`nav-item ${ index == 0 ? 'active' : ''}`} key={index}>
 								<button
 									className="nav-link"
 									data-bs-toggle="tab"
@@ -96,7 +97,7 @@ console.log(popularProducts);
           {
           popularProducts && Object.keys(popularProducts).map((products, index) => {
 						return(
-									<div className="tab-pane fade show active" id={`mp-${products}`}  key={index}>
+									<div className={`tab-pane fade show ${ index == 0 ? 'active' : ''}`} id={`mp-${products}`}  key={index}>
 										<div className="container">
 											<div className="row products-wrap">
 											{
