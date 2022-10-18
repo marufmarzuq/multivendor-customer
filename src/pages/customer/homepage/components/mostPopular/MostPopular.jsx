@@ -10,8 +10,8 @@ import { priceFormat } from "../../../../../hooks/helper";
 import { NavLink } from "react-router-dom";
 
 const MostPopular = ({popularProducts}) => {
-console.log(popularProducts);
-	const [active, setActive] = useState("");
+
+	const [active, setActive] = useState(0);
   const [selectVariant, setSelcetVariant] = useState("");
   const { addItem, onItemAdd } = useCart();
   const [products, setProducts] = useState([
@@ -82,7 +82,7 @@ console.log(popularProducts);
           <ul className="nav nav-tabs justify-content-center" role="tablist">
 						{ popularProducts && Object.keys(popularProducts).map((category_name, index) => {
 							return (
-								<li className={`nav-item ${ index == 0 ? 'active' : ''}`} key={index}>
+								<li className={`nav-item ${ ( index == active ) ? 'active' : '' }`} key={index} onClick={(e)=>{ setActive(index)}}>
 								<button
 									className="nav-link"
 									data-bs-toggle="tab"
@@ -98,7 +98,7 @@ console.log(popularProducts);
           {
           popularProducts && Object.keys(popularProducts).map((products, index) => {
 						return(
-									<div className={`tab-pane fade show ${ index == 0 ? 'active' : ''}`} id={`mp-${products}`}  key={index}>
+									<div className={`tab-pane fade ${ ( index == active ) ? ' show active' : '' } `} id={`mp-${products}`}  key={index}>
 										<div className="container">
 											<div className="row products-wrap">
 											{
@@ -157,9 +157,9 @@ console.log(popularProducts);
 																				<NavLink to={`products/${product.id}`}>{product.name}</NavLink>
 																			</h3>
 																			<div className="price">
-																				<span className="sale">{priceFormat(product.discount_price)}</span>
+																				{product.discount_price && <span className="sale">{priceFormat(product.discount_price)}</span> }
 																				<span className="del ms-1">
-																				{priceFormat(product.purchase_price)}
+																				{priceFormat(product.unit_price)}
 																				</span>
 																			</div>
 																			<div className="ratings">
@@ -181,96 +181,6 @@ console.log(popularProducts);
 								)
 						})
 					}
-            <div className="tab-pane fade" id="mp-beauty">
-              <div className="container">
-                <div className="row products-wrap">
-                  <div className="col-sm-6 col-md-3 mb-3">
-                    <div className="single-product style-1">
-                      <div className="image-wrap">
-                        <a href="#">
-                          <img src={product1} alt="Locket New" />
-                        </a>
-                        <div className="buttons-wrap">
-                          <button>
-                            <FaBalanceScaleLeft />
-                          </button>
-                        </div>
-                        <div className="badges">
-                          <div className="badge sale-badge">
-                            <span>10%</span>
-                          </div>
-
-                          <div className="badge tag-badge">
-                            <span>Sale</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="content-wrap">
-                        <h3 className="product-title">
-                          <a href="#">Locket New</a>
-                        </h3>
-                        <div className="price">
-                          <span className="sale">$ 200</span>
-                          <span className="del">$ 180</span>
-                        </div>
-                        <div className="ratings">
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="tab-pane fade" id="mp-groceries">
-              <div className="container">
-                <div className="row products-wrap">
-                  <div className="col-sm-6 col-md-3 mb-3">
-                    <div className="single-product style-1">
-                      <div className="image-wrap">
-                        <a href="#">
-                          <img src={groceries} alt="Locket New" />
-                        </a>
-                        <div className="buttons-wrap">
-                          <button>
-                            <FaBalanceScaleLeft />
-                          </button>
-                        </div>
-                        <div className="badges">
-                          <div className="badge sale-badge">
-                            <span>10%</span>
-                          </div>
-
-                          <div className="badge tag-badge">
-                            <span>Sale</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="content-wrap">
-                        <h3 className="product-title">
-                          <a href="#">Locket New</a>
-                        </h3>
-                        <div className="price">
-                          <span className="sale">$ 200</span>
-                          <span className="del">$ 180</span>
-                        </div>
-                        <div className="ratings">
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         <div className="d-flex justify-content-center my-2 ">
