@@ -31,15 +31,12 @@ const ProductTable = () => {
             </p>
           ) : (
             <div>
-              {items.map((item) => {
+              {items.map((item, key) => {
                 return (
-                  <section key={item.id}>
-                    <div className={miniCartStyle.miniCart}>
+                  <section>
+                    <div className={miniCartStyle.miniCart} key={key}>
                       <div>
-                        <img
-                          src="https://farmart.botble.com/storage/products/6-150x150.jpg"
-                          alt=""
-                        />
+                        <img src={item?.thumbnail_img} alt="" />
                       </div>
                       <div className={miniCartStyle.content}>
                         <h5>{item.name}</h5>

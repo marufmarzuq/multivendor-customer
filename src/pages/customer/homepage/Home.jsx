@@ -13,6 +13,7 @@ const Home = () => {
 
   const [loading, setLoading] = useState(false);
   const [currentItems, setCurrentItems] = useState([]);
+  const [popularProducts, setPopularProducts] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -21,13 +22,13 @@ const Home = () => {
       .then((response) => {
         setLoading(false);
 				setCurrentItems(response?.data);
+				setPopularProducts(response?.data.popular_products);
       });
   }, []);
-console.log(currentItems);
   return (
     <div className="wrapper">
 			<Category />
-			<MostPopular />
+			<MostPopular popularProducts={ popularProducts }/>
 			<AddSection />
 			<DailyDeals />
 			<AddSectionTwo />
