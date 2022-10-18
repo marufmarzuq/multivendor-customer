@@ -80,6 +80,8 @@ const MostPopular = ({ popularProducts }) => {
     addItem(product);
   };
 
+  console.log(popularProducts);
+
   return (
     <section className="most-popular my-4">
       <div className="container">
@@ -177,7 +179,7 @@ const MostPopular = ({ popularProducts }) => {
                             </h3>
                             <div className="price">
                               <span className="sale">
-                                {priceFormat(product.discount_price)}
+                                {priceFormat(product?.discount_price)}
                               </span>
                               <span className="del ms-1">
                                 {priceFormat(product.purchase_price)}
