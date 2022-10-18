@@ -6,9 +6,11 @@ import { FaBalanceScaleLeft, FaCartPlus } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
 import { useCart } from "react-use-cart";
 import { useState } from "react";
+import { priceFormat } from "../../../../../hooks/helper";
+import { NavLink } from "react-router-dom";
 
 const MostPopular = ({popularProducts}) => {
-// console.log(popularProducts);
+console.log(popularProducts);
 	const [active, setActive] = useState("");
   const [selectVariant, setSelcetVariant] = useState("");
   const { addItem, onItemAdd } = useCart();
@@ -152,12 +154,12 @@ const MostPopular = ({popularProducts}) => {
 																				</div>
 																			</div>
 																			<h3 className="product-title">
-																				<a href={`product/${product.id}`}> {product.name} </a>
+																				<NavLink to={`products/${product.id}`}>{product.name}</NavLink>
 																			</h3>
 																			<div className="price">
-																				<span className="sale">$ {product.price}</span>
+																				<span className="sale">{priceFormat(product.discount_price)}</span>
 																				<span className="del ms-1">
-																					$ {product.price - 20}
+																				{priceFormat(product.purchase_price)}
 																				</span>
 																			</div>
 																			<div className="ratings">
