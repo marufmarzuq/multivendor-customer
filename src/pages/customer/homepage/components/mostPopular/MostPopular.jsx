@@ -7,7 +7,9 @@ import { MdOutlineViewInAr } from "react-icons/md";
 import { useCart } from "react-use-cart";
 import { useState } from "react";
 
-const MostPopular = () => {
+const MostPopular = ({popularProducts}) => {
+// console.log(popularProducts);
+	const [active, setActive] = useState("");
   const [selectVariant, setSelcetVariant] = useState("");
   const { addItem, onItemAdd } = useCart();
   const [products, setProducts] = useState([
@@ -76,117 +78,107 @@ const MostPopular = () => {
         </div>
         <div className="row most-popular-tabs">
           <ul className="nav nav-tabs justify-content-center" role="tablist">
-            <li className="nav-item">
-              <button
-                className="nav-link active"
-                data-bs-toggle="tab"
-                data-bs-target="#mp-all"
-              >
-                All
-              </button>
-            </li>
-            <li className="nav-item">
-              <button
-                className="nav-link"
-                data-bs-toggle="tab"
-                data-bs-target="#mp-beauty"
-              >
-                Beauty
-              </button>
-            </li>
-            <li className="nav-item">
-              <button
-                className="nav-link"
-                data-bs-toggle="tab"
-                data-bs-target="#mp-groceries"
-              >
-                Groceries
-              </button>
-            </li>
+						{ popularProducts && Object.keys(popularProducts).map((category_name, index) => {
+							return (
+								<li className={`nav-item ${ index == 0 ? 'active' : ''}`} key={index}>
+								<button
+									className="nav-link"
+									data-bs-toggle="tab"
+									data-bs-target={`#mp-${category_name}`}
+								>
+									{category_name}
+								</button>
+							</li>
+							);
+						})}
           </ul>
           <div className="tab-content">
-            <div className="tab-pane fade show active" id="mp-all">
-              <div className="container">
-                <div className="row products-wrap">
-                  {products.map((product, key) => {
-                    return (
-                      <div
-                        className="col-sm-6 col-md-3 mb-3"
-                        key={product.name}
-                      >
-                        <div className="single-product style-1">
-                          <div className="image-wrap">
-                            <a href="#">
-                              <img src={product2} alt="Locket New" />
-                            </a>
-                            <div className="buttons-wrap">
-                              <button>
-                                <FaBalanceScaleLeft />
-                              </button>
-                              <button onClick={() => addItem(product)}>
-                                <FaCartPlus />
-                              </button>
-                            </div>
-                            <div className="badges">
-                              <div className="badge sale-badge">
-                                <span>10%</span>
-                              </div>
+          {
+          popularProducts && Object.keys(popularProducts).map((products, index) => {
+						return(
+									<div className={`tab-pane fade show ${ index == 0 ? 'active' : ''}`} id={`mp-${products}`}  key={index}>
+										<div className="container">
+											<div className="row products-wrap">
+											{
+													popularProducts[products].length > 0 && popularProducts[products].map((product, j ) => {
+															return (
+																<div
+																	className="col-sm-6 col-md-3 mb-3" key={j}
+																>
+																	<div className="single-product style-1">
+																		<div className="image-wrap">
+																			<a href="#">
+																				<img src={product.thumbnail_img} alt={product.name} />
+																			</a>
+																			<div className="buttons-wrap">
+																				<button>
+																					<FaBalanceScaleLeft />
+																				</button>
+																				<button onClick={() => addItem(product)}>
+																					<FaCartPlus />
+																				</button>
+																			</div>
+																			<div className="badges">
+																				<div className="badge sale-badge">
+																					<span>10%</span>
+																				</div>
 
-                              <div className="badge tag-badge">
-                                <span>Sale</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div className="content-wrap">
-                            <div className="variations d-flex flex-column">
-                              <div className="variation d-flex justify-content-center">
-                                {variations?.map((item) => {
-                                  return (
-                                    <span
-                                      className={
-                                        selectVariant ==
-                                          `${product.id}-${item}` &&
-                                        "variation-name"
-                                      }
-                                      onClick={() =>
-                                        handleSetVariant(product, item)
-                                      }
-                                      key={item}
-                                    >
-                                      {item}
-                                    </span>
-                                  );
-                                })}
-                                {/* <span className="variation-name">1 KG</span>
-                                <span>5 KG</span>
-                                <span>10 KG</span> */}
-                              </div>
-                            </div>
-                            <h3 className="product-title">
-                              <a href="#"> {product.name} </a>
-                            </h3>
-                            <div className="price">
-                              <span className="sale">$ {product.price}</span>
-                              <span className="del ms-1">
-                                $ {product.price - 20}
-                              </span>
-                            </div>
-                            <div className="ratings">
-                              <AiFillStar />
-                              <AiFillStar />
-                              <AiFillStar />
-                              <AiFillStar />
-                              <AiFillStar />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
+																				<div className="badge tag-badge">
+																					<span>Sale</span>
+																				</div>
+																			</div>
+																		</div>
+																		<div className="content-wrap">
+																			<div className="variations d-flex flex-column">
+																				<div className="variation d-flex justify-content-center">
+																					{variations?.map((item) => {
+																						return (
+																							<span
+																								className={
+																									selectVariant ==
+																										`${product.id}-${item}` &&
+																									"variation-name"
+																								}
+																								onClick={() =>
+																									handleSetVariant(product, item)
+																								}
+																								key={item}
+																							>
+																								{item}
+																							</span>
+																						);
+																					})}
 
+																				</div>
+																			</div>
+																			<h3 className="product-title">
+																				<a href={`product/${product.id}`}> {product.name} </a>
+																			</h3>
+																			<div className="price">
+																				<span className="sale">$ {product.price}</span>
+																				<span className="del ms-1">
+																					$ {product.price - 20}
+																				</span>
+																			</div>
+																			<div className="ratings">
+																				<AiFillStar />
+																				<AiFillStar />
+																				<AiFillStar />
+																				<AiFillStar />
+																				<AiFillStar />
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															);
+														})
+												}
+											</div>
+										</div>
+									</div>
+								)
+						})
+					}
             <div className="tab-pane fade" id="mp-beauty">
               <div className="container">
                 <div className="row products-wrap">
