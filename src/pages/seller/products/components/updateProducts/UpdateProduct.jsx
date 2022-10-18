@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { updateProductSchema } from "../../../../../schema/productSchema";
 import { markutosSellerApi } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
-import AddProducts from "../addProduct/AddProducts";
+
 import CashOnDelivery from "../addProduct/components/cashOnDelivery/CashOnDelivery";
 import Featured from "../addProduct/components/featured/Featured";
 import LowStockQuantity from "../addProduct/components/lowStockQuantity/LowStockQuantity";
@@ -132,9 +132,6 @@ const UpdateProduct = () => {
     handleBlur,
     setFieldValue,
   } = formik;
-
-  console.log(values.discount_type);
-  console.log(values.discount);
 
   return (
     <div>

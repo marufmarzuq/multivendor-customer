@@ -120,7 +120,13 @@ const ReceivedRefunds = () => {
                         <small>{priceFormat(item.refund_amount)}</small>
                       </td>
                       <td className="text-center">
-                        <small className={receivedRefundStyle.paid}>
+                        <small
+                          className={
+                            item?.refund_status == "rejected"
+                              ? receivedRefundStyle.unpaid
+                              : receivedRefundStyle.paid
+                          }
+                        >
                           {item.refund_status}
                         </small>
                       </td>

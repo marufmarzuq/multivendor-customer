@@ -26,6 +26,7 @@ const DetailsModal = ({
 }) => {
   const [refundStatus, setRefundStatus] = useState("");
   const [submiting, setSubmitting] = useState(false);
+  const [rejectReason, setRejectReason] = useState("");
 
   const handleRefund = () => {
     setSubmitting(true);
@@ -48,11 +49,14 @@ const DetailsModal = ({
         });
     } else if (refundStatus == "rejected") {
       markutosSellerApi
-        .get(`/refund-requests/reject?request_id=${refund?.id}`, {
-          headers: {
-            Authorization: authHeader(),
-          },
-        })
+        .get(
+          `/refund-requests/reject?request_id=${refund?.id}?reason=${rejectReason}`,
+          {
+            headers: {
+              Authorization: authHeader(),
+            },
+          }
+        )
         .then((res) => {
           toast.success(res.data.message);
           setStatusUpdate(!statusUpdate);
@@ -70,7 +74,11 @@ const DetailsModal = ({
 
   useEffect(() => {
     setRefundStatus(refund.refund_status);
+    setRejectReason(refund?.reject_reason);
   }, [date]);
+
+  console.log(refund);
+  console.log(refundStatus);
 
   return (
     <>
@@ -143,16 +151,6 @@ const DetailsModal = ({
                     <h5>{refund?.reason}</h5>
                   </Col>
                 </Row>
-
-                <Row>
-                  <Col xs="6" md="3">
-                    <h6> Reject Reason</h6>{" "}
-                  </Col>
-                  <Col xs="6" md="9">
-                    <h5>{refund?.reject_reason}</h5>
-                  </Col>
-                </Row>
-
                 <Row>
                   <Col xs="6" md="3">
                     <h6> Refund Amount</h6>
@@ -161,6 +159,23 @@ const DetailsModal = ({
                     <h5>$ {refund?.refund_amount} </h5>
                   </Col>
                 </Row>
+                {refundStatus == "rejected" && (
+                  <Row>
+                    <Col xs="6" md="3">
+                      <h6> Reject Reason</h6>{" "}
+                    </Col>
+                    <Col xs="6" md="9">
+                      <textarea
+                        value={rejectReason}
+                        type="text"
+                        onChange={(e) => setRejectReason(e.target.value)}
+                        id=""
+                        cols="30"
+                        rows="3"
+                      ></textarea>
+                    </Col>
+                  </Row>
+                )}
               </div>
             </div>
           </section>
