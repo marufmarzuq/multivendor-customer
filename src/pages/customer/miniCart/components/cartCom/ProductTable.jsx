@@ -31,45 +31,49 @@ const ProductTable = () => {
             </p>
           ) : (
             <div>
-              {items.map((item, key) => {
-                return (
-                  <section>
-                    <div className={miniCartStyle.miniCart} key={key}>
-                      <div>
-                        <img src={item?.thumbnail_img} alt="" />
-                      </div>
-                      <div className={miniCartStyle.content}>
-                        <h5>{item.name}</h5>
-                        <h5>(x {item.quantity})</h5>
-                        <h6> $ {item.itemTotal} </h6>
-                        <small>
-                          {item?.variant ? `( Variant: ${item?.variant} )` : ""}
-                        </small>
-                      </div>
-                      <div className={miniCartStyle.cartIncreaseButton}>
-                        <button
-                          onClick={() =>
-                            updateItemQuantity(item.id, item.quantity - 1)
-                          }
-                        >
-                          <AiOutlineMinusCircle />
-                        </button>
-                        <button
-                          onClick={() =>
-                            updateItemQuantity(item.id, item.quantity + 1)
-                          }
-                        >
-                          <AiOutlinePlusCircle />
-                        </button>
+              <section>
+                {items.map((item, key) => {
+                  return (
+                    <section>
+                      <div className={miniCartStyle.miniCart} key={key}>
+                        <div>
+                          <img src={item?.thumbnail_img} alt="" />
+                        </div>
+                        <div className={miniCartStyle.content}>
+                          <h5>{item.name}</h5>
+                          <h5>(x {item.quantity})</h5>
+                          <h6> $ {item.itemTotal} </h6>
+                          <small>
+                            {item?.variant
+                              ? `( Variant: ${item?.variant} )`
+                              : ""}
+                          </small>
+                        </div>
+                        <div className={miniCartStyle.cartIncreaseButton}>
+                          <button
+                            onClick={() =>
+                              updateItemQuantity(item.id, item.quantity - 1)
+                            }
+                          >
+                            <AiOutlineMinusCircle />
+                          </button>
+                          <button
+                            onClick={() =>
+                              updateItemQuantity(item.id, item.quantity + 1)
+                            }
+                          >
+                            <AiOutlinePlusCircle />
+                          </button>
 
-                        <button onClick={() => removeItem(item.id)}>
-                          <AiOutlineDelete />
-                        </button>
+                          <button onClick={() => removeItem(item.id)}>
+                            <AiOutlineDelete />
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  </section>
-                );
-              })}
+                    </section>
+                  );
+                })}
+              </section>
               <section>
                 <div className="mb-4">
                   <CartTotal total={cartTotal} cartTotalTitle="checkout" />
