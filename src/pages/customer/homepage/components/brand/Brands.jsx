@@ -1,13 +1,16 @@
 import React from "react";
 import "./brands.css";
-import { groceries, product1, product2 } from "../../../../../assets";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
-const Brands = () => {
+import { NavLink } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
+const Brands = ({brands}) => {
   return (
     <div className="wrapper mb-5 pb-3">
       {" "}
@@ -55,55 +58,27 @@ const Brands = () => {
               modules={[Autoplay, Pagination, Navigation]}
               className="mySwiper"
             >
-              <SwiperSlide>
-                {/* <div className="swiper-slide"> */}
-                <a href="">
-                  <img src={product1} />
-                </a>
-                {/* </div> */}
-              </SwiperSlide>
-              <SwiperSlide>
-                {/* <div className="swiper-slide"> */}
-                <a href="">
-                  <img src={product2} alt="" />
-                </a>
-                {/* </div> */}
-              </SwiperSlide>
-              <SwiperSlide>
-                {/* <div className="swiper-slide"> */}
-                <a href="">
-                  <img src={groceries} alt="" />
-                </a>
-                {/* </div> */}
-              </SwiperSlide>
-              <SwiperSlide>
-                {/* <div className="swiper-slide"> */}
-                <a href="">
-                  <img src={product1} alt="" />
-                </a>
-                {/* </div> */}
-              </SwiperSlide>
-              <SwiperSlide>
-                {/* <div className="swiper-slide"> */}
-                <a href="">
-                  <img src={product1} />
-                </a>
-                {/* </div> */}
-              </SwiperSlide>
-              <SwiperSlide>
-                {/* <div className="swiper-slide"> */}
-                <a href="">
-                  <img src={product2} alt="" />
-                </a>
-                {/* </div> */}
-              </SwiperSlide>
-              <SwiperSlide>
-                {/* <div className="swiper-slide"> */}
-                <a href="">
-                  <img src={groceries} alt="" />
-                </a>
-                {/* </div> */}
-              </SwiperSlide>
+						{ brands.length == 0 ?
+							(
+								<SkeletonTheme height={50}>
+								<p>
+									<Skeleton count={5} />
+								</p>
+							</SkeletonTheme>
+							) :
+							(
+								brands.map((brand,index)=>{
+								return(
+									<SwiperSlide key={index}>
+										<NavLink to={`/demo-shop-dqka`}>
+											<img src={brand.logo} alt={brand.name} />
+										</NavLink>
+									</SwiperSlide>
+								)
+								})
+							)
+						}
+
             </Swiper>
           </div>
         </div>

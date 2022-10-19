@@ -14,6 +14,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [currentItems, setCurrentItems] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
+  const [shops, setShops] = useState([]);
+  const [brands, setBrands] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -23,6 +25,8 @@ const Home = () => {
         setLoading(false);
 				setCurrentItems(response?.data);
 				setPopularProducts(response?.data.popular_products);
+				setShops(response?.data.shops);
+				setBrands(response?.data.brands);
       });
   }, []);
   return (
@@ -33,8 +37,8 @@ const Home = () => {
 			<DailyDeals />
 			<AddSectionTwo />
 			<Featured />
-			<Brands />
-			<Shops />
+			<Brands brands={brands}/>
+			<Shops shops={shops}/>
     </div>
   );
 };

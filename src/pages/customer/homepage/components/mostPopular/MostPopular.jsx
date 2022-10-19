@@ -1,6 +1,5 @@
 import React from "react";
 import "../dailyDeals/dailyDeals.css";
-import { product2, product1, groceries } from "../../../../../assets";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft, FaCartPlus } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
