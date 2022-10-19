@@ -12,6 +12,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const MostPopular = ({ popularProducts }) => {
+console.log(popularProducts);
   const [active, setActive] = useState("");
   const [selectVariant, setSelcetVariant] = useState("");
   const { addItem, onItemAdd } = useCart();
@@ -102,7 +103,7 @@ const MostPopular = ({ popularProducts }) => {
             {popularProducts &&
               Object.keys(popularProducts).map((category_name, index) => {
                 return (
-                  <li className="nav-item " key={index}>
+                  <li className="nav-item" key={index}>
                     <button
                       onClick={() => setCategoryName(category_name)}
                       className={`nav-link ${
@@ -156,11 +157,7 @@ const MostPopular = ({ popularProducts }) => {
                                 {variations?.map((item) => {
                                   return (
                                     <span
-                                      className={
-                                        selectVariant ==
-                                          `${product.id}-${item}` &&
-                                        "variation-name"
-                                      }
+                                      className={ selectVariant == `${product.id}-${item}` && "variation-name" }
                                       onClick={() =>
                                         handleSetVariant(product, item)
                                       }
@@ -181,8 +178,8 @@ const MostPopular = ({ popularProducts }) => {
                               <span className="sale">
                                 {priceFormat(product?.discount_price)}
                               </span>
-                              <span className="del ms-1">
-                                {priceFormat(product.purchase_price)}
+                              <span className={ product?.discount_price ? ' del ms-1' : 'ms-1' } >
+                                {priceFormat(product.unit_price)}
                               </span>
                             </div>
                             <div className="ratings">
