@@ -1,12 +1,16 @@
 import React from "react";
-import { product2, slider1 } from "../../../../../assets";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
-const Shops = () => {
+import { NavLink } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
+const Shops = ({shops}) => {
+
   return (
     <section className="shops my-5 pb-3">
       <div className="container">
@@ -51,41 +55,26 @@ const Shops = () => {
             modules={[Autoplay, Pagination, Navigation]}
             className="mySwiper"
           >
-            <SwiperSlide>
-              <a href="">
-                <img src={slider1} />
-              </a>
-            </SwiperSlide>
-            <SwiperSlide>
-              <a href="">
-                <img src={product2} alt="" />
-              </a>
-            </SwiperSlide>
-            <SwiperSlide>
-              <a href="">
-                <img src={slider1} alt="" />
-              </a>
-            </SwiperSlide>
-            <SwiperSlide>
-              <a href="">
-                <img src={slider1} alt="" />
-              </a>
-            </SwiperSlide>
-            <SwiperSlide>
-              <a href="">
-                <img src={slider1} />
-              </a>
-            </SwiperSlide>
-            <SwiperSlide>
-              <a href="">
-                <img src={slider1} alt="" />
-              </a>
-            </SwiperSlide>
-            <SwiperSlide>
-              <a href="">
-                <img src={slider1} alt="" />
-              </a>
-            </SwiperSlide>
+          { shops.length == 0 ?
+						(
+							<SkeletonTheme height={50}>
+							<p>
+								<Skeleton count={5} />
+							</p>
+						</SkeletonTheme>
+						) :
+						(
+							shops.map((shop,index)=>{
+							return(
+								<SwiperSlide key={index}>
+									<NavLink to={`/demo-shop-dqka`}>
+										<img src={shop.logo} alt={shop.name} />
+									</NavLink>
+								</SwiperSlide>
+							)
+							})
+						)
+          }
           </Swiper>
         </div>
       </div>
