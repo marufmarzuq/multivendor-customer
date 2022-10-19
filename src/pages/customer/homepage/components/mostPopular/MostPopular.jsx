@@ -81,8 +81,6 @@ console.log(popularProducts);
     addItem(product);
   };
 
-  console.log(popularProducts);
-
   return (
     <section className="most-popular my-4">
       <div className="container">
