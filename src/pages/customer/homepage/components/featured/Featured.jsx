@@ -1,187 +1,205 @@
 import React from "react";
-import { groceries, product1, product2 } from "../../../../../assets";
+import "../dailyDeals/dailyDeals.css";
 import { AiFillStar } from "react-icons/ai";
-import { FaBalanceScaleLeft } from "react-icons/fa";
+import { FaBalanceScaleLeft, FaCartPlus } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
-const Featured = () => {
+import { useCart } from "react-use-cart";
+import { useState } from "react";
+import { priceFormat } from "../../../../../hooks/helper";
+import { NavLink } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+
+const Featured = ({ featureProducts }) => {
+
+  const [selectVariant, setSelcetVariant] = useState("");
+  const { addItem, onItemAdd } = useCart();
+  const [categoryName, setCategoryName] = useState("all");
+  const [products, setProducts] = useState([
+    {
+      id: 1,
+      name: "Canon Camera",
+      price: 99,
+      M: {
+        price: 99,
+      },
+      L: {
+        price: 100,
+      },
+      XL: {
+        price: 110,
+      },
+    },
+    {
+      id: 2,
+      name: "Table Fan",
+      price: 56,
+      M: {
+        price: 56,
+      },
+      L: {
+        price: 62,
+      },
+      XL: {
+        price: 65,
+      },
+    },
+    {
+      id: 3,
+      name: "Water Heater",
+      price: 45,
+      M: {
+        price: 45,
+      },
+      L: {
+        price: 50,
+      },
+      XL: {
+        price: 48,
+      },
+    },
+  ]);
+  const variations = ["M", "L", "XL"];
+
+  const handleSetVariant = (product, variant) => {
+    setSelcetVariant(`${product.id}-${variant}`);
+    const filteredProducts = products.map((prod) => {
+      if (prod.id == product.id) {
+        prod.price = prod[variant].price;
+        prod.variant = variant;
+      }
+      return prod;
+    });
+
+    setProducts(filteredProducts);
+  };
+
+  const addToCart = (product) => {
+    product.price = product.unit_price;
+    addItem(product);
+  };
+
   return (
-    <section className="featured-products my-4 mb-5">
+    <section className="most-popular my-4">
       <div className="container">
         <div className="row">
-          <div className="col">
-            <h2 className="section-title">Featured Products</h2>
-          </div>
+          <h2 className="section-title">Featured Products</h2>
         </div>
-        <div className="row featured-products-tabs">
+
+        {Object.keys(featureProducts).length == 0 && (
+          <SkeletonTheme height={50}>
+            <p>
+              <Skeleton count={5} />
+            </p>
+          </SkeletonTheme>
+        )}
+
+        <div className="row most-popular-tabs">
           <ul className="nav nav-tabs justify-content-center" role="tablist">
-            <li className="nav-item">
-              <button
-                className="nav-link active"
-                data-bs-toggle="tab"
-                data-bs-target="#fp-all"
-              >
-                All
-              </button>
-            </li>
-            <li className="nav-item">
-              <button
-                className="nav-link"
-                data-bs-toggle="tab"
-                data-bs-target="#fp-beauty"
-              >
-                Beauty
-              </button>
-            </li>
-            <li className="nav-item">
-              <button
-                className="nav-link"
-                data-bs-toggle="tab"
-                data-bs-target="#fp-groceries"
-              >
-                Groceries
-              </button>
-            </li>
+            {featureProducts &&
+              Object.keys(featureProducts).map((category_name, index) => {
+                return (
+                  <li className="nav-item" key={index}>
+                    <button
+                      onClick={() => setCategoryName(category_name)}
+                      className={`nav-link ${
+                        category_name == "all" ? "active" : ""
+                      }`}
+                      data-bs-toggle="tab"
+                      data-bs-target={`#mp-${category_name}`}
+                    >
+                      {category_name}
+                    </button>
+                  </li>
+                );
+              })}
           </ul>
           <div className="tab-content">
-            <div className="tab-pane fade show active" id="fp-all">
-              <div className="container">
-                <div className="row products-wrap">
-                  <div className="col-sm-6 col-md-3 mb-3">
-                    <div className="single-product style-1">
-                      <div className="image-wrap">
-                        <a href="#">
-                          <img src={groceries} alt="Locket New" />
-                        </a>
-                        <div className="buttons-wrap">
-                          <button>
-                            <FaBalanceScaleLeft />
-                          </button>
-                        </div>
-                        <div className="badges">
-                          <div className="badge sale-badge">
-                            <span>10%</span>
+            <div className="container">
+              <div className="row products-wrap">
+                {featureProducts &&
+                  featureProducts[categoryName]?.map((product, index) => {
+                    return (
+                      <div className="col-sm-6 col-lg-4 col-xxl-3 mb-3" key={index}>
+                        <div className="single-product style-1">
+                          <div className="image-wrap">
+                            <a href="#">
+                              <img
+                                src={product.thumbnail_img}
+                                alt={product.name}
+                              />
+                            </a>
+                            <div className="buttons-wrap">
+                              <button>
+                                <FaBalanceScaleLeft />
+                              </button>
+                              <button onClick={() => addToCart(product)}>
+                                <FaCartPlus />
+                              </button>
+                            </div>
+														<div className="badges">
+															{ product.discount_type =="percent" &&
+																	<div className="badge sale-badge">
+																		<span> {product.discount +'%'} </span>
+																	</div>
+															}
+															{ product.tags?.map((item,key) => {
+                                  return (
+																		<div className="badge tag-badge" key={key}>{item}</div>
+                                  );
+                                })
+                              }
+                            </div>
                           </div>
-
-                          <div className="badge tag-badge">
-                            <span>Sale</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="content-wrap">
-                        <h3 className="product-title">
-                          <a href="#">Locket New</a>
-                        </h3>
-                        <div className="price">
-                          <span className="sale">$ 200</span>
-                          <span className="del">$ 180</span>
-                        </div>
-                        <div className="ratings">
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="tab-pane fade" id="fp-beauty">
-              <div className="container">
-                <div className="row products-wrap">
-                  <div className="col-sm-6 col-md-3 mb-3">
-                    <div className="single-product style-1">
-                      <div className="image-wrap">
-                        <a href="#">
-                          <img src={product1} alt="Locket New" />
-                        </a>
-                        <div className="buttons-wrap">
-                          <button>
-                            <FaBalanceScaleLeft />
-                          </button>
-                        </div>
-                        <div className="badges">
-                          <div className="badge sale-badge">
-                            <span>10%</span>
-                          </div>
-
-                          <div className="badge tag-badge">
-                            <span>Sale</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="content-wrap">
-                        <h3 className="product-title">
-                          <a href="#">Locket New</a>
-                        </h3>
-                        <div className="price">
-                          <span className="sale">$ 200</span>
-                          <span className="del">$ 180</span>
-                        </div>
-                        <div className="ratings">
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="tab-pane fade" id="fp-groceries">
-              <div className="container">
-                <div className="row products-wrap">
-                  <div className="col-sm-6 col-md-3 mb-3">
-                    <div className="single-product style-1">
-                      <div className="image-wrap">
-                        <a href="#">
-                          <img src={product2} alt="Locket New" />
-                        </a>
-                        <div className="buttons-wrap">
-                          <button>
-                            <FaBalanceScaleLeft />
-                          </button>
-                        </div>
-                        <div className="badges">
-                          <div className="badge sale-badge">
-                            <span>10%</span>
-                          </div>
-
-                          <div className="badge tag-badge">
-                            <span>Sale</span>
+                          <div className="content-wrap">
+                            <div className="variations d-flex flex-column">
+                              <div className="variation d-flex justify-content-center">
+                                {variations?.map((item) => {
+                                  return (
+                                    <span
+                                      className={ selectVariant == `${product.id}-${item}` ? "variation-name" : '' }
+                                      onClick={() =>
+                                        handleSetVariant(product, item)
+                                      }
+                                      key={item}
+                                    >
+                                      {item}
+                                    </span>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                            <h3 className="product-title">
+                              <NavLink to={`products/${product. slug}`}>
+                                {product.name}
+                              </NavLink>
+                            </h3>
+                            <div className="price">
+                              <span className="sale">
+                                {priceFormat(product?.discount_price)}
+                              </span>
+                              <span className={ product?.discount_price ? ' del ms-1' : 'ms-1' } >
+                                {priceFormat(product.unit_price)}
+                              </span>
+                            </div>
+                            <div className="ratings">
+                              <AiFillStar />
+                              <AiFillStar />
+                              <AiFillStar />
+                              <AiFillStar />
+                              <AiFillStar />
+                            </div>
                           </div>
                         </div>
                       </div>
-                      <div className="content-wrap">
-                        <h3 className="product-title">
-                          <a href="#">Locket New</a>
-                        </h3>
-                        <div className="price">
-                          <span className="sale">$ 200</span>
-                          <span className="del">$ 180</span>
-                        </div>
-                        <div className="ratings">
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                          <AiFillStar />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                    );
+                  })}
               </div>
             </div>
           </div>
         </div>
-        <div className="d-flex  justify-content-center my-2">
-          <a href="#" className="btn btn-primary">
+        <div className="d-flex justify-content-center my-2 ">
+          <a href="#" className="btn btn-primary ">
             <MdOutlineViewInAr /> View More
           </a>
         </div>

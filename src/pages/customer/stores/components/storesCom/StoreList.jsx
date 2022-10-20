@@ -57,7 +57,7 @@ const StoreList = ({ layout , currentItems , loading }) => {
 								</p> */}
 							</div>
 							<div className={storeStyle.visitBtn}>
-								<NavLink to={`/seller-shop/${item.seller_id}`} className="btn btn-primary mb-4">
+								<NavLink to={`/seller-shop/${item.slug}`} className="btn btn-primary mb-4">
 									<IoStorefrontOutline /> Visit Store
 								</NavLink>
 							</div>

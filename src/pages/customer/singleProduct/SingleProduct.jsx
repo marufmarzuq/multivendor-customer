@@ -12,14 +12,14 @@ import ProductDescription from "./components/productDes/ProductDescription";
 import ProductInformation from "./components/ProductInfo/ProductInformation";
 
 const SingleProduct = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
 
   useEffect(() => {
     // this is for actual api call
     // getApi(`products/${id}`, setSingleProduct);
 
     // this one is for json file from local
-    getApi(`singleProduct.json/${id}`, setSingleProduct);
+    getApi(`singleProduct.json/${slug}`, setSingleProduct);
   }, []);
 
   const { product } = useSelector((state) => state.singleProductReducer);

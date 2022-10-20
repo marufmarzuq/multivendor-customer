@@ -34,8 +34,8 @@ const ProductTable = () => {
               <section>
                 {items.map((item, key) => {
                   return (
-                    <section>
-                      <div className={miniCartStyle.miniCart} key={key}>
+                    <section key={key}>
+                      <div className={miniCartStyle.miniCart}>
                         <div>
                           <img src={item?.thumbnail_img} alt="" />
                         </div>

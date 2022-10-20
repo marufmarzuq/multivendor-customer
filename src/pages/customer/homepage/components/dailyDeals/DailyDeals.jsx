@@ -9,6 +9,7 @@ import { priceFormat } from "../../../../../hooks/helper";
 import { NavLink } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import Variation from "../variation/Variation";
 
 const DailyDeals = ({ dailyDeals }) => {
 
@@ -61,18 +62,6 @@ const DailyDeals = ({ dailyDeals }) => {
   ]);
   const variations = ["M", "L", "XL"];
 
-  const handleSetVariant = (product, variant) => {
-    setSelcetVariant(`${product.id}-${variant}`);
-    const filteredProducts = products.map((prod) => {
-      if (prod.id == product.id) {
-        prod.price = prod[variant].price;
-        prod.variant = variant;
-      }
-      return prod;
-    });
-
-    setProducts(filteredProducts);
-  };
 
   const addToCart = (product) => {
     product.price = product.unit_price;
@@ -154,23 +143,20 @@ const DailyDeals = ({ dailyDeals }) => {
                           <div className="content-wrap">
                             <div className="variations d-flex flex-column">
                               <div className="variation d-flex justify-content-center">
-                                {variations?.map((item) => {
-                                  return (
-                                    <span
-                                      className={ selectVariant == `${product.id}-${item}` ? "variation-name" : '' }
-                                      onClick={() =>
-                                        handleSetVariant(product, item)
-                                      }
-                                      key={item}
-                                    >
-                                      {item}
-                                    </span>
-                                  );
-                                })}
+                                { product.product_type == "variation" &&
+																	<Variation
+																		products={products}
+																		product={product}
+																		selectVariant={selectVariant}
+																		setSelcetVariant={setSelcetVariant}
+																		variations={variations}
+																		setProducts={setProducts}
+																	/>
+                                }
                               </div>
                             </div>
                             <h3 className="product-title">
-                              <NavLink to={`products/${product.id}`}>
+                              <NavLink to={`products/${product. slug}`}>
                                 {product.name}
                               </NavLink>
                             </h3>

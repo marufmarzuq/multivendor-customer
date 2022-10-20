@@ -67,7 +67,7 @@ const Shops = ({shops}) => {
 							shops.map((shop,index)=>{
 							return(
 								<SwiperSlide key={index}>
-									<NavLink to={`/demo-shop-dqka`}>
+									<NavLink to={`/seller-shop/${shop.slug}`}>
 										<img src={shop.logo} alt={shop.name} />
 									</NavLink>
 								</SwiperSlide>

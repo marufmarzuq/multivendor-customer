@@ -7,7 +7,7 @@ import TopPart from "./components/topPart/TopPart";
 import TopSelling from "./components/topSelling/TopSelling";
 
 const SellerShop = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   return (
     <>
       <TopPart />

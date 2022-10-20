@@ -170,7 +170,7 @@ const MostPopular = ({ popularProducts }) => {
                               </div>
                             </div>
                             <h3 className="product-title">
-                              <NavLink to={`products/${product.id}`}>
+                              <NavLink to={`products/${product. slug}`}>
                                 {product.name}
                               </NavLink>
                             </h3>
