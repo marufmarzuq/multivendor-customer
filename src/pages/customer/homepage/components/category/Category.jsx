@@ -18,73 +18,14 @@ import { GiClothes, GiFruitBowl } from "react-icons/gi";
 import { BiArrowBack, BiBasketball } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import { FaBaby } from "react-icons/fa";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Next, Prev } from "react-bootstrap/esm/PageItem";
 import { FcNext, FcPrevious } from "react-icons/fc";
+import PinnedCategories from "./pinnedCategories/pinnedCategories";
 
-// const ArrowButtonPrevious = ({ onClick }) => {
-//   return (
-//     <button
-//       onClick={onClick}
-//       style={{
-//         backgroundColor: "transparent",
-//         border: "none",
-//         paddingLeft: "20px",
-//       }}
-//     >
-//       <FcPrevious />
-//     </button>
-//   );
-// };
-
-// const ArrowButtonNext = ({ style, className, onClick }) => {
-//   return (
-//     <button
-//       // className={className}
-//       className="miniSliderNextBtn"
-//       onClick={onClick}
-//       // style={{
-//       //   ...style,
-
-//       // }}
-//     >
-//       <FcNext />
-//     </button>
-//   );
-// };
-
-// function SampleNextArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: "block", background: "red" }}
-//       onClick={onClick}
-//     />
-//   );
-// }
-
-// function SamplePrevArrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{
-//         ...style,
-//         display: "block",
-//         background: "green",
-//         paddingLeft: "10px",
-//       }}
-//       onClick={onClick}
-//     />
-//   );
-// }
-
-const Category = () => {
+const Category = ( {pinnedCategories} ) => {
   const settings = {
-    // dots: true,
     infinite: true,
     speed: 200,
     slidesToShow: 4,
@@ -93,8 +34,6 @@ const Category = () => {
     autoplaySpeed: 2000,
     arrows: true,
     pauseOnFocus: true,
-    // nextArrow: <SampleNextArrow />,
-    // prevArrow: <SamplePrevArrow />,
 
     responsive: [
       {
@@ -103,7 +42,6 @@ const Category = () => {
           slidesToShow: 4,
           slidesToScroll: 1,
           infinite: true,
-          // dots: true,
         },
       },
       {
@@ -318,141 +256,7 @@ const Category = () => {
                 }}
                 className="row mx-0 px-0"
               >
-                <div className="col-12 col-xs-12 col-md-12  ">
-                  <div className="mb-5">
-                    <Slider {...settings}>
-                      <div className="mini-slide">
-                        <a href="#">
-                          <div className="image">
-                            <img src={beauty} alt="" />
-                          </div>
-                          <p>Beauty</p>
-                        </a>
-                      </div>
-
-                      <div className="mini-slide">
-                        <a href="#">
-                          <div className="image">
-                            <img src={clothing} alt="" />
-                          </div>
-                          <p>Clothing</p>
-                        </a>
-                      </div>
-                      <div className="mini-slide">
-                        <a href="#">
-                          <div className="image">
-                            <img src={beauty} alt="" />
-                          </div>
-                          <p>Beauty</p>
-                        </a>
-                      </div>
-                      <div className="mini-slide">
-                        <a href="#">
-                          <div className="image">
-                            <img src={bagAndShoes} alt="" />
-                          </div>
-                          <p>Bag and Shoes</p>
-                        </a>
-                      </div>
-
-                      <div className="mini-slide">
-                        <a href="#">
-                          <div className="image">
-                            <img src={groceries} alt="" />
-                          </div>
-                          <p>Groceries</p>
-                        </a>
-                      </div>
-
-                      <div className="mini-slide">
-                        <a href="#">
-                          <div className="image">
-                            <img src={clothing} alt="" />
-                          </div>
-                          <p>Clothing</p>
-                        </a>
-                      </div>
-
-                      <div className="mini-slide">
-                        <a href="#">
-                          <div className="image">
-                            <img src={bagAndShoes} alt="" />
-                          </div>
-                          <p>Bag and Shoes</p>
-                        </a>
-                      </div>
-                    </Slider>
-
-                    {/* <div className="swiper-wrapper ">
-                      <Swiper
-                        spaceBetween={10}
-                        centeredSlides={true}
-                        slidesPerView={3}
-                        // breakpoints={{
-                        //   320: {
-                        //     slidesPerView: 2,
-                        //   },
-                        //   550: {
-                        //     slidesPerView: 3,
-                        //   },
-                        // }}
-                        autoplay={{
-                          delay: 2500,
-                          disableOnInteraction: false,
-                        }}
-                        pagination={{
-                          clickable: true,
-                        }}
-                        loop={true}
-                        loopFillGroupWithBlank={true}
-                        navigation={true}
-                        modules={[Autoplay, Pagination, Navigation]}
-                        className="mySwiper"
-                      >
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <a href="#">
-                              <div className="thumb-image">
-                                <img src={beauty} alt="" />
-                              </div>
-                              <p>Beauty</p>
-                            </a>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <a href="#">
-                              <div className="thumb-image">
-                                <img src={groceries} alt="" />
-                              </div>
-                              <p>Groceries</p>
-                            </a>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <a href="#">
-                              <div className="thumb-image">
-                                <img src={clothing} alt="" />
-                              </div>
-                              <p>Clothing</p>
-                            </a>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <a href="#">
-                              <div className="thumb-image">
-                                <img src={bagAndShoes} alt="" />
-                              </div>
-                              <p>Bags & Shoes</p>
-                            </a>
-                          </div>
-                        </SwiperSlide>
-                      </Swiper>
-                    </div> */}
-                  </div>
-                </div>
+								<PinnedCategories settings={settings} pinnedCategories={pinnedCategories}/>
               </div>
             </div>
           </div>

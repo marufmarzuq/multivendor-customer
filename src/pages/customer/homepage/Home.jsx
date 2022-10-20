@@ -12,7 +12,7 @@ import { markutosFrontendApi } from "../../services/Api/api";
 const Home = () => {
 
   const [loading, setLoading] = useState(false);
-  const [currentItems, setCurrentItems] = useState([]);
+  const [pinnedCategories, setPinnedCategories] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
   const [dailyDeals, setDailyDeals] = useState([]);
   const [featureProducts, setFeatureProducts] = useState([]);
@@ -25,7 +25,7 @@ const Home = () => {
       .get(`/index`)
       .then((response) => {
         setLoading(false);
-				setCurrentItems(response?.data);
+				setPinnedCategories(response?.data.pinned_categories);
 				setPopularProducts(response?.data.popular_products);
 				setDailyDeals(response?.data.daily_deal_products);
 				setFeatureProducts(response?.data.featured_products);
@@ -35,7 +35,7 @@ const Home = () => {
   }, []);
   return (
     <div className="wrapper">
-			<Category />
+			<Category pinnedCategories={ pinnedCategories }/>
 			<MostPopular popularProducts={ popularProducts }/>
 			<AddSection />
 			<DailyDeals dailyDeals={dailyDeals}/>
