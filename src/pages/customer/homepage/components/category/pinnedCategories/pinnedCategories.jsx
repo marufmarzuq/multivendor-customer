@@ -1,6 +1,5 @@
 
 import { NavLink } from "react-router-dom";
-import "../category.css";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -72,7 +71,6 @@ const PinnedCategories = ({pinnedCategories}) => {
 					})
 				)
 				}
-
 			</Slider>
 		</div>
 	</div>
