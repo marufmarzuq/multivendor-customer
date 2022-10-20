@@ -13,14 +13,9 @@
 }
 .slick-slide > div {
   margin: 0 12px;
-  /* padding: 10px; */
-  /* background-color: red; */
-  /* text-align: center; */
 }
 .mini-slide {
   text-align: center;
-
-  /* border-right: 5px solid #fff; */
 }
 .mini-slide p {
   color: gray;
@@ -28,7 +23,6 @@
   margin-top: 8px;
 }
 .mini-slide .image {
-  /* background-color: green; */
   border-radius: 10px;
   background-color: #f3f3f3;
   height: 130px;

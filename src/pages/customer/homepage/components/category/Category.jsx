@@ -18,49 +18,13 @@ import { GiClothes, GiFruitBowl } from "react-icons/gi";
 import { BiArrowBack, BiBasketball } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import { FaBaby } from "react-icons/fa";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 import { Next, Prev } from "react-bootstrap/esm/PageItem";
 import { FcNext, FcPrevious } from "react-icons/fc";
 import PinnedCategories from "./pinnedCategories/pinnedCategories";
 
 const Category = ( {pinnedCategories} ) => {
-  const settings = {
-    infinite: true,
-    speed: 200,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    arrows: true,
-    pauseOnFocus: true,
 
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
   return (
     <section className="category-wrapper mt-5 wrapper">
       <div className="container">
@@ -249,15 +213,8 @@ const Category = ( {pinnedCategories} ) => {
                   </div>
                 </div>
               </div>
-              <div
-                style={{
-                  overflowX: "hidden",
-                  width: "100%",
-                }}
-                className="row mx-0 px-0"
-              >
-								<PinnedCategories settings={settings} pinnedCategories={pinnedCategories}/>
-              </div>
+								{/* Pinned Categories */}
+								<PinnedCategories pinnedCategories={pinnedCategories}/>
             </div>
           </div>
         </div>
