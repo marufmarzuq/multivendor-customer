@@ -1,12 +1,6 @@
 import React from "react";
 import "./category.css";
-import {
-  catSlider1,
-  beauty,
-  clothing,
-  groceries,
-  bagAndShoes,
-} from "../../../../../assets";
+import {catSlider1} from "../../../../../assets";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -15,12 +9,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
 import { BsBagDash, BsFlower2 } from "react-icons/bs";
 import { GiClothes, GiFruitBowl } from "react-icons/gi";
-import { BiArrowBack, BiBasketball } from "react-icons/bi";
+import { BiBasketball } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import { FaBaby } from "react-icons/fa";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import PinnedCategories from "./pinnedCategories/pinnedCategories";
 
 const Category = ({pinnedCategories}) => {
