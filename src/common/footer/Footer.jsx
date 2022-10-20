@@ -182,7 +182,7 @@ const Footer = ({footerData}) => {
       </div>
       <div className="container-fluid footer-bottom">
         <div className="row footer-copyright">
-          <p>Copyright Sakira 2021. All rights reserved</p>
+          <p>{ footerData.copyright_text ? footerData.copyright_text : "Copyright MARKUTOS 2022. All rights reserved" }</p>
         </div>
       </div>
     </footer>

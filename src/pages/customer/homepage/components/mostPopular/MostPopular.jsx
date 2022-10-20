@@ -11,8 +11,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const MostPopular = ({ popularProducts }) => {
-console.log(popularProducts);
-  const [active, setActive] = useState("");
+
   const [selectVariant, setSelcetVariant] = useState("");
   const { addItem, onItemAdd } = useCart();
   const [categoryName, setCategoryName] = useState("all");
@@ -121,7 +120,7 @@ console.log(popularProducts);
                 {popularProducts &&
                   popularProducts[categoryName]?.map((product, index) => {
                     return (
-                      <div className="col-sm-6 col-lg-4 col-xxl-3 mb-3">
+                      <div className="col-sm-6 col-lg-4 col-xxl-3 mb-3" key={index}>
                         <div className="single-product style-1">
                           <div className="image-wrap">
                             <a href="#">
@@ -138,14 +137,18 @@ console.log(popularProducts);
                                 <FaCartPlus />
                               </button>
                             </div>
-                            <div className="badges">
-                              <div className="badge sale-badge">
-                                <span>10%</span>
-                              </div>
-
-                              <div className="badge tag-badge">
-                                <span>Sale</span>
-                              </div>
+														<div className="badges">
+															{ product.discount_type =="percent" &&
+																	<div className="badge sale-badge">
+																		<span> {product.discount +'%'} </span>
+																	</div>
+															}
+															{ product.tags?.map((item,key) => {
+                                  return (
+																		<div className="badge tag-badge" key={key}>{item}</div>
+                                  );
+                                })
+                              }
                             </div>
                           </div>
                           <div className="content-wrap">
@@ -154,7 +157,7 @@ console.log(popularProducts);
                                 {variations?.map((item) => {
                                   return (
                                     <span
-                                      className={ selectVariant == `${product.id}-${item}` && "variation-name" }
+                                      className={ selectVariant == `${product.id}-${item}` ? "variation-name" : '' }
                                       onClick={() =>
                                         handleSetVariant(product, item)
                                       }

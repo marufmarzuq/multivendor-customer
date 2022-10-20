@@ -14,6 +14,8 @@ const Home = () => {
   const [loading, setLoading] = useState(false);
   const [currentItems, setCurrentItems] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
+  const [dailyDeals, setDailyDeals] = useState([]);
+  const [featureProducts, setFeatureProducts] = useState([]);
   const [shops, setShops] = useState([]);
   const [brands, setBrands] = useState([]);
 
@@ -25,6 +27,8 @@ const Home = () => {
         setLoading(false);
 				setCurrentItems(response?.data);
 				setPopularProducts(response?.data.popular_products);
+				setDailyDeals(response?.data.daily_deal_products);
+				setFeatureProducts(response?.data.featured_products);
 				setShops(response?.data.shops);
 				setBrands(response?.data.brands);
       });
@@ -34,9 +38,9 @@ const Home = () => {
 			<Category />
 			<MostPopular popularProducts={ popularProducts }/>
 			<AddSection />
-			<DailyDeals />
+			<DailyDeals dailyDeals={dailyDeals}/>
 			<AddSectionTwo />
-			<Featured />
+			<Featured featureProducts={featureProducts}/>
 			<Brands brands={brands}/>
 			<Shops shops={shops}/>
     </div>

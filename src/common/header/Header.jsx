@@ -65,7 +65,7 @@ const customStyles = {
   }),
 };
 
-const Header = ({ headerLogo }) => {
+const Header = ({ headerLogo , languageSwitcher, currencySwitcher }) => {
   const [mobileNav, setMobileNav] = useState(false);
   const navigate = useNavigate();
   const logout = () => {
@@ -90,52 +90,61 @@ const Header = ({ headerLogo }) => {
           <div className="row align-items-center">
             <div className="col-4 col-lg-6 col-xl-6 col-xxl-6 left-menu">
               <ul className="d-flex">
-                <li className="dropdown">
-                  <a
-                    className="dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                  >
-                    Euro
-                  </a>
+							{
+							languageSwitcher == true && (
+								<li className="dropdown">
+									<a
+										className="dropdown-toggle"
+										href="#"
+										role="button"
+										data-bs-toggle="dropdown"
+									>
+										En
+									</a>
 
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        USD
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        BDT
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="dropdown">
-                  <a
-                    className="dropdown-toggle"
-                    href="#"
-                    role="button"
-                    data-bs-toggle="dropdown"
-                  >
-                    En
-                  </a>
+									<ul className="dropdown-menu">
+										<li>
+											<a className="dropdown-item" href="#">
+												Bn
+											</a>
+										</li>
+										<li>
+											<a className="dropdown-item" href="#">
+												Ar
+											</a>
+										</li>
+									</ul>
+								</li>
+								)
+							}
+							{
+								currencySwitcher == true &&
+								(
+									<li className="dropdown">
+									<a
+										className="dropdown-toggle"
+										href="#"
+										role="button"
+										data-bs-toggle="dropdown"
+									>
+										Euro
+									</a>
 
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Bn
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Ar
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+										<ul className="dropdown-menu">
+											<li>
+												<a className="dropdown-item" href="#">
+													USD
+												</a>
+											</li>
+											<li>
+												<a className="dropdown-item" href="#">
+													BDT
+												</a>
+											</li>
+										</ul>
+									</li>
+								)
+							}
               </ul>
             </div>
             <div className="col-8 col-lg-6 col-xl-6 col-xxl-6 right-menu">
