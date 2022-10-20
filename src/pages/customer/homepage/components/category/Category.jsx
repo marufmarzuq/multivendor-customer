@@ -18,12 +18,12 @@ import { GiClothes, GiFruitBowl } from "react-icons/gi";
 import { BiArrowBack, BiBasketball } from "react-icons/bi";
 import { AiFillCar } from "react-icons/ai";
 import { FaBaby } from "react-icons/fa";
-
-import { Next, Prev } from "react-bootstrap/esm/PageItem";
-import { FcNext, FcPrevious } from "react-icons/fc";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import PinnedCategories from "./pinnedCategories/pinnedCategories";
 
-const Category = ( {pinnedCategories} ) => {
+const Category = ({pinnedCategories}) => {
 
   return (
     <section className="category-wrapper mt-5 wrapper">
@@ -213,8 +213,8 @@ const Category = ( {pinnedCategories} ) => {
                   </div>
                 </div>
               </div>
-								{/* Pinned Categories */}
-								<PinnedCategories pinnedCategories={pinnedCategories}/>
+              {/* Pinned categories */}
+							<PinnedCategories pinnedCategories={pinnedCategories}/>
             </div>
           </div>
         </div>
