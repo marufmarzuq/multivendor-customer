@@ -8,8 +8,11 @@ import {
 import { BiSad } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { useCart } from "react-use-cart";
+import { priceFormat } from "../../../../../hooks/helper";
 import CartTotal from "../../../cart/components/cartCom/CartTotal";
 import miniCartStyle from "../../miniCart.module.css";
+// import {priceFormat} from "../../../hooks/helper";
+
 const ProductTable = () => {
   const {
     isEmpty,
@@ -42,7 +45,7 @@ const ProductTable = () => {
                         <div className={miniCartStyle.content}>
                           <h5>{item.name}</h5>
                           <h5>(x {item.quantity})</h5>
-                          <h6> $ {item.itemTotal} </h6>
+                          <h6>{ priceFormat(item.itemTotal) }</h6>
                           <small>
                             {item?.variant
                               ? `( Variant: ${item?.variant} )`
@@ -76,7 +79,7 @@ const ProductTable = () => {
               </section>
               <section>
                 <div className="mb-4">
-                  <CartTotal total={cartTotal} cartTotalTitle="checkout" />
+                  <CartTotal cartTotal={cartTotal} cartTotalTitle="checkout" />
                 </div>
                 <div className={miniCartStyle.buttons}>
                   <div>

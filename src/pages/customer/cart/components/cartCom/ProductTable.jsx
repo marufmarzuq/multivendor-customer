@@ -2,20 +2,12 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import cartStyle from "./cart.module.css";
 import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { useState } from "react";
-const ProductTable = () => {
-  const [quantity, setQuantity] = useState(2);
-  const decreaseQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
-  };
+import { priceFormat } from "../../../../../hooks/helper";
+const ProductTable = ({totalUniqueItems,items,updateItemQuantity,removeItem}) => {
 
-  const increaseQuantity = () => {
-    setQuantity(quantity + 1);
-  };
   return (
     <div className={cartStyle.productTable}>
+			<p>Total ({totalUniqueItems}) item(s)</p>
       <Table borderless responsive>
         <thead className="thead-light">
           <tr>
@@ -27,29 +19,33 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="py-3"> Smart Watch External </td>
-            <td className="py-3">$ 20.00</td>
+        {items.map((item, key) => {
+          return (
+          <tr key={key}>
+            <td className="py-3"> {item.name} </td>
+            <td className="py-3">{priceFormat(item.price)}</td>
             <td className="py-3">
               <div className={cartStyle.quantity}>
-                <button onClick={decreaseQuantity}>
+                <button onClick={() => updateItemQuantity(item.id, item.quantity - 1)}>
                   <AiOutlineMinus />
                 </button>
-                <span> {quantity} </span>
-                <button onClick={increaseQuantity}>
+                <span> {item.quantity} </span>
+                <button onClick={() => updateItemQuantity(item.id, item.quantity + 1)}>
                   {" "}
                   <AiOutlinePlus />{" "}
                 </button>
               </div>
             </td>
-            <td className="py-3">$ 20.00</td>
+            <td className="py-3">{priceFormat(item.itemTotal)}</td>
             <td className="py-3">
-              <button className={cartStyle.deleteBtn}>
+              <button className={cartStyle.deleteBtn} onClick={() => removeItem(item.id) }>
                 {" "}
                 <AiOutlineDelete />{" "}
               </button>
             </td>
           </tr>
+          );
+				})}
         </tbody>
       </Table>
     </div>
