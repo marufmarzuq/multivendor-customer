@@ -13,7 +13,9 @@
   display: grid;
   grid-template-columns: 1fr;
 }
-
+.address {
+  margin-top: 1%;
+}
 .submitBtn {
   display: grid;
   grid-template-columns: 1fr 1fr;
