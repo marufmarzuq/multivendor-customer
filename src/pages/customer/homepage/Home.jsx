@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import AddSectionTwo from "./components/addSection/AddSectionTwo";
 import AddSection from "./components/addSection/AddSection";
 import Brands from "./components/brand/Brands";

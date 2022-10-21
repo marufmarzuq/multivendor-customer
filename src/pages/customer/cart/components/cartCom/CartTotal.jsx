@@ -47,7 +47,7 @@ const CartTotal = ({ proceedKey, cartTotalTitle, cartTotal }) => {
         </div>
 
         {proceedKey == "checkout" ? (
-          <div class="form-group mt-3 ">
+          <div className="form-group mt-3 ">
             <h6
               className="pb-1"
               style={{
@@ -57,7 +57,7 @@ const CartTotal = ({ proceedKey, cartTotalTitle, cartTotal }) => {
             >
               Shipping Method:
             </h6>
-            <select class="form-control" name="" id="">
+            <select className="form-control" name="" id="">
               <option>Free Shipping</option>
               <option>Economy</option>
               <option>Ultra Fast</option>
