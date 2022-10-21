@@ -9,8 +9,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
 import PinnedCategories from "./pinnedCategories/pinnedCategories";
 import LeftCategories from "./leftCategories/LeftCategories";
+import Sliders from "./sliders/Sliders";
 
-const Category = ({pinnedCategories}) => {
+const Category = ({pinnedCategories,sliders}) => {
 
   return (
     <section className="category-wrapper mt-5 wrapper">
@@ -26,91 +27,7 @@ const Category = ({pinnedCategories}) => {
           >
             <div className="container-fluid">
               <div className="row mb-4">
-                <div className="col-12 col-xs-9 col-md-9 my-2">
-                  {/* <!-- Slider main container --> */}
-
-                  <div className="category-slider">
-                    <div className="swiper-wrapper">
-                      <Swiper
-                        spaceBetween={30}
-                        centeredSlides={true}
-                        slidesPerView={1}
-                        autoplay={{
-                          delay: 2500,
-                          disableOnInteraction: false,
-                        }}
-                        pagination={{
-                          clickable: true,
-                        }}
-                        loop={true}
-                        loopFillGroupWithBlank={true}
-                        navigation={true}
-                        modules={[Autoplay, Pagination, Navigation]}
-                        className="mySwiper"
-                      >
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <img src={catSlider1} alt="" />
-                            <div className="slider-content">
-                              <h3>
-                                Upto 30% Off on <br />
-                                Groceries
-                              </h3>
-                              <a href="#" className="button-outline">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <img src={catSlider1} alt="" />
-                            <div className="slider-content">
-                              <h3>
-                                Upto 30% Off on <br />
-                                Groceries
-                              </h3>
-                              <a href="#" className="button-outline">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <img src={catSlider1} alt="" />
-                            <div className="slider-content">
-                              <h3>
-                                Upto 30% Off on <br />
-                                Groceries
-                              </h3>
-                              <a href="#" className="button-outline">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="swiper-slide">
-                            <img src={catSlider1} alt="" />
-                            <div className="slider-content">
-                              <h3>
-                                Upto 30% Off on <br />
-                                Groceries
-                              </h3>
-                              <a href="#" className="button-outline">
-                                Shop Now
-                              </a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      </Swiper>
-
-                      {/* </div> */}
-                    </div>
-                  </div>
-                </div>
-                {/* <!-- ./Slider main container --> */}
+                <Sliders sliders={sliders}/>
                 <div className="col-12 col-xs-3 col-md-3 my-2">
                   <div className="category-promotion">
                     <h4>Winter Flash Sale!</h4>

@@ -69,25 +69,6 @@ export const reviewSlice = createSlice({
   },
 });
 
-//single products reducer
-export const singleProductSlice = createSlice({
-  name: "singleProduct",
-  initialState: {
-    product: [],
-    loading: false,
-    error: "",
-  },
-
-  reducers: {
-    setSingleProduct: (state, action) => {
-      state.loading = action.payload.loading;
-      state.error = action.payload.error;
-      state.product = action.payload.data;
-    },
-  },
-});
-
 export const { setProducts }      = productSlice.actions;
-export const { setSingleProduct } = singleProductSlice.actions;
 export const { setWishlist }      = wishlistSlice.actions;
 export const { setReviews }       = reviewSlice.actions;

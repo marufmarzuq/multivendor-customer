@@ -2,7 +2,6 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import {
   productSlice,
-  singleProductSlice,
   wishlistSlice,
   reviewSlice,
 } from "../slices/seller/products";
@@ -23,7 +22,6 @@ import { shopSettingSlice } from "../slices/seller/shopSetting";
 export const store = configureStore({
   reducer: {
     productSlice: productSlice.reducer,
-    singleProductReducer: singleProductSlice.reducer,
     orderSlice: orderSlice.reducer,
     sentRefundsSlice: sentRefundsSlice.reducer,
     receivedRefundsSlice: receivedRefundsSlice.reducer,
