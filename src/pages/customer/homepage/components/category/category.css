@@ -7,7 +7,11 @@
   margin-top: -60px;
   z-index: 20 !important;
 } */
-
+.icon_size{
+	height: 20px;
+	width: 20px;
+	padding-right: 2px;
+}
 .slick-slider {
   margin: 0 -23px;
 }

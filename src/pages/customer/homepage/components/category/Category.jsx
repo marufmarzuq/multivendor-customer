@@ -5,20 +5,19 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, Pagination } from "swiper";
 import PinnedCategories from "./pinnedCategories/pinnedCategories";
 import LeftCategories from "./leftCategories/LeftCategories";
 import Sliders from "./sliders/Sliders";
+import Ads from "./sliders/Ads";
 
-const Category = ({pinnedCategories,sliders}) => {
+const Category = ({pinnedCategories,sliders,categories}) => {
 
   return (
     <section className="category-wrapper mt-5 wrapper">
       <div className="container">
         <div className="row">
         	{/* Left side categories */}
-					<LeftCategories/>
+					<LeftCategories categories={categories}/>
           <div
             style={{
               marginTop: "-7px",
@@ -27,18 +26,10 @@ const Category = ({pinnedCategories,sliders}) => {
           >
             <div className="container-fluid">
               <div className="row mb-4">
+              	{/* Sliders */}
                 <Sliders sliders={sliders}/>
-                <div className="col-12 col-xs-3 col-md-3 my-2">
-                  <div className="category-promotion">
-                    <h4>Winter Flash Sale!</h4>
-                    <h3>
-                      Upto 65% <br /> On <br /> Baby Products
-                    </h3>
-                    <a href="#" className="button-outline">
-                      Shop Now
-                    </a>
-                  </div>
-                </div>
+                {/* adds */}
+								<Ads/>
               </div>
               {/* Pinned categories */}
 							<PinnedCategories pinnedCategories={pinnedCategories}/>

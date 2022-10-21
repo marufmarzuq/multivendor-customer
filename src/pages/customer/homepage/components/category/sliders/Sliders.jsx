@@ -1,6 +1,5 @@
 
 import { NavLink } from "react-router-dom";
-import {catSlider1} from "../../../../../../assets";
 import "../category.css";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -8,9 +7,11 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Sliders = ({sliders}) => {
-
+console.log(sliders.length == 0 );
   return (
 		<div className="col-12 col-xs-9 col-md-9 my-2">
 		{/* <!-- Slider main container --> */}
@@ -21,7 +22,7 @@ const Sliders = ({sliders}) => {
 					centeredSlides={true}
 					slidesPerView={1}
 					autoplay={{
-						delay: 2500,
+						delay: 2000,
 						disableOnInteraction: false,
 					}}
 					pagination={{
@@ -33,62 +34,30 @@ const Sliders = ({sliders}) => {
 					modules={[Autoplay, Pagination, Navigation]}
 					className="mySwiper"
 				>
-					<SwiperSlide>
-						<div className="swiper-slide">
-							<img src={catSlider1} alt="" />
-							<div className="slider-content">
-								<h3>
-									Upto 30% Off on <br />
-									Groceries
-								</h3>
-								<a href="#" className="button-outline">
-									Shop Now
-								</a>
-							</div>
-						</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						<div className="swiper-slide">
-							<img src={catSlider1} alt="" />
-							<div className="slider-content">
-								<h3>
-									Upto 30% Off on <br />
-									Groceries
-								</h3>
-								<a href="#" className="button-outline">
-									Shop Now
-								</a>
-							</div>
-						</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						<div className="swiper-slide">
-							<img src={catSlider1} alt="" />
-							<div className="slider-content">
-								<h3>
-									Upto 30% Off on <br />
-									Groceries
-								</h3>
-								<a href="#" className="button-outline">
-									Shop Now
-								</a>
-							</div>
-						</div>
-					</SwiperSlide>
-					<SwiperSlide>
-						<div className="swiper-slide">
-							<img src={catSlider1} alt="" />
-							<div className="slider-content">
-								<h3>
-									Upto 30% Off on <br />
-									Groceries
-								</h3>
-								<a href="#" className="button-outline">
-									Shop Now
-								</a>
-							</div>
-						</div>
-					</SwiperSlide>
+					{
+						sliders.length == 0 ? (
+							<SkeletonTheme height={50}>
+							<p><Skeleton count={5}/></p>
+							</SkeletonTheme>
+						) :
+						(
+							sliders.map((item,key)=>{
+								return(
+									<SwiperSlide key={key}>
+										<div className="swiper-slide">
+											<img src={item.image} alt={item.title} />
+											<div className="slider-content">
+												<h3>{item.title}</h3>
+												<NavLink to={item.link} className="button-outline">
+													Shop Now
+												</NavLink>
+											</div>
+										</div>
+									</SwiperSlide>
+								)
+							})
+						)
+					}
 				</Swiper>
 
 				{/* </div> */}
