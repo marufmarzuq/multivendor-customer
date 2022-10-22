@@ -18,7 +18,7 @@ const ShopCom = () => {
 				setShopProduct(response?.data.data);
 		});
 	}, []);
-console.log(shopProduct);
+// console.log(shopProduct);
   return (
       <section className="shop-wrap my-4">
         <div className="container">

@@ -23,12 +23,12 @@ const SellerShop = () => {
 				setSellerShop(response?.data);
 		});
 	},[]);
-
+console.log(sellerShop);
   return (
     <>
       <TopPart
 				loading={loading}
-				shopName={sellerShop.shop_name}
+				shopName={sellerShop.name}
 				address={sellerShop.address}
 				logo={sellerShop.logo}
 				avgRating={sellerShop.avg_rating}
@@ -38,7 +38,7 @@ const SellerShop = () => {
       <NewArrivals newArrival={sellerShop.new_arrival_products} />
       <TopSelling topSelling={sellerShop.top_selling_products} />
       <AllProducts allProducts={sellerShop.all_products}/>
-      <AboutShop shopName={sellerShop.shop_name} about={sellerShop.about}/>
+      <AboutShop shopName={sellerShop.name} about={sellerShop.about}/>
     </>
   );
 };
