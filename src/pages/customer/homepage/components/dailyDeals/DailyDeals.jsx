@@ -1,10 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import "../dailyDeals/dailyDeals.css";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft, FaCartPlus } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
 import { useCart } from "react-use-cart";
-import { useState } from "react";
 import { priceFormat } from "../../../../../hooks/helper";
 import { NavLink } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";

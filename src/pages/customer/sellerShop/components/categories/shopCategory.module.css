@@ -48,7 +48,9 @@
   font-size: 90px;
   color: rgba(0, 0, 0, 0.658);
 }
-
+.slideItem img{
+width: 100%;
+}
 .slideItem:hover {
   box-shadow: 3px 3px 10px rgba(128, 128, 128, 0.313);
 }

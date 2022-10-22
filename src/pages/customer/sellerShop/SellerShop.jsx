@@ -23,7 +23,7 @@ const SellerShop = () => {
 				setSellerShop(response?.data);
 		});
 	},[]);
-console.log(sellerShop);
+
   return (
     <>
       <TopPart
