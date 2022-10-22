@@ -4,7 +4,7 @@ import { FaBalanceScaleLeft } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
 import { product, product1 } from "../../../../../assets";
 import arrivalStyle from "./topSelling.module.css";
-const TopSelling = () => {
+const TopSelling = ({topSelling}) => {
   return (
     <div className="container">
       <div className={arrivalStyle.titles}>

@@ -15,16 +15,14 @@ const SellerShop = () => {
   const [loading, setLoading] = useState(false);
   const [sellerShop, setSellerShop] = useState([]);
   useEffect(() => {
-  	console.log(slug);
     setLoading(true);
     markutosFrontendApi
       .get(`/seller-shop?slug=${slug}`)
       .then((response) => {
         setLoading(false);
 				setSellerShop(response?.data);
-				console.log(response);
 		});
-	}, []);
+	},[]);
 
   return (
     <>

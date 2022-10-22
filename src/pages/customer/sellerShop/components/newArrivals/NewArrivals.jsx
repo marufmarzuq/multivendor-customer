@@ -4,7 +4,7 @@ import { FaBalanceScaleLeft } from "react-icons/fa";
 import { MdOutlineViewInAr } from "react-icons/md";
 import { product2 } from "../../../../../assets";
 import arrivalStyle from "./arrival.module.css";
-const NewArrivals = () => {
+const NewArrivals = ({newArrival}) => {
   return (
     <div className="container">
       <div className={arrivalStyle.titles}>

@@ -14,7 +14,7 @@ const TopPart = ({loading,shopName,address,logo,avgRating,sliders}) => {
   return (
     <div className="container">
       <div className={topPartStyle.topPartContainer}>
-      {loading ?
+      { loading ?
       (
 				<SkeletonTheme height={25}>
 					<p><Skeleton count={5} /></p>
@@ -67,13 +67,13 @@ const TopPart = ({loading,shopName,address,logo,avgRating,sliders}) => {
 								className="mySwiper"
 							>
 							{
-								sliders.length == 0 ? (
+								sliders?.length == 0 ? (
 									<SkeletonTheme height={50}>
 									<p><Skeleton count={5}/></p>
 									</SkeletonTheme>
 								) :
 								(
-									sliders.map((item,key)=>{
+									sliders?.map((item,key)=>{
 										return(
 											<SwiperSlide  className={topPartStyle.swiperSlide} key={key}>
 												<div className={topPartStyle.swiperSlideContent}>

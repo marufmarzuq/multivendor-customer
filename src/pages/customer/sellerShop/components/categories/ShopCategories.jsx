@@ -14,7 +14,7 @@ import { BsHandbag } from "react-icons/bs";
 import { BiBasketball } from "react-icons/bi";
 import { RiBearSmileLine } from "react-icons/ri";
 import { AiOutlineLaptop } from "react-icons/ai";
-const ShopCategories = () => {
+const ShopCategories = ({categories}) => {
   return (
     <div className="container">
       <div className={categoryStyle.titles}>
