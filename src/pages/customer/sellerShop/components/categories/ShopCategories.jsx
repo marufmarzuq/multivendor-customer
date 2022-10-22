@@ -10,7 +10,7 @@ import { GiJeweledChalice } from "react-icons/gi";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { NavLink } from "react-router-dom";
 
-const ShopCategories = ({categories}) => {
+const ShopCategories = ({loading,categories}) => {
   return (
     <div className="container">
       <div className={categoryStyle.titles}>
@@ -25,13 +25,13 @@ const ShopCategories = ({categories}) => {
         </div>
       </div>
       <section className="my-5">
-				{ categories?.length == 0 ?
+				{ loading ?
 					(
 						<SkeletonTheme height={50}>
 						<p>
 							<Skeleton count={5} />
 						</p>
-					</SkeletonTheme>
+						</SkeletonTheme>
 					) :
 					(
 						<Swiper

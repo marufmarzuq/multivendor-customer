@@ -9,7 +9,7 @@ import { useCart } from "react-use-cart";
 import { priceFormat } from "../../../../../hooks/helper";
 import Variation from "../../../homepage/components/variation/Variation";
 
-const NewArrivals = ({newArrival}) => {
+const NewArrivals = ({ loading , newArrival}) => {
 	const [selectVariant, setSelcetVariant] = useState("");
   const { addItem, onItemAdd } = useCart();
 	const addToCart = (product) => {
@@ -68,14 +68,11 @@ const NewArrivals = ({newArrival}) => {
       </div>
       <section>
         <div className={arrivalStyle.productsContainer}>
-        { newArrival?.length == 0 ?
-					(
+        { loading ?
 						<SkeletonTheme height={50}>
-						<p>
-							<Skeleton count={5} />
-						</p>
-					</SkeletonTheme>
-					) :
+							<p><Skeleton count={5} /></p>
+						</SkeletonTheme>
+					:
 					(
 						newArrival?.map((product,index)=>{
 							return(

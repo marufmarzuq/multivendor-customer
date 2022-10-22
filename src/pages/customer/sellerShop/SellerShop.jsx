@@ -34,11 +34,11 @@ const SellerShop = () => {
 				avgRating={sellerShop.avg_rating}
 				sliders={sellerShop.sliders}
       />
-      <ShopCategories categories={sellerShop.categories} />
-      <NewArrivals newArrival={sellerShop.new_arrival_products} />
-      <TopSelling topSelling={sellerShop.top_selling_products} />
-      <AllProducts allProducts={sellerShop.all_products}/>
-      <AboutShop shopName={sellerShop.name} about={sellerShop.about}/>
+      <ShopCategories loading={loading} categories={sellerShop.categories} />
+      <NewArrivals loading={loading} newArrival={sellerShop.new_arrival_products} />
+      <TopSelling loading={loading} topSelling={sellerShop.top_selling_products} />
+      <AllProducts loading={loading} allProducts={sellerShop.all_products}/>
+      <AboutShop loading={loading} shopName={sellerShop.name} about={sellerShop.about}/>
     </>
   );
 };

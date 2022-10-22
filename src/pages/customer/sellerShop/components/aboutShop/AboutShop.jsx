@@ -2,13 +2,13 @@ import React from "react";
 import aboutStyle from "./aboutShop.module.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-const AboutShop = ({about,shopName}) => {
+const AboutShop = ({loading,about,shopName}) => {
   return (
     <div className="container pb-5">
       <div className={aboutStyle.titles}>
         <h1 className="pt-5 mt-5 mb-5 text-center">About {shopName}</h1>
       </div>
-			{ about == "" ? (
+			{ loading ? (
 				<SkeletonTheme height={50}>
 					<p><Skeleton count={5} /></p>
 				</SkeletonTheme>
