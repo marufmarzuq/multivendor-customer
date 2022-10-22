@@ -9,7 +9,7 @@ import LeftCategories from "./leftCategories/LeftCategories";
 import Sliders from "./sliders/Sliders";
 import Ads from "./sliders/Ads";
 
-const Category = ({pinnedCategories,sliders,categories}) => {
+const Category = ({loading,pinnedCategories,sliders,categories}) => {
   return (
     <section className="category-wrapper mt-5 wrapper">
       <div className="container">
@@ -25,7 +25,7 @@ const Category = ({pinnedCategories,sliders,categories}) => {
             <div className="container-fluid">
               <div className="row mb-4">
               	{/* Sliders */}
-                <Sliders sliders={sliders}/>
+                <Sliders loading ={loading} sliders={sliders}/>
                 {/* adds */}
 								<Ads/>
               </div>

@@ -61,9 +61,8 @@ const DailyDeals = ({ dailyDeals }) => {
   ]);
   const variations = ["M", "L", "XL"];
 
-
   const addToCart = (product) => {
-    product.price = product.unit_price;
+    product.price = product.discount_price;
     addItem(product);
   };
 

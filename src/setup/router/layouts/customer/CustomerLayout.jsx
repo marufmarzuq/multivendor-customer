@@ -21,10 +21,8 @@ const CustomerLayout = () => {
   return (
     <div className="wrapper">
       <Header
-      // languageSwitcher={currentItems.language_switcher ? currentItems.language_switcher : 1 }
-      // currencySwitcher={currentItems.currency_switcher ? currentItems.currency_switcher : 1 }
-			languageSwitcher={ 1 }
-      currencySwitcher={ 1 }
+      languageSwitcher={currentItems.language_switcher ? currentItems.language_switcher : 1 }
+      currencySwitcher={currentItems.currency_switcher ? currentItems.currency_switcher : 1 }
       headerLogo={ currentItems.header_logo ? currentItems.header_logo : "" }
       />
       <Outlet />

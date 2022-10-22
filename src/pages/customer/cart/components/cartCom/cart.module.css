@@ -1,7 +1,10 @@
 .productTable thead {
   background-color: #d9e8fb;
 }
-
+.del{
+	color: #777777;
+	text-decoration: line-through;
+}
 .productTable tr {
   border-bottom: 1px solid rgba(128, 128, 128, 0.176);
 }
@@ -51,7 +54,6 @@
 }
 .couponBtn {
   padding: 10px 15px !important;
-  /* border: none; */
   border-radius: 0 8px 8px 0 !important;
   background-color: #2e74e8 !important;
   color: #fff !important;

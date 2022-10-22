@@ -75,7 +75,7 @@ const MostPopular = ({ popularProducts }) => {
   };
 
   const addToCart = (product) => {
-    product.price = product.unit_price;
+    product.price = product.discount_price;
     addItem(product);
   };
 

@@ -7,6 +7,7 @@ import Reviews from "./components/singleCom/Reviews";
 import { useParams } from "react-router-dom";
 import ProductDescription from "./components/productDes/ProductDescription";
 import ProductInformation from "./components/ProductInfo/ProductInformation";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const SingleProduct = () => {
   const { slug } = useParams();
@@ -17,13 +18,14 @@ const SingleProduct = () => {
   useEffect(() => {
     setLoading(true);
     markutosFrontendApi
-      .get(`/index`)
+      .get(`/product-details?product_slug=${slug}`)
       .then((response) => {
         setLoading(false);
+        setSingleProduct(response?.data);
 		});
 	}, []);
 
-
+// console.log(singleProduct);
   return (
     <section className="single-product-wrap my-4">
       <div className="container">
@@ -32,7 +34,7 @@ const SingleProduct = () => {
             <Slider />
           </div>
           <div className="col-12 col-md-6 mb-5 mb-md-2 overflow-hidden">
-            <ProductDetails />
+            <ProductDetails loading={loading} singleProduct={singleProduct} />
           </div>
         </div>
         <ProductDescription />

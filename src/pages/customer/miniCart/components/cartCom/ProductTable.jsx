@@ -51,6 +51,7 @@ const ProductTable = () => {
                               ? `( Variant: ${item?.variant} )`
                               : ""}
                           </small>
+													<div><span className="me-1">Sold By : </span><span>{item.shop_name}</span></div>
                         </div>
                         <div className={miniCartStyle.cartIncreaseButton}>
                           <button

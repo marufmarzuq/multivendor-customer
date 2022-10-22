@@ -28,9 +28,7 @@ const ShopCategories = ({loading,categories}) => {
 				{ loading ?
 					(
 						<SkeletonTheme height={50}>
-						<p>
-							<Skeleton count={5} />
-						</p>
+						<p><Skeleton count={5} /></p>
 						</SkeletonTheme>
 					) :
 					(

@@ -38,7 +38,7 @@ const Home = () => {
   }, []);
   return (
     <div className="wrapper">
-			<Category sliders={sliders} categories={categories} pinnedCategories={ pinnedCategories }/>
+			<Category loading={loading} sliders={sliders} categories={categories} pinnedCategories={ pinnedCategories }/>
 			<MostPopular popularProducts={ popularProducts }/>
 			<AddSection />
 			<DailyDeals dailyDeals={dailyDeals}/>
