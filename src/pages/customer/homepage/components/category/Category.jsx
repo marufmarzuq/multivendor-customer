@@ -1,6 +1,5 @@
 import React from "react";
 import "./category.css";
-import {catSlider1} from "../../../../../assets";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -11,7 +10,6 @@ import Sliders from "./sliders/Sliders";
 import Ads from "./sliders/Ads";
 
 const Category = ({pinnedCategories,sliders,categories}) => {
-
   return (
     <section className="category-wrapper mt-5 wrapper">
       <div className="container">

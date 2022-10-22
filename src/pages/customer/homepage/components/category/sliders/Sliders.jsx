@@ -1,6 +1,5 @@
 
 import { NavLink } from "react-router-dom";
-import "../category.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -11,7 +10,6 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const Sliders = ({sliders}) => {
-console.log(sliders.length == 0 );
   return (
 		<div className="col-12 col-xs-9 col-md-9 my-2">
 		{/* <!-- Slider main container --> */}
