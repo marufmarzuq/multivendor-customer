@@ -21,7 +21,7 @@ const ProductTable = () => {
     removeItem,
     cartTotal,
   } = useCart();
-console.log(items);
+
   return (
     <>
       <div className="pt-3">
