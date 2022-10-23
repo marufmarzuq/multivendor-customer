@@ -30,6 +30,8 @@ const ProductDetails = ({loading,singleProduct}) => {
     addItem(product);
   };
 
+  const handleSetVariant = (product, variant) => {
+  };
 
   return (
 			loading ? (

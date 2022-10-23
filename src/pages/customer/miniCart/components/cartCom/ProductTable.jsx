@@ -11,7 +11,6 @@ import { useCart } from "react-use-cart";
 import { priceFormat } from "../../../../../hooks/helper";
 import CartTotal from "../../../cart/components/cartCom/CartTotal";
 import miniCartStyle from "../../miniCart.module.css";
-// import {priceFormat} from "../../../hooks/helper";
 
 const ProductTable = () => {
   const {

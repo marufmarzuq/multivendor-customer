@@ -9,73 +9,14 @@ import { priceFormat } from "../../../../../hooks/helper";
 import { NavLink } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import Variation from "../../../../../common/product/variation/Variation";
 
 const MostPopular = ({ popularProducts }) => {
 
-  const [selectVariant, setSelcetVariant] = useState("");
   const { addItem, onItemAdd } = useCart();
   const [categoryName, setCategoryName] = useState("all");
-  const [products, setProducts] = useState([
-    {
-      id: 1,
-      name: "Canon Camera",
-      price: 99,
-      M: {
-        price: 99,
-      },
-      L: {
-        price: 100,
-      },
-      XL: {
-        price: 110,
-      },
-    },
-    {
-      id: 2,
-      name: "Table Fan",
-      price: 56,
-      M: {
-        price: 56,
-      },
-      L: {
-        price: 62,
-      },
-      XL: {
-        price: 65,
-      },
-    },
-    {
-      id: 3,
-      name: "Water Heater",
-      price: 45,
-      M: {
-        price: 45,
-      },
-      L: {
-        price: 50,
-      },
-      XL: {
-        price: 48,
-      },
-    },
-  ]);
-  const variations = ["M", "L", "XL"];
-
-  const handleSetVariant = (product, variant) => {
-    setSelcetVariant(`${product.id}-${variant}`);
-    const filteredProducts = products.map((prod) => {
-      if (prod.id == product.id) {
-        prod.price = prod[variant].price;
-        prod.variant = variant;
-      }
-      return prod;
-    });
-
-    setProducts(filteredProducts);
-  };
 
   const addToCart = (product) => {
-    product.price = product.discount_price;
     addItem(product);
   };
 
@@ -152,25 +93,15 @@ const MostPopular = ({ popularProducts }) => {
                             </div>
                           </div>
                           <div className="content-wrap">
-                            <div className="variations d-flex flex-column">
-                              <div className="variation d-flex justify-content-center">
-                                {variations?.map((item) => {
-                                  return (
-                                    <span
-                                      className={ selectVariant == `${product.id}-${item}` ? "variation-name" : '' }
-                                      onClick={() =>
-                                        handleSetVariant(product, item)
-                                      }
-                                      key={item}
-                                    >
-                                      {item}
-                                    </span>
-                                  );
-                                })}
-                              </div>
-                            </div>
+														{ product.product_type == "variation" &&
+															<Variation
+															choseOptions={product.choice_options}
+															product={product}
+															colors={product.colors}
+															/>
+														}
                             <h3 className="product-title">
-                              <NavLink to={`products/${product. slug}`}>
+                              <NavLink to={`products/${product.slug}`}>
                                 {product.name}
                               </NavLink>
                             </h3>
