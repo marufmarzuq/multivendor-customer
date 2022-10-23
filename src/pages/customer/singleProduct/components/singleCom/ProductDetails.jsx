@@ -13,13 +13,23 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { Fragment } from "react";
 import { priceFormat } from "../../../../../hooks/helper";
 import { useCart } from "react-use-cart";
+import Variation from "./Variation";
 
 const ProductDetails = ({loading,singleProduct}) => {
 
 	const {
     items,
+    addItem,
     updateItemQuantity,
+    getItem,
   } = useCart();
+
+	const myItem = loading == false && getItem(singleProduct.id);
+
+  const addToCart = (product) => {
+    addItem(product);
+  };
+
 
   return (
 			loading ? (
@@ -66,49 +76,25 @@ const ProductDetails = ({loading,singleProduct}) => {
 						</button>
 					</div>
 
-					<div className="product-meta radio-wrap color-wrap d-inline-flex align-items-center">
-						<span className="label">Color : </span>
-						<div className="radio-item">
-							<input type="radio" name="" value="L" id="red" />
-							<label htmlFor="red" style={{ backgroundColor: "red" }}></label>
-						</div>
-						<div className="radio-item">
-							<input type="radio" name="" value="L" id="green" />
-							<label htmlFor="green" style={{ backgroundColor: "green" }}></label>
-						</div>
-						<div className="radio-item">
-							<input type="radio" name="" value="L" id="blue" />
-							<label htmlFor="blue" style={{ backgroundColor: "blue" }}></label>
-						</div>
-					</div>
-					<div className="product-meta radio-wrap d-inline-flex align-items-center">
-						<span className="label">Size : </span>
-						<div className="radio-item">
-							<input type="radio" name="" value="L" id="L" />
-							<label htmlFor="L">L</label>
-						</div>
-						<div className="radio-item">
-							<input type="radio" name="" value="XL" id="XL" />
-							<label htmlFor="XL">XL</label>
-						</div>
-						<div className="radio-item">
-							<input type="radio" name="" value="M" id="M" />
-							<label htmlFor="M">M</label>
-						</div>
-					</div>
+					{ singleProduct.product_type == "variation" &&
+						<Variation
+						choseOptions={singleProduct.choice_options}
+						colors={singleProduct.colors}
+						/>
+					}
+
 					<div className="quantity">
-						<button onClick={() => updateItemQuantity(singleProduct.id, singleProduct.quantity - 1)}>
+						<button onClick={() => updateItemQuantity(singleProduct.id, myItem?.quantity &&  myItem?.quantity - 1 )}>
 							<AiOutlineMinus />
 						</button>
-						{/* <span> {singleProduct.min_qty} </span> */}
-						<span> {singleProduct.quantity} </span>
-						<button onClick={() => updateItemQuantity(singleProduct.id, singleProduct.quantity + 1)}>
+						<span> {myItem?.quantity ? myItem?.quantity : singleProduct.min_qty } </span>
+						<button onClick={() => updateItemQuantity(singleProduct.id, myItem?.quantity ? myItem?.quantity + 1 : singleProduct.min_qty + 1 )}>
 							{" "}
 							<AiOutlinePlus />{" "}
 						</button>
           </div>
 					<div className="cart-buttons-wrap">
-						<button className="btn btn-primary ">
+						<button className="btn btn-primary " onClick={(e)=>addToCart(singleProduct)}>
 							<AiOutlineShoppingCart className="me-1" />{" "}
 							<small>Add to Cart</small>
 						</button>
