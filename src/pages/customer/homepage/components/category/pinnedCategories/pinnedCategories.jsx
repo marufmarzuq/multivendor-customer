@@ -1,11 +1,10 @@
-
 import { NavLink } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import SimpleLoading from "../../../../../../common/loading/SimpleLoading";
 
-const PinnedCategories = ({pinnedCategories}) => {
+const PinnedCategories = ({ pinnedCategories }) => {
   const settings = {
     infinite: true,
     speed: 200,
@@ -43,37 +42,34 @@ const PinnedCategories = ({pinnedCategories}) => {
     ],
   };
   return (
-		<div
-		style={{
-			overflowX: "hidden",
-			width: "100%",
-		}}
-		className="row mx-0 px-0"
-	>
-		<div className="col-12 col-xs-12 col-md-12 mb-5">
-			<Slider {...settings}>
-				{
-				pinnedCategories.length == 0 ? (
-					<SimpleLoading/>
-				) :
-				(
-					pinnedCategories.map((category,key)=>{
-						return(
-							<div className="mini-slide" key={key}>
-								<NavLink to={"#"}>
-									<div className="image">
-										<img src={category.banner} alt={category.name} />
-									</div>
-									<p>{category.name}</p>
-								</NavLink>
-							</div>
-						)
-					})
-				)
-				}
-			</Slider>
-		</div>
-	</div>
+    <div
+      style={{
+        overflowX: "hidden",
+        width: "100%",
+      }}
+      className="row mx-0 px-0"
+    >
+      <div className="col-12 col-xs-12 col-md-12 mb-5">
+        <Slider {...settings}>
+          {pinnedCategories.length == 0 ? (
+            <SimpleLoading />
+          ) : (
+            pinnedCategories.map((category, key) => {
+              return (
+                <div className="mini-slide" key={key}>
+                  <NavLink to={"#"}>
+                    <div className="image">
+                      <img src={category.banner} alt={category.name} />
+                    </div>
+                    <p>{category.name}</p>
+                  </NavLink>
+                </div>
+              );
+            })
+          )}
+        </Slider>
+      </div>
+    </div>
   );
 };
 

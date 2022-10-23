@@ -449,7 +449,12 @@
     grid-gap: 5px;
     overflow-y: scroll !important;
   }
-
+	.quantity {
+		border: 1px solid rgba(128, 128, 128, 0.156);
+		display: inline;
+		padding: 10px 15px 10px 15px;
+		border-radius: 3px;
+	}
   .single-product-wrap .product-gallery-container {
     flex-direction: column;
   }
