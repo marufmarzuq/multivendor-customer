@@ -2,17 +2,25 @@ import {
   AiOutlineHeart,
   AiOutlineMessage,
   AiOutlineShoppingCart,
+  AiOutlineMinus,
+  AiOutlinePlus,
 } from "react-icons/ai";
 import { FaInstagram, FaLinkedin, FaStar, FaTwitter } from "react-icons/fa";
 import { BiShoppingBag } from "react-icons/bi";
 import { IoIosGitCompare } from "react-icons/io";
-import { useParams } from "react-router-dom";
 import "./singleCom.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { Fragment } from "react";
 import { priceFormat } from "../../../../../hooks/helper";
+import { useCart } from "react-use-cart";
 
 const ProductDetails = ({loading,singleProduct}) => {
+
+	const {
+    items,
+    updateItemQuantity,
+  } = useCart();
+
   return (
 			loading ? (
 				<SkeletonTheme height={50}>
@@ -88,6 +96,17 @@ const ProductDetails = ({loading,singleProduct}) => {
 							<label htmlFor="M">M</label>
 						</div>
 					</div>
+					<div className="quantity">
+						<button onClick={() => updateItemQuantity(singleProduct.id, singleProduct.quantity - 1)}>
+							<AiOutlineMinus />
+						</button>
+						{/* <span> {singleProduct.min_qty} </span> */}
+						<span> {singleProduct.quantity} </span>
+						<button onClick={() => updateItemQuantity(singleProduct.id, singleProduct.quantity + 1)}>
+							{" "}
+							<AiOutlinePlus />{" "}
+						</button>
+          </div>
 					<div className="cart-buttons-wrap">
 						<button className="btn btn-primary ">
 							<AiOutlineShoppingCart className="me-1" />{" "}
