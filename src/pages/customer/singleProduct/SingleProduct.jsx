@@ -25,20 +25,19 @@ const SingleProduct = () => {
 		});
 	}, []);
 
-// console.log(singleProduct);
   return (
     <section className="single-product-wrap my-4">
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-6 mb-5 mb-md-2 overflow-hidden">
-            <Slider />
+            <Slider loading={loading} sliders={singleProduct.photos}/>
           </div>
           <div className="col-12 col-md-6 mb-5 mb-md-2 overflow-hidden">
             <ProductDetails loading={loading} singleProduct={singleProduct} />
           </div>
         </div>
-        <ProductDescription />
-        <ProductInformation />
+        <ProductDescription loading={loading} singleProduct={singleProduct}  />
+        {/* <ProductInformation /> */}
         <RelatedProducts />
         <Reviews />
       </div>

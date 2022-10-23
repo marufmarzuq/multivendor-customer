@@ -70,7 +70,7 @@ const Brands = ({brands}) => {
 								brands.map((brand,index)=>{
 								return(
 									<SwiperSlide key={index}>
-										<NavLink to={`/demo-shop-dqka`}>
+										<NavLink to={`/`}>
 											<img src={brand.logo} alt={brand.name} />
 										</NavLink>
 									</SwiperSlide>
