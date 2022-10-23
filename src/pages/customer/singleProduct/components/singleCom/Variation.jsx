@@ -1,37 +1,62 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useState } from "react";
 
 const Variation = ({colors,choseOptions}) => {
+
+const [selectVariant, setSelectVariant] = useState([]);
+
+const getVariation=(attribute,newVariant)=>{
+	if (selectVariant.find((item) => item.attribute === attribute) !== undefined) {
+		// item exist
+		let filteredVariant = selectVariant.filter(item => item.attribute !== attribute);
+		setSelectVariant([...filteredVariant, {attribute:attribute,variation:newVariant}])
+	} else {
+		setSelectVariant([...selectVariant, {attribute:attribute,variation:newVariant}])
+	}
+}
+
   return (
 		<Fragment>
 			<div className="product-meta radio-wrap color-wrap d-inline-flex align-items-center">
-				<span className="label">Color : </span>
-				<div className="radio-item">
-					<input type="radio" name="" value="L" id="red" />
-					<label htmlFor="red" style={{ backgroundColor: "red" }}></label>
-				</div>
-				<div className="radio-item">
-					<input type="radio" name="" value="L" id="green" />
-					<label htmlFor="green" style={{ backgroundColor: "green" }}></label>
-				</div>
-				<div className="radio-item">
-					<input type="radio" name="" value="L" id="blue" />
-					<label htmlFor="blue" style={{ backgroundColor: "blue" }}></label>
-				</div>
+				{ colors.length > 0 && (
+					<Fragment>
+						<span className="label">Colors : </span>
+						{
+							colors.map((item,key)=>{
+								return(
+									<div className="radio-item" key={key}>
+										<input type="radio" name="color" value={item.name} id={item.name}/>
+										<label htmlFor={item.name} style={{ backgroundColor: item.code }}></label>
+									</div>
+								)
+							})
+						}
+					</Fragment>
+				)}
 			</div>
 			<div className="product-meta radio-wrap d-inline-flex align-items-center">
-				<span className="label">Size : </span>
-				<div className="radio-item">
-					<input type="radio" name="" value="L" id="L" />
-					<label htmlFor="L">L</label>
-				</div>
-				<div className="radio-item">
-					<input type="radio" name="" value="XL" id="XL" />
-					<label htmlFor="XL">XL</label>
-				</div>
-				<div className="radio-item">
-					<input type="radio" name="" value="M" id="M" />
-					<label htmlFor="M">M</label>
-				</div>
+				{ Object.keys(choseOptions).length > 0 && (
+					<Fragment>
+						{
+							Object.keys(choseOptions)?.map((item,key)=>{
+								return(
+								<div key={key} className="me-1 ms-2">
+									<span className="label">{item} : </span>
+									{
+										choseOptions[item]?.map((variant,i)=>{
+											return(
+												<div className="radio-item" key={i}>
+													<input type="radio" name={item} value={variant} id={variant} onChange={(e)=>(getVariation(item,e.target.value))} />
+													<label htmlFor={variant}>{variant}</label>
+												</div>
+											)
+										})
+									}
+								</div>
+								)
+							})
+						}
+					</Fragment>
+				)}
 			</div>
 		</Fragment>
   );
