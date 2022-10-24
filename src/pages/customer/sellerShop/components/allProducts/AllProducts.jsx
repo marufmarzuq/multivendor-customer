@@ -29,7 +29,7 @@ const AllProducts = ({loading,allProducts}) => {
 							return(
 								<ProductLayout
 									product={product}
-									index={index}
+									key={index}
 									addToCart={addToCart}
 								/>
 							)

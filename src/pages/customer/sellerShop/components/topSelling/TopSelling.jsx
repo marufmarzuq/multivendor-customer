@@ -32,7 +32,7 @@ const TopSelling = ({loading,topSelling}) => {
 							return(
 								<ProductLayout
 									product={product}
-									index={index}
+									key={index}
 									addToCart={addToCart}
 								/>
 							)

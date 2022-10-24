@@ -4,9 +4,9 @@ import { priceFormat } from "../../../../../hooks/helper";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft, FaCartPlus } from "react-icons/fa";
 
-const ProductLayout = ({product,index,addToCart}) => {
+const ProductLayout = ({product,addToCart}) => {
   return (
-		<div className="col-sm-6 col-lg-4 col-xxl-3 mb-3" key={index}>
+		<div className="col-sm-6 col-lg-4 col-xxl-3 mb-3">
 			<div className="single-product style-1">
 				<div className="image-wrap">
 					<a href="#">

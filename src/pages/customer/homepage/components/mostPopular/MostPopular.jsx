@@ -58,9 +58,8 @@ const MostPopular = ({ popularProducts }) => {
                 {popularProducts &&
                   popularProducts[categoryName]?.map((product, index) => {
                     return (
-											<ProductLayout
+											<ProductLayout key={index}
 												product={product}
-												index={index}
 												addToCart={addToCart}
 											/>
                     );

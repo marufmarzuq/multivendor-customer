@@ -60,7 +60,7 @@ const Featured = ({ featureProducts }) => {
                     return (
 											<ProductLayout
 												product={product}
-												index={index}
+												key={index}
 												addToCart={addToCart}
 											/>
                     );

@@ -2,7 +2,9 @@ import { AiOutlineShop } from "react-icons/ai";
 import CartTotal from "../../../cart/components/cartCom/CartTotal";
 
 import cartDeailsStyle from "./checkout.module.css";
-const CartDetails = () => {
+const CartDetails = ({storesCart,items}) => {
+// console.log(storesCart);
+// console.log(items);
   return (
     <div>
       <div className={cartDeailsStyle.cartDetails}>

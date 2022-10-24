@@ -28,7 +28,7 @@ const NewArrivals = ({ loading , newArrival}) => {
 							return(
 								<ProductLayout
 									product={product}
-									index={index}
+									key={index}
 									addToCart={addToCart}
 								/>
 							)
