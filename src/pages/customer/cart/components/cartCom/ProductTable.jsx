@@ -26,6 +26,12 @@ const ProductTable = ({totalUniqueItems,items,updateItemQuantity,removeItem}) =>
           <tr key={key}>
 						<td className="py-3">
 							<NavLink to={`/products/${item.slug}`}>{item.name}</NavLink>
+							{/* Variation */}
+							{ item.product_type == "variation" &&
+								item.selectedVariant.map((variant,i)=>{
+									return <span className="me-2" key={i}>{variant.attribute} : {variant.variation}</span>
+								})
+							}
 							<div><span className="me-1">Sold By : </span><span>{item.shop_name}</span></div>
 						</td>
             <td className="py-3"><span className={ item.discount_price ? cartStyle.del : '' }>{priceFormat(item.unit_price)}</span>{priceFormat(item.discount_price)}</td>
