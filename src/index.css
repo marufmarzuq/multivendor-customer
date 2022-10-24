@@ -89,6 +89,10 @@ select {
   outline: none;
   width: 100%;
 }
+
+input[type="radio"] {
+  padding: 10px 10px;
+}
 /* input:hover,
 textarea:hover,
 select:hover {

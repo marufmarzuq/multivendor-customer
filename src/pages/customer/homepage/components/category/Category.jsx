@@ -9,13 +9,13 @@ import LeftCategories from "./leftCategories/LeftCategories";
 import Sliders from "./sliders/Sliders";
 import Ads from "./sliders/Ads";
 
-const Category = ({loading,pinnedCategories,sliders,categories}) => {
+const Category = ({ loading, pinnedCategories, sliders, categories }) => {
   return (
     <section className="category-wrapper mt-5 wrapper">
       <div className="container">
         <div className="row">
-        	{/* Left side categories */}
-					<LeftCategories categories={categories}/>
+          {/* Left side categories */}
+          <LeftCategories categories={categories} />
           <div
             style={{
               marginTop: "-7px",
@@ -24,13 +24,13 @@ const Category = ({loading,pinnedCategories,sliders,categories}) => {
           >
             <div className="container-fluid">
               <div className="row mb-4">
-              	{/* Sliders */}
-                <Sliders loading ={loading} sliders={sliders}/>
+                {/* Sliders */}
+                <Sliders loading={loading} sliders={sliders} />
                 {/* adds */}
-								<Ads/>
+                <Ads />
               </div>
               {/* Pinned categories */}
-							<PinnedCategories pinnedCategories={pinnedCategories}/>
+              <PinnedCategories pinnedCategories={pinnedCategories} />
             </div>
           </div>
         </div>
