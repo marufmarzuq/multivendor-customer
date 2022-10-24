@@ -30,7 +30,7 @@ const Checkout = () => {
           <CheckoutForm />
         </div>
         <div className={checkoutStyle.cartDetails}>
-          <CartDetails storesCart={storesCart} items={items} />
+          <CartDetails storesCart={storesCart} cartTotal={cartTotal} />
         </div>
       </div>
     </div>

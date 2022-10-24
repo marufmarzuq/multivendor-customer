@@ -129,7 +129,7 @@ const ProductVariation = ({
         return item;
       }
     });
-
+		variations = [''];
     const allValues = [];
     if (variations[0].values.length > 0 && variations[1].values.length > 0) {
       for (let i = 0; i < variations[0].values.length; i++) {

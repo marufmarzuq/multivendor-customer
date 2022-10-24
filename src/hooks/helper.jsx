@@ -25,14 +25,14 @@ export const priceFormat = ( price , code={code:'de-DE',currency:'EUR'})=>{
  */
 export const storeCart = (items )=>{
 	const lookup = items.reduce((newObj, item) => {
-		newObj[item.user_id] = item.shop_name  +  `(${ ++newObj[item.user_id] || 0 })`  ;
+		newObj[item.user_id] = item.shop_name;
 		return newObj;
 	}, {});
 
 	var resultArr = [];
 	Object.keys(lookup).map((obj,key)=>{
-		var newArr = items.filter( element => obj[element.user_id] ==  element.user_id );
-		resultArr.push({ shop_name: lookup[obj] , user_id : obj , items:newArr})
+		var newArr = items.filter( element => obj == element.user_id );
+		resultArr.push({ shopName: lookup[obj] , userId : obj , items:newArr})
 	});
 
 	return resultArr;

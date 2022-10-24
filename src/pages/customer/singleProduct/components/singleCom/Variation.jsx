@@ -6,16 +6,17 @@ const Variation = ({colors,choseOptions,singleProduct}) => {
 
 	useEffect(() => {
 		singleProduct.selectedVariant = selectVariant;
+		console.log(selectVariant);
 	}, [selectVariant]);
 	console.log(selectVariant);
 
-	const getVariation=(attribute,newVariant)=>{
-		if (selectVariant.find((item) => item.attribute === attribute) !== undefined) {
+	const getVariation=(attribute,newVariant,index)=>{
+		if (selectVariant.find((item) => item.attribute === attribute) !== undefined ) {
 			// item exist
 			let filteredVariant = selectVariant.filter(item => item.attribute !== attribute);
-			setSelectVariant([...filteredVariant, {attribute:attribute,variation:newVariant}])
+			setSelectVariant([...filteredVariant, {attribute:attribute,variation:newVariant,index:index}])
 		} else {
-			setSelectVariant([...selectVariant, {attribute:attribute,variation:newVariant}])
+			setSelectVariant([...selectVariant, {attribute:attribute,variation:newVariant,index:index}])
 		}
 	}
 
@@ -29,7 +30,7 @@ const Variation = ({colors,choseOptions,singleProduct}) => {
 							colors.map((item,key)=>{
 								return(
 									<div className="radio-item" key={key}>
-										<input type="radio" name="color" value={item.name} id={item.name} onChange={(e)=>(getVariation('Colors',e.target.value))}/>
+										<input type="radio" name="color" value={item.name} id={item.name} onChange={(e)=>(getVariation('Colors',e.target.value,0))}/>
 										<label htmlFor={item.name} style={{ backgroundColor: item.code }}></label>
 									</div>
 								)
@@ -50,7 +51,7 @@ const Variation = ({colors,choseOptions,singleProduct}) => {
 										choseOptions[item]?.map((variant,i)=>{
 											return(
 												<div className="radio-item" key={i}>
-													<input type="radio" name={item} value={variant} id={variant} onChange={(e)=>(getVariation(item,e.target.value))} />
+													<input type="radio" name={item} value={variant} id={variant} onChange={(e)=>(getVariation(item,e.target.value,key+1))} />
 													<label htmlFor={variant}>{variant}</label>
 												</div>
 											)

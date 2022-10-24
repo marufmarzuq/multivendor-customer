@@ -11,6 +11,7 @@ import { useCart } from "react-use-cart";
 import { priceFormat } from "../../../../../hooks/helper";
 import CartTotal from "../../../cart/components/cartCom/CartTotal";
 import miniCartStyle from "../../miniCart.module.css";
+import Variations from "./Variations";
 
 const ProductTable = () => {
   const {
@@ -45,11 +46,7 @@ const ProductTable = () => {
                           <h5>{item.name}</h5>
                           <h5>(x {item.quantity})</h5>
                           {/* Variation */}
-                          { item.product_type == "variation" &&
-														item.selectedVariant.map((variant,i)=>{
-															return  (<span className="ms-1 me-2" key={i}>{variant.attribute} : {variant.variation}</span>)
-														})
-													}
+                          <Variations items={items}/>
                           <h6>{ priceFormat(item.itemTotal) }</h6>
                           <small>
                             {item?.variant
