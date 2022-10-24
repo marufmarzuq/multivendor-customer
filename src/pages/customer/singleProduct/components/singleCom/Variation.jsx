@@ -1,18 +1,22 @@
-import React, { Fragment,useState } from "react";
+import React, { Fragment,useState,useEffect } from "react";
 
-const Variation = ({colors,choseOptions}) => {
+const Variation = ({colors,choseOptions,singleProduct}) => {
 
-const [selectVariant, setSelectVariant] = useState([]);
+	const [selectVariant, setSelectVariant] = useState([]);
 
-const getVariation=(attribute,newVariant)=>{
-	if (selectVariant.find((item) => item.attribute === attribute) !== undefined) {
-		// item exist
-		let filteredVariant = selectVariant.filter(item => item.attribute !== attribute);
-		setSelectVariant([...filteredVariant, {attribute:attribute,variation:newVariant}])
-	} else {
-		setSelectVariant([...selectVariant, {attribute:attribute,variation:newVariant}])
+	useEffect(() => {
+		singleProduct.selectedVariant = selectVariant;
+	}, [selectVariant]);
+
+	const getVariation=(attribute,newVariant)=>{
+		if (selectVariant.find((item) => item.attribute === attribute) !== undefined) {
+			// item exist
+			let filteredVariant = selectVariant.filter(item => item.attribute !== attribute);
+			setSelectVariant([...filteredVariant, {attribute:attribute,variation:newVariant}])
+		} else {
+			setSelectVariant([...selectVariant, {attribute:attribute,variation:newVariant}])
+		}
 	}
-}
 
   return (
 		<Fragment>

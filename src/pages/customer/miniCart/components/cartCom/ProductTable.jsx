@@ -44,6 +44,11 @@ const ProductTable = () => {
                         <div className={miniCartStyle.content}>
                           <h5>{item.name}</h5>
                           <h5>(x {item.quantity})</h5>
+                          { item.product_type == "variation" &&
+														item.selectedVariant.map((variant,i)=>{
+															return <span className="me-2" key={i}>{variant.attribute} : {variant.variation}</span>
+														})
+													}
                           <h6>{ priceFormat(item.itemTotal) }</h6>
                           <small>
                             {item?.variant

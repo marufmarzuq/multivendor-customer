@@ -30,9 +30,6 @@ const ProductDetails = ({loading,singleProduct}) => {
     addItem(product);
   };
 
-  const handleSetVariant = (product, variant) => {
-  };
-
   return (
 			loading ? (
 				<SkeletonTheme height={50}>
@@ -82,6 +79,7 @@ const ProductDetails = ({loading,singleProduct}) => {
 						<Variation
 						choseOptions={singleProduct.choice_options}
 						colors={singleProduct.colors}
+						singleProduct={singleProduct}
 						/>
 					}
 
