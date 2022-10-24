@@ -7,6 +7,7 @@ const Variation = ({colors,choseOptions,singleProduct}) => {
 	useEffect(() => {
 		singleProduct.selectedVariant = selectVariant;
 	}, [selectVariant]);
+	console.log(selectVariant);
 
 	const getVariation=(attribute,newVariant)=>{
 		if (selectVariant.find((item) => item.attribute === attribute) !== undefined) {
@@ -28,7 +29,7 @@ const Variation = ({colors,choseOptions,singleProduct}) => {
 							colors.map((item,key)=>{
 								return(
 									<div className="radio-item" key={key}>
-										<input type="radio" name="color" value={item.name} id={item.name}/>
+										<input type="radio" name="color" value={item.name} id={item.name} onChange={(e)=>(getVariation('Colors',e.target.value))}/>
 										<label htmlFor={item.name} style={{ backgroundColor: item.code }}></label>
 									</div>
 								)

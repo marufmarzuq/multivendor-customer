@@ -8,7 +8,6 @@ const [selectedVariant, setSelectedVariant] = useState('');
 useEffect(() => {
 	product.selectedVariant = selectVariant;
 }, [selectVariant]);
-
 const getVariation=(attribute,newVariant)=>{
 	if (selectVariant.find((item) => item.attribute === attribute) !== undefined) {
 		// item exist
@@ -22,28 +21,25 @@ const getVariation=(attribute,newVariant)=>{
 
   return (
 		<Fragment>
-		<div className="variations d-flex flex-column">
-			<div className="variation">
+		<div className="d-flex flex-column">
+			<div className="product-meta radio-wrap">
 				{ colors.length > 0 && (
 					<Fragment>
 						<span className="label">Colors : </span>
 						{
 							colors.map((item,key)=>{
 								return(
-									<span
-										className={ selectedVariant == `${'Colors'}-${item.name}` ? "variation-name" : '' }
-										onClick={(e)=>(getVariation('Colors',item.name))}
-										key={key}
-									>
-										{item.name}
-									</span>
+									<div className="radio-item" key={key}>
+										<input type="radio" name="color" value={item.name} id={item.name} onChange={(e)=>(getVariation('Colors',e.target.value))}/>
+										<label className='radio-bg-padding' htmlFor={item.name} style={{ backgroundColor: item.code }}></label>
+									</div>
 								)
 							})
 						}
 					</Fragment>
 				)}
 			</div>
-			<div className="variation">
+			<div className="product-meta radio-wrap">
 				{ Object.keys(choseOptions).length > 0 && (
 					<Fragment>
 						{
@@ -54,13 +50,10 @@ const getVariation=(attribute,newVariant)=>{
 									{
 										choseOptions[item]?.map((variant,i)=>{
 											return(
-												<span
-													className={ selectedVariant == `${item}-${variant}` ? "variation-name" : '' }
-													onClick={(e)=>(getVariation(item,variant))}
-													key={i}
-												>
-													{variant}
-												</span>
+												<div className="radio-item" key={i}>
+													<input type="radio" name={item} value={variant} id={variant} onChange={(e)=>(getVariation(item,e.target.value))} />
+													<label htmlFor={variant}>{variant}</label>
+												</div>
 											)
 										})
 									}

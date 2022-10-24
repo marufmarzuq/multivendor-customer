@@ -1,3 +1,25 @@
+.radio-wrap .radio-item{
+  column-gap: 5px;
+}
+.radio-wrap .radio-item input{
+  visibility: hidden;
+  width: 0;
+}
+
+.radio-wrap .radio-item label{
+  border: 5px solid #fff;
+  outline: 1px solid #d7d7d7;
+  border-radius: 5px;
+  font-weight: 500;
+}
+.radio-bg-padding{
+padding: 8px 8px;
+}
+.radio-wrap .radio-item input:checked + label{
+  outline: 1px outset #2e74e8;
+  color: #2e74e8;
+}
+
 .most-popular .most-popular-tabs .nav-tabs,
 .most-popular .daily-deals-tabs .nav-tabs,
 .most-popular .featured-products-tabs .nav-tabs,
