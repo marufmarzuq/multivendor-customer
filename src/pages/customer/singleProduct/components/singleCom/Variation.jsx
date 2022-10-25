@@ -3,12 +3,29 @@ import React, { Fragment,useState,useEffect } from "react";
 const Variation = ({colors,choseOptions,singleProduct}) => {
 
 	const [selectVariant, setSelectVariant] = useState([]);
+	const [variantPrice, setVariantPrice] = useState('');
 
 	useEffect(() => {
 		singleProduct.selectedVariant = selectVariant;
-		console.log(selectVariant);
+		var getVariant="";
+		// sort by index
+		selectVariant.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
+		// combination of variation
+		if ( selectVariant?.length>0 ) {
+			selectVariant.map((variant,key)=>{
+				var dash =`${selectVariant.length !== key+1 ? '-' : ''}`
+				getVariant += `${variant.variation}` + `${dash}`
+			})
+			// get price
+			if (getVariant !== "") {
+				const found = singleProduct.variations.find(element => element.variant == getVariant );
+				if (found) {
+					singleProduct.price = found.price;
+					setVariantPrice(found.price);
+				}
+			}
+		}
 	}, [selectVariant]);
-	console.log(selectVariant);
 
 	const getVariation=(attribute,newVariant,index)=>{
 		if (selectVariant.find((item) => item.attribute === attribute) !== undefined ) {
@@ -64,6 +81,9 @@ const Variation = ({colors,choseOptions,singleProduct}) => {
 					</Fragment>
 				)}
 			</div>
+
+			{ variantPrice !== "" && <div className=""> {variantPrice} </div>}
+			<div className="variation-price d-flex justify-content-end"> {singleProduct.discount_price_range} </div>
 		</Fragment>
   );
 };

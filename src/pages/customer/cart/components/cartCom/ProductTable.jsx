@@ -7,7 +7,6 @@ import cartStyle from "./cart.module.css";
 import Variations from "../../../miniCart/components/cartCom/Variations";
 
 const ProductTable = ({totalUniqueItems,items,updateItemQuantity,removeItem}) => {
-
   return (
     <div className={cartStyle.productTable}>
 			<p>Total ({totalUniqueItems}) item(s)</p>
@@ -27,7 +26,7 @@ const ProductTable = ({totalUniqueItems,items,updateItemQuantity,removeItem}) =>
           <tr key={key}>
 						<td className="py-3">
 							<NavLink to={`/products/${item.slug}`}>{item.name}</NavLink>
-							<Variations items={items}/>
+							<Variations item={item}/>
 							<div><span className="me-1">Sold By : </span><span>{item.shop_name}</span></div>
 						</td>
             <td className="py-3"><span className={ item.discount_price ? cartStyle.del : '' }>{priceFormat(item.unit_price)}</span>{priceFormat(item.discount_price)}</td>

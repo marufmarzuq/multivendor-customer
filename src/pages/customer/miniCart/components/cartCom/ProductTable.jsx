@@ -46,7 +46,7 @@ const ProductTable = () => {
                           <h5>{item.name}</h5>
                           <h5>(x {item.quantity})</h5>
                           {/* Variation */}
-                          <Variations items={items}/>
+                          <Variations item={item}/>
                           <h6>{ priceFormat(item.itemTotal) }</h6>
                           <small>
                             {item?.variant
