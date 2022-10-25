@@ -84,7 +84,6 @@ const getVariation=(attribute,newVariant,index)=>{
 					</Fragment>
 				)}
 				{ variantPrice !== "" && <div className="variation-price d-flex justify-content-end"> {variantPrice} </div> }
-				<div className="variation-price d-flex justify-content-end"> {product.discount_price_range}</div>
 			</div>
 		</div>
 		</Fragment>

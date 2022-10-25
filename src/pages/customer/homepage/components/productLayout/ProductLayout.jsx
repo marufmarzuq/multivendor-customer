@@ -51,15 +51,17 @@ const ProductLayout = ({product,addToCart}) => {
 							{product.name}
 						</NavLink>
 					</h3>
-
-					<div className="price">
-						<span className="sale">
-							{priceFormat(product?.discount_price)}
-						</span>
-						<span className={ product?.discount_price ? ' del ms-1' : 'ms-1' } >
-							{priceFormat(product.unit_price)}
-						</span>
-					</div>
+					{ product.product_type !== "variation" ?
+						(<div className="price">
+							<span className="sale">
+								{priceFormat(product?.discount_price)}
+							</span>
+							<span className={ product?.discount_price ? ' del ms-1' : 'ms-1' } >
+								{priceFormat(product.unit_price)}
+							</span>
+						</div>) :
+						( product.discount_price_range )
+					}
 					<div className="ratings">
 						<AiFillStar />
 						<AiFillStar />

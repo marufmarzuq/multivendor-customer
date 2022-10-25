@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { AiOutlineShop } from "react-icons/ai";
 import { priceFormat } from "../../../../../hooks/helper";
 import CartTotal from "../../../cart/components/cartCom/CartTotal";
@@ -5,6 +6,7 @@ import Variations from "../../../miniCart/components/cartCom/Variations";
 import cartDeailsStyle from "./checkout.module.css";
 
 const ShopCart = ({items}) => {
+
   return (
     <div>
       <div className={cartDeailsStyle.cartDetails}>
@@ -21,34 +23,39 @@ const ShopCart = ({items}) => {
 						{
 						items.items.length > 0 &&
 						(
-							items.items.map((item,key)=>{
-								return(
-									<div className={cartDeailsStyle.productInfo} key={key}>
-										<div className={cartDeailsStyle.productInfoImg}>
-											<img
-												src={item.thumbnail_img}
-												alt={ item.name }
-											/>
-											<div className={cartDeailsStyle.imageTop}> { item.quantity }</div>
+						<Fragment>
+								<Fragment>
+								{ items.items.map((item,key)=>{
+									return(
+										<div className={cartDeailsStyle.productInfo} key={key}>
+											<div className={cartDeailsStyle.productInfoImg}>
+												<img
+													src={item.thumbnail_img}
+													alt={ item.name }
+												/>
+												<div className={cartDeailsStyle.imageTop}> { item.quantity }</div>
+											</div>
+											<div>
+												<h6> { item.name } </h6>
+												<Variations item={item}/>
+											</div>
+											<div className={cartDeailsStyle.productInfoPrice}>
+												<h5>{ priceFormat(item.itemTotal) }</h5>
+											</div>
 										</div>
-										<div>
-											<h6> { item.name } </h6>
-											<Variations item={item}/>
-										</div>
-										<div className={cartDeailsStyle.productInfoPrice}>
-											<h5>{ priceFormat(item.price) }</h5>
-										</div>
+									)
+								})
+								}
+								</Fragment>
+								<Fragment>
+									<div className="mb-4">
+										<CartTotal proceedKey="checkout" cartTotalTitle="checkout" cartTotal={items.cartTotal} />
 									</div>
-								)
-							})
+								</Fragment>
+						</Fragment>
+
 						)
 						}
-            <CartTotal proceedKey="checkout" cartTotalTitle="checkout" />
-          </div>
-        </section>
-        <section>
-          <div className="mb-4">
-            <CartTotal cartTotalTitle="checkout" />
           </div>
         </section>
       </div>

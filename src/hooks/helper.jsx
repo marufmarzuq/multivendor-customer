@@ -32,7 +32,12 @@ export const storeCart = (items )=>{
 	var resultArr = [];
 	Object.keys(lookup).map((obj,key)=>{
 		var newArr = items.filter( element => obj == element.user_id );
-		resultArr.push({ shopName: lookup[obj] , userId : obj , items:newArr})
+
+		const cartTotal = newArr.reduce((accumulator, object) => {
+			return accumulator + object.itemTotal;
+		}, 0);
+
+		resultArr.push({ shopName: lookup[obj] , userId : obj , items:newArr , cartTotal : cartTotal })
 	});
 
 	return resultArr;

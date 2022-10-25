@@ -49,15 +49,19 @@ const ProductDetails = ({loading,singleProduct}) => {
 						<FaStar />
 						<span className="ms-2">(2 reviews)</span>
 					</div>
-					<div
-						style={{
-							marginTop: "-10px",
-						}}
-						className="price"
-					>
-						<span className="sale">{priceFormat(singleProduct.discount_price)}</span>
-						<span className={ singleProduct?.discount_price ? ' del ms-2' : '' }>{priceFormat(singleProduct.unit_price)}</span>
-					</div>
+					{ singleProduct.product_type !== "variation" ?
+						(<div
+							style={{
+								marginTop: "-10px",
+							}}
+							className="price"
+						>
+							<span className="sale">{priceFormat(singleProduct.discount_price)}</span>
+							<span className={ singleProduct?.discount_price ? ' del ms-2' : '' }>{priceFormat(singleProduct.unit_price)}</span>
+						</div>) :
+						( singleProduct.discount_price_range )
+
+					}
 					<p className="excerpt">
 						{singleProduct.short_description}
 					</p>

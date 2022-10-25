@@ -81,12 +81,9 @@ const CheckoutForm = () => {
       </div>
 
       <div className={checkoutStyle.submitBtn}>
-        <div>
-          <NavLink to="/">
-            <AiOutlineArrowLeft /> Back to cart
-          </NavLink>
-        </div>
-
+				<NavLink to="/cart">
+					<AiOutlineArrowLeft /> Back to cart
+				</NavLink>
         <div className="d-flex justify-content-end">
           <NavLink to="/thank-you" className="btn btn-primary">
             <AiOutlineCheckCircle /> Checkout

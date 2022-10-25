@@ -83,7 +83,7 @@ const Variation = ({colors,choseOptions,singleProduct}) => {
 			</div>
 
 			{ variantPrice !== "" && <div className=""> {variantPrice} </div>}
-			<div className="variation-price d-flex justify-content-end"> {singleProduct.discount_price_range} </div>
+
 		</Fragment>
   );
 };
