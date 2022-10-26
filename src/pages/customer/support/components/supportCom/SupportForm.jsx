@@ -12,7 +12,7 @@ import authHeader from "../../../../services/auth-header";
 import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
 import JoditEditor from "jodit-react";
-import { loadFromLocalStorage } from "../../../../../utils/seller/manageLocalStorage";
+import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
 const SupportForm = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());

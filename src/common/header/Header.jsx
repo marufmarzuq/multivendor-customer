@@ -26,17 +26,12 @@ import { GiClothes, GiFruitBowl } from "react-icons/gi";
 import { BiBasketball } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { IoIosGitCompare } from "react-icons/io";
-import { loadFromLocalStorage } from "../../utils/user/manageLocalStorage";
 import { loadFromLocalStorage as loadSellerData } from "../../utils/seller/manageLocalStorage";
 
 import Select from "react-select";
 import { useCart } from "react-use-cart";
 
 const customStyles = {
-  // option: (provided, state) => ({
-  //   ...provided,
-  //   zIndex: 99999,
-  // }),
 
   menuPortal: (base) => ({ ...base, zIndex: 9999, background: "red" }),
 
@@ -65,14 +60,14 @@ const customStyles = {
   }),
 };
 
-const Header = ({ headerLogo , languageSwitcher, currencySwitcher }) => {
+const Header = ({ headerLogo , languageSwitcher, currencySwitcher , user }) => {
   const [mobileNav, setMobileNav] = useState(false);
   const navigate = useNavigate();
   const logout = () => {
     navigate("/login");
     AuthService.logout();
   };
-  const user = loadFromLocalStorage();
+
   const seller = loadSellerData();
 
   const { totalItems } = useCart();
