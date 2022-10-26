@@ -23,7 +23,8 @@ const NewsLetter = () => {
           action.resetForm();
         })
         .catch((e) => {
-          toast.error(e.message);
+					console.log(e.response?.data?.email?.[0]);
+          toast.error(e.response?.data?.email?.[0]);
         });
     },
   });
@@ -48,8 +49,10 @@ const NewsLetter = () => {
 			<div className="input-group">
 				<input
 					type="email"
-					className=" search-text"
+					className="search-text"
 					placeholder="Email Address"
+					name="email"
+					id="email"
 					value={values.email}
 					onChange={handleChange}
 					onBlur={handleBlur}
