@@ -1,15 +1,14 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
-import { AiOutlineSearch } from "react-icons/ai";
 import "./footer.css";
 import { NavLink } from "react-router-dom";
 import { logo } from "../../assets/index";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
+import NewsLetter from "./newsletter/NewsLetter";
 
 const Footer = ({footerData,user}) => {
-// console.log(footerData?.products);
   return (
     <footer className="footer">
       <div className="container">
@@ -23,22 +22,7 @@ const Footer = ({footerData,user}) => {
             </div>
           </div>
           <div className="col-md-7">
-            <div className="newsletter">
-              <h3>Newsletter</h3>
-              <div className="input-group">
-                <input
-                  type="email"
-                  className=" search-text"
-                  placeholder="Email Address"
-                />
-                <button
-                  type="button"
-                  className="btn btn-primary px-1 ps-2 px-md-3 search-button"
-                >
-                  Search <AiOutlineSearch />
-                </button>
-              </div>
-            </div>
+						<NewsLetter/>
           </div>
         </div>
         <div className="row footer-main">
@@ -114,16 +98,16 @@ const Footer = ({footerData,user}) => {
             <h3 className="footer-title text-center text-sm-start">Products</h3>
             <ul className="vertical-menu">
             {
-            footerData?.products?.length > 0 ? 
+            footerData?.products?.length > 0 ?
 							(
 								footerData?.products.map((item,key)=>{
 									return <li key={key}><NavLink to={`/${item.slug}`}><span>{item.name}</span></NavLink></li>
 								})
 							) :
 							(
-								<SkeletonTheme height={50}>
-									<p><Skeleton count={5} /></p>
-								</SkeletonTheme>
+									<SkeletonTheme height={50}>
+										<p><Skeleton count={5} /></p>
+									</SkeletonTheme>
 							)
             }
             </ul>
