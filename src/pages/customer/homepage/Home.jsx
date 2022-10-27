@@ -20,6 +20,7 @@ const Home = () => {
   const [featureProducts, setFeatureProducts] = useState([]);
   const [shops, setShops] = useState([]);
   const [brands, setBrands] = useState([]);
+  const [banners, setBanners] = useState([]);
 
   useEffect(() => {
     setLoading(true);
@@ -34,16 +35,18 @@ const Home = () => {
 				setFeatureProducts(response?.data.featured_products);
 				setShops(response?.data.shops);
 				setBrands(response?.data.brands);
+				setBanners(response?.data.banners);
 				setSliders(response?.data.sliders);
       });
   }, []);
+  console.log(banners?.banner_1);
   return (
     <div className="wrapper">
-			<Category loading={loading} sliders={sliders} categories={categories} pinnedCategories={ pinnedCategories }/>
+			<Category bannerOne={banners?.banner_1} loading={loading} sliders={sliders} categories={categories} pinnedCategories={ pinnedCategories }/>
 			<MostPopular popularProducts={ popularProducts }/>
-			<AddSection />
+			<AddSection bannerTwo={banners?.banner_2} loading={loading} />
 			<DailyDeals dailyDeals={dailyDeals}/>
-			<AddSectionTwo />
+			<AddSectionTwo bannerThree={banners?.banner_3}  bannerFour={banners?.banner_4} loading={loading} />
 			<Featured featureProducts={featureProducts}/>
 			<Brands brands={brands}/>
 			<Shops shops={shops}/>

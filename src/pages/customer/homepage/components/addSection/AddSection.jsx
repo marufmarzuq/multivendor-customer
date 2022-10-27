@@ -1,19 +1,31 @@
-import React from "react";
-
+import { NavLink } from "react-router-dom";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "./addSection.css";
 
-const AddSection = () => {
+const AddSection = ({bannerTwo,loading}) => {
   return (
     <section className="ads my-4">
       <div className="container">
-        <div className="row ads-wrapper">
+			{
+			loading ?
+			(
+				<SkeletonTheme height={50}>
+					<p><Skeleton count={5} /></p>
+				</SkeletonTheme>
+			) :
+			(
+				<div className="row ads-wrapper" style={{
+					backgroundImage: `url(${bannerTwo?.banner})`,
+				}}>
           <div className="col-12 col-md-6 offset-md-1 text-center">
-            <h2 className="ad-header">Fashion Jewelry</h2>
-            <a href="#" className="btn button-outline">
-              Shop Now
-            </a>
+            <h2 className="ad-header">{bannerTwo?.title}</h2>
+            <NavLink to={`/${bannerTwo?.link}`} className="button-outline">
+							Shop Now
+						</NavLink>
           </div>
         </div>
+			)
+		}
       </div>
     </section>
   );
