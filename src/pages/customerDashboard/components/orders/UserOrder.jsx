@@ -7,12 +7,20 @@ import customerAuthHeader from "../../../services/customer-auth-header";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
 import { priceFormat } from "../../../../hooks/helper";
 import FrontendPagination from "../../../../common/pagination/frontend/FrontendPagination";
+import OrderModal from "./components/orderModal/OrderModal";
 
 const UserOrder = () => {
   const [loading, setLoading] = useState(false);
   const [currentItems, setCurrentItems] = useState([]);
 	const [pageCount, setPageCount] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
+	const [currentOrderId, setCurrentOrderId] = useState(null);
+  const [show, setShow] = useState(false);
+
+  const modalOpen = (id) => {
+    setCurrentOrderId(id);
+    setShow(!show);
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -72,8 +80,10 @@ const UserOrder = () => {
 									<td><small className={item.order_status == "pending" ?"text-danger" : "text-success"}> {item.order_status} </small></td>
 									<td className="text-center">
 										<small>
-											<button className="btn">
-												<BsEyeFill />
+											<button className={orderStyle.preview}
+												onClick={() => modalOpen(item.id)}
+											>
+                        <BsEyeFill />
 											</button>
 										</small>
 									</td>
@@ -94,6 +104,13 @@ const UserOrder = () => {
 						setCurrentPage={setCurrentPage}
 					/>
 				)}
+				<OrderModal
+          orderId={currentOrderId}
+          page="order"
+          show={show}
+          setShow={setShow}
+          time={new Date()}
+        />
       </section>
     </div>
   );

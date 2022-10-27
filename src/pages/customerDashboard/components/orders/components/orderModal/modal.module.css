@@ -1,0 +1,73 @@
+.orderModalWidth {
+  min-width: 80vw !important;
+}
+.statusDropdown {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 2rem;
+  margin-bottom: 3rem;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.statusDropdown label {
+  text-align: center;
+  display: block;
+  padding-bottom: 0.5rem;
+}
+
+.orderSummary {
+  padding: 15px 0;
+  border: 1px solid rgba(128, 128, 128, 0.196);
+  border-radius: 8px;
+}
+
+.orderSummary h6 {
+  border-bottom: 1px solid rgba(128, 128, 128, 0.196);
+  padding: 0 1rem;
+  padding-bottom: 1rem;
+  font-weight: 600;
+}
+
+.orderBody {
+  padding-right: 10px;
+  padding-top: 1rem;
+  padding-left: 0;
+}
+
+.orderBody h6 {
+  border: none;
+  font-size: 0.8rem;
+}
+
+.orderBody h5 {
+  padding-bottom: 25px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.orderBody h6 {
+  padding-bottom: 20px;
+}
+
+.orderBody th {
+  font-size: 0.9rem;
+}
+
+.orderBody td {
+  font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .orderBody h6,
+  .orderBody h5 {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    padding-bottom: 20px;
+    border: none;
+  }
+
+  .orderBody {
+    padding-left: 1rem;
+  }
+}
