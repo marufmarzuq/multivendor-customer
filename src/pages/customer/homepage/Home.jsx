@@ -39,7 +39,7 @@ const Home = () => {
 				setSliders(response?.data.sliders);
       });
   }, []);
-  console.log(banners?.banner_1);
+
   return (
     <div className="wrapper">
 			<Category bannerOne={banners?.banner_1} loading={loading} sliders={sliders} categories={categories} pinnedCategories={ pinnedCategories }/>
