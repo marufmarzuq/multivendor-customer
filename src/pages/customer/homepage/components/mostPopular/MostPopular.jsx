@@ -9,7 +9,6 @@ import "react-loading-skeleton/dist/skeleton.css";
 import ProductLayout from "../productLayout/ProductLayout";
 
 const MostPopular = ({ popularProducts }) => {
-
   const { addItem, onItemAdd } = useCart();
   const [categoryName, setCategoryName] = useState("all");
 
@@ -58,10 +57,13 @@ const MostPopular = ({ popularProducts }) => {
                 {popularProducts &&
                   popularProducts[categoryName]?.map((product, index) => {
                     return (
-											<ProductLayout key={index}
-												product={product}
-												addToCart={addToCart}
-											/>
+                      <ProductLayout
+                        key={index}
+                        products={popularProducts[categoryName]}
+                        prodID={product.id}
+                        product={product}
+                        addToCart={addToCart}
+                      />
                     );
                   })}
               </div>

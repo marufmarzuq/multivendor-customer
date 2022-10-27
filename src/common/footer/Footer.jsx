@@ -5,7 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import "./footer.css";
 import { NavLink } from "react-router-dom";
 import { logo } from "../../assets/index";
-const Footer = ({footerData}) => {
+const Footer = ({ footerData }) => {
   return (
     <footer className="footer">
       <div className="container">
@@ -13,8 +13,10 @@ const Footer = ({footerData}) => {
           <div className="col-md-5">
             <div className="footer-logo">
               <a href="#">
-                <img src={ footerData.footer_logo ? footerData.footer_logo : ""} alt="MARKUTOS" />
-
+                <img
+                  src={footerData.footer_logo ? footerData.footer_logo : ""}
+                  alt="MARKUTOS"
+                />
               </a>
             </div>
           </div>
@@ -31,7 +33,7 @@ const Footer = ({footerData}) => {
                   type="button"
                   className="btn btn-primary px-1 ps-2 px-md-3 search-button"
                 >
-                  Search <AiOutlineSearch />
+                  <span>Search</span> <AiOutlineSearch />
                 </button>
               </div>
             </div>
@@ -40,29 +42,29 @@ const Footer = ({footerData}) => {
         <div className="row footer-main">
           <div className="col-12 col-sm-5 col-lg-4 my-2 text-center text-sm-start">
             <p>
-              { footerData.footer_about_text ? footerData.footer_about_text : ""}
+              {footerData.footer_about_text ? footerData.footer_about_text : ""}
             </p>
-            <p>{ footerData.address ? footerData.address : ""}</p>
+            <p>{footerData.address ? footerData.address : ""}</p>
             <ul className="vertical-menu">
-              <li>{ footerData.phone ? footerData.phone : ""}</li>
+              <li>{footerData.phone ? footerData.phone : ""}</li>
               <li>
                 <BiUser />
-                <span>{ footerData.email ? footerData.email : ""}</span>
+                <span>{footerData.email ? footerData.email : ""}</span>
               </li>
             </ul>
             <ul className="social-buttons">
               <li>
-                <a href={ footerData.facebook ? footerData.facebook : "#" }>
+                <a href={footerData.facebook ? footerData.facebook : "#"}>
                   <FaFacebookF />
                 </a>
               </li>
               <li>
-                <a href={ footerData.twitter ? footerData.twitter : "#" }>
+                <a href={footerData.twitter ? footerData.twitter : "#"}>
                   <FaTwitter />
                 </a>
               </li>
               <li>
-                <a href={ footerData.linkedin ? footerData.linkedin : "#" }>
+                <a href={footerData.linkedin ? footerData.linkedin : "#"}>
                   <FaLinkedinIn />
                 </a>
               </li>
@@ -182,7 +184,11 @@ const Footer = ({footerData}) => {
       </div>
       <div className="container-fluid footer-bottom">
         <div className="row footer-copyright">
-          <p>{ footerData.copyright_text ? footerData.copyright_text : "Copyright MARKUTOS 2022. All rights reserved" }</p>
+          <p>
+            {footerData.copyright_text
+              ? footerData.copyright_text
+              : "Copyright MARKUTOS 2022. All rights reserved"}
+          </p>
         </div>
       </div>
     </footer>
