@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import linkStyle from "./links.module.css";
 const DashboardLinks = () => {
@@ -30,12 +30,11 @@ const DashboardLinks = () => {
             Order Return Requests
           </NavLink>
         </li>
-				{/*
         <li
-          className={pathName == "password-change" ? linkStyle.activeLink : ""}
+          className={pathName == "supports" ? linkStyle.activeLink : ""}
         >
-          <NavLink to="/dashboard/password-change"> Change Password</NavLink>
-        </li> */}
+          <NavLink to="/dashboard/supports">Supports</NavLink>
+        </li>
         <li className={pathName == "become-vendor" ? linkStyle.activeLink : ""}>
           <NavLink to="/dashboard/become-vendor"> Become A Vendor </NavLink>
         </li>
