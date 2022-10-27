@@ -1,18 +1,17 @@
 
-import GridOne from "../../../../../common/productView/GridOne";
-import { BiSearch, BiSquare } from "react-icons/bi";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { AiOutlineBars } from "react-icons/ai";
-import { FaBalanceScale, FaStar } from "react-icons/fa";
-import { product2 } from "../../../../../assets/index";
-import { Fragment } from "react";
+import { useCart } from "react-use-cart";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import ProductLayout from "../../../homepage/components/productLayout/ProductLayout";
+import FrontendPagination from "../../../../../common/pagination/frontend/FrontendPagination";
 
-const RightComp = () => {
-  const options = [
-    { value: "chocolate", label: "Chocolate" },
-    { value: "strawberry", label: "Strawberry" },
-    { value: "vanilla", label: "Vanilla" },
-  ];
+const RightComp = ({loading,shopProduct,pageCount,currentPage,setCurrentPage,setSortBy}) => {
+  const { addItem, onItemAdd } = useCart();
+
+  const addToCart = (product) => {
+    addItem(product);
+  };
 
   return (
 		<div>
@@ -38,59 +37,36 @@ const RightComp = () => {
 							<option>Sale</option>
 							<option>Price</option>
 						</select>
-
-						{/* <div>
-							<Select
-								styles={customStyles}
-								options={options}
-						
-							/>
-						</div> */}
 					</div>
 				</div>
 			</div>
-			<div className="row products-wrap shop">
-				<section>
-					<div className="col-sm-6 col-md-3 mb-3">
-						<div className="single-product single-product-min style-1">
-							<div className="image-wrap">
-								<a href="#">
-									<img src={product2} alt="Locket New" />
-								</a>
-								<div className="buttons-wrap">
-									<button>
-										<FaBalanceScale />
-									</button>
-								</div>
-								<div className="badges">
-									<div className="badge sale-badge">
-										<span>10%</span>
-									</div>
-
-									<div className="badge tag-badge">
-										<span>Sale</span>
-									</div>
-								</div>
-							</div>
-							<div className="content-wrap">
-								<h3 className="product-title">
-									<a href="#">Locket New</a>
-								</h3>
-								<div className="price">
-									<span className="sale">$ 200</span>
-									<span className="del">$ 180</span>
-								</div>
-								<div className="ratings">
-									<FaStar />
-									<FaStar />
-									<FaStar />
-									<FaStar />
-									<FaStar />
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
+			<div className="row products-wrap">
+				{loading && (
+					<SkeletonTheme height={50}>
+						<p>
+							<Skeleton count={5} />
+						</p>
+					</SkeletonTheme>
+				)}
+				{
+					shopProduct.map((product, index) => {
+						return (
+						<ProductLayout key={index}
+							product={product}
+							addToCart={addToCart}
+						/>
+					);
+					})
+				}
+				{shopProduct.length > 0 && (
+        <FrontendPagination
+          currentItem={shopProduct}
+          perPage={12}
+          pageCount={pageCount}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
 			</div>
 		</div>
   );

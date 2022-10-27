@@ -8,6 +8,7 @@ import Featured from "./components/featured/Featured";
 import MostPopular from "./components/mostPopular/MostPopular";
 import Shops from "./components/shops/Shops";
 import { markutosFrontendApi } from "../../services/Api/api";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
