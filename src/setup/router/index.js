@@ -51,6 +51,7 @@ import BlogDetails from "../../pages/customer/blog/components/blogDetails/BlogDe
 import ThankYou from "../../pages/customer/thankYou/ThankYou";
 import CustomerPrivateRoutes from "./routeModels/CustomerPrivateRoutes";
 import BeVendor from "../../pages/customerDashboard/components/becomeVendor/BeVendor";
+import Supports from "../../pages/customerDashboard/components/supports/Supports";
 
 
 const Router = () => {
@@ -118,6 +119,7 @@ const Router = () => {
             <Route path="order-returns" element={<UserOrderReturns />} />
             <Route path="password-change" element={<ChangePass />} />
             <Route path="become-vendor" element={<BeVendor />} />
+            <Route path="supports" element={<Supports />} />
           </Route>
         </Route>
       </Route>

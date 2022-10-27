@@ -102,10 +102,6 @@ const OrderList = () => {
         </section>
 
         <section>
-          {/* <div
-            className={`table-filters px-md-4 px-3 pt-3 py-2 tableFilters ${orderListStyle.filterContainer} `}
-          > */}
-
           <div
             className={` px-md-4 px-3 pt-3 table-filters ${orderListStyle.filterContainer}`}
           >
@@ -209,12 +205,6 @@ const OrderList = () => {
                         >
                           <BsEyeFill />
                         </button>
-                        {/* <button
-                          onClick={() => setPdfShow(!pdfShow)}
-                          className={orderListStyle.invoice}
-                        >
-                          <BsDownload />
-                        </button> */}
                       </div>
                     </div>
                   );

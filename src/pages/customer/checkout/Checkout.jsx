@@ -27,7 +27,7 @@ const Checkout = () => {
       <BreadCumb data={"Checkout"} />
       <div className={`container ${checkoutStyle.checkoutContainer}`}>
         <div className={checkoutStyle.checkoutForm}>
-          <CheckoutForm />
+          <CheckoutForm items={items} cartTotal={cartTotal} />
         </div>
         <div className={checkoutStyle.cartDetails}>
           <CartDetails storesCart={storesCart} cartTotal={cartTotal} />

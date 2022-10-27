@@ -4,7 +4,6 @@ import navigationStyle from "./navigation.module.css";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../pages/seller/services/auth.service";
 
-
 import {
   AiOutlineHome,
   AiFillFileAdd,
@@ -16,7 +15,7 @@ import {
 import { IoMdCheckmarkCircleOutline, IoIosStarHalf } from "react-icons/io";
 import { HiOutlineTicket } from "react-icons/hi";
 import { FiSettings } from "react-icons/fi";
-import { GiNotebook, GiBackwardTime } from "react-icons/gi";
+import { GiBackwardTime } from "react-icons/gi";
 import { RiVipDiamondLine } from "react-icons/ri";
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { BsArrowCounterclockwise, BsCurrencyDollar } from "react-icons/bs";
@@ -183,7 +182,7 @@ const Navigation = ({ toggleF, toggle }) => {
                     <span className="ps-2">Product Bulk Upload</span>
                   </NavLink>
                 </li>
-								<li
+								{/* <li
                   onClick={() => handleDropdown("categories")}
                   className={`  ${activeMenu == "categories" ? navigationStyle.active : ""} `}
                 >
@@ -208,7 +207,7 @@ const Navigation = ({ toggleF, toggle }) => {
                     <IoIosStarHalf className={navigationStyle.icon_green} />
                     <span className="ps-2">Attributes</span>
                   </NavLink>
-                </li>
+                </li> */}
                 <li
                   onClick={() => handleDropdown("wishlist")}
                   className={`  ${ activeMenu == "wishlist" ? navigationStyle.active : ""} `}

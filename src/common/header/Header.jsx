@@ -5,20 +5,13 @@ import MiniCart from "../../pages/customer/miniCart/MiniCart";
 import { useNavigate } from "react-router-dom";
 import AuthService from "../../pages/customer/services/auth.service";
 import {
-  AiFillCar,
   AiOutlineBars,
   AiOutlineHeart,
   AiOutlineSearch,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import {
-  FaBaby,
-  FaBalanceScale,
-  FaBalanceScaleLeft,
-  FaBalanceScaleRight,
-  FaRegHeart,
   FaTimes,
-  FaUser,
 } from "react-icons/fa";
 
 import { BsBagDash, BsFlower2, BsTags } from "react-icons/bs";
@@ -26,17 +19,13 @@ import { GiClothes, GiFruitBowl } from "react-icons/gi";
 import { BiBasketball } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { IoIosGitCompare } from "react-icons/io";
-import { loadFromLocalStorage } from "../../utils/user/manageLocalStorage";
 import { loadFromLocalStorage as loadSellerData } from "../../utils/seller/manageLocalStorage";
 
 import Select from "react-select";
 import { useCart } from "react-use-cart";
+import Categories from "./component/Categories";
 
 const customStyles = {
-  // option: (provided, state) => ({
-  //   ...provided,
-  //   zIndex: 99999,
-  // }),
 
   menuPortal: (base) => ({ ...base, zIndex: 9999, background: "red" }),
 
@@ -65,14 +54,14 @@ const customStyles = {
   }),
 };
 
-const Header = ({ headerLogo , languageSwitcher, currencySwitcher }) => {
+const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher , user }) => {
   const [mobileNav, setMobileNav] = useState(false);
   const navigate = useNavigate();
   const logout = () => {
     navigate("/login");
     AuthService.logout();
   };
-  const user = loadFromLocalStorage();
+
   const seller = loadSellerData();
 
   const { totalItems } = useCart();
@@ -215,7 +204,6 @@ const Header = ({ headerLogo , languageSwitcher, currencySwitcher }) => {
                   <Select
                     styles={customStyles}
                     options={options}
-                    // placeholder="Options"
                   />
 
                   <button type="button" className="btn search-button">
@@ -263,92 +251,7 @@ const Header = ({ headerLogo , languageSwitcher, currencySwitcher }) => {
       <div className="header-menu">
         <div className="container">
           <div className="row align-items-center">
-            <div className="d-none d-md-block col-md-4">
-              <div className="categories">
-                <div className="dropdown-button px-0">
-                  <span className="d-flex align-items-center">
-                    <AiOutlineBars className="me-2 mt-0" />{" "}
-                    <span className="mt-1">Categories</span>
-                  </span>
-                  <div className="category-list">
-                    <ul>
-                      <li className="see-all">
-                        <a href="#">See All</a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i>
-                            {" "}
-                            <BsFlower2 />
-                          </i>
-                          Beauty
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i>
-                            <GiFruitBowl />
-                          </i>
-                          Groceries
-                        </a>
-
-                        <ul>
-                          <li>
-                            <a href="#">Men</a>
-                          </li>
-                          <li>
-                            <a href="#">Women</a>
-                          </li>
-                          <li>
-                            <a href="#">Kids</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i>
-                            <GiClothes />
-                          </i>
-                          Clothing
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i>
-                            <BsBagDash />
-                          </i>
-                          Bags & Shoes
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i>
-                            <BiBasketball />
-                          </i>
-                          Outdoor Fun & Sports
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i>
-                            <AiFillCar />
-                          </i>
-                          Automobile & Motorcycles
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i>
-                            <FaBaby />
-                          </i>
-                          Toys & Kids
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
+						<Categories categories={categories}/>
             <div className="col-8  d-flex align-items-center">
               <div className="shop-menu">
                 <ul

@@ -25,9 +25,7 @@ const MostPopular = ({ popularProducts }) => {
 
         {Object.keys(popularProducts).length == 0 && (
           <SkeletonTheme height={50}>
-            <p>
-              <Skeleton count={5} />
-            </p>
+            <p><Skeleton count={5} /></p>
           </SkeletonTheme>
         )}
 

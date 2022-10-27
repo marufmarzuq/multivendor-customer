@@ -182,15 +182,12 @@
 .category-wrapper .category-slider .swiper-button-prev {
   top: 50%;
 }
+
 .category-wrapper .category-promotion {
   height: 100%;
   padding: 40px 15px 30px 15px;
   text-align: center;
   border-radius: 10px;
-  overflow: hidden;
-  background-position: center;
-  background-size: cover;
-  background-image: url("../../../../../assets/images/cat-promo-bg.png");
 }
 .category-wrapper a {
   text-decoration: none;

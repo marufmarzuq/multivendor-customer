@@ -1,11 +1,18 @@
 import React from "react";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { BiUser } from "react-icons/bi";
-import { AiOutlineSearch } from "react-icons/ai";
 import "./footer.css";
 import { NavLink } from "react-router-dom";
 import { logo } from "../../assets/index";
+<<<<<<< HEAD
 const Footer = ({ footerData }) => {
+=======
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import NewsLetter from "./newsletter/NewsLetter";
+
+const Footer = ({footerData,user}) => {
+>>>>>>> a8610f47c5318af5e211c71c99241ec7f843a23c
   return (
     <footer className="footer">
       <div className="container">
@@ -21,6 +28,7 @@ const Footer = ({ footerData }) => {
             </div>
           </div>
           <div className="col-md-7">
+<<<<<<< HEAD
             <div className="newsletter">
               <h3>Newsletter</h3>
               <div className="input-group">
@@ -37,6 +45,9 @@ const Footer = ({ footerData }) => {
                 </button>
               </div>
             </div>
+=======
+						<NewsLetter/>
+>>>>>>> a8610f47c5318af5e211c71c99241ec7f843a23c
           </div>
         </div>
         <div className="row footer-main">
@@ -111,46 +122,19 @@ const Footer = ({ footerData }) => {
           <div className="col-12 col-sm-5 col-lg-2 offset-lg-1 my-2 text-center text-sm-start">
             <h3 className="footer-title text-center text-sm-start">Products</h3>
             <ul className="vertical-menu">
-              <li>
-                <a href="#">
-                  <span>Womens Wear</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Mens Wear</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Kids Wear</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Electronics</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Gadgets</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Furniture</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Lightings</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Computer</span>
-                </a>
-              </li>
+            {
+            footerData?.products?.length > 0 ?
+							(
+								footerData?.products.map((item,key)=>{
+									return <li key={key}><NavLink to={`/${item.slug}`}><span>{item.name}</span></NavLink></li>
+								})
+							) :
+							(
+									<SkeletonTheme height={50}>
+										<p><Skeleton count={5} /></p>
+									</SkeletonTheme>
+							)
+            }
             </ul>
           </div>
           <div className="col-12 col-sm-6 offset-sm-1 col-lg-2 offset-lg-0 my-2 text-center text-sm-start">
@@ -159,24 +143,19 @@ const Footer = ({ footerData }) => {
             </h3>
             <ul className="vertical-menu">
               <li>
-                <a href="#">
+                <NavLink to={user ? `/dashboard`:`/login`}>
                   <span>My Account</span>
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#">
-                  <span>Order History</span>
-                </a>
+								<NavLink to={user ? `/dashboard/orders`:`login`}>
+									<span>Order History</span>
+                </NavLink>
               </li>
               <li>
-                <a href="#">
-                  <span>Wishlist</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>Newsletter</span>
-                </a>
+								<NavLink to={`/wishlist`}>
+									<span>Wishlist</span>
+                </NavLink>
               </li>
             </ul>
           </div>

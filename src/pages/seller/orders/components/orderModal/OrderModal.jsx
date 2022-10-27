@@ -55,7 +55,6 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
         setSubmiting(false);
       });
   };
-
   useEffect(() => {
     if (page == "order" && orderId) {
       markutosSellerApi
@@ -174,13 +173,24 @@ const OrderModal = ({ page, show, setShow, orderId, time }) => {
                       <h6>Order ID:</h6>
                       <h6>Customer:</h6>
                       <h6>Email:</h6>
-                      <h6>Shipping Address:</h6>
                     </Col>
                     <Col xs="7" md="5">
                       <h5>{orderDetails?.order?.id} </h5>
                       <h5>{orderDetails?.order?.customer_name}</h5>
                       <h5>{orderDetails?.order?.customer_email}</h5>
-                      <h5>{orderDetails?.order?.shipping_address}</h5>
+                    </Col>
+										<h6>Shipping Address:</h6>
+										<Col xs="5" md="2">
+                      <h6>Name:</h6>
+                      <h6>Address:</h6>
+                      <h6>Phone:</h6>
+                      <h6>Email:</h6>
+                    </Col>
+										<Col xs="7" md="5">
+                      <h5>{orderDetails?.order?.shipping_address?.name}</h5>
+                      <h5>{orderDetails?.order?.shipping_address?.address}</h5>
+                      <h5>{orderDetails?.order?.shipping_address?.phone}</h5>
+                      <h5>{orderDetails?.order?.shipping_address?.email}</h5>
                     </Col>
                     <Col xs="7" md="2">
                       <h6>Order Date:</h6>
