@@ -10,3 +10,5 @@ export const loadFromLocalStorage = () => {
 		return JSON.parse(decryptData(localStorage.getItem("markutosSeller")));
 	} else return undefined;
 };
+
+

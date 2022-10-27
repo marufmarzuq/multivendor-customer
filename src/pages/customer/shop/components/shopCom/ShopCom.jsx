@@ -12,7 +12,7 @@ const ShopCom = () => {
   const [pageCount, setPageCount] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
   const [sortBy, setSortBy] = useState('price');
-  
+
   useEffect(() => {
     setLoading(true);
     markutosFrontendApi
@@ -25,7 +25,7 @@ const ShopCom = () => {
         setPageCount(response?.data?.last_page);
 		});
 	}, [currentPage]);
-console.log(shopProduct);
+
   return (
       <section className="shop-wrap my-4">
         <div className="container">

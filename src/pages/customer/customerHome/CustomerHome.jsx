@@ -10,7 +10,6 @@ const CustomerHome = () => {
 
   const changeLanguage = (lang) => {
     localStorage.setItem("lang", lang);
-    // i18n.changeLanguage(lang);
     i18n
       .changeLanguage(lang)
       .then(() => console.log("changed"))

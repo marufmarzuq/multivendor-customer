@@ -59,14 +59,14 @@ const RightComp = ({loading,shopProduct,pageCount,currentPage,setCurrentPage,set
 					})
 				}
 				{shopProduct.length > 0 && (
-        <FrontendPagination
-          currentItem={shopProduct}
-          perPage={12}
-          pageCount={pageCount}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      )}
+					<FrontendPagination
+						currentItem={shopProduct}
+						perPage={12}
+						pageCount={pageCount}
+						currentPage={currentPage}
+						setCurrentPage={setCurrentPage}
+					/>
+      	)}
 			</div>
 		</div>
   );
