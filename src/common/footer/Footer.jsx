@@ -8,7 +8,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import NewsLetter from "./newsletter/NewsLetter";
 
-const Footer = ({footerData,user}) => {
+const Footer = ({ footerData, user }) => {
   return (
     <footer className="footer">
       <div className="container">
@@ -16,41 +16,43 @@ const Footer = ({footerData,user}) => {
           <div className="col-md-5">
             <div className="footer-logo">
               <a href="#">
-                <img src={ footerData.footer_logo ? footerData.footer_logo : ""} alt="MARKUTOS" />
-
+                <img
+                  src={footerData.footer_logo ? footerData.footer_logo : ""}
+                  alt="MARKUTOS"
+                />
               </a>
             </div>
           </div>
           <div className="col-md-7">
-						<NewsLetter/>
+            <NewsLetter />
           </div>
         </div>
         <div className="row footer-main">
           <div className="col-12 col-sm-5 col-lg-4 my-2 text-center text-sm-start">
             <p>
-              { footerData.footer_about_text ? footerData.footer_about_text : ""}
+              {footerData.footer_about_text ? footerData.footer_about_text : ""}
             </p>
-            <p>{ footerData.address ? footerData.address : ""}</p>
+            <p>{footerData.address ? footerData.address : ""}</p>
             <ul className="vertical-menu">
-              <li>{ footerData.phone ? footerData.phone : ""}</li>
+              <li>{footerData.phone ? footerData.phone : ""}</li>
               <li>
                 <BiUser />
-                <span>{ footerData.email ? footerData.email : ""}</span>
+                <span>{footerData.email ? footerData.email : ""}</span>
               </li>
             </ul>
             <ul className="social-buttons">
               <li>
-                <a href={ footerData.facebook ? footerData.facebook : "#" }>
+                <a href={footerData.facebook ? footerData.facebook : "#"}>
                   <FaFacebookF />
                 </a>
               </li>
               <li>
-                <a href={ footerData.twitter ? footerData.twitter : "#" }>
+                <a href={footerData.twitter ? footerData.twitter : "#"}>
                   <FaTwitter />
                 </a>
               </li>
               <li>
-                <a href={ footerData.linkedin ? footerData.linkedin : "#" }>
+                <a href={footerData.linkedin ? footerData.linkedin : "#"}>
                   <FaLinkedinIn />
                 </a>
               </li>
@@ -97,19 +99,23 @@ const Footer = ({footerData,user}) => {
           <div className="col-12 col-sm-5 col-lg-2 offset-lg-1 my-2 text-center text-sm-start">
             <h3 className="footer-title text-center text-sm-start">Products</h3>
             <ul className="vertical-menu">
-            {
-            footerData?.products?.length > 0 ?
-							(
-								footerData?.products.map((item,key)=>{
-									return <li key={key}><NavLink to={`/${item.slug}`}><span>{item.name}</span></NavLink></li>
-								})
-							) :
-							(
-									<SkeletonTheme height={50}>
-										<p><Skeleton count={5} /></p>
-									</SkeletonTheme>
-							)
-            }
+              {footerData?.products?.length > 0 ? (
+                footerData?.products.map((item, key) => {
+                  return (
+                    <li key={key}>
+                      <NavLink to={`/${item.slug}`}>
+                        <span>{item.name}</span>
+                      </NavLink>
+                    </li>
+                  );
+                })
+              ) : (
+                <SkeletonTheme height={50}>
+                  <p>
+                    <Skeleton count={5} />
+                  </p>
+                </SkeletonTheme>
+              )}
             </ul>
           </div>
           <div className="col-12 col-sm-6 offset-sm-1 col-lg-2 offset-lg-0 my-2 text-center text-sm-start">
@@ -118,18 +124,18 @@ const Footer = ({footerData,user}) => {
             </h3>
             <ul className="vertical-menu">
               <li>
-                <NavLink to={user ? `/dashboard`:`/login`}>
+                <NavLink to={user ? `/dashboard` : `/login`}>
                   <span>My Account</span>
                 </NavLink>
               </li>
               <li>
-								<NavLink to={user ? `/dashboard/orders`:`login`}>
-									<span>Order History</span>
+                <NavLink to={user ? `/dashboard/orders` : `login`}>
+                  <span>Order History</span>
                 </NavLink>
               </li>
               <li>
-								<NavLink to={`/wishlist`}>
-									<span>Wishlist</span>
+                <NavLink to={`/wishlist`}>
+                  <span>Wishlist</span>
                 </NavLink>
               </li>
             </ul>
@@ -138,7 +144,11 @@ const Footer = ({footerData,user}) => {
       </div>
       <div className="container-fluid footer-bottom">
         <div className="row footer-copyright">
-          <p>{ footerData.copyright_text ? footerData.copyright_text : "Copyright MARKUTOS 2022. All rights reserved" }</p>
+          <p>
+            {footerData.copyright_text
+              ? footerData.copyright_text
+              : "Copyright MARKUTOS 2022. All rights reserved"}
+          </p>
         </div>
       </div>
     </footer>
