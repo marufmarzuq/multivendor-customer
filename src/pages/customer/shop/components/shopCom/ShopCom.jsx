@@ -23,7 +23,7 @@ const ShopCom = () => {
         setCurrentPage(response?.data?.current_page);
         setPageCount(response?.data?.last_page);
 		});
-	}, [currentPage]);
+	}, [currentPage,sortBy]);
 
   return (
       <section className="shop-wrap my-4">
