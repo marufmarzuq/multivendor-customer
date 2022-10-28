@@ -3,7 +3,6 @@ import { BiSearch, BiSquare } from "react-icons/bi";
 import { BsGrid3X3Gap } from "react-icons/bs";
 import { AiOutlineBars } from "react-icons/ai";
 import { FaBalanceScale, FaStar } from "react-icons/fa";
-import { product2 } from "../../../../../assets/index";
 const LeftComp = () => {
   return (
 	<div className="shop-sidebar">
@@ -90,16 +89,6 @@ const LeftComp = () => {
 						htmlFor="blue"
 						style={{ backgroundColor: "blue" }}
 					></label>
-				</div>
-			</div>
-			<div className="sidebar-row radio-wrap color-wrap">
-				<h4 className="sidebar-label">Color</h4>
-				<div className="radio-item">
-					<span
-						className="color"
-						style={{ backgroundColor: "blue" }}
-					></span>
-					<span className="size">XL</span>
 				</div>
 			</div>
 	</div>
