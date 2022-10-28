@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import authService from "../../../customer/services/auth.service";
 import linkStyle from "./links.module.css";
+import { useNavigate } from "react-router-dom";
+
 const DashboardLinks = () => {
   const location = useLocation();
 
@@ -12,6 +15,15 @@ const DashboardLinks = () => {
       setPathName("profile");
     }
   }, [location.pathname]);
+
+	// Logout
+  const navigate = useNavigate();
+
+	const logout = () => {
+		authService.logout();
+    navigate("/login");
+  };
+
   return (
     <div className={linkStyle.linksContainer}>
       <ul>
@@ -39,7 +51,7 @@ const DashboardLinks = () => {
           <NavLink to="/dashboard/become-vendor"> Become A Vendor </NavLink>
         </li>
         <li>
-          <a href=""> Logout</a>
+					<NavLink to="/login" onClick={logout}>Logout</NavLink>
         </li>
       </ul>
     </div>
