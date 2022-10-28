@@ -75,7 +75,7 @@ const Profile = () => {
     handleBlur,
     setFieldValue,
   } = formik;
-console.log(values);
+
   return (
     <>
       <h4>Profile</h4>
