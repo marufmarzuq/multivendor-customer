@@ -57,7 +57,7 @@
   outline: 1px outset #2e74e8;
   color: #2e74e8;
 }
-.shop-sidebar .radio-wrap .radio-item label,
+
 .single-product-wrap .radio-wrap .radio-item label {
   border: 5px solid #fff;
   outline: 1px solid #d7d7d7;
@@ -67,10 +67,7 @@
   font-weight: 500;
   line-height: 22px;
 }
-.shop-sidebar .radio-wrap.color-wrap .radio-item label,
-.single-product-wrap .radio-wrap.color-wrap .radio-item label {
-  padding: 15px 15px;
-}
+
 .shop-sidebar .sidebar-row {
   margin-bottom: 25px;
 }
@@ -220,16 +217,10 @@
   outline: 1px outset #2e74e8;
 }
 .shop-sidebar .radio-wrap .radio-item label {
-  border: 5px solid #fff;
-  outline: 1px solid #d7d7d7;
-  padding: 8px 12px;
-  border-radius: 5px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 22px;
+	padding: 0px 5px;
 }
 .shop-sidebar .color-wrap .radio-item label {
-  padding: 15px 15px;
+  padding: 12px 12px;
 }
 .shop-sidebar .progress-wrap {
   display: flex;
