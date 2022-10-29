@@ -168,7 +168,7 @@ const SupportForm = () => {
             </div>
             {/* <div className="tiny-desc-container">
               <Editor
-              	type="text"
+								type="text"
                 init={{ height: 500 }}
                 toolbarClassName="toolbarClassName"
                 wrapperClassName="wrapperClassName"

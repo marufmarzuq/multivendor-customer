@@ -19,7 +19,7 @@ const CustomerLayout = () => {
 				setCurrentItems(response?.data);
       });
   }, []);
-// console.log(currentItems);
+
   return (
     <div className="wrapper">
       <Header

@@ -52,6 +52,7 @@ import ThankYou from "../../pages/customer/thankYou/ThankYou";
 import CustomerPrivateRoutes from "./routeModels/CustomerPrivateRoutes";
 import BeVendor from "../../pages/customerDashboard/components/becomeVendor/BeVendor";
 import Supports from "../../pages/customerDashboard/components/supports/Supports";
+import OrderReturnList from "../../pages/customerDashboard/components/orderReturns/OrderReturnList";
 
 
 const Router = () => {
@@ -116,6 +117,7 @@ const Router = () => {
           <Route path="dashboard" element={<DashboardLayout />}>
             <Route path="" element={<Profile />} />
             <Route path="orders" element={<UserOrder />} />
+						<Route path="order-return-list" element={<OrderReturnList />} />
             <Route path="order-returns" element={<UserOrderReturns />} />
             <Route path="password-change" element={<ChangePass />} />
             <Route path="become-vendor" element={<BeVendor />} />

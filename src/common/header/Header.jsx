@@ -56,6 +56,8 @@ const customStyles = {
 
 const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher , user }) => {
   const [mobileNav, setMobileNav] = useState(false);
+
+  // Logout
   const navigate = useNavigate();
   const logout = () => {
     navigate("/login");

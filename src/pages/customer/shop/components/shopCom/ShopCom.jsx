@@ -6,7 +6,6 @@ import { markutosFrontendApi } from "../../../../services/Api/api";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const ShopCom = () => {
-
   const [loading, setLoading] = useState(false);
   const [shopProduct, setShopProduct] = useState([]);
   const [pageCount, setPageCount] = useState(1);
@@ -16,7 +15,7 @@ const ShopCom = () => {
   useEffect(() => {
     setLoading(true);
     markutosFrontendApi
-      .get(`/shop?per_page=16&search_value=&category=&brand=&rating=&color=&sort_by=${sortBy}&choice_name=&choice_value=&per_page=${12}&page=${currentPage}`)
+      .get(`/shop?per_page=12&search_value=&category=&brand=&rating=&color=&sort_by=${sortBy}&choice_name=&choice_value=&page=${currentPage}`)
       .then((response) => {
         setLoading(false);
 				setShopProduct(response?.data.data);
@@ -24,7 +23,7 @@ const ShopCom = () => {
         setCurrentPage(response?.data?.current_page);
         setPageCount(response?.data?.last_page);
 		});
-	}, [currentPage]);
+	}, [currentPage,sortBy]);
 
   return (
       <section className="shop-wrap my-4">
