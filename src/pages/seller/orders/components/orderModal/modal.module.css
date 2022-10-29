@@ -1,3 +1,10 @@
+.mainView {
+  display: block;
+}
+
+.print_area {
+  display: none;
+}
 .orderModalWidth {
   min-width: 80vw !important;
 }
@@ -33,6 +40,8 @@
   padding-right: 10px;
   padding-top: 1rem;
   padding-left: 0;
+  display: block;
+  flex-wrap: nowrap !important;
 }
 
 .orderBody h6 {
@@ -69,5 +78,63 @@
 
   .orderBody {
     padding-left: 1rem;
+  }
+}
+
+@media print {
+  .mainView {
+    display: none !important;
+  }
+
+  .print_area {
+    display: block !important;
+  }
+
+  .orderSummary {
+    padding: 15px 0;
+    border: 1px solid rgba(128, 128, 128, 0.196);
+    border-radius: 8px;
+  }
+
+  .orderSummary h6 {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.196);
+    padding: 0 1rem;
+    padding-bottom: 10px !important;
+    font-weight: 600;
+  }
+
+  .orderSummary h5 {
+    padding-bottom: 15px !important;
+  }
+
+  .orderBody {
+    padding-right: 10px;
+    padding-top: 1rem;
+    padding-left: 0;
+    display: block;
+    flex-wrap: nowrap !important;
+  }
+
+  .orderBody h6 {
+    border: none;
+    font-size: 0.8rem;
+  }
+
+  .orderBody h5 {
+    padding-bottom: 25px;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .orderBody h6 {
+    padding-bottom: 20px;
+  }
+
+  .orderBody th {
+    font-size: 0.9rem;
+  }
+
+  .orderBody td {
+    font-size: 0.9rem;
   }
 }

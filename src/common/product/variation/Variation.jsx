@@ -111,8 +111,7 @@ const Variation = ({ colors, choseOptions, product, products, prodID }) => {
           )}
           {variantPrice !== "" && (
             <div className="variation-price d-flex justify-content-end">
-              {" "}
-              {variantPrice}{" "}
+              {variantPrice}
             </div>
           )}
         </div>

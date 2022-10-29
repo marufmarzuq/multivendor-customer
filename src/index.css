@@ -459,3 +459,9 @@ input.table-search-input:focus {
     width: 300px;
   }
 }
+
+@media print {
+  .sller-lang-div {
+    display: none !important;
+  }
+}

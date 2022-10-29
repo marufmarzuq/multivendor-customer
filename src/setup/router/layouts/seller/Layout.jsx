@@ -26,8 +26,8 @@ const Layout = () => {
   };
 
   const languages = [
-    { label: "EN", value: { code: "en-US", currency: "USD" } , code : 'en' },
-    { label: "FR", value: { code: "de-DE", currency: "EUR" } , code : 'fr'},
+    { label: "EN", value: { code: "en-US", currency: "USD" }, code: "en" },
+    { label: "FR", value: { code: "de-DE", currency: "EUR" }, code: "fr" },
   ];
 
   // console.log(i18n.language);
@@ -77,7 +77,7 @@ const Layout = () => {
           </div>
           <div className="px-0 mx-0">
             {/* Container for showing content */}
-            <div className={`  ${layoutStyle.content}`}>
+            <div className={`sller-lang-div  ${layoutStyle.content}`}>
               <section className={layoutStyle.topMenu}>
                 <menu>
                   <div>
