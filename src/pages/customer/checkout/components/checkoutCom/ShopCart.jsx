@@ -6,6 +6,7 @@ import Variations from "../../../miniCart/components/cartCom/Variations";
 import cartDeailsStyle from "./checkout.module.css";
 
 const ShopCart = ({items}) => {
+console.log(items);
 
   return (
     <div>
@@ -21,11 +22,11 @@ const ShopCart = ({items}) => {
               </h4>
             </div>
 						{
-						items.items.length > 0 &&
+						items.products.length > 0 &&
 						(
 						<Fragment>
 								<Fragment>
-								{ items.items.map((item,key)=>{
+								{ items.products.map((item,key)=>{
 									return(
 										<div className={cartDeailsStyle.productInfo} key={key}>
 											<div className={cartDeailsStyle.productInfoImg}>
@@ -49,7 +50,7 @@ const ShopCart = ({items}) => {
 								</Fragment>
 								<Fragment>
 									<div className="mb-4">
-										<CartTotal proceedKey="checkout" cartTotalTitle="checkout" cartTotal={items.cartTotal} />
+										<CartTotal proceedKey="checkout" cartTotalTitle="checkout" cartTotal={items.subtotal} />
 									</div>
 								</Fragment>
 						</Fragment>

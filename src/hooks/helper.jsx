@@ -37,7 +37,8 @@ export const storeCart = (items )=>{
 			return accumulator + object.itemTotal;
 		}, 0);
 
-		resultArr.push({ shopName: lookup[obj] , userId : obj , items:newArr , cartTotal : cartTotal })
+		resultArr.push({ shopName: lookup[obj] , seller_id : obj ,
+		products:newArr , subtotal : cartTotal , shipping_method : "" , tax : 2.00 , coupon_discount: 0.00 , total: cartTotal })
 	});
 
 	return resultArr;

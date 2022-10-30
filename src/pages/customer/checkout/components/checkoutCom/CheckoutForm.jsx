@@ -9,9 +9,10 @@ import { markutosFrontendApi } from "../../../../services/Api/api";
 import { addOrderSchema } from "../../../../../schema/addOrderSchema";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
-const CheckoutForm = ({items,cartTotal}) => {
+const CheckoutForm = ({storesCart,cartTotal}) => {
 	const [paymentMethod, setPaymentMethod] = useState('cod');
 	const user = loadFromLocalStorage();
+	console.log(storesCart);
 
   const formik = useFormik({
     validationSchema: addOrderSchema,
@@ -31,10 +32,8 @@ const CheckoutForm = ({items,cartTotal}) => {
         "phone": values.phone,
         "address": values.address
 			};
-
 			finalValues.user_id = user ? user?.user?.id : null;
-			finalValues.products = items;
-			finalValues.shipping_info   = shipping_info;
+			finalValues.orders = storesCart;
 			finalValues.payment_method  = "cod";
 			finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
 			finalValues.coupon_discount =  0;

@@ -32,7 +32,7 @@ const Checkout = () => {
 					(
 						<Fragment>
 							<div className={checkoutStyle.checkoutForm}>
-								<CheckoutForm items={items} cartTotal={cartTotal} />
+								<CheckoutForm storesCart={storesCart} cartTotal={cartTotal} />
 							</div>
 							<div className={checkoutStyle.cartDetails}>
 								<CartDetails storesCart={storesCart} cartTotal={cartTotal} />
