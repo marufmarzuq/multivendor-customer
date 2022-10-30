@@ -1,15 +1,15 @@
 import { Fragment, useState, useEffect } from "react";
 
-const Variation = ({ colors, choseOptions, product, products, prodID }) => {
+const Variation = ({ colors, choseOptions, product }) => {
   const [selectVariant, setSelectVariant] = useState([]);
   const [variantPrice, setVariantPrice] = useState("");
 
   useEffect(() => {
     product.selectedVariant = selectVariant;
-
     var getVariant = "";
     // sort by index
     selectVariant.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
+
     // combination of variation
     if (selectVariant?.length > 0) {
       selectVariant.map((variant, key) => {
@@ -61,7 +61,7 @@ const Variation = ({ colors, choseOptions, product, products, prodID }) => {
               {colors.map((item, key) => {
                 return (
                   <div className="radio-item" key={key}>
-                    <input
+                    {/* <input
                       type="radio"
                       name="color"
                       value={item.name}
@@ -74,7 +74,10 @@ const Variation = ({ colors, choseOptions, product, products, prodID }) => {
                       className="radio-bg-padding"
                       htmlFor={item.name}
                       style={{ backgroundColor: item.code }}
-                    ></label>
+                    ></label> */}
+                    <span onClick={(e) =>
+                        getVariation("Colors", item.name , 0)
+                      } > </span>
                   </div>
                 );
               })}
@@ -91,7 +94,7 @@ const Variation = ({ colors, choseOptions, product, products, prodID }) => {
                     {choseOptions[item]?.map((variant, i) => {
                       return (
                         <div className="radio-item" key={i}>
-                          <input
+                          {/* <input
                             type="radio"
                             name={item}
                             value={variant}
@@ -100,7 +103,10 @@ const Variation = ({ colors, choseOptions, product, products, prodID }) => {
                               getVariation(item, e.target.value, key + 1)
                             }
                           />
-                          <label htmlFor={variant}>{variant}</label>
+                          <label htmlFor={variant}>{variant}</label> */}
+                          <span onClick={(e) =>
+													getVariation(item, variant , key + 1)
+													}>{variant}</span>
                         </div>
                       );
                     })}

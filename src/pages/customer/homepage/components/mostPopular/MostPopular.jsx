@@ -57,8 +57,6 @@ const MostPopular = ({ popularProducts }) => {
                     return (
                       <ProductLayout
                         key={index}
-                        products={popularProducts[categoryName]}
-                        prodID={product.id}
                         product={product}
                         addToCart={addToCart}
                       />
