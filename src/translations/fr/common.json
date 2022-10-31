@@ -1,3 +1,6 @@
 {
-	"support_request":"Support Request"
+	"common":{
+		"support_request":"Support Request",
+    "go_frontend": "Go To Frontend-fr"
+	}
 }

@@ -14,9 +14,6 @@ import {
   FaTimes,
 } from "react-icons/fa";
 
-import { BsBagDash, BsFlower2, BsTags } from "react-icons/bs";
-import { GiClothes, GiFruitBowl } from "react-icons/gi";
-import { BiBasketball } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
 import { IoIosGitCompare } from "react-icons/io";
 import { loadFromLocalStorage as loadSellerData } from "../../utils/seller/manageLocalStorage";
@@ -24,11 +21,10 @@ import { loadFromLocalStorage as loadSellerData } from "../../utils/seller/manag
 import Select from "react-select";
 import { useCart } from "react-use-cart";
 import Categories from "./component/Categories";
+import { useTranslation } from "react-i18next";
 
 const customStyles = {
-
   menuPortal: (base) => ({ ...base, zIndex: 9999, background: "red" }),
-
   valueContainer: (provided) => ({
     ...provided,
     width: 200,
@@ -45,7 +41,6 @@ const customStyles = {
     ...defaultStyles,
     marginTop: -12,
   }),
-
   singleValue: (styles) => ({ ...styles, marginTop: -12 }),
   dropdownIndicator: (styles) => ({
     marginTop: -12,
@@ -72,6 +67,25 @@ const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher ,
     { value: "strawberry", label: "Strawberry" },
     { value: "vanilla", label: "Vanilla" },
   ];
+	const { t, i18n } = useTranslation();
+  const changeLanguage = (lang) => {
+    localStorage.setItem("frontendLang", JSON.stringify(lang));
+    i18n.changeLanguage(lang.code);
+  };
+  const languages = [
+    { label: "EN", value: { code: "en-US", currency: "USD" }, code: "en" },
+    { label: "FR", value: { code: "de-DE", currency: "EUR" }, code: "fr" },
+  ];
+  const currency = [
+    { label: "USD", value: "USD" },
+    { label: "EUR", value: "EUR" },
+  ];
+	const changeCurrency = (currency) => {
+    var getCurrency = localStorage.getItem("frontendLang");
+    getCurrency = getCurrency ? JSON.parse(getCurrency) : { code: "en", lang: "en-US", currency: "USD"  };
+    getCurrency.currency = currency;
+		localStorage.setItem("frontendLang", JSON.stringify(getCurrency));
+  };
 
   return (
     <header className="header">
@@ -83,57 +97,23 @@ const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher ,
               <ul className="d-flex">
 							{
 							languageSwitcher == true && (
-								<li className="dropdown">
-									<a
-										className="dropdown-toggle"
-										href="#"
-										role="button"
-										data-bs-toggle="dropdown"
-									>
-										En
-									</a>
-
-									<ul className="dropdown-menu">
-										<li>
-											<a className="dropdown-item" href="#">
-												Bn
-											</a>
-										</li>
-										<li>
-											<a className="dropdown-item" href="#">
-												Ar
-											</a>
-										</li>
-									</ul>
-								</li>
+									<div>
+                    <Select
+                      defaultValue={{ label: "EN", value: { code: "en-US", currency: "USD" }, code: "en" } }
+                      options={languages}
+                      onChange={(e) => changeLanguage({code:e.code,currency:e.value.currency,lang:e.value.code})}
+                    />
+                  </div>
 								)
 							}
 							{
 								currencySwitcher == true &&
 								(
-									<li className="dropdown">
-									<a
-										className="dropdown-toggle"
-										href="#"
-										role="button"
-										data-bs-toggle="dropdown"
-									>
-										Euro
-									</a>
-
-										<ul className="dropdown-menu">
-											<li>
-												<a className="dropdown-item" href="#">
-													USD
-												</a>
-											</li>
-											<li>
-												<a className="dropdown-item" href="#">
-													BDT
-												</a>
-											</li>
-										</ul>
-									</li>
+									<Select
+                      defaultValue={{label: "USD", value: "USD"}}
+                      options={currency}
+                      onChange={(e) => changeCurrency(e.value)}
+                    />
 								)
 							}
               </ul>

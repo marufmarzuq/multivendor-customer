@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import layoutStyle from "./layout.module.css";
@@ -15,26 +15,17 @@ import Navigation from "../../../../navigation/seller/Navigation";
 
 const Layout = () => {
   const [toggle, setToggle] = useState(false);
-  const [selectedLang, setSelectedLang] = useState({
-    code: "en-US",
-    currency: "USD",
-  });
+
   const { t, i18n } = useTranslation();
   const changeLanguage = (lang) => {
     localStorage.setItem("sellerLang", JSON.stringify(lang));
-    i18n.changeLanguage(lang.code);
+    i18n.changeLanguage(lang);
   };
-
   const languages = [
     { label: "EN", value: { code: "en-US", currency: "USD" }, code: "en" },
     { label: "FR", value: { code: "de-DE", currency: "EUR" }, code: "fr" },
   ];
 
-  // console.log(i18n.language);
-  // const languages = [
-  //   { label: "EN", value: "en" },
-  //   { label: "FR", value: "fr" },
-  // ];
   return (
     <>
       <div className="container-fluid m-0 p-0 mb-0">
@@ -82,14 +73,14 @@ const Layout = () => {
                 <menu>
                   <div>
                     <Select
-                      defaultValue={{ label: "EN", value: "EN" }}
+                      defaultValue={{label: "EN", value: { code: "en-US", currency: "USD" }, code: "en"}}
                       options={languages}
-                      onChange={(e) => changeLanguage(e.value)}
+                      onChange={(e) => changeLanguage(e.code)}
                     />
                   </div>
                   <div>
                     <NavLink className="btn btn-sm" to={"/"}>
-                      Go to Frontend <IoArrowRedoOutline className="ms-2" />
+										{t("go_frontend")} <IoArrowRedoOutline className="ms-2" />
                     </NavLink>
                   </div>
                 </menu>

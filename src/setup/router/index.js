@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import NotFound from "../../pages/NotFound";
 import BulkUpload from "../../pages/seller/bulkUpload/BulkUpload";
 import CommissionHistory from "../../pages/seller/commissionHistory/CommissionHistory";
@@ -53,6 +53,7 @@ import CustomerPrivateRoutes from "./routeModels/CustomerPrivateRoutes";
 import BeVendor from "../../pages/customerDashboard/components/becomeVendor/BeVendor";
 import Supports from "../../pages/customerDashboard/components/supports/Supports";
 import OrderReturnList from "../../pages/customerDashboard/components/orderReturns/OrderReturnList";
+import SupportTicket from "../../pages/customer/support/SupportTicket";
 
 
 const Router = () => {
@@ -122,6 +123,7 @@ const Router = () => {
             <Route path="password-change" element={<ChangePass />} />
             <Route path="become-vendor" element={<BeVendor />} />
             <Route path="supports" element={<Supports />} />
+            <Route path="support-ticket/:ticket" element={<SupportTicket />} />
           </Route>
         </Route>
       </Route>

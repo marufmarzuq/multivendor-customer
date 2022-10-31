@@ -1,5 +1,6 @@
 import React from "react";
 import "./translations/i18next";
+import "./translations/i18nextFrontend";
 import ReactDOMClient from "react-dom/client";
 import App from "./App";
 import "./index.css";

@@ -6,13 +6,15 @@ import common_es from "./es/common.json";
 import common_it from "./it/common.json";
 import { initReactI18next } from "react-i18next";
 
-var sellerLang  = JSON.parse(localStorage.getItem("sellerLang"));
-sellerLang      = sellerLang?.code || "en";
+var frontendLang  = localStorage.getItem("frontendLang");
+frontendLang      = frontendLang ? JSON.parse(frontendLang) : {code:"en-US",currency:"en"};
+frontendLang      = frontendLang?.code || "en";
+console.log(frontendLang);
 
 // seller languages
 i18next.use(initReactI18next).init({
   interpolation: { escapeValue: false }, // React already does escaping
-  lng: sellerLang, // language to use
+  lng: frontendLang, // language to use
   resources: {
     en: { translation: common_en },
     fr: { translation: common_fr.common },

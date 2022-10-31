@@ -1,5 +1,6 @@
 {
-  "common": {
+
+    "go_frontend": "Go To Frontend",
     "support_request": "Support Request",
     "wholesale": "Sales platform",
     "restaurant": "Restaurant",
@@ -19,7 +20,6 @@
     "select_purchase_type": "Select purchase type",
     "select_vendor_type": "Select vendor type",
     "exiting_product": "Existing product",
-    "vendor": "Vendor",
     "order": "Order",
     "profit": "Profit",
     "user_name": "User name",
@@ -34,7 +34,6 @@
     "email": "Email",
     "category_name": "Category name",
     "address": "Address",
-    "category": "Category",
     "categories": "Categories",
     "tags": "Tags",
     "price": "Price",
@@ -45,7 +44,6 @@
     "name": "Name",
     "status": "Status",
     "purchase_status": "Purchase status",
-    "report": "Report",
     "prediction": "Prediction",
     "confirm_purchase": "Confirm purchase",
     "theme_options": "Theme options",
@@ -123,9 +121,7 @@
     "simple": "Simple",
     "estimate_profit": "Estimated profit",
     "id": "SN.",
-    "product": "Product",
     "customer": "Customer",
-    "sales": "Sales",
     "days": "Days",
     "thank_message": "Thank you. Your order has been received.",
     "to_date": "To date",
@@ -140,7 +136,6 @@
     "see_all": "See All",
     "compare_list": "Compare List",
     "part": "part",
-    "stock": "Stock",
     "count": "Count",
     "helps": "Help center",
     "seller_request": "Seller request",
@@ -155,8 +150,7 @@
     "out_stock": "Out Stock",
     "add_wishlist": "Add To Wishlist",
     "add_compare": "Add To Compare",
-    "shop": "Shop"
-  },
+    "shop": "Shop",
   "login": {
     "login": "LOG IN",
     "have_register": "If you don't have account",
