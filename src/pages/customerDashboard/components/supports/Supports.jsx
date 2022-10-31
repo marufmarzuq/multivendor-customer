@@ -35,26 +35,16 @@ const Supports = () => {
 
   return (
     <div>
-      <h4>Orders</h4>
+      <h4>Supports</h4>
       <section className={` ${supportStyle.tableData}`}>
         <table>
           <thead>
             <tr>
-              <th>
-                <small>ID Number</small>
-              </th>
-              <th>
-                <small>Date</small>
-              </th>
-              <th>
-                <small>Total</small>
-              </th>
-              <th>
-                <small> Status</small>
-              </th>
-              <th className="text-center">
-                <small>Actions</small>
-              </th>
+              <th><small>Ticket ID</small></th>
+              <th><small>Subject</small></th>
+              <th><small> Status</small></th>
+              <th><small> Last Update</small></th>
+              <th className="text-center"><small>Actions</small></th>
             </tr>
           </thead>
 
@@ -67,9 +57,9 @@ const Supports = () => {
 								return(
 									<tr key={index}>
 									<td><small>{item.code}</small></td>
-									<td><small>{item.created_at}</small></td>
-									<td><small>{priceFormat(item.grand_total)}</small></td>
-									<td><small className={item.order_status == "pending" ?"text-danger" : "text-success"}> {item.order_status} </small></td>
+									<td><small>{item.subject}</small></td>
+									<td><small>{item.status}</small></td>
+									<td><small>{item.updated_at}</small></td>
 									<td className="text-center">
 										<small>
 											<button className="btn">
