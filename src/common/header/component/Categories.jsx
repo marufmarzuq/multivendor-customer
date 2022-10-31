@@ -15,21 +15,30 @@ const Categories = ({categories}) => {
 						<li className="see-all">
 							<NavLink to={`/`}>See All</NavLink>
 						</li>
-						<li>
-							<a href="#">
-								<img src={`#`}/>Groceries
-							</a>
-							<ul>
-								<li>
-									<a href="#">Men</a>
-								</li>
-							</ul>
+						{categories.length > 0 &&
+						categories.map((item,key)=>{
+						return(
+							<li key={key}>
+							<NavLink to={`/${item.slug}`}>
+								<img className="icon_size" src={item.icon}/>{item.name}
+							</NavLink>
+							{item?.sub_category.map((sub,i)=>{
+								return(
+									<ul key={i}>
+										<li>
+											<NavLink to={`/${sub.slug}`}>{sub.name}</NavLink>
+										</li>
+									</ul>
+								)
+								})}
 						</li>
+						)
+						}) }
 					</ul>
 				</div>
 			</div>
 		</div>
-	</div>
+		</div>
   );
 };
 

@@ -50,9 +50,25 @@ const customStyles = {
   }),
 };
 
-const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher , user }) => {
+const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher , user , language }) => {
   const [mobileNav, setMobileNav] = useState(false);
+
 	const context = useContext(ProductContext);
+  const languages = [
+    { label: "EN", value: { code: "en-US", currency: "USD" }, code: "en" },
+    { label: "FR", value: { code: "de-DE", currency: "EUR" }, code: "fr" },
+  ];
+  const currency = [
+    { label: "USD", value: "USD" },
+    { label: "EUR", value: "EUR" },
+  ];
+
+
+	var getLang = localStorage.getItem("frontendLang");
+	getLang = getLang ? JSON.parse(getLang) : { code: language, currency: "USD" } ;
+	var defaultLang = languages.find(function(lang) {
+		return lang.code == getLang.code ;
+	});
 
   // Logout
   const navigate = useNavigate();
@@ -70,18 +86,12 @@ const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher ,
     { value: "vanilla", label: "Vanilla" },
   ];
 	const { t, i18n } = useTranslation();
+
   const changeLanguage = (lang) => {
     localStorage.setItem("frontendLang", JSON.stringify(lang));
     i18n.changeLanguage(lang.code);
   };
-  const languages = [
-    { label: "EN", value: { code: "en-US", currency: "USD" }, code: "en" },
-    { label: "FR", value: { code: "de-DE", currency: "EUR" }, code: "fr" },
-  ];
-  const currency = [
-    { label: "USD", value: "USD" },
-    { label: "EUR", value: "EUR" },
-  ];
+
 	const changeCurrency = (currency) => {
     var getCurrency = localStorage.getItem("frontendLang");
     getCurrency = getCurrency ? JSON.parse(getCurrency) : { code: "en", lang: "en-US", currency: "USD"  };
@@ -101,7 +111,7 @@ const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher ,
 							languageSwitcher == true && (
 									<div>
                     <Select
-                      defaultValue={{ label: "EN", value: { code: "en-US", currency: "USD" }, code: "en" } }
+                      defaultValue={ defaultLang }
                       options={languages}
                       onChange={(e) => changeLanguage({code:e.code,currency:e.value.currency,lang:e.value.code})}
                     />
@@ -112,7 +122,7 @@ const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher ,
 								currencySwitcher == true &&
 								(
 									<Select
-                      defaultValue={{label: "USD", value: "USD"}}
+                      defaultValue={{label: defaultLang.value.currency , value: defaultLang.value.currency }}
                       options={currency}
                       onChange={(e) => changeCurrency(e.value)}
                     />

@@ -28,6 +28,7 @@ const CustomerLayout = () => {
       languageSwitcher={currentItems.language_switcher ? currentItems.language_switcher : 1 }
       currencySwitcher={currentItems.currency_switcher ? currentItems.currency_switcher : 1 }
       headerLogo={ currentItems.header_logo ? currentItems.header_logo : "" }
+      language={ currentItems?.language || "en" }
       />
       <Outlet />
       <Footer user={user} footerData={currentItems}/>
