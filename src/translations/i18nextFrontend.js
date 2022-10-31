@@ -9,7 +9,6 @@ import { initReactI18next } from "react-i18next";
 var frontendLang  = localStorage.getItem("frontendLang");
 frontendLang      = frontendLang ? JSON.parse(frontendLang) : {code:"en-US",currency:"en"};
 frontendLang      = frontendLang?.code || "en";
-console.log(frontendLang);
 
 // seller languages
 i18next.use(initReactI18next).init({

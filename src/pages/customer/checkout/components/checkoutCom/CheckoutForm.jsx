@@ -12,7 +12,6 @@ import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStora
 const CheckoutForm = ({storesCart,cartTotal}) => {
 	const [paymentMethod, setPaymentMethod] = useState('cod');
 	const user = loadFromLocalStorage();
-	console.log(storesCart);
 
   const formik = useFormik({
     validationSchema: addOrderSchema,

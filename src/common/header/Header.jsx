@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useContext } from "react";
 import "./header.css";
 import { logo } from "../../assets/index";
 import MiniCart from "../../pages/customer/miniCart/MiniCart";
@@ -22,6 +22,7 @@ import Select from "react-select";
 import { useCart } from "react-use-cart";
 import Categories from "./component/Categories";
 import { useTranslation } from "react-i18next";
+import ProductContext from "../../setup/context/ProductContext";
 
 const customStyles = {
   menuPortal: (base) => ({ ...base, zIndex: 9999, background: "red" }),
@@ -51,6 +52,7 @@ const customStyles = {
 
 const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher , user }) => {
   const [mobileNav, setMobileNav] = useState(false);
+	const context = useContext(ProductContext);
 
   // Logout
   const navigate = useNavigate();
@@ -202,14 +204,14 @@ const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher ,
                     <NavLink to="/compare">
                       {/* <FaBalanceScaleRight /> */}
                       <IoIosGitCompare />
-                      <span>0</span>
+                      <span>{context.data.compareListCount}</span>
                     </NavLink>
                   </li>
                   {/* WishList */}
                   <li>
                     <NavLink to="/wishlist">
                       <AiOutlineHeart />
-                      <span>0</span>
+                      <span>{context.data.wishlistCount}</span>
                     </NavLink>
                   </li>
                   <li className="headerMiniCartIcon">

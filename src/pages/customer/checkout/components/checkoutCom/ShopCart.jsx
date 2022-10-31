@@ -6,7 +6,6 @@ import Variations from "../../../miniCart/components/cartCom/Variations";
 import cartDeailsStyle from "./checkout.module.css";
 
 const ShopCart = ({items}) => {
-console.log(items);
 
   return (
     <div>
