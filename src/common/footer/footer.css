@@ -31,14 +31,7 @@
   height: 45px !important;
 }
 .footer .footer-top .newsletter .input-group button {
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 22px;
-  padding: 8px 30px 8px 30px;
-  height: 45px !important;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  font-size: 15px;
 }
 .footer .footer-top .newsletter .input-group span {
   margin-right: 10px !important;
