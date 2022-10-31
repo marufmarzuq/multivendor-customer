@@ -1,21 +1,14 @@
 import React from "react";
 import "../dailyDeals/dailyDeals.css";
 import { MdOutlineViewInAr } from "react-icons/md";
-import { useCart } from "react-use-cart";
 import { useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ProductLayout from "../productLayout/ProductLayout";
 
-const Featured = ({ featureProducts }) => {
+const Featured = ({ addToCart, featureProducts }) => {
 
-  const [selectVariant, setSelcetVariant] = useState("");
-  const { addItem, onItemAdd } = useCart();
   const [categoryName, setCategoryName] = useState("all");
-
-  const addToCart = (product) => {
-    addItem(product);
-  };
 
   return (
     <section className="most-popular my-4">

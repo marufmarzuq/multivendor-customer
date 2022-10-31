@@ -23,6 +23,7 @@ const Variation = ({ colors, choseOptions, product }) => {
         );
         if (found) {
           product.price = found.price;
+          product.variation = getVariant;
           setVariantPrice(found.price);
         }
       }

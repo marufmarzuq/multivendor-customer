@@ -12,11 +12,9 @@ const Checkout = () => {
 
 	const {
     isEmpty,
-    totalUniqueItems,
     items,
 		cartTotal,
-    updateItemQuantity,
-    removeItem,
+    emptyCart,
   } = useCart();
 
 	useEffect(() => {
@@ -32,7 +30,7 @@ const Checkout = () => {
 					(
 						<Fragment>
 							<div className={checkoutStyle.checkoutForm}>
-								<CheckoutForm storesCart={storesCart} cartTotal={cartTotal} />
+								<CheckoutForm storesCart={storesCart} cartTotal={cartTotal} emptyCart={emptyCart} />
 							</div>
 							<div className={checkoutStyle.cartDetails}>
 								<CartDetails storesCart={storesCart} cartTotal={cartTotal} />

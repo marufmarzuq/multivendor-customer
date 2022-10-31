@@ -8,6 +8,7 @@ const NewArrivals = ({ loading , newArrival}) => {
 
   const { addItem, onItemAdd } = useCart();
 	const addToCart = (product) => {
+		product.total= parseFloat(product.price) - parseFloat(product.discount);
     addItem(product);
   };
 

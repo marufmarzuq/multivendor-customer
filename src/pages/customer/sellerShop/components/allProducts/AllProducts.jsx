@@ -7,6 +7,7 @@ import ProductLayout from "../productLayout/ProductLayout";
 const AllProducts = ({loading,allProducts}) => {
   const { addItem, onItemAdd } = useCart();
 	const addToCart = (product) => {
+		product.total= parseFloat(product.price) - parseFloat(product.discount);
     addItem(product);
   };
   return (

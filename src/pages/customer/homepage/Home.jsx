@@ -9,6 +9,7 @@ import MostPopular from "./components/mostPopular/MostPopular";
 import Shops from "./components/shops/Shops";
 import { markutosFrontendApi } from "../../services/Api/api";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useCart } from "react-use-cart";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -21,6 +22,13 @@ const Home = () => {
   const [shops, setShops] = useState([]);
   const [brands, setBrands] = useState([]);
   const [banners, setBanners] = useState([]);
+  const { addItem, onItemAdd } = useCart();
+
+	const addToCart = (product) => {
+		product.total= parseFloat(product.price) - parseFloat(product.discount);
+    addItem(product);
+  };
+
 
   useEffect(() => {
     setLoading(true);
@@ -43,11 +51,11 @@ const Home = () => {
   return (
     <div className="wrapper">
 			<Category bannerOne={banners?.banner_1} loading={loading} sliders={sliders} categories={categories} pinnedCategories={ pinnedCategories }/>
-			<MostPopular popularProducts={ popularProducts }/>
+			<MostPopular addToCart={addToCart} popularProducts={ popularProducts }/>
 			<AddSection bannerTwo={banners?.banner_2} loading={loading} />
-			<DailyDeals dailyDeals={dailyDeals}/>
+			<DailyDeals addToCart={addToCart}  dailyDeals={dailyDeals}/>
 			<AddSectionTwo bannerThree={banners?.banner_3}  bannerFour={banners?.banner_4} loading={loading} />
-			<Featured featureProducts={featureProducts}/>
+			<Featured addToCart={addToCart} featureProducts={featureProducts}/>
 			<Brands brands={brands}/>
 			<Shops shops={shops}/>
     </div>

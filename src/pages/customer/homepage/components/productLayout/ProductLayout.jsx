@@ -9,9 +9,9 @@ const ProductLayout = ({ product, addToCart }) => {
     <div className="col-sm-6 col-lg-4 col-xxl-3 mb-3">
       <div className="single-product style-1">
         <div className="image-wrap">
-          <a href="#">
+          <NavLink to={`/products/${product.slug}`} >
             <img src={product.thumbnail_img} alt={product.name} />
-          </a>
+          </NavLink>
           <div className="buttons-wrap">
             <button>
               <FaBalanceScaleLeft />
@@ -44,7 +44,7 @@ const ProductLayout = ({ product, addToCart }) => {
             />
           )}
           <h3 className="product-title">
-            <NavLink to={`products/${product.slug}`}>{product.name}</NavLink>
+            <NavLink to={`/products/${product.slug}`}>{product.name}</NavLink>
           </h3>
           {product.product_type !== "variation" ? (
             <div className="price">

@@ -9,7 +9,7 @@ import { markutosFrontendApi } from "../../../../services/Api/api";
 import { addOrderSchema } from "../../../../../schema/addOrderSchema";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
-const CheckoutForm = ({storesCart,cartTotal}) => {
+const CheckoutForm = ({storesCart,cartTotal,emptyCart}) => {
 	const [paymentMethod, setPaymentMethod] = useState('cod');
 	const user = loadFromLocalStorage();
 
@@ -31,7 +31,7 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
         "phone": values.phone,
         "address": values.address
 			};
-			finalValues.user_id = user ? user?.user?.id : null;
+			finalValues.user_id = user ? user?.user?.id : 0;
 			finalValues.orders = storesCart;
 			finalValues.payment_method  = "cod";
 			finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
@@ -44,6 +44,7 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
         .then((res) => {
           toast.success(res.data.message);
           action.resetForm();
+          emptyCart();
           // /thank-you
         })
         .catch((e) => {

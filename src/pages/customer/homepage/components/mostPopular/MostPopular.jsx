@@ -8,14 +8,8 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import ProductLayout from "../productLayout/ProductLayout";
 
-const MostPopular = ({ popularProducts }) => {
-  const { addItem, onItemAdd } = useCart();
+const MostPopular = ({ addToCart , popularProducts }) => {
   const [categoryName, setCategoryName] = useState("all");
-
-  const addToCart = (product) => {
-    addItem(product);
-  };
-
   return (
     <section className="most-popular my-4">
       <div className="container">
