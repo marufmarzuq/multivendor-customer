@@ -1,6 +1,5 @@
 import {useState,useEffect} from "react";
 import orderStyle from "../orders/userOrder.module.css";
-import { BsEyeFill } from "react-icons/bs";
 import "react-loading-skeleton/dist/skeleton.css";
 import { markutosFrontendApi } from "../../../services/Api/api";
 import customerAuthHeader from "../../../services/customer-auth-header";
@@ -41,18 +40,13 @@ const OrderReturnList = () => {
         <table>
           <thead>
             <tr>
-              <th>
-                <small>ID Number</small>
-              </th>
-              <th>
-                <small>Date</small>
-              </th>
-              <th><small>Refund Amount</small></th>
-              <th><small>Refund Reason</small></th>
-              <th><small> Status</small></th>
-              <th className="text-center">
-                <small>Actions</small>
-              </th>
+							<th><small>Seller Name</small></th>
+							<th><small>OrderID</small></th>
+							<th><small>Date</small> </th>
+							<th><small>Refund Amount</small></th>
+							<th><small>Refund Reason</small></th>
+							<th><small> Status</small></th>
+							<th className="text-center"><small>Actions</small></th>
             </tr>
           </thead>
 
@@ -64,7 +58,8 @@ const OrderReturnList = () => {
 								currentItems.map((item,index)=>{
 								return(
 									<tr key={index}>
-									<td><small>{item.code}</small></td>
+									<td><small>{item.seller_name}</small></td>
+									<td><small>{item.order_id}</small></td>
 									<td><small>{item.created_at}</small></td>
 									<td><small>{priceFormat(item.refund_amount)}</small></td>
 									<td><small>{priceFormat(item.reason)}</small></td>

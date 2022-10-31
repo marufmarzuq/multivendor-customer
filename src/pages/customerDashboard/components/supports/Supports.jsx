@@ -17,7 +17,7 @@ const Supports = () => {
   useEffect(() => {
     setLoading(true);
     markutosFrontendApi
-      .get(`dashboard/my-orders?per_page=10&page=${currentPage}`,
+      .get(`dashboard/support-tickets?per_page=10&page=${currentPage}`,
       {
 				headers: {
 					Authorization: customerAuthHeader(),
