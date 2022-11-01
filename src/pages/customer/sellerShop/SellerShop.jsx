@@ -8,12 +8,15 @@ import TopPart from "./components/topPart/TopPart";
 import TopSelling from "./components/topSelling/TopSelling";
 import { markutosFrontendApi } from "../../services/Api/api";
 import "react-loading-skeleton/dist/skeleton.css";
+import { useCart } from "react-use-cart";
 
 const SellerShop = () => {
   const { slug } = useParams();
 
   const [loading, setLoading] = useState(false);
   const [sellerShop, setSellerShop] = useState([]);
+	const { addItem, onItemAdd } = useCart();
+
   useEffect(() => {
     setLoading(true);
     markutosFrontendApi
@@ -23,6 +26,11 @@ const SellerShop = () => {
 				setSellerShop(response?.data);
 		});
 	},[]);
+
+	const addToCart = (product) => {
+    addItem(product);
+  };
+
 
   return (
     <>
@@ -35,9 +43,9 @@ const SellerShop = () => {
 				sliders={sellerShop.sliders}
       />
       <ShopCategories loading={loading} categories={sellerShop.categories} />
-      <NewArrivals loading={loading} newArrival={sellerShop.new_arrival_products} />
-      <TopSelling loading={loading} topSelling={sellerShop.top_selling_products} />
-      <AllProducts loading={loading} allProducts={sellerShop.all_products}/>
+      <NewArrivals addToCart={addToCart} loading={loading} newArrival={sellerShop.new_arrival_products} />
+      <TopSelling addToCart={addToCart} loading={loading} topSelling={sellerShop.top_selling_products} />
+      <AllProducts addToCart={addToCart} loading={loading} allProducts={sellerShop.all_products}/>
       <AboutShop loading={loading} shopName={sellerShop.name} about={sellerShop.about}/>
     </>
   );

@@ -8,10 +8,12 @@ import { toast } from "react-toastify";
 import { markutosFrontendApi } from "../../../../services/Api/api";
 import { addOrderSchema } from "../../../../../schema/addOrderSchema";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
+import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({storesCart,cartTotal,emptyCart}) => {
+const CheckoutForm = ({storesCart,cartTotal}) => {
 	const [paymentMethod, setPaymentMethod] = useState('cod');
 	const user = loadFromLocalStorage();
+  const navigate = useNavigate();
 
   const formik = useFormik({
     validationSchema: addOrderSchema,
@@ -44,8 +46,13 @@ const CheckoutForm = ({storesCart,cartTotal,emptyCart}) => {
         .then((res) => {
           toast.success(res.data.message);
           action.resetForm();
-          emptyCart();
-          // /thank-you
+          console.log(res.data.packages);
+          navigate(
+						'/thank-you',
+						{
+							state: {...res.data.packages}
+						}
+						)
         })
         .catch((e) => {
           toast.error(e.message);

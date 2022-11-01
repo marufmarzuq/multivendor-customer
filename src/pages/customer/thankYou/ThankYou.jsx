@@ -1,10 +1,24 @@
-import { useState } from "react";
+import { Fragment, useEffect,useState } from "react";
 import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import BreadCumb from "../../../common/breadcumb/BreadCumb";
 import PdfModal from "../../../common/pdfModal/PdfModal";
 import thankStyle from "./thanks.module.css";
+import { useCart } from "react-use-cart";
+import { useLocation } from 'react-router-dom';
+import SimpleLoading from "../../../common/loading/SimpleLoading";
+import { priceFormat } from "../../../hooks/helper";
+
 const ThankYou = () => {
   const [show, setShow] = useState(false);
+  const [orderData, setOrderData] = useState([]);
+	const {emptyCart} = useCart();
+	const { state } = useLocation();
+
+  useEffect(() => {
+		emptyCart();
+		setOrderData(state)
+	}, []);
+	console.log(orderData)
   return (
     <div>
       <div className={thankStyle.BreadCumb}>
@@ -13,33 +27,46 @@ const ThankYou = () => {
       <div className={`container ${thankStyle.thankContainer} `}>
         <h6>Thank you. Your order has been received.</h6>
         <section>
-          <div className={thankStyle.topData}>
-            <div className={thankStyle.topDataItem}>
-              <h6>ORDER NUMBER</h6>
-              <h5> 8660</h5>
-            </div>
 
-            <div className={thankStyle.topDataItem}>
-              <h6>DATE</h6>
-              <h5> 09/08/2022</h5>
-            </div>
+          {
+						Object.keys(orderData).length !== 0  ?
+						(
+							Object.keys(orderData).map((item,key)=>{
+								return (
+									<Fragment key={key}>
+										<div className={thankStyle.topData}>
+											<div className={thankStyle.topDataItem}>
+												<h6>Shop Name</h6>
+												<h5> {orderData[item].order.shop_name}</h5>
+											</div>
+											<div className={thankStyle.topDataItem}>
+												<h6>ORDER NUMBER</h6>
+												<h5> {orderData[item].order.id} </h5>
+											</div>
 
-            <div className={thankStyle.topDataItem}>
-              <h6>EMAIL</h6>
-              <h5> user@gmail.com</h5>
-            </div>
+											<div className={thankStyle.topDataItem}>
+												<h6>DATE</h6>
+												<h5> {orderData[item].order.created_at}</h5>
+											</div>
+											<div className={thankStyle.topDataItem}>
+												<h6>TOTAL</h6>
+												<h5> {priceFormat(orderData[item].order.grand_total)}</h5>
+											</div>
 
-            <div className={thankStyle.topDataItem}>
-              <h6>TOTAL</h6>
-              <h5> $90.00 </h5>
-            </div>
+											<div className={thankStyle.topDataItem}>
+												<h6>PAYMENT METHOD</h6>
+												<h5> {orderData[item].order.payment_type}</h5>
+											</div>
+										</div>
+										{ orderData[item].order.payment_type == "cod" && <h6 className="mt-4">Pay with cash upon delivery.</h6> }
+									</Fragment>
+								)
+							})
+						) : (<SimpleLoading/>)
+          }
 
-            <div className={thankStyle.topDataItem}>
-              <h6>PAYMENT METHOD</h6>
-              <h5> Cash on delivery</h5>
-            </div>
-          </div>
-          <h6 className="mt-4">Pay with cash upon delivery.</h6>
+
+
         </section>
 
         <section>

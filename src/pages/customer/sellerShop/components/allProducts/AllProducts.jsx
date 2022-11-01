@@ -1,15 +1,9 @@
 import { MdOutlineViewInAr } from "react-icons/md";
 import arrivalStyle from "./allProducts.module.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { useCart } from "react-use-cart";
 import ProductLayout from "../productLayout/ProductLayout";
 
-const AllProducts = ({loading,allProducts}) => {
-  const { addItem, onItemAdd } = useCart();
-	const addToCart = (product) => {
-		product.total= parseFloat(product.price) - parseFloat(product.discount);
-    addItem(product);
-  };
+const AllProducts = ({loading,allProducts,addToCart}) => {
   return (
     <div className="container">
       <div className={arrivalStyle.titles}>
