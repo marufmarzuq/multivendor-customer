@@ -153,11 +153,11 @@ const WishListTable = () => {
 		}
 	];
 	const [wishList, setWishList] = useState(wish);
-  const { addItem, onItemAdd } = useCart();
+	const { addItem, onItemAdd } = useCart();
 
-  const addToCart = (product) => {
-    addItem(product);
-  };
+	const addToCart = (product) => {
+		addItem(product);
+	};
 
 	return (
 	<div>
@@ -186,15 +186,15 @@ const WishListTable = () => {
 						</td>
 						<td>
 						<h6>{product.name}</h6>
-            <small>Shop Name : {product.shop_name} </small>
-						  {/* Variation */}
-              {product.product_type == "variation" && (
-                <Variation
-                  choseOptions={product.choice_options}
-                  product={product}
-                  colors={product.colors}
-                />
-              )}
+						<small>Shop Name : {product.shop_name} </small>
+						{/* Variation */}
+						{product.product_type == "variation" && (
+							<Variation
+							choseOptions={product.choice_options}
+							product={product}
+							colors={product.colors}
+							/>
+						)}
 						</td>
 						<td>{ product.product_type == "variation" ? product.discount_price_range : priceFormat(product.price)}</td>
 						<td>

@@ -2,7 +2,7 @@ import CompareTable from "./components/productCompareCom/CompareTable";
 
 const ProductCompare = () => {
   return (
-			<CompareTable/>
+	<CompareTable/>
   );
 };
 

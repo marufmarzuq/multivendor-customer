@@ -1,11 +1,9 @@
 .compareContaier {
   display: grid;
-  /* border: 1px solid #e6e4e4; */
   margin-bottom: 3rem;
   min-width: 100%;
 }
 .titles {
-  /* padding: 1rem; */
   border: 1px solid #e6e4e4;
 }
 .titles h6 {
@@ -25,7 +23,7 @@
 
 .compareContaier .title {
   padding: 1rem;
-  height: 55px;
+  height: 80px;
   border-bottom: 1px solid #e6e4e4;
   background-color: #f1f1f19c;
 }
