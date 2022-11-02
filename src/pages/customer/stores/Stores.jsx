@@ -35,8 +35,7 @@ const Checkout = () => {
   }, [
 		search,
 		currentPage,
-    perPage,
-  ]);
+	]);
   return (
     <div className="wrapper">
       <BreadCumb data={"Stores"} />
@@ -44,14 +43,14 @@ const Checkout = () => {
         <SortFilter setLayout={setLayout} search={search} setSearch={setSearch}  totalStores={totalStores} />
         <StoreList loading={loading} layout={layout} currentItems={currentItems} />
         {currentItems.length > 0 && (
-					<FrontendPagination
-						currentItem={currentItems}
-						perPage={perPage}
-						pageCount={pageCount}
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
-					/>
-				)}
+			<FrontendPagination
+				currentItem={currentItems}
+				perPage={perPage}
+				pageCount={pageCount}
+				currentPage={currentPage}
+				setCurrentPage={setCurrentPage}
+			/>
+		)}
       </div>
     </div>
   );

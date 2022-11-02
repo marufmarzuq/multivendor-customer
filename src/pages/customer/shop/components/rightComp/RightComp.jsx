@@ -11,7 +11,6 @@ const RightComp = ({loading,shopProduct,pageCount,currentPage,setCurrentPage,set
   const [layout, setLayout] = useState("grid");
 
   const addToCart = (product) => {
-		product.total= parseFloat(product.price) - parseFloat(product.discount);
     addItem(product);
   };
 

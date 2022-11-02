@@ -29,15 +29,15 @@ const ShopCom = () => {
       <section className="shop-wrap my-4">
         <div className="container">
           <div className="shopContainer">
-						<LeftComp/>
-						<RightComp
-						loading={loading}
-						shopProduct={shopProduct}
-						pageCount={pageCount}
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
-						setSortBy={setSortBy}
-						/>
+			<LeftComp/>
+			<RightComp
+			loading={loading}
+			shopProduct={shopProduct}
+			pageCount={pageCount}
+			currentPage={currentPage}
+			setCurrentPage={setCurrentPage}
+			setSortBy={setSortBy}
+			/>
           </div>
         </div>
       </section>
