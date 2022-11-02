@@ -5,6 +5,7 @@ import wisthlistStyle from "./wishlist.module.css";
 import { priceFormat } from "../../../../../hooks/helper";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import { useCart } from "react-use-cart";
+import Variation from "../../../../../common/product/variation/Variation";
 
 const WishListTable = () => {
 	var wish = [
@@ -185,15 +186,19 @@ const WishListTable = () => {
 						</td>
 						<td>
 						<h6>{product.name}</h6>
-						{/* Variation */}
-						
-						<small>Shop Name : {product.shop_name} </small>
+            <small>Shop Name : {product.shop_name} </small>
+						  {/* Variation */}
+              {product.product_type == "variation" && (
+                <Variation
+                  choseOptions={product.choice_options}
+                  product={product}
+                  colors={product.colors}
+                />
+              )}
 						</td>
-						<td>{priceFormat(product.price)}</td>
+						<td>{ product.product_type == "variation" ? product.discount_price_range : priceFormat(product.price)}</td>
 						<td>
-						<span style={{ fontWeight: "600" }} className="text-success ">
-							In stock
-						</span>
+						<span style={{ fontWeight: "600" }} className="text-success ">{product.stock_status}</span>
 						</td>
 						<td>
 						{" "}
