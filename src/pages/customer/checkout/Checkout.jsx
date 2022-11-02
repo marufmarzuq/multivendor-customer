@@ -25,22 +25,22 @@ const Checkout = () => {
     <div className="wrapper">
       <BreadCumb data={"Checkout"} />
       <div className={`container ${checkoutStyle.checkoutContainer}`}>
-				{
-					!isEmpty ?
-					(
-						<Fragment>
-							<div className={checkoutStyle.checkoutForm}>
-								<CheckoutForm storesCart={storesCart} cartTotal={cartTotal} emptyCart={emptyCart} />
-							</div>
-							<div className={checkoutStyle.cartDetails}>
-								<CartDetails storesCart={storesCart} cartTotal={cartTotal} />
-							</div>
-						</Fragment>
-					) :
-					(
-							<h6>Your Cart is empty. Go to <NavLink to={`/shop`}>Shop</NavLink></h6>
-					)
-				}
+		{
+			!isEmpty ?
+			(
+				<Fragment>
+					<div className={checkoutStyle.checkoutForm}>
+						<CheckoutForm storesCart={storesCart} cartTotal={cartTotal} emptyCart={emptyCart} />
+					</div>
+					<div className={checkoutStyle.cartDetails}>
+						<CartDetails storesCart={storesCart} cartTotal={cartTotal} />
+					</div>
+				</Fragment>
+			) :
+			(
+				<h6>Your Cart is empty. Go to <NavLink to={`/shop`}>Shop</NavLink></h6>
+			)
+		}
       </div>
 
     </div>

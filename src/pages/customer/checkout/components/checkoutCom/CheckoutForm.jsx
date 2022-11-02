@@ -11,193 +11,193 @@ import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStora
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({storesCart,cartTotal}) => {
-	const [paymentMethod, setPaymentMethod] = useState('cod');
-	const user = loadFromLocalStorage();
+  const [paymentMethod, setPaymentMethod] = useState('cod');
+  const user = loadFromLocalStorage();
   const navigate = useNavigate();
 
   const formik = useFormik({
-    validationSchema: addOrderSchema,
-    initialValues: {
+      validationSchema: addOrderSchema,
+      initialValues: {
       name: "",
       email: "",
       phone: "",
-    },
+      },
 
-    enableReinitialize: true,
-    onSubmit: (values, action) => {
+      enableReinitialize: true,
+      onSubmit: (values, action) => {
       const finalValues = values;
 
-			let shipping_info = {
-        "name": values.name,
-        "email": values.email,
-        "phone": values.phone,
-        "address": values.address
-			};
-			finalValues.user_id = user ? user?.user?.id : 0;
-			finalValues.orders = storesCart;
-			finalValues.payment_method  = "cod";
-			finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
-			finalValues.coupon_discount =  0;
-			finalValues.subtotal        =  cartTotal;
-			finalValues.total           =  cartTotal;
+      let shipping_info = {
+      "name": values.name,
+      "email": values.email,
+      "phone": values.phone,
+      "address": values.address
+      };
+      finalValues.user_id = user ? user?.user?.id : 0;
+      finalValues.orders = storesCart;
+      finalValues.payment_method  = "cod";
+      finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
+      finalValues.coupon_discount =  0;
+      finalValues.subtotal        =  cartTotal;
+      finalValues.total           =  cartTotal;
+      finalValues.shipping_info   =  shipping_info;
 
       markutosFrontendApi
-        .post("/checkout/post", finalValues )
-        .then((res) => {
+          .post("/checkout/post", finalValues )
+          .then((res) => {
           toast.success(res.data.message);
           action.resetForm();
-          console.log(res.data.packages);
           navigate(
-						'/thank-you',
-						{
-							state: {...res.data.packages}
-						}
-						)
-        })
-        .catch((e) => {
+              '/thank-you',
+              {
+                  state: {...res.data.packages}
+              }
+              )
+          })
+          .catch((e) => {
           toast.error(e.message);
-        });
-    },
+          });
+      },
   });
 
   const {
-    values,
-    setErrors,
-    handleChange,
-    touched,
-    errors,
-    handleSubmit,
-    handleBlur,
-    setFieldValue,
+      values,
+      setErrors,
+      handleChange,
+      touched,
+      errors,
+      handleSubmit,
+      handleBlur,
+      setFieldValue,
   } = formik;
 
   return (
     <div className="">
       <h4 className="mb-4">Shipping Information</h4>
-			<form onSubmit={(e) => e.preventDefault()}>
+            <form onSubmit={(e) => e.preventDefault()}>
         <FocusError formik={formik} />
-				{/* Billing details */}
-				<div className={checkoutStyle.name}>
-					<label htmlFor="name"> Name : <i>*</i> </label>
+                {/* Billing details */}
+                <div className={checkoutStyle.name}>
+                    <label htmlFor="name"> Name : <i>*</i> </label>
 
-					<input
-						type="text"
-						placeholder="Enter your Name"
-						id="name"
-						value={values.name}
-						onChange={handleChange}
-						onBlur={handleBlur}
-					/>
+                    <input
+                        type="text"
+                        placeholder="Enter your Name"
+                        id="name"
+                        value={values.name}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                    />
 
-					{errors.name && touched.name && (
-						<small className="text-danger"> {errors.name} </small>
-					)}
+                    {errors.name && touched.name && (
+                        <small className="text-danger"> {errors.name} </small>
+                    )}
 
-				</div>
-				<div className={checkoutStyle.emailPhone}>
-					<div className={checkoutStyle.email}>
-						<label htmlFor="email"><span>Email</span><i>*</i></label>
-						<input
-							type="email"
-							name="email"
-							id="email"
-							placeholder="Enter your email"
-							value={values.email}
-							onChange={handleChange}
-							onBlur={handleBlur}
-						/>
-						{errors.email && touched.email && (
-							<small className="text-danger"> {errors.email} </small>
-						)}
-					</div>
+                </div>
+                <div className={checkoutStyle.emailPhone}>
+                    <div className={checkoutStyle.email}>
+                        <label htmlFor="email"><span>Email</span><i>*</i></label>
+                        <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            placeholder="Enter your email"
+                            value={values.email}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.email && touched.email && (
+                            <small className="text-danger"> {errors.email} </small>
+                        )}
+                    </div>
 
-					<div className={checkoutStyle.phone}>
-					<label htmlFor="phone"><span>Phone</span><i>*</i></label>
-					<input
-							type="tel"
-							name="phone"
-							id="phone"
-							placeholder="Enter your phone no."
-							value={values.phone}
-							onChange={handleChange}
-							onBlur={handleBlur}
-						/>
-						{errors.phone && touched.phone && (
-							<small className="text-danger"> {errors.phone} </small>
-						)}
-					</div>
-				</div>
-				<div className={checkoutStyle.address}>
-					<label htmlFor="address"> Address : </label>
-					<textarea name="address" id="address" rows={'5'} cols={'5'}></textarea>
-				</div>
-				{/* Payment method */}
+                    <div className={checkoutStyle.phone}>
+                    <label htmlFor="phone"><span>Phone</span><i>*</i></label>
+                    <input
+                            type="tel"
+                            name="phone"
+                            id="phone"
+                            placeholder="Enter your phone no."
+                            value={values.phone}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                        />
+                        {errors.phone && touched.phone && (
+                            <small className="text-danger"> {errors.phone} </small>
+                        )}
+                    </div>
+                </div>
+                <div className={checkoutStyle.address}>
+                    <label htmlFor="address"> Address : </label>
+                    <textarea name="address" id="address" rows={'5'} cols={'5'}></textarea>
+                </div>
+                {/* Payment method */}
 
-				<div className="my-3">
-					<h4 className="mt-4">Payment Method</h4>
-					<div className="form-check">
-						<input
-							className="form-check-input my-2"
-							type="radio"
-							name="flexRadioDefault"
-							id="flexRadioDefault1"
-						/>
-						<label className="form-check-label ms-2 my-2" htmlFor="flexRadioDefault1">
-							Stripe
-						</label>
-					</div>
-					<div className="form-check">
-						<input
-							className="form-check-input my-2"
-							type="radio"
-							name="flexRadioDefault"
-							id="flexRadioDefault2"
-							onChange={(e)=>setPaymentMethod(e.target.value)}
-							checked={ paymentMethod == "cod" ? 'checked' : ''}
-						/>
-						<label className="form-check-label ms-2 my-2" htmlFor="flexRadioDefault2">
-							Cache on delivery (COD)
-						</label>
-					</div>
-					<div className="form-check">
-						<input
-							className="form-check-input my-2"
-							type="radio"
-							name="flexRadioDefault"
-							id="flexRadioDefault3"
-						/>
-						<label className="form-check-label ms-2 my-2" htmlFor="flexRadioDefault3">
-							Paypal
-						</label>
-					</div>
-				</div>
+                <div className="my-3">
+                    <h4 className="mt-4">Payment Method</h4>
+                    <div className="form-check">
+                        <input
+                            className="form-check-input my-2"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault1"
+                        />
+                        <label className="form-check-label ms-2 my-2" htmlFor="flexRadioDefault1">
+                            Stripe
+                        </label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            className="form-check-input my-2"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault2"
+                            onChange={(e)=>setPaymentMethod(e.target.value)}
+                            checked={ paymentMethod == "cod" ? 'checked' : ''}
+                        />
+                        <label className="form-check-label ms-2 my-2" htmlFor="flexRadioDefault2">
+                            Cache on delivery (COD)
+                        </label>
+                    </div>
+                    <div className="form-check">
+                        <input
+                            className="form-check-input my-2"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault3"
+                        />
+                        <label className="form-check-label ms-2 my-2" htmlFor="flexRadioDefault3">
+                            Paypal
+                        </label>
+                    </div>
+                </div>
 
-				{/* Order Notes */}
-				<div className="">
-					<label htmlFor="order_notes"> Order Notes : </label>
-					<textarea
-						rows="5"
-						cols="5"
-						placeholder="Notes about your order"
-						id="order_notes"
-					></textarea>
-				</div>
+                {/* Order Notes */}
+                <div className="">
+                    <label htmlFor="order_notes"> Order Notes : </label>
+                    <textarea
+                        rows="5"
+                        cols="5"
+                        placeholder="Notes about your order"
+                        id="order_notes"
+                    ></textarea>
+                </div>
 
-				<div className={checkoutStyle.submitBtn}>
-					<NavLink to="/cart">
-						<AiOutlineArrowLeft /> Back to cart
-					</NavLink>
-					<div className="d-flex justify-content-end">
-						<button
-							onClick={handleSubmit}
-							className="btn btn-primary"
-							type="submit"
-							name="button"
-						>
-							<AiOutlineCheckCircle /> Checkout
-						</button>
-					</div>
-				</div>
+                <div className={checkoutStyle.submitBtn}>
+                    <NavLink to="/cart">
+                        <AiOutlineArrowLeft /> Back to cart
+                    </NavLink>
+                    <div className="d-flex justify-content-end">
+                        <button
+                            onClick={handleSubmit}
+                            className="btn btn-primary"
+                            type="submit"
+                            name="button"
+                        >
+                            <AiOutlineCheckCircle /> Checkout
+                        </button>
+                    </div>
+                </div>
       </form>
     </div>
   );
