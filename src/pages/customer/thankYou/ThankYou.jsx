@@ -18,7 +18,7 @@ const { state } = useLocation();
 useEffect(() => {
     emptyCart();
     setOrderData(state)
-}, []);
+}, [state]);
 
 return (
     <div>
