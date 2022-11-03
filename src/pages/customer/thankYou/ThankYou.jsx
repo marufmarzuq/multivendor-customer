@@ -34,31 +34,57 @@ return (
                 Object.keys(orderData).map((item,key)=>{
                     return (
                         <Fragment key={key}>
+                          <Fragment>
                             <div className={thankStyle.topData}>
-                                <div className={thankStyle.topDataItem}>
-                                    <h6>Shop Name</h6>
-                                    <h5> {orderData[item].order.shop_name}</h5>
-                                </div>
-                                <div className={thankStyle.topDataItem}>
-                                    <h6>ORDER NUMBER</h6>
-                                    <h5> {orderData[item].order.id} </h5>
-                                </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>Shop Name</h6>
+                                <h5> {orderData[item].order.shop_name}</h5>
+                              </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>ORDER NUMBER</h6>
+                                <h5> {orderData[item].order.id} </h5>
+                              </div>
 
-                                <div className={thankStyle.topDataItem}>
-                                    <h6>DATE</h6>
-                                    <h5> {orderData[item].order.created_at}</h5>
-                                </div>
-                                <div className={thankStyle.topDataItem}>
-                                    <h6>TOTAL</h6>
-                                    <h5> {priceFormat(orderData[item].order.grand_total)}</h5>
-                                </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>DATE</h6>
+                                <h5> {orderData[item].order.created_at}</h5>
+                              </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>TOTAL</h6>
+                                <h5> {priceFormat(orderData[item].order.grand_total)}</h5>
+                              </div>
 
-                                <div className={thankStyle.topDataItem}>
-                                    <h6>PAYMENT METHOD</h6>
-                                    <h5> {orderData[item].order.payment_type}</h5>
-                                </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>PAYMENT METHOD</h6>
+                                <h5> {orderData[item].order.payment_type}</h5>
+                              </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>Order Status</h6>
+                                <h5> {orderData[item].order.order_status}</h5>
+                              </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>Payment Status</h6>
+                                <h5> {orderData[item].order.payment_status}</h5>
+                              </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>Deliver Status</h6>
+                                <h5> {orderData[item].order.delivery_status}</h5>
+                              </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>Shipping Type</h6>
+                                <h5> {orderData[item].order.shipping_type}</h5>
+                              </div>
+                              <div className={thankStyle.topDataItem}>
+                                <h6>Shipping Method</h6>
+                                <h5> {orderData[item].order.shipping_method}</h5>
+                              </div>
                             </div>
                             { orderData[item].order.payment_type == "cod" && <h6 className="mt-4">Pay with cash upon delivery.</h6> }
+                          </Fragment>
+                          <Fragment>
+                            {/* Product Table */}
+                            <ProductTable products={orderData[item].order_details} order={orderData[item].order} thankStyle={thankStyle}/>
+                          </Fragment>
                         </Fragment>
                     )
                 })
@@ -67,26 +93,23 @@ return (
         </section>
 
         <section>
-        <div className="mt-4">
+          <div className="mt-4">
             <h1 className="text-center">Order Location</h1>
             <h6 className="text-center">
             Order Location for admin : test location
             </h6>
-        </div>
+          </div>
         </section>
-
-        {/* Product Table */}
-        <ProductTable thankStyle={thankStyle}/>
 
         {/* Shipping information */}
         <ShippingInfo thankStyle={thankStyle}/>
 
         <section>
-        <button
-            onClick={() => setShow(!show)}
-            className="btn btn-primary mb-5">Print</button>
+          <button
+              onClick={() => setShow(!show)}
+              className="btn btn-primary mb-5">Print</button>
 
-        <PdfModal com={<ThankYou />} show={show} setShow={setShow} />
+          <PdfModal com={<ThankYou />} show={show} setShow={setShow} />
         </section>
     </div>
     </div>
