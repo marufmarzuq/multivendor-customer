@@ -10,17 +10,17 @@ import FrontendPagination from "../../../../common/pagination/frontend/FrontendP
 import OrderModal from "./components/orderModal/OrderModal";
 
 const UserOrder = () => {
-  const [loading, setLoading] = useState(false);
-  const [currentItems, setCurrentItems] = useState([]);
+	const [loading, setLoading] = useState(false);
+	const [currentItems, setCurrentItems] = useState([]);
 	const [pageCount, setPageCount] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+	const [currentPage, setCurrentPage] = useState(1);
 	const [currentOrderId, setCurrentOrderId] = useState(null);
-  const [show, setShow] = useState(false);
+	const [show, setShow] = useState(false);
 
-  const modalOpen = (id) => {
-    setCurrentOrderId(id);
-    setShow(!show);
-  };
+	const modalOpen = (id) => {
+		setCurrentOrderId(id);
+		setShow(!show);
+	};
 
   useEffect(() => {
     setLoading(true);
@@ -69,47 +69,45 @@ const UserOrder = () => {
           <tbody>
           {
           loading ? (<tr className="w-100"><td className="w-100"><SimpleLoading /></td></tr>) :
-						(
-							(
-								currentItems.map((item,index)=>{
-								return(
-									<tr key={index}>
-									<td><small>{item.code}</small></td>
-									<td><small>{item.created_at}</small></td>
-									<td><small>{priceFormat(item.grand_total)}</small></td>
-									<td><small className={item.order_status == "pending" ?"text-danger" : "text-success"}> {item.order_status} </small></td>
-									<td className="text-center">
-										<small>
-											<button className={orderStyle.preview}
-												onClick={() => modalOpen(item.id)}
-											>
-                        <BsEyeFill />
-											</button>
-										</small>
-									</td>
-								</tr>
-								)
-								})
-							)
-						)
+			(
+				(
+					currentItems.map((item,index)=>{
+					return(
+						<tr key={index}>
+						<td><small>{item.code}</small></td>
+						<td><small>{item.created_at}</small></td>
+						<td><small>{priceFormat(item.grand_total)}</small></td>
+						<td><small className={item.order_status == "pending" ?"text-danger" : "text-success"}> {item.order_status} </small></td>
+						<td className="text-center">
+						<small>
+							<button className={orderStyle.preview} onClick={() => modalOpen(item.id)}>
+								<BsEyeFill />
+							</button>
+						</small>
+						</td>
+					</tr>
+					)
+					})
+				)
+			)
           }
           </tbody>
         </table>
-				{currentItems.length > 0 && (
-					<FrontendPagination
-						currentItem={currentItems}
-						perPage={10}
-						pageCount={pageCount}
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
-					/>
-				)}
-				<OrderModal
-          orderId={currentOrderId}
-          page="order"
-          show={show}
-          setShow={setShow}
-          time={new Date()}
+		{currentItems.length > 0 && (
+			<FrontendPagination
+				currentItem={currentItems}
+				perPage={10}
+				pageCount={pageCount}
+				currentPage={currentPage}
+				setCurrentPage={setCurrentPage}
+			/>
+		)}
+		<OrderModal
+		orderId={currentOrderId}
+		page="order"
+		show={show}
+		setShow={setShow}
+		time={new Date()}
         />
       </section>
     </div>

@@ -1,3 +1,11 @@
+.preview {
+	background-color: #65d0f74b;
+	color: #25bcf1;
+}
+.preview:hover {
+background-color: #45c7f6;
+color: #fff;
+}
 .tableData {
   width: 100%;
 }

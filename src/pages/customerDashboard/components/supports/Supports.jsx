@@ -7,13 +7,20 @@ import customerAuthHeader from "../../../services/customer-auth-header";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
 import { priceFormat } from "../../../../hooks/helper";
 import FrontendPagination from "../../../../common/pagination/frontend/FrontendPagination";
+import SupportModal from "./components/supportModal/SupportModal";
 
-const Supports = () => {
-  const [loading, setLoading] = useState(false);
-  const [currentItems, setCurrentItems] = useState([]);
+const Supports = ({orderStyle}) => {
+	const [loading, setLoading] = useState(false);
+	const [currentItems, setCurrentItems] = useState([]);
 	const [pageCount, setPageCount] = useState(1);
-  const [currentPage, setCurrentPage] = useState(1);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [currentTicketId, setCurrentTicketId] = useState(null);
+	const [show, setShow] = useState(false);
 
+	const modalOpen = (id) => {
+		setCurrentTicketId(id);
+		setShow(!show);
+	};
   useEffect(() => {
     setLoading(true);
     markutosFrontendApi
@@ -51,39 +58,43 @@ const Supports = () => {
           <tbody>
           {
           loading ? (<tr className="w-100"><td className="w-100"><SimpleLoading /></td></tr>) :
-						(
-							(
-								currentItems.map((item,index)=>{
-								return(
-									<tr key={index}>
-									<td><small>{item.code}</small></td>
-									<td><small>{item.subject}</small></td>
-									<td><small>{item.status}</small></td>
-									<td><small>{item.updated_at}</small></td>
-									<td className="text-center">
-										<small>
-											<button className="btn">
-												<BsEyeFill />
-											</button>
-										</small>
-									</td>
-								</tr>
-								)
-								})
-							)
-						)
+			(
+				(
+					currentItems.map((item,index)=>{
+					return(
+						<tr key={index}>
+						<td><small>{item.code}</small></td>
+						<td><small>{item.subject}</small></td>
+						<td><small>{item.status}</small></td>
+						<td><small>{item.updated_at}</small></td>
+						<td className="text-center">
+							<button className={'preview'} onClick={() => modalOpen(item.code)}>
+								<BsEyeFill />
+							</button>
+						</td>
+					</tr>
+					)
+					})
+				)
+			)
           }
           </tbody>
         </table>
-				{currentItems.length > 0 && (
-					<FrontendPagination
-						currentItem={currentItems}
-						perPage={10}
-						pageCount={pageCount}
-						currentPage={currentPage}
-						setCurrentPage={setCurrentPage}
-					/>
-				)}
+		{currentItems.length > 0 && (
+			<FrontendPagination
+				currentItem={currentItems}
+				perPage={10}
+				pageCount={pageCount}
+				currentPage={currentPage}
+				setCurrentPage={setCurrentPage}
+			/>
+		)}
+		<SupportModal
+		ticketId={currentTicketId}
+		page="support"
+		show={show}
+		setShow={setShow}
+        />
       </section>
     </div>
   );
