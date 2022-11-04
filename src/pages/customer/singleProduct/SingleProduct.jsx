@@ -39,7 +39,7 @@ const SingleProduct = () => {
         <ProductDescription loading={loading} singleProduct={singleProduct}  />
         {/* <ProductInformation /> */}
         <RelatedProducts loading={loading} singleProduct={singleProduct}/>
-        <Reviews />
+        <Reviews loading={loading} singleProduct={singleProduct} />
       </div>
     </section>
   );

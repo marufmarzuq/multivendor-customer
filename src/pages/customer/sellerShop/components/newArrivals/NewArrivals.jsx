@@ -12,22 +12,22 @@ const NewArrivals = ({ loading , newArrival,addToCart}) => {
       <section>
         <div className={arrivalStyle.productsContainer}>
         { loading ?
-						<SkeletonTheme height={50}>
-							<p><Skeleton count={5} /></p>
-						</SkeletonTheme>
-					:
-					(
-						newArrival?.map((product,index)=>{
-							return(
-								<ProductLayout
-									product={product}
-									key={index}
-									addToCart={addToCart}
-								/>
-							)
-							})
-					)
-				}
+		<SkeletonTheme height={50}>
+			<p><Skeleton count={5} /></p>
+		</SkeletonTheme>
+		:
+		(
+			newArrival?.map((product,index)=>{
+				return(
+					<ProductLayout
+						product={product}
+						key={index}
+						addToCart={addToCart}
+					/>
+				)
+				})
+		)
+		}
         </div>
       </section>
 

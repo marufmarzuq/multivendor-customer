@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../dailyDeals/dailyDeals.css";
 import { MdOutlineViewInAr } from "react-icons/md";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import ProductLayout from "../productLayout/ProductLayout";
+import GridOne from "../../../../../common/product/layout/GridOne";
 
 const DailyDeals = ({ addToCart,dailyDeals }) => {
 
@@ -50,10 +50,10 @@ const DailyDeals = ({ addToCart,dailyDeals }) => {
                 {dailyDeals &&
                   dailyDeals[categoryName]?.map((product, index) => {
                     return (
-											<ProductLayout key={index}
-												product={product}
-												addToCart={addToCart}
-											/>
+						<GridOne key={index}
+							product={product}
+							addToCart={addToCart}
+						/>
                     );
                   })}
               </div>

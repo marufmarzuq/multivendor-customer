@@ -1,4 +1,4 @@
-import ProductLayout from "../../../homepage/components/productLayout/ProductLayout";
+import GridOne from "../../../../../common/product/layout/GridOne";
 import { useCart } from "react-use-cart";
 
 const RelatedProducts = ({loading,singleProduct}) => {
@@ -18,7 +18,7 @@ const RelatedProducts = ({loading,singleProduct}) => {
 			{!loading &&
 			singleProduct?.related_products?.map((product, index) => {
 				return (
-					<ProductLayout
+					<GridOne
 					key={index}
 					product={product}
 					addToCart={addToCart}

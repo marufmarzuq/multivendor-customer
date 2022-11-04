@@ -4,7 +4,7 @@ import { MdOutlineViewInAr } from "react-icons/md";
 import { useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import ProductLayout from "../productLayout/ProductLayout";
+import GridOne from "../../../../../common/product/layout/GridOne";
 
 const Featured = ({ addToCart, featureProducts }) => {
 
@@ -51,11 +51,11 @@ const Featured = ({ addToCart, featureProducts }) => {
                 {featureProducts &&
                   featureProducts[categoryName]?.map((product, index) => {
                     return (
-											<ProductLayout
-												product={product}
-												key={index}
-												addToCart={addToCart}
-											/>
+						<GridOne
+							product={product}
+							key={index}
+							addToCart={addToCart}
+						/>
                     );
                   })}
               </div>

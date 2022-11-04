@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useCart } from "react-use-cart";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import ProductLayout from "../../../homepage/components/productLayout/ProductLayout";
+import GridOne from "../../../../../common/product/layout/GridOne";
 import FrontendPagination from "../../../../../common/pagination/frontend/FrontendPagination";
 import SortBar from "./components/SortBar";
 
@@ -28,7 +28,7 @@ const RightComp = ({loading,shopProduct,pageCount,currentPage,setCurrentPage,set
 				{
 					shopProduct.map((product, index) => {
 						return (
-						<ProductLayout key={index}
+						<GridOne key={index}
 							product={product}
 							addToCart={addToCart}
 						/>

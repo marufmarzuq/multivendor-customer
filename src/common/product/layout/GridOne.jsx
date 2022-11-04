@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
-import Variation from "../../../../../common/product/variation/Variation";
-import { priceFormat } from "../../../../../hooks/helper";
+import Variation from "../variation/Variation";
+import { priceFormat } from "../../../hooks/helper";
 import { AiFillStar } from "react-icons/ai";
 import { FaBalanceScaleLeft, FaCartPlus } from "react-icons/fa";
 
-const ProductLayout = ({ product, addToCart }) => {
+const GridOne = ({ product, addToCart }) => {
   return (
     <div className="col-sm-6 col-lg-4 col-xxl-3 mb-3">
       <div className="single-product style-1">
@@ -71,4 +71,4 @@ const ProductLayout = ({ product, addToCart }) => {
   );
 };
 
-export default ProductLayout;
+export default GridOne;

@@ -13,7 +13,7 @@ import { Fragment } from "react";
 const Cart = () => {
   const { t } = useTranslation();
 
-	const {
+const {
     isEmpty,
     totalUniqueItems,
     items,
@@ -31,23 +31,23 @@ const Cart = () => {
           isEmpty ? <p>Your cart is empty</p> :
           (
           <Fragment>
-						<ProductTable
-							totalUniqueItems={totalUniqueItems}
-							items={items}
-							updateItemQuantity={updateItemQuantity}
-							removeItem={removeItem}
-						/>
-						<ActionButton />
-						<hr />
-						<div className={`mt-4 ${cartStyle.cuponContainer}`}>
-								<Coupon />
-								<CartTotal proceedKey="cart" cartTotal={cartTotal} />
-						</div>
+				<ProductTable
+					totalUniqueItems={totalUniqueItems}
+					items={items}
+					updateItemQuantity={updateItemQuantity}
+					removeItem={removeItem}
+				/>
+				<ActionButton />
+				<hr />
+				<div className={`mt-4 ${cartStyle.cuponContainer}`}>
+					<Coupon />
+					<CartTotal proceedKey="cart" cartTotal={cartTotal} />
+				</div>
           </Fragment>
           )
 
         }
-        <OrderBump />
+        <OrderBump products={[]} />
       </div>
     </div>
   );

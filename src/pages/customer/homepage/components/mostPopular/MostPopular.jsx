@@ -1,11 +1,9 @@
-import React from "react";
 import "../dailyDeals/dailyDeals.css";
 import { MdOutlineViewInAr } from "react-icons/md";
 import { useState } from "react";
-
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import ProductLayout from "../productLayout/ProductLayout";
+import GridOne from "../../../../../common/product/layout/GridOne";
 
 const MostPopular = ({ addToCart , popularProducts }) => {
   const [categoryName, setCategoryName] = useState("all");
@@ -48,7 +46,7 @@ const MostPopular = ({ addToCart , popularProducts }) => {
                 {popularProducts &&
                   popularProducts[categoryName]?.map((product, index) => {
                     return (
-                      <ProductLayout
+                      <GridOne
                         key={index}
                         product={product}
                         addToCart={addToCart}
