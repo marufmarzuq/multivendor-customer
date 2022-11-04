@@ -1,7 +1,6 @@
 import React from "react";
 import "../dailyDeals/dailyDeals.css";
 import { MdOutlineViewInAr } from "react-icons/md";
-import { useCart } from "react-use-cart";
 import { useState } from "react";
 
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";

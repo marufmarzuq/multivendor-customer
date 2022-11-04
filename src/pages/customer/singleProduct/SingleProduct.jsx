@@ -38,7 +38,7 @@ const SingleProduct = () => {
         </div>
         <ProductDescription loading={loading} singleProduct={singleProduct}  />
         {/* <ProductInformation /> */}
-        <RelatedProducts />
+        <RelatedProducts loading={loading} singleProduct={singleProduct}/>
         <Reviews />
       </div>
     </section>

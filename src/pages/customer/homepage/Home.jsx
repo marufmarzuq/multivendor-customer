@@ -12,21 +12,21 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { useCart } from "react-use-cart";
 
 const Home = () => {
-  const [loading, setLoading] = useState(false);
-  const [sliders, setSliders] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [pinnedCategories, setPinnedCategories] = useState([]);
-  const [popularProducts, setPopularProducts] = useState([]);
-  const [dailyDeals, setDailyDeals] = useState([]);
-  const [featureProducts, setFeatureProducts] = useState([]);
-  const [shops, setShops] = useState([]);
-  const [brands, setBrands] = useState([]);
-  const [banners, setBanners] = useState([]);
-  const { addItem, onItemAdd } = useCart();
+	const [loading, setLoading] = useState(false);
+	const [sliders, setSliders] = useState([]);
+	const [categories, setCategories] = useState([]);
+	const [pinnedCategories, setPinnedCategories] = useState([]);
+	const [popularProducts, setPopularProducts] = useState([]);
+	const [dailyDeals, setDailyDeals] = useState([]);
+	const [featureProducts, setFeatureProducts] = useState([]);
+	const [shops, setShops] = useState([]);
+	const [brands, setBrands] = useState([]);
+	const [banners, setBanners] = useState([]);
+	const { addItem, onItemAdd } = useCart();
 
 	const addToCart = (product) => {
-    addItem(product);
-  };
+	addItem(product);
+	};
 
 
   useEffect(() => {
