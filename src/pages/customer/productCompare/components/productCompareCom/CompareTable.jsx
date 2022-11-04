@@ -222,7 +222,7 @@ const CompareTable = () => {
                         <small>Shop Name : {product.shop_name} </small>
                       </div>
                       <div className={compareStyle.price}>
-                        <h6>{ product.product_type == "variation" ? product.discount_price_range : priceFormat(product.price)}</h6>
+                        <h6>{ product.product_type == "variation" ? priceFormat(product.discount_price_range,"variable") : priceFormat(product.price)}</h6>
                       </div>
                       {product.product_type == "variation" ? (
                         <div>

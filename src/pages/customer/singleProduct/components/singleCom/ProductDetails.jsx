@@ -60,7 +60,7 @@ const ProductDetails = ({loading,singleProduct}) => {
 							<span className="sale">{priceFormat(singleProduct.discount_price)}</span>
 							<span className={ singleProduct?.discount_price ? ' del ms-2' : '' }>{priceFormat(singleProduct.unit_price)}</span>
 						</div>) :
-						( singleProduct.discount_price_range )
+						( priceFormat(singleProduct.discount_price_range,"variable") )
 
 					}
 					<p className="excerpt">
@@ -97,14 +97,11 @@ const ProductDetails = ({loading,singleProduct}) => {
 							{" "}
 							<AiOutlinePlus />{" "}
 						</button>
-          </div>
+          			</div>
 					<div className="cart-buttons-wrap">
 						<button className="btn btn-primary " onClick={(e)=>addToCart(singleProduct)}>
 							<AiOutlineShoppingCart className="me-1" />{" "}
 							<small>Add to Cart</small>
-						</button>
-						<button className="btn btn-primary">
-							<BiShoppingBag className="me-1" /> <small>Buy Now</small>
 						</button>
 					</div>
 					<div className="wishlist-compare-wrap">

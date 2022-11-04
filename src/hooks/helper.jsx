@@ -4,8 +4,9 @@
  * @param {*} code
  * @returns
  */
-export const priceFormat = ( price , code={code:'de-DE',currency:'EUR'})=>{
+export const priceFormat = ( price , type ="simple", code={code:'de-DE',currency:'EUR'} )=>{
 	var resultPrice = price;
+
 	if ( price !== null) {
 		var result = new Intl.NumberFormat(code.code, {
 			style: 'currency',
@@ -13,9 +14,16 @@ export const priceFormat = ( price , code={code:'de-DE',currency:'EUR'})=>{
 			minimumFractionDigits: 2,
 			maximumFractionDigits: 2
 		});
+		if ( type =="simple" ) {
+			resultPrice = result.format(price);
+		}
+		else if( type =="variable" ){
+			const price_arr = price.split("-");
+			resultPrice = result.format(price_arr[0]) + `-`+  result.format(price_arr[1])
+		}
 
-		resultPrice = result.format(price);
 	}
+	
 	return resultPrice;
 };
 /**

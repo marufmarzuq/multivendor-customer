@@ -56,7 +56,7 @@ const ProductLayout = ({ product, addToCart }) => {
               </span>
             </div>
           ) : (
-            product.discount_price_range
+            priceFormat(product.discount_price_range,"variable")
           )}
           <div className="ratings">
             <AiFillStar />

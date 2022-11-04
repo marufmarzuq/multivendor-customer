@@ -196,7 +196,7 @@ const WishListTable = () => {
 							/>
 						)}
 						</td>
-						<td>{ product.product_type == "variation" ? product.discount_price_range : priceFormat(product.price)}</td>
+						<td>{ product.product_type == "variation" ? priceFormat(product.discount_price_range,"variable") : priceFormat(product.price)}</td>
 						<td>
 						<span style={{ fontWeight: "600" }} className="text-success ">{product.stock_status}</span>
 						</td>
