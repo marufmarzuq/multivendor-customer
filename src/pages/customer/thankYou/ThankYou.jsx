@@ -14,7 +14,6 @@ const [show, setShow] = useState(false);
 const [orderData, setOrderData] = useState([]);
 const {emptyCart} = useCart();
 const { state } = useLocation();
-
 useEffect(() => {
     emptyCart();
     setOrderData(state)
@@ -38,52 +37,52 @@ return (
                             <div className={thankStyle.topData}>
                               <div className={thankStyle.topDataItem}>
                                 <h6>Shop Name</h6>
-                                <h5> {orderData[item].order.shop_name}</h5>
+                                <h5> {orderData[item].shop_name}</h5>
                               </div>
                               <div className={thankStyle.topDataItem}>
                                 <h6>ORDER NUMBER</h6>
-                                <h5> {orderData[item].order.id} </h5>
+                                <h5> {orderData[item].id} </h5>
                               </div>
 
                               <div className={thankStyle.topDataItem}>
                                 <h6>DATE</h6>
-                                <h5> {orderData[item].order.created_at}</h5>
+                                <h5> {orderData[item].created_at}</h5>
                               </div>
                               <div className={thankStyle.topDataItem}>
                                 <h6>TOTAL</h6>
-                                <h5> {priceFormat(orderData[item].order.grand_total)}</h5>
+                                <h5> {priceFormat(orderData[item].grand_total)}</h5>
                               </div>
 
                               <div className={thankStyle.topDataItem}>
                                 <h6>PAYMENT METHOD</h6>
-                                <h5> {orderData[item].order.payment_type}</h5>
+                                <h5> {orderData[item].payment_type}</h5>
                               </div>
                               <div className={thankStyle.topDataItem}>
                                 <h6>Order Status</h6>
-                                <h5> {orderData[item].order.order_status}</h5>
+                                <h5> {orderData[item].order_status}</h5>
                               </div>
                               <div className={thankStyle.topDataItem}>
                                 <h6>Payment Status</h6>
-                                <h5> {orderData[item].order.payment_status}</h5>
+                                <h5> {orderData[item].payment_status}</h5>
                               </div>
                               <div className={thankStyle.topDataItem}>
                                 <h6>Deliver Status</h6>
-                                <h5> {orderData[item].order.delivery_status}</h5>
+                                <h5> {orderData[item].delivery_status}</h5>
                               </div>
                               <div className={thankStyle.topDataItem}>
                                 <h6>Shipping Type</h6>
-                                <h5> {orderData[item].order.shipping_type}</h5>
+                                <h5> {orderData[item].shipping_type}</h5>
                               </div>
                               <div className={thankStyle.topDataItem}>
                                 <h6>Shipping Method</h6>
-                                <h5> {orderData[item].order.shipping_method}</h5>
+                                <h5> {orderData[item].shipping_method}</h5>
                               </div>
                             </div>
-                            { orderData[item].order.payment_type == "cod" && <h6 className="mt-4">Pay with cash upon delivery.</h6> }
+                            { orderData[item].payment_type == "cod" && <h6 className="mt-4">Pay with cash upon delivery.</h6> }
                           </Fragment>
                           <Fragment>
                             {/* Product Table */}
-                            <ProductTable products={orderData[item].order_details} order={orderData[item].order} thankStyle={thankStyle}/>
+                            <ProductTable products={orderData[item].order_details} order={orderData[item]} thankStyle={thankStyle}/>
                           </Fragment>
                         </Fragment>
                     )

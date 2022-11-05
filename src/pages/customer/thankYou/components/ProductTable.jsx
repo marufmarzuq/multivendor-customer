@@ -1,7 +1,6 @@
 import { priceFormat } from "../../../../hooks/helper";
 
 const ProductTable = ({products,thankStyle,order}) => {
-	console.log(order);
   return (
 	<div className={thankStyle.orderDetails}>
 		<h1>Order Details</h1>
@@ -19,11 +18,10 @@ const ProductTable = ({products,thankStyle,order}) => {
           return(
             <tr key={key}>
               <td>
-                <span className="text-danger"> {product.name} </span>{" "}
+                <span className="text-danger"> {product.product_name} </span>{" "}
                 <span> x {product.quantity} </span>
-                <h6>
-                Vendor: <span className="text-danger"> mr. vendor </span>
-                </h6>
+                {/* Variation */}
+				{ product.variation !=="" && <div>{product.variation}</div> }
               </td>
               <td>{priceFormat(product.price)}</td>
           </tr>
