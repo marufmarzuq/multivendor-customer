@@ -34,7 +34,7 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
       "phone": values.phone,
       "address": values.address
       };
-	  console.log(shipping_info);
+
       finalValues.user_id = user ? user?.user?.id : 0;
       finalValues.orders = storesCart;
       finalValues.payment_method  = "cod";
