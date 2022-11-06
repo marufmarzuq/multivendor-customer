@@ -3,7 +3,7 @@ import {AiOutlineBars} from "react-icons/ai";
 
 const Categories = ({categories}) => {
   return (
-		<div className="d-none d-md-block col-md-4">
+	<div className="d-none d-md-block col-md-4">
 		<div className="categories">
 			<div className="dropdown-button px-0">
 				<span className="d-flex align-items-center">
@@ -38,7 +38,7 @@ const Categories = ({categories}) => {
 				</div>
 			</div>
 		</div>
-		</div>
+	</div>
   );
 };
 

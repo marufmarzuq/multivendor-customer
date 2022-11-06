@@ -6,7 +6,6 @@ import customerAuthHeader from "../../../services/customer-auth-header";
 import SimpleLoading from "../../../../common/loading/SimpleLoading";
 import { priceFormat } from "../../../../hooks/helper";
 import FrontendPagination from "../../../../common/pagination/frontend/FrontendPagination";
-import OrderModal from "../orders/components/orderModal/OrderModal";
 
 const OrderReturnList = () => {
   const [loading, setLoading] = useState(false);
@@ -40,38 +39,38 @@ const OrderReturnList = () => {
         <table>
           <thead>
             <tr>
-							<th><small>Seller Name</small></th>
-							<th><small>OrderID</small></th>
-							<th><small>Date</small> </th>
-							<th><small>Refund Amount</small></th>
-							<th><small>Refund Reason</small></th>
-							<th><small> Status</small></th>
-							<th className="text-center"><small>Actions</small></th>
+				<th><small>Seller Name</small></th>
+				<th><small>OrderID</small></th>
+				<th><small>Date</small> </th>
+				<th><small>Refund Amount</small></th>
+				<th><small>Refund Reason</small></th>
+				<th><small> Status</small></th>
+				<th className="text-center"><small>Actions</small></th>
             </tr>
           </thead>
 
           <tbody>
           {
           loading ? (<tr className="w-100"><td className="w-100"><SimpleLoading /></td></tr>) :
-						(
-							(
-								currentItems.map((item,index)=>{
-								return(
-									<tr key={index}>
-									<td><small>{item.seller_name}</small></td>
-									<td><small>{item.order_id}</small></td>
-									<td><small>{item.created_at}</small></td>
-									<td><small>{priceFormat(item.refund_amount)}</small></td>
-									<td><small>{priceFormat(item.reason)}</small></td>
-									<td>
-										<small> Admin Approval : {item.admin_approval == "0" ? "No" : "Yes"} </small>
-										<small> Seller Approval : {item.seller_approval == "0" ? "No" : "Yes"} </small>
-									</td>
-								</tr>
-								)
-								})
-							)
-						)
+			(
+				(
+					currentItems.map((item,index)=>{
+					return(
+						<tr key={index}>
+						<td><small>{item.seller_name}</small></td>
+						<td><small>{item.order_id}</small></td>
+						<td><small>{item.created_at}</small></td>
+						<td><small>{priceFormat(item.refund_amount)}</small></td>
+						<td><small>{priceFormat(item.reason)}</small></td>
+						<td>
+							<small> Admin Approval : {item.admin_approval == "0" ? "No" : "Yes"} </small>
+							<small> Seller Approval : {item.seller_approval == "0" ? "No" : "Yes"} </small>
+						</td>
+					</tr>
+					)
+					})
+				)
+			)
           }
           </tbody>
         </table>
