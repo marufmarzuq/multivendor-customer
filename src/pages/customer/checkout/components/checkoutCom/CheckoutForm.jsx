@@ -21,6 +21,7 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
       name: "",
       email: "",
       phone: "",
+      address: "",
       },
 
       enableReinitialize: true,
@@ -33,6 +34,7 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
       "phone": values.phone,
       "address": values.address
       };
+	  console.log(shipping_info);
       finalValues.user_id = user ? user?.user?.id : 0;
       finalValues.orders = storesCart;
       finalValues.payment_method  = "cod";
@@ -124,7 +126,14 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
                 </div>
                 <div className={checkoutStyle.address}>
                     <label htmlFor="address"> Address : </label>
-                    <textarea name="address" id="address" rows={'5'} cols={'5'}></textarea>
+                    <textarea name="address" id="address" rows={'5'} cols={'5'}
+						value={values.address}
+						onChange={handleChange}
+						onBlur={handleBlur}
+					></textarea>
+					{errors.address && touched.address && (
+                        <small className="text-danger"> {errors.address} </small>
+                    )}
                 </div>
                 {/* Payment method */}
 
