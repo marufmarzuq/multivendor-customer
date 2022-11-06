@@ -12,11 +12,14 @@ import ShippingInfo from "./components/ShippingInfo";
 const ThankYou = () => {
 const [show, setShow] = useState(false);
 const [orderData, setOrderData] = useState([]);
+const [shippingAddress, setShippingAddress] = useState("");
 const {emptyCart} = useCart();
 const { state } = useLocation();
+
 useEffect(() => {
     emptyCart();
-    setOrderData(state)
+    setOrderData(state.packages)
+    setShippingAddress(state.shipping_address)
 }, [state]);
 
 return (
@@ -94,14 +97,12 @@ return (
         <section>
           <div className="mt-4">
             <h1 className="text-center">Order Location</h1>
-            <h6 className="text-center">
-            Order Location for admin : test location
-            </h6>
+            <h6 className="text-center">Order Location for admin : test location</h6>
           </div>
         </section>
 
         {/* Shipping information */}
-        <ShippingInfo thankStyle={thankStyle}/>
+        <ShippingInfo thankStyle={thankStyle} shippingAddress={shippingAddress}/>
 
         <section>
           <button

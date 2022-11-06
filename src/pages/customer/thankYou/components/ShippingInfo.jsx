@@ -1,19 +1,16 @@
-import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
-const ShippingInfo = ({thankStyle}) => {
+import { AiOutlineMail, AiOutlinePhone,AiOutlineHome,AiOutlineUser } from "react-icons/ai";
+const ShippingInfo = ({thankStyle,shippingAddress}) => {
 	return (
 		<div className="mt-5">
 			<h1>Billing Address</h1>
 			<div className={thankStyle.billingBox}>
-			<h6>100/G</h6>
-			<h6> Central Road </h6>
-			<h6> Dhanmondi </h6>
-			<h6> Dhaka </h6>
-			<h6> 1204 </h6>
+			<div><AiOutlineUser/> <span>{shippingAddress.name}</span></div>
+			<div> <AiOutlineHome/> <span>{shippingAddress.address}</span></div>
 			<h6>
-				<AiOutlinePhone /> 0100000000{" "}
+				<AiOutlinePhone /> {shippingAddress.phone}{" "}
 			</h6>
 			<h6>
-				<AiOutlineMail /> user@email.com
+				<AiOutlineMail /> {shippingAddress.email}
 			</h6>
 			</div>
 		</div>

@@ -47,7 +47,7 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
           .then((res) => {
           toast.success(res.data.message);
           action.resetForm();
-          navigate('/thank-you',{state: {...res.data.packages}})
+          navigate('/thank-you',{state: {...res.data}})
           })
           .catch((e) => {
           toast.error(e.message);
