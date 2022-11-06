@@ -35,15 +35,15 @@ const Home = () => {
       .get(`/index`)
       .then((response) => {
         setLoading(false);
-				setCategories(response?.data.categories);
-				setPinnedCategories(response?.data.pinned_categories);
-				setPopularProducts(response?.data.popular_products);
-				setDailyDeals(response?.data.daily_deal_products);
-				setFeatureProducts(response?.data.featured_products);
-				setShops(response?.data.shops);
-				setBrands(response?.data.brands);
-				setBanners(response?.data.banners);
-				setSliders(response?.data.sliders);
+		setCategories(response?.data.categories);
+		setPinnedCategories(response?.data.pinned_categories);
+		setPopularProducts(response?.data.popular_products);
+		setDailyDeals(response?.data.daily_deal_products);
+		setFeatureProducts(response?.data.featured_products);
+		setShops(response?.data.shops);
+		setBrands(response?.data.brands);
+		setBanners(response?.data.banners);
+		setSliders(response?.data.sliders);
       });
   }, []);
 

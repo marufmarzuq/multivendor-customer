@@ -395,10 +395,7 @@
   text-decoration: line-through;
   color: #acacac;
 }
-.products-wrap .single-product.style-1 .content-wrap .ratings {
-  color: #1658a6;
-  font-size: 12px;
-}
+
 .products-wrap .single-product.style-1:hover {
   box-shadow: 0px 2px 5px 2px #e1e1e1;
 }
