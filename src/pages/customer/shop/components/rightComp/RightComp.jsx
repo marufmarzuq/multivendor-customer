@@ -5,6 +5,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import GridOne from "../../../../../common/product/layout/GridOne";
 import FrontendPagination from "../../../../../common/pagination/frontend/FrontendPagination";
 import SortBar from "./components/SortBar";
+import ListOne from "../../../../../common/product/layout/ListOne";
 
 const RightComp = ({loading,shopProduct,pageCount,currentPage,setCurrentPage,setSortBy}) => {
   const { addItem, onItemAdd } = useCart();
@@ -28,10 +29,21 @@ const RightComp = ({loading,shopProduct,pageCount,currentPage,setCurrentPage,set
 				{
 					shopProduct.map((product, index) => {
 						return (
-						<GridOne key={index}
-							product={product}
-							addToCart={addToCart}
-						/>
+							layout == "grid" ?
+							(
+							<GridOne 
+								key={index}
+								product={product}
+								addToCart={addToCart}
+							/>
+							) :
+							(
+							<ListOne
+								key={index}
+								product={product}
+								addToCart={addToCart}
+							/>
+							)
 					);
 					})
 				}
