@@ -98,10 +98,10 @@ const BeVendor = () => {
             )}
           </div>
           <div>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="vendor_email">Email</label>
             <input
               type="email"
-              id="email"
+              id="vendor_email"
               {...register("email", { required: true })}
               placeholder="Enter your email"
             />

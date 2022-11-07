@@ -28,7 +28,6 @@ const SupportModal = ({ page, show, setShow, ticketId }) => {
         });
     }
   }, [ticketId]);
-
   return (
     <>
       <Modal
@@ -41,7 +40,7 @@ const SupportModal = ({ page, show, setShow, ticketId }) => {
       >
         <Modal.Header closeButton>
           <Modal.Title id="example-custom-modal-styling-title">
-            Ticket Id: {""}
+            Ticket Id: {ticketId}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

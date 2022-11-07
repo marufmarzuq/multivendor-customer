@@ -3,11 +3,13 @@ import { NavLink, useLocation } from "react-router-dom";
 import authService from "../../../customer/services/auth.service";
 import linkStyle from "./links.module.css";
 import { useNavigate } from "react-router-dom";
+import { loadFromLocalStorage } from "../../../../utils/user/manageLocalStorage";
 
 const DashboardLinks = () => {
   const location = useLocation();
-
   const [pathName, setPathName] = useState("profile");
+  const user = loadFromLocalStorage();
+
   useEffect(() => {
     if (location.pathname.split("/").length > 2) {
       setPathName(location.pathname.split("/")[2]);
@@ -23,7 +25,6 @@ const DashboardLinks = () => {
 		authService.logout();
     navigate("/login");
   };
-
   return (
     <div className={linkStyle.linksContainer}>
       <ul>
@@ -52,11 +53,14 @@ const DashboardLinks = () => {
         >
           <NavLink to="/dashboard/supports">Supports</NavLink>
         </li>
-        <li className={pathName == "become-vendor" ? linkStyle.activeLink : ""}>
-          <NavLink to="/dashboard/become-vendor"> Become A Vendor </NavLink>
-        </li>
+		{
+			user?.seller == false &&
+			<li className={pathName == "become-vendor" ? linkStyle.activeLink : ""}>
+				<NavLink to="/dashboard/become-vendor"> Become A Vendor </NavLink>
+		  	</li>
+		}
         <li>
-					<NavLink to="/login" onClick={logout}>Logout</NavLink>
+			<NavLink to="/login" onClick={logout}>Logout</NavLink>
         </li>
       </ul>
     </div>
