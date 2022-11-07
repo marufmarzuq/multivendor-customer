@@ -35,12 +35,12 @@ const SellerShop = () => {
   return (
     <>
       <TopPart
-				loading={loading}
-				shopName={sellerShop.name}
-				address={sellerShop.address}
-				logo={sellerShop.logo}
-				avgRating={sellerShop.avg_rating}
-				sliders={sellerShop.sliders}
+		loading={loading}
+		shopName={sellerShop.name}
+		address={sellerShop.address}
+		logo={sellerShop.logo}
+		avgRating={sellerShop.avg_rating}
+		sliders={sellerShop.sliders}
       />
       <ShopCategories loading={loading} categories={sellerShop.categories} />
       <NewArrivals addToCart={addToCart} loading={loading} newArrival={sellerShop.new_arrival_products} />

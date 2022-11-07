@@ -1,9 +1,9 @@
-import { AiOutlineStar } from "react-icons/ai";
-import { BsStar, BsStarFill, BsStarHalf } from "react-icons/bs";
 import reviewStyle from "./relatedProduct.module.css";
 import ReviewForm from "./ReviewForm";
+import ReactStars from "react-rating-stars-component";
+import ProgressBar from "./ProgressBar";
+
 const Reviews = ({loading,singleProduct}) => {
-	console.log(singleProduct);
   return (
     <div>
       <div className=" mt-5 ">
@@ -12,88 +12,23 @@ const Reviews = ({loading,singleProduct}) => {
       <section>
         <div className={reviewStyle.reviews}>
           <div className={reviewStyle.reviewContainer}>
-            <div className={reviewStyle.stars}>
-              <span>
-                <BsStarFill />
-              </span>
-              <span>
-                <BsStarFill />
-              </span>
-              <span>
-                <BsStarFill />
-              </span>
-              <span>
-                <BsStarFill />
-              </span>
-              <span>
-                <BsStarHalf />
-              </span>
-
-              <p className="ps-3">4.7 out of 5</p>
+            <div className={`d-flex ${reviewStyle.stars}`}>
+				{
+					loading == false && 
+					<ReactStars
+						count={5}
+						size={12}
+						value={singleProduct?.reviews?.avg_reviews}
+						activeColor="#0b5ed7"
+					/>
+				}
+              <p className="ps-3">{singleProduct?.reviews?.avg_reviews} out of 5</p>
             </div>
 
             <div className="my-2">
-              <span>950 global reviews</span>
+              <span>{singleProduct?.reviews?.total_reviews} global reviews</span>
             </div>
-            <div className={reviewStyle.progressBar}>
-              <div className="">5 Starts</div>
-              <div className="progress">
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  style={{ width: "80%" }}
-                  aria-valuenow="25"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div className="text-center">80%</div>
-            </div>
-
-            <div className={reviewStyle.progressBar}>
-              <div className="">4 Starts</div>
-              <div className="progress">
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  style={{ width: "20%" }}
-                  aria-valuenow="25"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div className="text-center">20%</div>
-            </div>
-
-            <div className={reviewStyle.progressBar}>
-              <div className="">3 Starts</div>
-              <div className="progress">
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  style={{ width: "15%" }}
-                  aria-valuenow="25"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div className="text-center">15%</div>
-            </div>
-
-            <div className={reviewStyle.progressBar}>
-              <div className="">2 Starts</div>
-              <div className="progress">
-                <div
-                  className="progress-bar"
-                  role="progressbar"
-                  style={{ width: "5%" }}
-                  aria-valuenow="25"
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                ></div>
-              </div>
-              <div className="text-center">5%</div>
-            </div>
+			<ProgressBar singleProduct={singleProduct} reviewStyle={reviewStyle}/>
           </div>
         </div>
       </section>
@@ -117,21 +52,12 @@ const Reviews = ({loading,singleProduct}) => {
 					</div>
 		  
 					<div className={`text-end ${reviewStyle.stars}`}>
-					  <span>
-						<BsStarFill />
-					  </span>
-					  <span>
-						<BsStarFill />
-					  </span>
-					  <span>
-						<BsStarFill />
-					  </span>
-					  <span>
-						<BsStarFill />
-					  </span>
-					  <span>
-						<BsStarHalf />
-					  </span>
+						<ReactStars
+							count={5}
+							size={12}
+							value={parseFloat(review.rating)}
+							activeColor="#0b5ed7"
+						/>
 					</div>
 				  </div>
 				);
