@@ -6,17 +6,14 @@ import { markutosFrontendApi } from "../../../../pages/services/Api/api";
 import { loadFromLocalStorage } from "../../../../utils/user/manageLocalStorage";
 
 const CustomerLayout = () => {
-  const [loading, setLoading] = useState(false);
   const [currentItems, setCurrentItems] = useState([]);
   const user = loadFromLocalStorage();
 
   useEffect(() => {
-    setLoading(true);
     markutosFrontendApi
       .get(`/settings`)
       .then((response) => {
-        setLoading(false);
-				setCurrentItems(response?.data);
+		setCurrentItems(response?.data);
       });
   }, []);
 

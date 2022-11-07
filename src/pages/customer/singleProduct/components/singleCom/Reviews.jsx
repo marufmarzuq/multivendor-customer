@@ -35,38 +35,38 @@ const Reviews = ({loading,singleProduct}) => {
 
       <section>
 		{!loading &&
-			singleProduct?.reviews?.reviews?.map((review, index) => {
-				return (
-					<div className={reviewStyle.review} key={index}>
-					<div className={reviewStyle.image}>
-					  <img
-						src={review.user_image}
-						alt={review.name}
-					  />
-					</div>
-		  
-					<div>
-					  <h5>{review.name}</h5>
-					  <h6>{review.created_at}</h6>
-					  <p>{review.comment}</p>
-					</div>
-		  
-					<div className={`text-end ${reviewStyle.stars}`}>
-						<ReactStars
-							count={5}
-							size={12}
-							value={parseFloat(review.rating)}
-							activeColor="#0b5ed7"
-						/>
-					</div>
-				  </div>
-				);
-			})}
+		singleProduct?.reviews?.reviews?.map((review, index) => {
+			return (
+				<div className={reviewStyle.review} key={index}>
+				<div className={reviewStyle.image}>
+					<img
+					src={review.user_image}
+					alt={review.name}
+					/>
+				</div>
+		
+				<div>
+					<h5>{review.name}</h5>
+					<h6>{review.created_at}</h6>
+					<p>{review.comment}</p>
+				</div>
+		
+				<div className={`text-end ${reviewStyle.stars}`}>
+					<ReactStars
+						count={5}
+						size={12}
+						value={parseFloat(review.rating)}
+						activeColor="#0b5ed7"
+					/>
+				</div>
+				</div>
+			);
+		})}
       </section>
 
 	  {/* Review Form */}
       <section>
-        <ReviewForm reviewStyle={reviewStyle}/>
+        <ReviewForm reviewStyle={reviewStyle} productId={singleProduct.id}/>
       </section>
     </div>
   );
