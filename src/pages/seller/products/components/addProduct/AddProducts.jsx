@@ -23,7 +23,7 @@ import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
 
 const AddProducts = () => {
-  const [submiting, setSubmitting] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const formik = useFormik({
     validationSchema: addProductSchema,
 
@@ -120,12 +120,12 @@ const AddProducts = () => {
         <div className=" d-flex justify-content-between mt-3 mb-3">
           <h4>Add New product</h4>
           <button
-            disabled={submiting}
+            disabled={submitting}
             onClick={handleSubmit}
             type="submit"
             className="btn btn-outline-success"
           >
-            {submiting ? (
+            {submitting ? (
               <div>
                 <div
                   className="spinner-border spinner-border-sm me-1"
@@ -283,12 +283,12 @@ const AddProducts = () => {
 
         <div className="mt-4">
           <button
-            disabled={submiting}
+            disabled={submitting}
             onClick={handleSubmit}
             type="submit"
             className="btn btn-outline-success"
           >
-            {submiting ? (
+            {submitting ? (
               <div>
                 <div
                   className="spinner-border spinner-border-sm me-1"

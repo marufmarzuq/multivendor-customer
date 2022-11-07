@@ -1,3 +1,4 @@
+import {useState} from "react";
 import { markutosFrontendApi } from "../../../services/Api/api";
 import customerAuthHeader from "../../../services/customer-auth-header";
 import orderStyle from "./orderReturns.module.css";
@@ -8,7 +9,7 @@ import { useFormik } from "formik";
 import { addOrderReturn } from "../../../../schema/addOrderReturn";
 
 const UserOrderReturns = () => {
-
+	const [submitting, setSubmitting] = useState(false);
 	const formik = useFormik({
     validationSchema: addOrderReturn,
     initialValues: {
@@ -18,6 +19,7 @@ const UserOrderReturns = () => {
     enableReinitialize: true,
     onSubmit: (values, action) => {
       const finalValues = values;
+	  setSubmitting(true);
       markutosFrontendApi
         .post("/dashboard/return-order", finalValues, {
           headers: {
@@ -25,11 +27,13 @@ const UserOrderReturns = () => {
           },
         })
         .then((res) => {
-          toast.success(res.data.message);
-          action.resetForm();
+			setSubmitting(true);
+			toast.success(res.data.message);
+			action.resetForm();
         })
         .catch((e) => {
-          toast.error(e.message);
+			toast.error(e.message);
+			setSubmitting(false);
         });
     },
   });
@@ -77,7 +81,22 @@ const UserOrderReturns = () => {
 						)}
 					</div>
 				</div>
-				<button type="submit" onClick={handleSubmit} className="btn btn-primary mt-2 "> {" "} Submit <BsArrowRightCircle /></button>
+				<button disabled={submitting}
+				type="submit" onClick={handleSubmit} className="btn btn-primary mt-2 ">
+				{submitting ? (
+					<div>
+						<div
+						className="spinner-border spinner-border-sm me-1"
+						role="status"
+						>
+						<span className="visually-hidden">Loading...</span>
+						</div>
+						Save Product
+					</div>
+					) : (
+					<div>{" "}Submit <BsArrowRightCircle /></div> 
+				)}
+				</button>
       </form>
     </div>
   );

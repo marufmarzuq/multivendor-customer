@@ -5,12 +5,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import axios from "axios";
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { saveToLocalStorage } from "../../../../utils/seller/manageLocalStorage";
-import { API_URL } from "../../../services/Api/api";
+import { markutosFrontendApi } from "../../../services/Api/api";
+import customerAuthHeader from "../../../services/customer-auth-header";
 
 const schema = yup.object().shape({
   first_name: yup.string().required("First Name is required"),
@@ -39,21 +39,11 @@ const BeVendor = () => {
 
   const submitForm = (data) => {
     setLoading(true);
-    let formData = new FormData();
-    formData.append("first_name", data.first_name);
-    formData.append("last_name", data.last_name);
-    formData.append("email", data.email);
-    formData.append("password", data.password);
-    formData.append("confirm_password", data.confirm_password);
-    formData.append("shop_name", data.shop_name);
-    formData.append("shop_address", data.shop_address);
-
     axios
-      .post(`${API_URL}/register`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Access-Control-Allow-Origin": "*",
-        },
+      .post(`${markutosFrontendApi}/dashboard/become-a-vendor/post`, data , {
+		headers: {
+            Authorization: customerAuthHeader(),
+          },
       })
       .then((response) => {
         saveToLocalStorage(response?.data);
@@ -63,7 +53,6 @@ const BeVendor = () => {
       })
       .catch((error) => {
         setLoading(false);
-        console.log("Data", error?.response?.data?.email[0]);
         notify(error?.response?.data?.email[0]);
       });
   };

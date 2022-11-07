@@ -5,8 +5,8 @@ import BreadCumb from "../../../common/breadcumb/BreadCumb";
 const SellerRequest = () => {
   return (
 		<div>
-				<BreadCumb data={"Be a Seller"} />
-				<SellerRequestForm/>
+			<BreadCumb data={"Be a Seller"} />
+			<SellerRequestForm/>
 		</div>
   );
 };

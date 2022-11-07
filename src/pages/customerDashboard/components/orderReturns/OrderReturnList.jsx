@@ -17,16 +17,16 @@ const OrderReturnList = () => {
     setLoading(true);
     markutosFrontendApi
       .get(`dashboard/my-return-requests?per_page=10&page=${currentPage}`,
-      {
-				headers: {
-					Authorization: customerAuthHeader(),
-				},
-			}
+      	{
+			headers: {
+				Authorization: customerAuthHeader(),
+			},
+		}
       )
       .then((response) => {
         setLoading(false);
-				setCurrentItems(response?.data.data);
-				setLoading(false);
+		setCurrentItems(response?.data.data);
+		setLoading(false);
         setCurrentPage(response?.data?.current_page);
         setPageCount(response?.data?.last_page);
 		});
@@ -61,10 +61,10 @@ const OrderReturnList = () => {
 						<td><small>{item.order_id}</small></td>
 						<td><small>{item.created_at}</small></td>
 						<td><small>{priceFormat(item.refund_amount)}</small></td>
-						<td><small>{priceFormat(item.reason)}</small></td>
+						<td><small>{item.reason}</small></td>
 						<td>
-							<small> Admin Approval : {item.admin_approval == "0" ? "No" : "Yes"} </small>
-							<small> Seller Approval : {item.seller_approval == "0" ? "No" : "Yes"} </small>
+							<div> Admin Approval : {item.admin_approval == "0" ? "No" : "Yes"} </div>
+							<div> Seller Approval : {item.seller_approval == "0" ? "No" : "Yes"} </div>
 						</td>
 					</tr>
 					)
