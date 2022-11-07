@@ -39,13 +39,13 @@ const OrderReturnList = () => {
         <table>
           <thead>
             <tr>
-				<th><small>Seller Name</small></th>
 				<th><small>OrderID</small></th>
+				<th><small>Seller Name</small></th>
 				<th><small>Date</small> </th>
 				<th><small>Refund Amount</small></th>
 				<th><small>Refund Reason</small></th>
+				<th><small>Reject Reason</small></th>
 				<th><small> Status</small></th>
-				<th className="text-center"><small>Actions</small></th>
             </tr>
           </thead>
 
@@ -57,16 +57,17 @@ const OrderReturnList = () => {
 					currentItems.map((item,index)=>{
 					return(
 						<tr key={index}>
-						<td><small>{item.seller_name}</small></td>
-						<td><small>{item.order_id}</small></td>
-						<td><small>{item.created_at}</small></td>
-						<td><small>{priceFormat(item.refund_amount)}</small></td>
-						<td><small>{item.reason}</small></td>
-						<td>
-							<div> Admin Approval : {item.admin_approval == "0" ? "No" : "Yes"} </div>
-							<div> Seller Approval : {item.seller_approval == "0" ? "No" : "Yes"} </div>
-						</td>
-					</tr>
+							<td><small>{item.order_id}</small></td>
+							<td><small>{item.seller_name}</small></td>
+							<td><small>{item.created_at}</small></td>
+							<td><small>{priceFormat(item.refund_amount)}</small></td>
+							<td><small>{item.reason}</small></td>
+							<td><small>{item.reject_reason}</small></td>
+							<td>
+								<div> Admin Approval : {item.admin_approval == "0" ? "No" : "Yes"} </div>
+								<div> Seller Approval : {item.seller_approval == "0" ? "No" : "Yes"} </div>
+							</td>
+						</tr>
 					)
 					})
 				)
