@@ -8,7 +8,6 @@ import {
   } from "react-icons/ai";
 import { IoIosGitCompare } from "react-icons/io";
 import { NavLink } from "react-router-dom";
-import ProductContext from "../../../setup/context/ProductContext";
 import { useCart } from "react-use-cart";
 import Select from "react-select";
 import { markutosFrontendApi } from "../../../pages/services/Api/api";
@@ -42,8 +41,6 @@ const MainHeader = ({filterCategories,headerLogo}) => {
 		color: "gray",
 	}),
 	};
-	const context = useContext(ProductContext);
-
 
 	const getResultData=()=>{
 		markutosFrontendApi
@@ -106,14 +103,14 @@ const MainHeader = ({filterCategories,headerLogo}) => {
                     <NavLink to="/compare">
                       {/* <FaBalanceScaleRight /> */}
                       <IoIosGitCompare />
-                      <span>{context.data.compareListCount}</span>
+                      <span>{0}</span>
                     </NavLink>
                   </li>
                   {/* WishList */}
                   <li>
                     <NavLink to="/wishlist">
                       <AiOutlineHeart />
-                      <span>{context.data.wishlistCount}</span>
+                      <span>{0}</span>
                     </NavLink>
                   </li>
                   <li className="headerMiniCartIcon">
