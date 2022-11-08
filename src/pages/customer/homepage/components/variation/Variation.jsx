@@ -12,6 +12,7 @@ const Variation = ({variations,setProducts,setSelcetVariant,selectVariant,produc
 
     setProducts(filteredProducts);
   };
+
   return (
 		variations?.map((item) => {
 			return (
@@ -21,11 +22,9 @@ const Variation = ({variations,setProducts,setSelcetVariant,selectVariant,produc
 						handleSetVariant(product, item)
 					}
 					key={item}
-				>
-					{item}
-				</span>
+				> {item} </span>
 			);
-		})
+	})
   );
 };
 
