@@ -6,9 +6,13 @@ import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { BsArrowRightCircle } from "react-icons/bs";
+import customerAuthHeader from "../../../../services/customer-auth-header";
+import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
 const ReviewForm = ({reviewStyle,productId}) => {
 	const [loading, setLoading] = useState(false);
+	const [rating, setRating]  = useState(0);
+	const user = loadFromLocalStorage();
 
 	const formik = useFormik({
 		initialValues: {
@@ -21,10 +25,15 @@ const ReviewForm = ({reviewStyle,productId}) => {
 		onSubmit: (values, action) => {
 			const finalValues = values;
 			finalValues.product_id = productId;
+			finalValues.rating = rating;
 			setLoading(true);
 			console.log(finalValues);
 			markutosFrontendApi
-			.post("/product-details/add-review", finalValues)
+			.post("/product-details/add-review", finalValues,{
+				headers: {
+					Authorization: customerAuthHeader(),
+				  },
+			  })
 			.then((res) => {
 				setLoading(false);
 				toast.success(res.data.message);
@@ -50,82 +59,94 @@ const ReviewForm = ({reviewStyle,productId}) => {
 	  
   return (
 	<section>
-	<div className={reviewStyle.addReview}>
-		<form onSubmit={(e) => e.preventDefault()}>
-			<FocusError formik={formik} />
-
-			<div>
-				<h4>Add Your Review</h4>
-				<p>
-				Your email address will not be published. Required fields are
-				marked *
-				</p>
-			</div>
-
-			<div className={'d-flex'}>
-				<p className="pe-2">Your Rating</p>
-				<ReactStars
-					count={5}
-					size={14}
-					value={5}
-					activeColor="#0b5ed7"
-				/>
-			</div>
-
-			<div className={reviewStyle.nameEmail}>
-				<div>
-					<input type="text" name="name" placeholder="Name *" 
-						value={values.name}
-						onChange={handleChange}
-						onBlur={handleBlur}
-					/>
-				</div>
-				<div>
-				<input type="email" name="email" placeholder="Email *" 
-					value={values.email}
-					onChange={handleChange}
-					onBlur={handleBlur}
-					/>
-				</div>
-			</div>
-
-			<div>
-				<textarea
-					name="comment"
-					placeholder="Comment *"
-					cols="30"
-					rows="5"
-					value={values.comment}
-					onChange={handleChange}
-					onBlur={handleBlur}></textarea>
-			</div>
-
-			<div className={'d-flex'}>
-				<input type="checkbox" id="anonymous" name="anonymous"/>
-				<label htmlFor="anonymous">Anonymous</label>
-			</div>
-
-			<button 
-				type={'submit'}
-				disabled={loading}
-				onClick={handleSubmit}
-				className="btn btn-primary"> 
-				{loading ? (
-					<div>
-						<div
-						className="spinner-border spinner-border-sm me-1"
-						role="status"
-						>
-						<span className="visually-hidden">Loading...</span>
+		{
+			user ?
+			(
+				<div className={reviewStyle.addReview}>
+					<form onSubmit={(e) => e.preventDefault()}>
+						<FocusError formik={formik} />
+		
+						<div>
+							<h4>Add Your Review</h4>
+							<p>
+							Your email address will not be published. Required fields are
+							marked *
+							</p>
 						</div>
-						Submit
-					</div>
-					) : (
-					<div>{" "}Submit <BsArrowRightCircle /></div> 
-				)}
-			</button>
-		</form>
-	</div>
+		
+						<div className={'d-flex'}>
+							<p className="pe-2">Your Rating</p>
+							<ReactStars
+								count={5}
+								size={14}
+								value={5}
+								activeColor="#0b5ed7"
+								onChange={(newRating)=>setRating(newRating)}
+							/>
+						</div>
+		
+						<div className={reviewStyle.nameEmail}>
+							<div>
+								<input type="text" name="name" placeholder="Name *" 
+									value={values.name}
+									onChange={handleChange}
+									onBlur={handleBlur}
+								/>
+							</div>
+							<div>
+							<input type="email" name="email" placeholder="Email *" 
+								value={values.email}
+								onChange={handleChange}
+								onBlur={handleBlur}
+								/>
+							</div>
+						</div>
+		
+						<div>
+							<textarea
+								name="comment"
+								placeholder="Comment *"
+								cols="30"
+								rows="5"
+								value={values.comment}
+								onChange={handleChange}
+								onBlur={handleBlur}></textarea>
+						</div>
+		
+						<div className={'d-flex'}>
+							<input type="checkbox" id="anonymous" name="anonymous" value={0}/>
+							<label htmlFor="anonymous">Anonymous</label>
+						</div>
+		
+						<button 
+							type={'submit'}
+							disabled={loading}
+							onClick={handleSubmit}
+							className="btn btn-primary"> 
+							{loading ? (
+								<div>
+									<div
+									className="spinner-border spinner-border-sm me-1"
+									role="status"
+									>
+									<span className="visually-hidden">Loading...</span>
+									</div>
+									Submit
+								</div>
+								) : (
+								<div>{" "}Submit <BsArrowRightCircle /></div> 
+							)}
+						</button>
+					</form>
+				</div>
+			)
+			:
+			(
+				<div className={reviewStyle.addReview}>
+					Please Logged in to give review in the product
+				</div>
+			)
+		}
 	</section>
   );
 };
