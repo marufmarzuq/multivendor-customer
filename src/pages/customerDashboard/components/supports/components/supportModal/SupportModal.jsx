@@ -15,7 +15,7 @@ const SupportModal = ({ page, show, setShow, ticketId }) => {
   useEffect(() => {
     if (page == "support" && ticketId) {
       markutosFrontendApi
-        .get(`/dashboard/support-conversation?ticket_cod=${ticketId}`, {
+        .get(`/dashboard/support-conversation?ticket_code=${ticketId}`, {
           headers: {
             Authorization: customerAuthHeader(),
           },
