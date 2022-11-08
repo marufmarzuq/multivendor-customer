@@ -9,7 +9,6 @@ import {
   AiFillFileAdd,
   AiOutlineUser,
   AiOutlineArrowUp,
-  AiOutlineLogout,
 } from "react-icons/ai";
 
 import { IoMdCheckmarkCircleOutline, IoIosStarHalf } from "react-icons/io";
@@ -31,7 +30,6 @@ const Navigation = ({ toggleF, toggle }) => {
   const navigate 		= useNavigate();
   const logOut = () => {
     toggleF(!toggle);
-    console.log("signout ");
   };
 
   const sellerLogout = () => {
@@ -101,7 +99,7 @@ const Navigation = ({ toggleF, toggle }) => {
           </h1>
 
           <h5>
-            {user?.user?.first_name} {user?.user?.last_name}
+            {user?.user?.shop_name}
             <IoMdCheckmarkCircleOutline
               className={navigationStyle.icon_green}
             />

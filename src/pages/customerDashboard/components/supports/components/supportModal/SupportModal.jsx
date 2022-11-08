@@ -7,6 +7,7 @@ import { markutosFrontendApi } from "../../../../../services/Api/api";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import { AiOutlineUser } from "react-icons/ai";
+import Conversations from "./Conversations";
 
 const SupportModal = ({ page, show, setShow, ticketId }) => {
 	const [editorState, setEditorState] = useState(EditorState.createEmpty());
@@ -21,13 +22,14 @@ const SupportModal = ({ page, show, setShow, ticketId }) => {
           },
         })
         .then((res) => {
-			setSupportDetails(res.data.data);
+			setSupportDetails(res.data);
         })
         .catch((err) => {
           console.log(err.message);
         });
     }
   }, [ticketId]);
+
   return (
     <>
       <Modal
@@ -54,66 +56,25 @@ const SupportModal = ({ page, show, setShow, ticketId }) => {
       </div>
       <div className="widget-container">
 			<div className="support-replay-profile">
-				<div className="srp-img">
-					<AiOutlineUser />
-				</div>
-				<span>Replay</span>
-				</div>
-				<div className="prod-desc-container">
-				<Editor
-					editorState={editorState}
-					toolbarClassName="toolbarClassName"
-					wrapperClassName="wrapperClassName"
-					editorClassName="editorClassName"
-					onEditorStateChange={(value) => setEditorState(value)}
-				/>
-				</div>
-				<div className="btns-container" style={{ height: "40px" }}>
-
-				<span>Send Replay</span>
-				</div>
-				<div className="widget-title" style={{ margin: "0 0 20px" }}>
-				Conversations
-				</div>
-				<div className="support-ticket-conversation-container">
-				<div className="stc-user-container">
-					<div className="support-replay-profile">
-					<div className="stc-user-img">
+					<div className="srp-img">
 						<AiOutlineUser />
 					</div>
-					<div className="stc-info">
-						<span>Jhon Doe</span>
-						<span className="stc-date">Today, 12/09/2022 - 11:45 AM</span>
+					<span>Replay</span>
 					</div>
+					<div className="prod-desc-container">
+					<Editor
+						editorState={editorState}
+						toolbarClassName="toolbarClassName"
+						wrapperClassName="wrapperClassName"
+						editorClassName="editorClassName"
+						onEditorStateChange={(value) => setEditorState(value)}
+					/>
 					</div>
-				</div>
-				<div className="stc-message">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione
-					quibusdam illum repellat optio, sit modi suscipit et vel eaque.
-					Atque fugiat maiores perferendis? Distinctio culpa et veniam ea
-					molestiae odio?
-				</div>
-				<div className="stc-admin-container">
-					<div className="support-replay-profile">
-					<div className="stc-info admin">
-						<span>You</span>
-						<span className="stc-date">Today, 12/09/2022 - 9:45 AM</span>
+					<div className="btns-container" style={{ height: "40px" }}>
+					<span>Send Replay</span>
 					</div>
-					<div className="stc-user-img">
-						<AiOutlineUser />
-					</div>
-					</div>
-				</div>
-				<div className="stc-message">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione
-					quibusdam illum repellat optio, sit modi suscipit et vel eaque.
-					Atque fugiat maiores perferendis? Distinctio culpa et veniam ea
-					molestiae odio?
-				</div>
-				</div>
-				<div className="support-ticket-creating-date">
-				Ticket #{ticketId} has been created at {"create date"}
-				</div>
+					{/* Conversations */}
+					<Conversations replies={supportDetails?.replies} ticketId={ticketId} createdAt={supportDetails?.ticket?.created_at}/>
 				</div>
 			</div>
         </div>
