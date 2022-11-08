@@ -32,8 +32,6 @@ const ReviewForm = ({reviewStyle,productId}) => {
 			finalValues.product_id = productId;
 			finalValues.rating = rating;
 			finalValues.anonymous = values.anonymous == ["on"] ? 1 : 0 ;
-
-console.log(finalValues);
 			setLoading(true);
 			markutosFrontendApi
 			.post("/product-details/add-review", finalValues,{

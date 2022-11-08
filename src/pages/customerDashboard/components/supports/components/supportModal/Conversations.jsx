@@ -2,7 +2,6 @@
 import { AiOutlineUser } from "react-icons/ai";
 
 const Conversations = ({ replies , ticketId , createdAt }) => {
-console.log(replies);
   return (
     <>
 		<div className="widget-title" style={{ margin: "0 0 20px" }}>Conversations</div>
