@@ -9,25 +9,32 @@ import { BsArrowRightCircle } from "react-icons/bs";
 import customerAuthHeader from "../../../../services/customer-auth-header";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
+const schema = yup.object().shape({
+	name: yup.string().required("Name is required"),
+	email: yup.string().email().required("Email is required."),
+  });
+
 const ReviewForm = ({reviewStyle,productId}) => {
 	const [loading, setLoading] = useState(false);
 	const [rating, setRating]  = useState(0);
 	const user = loadFromLocalStorage();
 
 	const formik = useFormik({
+		validationSchema: schema,
 		initialValues: {
 			name: "",
 			email: "",
-			subject: "",
-			message: "",
+			comment: "",
 		},
 		enableReinitialize: true,
 		onSubmit: (values, action) => {
 			const finalValues = values;
 			finalValues.product_id = productId;
 			finalValues.rating = rating;
+			finalValues.anonymous = values.anonymous == ["on"] ? 1 : 0 ;
+
+console.log(finalValues);
 			setLoading(true);
-			console.log(finalValues);
 			markutosFrontendApi
 			.post("/product-details/add-review", finalValues,{
 				headers: {
@@ -65,7 +72,7 @@ const ReviewForm = ({reviewStyle,productId}) => {
 				<div className={reviewStyle.addReview}>
 					<form onSubmit={(e) => e.preventDefault()}>
 						<FocusError formik={formik} />
-		
+	
 						<div>
 							<h4>Add Your Review</h4>
 							<p>
@@ -92,6 +99,9 @@ const ReviewForm = ({reviewStyle,productId}) => {
 									onChange={handleChange}
 									onBlur={handleBlur}
 								/>
+								{errors.name && touched.name && (
+									<small className="text-danger"> {errors.name} </small>
+								)}
 							</div>
 							<div>
 							<input type="email" name="email" placeholder="Email *" 
@@ -99,6 +109,9 @@ const ReviewForm = ({reviewStyle,productId}) => {
 								onChange={handleChange}
 								onBlur={handleBlur}
 								/>
+								{errors.email && touched.email && (
+									<small className="text-danger"> {errors.email} </small>
+								)}
 							</div>
 						</div>
 		
@@ -111,10 +124,16 @@ const ReviewForm = ({reviewStyle,productId}) => {
 								value={values.comment}
 								onChange={handleChange}
 								onBlur={handleBlur}></textarea>
+								{errors.comment && touched.comment && (
+									<small className="text-danger"> {errors.comment} </small>
+								)}
 						</div>
 		
 						<div className={'d-flex'}>
-							<input type="checkbox" id="anonymous" name="anonymous" value={0}/>
+							<input type="checkbox" id="anonymous" name="anonymous" 
+							onChange={handleChange}
+							onBlur={handleBlur}
+							/>
 							<label htmlFor="anonymous">Anonymous</label>
 						</div>
 		

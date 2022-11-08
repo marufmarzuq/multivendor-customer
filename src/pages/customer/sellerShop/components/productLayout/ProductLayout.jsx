@@ -47,7 +47,7 @@ const ProductLayout = ({product,addToCart}) => {
 					/>
 				}
 				<h3 className="product-title">
-					<NavLink to={`products/${product.slug}`}>
+					<NavLink to={`/products/${product.slug}`}>
 						{product.name}
 					</NavLink>
 				</h3>
