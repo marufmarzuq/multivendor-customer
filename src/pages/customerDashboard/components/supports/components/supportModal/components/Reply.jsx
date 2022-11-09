@@ -2,7 +2,6 @@
 import { AiOutlineUser } from "react-icons/ai";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { EditorState } from "draft-js";
 import { useState } from "react";
 import { useFormik } from "formik";
 import { FocusError } from "focus-formik-error";
@@ -17,7 +16,6 @@ const schema = yup.object({
   });
   
 const Reply = ({ticket}) => {
-	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 	const [loading, setLoading] = useState(false);
 	const user = loadFromLocalStorage();
 
@@ -27,7 +25,6 @@ const Reply = ({ticket}) => {
 		} else {
 		setFieldValue("message", newContent.getCurrentContent().getPlainText());
 		}
-
   	};
 
 	const formik = useFormik({

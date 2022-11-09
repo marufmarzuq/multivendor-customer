@@ -1,7 +1,5 @@
 import React, { useRef, useState } from "react";
 import { EditorState } from "draft-js";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import authStyle from "../../../../auth.module.css";
 import { FaRegEnvelope } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
@@ -15,7 +13,6 @@ import JoditEditor from "jodit-react";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
 const SupportForm = () => {
-  	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   	const { t } = useTranslation();
 
@@ -163,20 +160,6 @@ const SupportForm = () => {
                 <small className="text-danger"> {errors.message} </small>
               )}
             </div>
-            {/* <div className="tiny-desc-container">
-              <Editor
-								type="text"
-                init={{ height: 500 }}
-                toolbarClassName="toolbarClassName"
-                wrapperClassName="wrapperClassName"
-                editorClassName="editorClassName"
-                // onEditorStateChange={(value) => setEditorState(value)}
-                onEditorStateChange={handleEditorChange}
-								/>
-              {errors.message && touched.message && (
-								<small className="text-danger"> {errors.message} </small>
-							)}
-            </div> */}
             <div>
               <button
                 onClick={handleSubmit}
