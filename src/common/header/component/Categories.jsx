@@ -19,19 +19,19 @@ const Categories = ({categories}) => {
 						categories.map((item,key)=>{
 						return(
 							<li key={key}>
-							<NavLink to={`/${item.slug}`}>
-								<img className="icon_size" src={item.icon}/>{item.name}
-							</NavLink>
-							{item?.sub_category.map((sub,i)=>{
-								return(
-									<ul key={i}>
-										<li>
-											<NavLink to={`/${sub.slug}`}>{sub.name}</NavLink>
-										</li>
-									</ul>
-								)
+								<NavLink to={`/shop/${item.slug}`}>
+									<img className="icon_size" src={item.icon}/>{item.name}
+								</NavLink>
+								{ item?.sub_category.map((sub,i)=>{
+									return(
+										<ul key={i}>
+											<li>
+												<NavLink to={`/shop/${sub.slug}`}>{sub.name}</NavLink>
+											</li>
+										</ul>
+									)
 								})}
-						</li>
+							</li>
 						)
 						}) }
 					</ul>

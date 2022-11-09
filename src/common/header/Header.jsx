@@ -7,7 +7,7 @@ const Header = ({ categories , headerLogo , languageSwitcher, currencySwitcher ,
 
   return (
     <header className="header">
-      {/* <!-- topbar --> */}
+      {/* <!-- top bar --> */}
 		<TopBar 
 		languageSwitcher={languageSwitcher}
 		currencySwitcher={currencySwitcher}

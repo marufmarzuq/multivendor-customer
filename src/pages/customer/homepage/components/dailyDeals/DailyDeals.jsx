@@ -3,6 +3,7 @@ import "../dailyDeals/dailyDeals.css";
 import { MdOutlineViewInAr } from "react-icons/md";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import GridOne from "../../../../../common/product/layout/GridOne";
+import { NavLink } from "react-router-dom";
 
 const DailyDeals = ({ addToCart,dailyDeals }) => {
 
@@ -60,10 +61,10 @@ const DailyDeals = ({ addToCart,dailyDeals }) => {
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-center my-2 ">
-          <a href="#" className="btn btn-primary ">
+		<div className="d-flex justify-content-center my-2 ">
+          <NavLink to={`/shop/${categoryName}`} className="btn btn-primary ">
             <MdOutlineViewInAr /> View More
-          </a>
+          </NavLink>
         </div>
       </div>
     </section>

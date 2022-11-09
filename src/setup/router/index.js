@@ -78,25 +78,26 @@ const Router = () => {
           <Route path="setting" element={<ShopSetting />} />
         </Route>
         <Route path="seller/products/" element={<Layout />}>
-          <Route path="all" element={<Products />} />
-          <Route path="reviews" element={<ProductReviews />} />
-          <Route path="add" element={<AddProducts />} />
-          <Route path="update/:id" element={<UpdateProduct />} />
-          <Route path="bulk-upload" element={<BulkUpload />} />
-          <Route path="wishlist" element={<Wishlist />} />
-          <Route path="digital/all" element={<DigitalProduct />} />
-          <Route path="digital/add" element={<AddDigitalProducts />} />
-          <Route path="digital/update/:id" element={<UpdateDigitalProduct />} />
-					<Route path="categories" element={<Category />} />
-					<Route path="attributes" element={<Attribute />} />
-
+			<Route path="all" element={<Products />} />
+			<Route path="reviews" element={<ProductReviews />} />
+			<Route path="add" element={<AddProducts />} />
+			<Route path="update/:id" element={<UpdateProduct />} />
+			<Route path="bulk-upload" element={<BulkUpload />} />
+			<Route path="wishlist" element={<Wishlist />} />
+			<Route path="digital/all" element={<DigitalProduct />} />
+			<Route path="digital/add" element={<AddDigitalProducts />} />
+			<Route path="digital/update/:id" element={<UpdateDigitalProduct />} />
+			<Route path="categories" element={<Category />} />
+			<Route path="attributes" element={<Attribute />} />
         </Route>
       </Route>
 
       {/* Customer homepage */}
       <Route path="/" element={<CustomerLayout />}>
         <Route path="" element={<Home />} />
-        <Route path="shop" element={<Shop />} />
+        <Route path="shop" element={<Shop/>} />
+        <Route path="shop/:catId" element={<Shop/>} />
+        <Route path="shop/:catId/?search=:search" element={<Shop/>} />
         <Route path="stores" element={<Stores />} />
         <Route path="cart" element={<Cart />} />
         <Route path="compare" element={<ProductCompare />} />

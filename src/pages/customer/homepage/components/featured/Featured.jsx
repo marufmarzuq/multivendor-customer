@@ -5,6 +5,7 @@ import { useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import GridOne from "../../../../../common/product/layout/GridOne";
+import { NavLink } from "react-router-dom";
 
 const Featured = ({ addToCart, featureProducts }) => {
 
@@ -63,9 +64,9 @@ const Featured = ({ addToCart, featureProducts }) => {
           </div>
         </div>
         <div className="d-flex justify-content-center my-2 ">
-          <a href="#" className="btn btn-primary ">
+          <NavLink to={`/shop/${categoryName}`} className="btn btn-primary ">
             <MdOutlineViewInAr /> View More
-          </a>
+          </NavLink>
         </div>
       </div>
     </section>
