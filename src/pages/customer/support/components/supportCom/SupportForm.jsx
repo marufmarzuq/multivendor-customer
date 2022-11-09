@@ -15,22 +15,20 @@ import JoditEditor from "jodit-react";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
 const SupportForm = () => {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const [editorData, setEditorData] = useState("");
+  	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
-  const { t } = useTranslation();
+  	const { t } = useTranslation();
 
-  const editor = useRef(null);
+  	const editor = useRef(null);
 	const user = loadFromLocalStorage();
 
-  const handleEditorChange = (newContent) => {
-
-    if (newContent == "<p><br></p>" || newContent == "") {
-      setFieldValue("message", "");
-    } else {
-      setFieldValue("message", newContent);
-    }
-  };
+  	const handleEditorChange = (newContent) => {
+		if (newContent == "<p><br></p>" || newContent == "") {
+		setFieldValue("message", "");
+		} else {
+		setFieldValue("message", newContent);
+		}
+  	};
 
   const handleBlurEditorChange = (content) => {
     if (content == "<p><br></p>" || content == "") {
@@ -156,7 +154,6 @@ const SupportForm = () => {
               <JoditEditor
                 ref={editor}
                 value={values.message}
-                //   config={config}
                 tabIndex={1} // tabIndex of textarea
                 onBlur={(newContent) => handleBlurEditorChange(newContent)} // preferred to use only this option to update the content for performance reasons
                 onChange={(newContent) => handleEditorChange(newContent)}

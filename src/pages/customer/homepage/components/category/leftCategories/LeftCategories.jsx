@@ -31,7 +31,7 @@ const LeftCategories = ({categories}) => {
 								return(
 								<Fragment key={key}>
 									<li>
-										<NavLink to={`/${item.slug}`}>
+										<NavLink to={`/shop/${item.slug}`}>
 											<span><img src={item.icon} alt={item.name} className={'icon_size'} /></span>
 											{item.name}
 										</NavLink>
@@ -41,7 +41,7 @@ const LeftCategories = ({categories}) => {
 										item.sub_category.map((sub_item,index)=>{
 											return (
 												<li key={index}>
-													<NavLink to={sub_item.slug}>{sub_item.name}</NavLink>
+													<NavLink to={`/shop/${sub_item.slug}`}>{sub_item.name}</NavLink>
 												</li>
 											)
 										})
