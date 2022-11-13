@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import { EditorState } from "draft-js";
+import { useRef } from "react";
 import authStyle from "../../../../auth.module.css";
 import { FaRegEnvelope } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
