@@ -9,7 +9,6 @@ import BreadCumb from "../../../common/breadcumb/BreadCumb";
 import cartStyle from "./cartStyle.module.css";
 import { useCart } from "react-use-cart";
 import { Fragment } from "react";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const Cart = () => {
   const { t } = useTranslation();
@@ -41,7 +40,9 @@ const {
 				<ActionButton />
 				<hr />
 				<div className={`mt-4 ${cartStyle.cuponContainer}`}>
-					<Coupon />
+					<Coupon 
+					items={items}
+					/>
 					<CartTotal proceedKey="cart" cartTotal={cartTotal} />
 				</div>
           </Fragment>

@@ -9,8 +9,8 @@ import * as yup from "yup";
 
 const schema = yup.object().shape({
 	code: yup.string().required("Coupon  is required"),
-})
-const Coupon = () => {
+});
+const Coupon = ({items}) => {
 	const [loading, setLoading] = useState(false);
 
 	const formik = useFormik({
