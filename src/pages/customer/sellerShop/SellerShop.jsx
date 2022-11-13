@@ -12,7 +12,6 @@ import { useCart } from "react-use-cart";
 
 const SellerShop = () => {
   const { slug } = useParams();
-
   const [loading, setLoading] = useState(false);
   const [sellerShop, setSellerShop] = useState([]);
 	const { addItem, onItemAdd } = useCart();
