@@ -17,7 +17,7 @@ const RelatedProducts = ({loading,singleProduct}) => {
 			</div>
 			<div className="row products-wrap">
 				{!loading &&
-				singleProduct?.related_products?.map((product, index) => {
+				singleProduct?.related_products?.products?.map((product, index) => {
 					return (
 						<GridOne
 						key={index}
@@ -28,7 +28,7 @@ const RelatedProducts = ({loading,singleProduct}) => {
 				})}
 
 				<div className="text-center">
-					<NavLink to={`/shop/${singleProduct?.category_slug}`} className="btn btn-primary ">
+					<NavLink to={`/shop/${singleProduct?.related_products?.category_slug}`} className="btn btn-primary ">
 						<button className="btn btn-primary">View More</button>
 					</NavLink>
 				</div>

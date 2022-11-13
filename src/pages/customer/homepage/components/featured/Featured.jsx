@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 const Featured = ({ addToCart, featureProducts }) => {
 
   const [categoryName, setCategoryName] = useState("all");
+  const [categorySlug, setCategorySlug] = useState("all");
 
   return (
     <section className="most-popular my-4">
@@ -33,7 +34,7 @@ const Featured = ({ addToCart, featureProducts }) => {
                 return (
                   <li className="nav-item" key={index}>
                     <button
-                      onClick={() => setCategoryName(category_name)}
+                      onClick={() => setCategoryName(category_name)+ setCategorySlug( featureProducts[categoryName]?.category_slug )}
                       className={`nav-link ${
                         category_name == "all" ? "active" : ""
                       }`}
@@ -50,7 +51,7 @@ const Featured = ({ addToCart, featureProducts }) => {
             <div className="container">
               <div className="row products-wrap">
                 {featureProducts &&
-                  featureProducts[categoryName]?.map((product, index) => {
+                  featureProducts[categoryName]?.products?.map((product, index) => {
                     return (
 						<GridOne
 							product={product}
@@ -64,7 +65,7 @@ const Featured = ({ addToCart, featureProducts }) => {
           </div>
         </div>
         <div className="d-flex justify-content-center my-2 ">
-          <NavLink to={`/shop/${categoryName}`} className="btn btn-primary ">
+          <NavLink to={`/shop/${categorySlug}`} className="btn btn-primary ">
             <MdOutlineViewInAr /> View More
           </NavLink>
         </div>

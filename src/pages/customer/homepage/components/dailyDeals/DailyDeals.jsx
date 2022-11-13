@@ -6,9 +6,8 @@ import GridOne from "../../../../../common/product/layout/GridOne";
 import { NavLink } from "react-router-dom";
 
 const DailyDeals = ({ addToCart,dailyDeals }) => {
-
-  const [selectVariant, setSelcetVariant] = useState("");
-  const [categoryName, setCategoryName] = useState("all");
+	const [categorySlug, setCategorySlug] = useState("all");
+	const [categoryName, setCategoryName] = useState("all");
 
   return (
     <section className="most-popular my-4">
@@ -32,7 +31,7 @@ const DailyDeals = ({ addToCart,dailyDeals }) => {
                 return (
                   <li className="nav-item" key={index}>
                     <button
-                      onClick={() => setCategoryName(category_name)}
+                      onClick={() => setCategoryName(category_name) + setCategorySlug( dailyDeals[categoryName]?.category_slug )}
                       className={`nav-link ${
                         category_name == "all" ? "active" : ""
                       }`}
@@ -49,7 +48,7 @@ const DailyDeals = ({ addToCart,dailyDeals }) => {
             <div className="container">
               <div className="row products-wrap">
                 {dailyDeals &&
-                  dailyDeals[categoryName]?.map((product, index) => {
+                  dailyDeals[categoryName]?.products?.map((product, index) => {
                     return (
 						<GridOne key={index}
 							product={product}
@@ -62,7 +61,7 @@ const DailyDeals = ({ addToCart,dailyDeals }) => {
           </div>
         </div>
 		<div className="d-flex justify-content-center my-2 ">
-          <NavLink to={`/shop/${categoryName}`} className="btn btn-primary ">
+          <NavLink to={`/shop/${categorySlug}`} className="btn btn-primary ">
             <MdOutlineViewInAr /> View More
           </NavLink>
         </div>

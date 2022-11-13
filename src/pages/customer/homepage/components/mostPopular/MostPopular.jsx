@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 
 const MostPopular = ({ addToCart , popularProducts }) => {
   const [categoryName, setCategoryName] = useState("all");
+  const [categorySlug, setCategorySlug] = useState("all");
   return (
     <section className="most-popular my-4">
       <div className="container">
@@ -28,7 +29,7 @@ const MostPopular = ({ addToCart , popularProducts }) => {
                 return (
                   <li className="nav-item" key={index}>
                     <button
-                      onClick={() => setCategoryName(category_name)}
+                      onClick={() => setCategoryName(category_name) + setCategorySlug( popularProducts[categoryName]?.category_slug )}
                       className={`nav-link ${
                         category_name == "all" ? "active" : ""
                       }`}
@@ -45,7 +46,7 @@ const MostPopular = ({ addToCart , popularProducts }) => {
             <div className="container">
               <div className="row products-wrap">
                 {popularProducts &&
-                  popularProducts[categoryName]?.map((product, index) => {
+                  popularProducts[categoryName]?.products?.map((product, index) => {
                     return (
                       <GridOne
                         key={index}
@@ -59,7 +60,7 @@ const MostPopular = ({ addToCart , popularProducts }) => {
           </div>
         </div>
         <div className="d-flex justify-content-center my-2 ">
-          <NavLink to={`/shop/${categoryName}`} className="btn btn-primary ">
+          <NavLink to={`/shop/${categorySlug}`} className="btn btn-primary ">
             <MdOutlineViewInAr /> View More
           </NavLink>
         </div>
