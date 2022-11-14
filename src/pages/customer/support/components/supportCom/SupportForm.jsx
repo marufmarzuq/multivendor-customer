@@ -12,7 +12,7 @@ import JoditEditor from "jodit-react";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
 const SupportForm = () => {
-
+	const [loading, setLoading] = useState(false);
   	const { t } = useTranslation();
 
   	const editor = useRef(null);
@@ -46,20 +46,22 @@ const SupportForm = () => {
     onSubmit: (values, action) => {
       const finalValues = values;
 			finalValues.user_id = user ? user?.user?.id : null;
-
-      markutosFrontendApi
-        .post("/submit-support-request", finalValues, {
-          headers: {
-            Authorization: authHeader(),
-          },
-        })
-        .then((res) => {
-          toast.success(res.data.message);
-          action.resetForm();
-        })
-        .catch((e) => {
-          toast.error(e.message);
-        });
+		setLoading(true)
+		markutosFrontendApi
+			.post("/submit-support-request", finalValues, {
+			headers: {
+				Authorization: authHeader(),
+			},
+			})
+			.then((res) => {
+			setLoading(false)
+			toast.success(res.data.message);
+			action.resetForm();
+			})
+			.catch((e) => {
+			setLoading(false)
+			toast.error(e.message);
+			});
     },
   });
 
@@ -165,7 +167,11 @@ const SupportForm = () => {
                 className="btn btn-primary"
                 type="submit"
                 name="button"
+				disabled={loading}
               >
+				{loading && (
+					<span className="spinner-grow spinner-grow-sm"></span>
+				)}
                 <FaRegEnvelope /> Submit
               </button>
             </div>
