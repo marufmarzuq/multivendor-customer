@@ -14,6 +14,7 @@ import { useState } from "react";
 import { markutosSellerApi } from "../../services/Api/api";
 import { toast } from "react-toastify";
 import authHeader from "../../services/auth-header";
+import ShopPageSettings from "./componetns/shopPageSettings/ShopPageSettings";
 
 const ShopSetting = () => {
   const [submiting, setSubmitting] = useState(false);
@@ -73,28 +74,87 @@ const ShopSetting = () => {
       </div> */}
           </div>
 
-          <div className={settingStyle.add_product_widget_container}>
-            <SettingInfo
-              submiting={submiting}
-              touched={touched}
-              values={values}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-              setFieldValue={setFieldValue}
-              errors={errors}
-            />
-            <SettingBanner
-              submiting={submiting}
-              setFieldValue={setFieldValue}
-              values={values}
-              handleSubmit={handleSubmit}
-            />
-            <SettingSocialLinks
-              submiting={submiting}
-              values={values}
-              handleChange={handleChange}
-              handleSubmit={handleSubmit}
-            />
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="general-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#general-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="general-tab-pane"
+                aria-selected="true"
+                style={{ color: "black" }}
+              >
+                General Settings
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="shop-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#shop-tab-pane"
+                type="button"
+                role="tab"
+                aria-controls="shop-tab-pane"
+                aria-selected="false"
+                style={{ color: "black" }}
+              >
+                Shop Page Settings
+              </button>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div
+              class="tab-pane fade show active"
+              id="general-tab-pane"
+              role="tabpanel"
+              aria-labelledby="general-tab"
+              tabindex="0"
+            >
+              <div className={settingStyle.add_product_widget_container}>
+                <SettingInfo
+                  submiting={submiting}
+                  touched={touched}
+                  values={values}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                  setFieldValue={setFieldValue}
+                  errors={errors}
+                />
+                <SettingBanner
+                  submiting={submiting}
+                  setFieldValue={setFieldValue}
+                  values={values}
+                  handleSubmit={handleSubmit}
+                />
+                <SettingSocialLinks
+                  submiting={submiting}
+                  values={values}
+                  handleChange={handleChange}
+                  handleSubmit={handleSubmit}
+                />
+              </div>
+            </div>
+            <div
+              class="tab-pane fade"
+              id="shop-tab-pane"
+              role="tabpanel"
+              aria-labelledby="shop-tab"
+              tabindex="0"
+            >
+              <ShopPageSettings
+                submiting={submiting}
+                touched={touched}
+                values={values}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                setFieldValue={setFieldValue}
+                errors={errors}
+              />
+            </div>
           </div>
         </div>
       )}

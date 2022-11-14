@@ -4,6 +4,8 @@ const Variation = ({ colors, choseOptions, product }) => {
   const [selectVariant, setSelectVariant] = useState([]);
   const [variantPrice, setVariantPrice] = useState("");
 
+  console.log(selectVariant);
+
   useEffect(() => {
     product.selectedVariant = selectVariant;
     var getVariant = "";
@@ -76,9 +78,9 @@ const Variation = ({ colors, choseOptions, product }) => {
                       htmlFor={item.name}
                       style={{ backgroundColor: item.code }}
                     ></label> */}
-                    <span onClick={(e) =>
-                        getVariation("Colors", item.name , 0)
-                      } > </span>
+                    <span onClick={(e) => getVariation("Colors", item.name, 0)}>
+                      {" "}
+                    </span>
                   </div>
                 );
               })}
@@ -105,9 +107,13 @@ const Variation = ({ colors, choseOptions, product }) => {
                             }
                           />
                           <label htmlFor={variant}>{variant}</label> */}
-                          <span onClick={(e) =>
-													getVariation(item, variant , key + 1)
-													}>{variant}</span>
+                          <span
+                            onClick={(e) =>
+                              getVariation(item, variant, key + 1)
+                            }
+                          >
+                            {variant}
+                          </span>
                         </div>
                       );
                     })}
