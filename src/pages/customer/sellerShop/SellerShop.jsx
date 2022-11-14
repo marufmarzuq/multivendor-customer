@@ -9,6 +9,7 @@ import TopSelling from "./components/topSelling/TopSelling";
 import { markutosFrontendApi } from "../../services/Api/api";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useCart } from "react-use-cart";
+import ReviewForm from "./components/reviewForm/ReviewForm";
 
 const SellerShop = () => {
   const { slug } = useParams();
@@ -46,6 +47,7 @@ const SellerShop = () => {
       <TopSelling addToCart={addToCart} loading={loading} topSelling={sellerShop.top_selling_products} />
       <AllProducts addToCart={addToCart} loading={loading} allProducts={sellerShop.all_products}/>
       <AboutShop loading={loading} shopName={sellerShop.name} about={sellerShop.about}/>
+	  <ReviewForm/>	
     </>
   );
 };

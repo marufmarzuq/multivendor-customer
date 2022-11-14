@@ -15,6 +15,7 @@ import { priceFormat } from "../../../../../hooks/helper";
 import { useCart } from "react-use-cart";
 import Variation from "./Variation";
 import ReactStars from "react-rating-stars-component";
+import { NavLink } from "react-router-dom";
 
 const ProductDetails = ({loading,singleProduct}) => {
 
@@ -77,9 +78,11 @@ const ProductDetails = ({loading,singleProduct}) => {
 									<span className="label me-1">Sold By : </span>
 									<span>{singleProduct.shop_name}</span>
 								</div>
-								<button className="btn ms-0 ms-md-5 btn-primary search-button">
-									<AiOutlineMessage className="me-1" /> Message Seller
-								</button>
+								<NavLink to={`/seller-shop/${singleProduct.shop_slug}/#seller-review`}>
+									<button className="btn ms-0 ms-md-5 btn-primary search-button">
+										<AiOutlineMessage className="me-1" /> Message Seller
+									</button>
+								</NavLink>
 							</div>
 
 							{ singleProduct.product_type == "variation" &&
