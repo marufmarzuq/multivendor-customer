@@ -27,15 +27,15 @@ import { useState } from "react";
 import { loadFromLocalStorage } from "../../utils/seller/manageLocalStorage";
 
 const Navigation = ({ toggleF, toggle }) => {
-  const navigate 		= useNavigate();
+  const navigate = useNavigate();
   const logOut = () => {
     toggleF(!toggle);
   };
 
   const sellerLogout = () => {
-    navigate('/login');
-		AuthService.logout();
-  }
+    navigate("/login");
+    AuthService.logout();
+  };
 
   const user = loadFromLocalStorage();
 
@@ -180,7 +180,7 @@ const Navigation = ({ toggleF, toggle }) => {
                     <span className="ps-2">Product Bulk Upload</span>
                   </NavLink>
                 </li>
-								{/* <li
+                {/* <li
                   onClick={() => handleDropdown("categories")}
                   className={`  ${activeMenu == "categories" ? navigationStyle.active : ""} `}
                 >
@@ -208,7 +208,9 @@ const Navigation = ({ toggleF, toggle }) => {
                 </li> */}
                 <li
                   onClick={() => handleDropdown("wishlist")}
-                  className={`  ${ activeMenu == "wishlist" ? navigationStyle.active : ""} `}
+                  className={`  ${
+                    activeMenu == "wishlist" ? navigationStyle.active : ""
+                  } `}
                 >
                   <NavLink
                     className={navigationStyle.inside_nav}
@@ -223,7 +225,9 @@ const Navigation = ({ toggleF, toggle }) => {
                 </li>
                 <li
                   onClick={() => handleDropdown("reviews")}
-                  className={`  ${activeMenu == "reviews" ? navigationStyle.active : ""} `}
+                  className={`  ${
+                    activeMenu == "reviews" ? navigationStyle.active : ""
+                  } `}
                 >
                   <NavLink
                     className={navigationStyle.inside_nav}
@@ -385,6 +389,17 @@ const Navigation = ({ toggleF, toggle }) => {
             <NavLink onClick={() => closeNav()} to="/seller/manage-profile">
               <AiOutlineUser className={navigationStyle.icon_green} />
               <span className="ps-2">Manage profile</span>
+            </NavLink>
+          </li>
+          <li
+            onClick={() => handleDropdown("shop-reviews")}
+            className={`  ${
+              activeMenu == "shop-reviews" ? navigationStyle.active : ""
+            } `}
+          >
+            <NavLink onClick={() => closeNav()} to="/seller/shop-reviews">
+              <IoIosStarHalf className={navigationStyle.icon_green} />
+              <span className="ps-2">Shop Reviews</span>
             </NavLink>
           </li>
           <li>

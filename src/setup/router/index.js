@@ -54,7 +54,7 @@ import BeVendor from "../../pages/customerDashboard/components/becomeVendor/BeVe
 import Supports from "../../pages/customerDashboard/components/supports/Supports";
 import OrderReturnList from "../../pages/customerDashboard/components/orderReturns/OrderReturnList";
 import SupportTicket from "../../pages/customer/support/SupportTicket";
-
+import ShopReviews from "../../pages/seller/shopReviews/ShopReviews";
 
 const Router = () => {
   return (
@@ -76,28 +76,29 @@ const Router = () => {
           <Route path="withdraw" element={<MoneyWithDraw />} />
           <Route path="manage-profile" element={<ManageProfile />} />
           <Route path="setting" element={<ShopSetting />} />
+          <Route path="shop-reviews" element={<ShopReviews />} />
         </Route>
         <Route path="seller/products/" element={<Layout />}>
-			<Route path="all" element={<Products />} />
-			<Route path="reviews" element={<ProductReviews />} />
-			<Route path="add" element={<AddProducts />} />
-			<Route path="update/:id" element={<UpdateProduct />} />
-			<Route path="bulk-upload" element={<BulkUpload />} />
-			<Route path="wishlist" element={<Wishlist />} />
-			<Route path="digital/all" element={<DigitalProduct />} />
-			<Route path="digital/add" element={<AddDigitalProducts />} />
-			<Route path="digital/update/:id" element={<UpdateDigitalProduct />} />
-			<Route path="categories" element={<Category />} />
-			<Route path="attributes" element={<Attribute />} />
+          <Route path="all" element={<Products />} />
+          <Route path="reviews" element={<ProductReviews />} />
+          <Route path="add" element={<AddProducts />} />
+          <Route path="update/:id" element={<UpdateProduct />} />
+          <Route path="bulk-upload" element={<BulkUpload />} />
+          <Route path="wishlist" element={<Wishlist />} />
+          <Route path="digital/all" element={<DigitalProduct />} />
+          <Route path="digital/add" element={<AddDigitalProducts />} />
+          <Route path="digital/update/:id" element={<UpdateDigitalProduct />} />
+          <Route path="categories" element={<Category />} />
+          <Route path="attributes" element={<Attribute />} />
         </Route>
       </Route>
 
       {/* Customer homepage */}
       <Route path="/" element={<CustomerLayout />}>
         <Route path="" element={<Home />} />
-        <Route path="shop" element={<Shop/>} />
-        <Route path="shop/:catId" element={<Shop/>} />
-        <Route path="shop/:catId/?search=:search" element={<Shop/>} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="shop/:catId" element={<Shop />} />
+        <Route path="shop/:catId/?search=:search" element={<Shop />} />
         <Route path="stores" element={<Stores />} />
         <Route path="cart" element={<Cart />} />
         <Route path="compare" element={<ProductCompare />} />
@@ -119,7 +120,7 @@ const Router = () => {
           <Route path="dashboard" element={<DashboardLayout />}>
             <Route path="" element={<Profile />} />
             <Route path="orders" element={<UserOrder />} />
-						<Route path="order-return-list" element={<OrderReturnList />} />
+            <Route path="order-return-list" element={<OrderReturnList />} />
             <Route path="order-returns" element={<UserOrderReturns />} />
             <Route path="password-change" element={<ChangePass />} />
             <Route path="become-vendor" element={<BeVendor />} />
