@@ -54,6 +54,7 @@ import BeVendor from "../../pages/customerDashboard/components/becomeVendor/BeVe
 import Supports from "../../pages/customerDashboard/components/supports/Supports";
 import OrderReturnList from "../../pages/customerDashboard/components/orderReturns/OrderReturnList";
 import SupportTicket from "../../pages/customer/support/SupportTicket";
+import SingleTicket from "../../pages/customerDashboard/components/supports/components/SingleTicket";
 
 
 const Router = () => {
@@ -119,12 +120,13 @@ const Router = () => {
           <Route path="dashboard" element={<DashboardLayout />}>
             <Route path="" element={<Profile />} />
             <Route path="orders" element={<UserOrder />} />
-						<Route path="order-return-list" element={<OrderReturnList />} />
+			<Route path="order-return-list" element={<OrderReturnList />} />
             <Route path="order-returns" element={<UserOrderReturns />} />
             <Route path="password-change" element={<ChangePass />} />
             <Route path="become-vendor" element={<BeVendor />} />
             <Route path="supports" element={<Supports />} />
             <Route path="support-ticket/:ticket" element={<SupportTicket />} />
+            <Route path="support/conversation/*" element={<SingleTicket />} />
           </Route>
         </Route>
       </Route>
