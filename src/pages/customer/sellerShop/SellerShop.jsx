@@ -47,7 +47,7 @@ const SellerShop = () => {
       <TopSelling addToCart={addToCart} loading={loading} topSelling={sellerShop.top_selling_products} />
       <AllProducts addToCart={addToCart} loading={loading} allProducts={sellerShop.all_products}/>
       <AboutShop loading={loading} shopName={sellerShop.name} about={sellerShop.about}/>
-	  <ReviewForm/>	
+	  <ReviewForm sellerId={sellerShop.id}/>	
     </>
   );
 };
