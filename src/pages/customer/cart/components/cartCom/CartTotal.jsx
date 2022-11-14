@@ -2,23 +2,27 @@ import { AiOutlineDeliveredProcedure } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import { priceFormat } from "../../../../../hooks/helper";
 import cartStyle from "./cart.module.css";
+import { useCart } from "react-use-cart";
 
 const CartTotal = ({ proceedKey, cartTotalTitle, cartTotal }) => {
-
+	const {
+		metadata
+		} = useCart();
 	const addAdditionalPrice=()=>{
 		var tax = (cartTotal * 2 )/100;
 		var total_price = cartTotal + tax;
+		if (( cartTotalTitle != "checkout" && metadata?.coupon )) {
+			total_price -= parseFloat(metadata.coupon)
+		}
 		return priceFormat( total_price );
 	}
 
   return (
     <div>
       <div className={cartStyle.cart_totals}>
-        {cartTotalTitle != "checkout" ? (
+        {cartTotalTitle != "checkout" && (
           <h5 className="mb-3">Cart totals</h5>
-        ) : (
-          ""
-        )}
+        ) }
         <div className={cartStyle.cartTotalsRow}>
           <div>
             <span>Subtotal:</span>
@@ -27,14 +31,30 @@ const CartTotal = ({ proceedKey, cartTotalTitle, cartTotal }) => {
             <span>{priceFormat(cartTotal)}</span>
           </div>
         </div>
-        <div className={cartStyle.cartTotalsRow}>
-          <div>
-            <span>Tax (2%):</span>
-          </div>
-          <div className="d-flex justify-content-end">
-            <span>{priceFormat((cartTotal * 2 )/100)} </span>
-          </div>
-        </div>
+		{/* Add tax calculation */}
+		{
+			( cartTotalTitle != "GrandTotal" ) && 
+				<div className={cartStyle.cartTotalsRow}>
+					<div>
+						<span>Tax (2%):</span>
+					</div>
+					<div className="d-flex justify-content-end">
+						<span>{priceFormat((cartTotal * 2 )/100)} </span>
+					</div>
+				</div>
+		}
+		{/* Add coupon calculation */}
+		{
+		( cartTotalTitle != "checkout" && metadata?.coupon ) && 
+			<div className={cartStyle.cartTotalsRow}>
+				<div>
+				<span>Coupon Discount:</span>
+				</div>
+				<div className="d-flex justify-content-end">
+				<span>{priceFormat(metadata?.coupon)} </span>
+				</div>
+		  	</div>
+		}
         <div className={cartStyle.cartTotalsRowLast}>
           <div>
             <span>Total:</span>
@@ -68,12 +88,12 @@ const CartTotal = ({ proceedKey, cartTotalTitle, cartTotal }) => {
 
         {proceedKey == "cart" ? (
           <div className={`my-4  ${cartStyle.proceedBtn}`}>
-						<NavLink to={`/checkout`}>
-							<button className="btn btn-primary">
-								{" "}
-								<AiOutlineDeliveredProcedure /> Proceed to checkout
-							</button>
-						</NavLink>
+			<NavLink to={`/checkout`}>
+				<button className="btn btn-primary">
+					{" "}
+					<AiOutlineDeliveredProcedure /> Proceed to checkout
+				</button>
+			</NavLink>
           </div>
         ) : (
           ""

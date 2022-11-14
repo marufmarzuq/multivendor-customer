@@ -10,14 +10,14 @@ const CartDetails = ({storesCart,cartTotal}) => {
         <h4 className="mb-4">Products</h4>
         {
         storesCart.length > 0 &&
-					storesCart.map((items,key)=>{
-						return <ShopCart items={items} key={key}/>
-					})
+			storesCart.map((items,key)=>{
+				return <ShopCart items={items} key={key}/>
+			})
         }
         <section>
           <div className="mb-4">
-						<h4 className="mb-4">GrandTotal</h4>
-            <CartTotal cartTotalTitle="checkout" cartTotal={cartTotal}  />
+			<h4 className="mb-4">GrandTotal</h4>
+            <CartTotal cartTotalTitle="GrandTotal" cartTotal={cartTotal}  />
           </div>
         </section>
       </div>

@@ -13,11 +13,12 @@ const ThankYou = () => {
 const [show, setShow] = useState(false);
 const [orderData, setOrderData] = useState([]);
 const [shippingAddress, setShippingAddress] = useState("");
-const {emptyCart} = useCart();
+const {emptyCart,clearCartMetadata} = useCart();
 const { state } = useLocation();
 
 useEffect(() => {
     emptyCart();
+	clearCartMetadata();
     setOrderData(state.packages)
     setShippingAddress(state.shipping_address)
 }, [state]);

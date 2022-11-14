@@ -1,3 +1,4 @@
+import {useState} from "react";
 import { useTranslation } from "react-i18next";
 import PageHeader from "./components/cartCom/PageHeader";
 import ProductTable from "./components/cartCom/ProductTable";
@@ -11,16 +12,17 @@ import { useCart } from "react-use-cart";
 import { Fragment } from "react";
 
 const Cart = () => {
-  const { t } = useTranslation();
+  	const { t } = useTranslation();
 
-const {
+	const {
     isEmpty,
     totalUniqueItems,
     items,
-		cartTotal,
+	cartTotal,
     updateItemQuantity,
     removeItem,
-  } = useCart();
+	metadata
+  	} = useCart();
 
   return (
     <div>
@@ -40,10 +42,8 @@ const {
 				<ActionButton />
 				<hr />
 				<div className={`mt-4 ${cartStyle.cuponContainer}`}>
-					<Coupon 
-					items={items}
-					/>
-					<CartTotal proceedKey="cart" cartTotal={cartTotal} />
+					<Coupon/>
+					<CartTotal proceedKey="cart" cartTotal={cartTotal}/>
 				</div>
           </Fragment>
           )

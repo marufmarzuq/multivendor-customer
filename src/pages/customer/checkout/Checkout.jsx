@@ -13,7 +13,8 @@ const Checkout = () => {
 	const {
     isEmpty,
     items,
-		cartTotal,
+	cartTotal,
+	metadata,
     emptyCart,
   } = useCart();
 
@@ -30,7 +31,7 @@ const Checkout = () => {
 			(
 				<Fragment>
 					<div className={checkoutStyle.checkoutForm}>
-						<CheckoutForm storesCart={storesCart} cartTotal={cartTotal} emptyCart={emptyCart} />
+						<CheckoutForm storesCart={storesCart} cartTotal={cartTotal} emptyCart={emptyCart} metadata={metadata} />
 					</div>
 					<div className={checkoutStyle.cartDetails}>
 						<CartDetails storesCart={storesCart} cartTotal={cartTotal} />

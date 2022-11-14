@@ -10,7 +10,7 @@ import { addOrderSchema } from "../../../../../schema/addOrderSchema";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({storesCart,cartTotal}) => {
+const CheckoutForm = ({storesCart,cartTotal,metadata}) => {
   const [paymentMethod, setPaymentMethod] = useState('cod');
   const user = loadFromLocalStorage();
   const navigate = useNavigate();
@@ -35,14 +35,17 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
       "address": values.address
       };
 
-      finalValues.user_id = user ? user?.user?.id : 0;
-      finalValues.orders = storesCart;
-      finalValues.payment_method  = "cod";
-      finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
-      finalValues.coupon_discount =  0;
-      finalValues.subtotal        =  cartTotal;
-      finalValues.total           =  cartTotal;
-      finalValues.shipping_info   =  shipping_info;
+	finalValues.user_id = user ? user?.user?.id : 0;
+	finalValues.orders = storesCart;
+	finalValues.payment_method  = "cod";
+	finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
+	finalValues.coupon_discount =  0;
+	finalValues.subtotal        =  cartTotal;
+	finalValues.shipping_info   =  shipping_info;
+	if (metadata?.coupon) {
+		cartTotal -= parseFloat(metadata.coupon)
+	}
+	finalValues.total           =  cartTotal;
 
       markutosFrontendApi
           .post("/checkout/post", finalValues )
