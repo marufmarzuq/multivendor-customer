@@ -111,6 +111,8 @@ const Router = () => {
         <Route path="blog" element={<Blog />} />
         <Route path="blog/:id" element={<BlogDetails />} />
         <Route path="thank-you" element={<ThankYou />} />
+		<Route path="support/conversation" element={<SingleTicket />} />
+
         {/* Login */}
         <Route path="register" element={<CustomerRegister />} />
         <Route path="login" element={<Login />} />
@@ -126,7 +128,7 @@ const Router = () => {
             <Route path="become-vendor" element={<BeVendor />} />
             <Route path="supports" element={<Supports />} />
             <Route path="support-ticket/:ticket" element={<SupportTicket />} />
-            <Route path="support/conversation/*" element={<SingleTicket />} />
+            <Route path="support/conversation" element={<SingleTicket />} />
           </Route>
         </Route>
       </Route>

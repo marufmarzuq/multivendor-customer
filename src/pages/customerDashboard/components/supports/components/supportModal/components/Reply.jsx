@@ -34,12 +34,12 @@ const Reply = ({ticket}) => {
 		},
 		enableReinitialize: true,
 		onSubmit: (values, action) => {
-		  const finalValues = values;
-				finalValues.user_id = user ? user?.user?.id : null;
-				finalValues.ticket_code = ticket.code;
-				console.log(finalValues);
-			setLoading(true);
-		  markutosFrontendApi
+		const finalValues = values;
+			finalValues.user_id = user ? user?.user?.id : null;
+			finalValues.ticket_code = ticket.code;
+		setLoading(true);
+		if (user) {
+			markutosFrontendApi
 			.post("/dashboard/support-conversation/reply", finalValues, {
 			  headers: {
 				Authorization: customerAuthHeader(),
@@ -54,6 +54,20 @@ const Reply = ({ticket}) => {
 				setLoading(false);
 			  	toast.error(e.message);
 			});
+		} else {
+			markutosFrontendApi
+			.post("user-conversation/reply", finalValues )
+			.then((res) => {
+				setLoading(false);
+				toast.success(res.data.message);
+				action.resetForm();
+			})
+			.catch((e) => {
+				setLoading(false);
+			  	toast.error(e.message);
+			});	
+		}
+
 		},
 	  });
 	

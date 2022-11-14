@@ -6,14 +6,16 @@ import customerAuthHeader from "../../../../services/customer-auth-header";
 import { useSearchParams} from "react-router-dom";
 import Reply from "./supportModal/components/Reply";
 import Conversations from "./supportModal/components/Conversations";
+import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
 const SingleTicket = () => {
 	const [searchParams] = useSearchParams();
 	const ticketId = searchParams.get('ticket_code')
 	const [supportDetails, setSupportDetails] = useState("");
-
+	const user = loadFromLocalStorage();
 	useEffect(() => {
-		markutosFrontendApi
+		if (user) {
+			markutosFrontendApi
 			.get(`/dashboard/support-conversation?ticket_code=${ticketId}`, {
 				headers: {
 					Authorization: customerAuthHeader(),
@@ -25,8 +27,19 @@ const SingleTicket = () => {
 			.catch((err) => {
 				console.log(err.message);
 			});
-		
+		}
+		else{
+			markutosFrontendApi
+			.get(`/user-conversation?ticket_code=${ticketId}`)
+			.then((res) => {
+				setSupportDetails(res.data);
+			})
+			.catch((err) => {
+				console.log(err.message);
+			});
+		}
 	}, [ticketId]);
+	
   return (
 	<div>
 		<Reply ticket={supportDetails?.ticket}/>
