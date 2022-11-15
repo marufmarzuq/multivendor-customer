@@ -15,8 +15,6 @@ import ProductReviews from "../../pages/seller/productReviews/ProductReviews";
 import AddProducts from "../../pages/seller/products/components/addProduct/AddProducts";
 import UpdateProduct from "../../pages/seller/products/components/updateProducts/UpdateProduct";
 import Products from "../../pages/seller/products/Products";
-import Category from "../../pages/seller/category/Category";
-import Attribute from "../../pages/seller/attribute/Attribute";
 import ReceivedRefundReq from "../../pages/seller/refunds/receivedRefund/ReceivedRefundReq";
 import SentRefundReq from "../../pages/seller/refunds/sentRefund/SentRefundReq";
 import Wishlist from "../../pages/seller/wishlist/Wishlist";
@@ -88,8 +86,6 @@ const Router = () => {
 			<Route path="digital/all" element={<DigitalProduct />} />
 			<Route path="digital/add" element={<AddDigitalProducts />} />
 			<Route path="digital/update/:id" element={<UpdateDigitalProduct />} />
-			<Route path="categories" element={<Category />} />
-			<Route path="attributes" element={<Attribute />} />
         </Route>
       </Route>
 
