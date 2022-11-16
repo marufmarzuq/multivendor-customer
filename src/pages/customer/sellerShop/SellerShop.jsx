@@ -41,13 +41,12 @@ const SellerShop = () => {
 		}
 		setLoading(true);
 		markutosFrontendApi
-			.get(`/seller-shop/search?shop_id=1&search_value=&per_page=16&category=&brand=&rating=&color=&sort_by=&choice_name=&choice_value=`)
-			.then((response) => {
-			setReloading(false);
-			setFilterProducts(response?.data);
-			});
+		.get(`/seller-shop/search?shop_id=${sellerShop.seller_id}&search_value=${searchData}&per_page=16&category=&brand=&rating=&color=&sort_by=&choice_name=&choice_value=`)
+		.then((response) => {
+		setReloading(false);
+		setFilterProducts(response?.data?.data);
+		});
 	},[searchData]);
-
 
   return (
     <>

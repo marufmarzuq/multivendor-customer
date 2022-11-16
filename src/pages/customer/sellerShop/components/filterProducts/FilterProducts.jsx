@@ -4,30 +4,27 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import ProductLayout from "../productLayout/ProductLayout";
 
 const FilterProducts = ({ loading , filterProducts ,addToCart}) => {
-	console.log(filterProducts);
   return (
     <div className="container">
      	{ filterProducts.length > 0 &&
 			<div className={arrivalStyle.titles}>
-				<h1 className="text-center mb-5 pt-5">New Arrivals</h1>
+				<h1 className="text-center mb-5 pt-5">Search Result</h1>
 			</div>
 		}
       <section>
         <div className={arrivalStyle.productsContainer}>
-        { loading ?
-			""
-		:
-		(
+        { 
+		!loading &&
 			filterProducts?.map((product,index)=>{
-				return(
-					<ProductLayout
-						product={product}
-						key={index}
-						addToCart={addToCart}
-					/>
-				)
-				})
-		)
+			return(
+				<ProductLayout
+					product={product}
+					key={index}
+					addToCart={addToCart}
+				/>
+			)
+			})
+		
 		}
         </div>
       </section>
