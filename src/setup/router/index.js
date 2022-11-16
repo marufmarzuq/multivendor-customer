@@ -55,10 +55,12 @@ import Supports from "../../pages/customerDashboard/components/supports/Supports
 import OrderReturnList from "../../pages/customerDashboard/components/orderReturns/OrderReturnList";
 import SupportTicket from "../../pages/customer/support/SupportTicket";
 import ShopReviews from "../../pages/seller/shopReviews/ShopReviews";
+import Invoice from "../../common/invoice/Invoice";
 
 const Router = () => {
   return (
     <Routes>
+      <Route path="invoice" element={<Invoice />} />
       <Route path="/customer-home" element={<CustomerHome />} />
       {/* Vendor Dashboard */}
       <Route element={<PrivateRoutes />}>
@@ -112,6 +114,7 @@ const Router = () => {
         <Route path="blog/:id" element={<BlogDetails />} />
         <Route path="thank-you" element={<ThankYou />} />
         {/* Login */}
+
         <Route path="register" element={<CustomerRegister />} />
         <Route path="login" element={<Login />} />
         <Route path="reset-password" element={<ResetPassword />} />
