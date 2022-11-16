@@ -244,6 +244,40 @@ body.show:after {
   width: 100%;
   height: auto;
 }
+.search-wrap {
+  position: relative;
+}
+.search-template {
+  z-index: 100;
+  background-color: #fff;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  display: none;
+}
+.search-text:focus ~ .search-template {
+  display: grid;
+}
+.single_search_prod {
+  display: grid;
+  grid-template-columns: 100px auto;
+  gap: 11px;
+  align-items: center;
+  border: 0.5px solid #ddd;
+  padding: 6px;
+}
+p.ssp-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  min-height: 55px;
+}
+p.ssp-price {
+  font-size: 15px;
+}
 .header .main-header .search-wrap .search-text {
   flex: 2;
   position: relative;
