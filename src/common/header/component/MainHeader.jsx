@@ -11,12 +11,12 @@ import { NavLink } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import Select from "react-select";
 import { markutosFrontendApi } from "../../../pages/services/Api/api";
-import { searchData } from "./data";
-import { priceFormat } from "../../../hooks/helper";
+import SearchTemplate from "./SearchTemplate";
 
 const MainHeader = ({ filterCategories, headerLogo }) => {
   const { totalItems } = useCart();
   const [searchValue, setSearchValue] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
   const [catId, setCatId] = useState("");
   const customStyles = {
     menuPortal: (base) => ({ ...base, zIndex: 9999, background: "red" }),
@@ -48,11 +48,11 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
     markutosFrontendApi
       .get(`search?search_value=${searchValue}&category_id=${catId}`)
       .then((response) => {
-        console.log(response.data);
+        setSearchResult(response.data);
       })
       .catch((e) => {});
   };
-
+console.log(searchResult);
   return (
     <div className="main-header">
       <div className="container ">
@@ -92,22 +92,7 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                   <button type="button" className="btn search-button">
                     Search <AiOutlineSearch />
                   </button>
-                  <div className="search-template">
-                    {searchData[0] &&
-                      searchData.map((prod) => (
-                        <div className="single_search_prod">
-                          <div className="ssp-img">
-                            <img src={prod.img} alt="" />
-                          </div>
-                          <div>
-                            <p className="ssp-title">{prod.title}</p>
-                            <p className="ssp-price">
-                              {priceFormat(prod.price)}
-                            </p>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
+				  <SearchTemplate searchResult={searchResult}/>
                 </div>
               </form>
             </div>
