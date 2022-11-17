@@ -1,6 +1,3 @@
-import SettingBanner from "./componetns/settingBanner/SettingBanner";
-import SettingInfo from "./componetns/settingInfo/SettingInfo";
-import SettingSocialLinks from "./componetns/settingSocialLinks/SettingSocialLinks";
 import settingStyle from "./shopSetting.module.css";
 import { useFormik } from "formik";
 import { shopSettingSchema } from "../../../schema";
@@ -38,7 +35,12 @@ const ShopSetting = () => {
         google: setting?.google || "",
         youtube: setting?.youtube || "",
         instagram: setting?.instagram || "",
+        categories: setting?.categories || [1, 2],
+        about:
+          setting?.categories ||
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero facere rerum magni doloremque? Maxime dolor doloremque enim, beatae minus, quae minima magni dolore consequatur natus, error ab repellat dolorem necessitatibus.",
       },
+
       enableReinitialize: true,
       onSubmit: (values, action) => {
         setSubmitting(true);

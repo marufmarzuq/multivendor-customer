@@ -1,14 +1,48 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Select from "react-select";
+import { API_URL } from "../../../../services/Api/api";
+import authHeader from "../../../../services/auth-header";
 
-const ShopPageSettings = (
+const ShopPageSettings = ({
   submiting,
   handleSubmit,
   handleChange,
   values,
   errors,
   touched,
-  setFieldValue
-) => {
+  setFieldValue,
+}) => {
+  const [categories, setCategories] = useState([]);
+  const [selectedCategories, setSelectedCategories] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/get-categories`, {
+        headers: {
+          Authorization: authHeader(),
+        },
+      })
+      .then((response) => {
+        const formattedData = response.data.map((singleData) => {
+          return { value: singleData.id, label: singleData.name };
+        });
+        formattedData[0] ? setCategories(formattedData) : setCategories([]);
+        setSelectedCategories(
+          formattedData.filter(
+            (fd) => values?.categories?.includes(fd.value) && fd
+          )
+        );
+      });
+  }, []);
+  const handleCategories = (item) => {
+    setSelectedCategories(item);
+    setFieldValue(
+      "categories",
+      item.map((i) => i.value)
+    );
+  };
+
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <div className="add-product-single-widget">
@@ -20,13 +54,25 @@ const ShopPageSettings = (
               <i>*</i>
             </label>
             <div>
-              <input name="name" type="text" id="name" />
+              <Select
+                isMulti
+                value={selectedCategories}
+                onChange={(item) => handleCategories(item)}
+                options={categories}
+              />
             </div>
             <label htmlFor="about_shop">
               <span>About Shop</span>
             </label>
             <div>
-              <textarea name="about_shop" type="text" id="name" rows={5} />
+              <textarea
+                name="about"
+                value={values?.about}
+                onChange={handleChange}
+                type="text"
+                id="name"
+                rows={5}
+              />
             </div>
           </div>
         </div>
