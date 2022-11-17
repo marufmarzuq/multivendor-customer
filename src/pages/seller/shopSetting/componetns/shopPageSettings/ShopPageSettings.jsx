@@ -29,29 +29,6 @@ const ShopPageSettings = (
               <textarea name="about_shop" type="text" id="name" rows={5} />
             </div>
           </div>
-
-          <div className="d-flex justify-content-end mt-4 ">
-            <button
-              disabled={submiting}
-              onClick={() => handleSubmit()}
-              type="submit"
-              className="btn btn-success"
-            >
-              {submiting ? (
-                <div>
-                  <div
-                    className="spinner-border spinner-border-sm me-1"
-                    role="status"
-                  >
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                  Save
-                </div>
-              ) : (
-                "Save"
-              )}
-            </button>
-          </div>
         </div>
       </div>
     </form>
