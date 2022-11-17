@@ -89,8 +89,6 @@ const Router = () => {
           <Route path="digital/all" element={<DigitalProduct />} />
           <Route path="digital/add" element={<AddDigitalProducts />} />
           <Route path="digital/update/:id" element={<UpdateDigitalProduct />} />
-          <Route path="categories" element={<Category />} />
-          <Route path="attributes" element={<Attribute />} />
         </Route>
       </Route>
 

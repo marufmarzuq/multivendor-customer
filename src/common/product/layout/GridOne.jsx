@@ -60,12 +60,13 @@ const GridOne = ({ product, addToCart }) => {
             priceFormat(product.discount_price_range, "variable")
           )}
           <div className="d-flex justify-content-center">
-            <ReactStars
-              count={5}
-              size={12}
-              value={product.avg_rating}
-              activeColor="#1658a6"
-            />
+			<Rating
+                style={{ color: "#ffd700", fontSize: "20px" }}
+                initialRating={3}
+                readonly
+                emptySymbol={<BsStar className="icon" />}
+                fullSymbol={<BsStarFill className="icon" />}
+              />
           </div>
         </div>
       </div>
