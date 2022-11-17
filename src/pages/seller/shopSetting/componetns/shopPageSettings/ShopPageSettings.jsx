@@ -5,8 +5,6 @@ import { API_URL } from "../../../../services/Api/api";
 import authHeader from "../../../../services/auth-header";
 
 const ShopPageSettings = ({
-  submiting,
-  handleSubmit,
   handleChange,
   values,
   errors,
@@ -15,7 +13,6 @@ const ShopPageSettings = ({
 }) => {
   const [categories, setCategories] = useState([]);
   const [selectedCategories, setSelectedCategories] = useState([]);
-
   useEffect(() => {
     axios
       .get(`${API_URL}/get-categories`, {
@@ -34,7 +31,8 @@ const ShopPageSettings = ({
           )
         );
       });
-  }, []);
+  }, [values?.categories?.length]);
+
   const handleCategories = (item) => {
     setSelectedCategories(item);
     setFieldValue(
@@ -44,40 +42,38 @@ const ShopPageSettings = ({
   };
 
   return (
-    <form onSubmit={(e) => e.preventDefault()}>
-      <div className="add-product-single-widget">
-        <div className="widget-title">Basic Info</div>
-        <div className="widget-content-container">
-          <div className="product-informaiton-form">
-            <label htmlFor="name">
-              <span>Categories</span>
-              <i>*</i>
-            </label>
-            <div>
-              <Select
-                isMulti
-                value={selectedCategories}
-                onChange={(item) => handleCategories(item)}
-                options={categories}
-              />
-            </div>
-            <label htmlFor="about_shop">
-              <span>About Shop</span>
-            </label>
-            <div>
-              <textarea
-                name="about"
-                value={values?.about}
-                onChange={handleChange}
-                type="text"
-                id="name"
-                rows={5}
-              />
-            </div>
+    <div className="add-product-single-widget">
+      <div className="widget-title">Basic Info</div>
+      <div className="widget-content-container">
+        <div className="product-informaiton-form">
+          <label htmlFor="name">
+            <span>Categories</span>
+            <i>*</i>
+          </label>
+          <div>
+            <Select
+              isMulti
+              value={selectedCategories}
+              onChange={(item) => handleCategories(item)}
+              options={categories}
+            />
+          </div>
+          <label htmlFor="about_shop">
+            <span>About Shop</span>
+          </label>
+          <div>
+            <textarea
+              name="about"
+              value={values?.about}
+              onChange={handleChange}
+              type="text"
+              id="about"
+              rows={5}
+            />
           </div>
         </div>
       </div>
-    </form>
+    </div>
   );
 };
 

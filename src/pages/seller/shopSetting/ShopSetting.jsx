@@ -20,8 +20,6 @@ const ShopSetting = () => {
     (state) => state.shopSettingReducer
   );
 
-  console.log(setting);
-
   const { values, handleChange, touched, errors, handleSubmit, setFieldValue } =
     useFormik({
       validationSchema: shopSettingSchema,
@@ -35,14 +33,13 @@ const ShopSetting = () => {
         google: setting?.google || "",
         youtube: setting?.youtube || "",
         instagram: setting?.instagram || "",
-        categories: setting?.categories || [1, 2],
-        about:
-          setting?.categories ||
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero facere rerum magni doloremque? Maxime dolor doloremque enim, beatae minus, quae minima magni dolore consequatur natus, error ab repellat dolorem necessitatibus.",
+        categories: setting?.categories || [],
+        about: setting?.about || "",
       },
 
       enableReinitialize: true,
       onSubmit: (values, action) => {
+        console.log(values);
         setSubmitting(true);
         markutosSellerApi
           .post(`/update-shop-setting`, values, {
@@ -62,6 +59,7 @@ const ShopSetting = () => {
         action.resetForm();
       },
     });
+
   useEffect(() => {
     getApi("shop-setting", setShopSetting);
   }, []);
@@ -71,102 +69,99 @@ const ShopSetting = () => {
       {loading ? (
         <SimpleLoading />
       ) : (
-        <div className="add-product mx-3 mb-5">
-          <div className=" d-flex justify-content-between me-md-5 pe-md-4 me-0 pe-0 mt-3 mb-3">
-            <h4> Shop Setting </h4>
-          </div>
+        <form onSubmit={handleSubmit}>
+          <div className="add-product mx-3 mb-5">
+            <div className=" d-flex justify-content-between me-md-5 pe-md-4 me-0 pe-0 mt-3 mb-3">
+              <h4> Shop Setting </h4>
+            </div>
 
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="general-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#general-tab-pane"
-                type="button"
-                role="tab"
-                aria-controls="general-tab-pane"
-                aria-selected="true"
-                style={{ color: "black" }}
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="general-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#general-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="general-tab-pane"
+                  aria-selected="true"
+                  style={{ color: "black" }}
+                >
+                  General Settings
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="shop-tab"
+                  data-bs-toggle="tab"
+                  data-bs-target="#shop-tab-pane"
+                  type="button"
+                  role="tab"
+                  aria-controls="shop-tab-pane"
+                  aria-selected="false"
+                  style={{ color: "black" }}
+                >
+                  Shop Page Settings
+                </button>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+              <div
+                class="tab-pane fade show active"
+                id="general-tab-pane"
+                role="tabpanel"
+                aria-labelledby="general-tab"
+                tabindex="0"
               >
-                General Settings
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="shop-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#shop-tab-pane"
-                type="button"
-                role="tab"
-                aria-controls="shop-tab-pane"
-                aria-selected="false"
-                style={{ color: "black" }}
+                <GeneralSettings
+                  touched={touched}
+                  values={values}
+                  handleChange={handleChange}
+                  setFieldValue={setFieldValue}
+                  errors={errors}
+                />
+              </div>
+              <div
+                class="tab-pane fade"
+                id="shop-tab-pane"
+                role="tabpanel"
+                aria-labelledby="shop-tab"
+                tabindex="0"
               >
-                Shop Page Settings
-              </button>
-            </li>
-          </ul>
-          <div class="tab-content" id="myTabContent">
-            <div
-              class="tab-pane fade show active"
-              id="general-tab-pane"
-              role="tabpanel"
-              aria-labelledby="general-tab"
-              tabindex="0"
-            >
-              <GeneralSettings
-                submiting={submiting}
-                touched={touched}
-                values={values}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                setFieldValue={setFieldValue}
-                errors={errors}
-              />
+                <ShopPageSettings
+                  touched={touched}
+                  values={values}
+                  handleChange={handleChange}
+                  setFieldValue={setFieldValue}
+                  errors={errors}
+                />
+              </div>
             </div>
-            <div
-              class="tab-pane fade"
-              id="shop-tab-pane"
-              role="tabpanel"
-              aria-labelledby="shop-tab"
-              tabindex="0"
-            >
-              <ShopPageSettings
-                submiting={submiting}
-                touched={touched}
-                values={values}
-                handleChange={handleChange}
-                handleSubmit={handleSubmit}
-                setFieldValue={setFieldValue}
-                errors={errors}
-              />
-            </div>
-          </div>
-          <div className="d-flex justify-content-end pt-3">
-            <button
-              disabled={submiting}
-              onClick={() => handleSubmit()}
-              type="submit"
-              className="btn btn-success"
-            >
-              {submiting ? (
-                <div>
-                  <div
-                    className="spinner-border spinner-border-sm me-1"
-                    role="status"
-                  >
-                    <span className="visually-hidden">Loading...</span>
+            <div className="d-flex justify-content-end pt-3">
+              <button
+                disabled={submiting}
+                type="submit"
+                className="btn btn-success"
+              >
+                {submiting ? (
+                  <div>
+                    <div
+                      className="spinner-border spinner-border-sm me-1"
+                      role="status"
+                    >
+                      <span className="visually-hidden">Loading...</span>
+                    </div>
+                    Save
                   </div>
-                  Save
-                </div>
-              ) : (
-                "Save"
-              )}
-            </button>
+                ) : (
+                  "Save"
+                )}
+              </button>
+            </div>
           </div>
-        </div>
+        </form>
       )}
     </>
   );
