@@ -1,7 +1,8 @@
 import {Fragment} from "react";
 import { NavLink } from "react-router-dom";
 import topPartStyle from "./topPart.module.css";
-import { AiOutlineStar } from "react-icons/ai";
+import Rating from "react-rating";
+import { BsStar, BsStarFill } from "react-icons/bs";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -9,7 +10,6 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 import { Autoplay, Navigation, Pagination } from "swiper";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import ReactStars from "react-rating-stars-component";
 
 const TopPart = ({loading,shopName,address,logo,avgRating,sliders}) => {
   return (
@@ -34,11 +34,12 @@ const TopPart = ({loading,shopName,address,logo,avgRating,sliders}) => {
 					<div>
 						<h1>{shopName}</h1>
 						<h5>
-							<ReactStars
-								count={5}
-								size={12}
-								value={avgRating}
-								activeColor="#0b5ed7"
+							<Rating
+								style={{ color: "#0b5ed7", fontSize: "12px" }}
+								initialRating={avgRating}
+								readonly
+								emptySymbol={<BsStar className="icon" />}
+								fullSymbol={<BsStarFill className="icon" />}
 							/>
 						</h5>
 						<p>{address}</p>

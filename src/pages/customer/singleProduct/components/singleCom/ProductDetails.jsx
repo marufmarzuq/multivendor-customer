@@ -14,7 +14,8 @@ import { Fragment } from "react";
 import { priceFormat } from "../../../../../hooks/helper";
 import { useCart } from "react-use-cart";
 import Variation from "./Variation";
-import ReactStars from "react-rating-stars-component";
+import Rating from "react-rating";
+import { BsStar, BsStarFill } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 
 const ProductDetails = ({loading,singleProduct}) => {
@@ -45,11 +46,12 @@ const ProductDetails = ({loading,singleProduct}) => {
 						<div className="product-details-container">
 							<h2 className="product-title">{singleProduct.name}</h2>
 							<div className="ratings d-flex">
-								<ReactStars
-									count={5}
-									size={14}
-									value={singleProduct.avg_rating}
-									activeColor="#000"
+								<Rating
+									style={{ color: "#000", fontSize: "14px" }}
+									initialRating={singleProduct.avg_rating}
+									readonly
+									emptySymbol={<BsStar className="icon" />}
+									fullSymbol={<BsStarFill className="icon" />}
 								/>
 							<span className="ms-2">(2 reviews)</span>
 							</div>
