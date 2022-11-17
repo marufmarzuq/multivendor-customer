@@ -12,6 +12,7 @@ const SettingSocialLinks = ({
     { value: "flat", label: "Flat" },
     { value: "percent", label: "Percent" },
   ];
+
   return (
     <form onSubmit={(e) => e.preventDefault()}>
       <div className="add-product-single-widget setting-social-links">
