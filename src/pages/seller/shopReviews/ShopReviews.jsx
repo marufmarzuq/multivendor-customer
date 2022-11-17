@@ -6,10 +6,6 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
 import PaginationCom from "../../../common/pagination/PaginationCom";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
-import axios from "axios";
-import authHeader from "../../services/auth-header";
-import { API_URL, markutosSellerApi } from "../../services/Api/api";
-import { toast } from "react-toastify";
 
 const ShopReviews = () => {
   const { reviews, total, per_page, last_page, current_page, loading, error } =
@@ -17,35 +13,9 @@ const ShopReviews = () => {
   const [perPage, setPerPage] = useState(per_page);
   const [currentPage, setCurrentPage] = useState(current_page);
   const [search, setSearch] = useState("");
-  const [submiting, setSubmitting] = useState(false);
-
-  const changeStatus = (item) => {
-    setSubmitting(true);
-    markutosSellerApi
-      .get(`reviews/change-status?review_id=${item.id}`, {
-        headers: {
-          Authorization: authHeader(),
-        },
-      })
-      .then((res) => {
-        toast.success(res.data.message);
-        // getApi(
-        //   `reviews?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
-        //   setReviews
-        // );
-        setSubmitting(false);
-      })
-      .catch((err) => {
-        toast.error(err.message);
-        setSubmitting(false);
-      });
-  };
 
   useEffect(() => {
-    getApi(
-      `reviews?search_value=${search}&sort_by=price_high_to_low&per_page=${perPage}&page=${currentPage}`,
-      setReviews
-    );
+    getApi(`shop-reviews?per_page=20&sort_by=high_to_low`, setReviews);
   }, [perPage, currentPage, search]);
 
   return (
@@ -73,19 +43,16 @@ const ShopReviews = () => {
                     <small>#</small>
                   </th>
                   <th>
-                    <small>Product</small>
+                    <small>Name</small>
                   </th>
                   <th>
-                    <small>Customer</small>
+                    <small>Email</small>
                   </th>
                   <th>
                     <small>Rating</small>
                   </th>
                   <th>
                     <small>Comment</small>
-                  </th>
-                  <th>
-                    <small>Published</small>
                   </th>
                 </tr>
               </thead>
@@ -104,20 +71,16 @@ const ShopReviews = () => {
                     <small>#</small>
                   </th>
                   <th>
-                    <small>Product</small>
+                    <small>Name</small>
                   </th>
                   <th>
-                    <small>Customer</small>
+                    <small>Email</small>
                   </th>
                   <th>
                     <small>Rating</small>
                   </th>
                   <th>
                     <small>Comment</small>
-                  </th>
-                  <th>
-                    <small>Published</small>
-                    <div>Active switch to show Reviews in the frontend</div>
                   </th>
                 </tr>
               </thead>
@@ -131,40 +94,16 @@ const ShopReviews = () => {
                           <small>{item.id}</small>
                         </td>
                         <td>
-                          <small>{item.product_name}</small>
+                          <small>{item.name}</small>
                         </td>
                         <td>
-                          <small>{item.customer_name} </small>
+                          <small>{item.email} </small>
                         </td>
                         <td>
                           <small>{item.rating}</small>
                         </td>
                         <td>
                           <small>{item.comment}</small>
-                        </td>
-                        <td className="text-center">
-                          {/* {submiting ? (
-                            <div
-                              className="spinner-border spinner-border-sm me-1"
-                              role="status"
-                            >
-                              <span className="visually-hidden">
-                                Loading...
-                              </span>
-                            </div>
-                          ) : ( */}
-                          <div className="form-check form-switch">
-                            <input
-                              onChange={() => changeStatus(item)}
-                              className="form-check-input"
-                              type="checkbox"
-                              role="switch"
-                              id="flexSwitchCheckDefault"
-                              value={item.status == 1 ? true : false}
-                              defaultChecked={item.status == 1 ? true : false}
-                            />
-                          </div>
-                          {/* )} */}
                         </td>
                       </tr>
                     );
