@@ -1,7 +1,9 @@
 
 import { AiOutlineUser } from "react-icons/ai";
-import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { Editor } from "react-draft-wysiwyg";
 import { useState } from "react";
 import { useFormik } from "formik";
 import { FocusError } from "focus-formik-error";
@@ -19,13 +21,16 @@ const Reply = ({ticket}) => {
 	const [loading, setLoading] = useState(false);
 	const user = loadFromLocalStorage();
 
-	const handleEditorChange = (newContent) => {
-		if (newContent == "<p><br></p>" || newContent == "") {
-		setFieldValue("message", "");
-		} else {
-		setFieldValue("message", newContent.getCurrentContent().getPlainText());
-		}
-  	};
+	const handleEditorChange = (state) => {
+		setEditorState(state);
+		sendContent();
+		setFieldValue("message", sendContent())
+	};
+	const sendContent = () => {
+		return draftToHtml(convertToRaw(editorState.getCurrentContent()));
+	};
+
+	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
 	const formik = useFormik({
 		validationSchema: schema,
@@ -82,7 +87,7 @@ const Reply = ({ticket}) => {
 		setFieldValue,
 	  } = formik;
 
-	  
+	  console.log(values);
   return (
 	<div
 		className="single-widget"
