@@ -87,11 +87,9 @@ const ReviewForm = ({sellerId}) => {
 						<div className={'d-flex'}>
 							<p className="pe-2">Your Rating</p>
 							<Rating
-								size={14}
 								initialRating={5}
-								placeholderRate={5}
 								fullSymbol={<BsStar className="icon" />}
-								activeColor="#0b5ed7"
+								style={{ color: "#ffd700", fontSize: "14px" }}
 								onChange={(newRating)=>setRating(newRating)}
 							/>
 						</div>
