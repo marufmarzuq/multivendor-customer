@@ -62,49 +62,28 @@ const ProductTable = ({products,thankStyle,order}) => {
           {priceFormat(order.tax)}
           </h6>
         </td>
-			</tr>
-      <tr>
-        <td>
-            <h6
-            style={{
-              fontWeight: "600",
-            }}
-            >
-            Coupon Discount 
-            </h6>
-        </td>
+		</tr>
+		<tr>
+			<td>
+				<h6
+				style={{
+				fontWeight: "600",
+				}}
+				>
+				Total
+				</h6>
+			</td>
 
-        <td>
-          <h6
-          style={{
-            fontWeight: "600",
-          }}
-          >
-          {priceFormat(order.coupon_discount)}
-          </h6>
-        </td>
-			</tr>
-			<tr>
-        <td>
-            <h6
-            style={{
-              fontWeight: "600",
-            }}
-            >
-            Total
-            </h6>
-        </td>
-
-        <td>
-          <h6
-          style={{
-            fontWeight: "600",
-          }}
-          >
-          {priceFormat(order.grand_total)}
-          </h6>
-        </td>
-			</tr>
+			<td>
+			<h6
+			style={{
+				fontWeight: "600",
+			}}
+			>
+			{priceFormat(order.grand_total)}
+			</h6>
+			</td>
+		</tr>
 		</tbody>
 		</table>
 	</div>

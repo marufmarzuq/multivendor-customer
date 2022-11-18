@@ -87,7 +87,6 @@ const Reply = ({ticket}) => {
 		setFieldValue,
 	  } = formik;
 
-	  console.log(values);
   return (
 	<div
 		className="single-widget"

@@ -52,7 +52,7 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
       })
       .catch((e) => {});
   };
-console.log(searchResult);
+// console.log(searchResult);
   return (
     <div className="main-header">
       <div className="container ">

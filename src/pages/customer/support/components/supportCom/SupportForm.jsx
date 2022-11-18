@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { addSupportSchema } from "../../../../../schema/supportSchema";
 import { useFormik } from "formik";
 import { markutosFrontendApi } from "../../../../services/Api/api";
-import authHeader from "../../../../services/auth-header";
+import customerAuthHeader from "../../../../services/customer-auth-header";
 import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
 import JoditEditor from "jodit-react";
@@ -50,7 +50,7 @@ const SupportForm = () => {
 		markutosFrontendApi
 			.post("/submit-support-request", finalValues, {
 			headers: {
-				Authorization: authHeader(),
+				Authorization: customerAuthHeader(),
 			},
 			})
 			.then((res) => {
