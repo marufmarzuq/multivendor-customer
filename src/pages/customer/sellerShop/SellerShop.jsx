@@ -22,12 +22,12 @@ const SellerShop = () => {
 	const { addItem, onItemAdd } = useCart();
 
 	useEffect(() => {
-	setLoading(true);
-	markutosFrontendApi
+		setLoading(true);
+		markutosFrontendApi
 		.get(`/seller-shop?slug=${slug}`)
 		.then((response) => {
-		setLoading(false);
-		setSellerShop(response?.data);
+			setLoading(false);
+			setSellerShop(response?.data);
 		});
 	},[]);
 
@@ -39,7 +39,6 @@ const SellerShop = () => {
 		if (searchData == "") {
 			return;
 		}
-		setLoading(true);
 		markutosFrontendApi
 		.get(`/seller-shop/search?shop_id=${sellerShop.seller_id}&search_value=${searchData}&per_page=16&category=&brand=&rating=&color=&sort_by=&choice_name=&choice_value=`)
 		.then((response) => {
