@@ -98,7 +98,6 @@ const ProductInfoDigital = ({
               value={values.name}
               onChange={handleChange}
               onBlur={handleBlur}
-              id="name"
               type="text"
             />
             {errors.name && touched.name && (

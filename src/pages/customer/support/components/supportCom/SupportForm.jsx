@@ -92,7 +92,6 @@ const SupportForm = () => {
               <input
                 type="text"
                 name="name"
-                id="name"
                 placeholder="Enter your name"
                 value={values.name}
                 onChange={handleChange}

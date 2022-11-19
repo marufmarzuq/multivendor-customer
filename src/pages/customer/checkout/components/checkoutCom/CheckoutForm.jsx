@@ -83,7 +83,6 @@ const CheckoutForm = ({storesCart,cartTotal,metadata}) => {
                     <input
                         type="text"
                         placeholder="Enter your Name"
-                        id="name"
                         value={values.name}
                         onChange={handleChange}
                         onBlur={handleBlur}

@@ -25,7 +25,6 @@ const GeneralSettings = ({
               value={values?.name}
               onChange={handleChange}
               type="text"
-              id="name"
             />
             {errors?.name && touched?.name ? (
               <small className="text-danger">{errors?.name} </small>

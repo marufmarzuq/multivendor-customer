@@ -79,7 +79,6 @@ const CustomerRegister = () => {
               <label htmlFor="name">First Name</label>
               <input
                 type="text"
-                id="name"
                 {...register("first_name", { required: true })}
                 placeholder="Enter your first name"
               />
@@ -91,7 +90,6 @@ const CustomerRegister = () => {
               <label htmlFor="name">Last Name</label>
               <input
                 type="text"
-                id="name"
                 {...register("last_name", { required: true })}
                 placeholder="Enter your last name"
               />

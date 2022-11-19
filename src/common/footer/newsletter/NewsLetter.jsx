@@ -45,14 +45,13 @@ const NewsLetter = () => {
 		<div className="newsletter">
 		<h3>Newsletter</h3>
 		<form onSubmit={(e) => e.preventDefault()}>
-      <FocusError formik={formik} />
+      		<FocusError formik={formik} />
 			<div className="input-group">
 				<input
 					type="email"
 					className="search-text"
 					placeholder="Email Address"
 					name="email"
-					id="email"
 					value={values.email}
 					onChange={handleChange}
 					onBlur={handleBlur}

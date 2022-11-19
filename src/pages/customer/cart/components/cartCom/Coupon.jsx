@@ -49,10 +49,9 @@ const Coupon = () => {
 			} )
 			.then((res) => {
 				setLoading(false);
-				console.log(res.data.result);
 
 				// Set coupon price
-				if ( res.data.result == true || res.data.result == "true" ) {
+				if ( res.data.result == true ) {
 					if(metadata?.coupon){
 						updateCartMetadata({coupon:res.data.discount_amount})
 					}else{
