@@ -13,6 +13,7 @@ const ThankYou = () => {
 const [show, setShow] = useState(false);
 const [orderData, setOrderData] = useState([]);
 const [shippingAddress, setShippingAddress] = useState("");
+const [coupon, setCoupon] = useState("0.00");
 const {emptyCart,clearCartMetadata} = useCart();
 const { state } = useLocation();
 
@@ -21,8 +22,8 @@ useEffect(() => {
 	clearCartMetadata();
     setOrderData(state.packages)
     setShippingAddress(state.shipping_address)
+    setCoupon(state.coupon_discount)
 }, [state]);
-
 return (
     <div>
     <div className={thankStyle.BreadCumb}>
@@ -86,7 +87,7 @@ return (
                           </Fragment>
                           <Fragment>
                             {/* Product Table */}
-                            <ProductTable products={orderData[item].order_details} order={orderData[item]} thankStyle={thankStyle}/>
+                            <ProductTable products={orderData[item].order_details} order={orderData[item]} coupon={coupon} thankStyle={thankStyle}/>
                           </Fragment>
                         </Fragment>
                     )
