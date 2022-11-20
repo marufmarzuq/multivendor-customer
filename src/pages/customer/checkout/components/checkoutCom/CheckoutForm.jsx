@@ -40,13 +40,14 @@ const CheckoutForm = ({storesCart,cartTotal,metadata}) => {
 		finalValues.orders = storesCart;
 		finalValues.payment_method  = "cod";
 		finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
-		finalValues.coupon_discount =  0;
 		finalValues.subtotal        =  cartTotal;
 		finalValues.shipping_info   =  shipping_info;
 		if (metadata?.coupon) {
-		cartTotal -= parseFloat(metadata.coupon)
+			finalValues.coupon_discount =  metadata.coupon;
+			cartTotal -= parseFloat(metadata.coupon);
 		}
 		finalValues.total           =  cartTotal;
+
 		setLoading(true);
 		markutosFrontendApi
 			.post("/checkout/post", finalValues )
