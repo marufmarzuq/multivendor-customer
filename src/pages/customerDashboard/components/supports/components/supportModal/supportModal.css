@@ -1,0 +1,58 @@
+.support-replay-profile {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.srp-img,
+.stc-user-img {
+  height: 40px;
+  width: 41px;
+  background-color: #8b8b8b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #fff;
+  border: 2px solid #7c7c7c;
+  font-size: 23px;
+}
+.stc-info {
+  display: flex;
+  flex-direction: column;
+}
+.stc-info.admin {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.stc-date {
+  font-size: 12px;
+  color: #555;
+}
+.stc-info {
+  display: flex;
+  flex-direction: column;
+}
+.stc-message {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 10px 50px;
+  background-color: #efefef;
+}
+.stc-admin-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.support-ticket-creating-date {
+  text-align: center;
+  background-color: #fffc99;
+  padding: 7px;
+  margin-top: 30px;
+  border-radius: 3px;
+}

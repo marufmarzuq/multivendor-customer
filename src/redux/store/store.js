@@ -1,5 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import { authSlice } from "../slices/auth";
+
 import {
   productSlice,
   wishlistSlice,
@@ -30,5 +32,6 @@ export const store = configureStore({
     moneyWithdrawSlice: moneyWithdrawSlice.reducer,
     commissionHisSlice: commissionHisSlice.reducer,
     shopSettingReducer: shopSettingSlice.reducer,
+    authSlice: authSlice.reducer,
   },
 });

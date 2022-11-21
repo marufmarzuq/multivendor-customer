@@ -1,20 +1,23 @@
-@font-face {
+/* @font-face {
   font-family: "Cascadia Code";
 
   src: url("./fonts/CascadiaCode.woff2");
   font-weight: 300;
   font-size: normal;
-}
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 body {
   background-color: #f2f3f8 !important;
   margin: 0;
+  font-family: "Montserrat", sans-serif;
 }
 
 * {
   /* font-family: "Work Sans", "Source Sans Pro", sans-serif !important; */
   /* font-family: "PT Sans", sans-serif; */
-  font-family: "Source Sans Pro", sans-serif;
+  /* font-family: "Source Sans Pro", sans-serif; */
   /* font-family: "Cascadia Code"; */
   /* font-family: "Myriad Pro"; */
   /* font-family: "Maven Pro", sans-serif; */

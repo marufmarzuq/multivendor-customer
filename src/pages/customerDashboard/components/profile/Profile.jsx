@@ -125,33 +125,37 @@ const Profile = () => {
               <small className="text-danger"> {errors.email} </small>
             )}
           </div>
-          <div>
-            <label htmlFor="birth_date"> Date of Birth</label>
-            {/* <input type="date" name="birth_date" id="birth_date"
+
+          <div className="row">
+            <div className="col-6">
+              <label htmlFor=""> Phone </label>
+              <input
+                type="tel"
+                name="phone"
+                value={values.phone}
+                onChange={handleChange}
+                onBlur={handleBlur}
+              />
+              {errors.phone && touched.phone && (
+                <small className="text-danger"> {errors.phone} </small>
+              )}
+            </div>
+            <div className="col-6">
+              <label htmlFor="birth_date"> Date of Birth</label>
+              {/* <input type="date" name="birth_date" id="birth_date"
 							value={ values.birth_date }
 							onChange={date => setFieldValue('birth_date', date) }
 							onBlur={handleBlur}
 							data-date-format="DD MMMM YYYY"
 						/> */}
-            <DatePicker
-              name={"birth_date"}
-              dateFormat="MMMM d, yyyy"
-              value={values.birth_date}
-              onChange={(date) => setFieldValue("birth_date", date)}
-            />
-          </div>
-          <div>
-            <label htmlFor=""> Phone </label>
-            <input
-              type="tel"
-              name="phone"
-              value={values.phone}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-            {errors.phone && touched.phone && (
-              <small className="text-danger"> {errors.phone} </small>
-            )}
+              <DatePicker
+                name={"birth_date"}
+                className={profileStyle.reactDatePickerContainer}
+                dateFormat="MMMM d, yyyy"
+                value={values.birth_date}
+                onChange={(date) => setFieldValue("birth_date", date)}
+              />
+            </div>
           </div>
 
           <div>
