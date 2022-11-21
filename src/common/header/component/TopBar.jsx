@@ -9,7 +9,6 @@ import { setAuth } from "../../../redux/slices/auth";
 
 const TopBar = ({ languageSwitcher, currencySwitcher, language }) => {
   const { user, isLoggedin } = useSelector((state) => state?.authSlice);
-  console.log(isLoggedin, user);
   const dispatch = useDispatch();
   const languages = [
     { label: "EN", value: { code: "en-US", currency: "USD" }, code: "en" },

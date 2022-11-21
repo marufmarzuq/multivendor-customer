@@ -3,14 +3,13 @@ import { NavLink, useLocation } from "react-router-dom";
 import authService from "../../../customer/services/auth.service";
 import linkStyle from "./links.module.css";
 import { useNavigate } from "react-router-dom";
-import { loadFromLocalStorage } from "../../../../utils/user/manageLocalStorage";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "../../../../redux/slices/auth";
 
 const DashboardLinks = () => {
   const location = useLocation();
   const [pathName, setPathName] = useState("profile");
-  const { user, isLoggedin } = useSelector((state) => state?.authSlice);
+  const { user } = useSelector((state) => state?.authSlice);
   const dispatch = useDispatch();
 
   useEffect(() => {

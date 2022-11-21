@@ -12,8 +12,6 @@ const Header = ({
   language,
   filterCategories,
 }) => {
-  console.log(user);
-
   return (
     <header className="header">
       {/* <!-- top bar --> */}

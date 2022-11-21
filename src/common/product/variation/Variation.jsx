@@ -4,8 +4,6 @@ const Variation = ({ colors, choseOptions, product }) => {
   const [selectVariant, setSelectVariant] = useState([]);
   const [variantPrice, setVariantPrice] = useState("");
 
-  console.log(selectVariant);
-
   useEffect(() => {
     product.selectedVariant = selectVariant;
     var getVariant = "";
