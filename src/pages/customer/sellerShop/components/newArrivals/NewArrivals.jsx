@@ -2,6 +2,7 @@ import { MdOutlineViewInAr } from "react-icons/md";
 import arrivalStyle from "./arrival.module.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import ProductLayout from "../productLayout/ProductLayout";
+import { NavLink } from "react-router-dom";
 
 const NewArrivals = ({ loading , newArrival,addToCart}) => {
   return (
@@ -17,7 +18,7 @@ const NewArrivals = ({ loading , newArrival,addToCart}) => {
 		</SkeletonTheme>
 		:
 		(
-			newArrival?.map((product,index)=>{
+			newArrival?.products?.map((product,index)=>{
 				return(
 					<ProductLayout
 						product={product}
@@ -32,9 +33,9 @@ const NewArrivals = ({ loading , newArrival,addToCart}) => {
       </section>
 
       <div className="d-flex justify-content-center my-2">
-        <a href="#" className="btn btn-primary">
+        <NavLink to={`/shop/${newArrival?.slug}`} className="btn btn-primary">
           <MdOutlineViewInAr /> View More
-        </a>
+        </NavLink>
       </div>
     </div>
   );

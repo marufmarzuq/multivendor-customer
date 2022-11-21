@@ -6,31 +6,33 @@ import { useSelector } from "react-redux";
 import { getApi } from "../../../api/apiCall";
 import PaginationCom from "../../../common/pagination/PaginationCom";
 import SimpleLoading from "../../../common/loading/SimpleLoading";
+import Select from "react-select";
 
 const ShopReviews = () => {
-  const { reviews, total, per_page, last_page, current_page, loading, error } =
+  const { reviews,  per_page, last_page, current_page, loading, error } =
     useSelector((state) => state.reviewSlice);
   const [perPage, setPerPage] = useState(per_page);
   const [currentPage, setCurrentPage] = useState(current_page);
-  const [search, setSearch] = useState("");
+  const [reviewSorting, setReviewSort] = useState('rating_high_to_low');
 
   useEffect(() => {
-    getApi(`shop-reviews?per_page=20&sort_by=high_to_low`, setReviews);
-  }, [perPage, currentPage, search]);
+    getApi(`shop-reviews?per_page=${perPage}&sort_by=${reviewSorting}`, setReviews);
+  }, [perPage, currentPage, reviewSorting]);
+  
+  const reviewSort = [ {label:'Rating High to Low',value:'rating_high_to_low'} , {label:'Rating Low to High',value:'rating_low_to_high'} ];
 
   return (
     <Fragment>
       <div className={`${reviewsStyle.background}`}>
         <section>
-          <h5 className="px-md-4 px-3 py-2 pt-3">Product Reviews</h5>
+          <h5 className="px-md-4 px-3 py-2 pt-3">Shop Reviews</h5>
           <div className="tableFilters">
-            <input
-              type="text"
-              className="table-search-input"
-              placeholder="Search product by name"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
+		  	<Select
+				options={reviewSort}
+				className="me-0 me-md-3 mb-1 mb-md-0"
+				placeholder={"Sort by Rating"}
+				onChange={(e) => setReviewSort(e.value)}
+			/>
           </div>
         </section>
 

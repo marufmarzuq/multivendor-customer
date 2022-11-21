@@ -1,18 +1,18 @@
-import { useRef } from "react";
+import { useRef,useState } from "react";
 import authStyle from "../../../../auth.module.css";
 import { FaRegEnvelope } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
 import { addSupportSchema } from "../../../../../schema/supportSchema";
 import { useFormik } from "formik";
 import { markutosFrontendApi } from "../../../../services/Api/api";
-import authHeader from "../../../../services/auth-header";
+import customerAuthHeader from "../../../../services/customer-auth-header";
 import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
 import JoditEditor from "jodit-react";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 
 const SupportForm = () => {
-
+	const [loading, setLoading] = useState(false);
   	const { t } = useTranslation();
 
   	const editor = useRef(null);
@@ -46,20 +46,22 @@ const SupportForm = () => {
     onSubmit: (values, action) => {
       const finalValues = values;
 			finalValues.user_id = user ? user?.user?.id : null;
-
-      markutosFrontendApi
-        .post("/submit-support-request", finalValues, {
-          headers: {
-            Authorization: authHeader(),
-          },
-        })
-        .then((res) => {
-          toast.success(res.data.message);
-          action.resetForm();
-        })
-        .catch((e) => {
-          toast.error(e.message);
-        });
+		setLoading(true)
+		markutosFrontendApi
+			.post("/submit-support-request", finalValues, {
+			headers: {
+				Authorization: customerAuthHeader(),
+			},
+			})
+			.then((res) => {
+			setLoading(false)
+			toast.success(res.data.message);
+			action.resetForm();
+			})
+			.catch((e) => {
+			setLoading(false)
+			toast.error(e.message);
+			});
     },
   });
 
@@ -90,7 +92,6 @@ const SupportForm = () => {
               <input
                 type="text"
                 name="name"
-                id="name"
                 placeholder="Enter your name"
                 value={values.name}
                 onChange={handleChange}
@@ -165,7 +166,11 @@ const SupportForm = () => {
                 className="btn btn-primary"
                 type="submit"
                 name="button"
+				disabled={loading}
               >
+				{loading && (
+					<span className="spinner-grow spinner-grow-sm"></span>
+				)}
                 <FaRegEnvelope /> Submit
               </button>
             </div>

@@ -1,7 +1,9 @@
 
 import { AiOutlineUser } from "react-icons/ai";
-import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertToRaw } from "draft-js";
+import draftToHtml from "draftjs-to-html";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { Editor } from "react-draft-wysiwyg";
 import { useState } from "react";
 import { useFormik } from "formik";
 import { FocusError } from "focus-formik-error";
@@ -19,13 +21,16 @@ const Reply = ({ticket}) => {
 	const [loading, setLoading] = useState(false);
 	const user = loadFromLocalStorage();
 
-	const handleEditorChange = (newContent) => {
-		if (newContent == "<p><br></p>" || newContent == "") {
-		setFieldValue("message", "");
-		} else {
-		setFieldValue("message", newContent.getCurrentContent().getPlainText());
-		}
-  	};
+	const handleEditorChange = (state) => {
+		setEditorState(state);
+		sendContent();
+		setFieldValue("message", sendContent())
+	};
+	const sendContent = () => {
+		return draftToHtml(convertToRaw(editorState.getCurrentContent()));
+	};
+
+	const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
 	const formik = useFormik({
 		validationSchema: schema,
@@ -34,12 +39,12 @@ const Reply = ({ticket}) => {
 		},
 		enableReinitialize: true,
 		onSubmit: (values, action) => {
-		  const finalValues = values;
-				finalValues.user_id = user ? user?.user?.id : null;
-				finalValues.ticket_code = ticket.code;
-				console.log(finalValues);
-			setLoading(true);
-		  markutosFrontendApi
+		const finalValues = values;
+			finalValues.user_id = user ? user?.user?.id : null;
+			finalValues.ticket_code = ticket.code;
+		setLoading(true);
+		if (user) {
+			markutosFrontendApi
 			.post("/dashboard/support-conversation/reply", finalValues, {
 			  headers: {
 				Authorization: customerAuthHeader(),
@@ -54,6 +59,20 @@ const Reply = ({ticket}) => {
 				setLoading(false);
 			  	toast.error(e.message);
 			});
+		} else {
+			markutosFrontendApi
+			.post("user-conversation/reply", finalValues )
+			.then((res) => {
+				setLoading(false);
+				toast.success(res.data.message);
+				action.resetForm();
+			})
+			.catch((e) => {
+				setLoading(false);
+			  	toast.error(e.message);
+			});	
+		}
+
 		},
 	  });
 	
@@ -68,7 +87,6 @@ const Reply = ({ticket}) => {
 		setFieldValue,
 	  } = formik;
 
-	  
   return (
 	<div
 		className="single-widget"

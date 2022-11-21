@@ -180,7 +180,7 @@ const BeVendor = () => {
 				disabled={loading}
 			>
 				{loading && (
-				<span className="spinner-grow spinner-grow-sm"></span>
+					<span className="spinner-grow spinner-grow-sm"></span>
 				)}
 				<FaRegEdit /> Register
 			</button>

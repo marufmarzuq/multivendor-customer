@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import Variation from "../../../../../common/product/variation/Variation";
 import { priceFormat } from "../../../../../hooks/helper";
-import ReactStars from "react-rating-stars-component";
+import Rating from "react-rating";
+import { BsStar, BsStarFill } from "react-icons/bs";
 import { FaBalanceScaleLeft, FaCartPlus } from "react-icons/fa";
 
 const ProductLayout = ({product,addToCart}) => {
@@ -64,11 +65,12 @@ const ProductLayout = ({product,addToCart}) => {
 					priceFormat(product.discount_price_range,"variable")
 				)}
 				<div className="d-flex justify-content-center">
-					<ReactStars
-						count={5}
-						size={12}
-						value={product.avg_rating}
-						activeColor="#0b5ed7"
+					<Rating
+						style={{ color: "#0b5ed7", fontSize: "12px" }}
+						initialRating={product.avg_rating}
+						readonly
+						emptySymbol={<BsStar className="icon" />}
+						fullSymbol={<BsStarFill className="icon" />}
 					/>
 				</div>
 			</div>

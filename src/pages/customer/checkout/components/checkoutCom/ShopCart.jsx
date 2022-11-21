@@ -20,42 +20,42 @@ const ShopCart = ({items}) => {
                 {items.shopName}
               </h4>
             </div>
-						{
-						items.products.length > 0 &&
-						(
+			{
+			items.products.length > 0 &&
+				(
+				<Fragment>
 						<Fragment>
-								<Fragment>
-								{ items.products.map((item,key)=>{
-									return(
-										<div className={cartDeailsStyle.productInfo} key={key}>
-											<div className={cartDeailsStyle.productInfoImg}>
-												<img
-													src={item.thumbnail_img}
-													alt={ item.name }
-												/>
-												<div className={cartDeailsStyle.imageTop}> { item.quantity }</div>
-											</div>
-											<div>
-												<h6> { item.name } </h6>
-												<Variations item={item}/>
-											</div>
-											<div className={cartDeailsStyle.productInfoPrice}>
-												<h5>{ priceFormat(item.itemTotal) }</h5>
-											</div>
-										</div>
-									)
-								})
-								}
-								</Fragment>
-								<Fragment>
-									<div className="mb-4">
-										<CartTotal proceedKey="checkout" cartTotalTitle="checkout" cartTotal={items.subtotal} />
+						{ items.products.map((item,key)=>{
+							return(
+								<div className={cartDeailsStyle.productInfo} key={key}>
+									<div className={cartDeailsStyle.productInfoImg}>
+										<img
+											src={item.thumbnail_img}
+											alt={ item.name }
+										/>
+										<div className={cartDeailsStyle.imageTop}> { item.quantity }</div>
 									</div>
-								</Fragment>
-						</Fragment>
-
-						)
+									<div>
+										<h6> { item.name } </h6>
+										<Variations item={item}/>
+									</div>
+									<div className={cartDeailsStyle.productInfoPrice}>
+										<h5>{ priceFormat(item.itemTotal) }</h5>
+									</div>
+								</div>
+							)
+						})
 						}
+						</Fragment>
+						<Fragment>
+							<div className="mb-4">
+								<CartTotal proceedKey="checkout" cartTotalTitle="checkout" cartTotal={items.subtotal} />
+							</div>
+						</Fragment>
+				</Fragment>
+
+				)
+			}
           </div>
         </section>
       </div>

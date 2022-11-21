@@ -14,6 +14,9 @@ import { Fragment } from "react";
 import { priceFormat } from "../../../../../hooks/helper";
 import { useCart } from "react-use-cart";
 import Variation from "./Variation";
+import Rating from "react-rating";
+import { BsStar, BsStarFill } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 
 const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
@@ -25,7 +28,6 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
     product.total = parseFloat(product.price) - parseFloat(product.discount);
     addItem(product);
   };
-
   return loading ? (
     <SkeletonTheme height={50}>
       <p>

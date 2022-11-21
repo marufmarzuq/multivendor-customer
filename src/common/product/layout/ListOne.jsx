@@ -25,7 +25,7 @@ const ListOne = ({ product, addToCart }) => {
             </p>
             <div>
               <Rating
-                style={{ color: "#ffd700", fontSize: "20px" }}
+                style={{ color: "#ffd700", fontSize: "12px" }}
                 initialRating={3}
                 readonly
                 emptySymbol={<BsStar className="icon" />}

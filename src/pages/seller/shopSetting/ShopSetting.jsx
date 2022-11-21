@@ -75,10 +75,10 @@ const ShopSetting = () => {
               <h4> Shop Setting </h4>
             </div>
 
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item" role="presentation">
+            <ul className="nav nav-tabs" id="myTab" role="tablist">
+              <li className="nav-item" role="presentation">
                 <button
-                  class="nav-link active"
+                  className="nav-link active"
                   id="general-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#general-tab-pane"
@@ -91,9 +91,9 @@ const ShopSetting = () => {
                   General Settings
                 </button>
               </li>
-              <li class="nav-item" role="presentation">
+              <li className="nav-item" role="presentation">
                 <button
-                  class="nav-link"
+                  className="nav-link"
                   id="shop-tab"
                   data-bs-toggle="tab"
                   data-bs-target="#shop-tab-pane"
@@ -107,13 +107,13 @@ const ShopSetting = () => {
                 </button>
               </li>
             </ul>
-            <div class="tab-content" id="myTabContent">
+            <div className="tab-content" id="myTabContent">
               <div
-                class="tab-pane fade show active"
+                className="tab-pane fade show active"
                 id="general-tab-pane"
                 role="tabpanel"
                 aria-labelledby="general-tab"
-                tabindex="0"
+                tabIndex="0"
               >
                 <GeneralSettings
                   touched={touched}
@@ -124,11 +124,11 @@ const ShopSetting = () => {
                 />
               </div>
               <div
-                class="tab-pane fade"
+                className="tab-pane fade"
                 id="shop-tab-pane"
                 role="tabpanel"
                 aria-labelledby="shop-tab"
-                tabindex="0"
+                tabIndex="0"
               >
                 <ShopPageSettings
                   touched={touched}

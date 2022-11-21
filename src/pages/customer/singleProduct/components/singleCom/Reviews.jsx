@@ -1,7 +1,8 @@
 import reviewStyle from "./relatedProduct.module.css";
 import ReviewForm from "./ReviewForm";
-import ReactStars from "react-rating-stars-component";
 import ProgressBar from "./ProgressBar";
+import Rating from "react-rating";
+import { BsStar, BsStarFill } from "react-icons/bs";
 
 const Reviews = ({ loading, singleProduct, forwardedRef }) => {
   return (
@@ -13,12 +14,13 @@ const Reviews = ({ loading, singleProduct, forwardedRef }) => {
         <div className={reviewStyle.reviews}>
           <div className={reviewStyle.reviewContainer}>
             <div className={`d-flex ${reviewStyle.stars}`}>
-              {loading == false && (
-                <ReactStars
-                  count={5}
-                  size={12}
-                  value={singleProduct?.reviews?.avg_reviews}
-                  activeColor="#0b5ed7"
+              {loading === false && (
+                <Rating
+                  style={{ color: "#0b5ed7", fontSize: "12px" }}
+                  initialRating={singleProduct?.reviews?.avg_reviews}
+                  readonly
+                  emptySymbol={<BsStar className="icon" />}
+                  fullSymbol={<BsStarFill className="icon" />}
                 />
               )}
               <p className="ps-3">
@@ -55,11 +57,12 @@ const Reviews = ({ loading, singleProduct, forwardedRef }) => {
                 </div>
 
                 <div className={`text-end ${reviewStyle.stars}`}>
-                  <ReactStars
-                    count={5}
-                    size={12}
-                    value={parseFloat(review.rating)}
-                    activeColor="#0b5ed7"
+                  <Rating
+                    style={{ color: "#0b5ed7", fontSize: "12px" }}
+                    initialRating={parseFloat(review.rating)}
+                    readonly
+                    emptySymbol={<BsStar className="icon" />}
+                    fullSymbol={<BsStarFill className="icon" />}
                   />
                 </div>
               </div>

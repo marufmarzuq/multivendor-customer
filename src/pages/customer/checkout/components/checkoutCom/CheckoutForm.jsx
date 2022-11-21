@@ -10,50 +10,58 @@ import { addOrderSchema } from "../../../../../schema/addOrderSchema";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({storesCart,cartTotal}) => {
+const CheckoutForm = ({storesCart,cartTotal,metadata}) => {
   const [paymentMethod, setPaymentMethod] = useState('cod');
   const user = loadFromLocalStorage();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
-      validationSchema: addOrderSchema,
-      initialValues: {
-      name: "",
-      email: "",
-      phone: "",
-      address: "",
-      },
+		validationSchema: addOrderSchema,
+		initialValues: {
+		name: "",
+		email: "",
+		phone: "",
+		address: "",
+		},
 
-      enableReinitialize: true,
-      onSubmit: (values, action) => {
-      const finalValues = values;
+		enableReinitialize: true,
+		onSubmit: (values, action) => {
+		const finalValues = values;
 
-      let shipping_info = {
-      "name": values.name,
-      "email": values.email,
-      "phone": values.phone,
-      "address": values.address
-      };
+		let shipping_info = {
+		"name": values.name,
+		"email": values.email,
+		"phone": values.phone,
+		"address": values.address
+		};
 
-      finalValues.user_id = user ? user?.user?.id : 0;
-      finalValues.orders = storesCart;
-      finalValues.payment_method  = "cod";
-      finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
-      finalValues.coupon_discount =  0;
-      finalValues.subtotal        =  cartTotal;
-      finalValues.total           =  cartTotal;
-      finalValues.shipping_info   =  shipping_info;
+		finalValues.user_id = user ? user?.user?.id : 0;
+		finalValues.orders = storesCart;
+		finalValues.payment_method  = "cod";
+		finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
+		finalValues.subtotal        =  cartTotal;
+		finalValues.shipping_info   =  shipping_info;
+		if (metadata?.coupon) {
+			finalValues.coupon_discount =  metadata.coupon;
+			cartTotal -= parseFloat(metadata.coupon);
+		}
+		finalValues.total           =  cartTotal;
 
-      markutosFrontendApi
-          .post("/checkout/post", finalValues )
-          .then((res) => {
-          toast.success(res.data.message);
-          action.resetForm();
-          navigate('/thank-you',{state: {...res.data}})
-          })
-          .catch((e) => {
-          toast.error(e.message);
-          });
+		setLoading(true);
+		markutosFrontendApi
+			.post("/checkout/post", finalValues )
+			.then((res) => {
+			setLoading(false);
+
+			toast.success(res.data.message);
+			action.resetForm();
+			navigate('/thank-you',{state: {...res.data}})
+			})
+			.catch((e) => {
+			setLoading(false)
+			toast.error(e.message);
+		});
       },
   });
 
@@ -75,12 +83,13 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
         <FocusError formik={formik} />
                 {/* Billing details */}
                 <div className={checkoutStyle.name}>
-                    <label htmlFor="name"> Name : <i>*</i> </label>
+                    <label htmlFor="customer_name"> Name : <i>*</i> </label>
 
                     <input
                         type="text"
                         placeholder="Enter your Name"
-                        id="name"
+						name="name"
+						id="customer_name"
                         value={values.name}
                         onChange={handleChange}
                         onBlur={handleBlur}
@@ -197,7 +206,11 @@ const CheckoutForm = ({storesCart,cartTotal}) => {
                             className="btn btn-primary"
                             type="submit"
                             name="button"
+							disabled={loading}
                         >
+						{loading && (
+							<span className="spinner-grow spinner-grow-sm"></span>
+						)}
                             <AiOutlineCheckCircle /> Checkout
                         </button>
                     </div>

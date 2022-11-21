@@ -40,6 +40,7 @@ export const getApi = async (url, setState) => {
         Authorization: authHeader(),
       },
     });
+	
     const data = await res.data;
     store.dispatch(
       setState({

@@ -15,8 +15,6 @@ import ProductReviews from "../../pages/seller/productReviews/ProductReviews";
 import AddProducts from "../../pages/seller/products/components/addProduct/AddProducts";
 import UpdateProduct from "../../pages/seller/products/components/updateProducts/UpdateProduct";
 import Products from "../../pages/seller/products/Products";
-import Category from "../../pages/seller/category/Category";
-import Attribute from "../../pages/seller/attribute/Attribute";
 import ReceivedRefundReq from "../../pages/seller/refunds/receivedRefund/ReceivedRefundReq";
 import SentRefundReq from "../../pages/seller/refunds/sentRefund/SentRefundReq";
 import Wishlist from "../../pages/seller/wishlist/Wishlist";
@@ -54,6 +52,7 @@ import BeVendor from "../../pages/customerDashboard/components/becomeVendor/BeVe
 import Supports from "../../pages/customerDashboard/components/supports/Supports";
 import OrderReturnList from "../../pages/customerDashboard/components/orderReturns/OrderReturnList";
 import SupportTicket from "../../pages/customer/support/SupportTicket";
+import SingleTicket from "../../pages/customerDashboard/components/supports/components/SingleTicket";
 import ShopReviews from "../../pages/seller/shopReviews/ShopReviews";
 import Invoice from "../../common/invoice/Invoice";
 
@@ -90,8 +89,6 @@ const Router = () => {
           <Route path="digital/all" element={<DigitalProduct />} />
           <Route path="digital/add" element={<AddDigitalProducts />} />
           <Route path="digital/update/:id" element={<UpdateDigitalProduct />} />
-          <Route path="categories" element={<Category />} />
-          <Route path="attributes" element={<Attribute />} />
         </Route>
       </Route>
 
@@ -113,6 +110,8 @@ const Router = () => {
         <Route path="blog" element={<Blog />} />
         <Route path="blog/:id" element={<BlogDetails />} />
         <Route path="thank-you" element={<ThankYou />} />
+		<Route path="support/conversation" element={<SingleTicket />} />
+
         {/* Login */}
 
         <Route path="register" element={<CustomerRegister />} />
@@ -129,6 +128,7 @@ const Router = () => {
             <Route path="become-vendor" element={<BeVendor />} />
             <Route path="supports" element={<Supports />} />
             <Route path="support-ticket/:ticket" element={<SupportTicket />} />
+            <Route path="support/conversation" element={<SingleTicket />} />
           </Route>
         </Route>
       </Route>

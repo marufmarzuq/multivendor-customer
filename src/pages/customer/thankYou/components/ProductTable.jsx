@@ -1,6 +1,6 @@
 import { priceFormat } from "../../../../hooks/helper";
 
-const ProductTable = ({products,thankStyle,order}) => {
+const ProductTable = ({products,thankStyle,order,coupon}) => {
   return (
 	<div className={thankStyle.orderDetails}>
 		<h1>Order Details</h1>
@@ -30,80 +30,84 @@ const ProductTable = ({products,thankStyle,order}) => {
       }
 
 			<tr>
-        <td>
-          <h6
-          style={{
-            fontWeight: "600",
-          }}
-          >
-          Subtotal:
-          </h6>
-        </td>
-
-        <td>{priceFormat(order.subtotal)}</td>
+				<td>
+				<h6
+				style={{
+					fontWeight: "600",
+				}}
+				>
+				Subtotal:
+				</h6>
+				</td>
+				<td>{priceFormat(order.subtotal)}</td>
 			</tr>
 			<tr>
-        <td>
-            <h6
-            style={{
-              fontWeight: "600",
-            }}
-            >
-            Tax
-            </h6>
-        </td>
+				<td>
+					<h6
+					style={{
+					fontWeight: "600",
+					}}
+					>
+					Tax
+					</h6>
+				</td>
 
-        <td>
-          <h6
-          style={{
-            fontWeight: "600",
-          }}
-          >
-          {priceFormat(order.tax)}
-          </h6>
-        </td>
+				<td>
+				<h6
+				style={{
+					fontWeight: "600",
+				}}
+				>
+				{priceFormat(order.tax)}
+				</h6>
+				</td>
 			</tr>
-      <tr>
-        <td>
-            <h6
-            style={{
-              fontWeight: "600",
-            }}
-            >
-            Coupon Discount 
-            </h6>
-        </td>
+			{
+				coupon !== "0.00" &&
+				<tr>
+					<td>
+						<h6
+						style={{
+						fontWeight: "600",
+						}}
+						>
+						Coupon Discount
+						</h6>
+					</td>
 
-        <td>
-          <h6
-          style={{
-            fontWeight: "600",
-          }}
-          >
-          {priceFormat(order.coupon_discount)}
-          </h6>
-        </td>
-			</tr>
+					<td>
+					<h6
+					style={{
+						fontWeight: "600",
+					}}
+					>
+					{priceFormat(coupon)}
+					</h6>
+					</td>
+				</tr>
+
+			}
+
 			<tr>
-        <td>
-            <h6
-            style={{
-              fontWeight: "600",
-            }}
-            >
-            Total
-            </h6>
-        </td>
+				<td>
+					<h6
+					style={{
+					fontWeight: "600",
+					}}
+					>
+					Total
+					</h6>
+				</td>
 
-        <td>
-          <h6
-          style={{
-            fontWeight: "600",
-          }}
-          >
-          {priceFormat(order.grand_total)}
-          </h6>
-        </td>
+				<td>
+				<h6
+				style={{
+					fontWeight: "600",
+				}}
+				>
+				{priceFormat(order.grand_total)}
+				</h6>
+				</td>
 			</tr>
 		</tbody>
 		</table>

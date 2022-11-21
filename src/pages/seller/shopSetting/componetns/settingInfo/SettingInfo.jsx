@@ -39,7 +39,6 @@ const SettingInfo = ({
                 value={values.name}
                 onChange={handleChange}
                 type="text"
-                id="name"
               />
 
               {/* <small className="text-danger"> {errors.shopName} </small> */}

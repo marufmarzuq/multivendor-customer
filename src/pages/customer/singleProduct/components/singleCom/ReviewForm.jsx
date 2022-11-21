@@ -1,5 +1,4 @@
 import { useState } from "react";
-import ReactStars from "react-rating-stars-component";
 import { useFormik } from "formik";
 import { markutosFrontendApi } from "../../../../services/Api/api";
 import { FocusError } from "focus-formik-error";
@@ -8,6 +7,8 @@ import * as yup from "yup";
 import { BsArrowRightCircle } from "react-icons/bs";
 import customerAuthHeader from "../../../../services/customer-auth-header";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
+import Rating from "react-rating";
+import { BsStarFill } from "react-icons/bs";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
@@ -63,7 +64,7 @@ const ReviewForm = ({ reviewStyle, productId }) => {
   } = formik;
 
   return (
-    <section style={{ paddingTop: "10px" }}>
+    <section>
       {user ? (
         <div className={reviewStyle.addReview}>
           <form onSubmit={(e) => e.preventDefault()}>
@@ -79,10 +80,9 @@ const ReviewForm = ({ reviewStyle, productId }) => {
 
             <div className={"d-flex"}>
               <p className="pe-2">Your Rating</p>
-              <ReactStars
-                count={5}
+              <Rating
                 size={14}
-                value={5}
+                fullSymbol={<BsStarFill className="icon" />}
                 activeColor="#0b5ed7"
                 onChange={(newRating) => setRating(newRating)}
               />

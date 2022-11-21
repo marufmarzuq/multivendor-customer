@@ -47,7 +47,6 @@ const NewsLetter = () => {
             className="search-text"
             placeholder="Email Address"
             name="email"
-            id="email"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
