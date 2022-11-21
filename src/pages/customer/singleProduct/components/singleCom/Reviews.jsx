@@ -14,7 +14,7 @@ const Reviews = ({ loading, singleProduct, forwardedRef }) => {
         <div className={reviewStyle.reviews}>
           <div className={reviewStyle.reviewContainer}>
             <div className={`d-flex ${reviewStyle.stars}`}>
-              {loading === false && (
+              {loading == false && (
                 <Rating
                   style={{ color: "#0b5ed7", fontSize: "12px" }}
                   initialRating={singleProduct?.reviews?.avg_reviews}

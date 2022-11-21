@@ -5,8 +5,7 @@ import {
   AiOutlineMinus,
   AiOutlinePlus,
 } from "react-icons/ai";
-import { FaInstagram, FaLinkedin, FaStar, FaTwitter } from "react-icons/fa";
-import { BiShoppingBag } from "react-icons/bi";
+import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { IoIosGitCompare } from "react-icons/io";
 import "./singleCom.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
@@ -16,13 +15,11 @@ import { useCart } from "react-use-cart";
 import Variation from "./Variation";
 import Rating from "react-rating";
 import { BsStar, BsStarFill } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
 
 const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
-  const { items, addItem, updateItemQuantity, getItem } = useCart();
+  const { addItem, updateItemQuantity, getItem } = useCart();
 
-  const myItem = loading == false && getItem(singleProduct.id);
+  const myItem = loading === false && getItem(singleProduct.id);
 
   const addToCart = (product) => {
     product.total = parseFloat(product.price) - parseFloat(product.discount);
@@ -40,11 +37,12 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
         <div className="product-details-container">
           <h2 className="product-title">{singleProduct.name}</h2>
           <div className="ratings d-flex">
-            <ReactStars
-              count={5}
-              size={14}
-              value={singleProduct.avg_rating}
-              activeColor="#000"
+            <Rating
+              style={{ color: "#000", fontSize: "14px" }}
+              initialRating={singleProduct.avg_rating}
+              readonly
+              emptySymbol={<BsStar className="icon" />}
+              fullSymbol={<BsStarFill className="icon" />}
             />
             <span className="ms-2">(2 reviews)</span>
           </div>
