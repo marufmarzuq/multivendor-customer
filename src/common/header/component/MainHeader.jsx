@@ -12,12 +12,18 @@ import { useCart } from "react-use-cart";
 import Select from "react-select";
 import { markutosFrontendApi } from "../../../pages/services/Api/api";
 import SearchTemplate from "./SearchTemplate";
+import { useSelector } from "react-redux";
 
 const MainHeader = ({ filterCategories, headerLogo }) => {
   const { totalItems } = useCart();
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [catId, setCatId] = useState("");
+  const wishlistedProds = JSON.parse(localStorage.getItem("my-wishlist")) || [];
+  const [showSearchTemp, setShowSearchTemp] = useState(false);
+
+  const state = useSelector((state) => state);
+  console.log(state);
   const customStyles = {
     menuPortal: (base) => ({ ...base, zIndex: 9999, background: "red" }),
     valueContainer: (provided) => ({
@@ -52,7 +58,7 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
       })
       .catch((e) => {});
   };
-// console.log(searchResult);
+  // console.log(searchResult);
   return (
     <div className="main-header">
       <div className="container ">
@@ -74,6 +80,7 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                     placeholder="Looking for..."
                     value={searchValue}
                     name={"search_value"}
+                    onFocus={() => setShowSearchTemp(true)}
                     onChange={(e) => {
                       setSearchValue(e.target.value);
                       getResultData();
@@ -92,7 +99,9 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                   <button type="button" className="btn search-button">
                     Search <AiOutlineSearch />
                   </button>
-				  <SearchTemplate searchResult={searchResult}/>
+                  {showSearchTemp && (
+                    <SearchTemplate searchResult={searchResult} />
+                  )}
                 </div>
               </form>
             </div>
@@ -112,7 +121,7 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                 <li>
                   <NavLink to="/wishlist">
                     <AiOutlineHeart />
-                    <span>{0}</span>
+                    <span>{wishlistedProds?.length}</span>
                   </NavLink>
                 </li>
                 <li className="headerMiniCartIcon">

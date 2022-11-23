@@ -18,6 +18,9 @@ import { BsStar, BsStarFill } from "react-icons/bs";
 
 const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
   const { addItem, updateItemQuantity, getItem } = useCart();
+  const wishlistedProds = JSON.parse(localStorage.getItem("my-wishlist")) || [];
+
+  console.log(wishlistedProds);
 
   const myItem = loading === false && getItem(singleProduct.id);
 
@@ -25,6 +28,13 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
     product.total = parseFloat(product.price) - parseFloat(product.discount);
     addItem(product);
   };
+
+  const addToWishlist = () => {
+    const newWishlistedProds = [...wishlistedProds, singleProduct];
+    localStorage.setItem("my-wishlist", JSON.stringify(newWishlistedProds));
+    console.log(JSON.parse(localStorage.getItem("my-wishlist")));
+  };
+
   return loading ? (
     <SkeletonTheme height={50}>
       <p>
@@ -134,7 +144,7 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
               <IoIosGitCompare />
               Compare
             </button>
-            <button className="btn ps-2">
+            <button className="btn ps-2" onClick={addToWishlist}>
               <AiOutlineHeart /> Wishlist
             </button>
           </div>
