@@ -6,7 +6,8 @@ import { priceFormat } from "../../../../../hooks/helper";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import { useCart } from "react-use-cart";
 import Variation from "../../../../../common/product/variation/Variation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCustomerWishlist } from "../../../../../redux/slices/wishlist";
 
 const WishListTable = () => {
   const { products: wishListedProds } = useSelector(
@@ -14,9 +15,23 @@ const WishListTable = () => {
   );
 
   const { addItem, onItemAdd } = useCart();
+  const dispatch = useDispatch();
 
   const addToCart = (product) => {
     addItem(product);
+  };
+
+  const removeFromWishlist = (prod) => {
+    const preProds = wishListedProds;
+    const newWishlistedProds = preProds?.filter((pp) => pp.id !== prod.id);
+    dispatch(
+      setCustomerWishlist({
+        count: newWishlistedProds.length,
+        products: newWishlistedProds,
+      })
+    );
+    localStorage.setItem("my-wishlist", JSON.stringify(newWishlistedProds));
+    console.log(JSON.parse(localStorage.getItem("my-wishlist")));
   };
 
   return (
@@ -86,7 +101,10 @@ const WishListTable = () => {
                       </td>
                       <td>
                         {" "}
-                        <button className={`btn ${wisthlistStyle.deletebtn}`}>
+                        <button
+                          className={`btn ${wisthlistStyle.deletebtn}`}
+                          onClick={() => removeFromWishlist(product)}
+                        >
                           <AiOutlineDelete />
                         </button>{" "}
                       </td>
