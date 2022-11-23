@@ -71,6 +71,11 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
       .catch((e) => {});
   };
   // console.log(searchResult);
+  document.onclick = function (h) {
+    if (h.target.className !== "search-text") {
+      setShowSearchTemp(false);
+    }
+  };
   return (
     <div className="main-header">
       <div className="container ">
