@@ -4,6 +4,7 @@ import {
   AiOutlineShoppingCart,
   AiOutlineMinus,
   AiOutlinePlus,
+  AiFillHeart,
 } from "react-icons/ai";
 import { FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { IoIosGitCompare } from "react-icons/io";
@@ -15,12 +16,15 @@ import { useCart } from "react-use-cart";
 import Variation from "./Variation";
 import Rating from "react-rating";
 import { BsStar, BsStarFill } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
+import { setCustomerWishlist } from "../../../../../redux/slices/wishlist";
 
 const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
   const { addItem, updateItemQuantity, getItem } = useCart();
-  const wishlistedProds = JSON.parse(localStorage.getItem("my-wishlist")) || [];
-
-  console.log(wishlistedProds);
+  const dispatch = useDispatch();
+  const { products: wishlistedProds } = useSelector(
+    (state) => state?.customerWishlist
+  );
 
   const myItem = loading === false && getItem(singleProduct.id);
 
@@ -29,8 +33,27 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
     addItem(product);
   };
 
+  const isWishlistedProd = (prod) => {
+    return wishlistedProds.some((wp) => {
+      return wp.id === prod.id;
+    });
+  };
+
   const addToWishlist = () => {
-    const newWishlistedProds = [...wishlistedProds, singleProduct];
+    let newWishlistedProds;
+    if (isWishlistedProd(singleProduct)) {
+      newWishlistedProds = wishlistedProds?.filter(
+        (wp) => wp.id !== singleProduct.id
+      );
+    } else {
+      newWishlistedProds = [...wishlistedProds, singleProduct];
+    }
+    dispatch(
+      setCustomerWishlist({
+        count: newWishlistedProds.length,
+        products: newWishlistedProds,
+      })
+    );
     localStorage.setItem("my-wishlist", JSON.stringify(newWishlistedProds));
     console.log(JSON.parse(localStorage.getItem("my-wishlist")));
   };
@@ -145,7 +168,15 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
               Compare
             </button>
             <button className="btn ps-2" onClick={addToWishlist}>
-              <AiOutlineHeart /> Wishlist
+              {isWishlistedProd(singleProduct) ? (
+                <>
+                  <AiFillHeart color="red" /> Wishlisted
+                </>
+              ) : (
+                <>
+                  <AiOutlineHeart /> Wishlist
+                </>
+              )}
             </button>
           </div>
           <div className="social-share-wrap">

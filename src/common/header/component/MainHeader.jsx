@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { logo } from "../../../assets/index";
 import MiniCart from "../../../pages/customer/miniCart/MiniCart";
 import {
@@ -12,7 +12,8 @@ import { useCart } from "react-use-cart";
 import Select from "react-select";
 import { markutosFrontendApi } from "../../../pages/services/Api/api";
 import SearchTemplate from "./SearchTemplate";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setCustomerWishlist } from "../../../redux/slices/wishlist";
 
 const MainHeader = ({ filterCategories, headerLogo }) => {
   const { totalItems } = useCart();
@@ -21,9 +22,20 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
   const [catId, setCatId] = useState("");
   const wishlistedProds = JSON.parse(localStorage.getItem("my-wishlist")) || [];
   const [showSearchTemp, setShowSearchTemp] = useState(false);
+  const dispatch = useDispatch();
 
-  const state = useSelector((state) => state);
-  console.log(state);
+  const { count: wishlishtCount } = useSelector(
+    (state) => state?.customerWishlist
+  );
+  useEffect(() => {
+    dispatch(
+      setCustomerWishlist({
+        count: wishlistedProds.length,
+        products: wishlistedProds,
+      })
+    );
+  }, []);
+
   const customStyles = {
     menuPortal: (base) => ({ ...base, zIndex: 9999, background: "red" }),
     valueContainer: (provided) => ({
@@ -121,7 +133,7 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                 <li>
                   <NavLink to="/wishlist">
                     <AiOutlineHeart />
-                    <span>{wishlistedProds?.length}</span>
+                    <span>{wishlishtCount}</span>
                   </NavLink>
                 </li>
                 <li className="headerMiniCartIcon">

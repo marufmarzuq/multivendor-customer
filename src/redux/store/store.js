@@ -20,6 +20,7 @@ import {
   commissionHisSlice,
 } from "../slices/seller/payments";
 import { shopSettingSlice } from "../slices/seller/shopSetting";
+import { customerWishlistSlice } from "../slices/wishlist";
 
 export const store = configureStore({
   reducer: {
@@ -33,5 +34,6 @@ export const store = configureStore({
     commissionHisSlice: commissionHisSlice.reducer,
     shopSettingReducer: shopSettingSlice.reducer,
     authSlice: authSlice.reducer,
+    customerWishlist: customerWishlistSlice.reducer,
   },
 });
