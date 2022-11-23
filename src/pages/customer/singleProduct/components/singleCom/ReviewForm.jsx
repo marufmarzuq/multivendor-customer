@@ -4,7 +4,7 @@ import { markutosFrontendApi } from "../../../../services/Api/api";
 import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
 import * as yup from "yup";
-import { BsArrowRightCircle } from "react-icons/bs";
+import { BsArrowRightCircle, BsStar } from "react-icons/bs";
 import customerAuthHeader from "../../../../services/customer-auth-header";
 import { loadFromLocalStorage } from "../../../../../utils/user/manageLocalStorage";
 import Rating from "react-rating";
@@ -17,7 +17,7 @@ const schema = yup.object().shape({
 
 const ReviewForm = ({ reviewStyle, productId }) => {
   const [loading, setLoading] = useState(false);
-  const [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(5);
   const user = loadFromLocalStorage();
 
   const formik = useFormik({
@@ -81,9 +81,12 @@ const ReviewForm = ({ reviewStyle, productId }) => {
             <div className={"d-flex"}>
               <p className="pe-2">Your Rating</p>
               <Rating
-                size={14}
+                initialRating={rating}
+                size={30}
                 fullSymbol={<BsStarFill className="icon" />}
+                emptySymbol={<BsStar className="icon" />}
                 activeColor="#0b5ed7"
+                value={rating}
                 onChange={(newRating) => setRating(newRating)}
               />
             </div>

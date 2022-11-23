@@ -256,11 +256,11 @@ body.show:after {
   left: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  display: none;
+  /* display: none; */
 }
-.search-text:focus ~ .search-template {
+/* .search-text:focus ~ .search-template {
   display: grid;
-}
+} */
 .single_search_prod {
   display: grid;
   grid-template-columns: 100px auto;
@@ -565,4 +565,8 @@ p.ssp-price {
     font-size: 36px;
     margin-left: 50px;
   }
+}
+
+#react-select-4-listbox {
+  z-index: 100;
 }

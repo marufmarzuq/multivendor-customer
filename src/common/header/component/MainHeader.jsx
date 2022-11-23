@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { logo } from "../../../assets/index";
 import MiniCart from "../../../pages/customer/miniCart/MiniCart";
 import {
@@ -12,12 +12,30 @@ import { useCart } from "react-use-cart";
 import Select from "react-select";
 import { markutosFrontendApi } from "../../../pages/services/Api/api";
 import SearchTemplate from "./SearchTemplate";
+import { useDispatch, useSelector } from "react-redux";
+import { setCustomerWishlist } from "../../../redux/slices/wishlist";
 
 const MainHeader = ({ filterCategories, headerLogo }) => {
   const { totalItems } = useCart();
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [catId, setCatId] = useState("");
+  const wishlistedProds = JSON.parse(localStorage.getItem("my-wishlist")) || [];
+  const [showSearchTemp, setShowSearchTemp] = useState(false);
+  const dispatch = useDispatch();
+
+  const { count: wishlishtCount } = useSelector(
+    (state) => state?.customerWishlist
+  );
+  useEffect(() => {
+    dispatch(
+      setCustomerWishlist({
+        count: wishlistedProds.length,
+        products: wishlistedProds,
+      })
+    );
+  }, []);
+
   const customStyles = {
     menuPortal: (base) => ({ ...base, zIndex: 9999, background: "red" }),
     valueContainer: (provided) => ({
@@ -52,7 +70,12 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
       })
       .catch((e) => {});
   };
-// console.log(searchResult);
+  // console.log(searchResult);
+  document.onclick = function (h) {
+    if (h.target.className !== "search-text") {
+      setShowSearchTemp(false);
+    }
+  };
   return (
     <div className="main-header">
       <div className="container ">
@@ -74,6 +97,7 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                     placeholder="Looking for..."
                     value={searchValue}
                     name={"search_value"}
+                    onFocus={() => setShowSearchTemp(true)}
                     onChange={(e) => {
                       setSearchValue(e.target.value);
                       getResultData();
@@ -92,7 +116,9 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                   <button type="button" className="btn search-button">
                     Search <AiOutlineSearch />
                   </button>
-				  <SearchTemplate searchResult={searchResult}/>
+                  {showSearchTemp && (
+                    <SearchTemplate searchResult={searchResult} />
+                  )}
                 </div>
               </form>
             </div>
@@ -112,7 +138,7 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                 <li>
                   <NavLink to="/wishlist">
                     <AiOutlineHeart />
-                    <span>{0}</span>
+                    <span>{wishlishtCount}</span>
                   </NavLink>
                 </li>
                 <li className="headerMiniCartIcon">
