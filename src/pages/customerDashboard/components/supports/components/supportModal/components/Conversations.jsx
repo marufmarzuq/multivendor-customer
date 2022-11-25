@@ -9,7 +9,7 @@ const Conversations = ({ replies, ticketId, createdAt }) => {
       {replies?.map((reply, key) => {
         return (
           <div className="support-ticket-conversation-container" key={key + 1}>
-            {key % 2 === 0 ? (
+            { reply.replied_by === "admin" ? (
               <div className="stc-admin-container">
                 <div className="support-replay-profile">
                   <div className="stc-info admin">
