@@ -25,18 +25,18 @@ const Supports = ({orderStyle}) => {
     setLoading(true);
     markutosFrontendApi
       .get(`dashboard/support-tickets?per_page=10&page=${currentPage}`,
-      {
-				headers: {
-					Authorization: customerAuthHeader(),
-				},
-			}
+		{
+			headers: {
+				Authorization: customerAuthHeader(),
+			},
+		}
       )
       .then((response) => {
-        setLoading(false);
-				setCurrentItems(response?.data.data);
-				setLoading(false);
-        setCurrentPage(response?.data?.current_page);
-        setPageCount(response?.data?.last_page);
+			setLoading(false);
+			setCurrentItems(response?.data.data);
+			setLoading(false);
+			setCurrentPage(response?.data?.current_page);
+			setPageCount(response?.data?.last_page);
 		});
 	}, [currentPage]);
 
