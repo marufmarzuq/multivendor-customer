@@ -12,6 +12,7 @@ import pdfLogo from "./images/pdf_image.png";
 import singleProduct1 from "./images/singleProdcut1.png";
 import singleProduct2 from "./images/singleProduct2.png";
 import singleProduct3 from "./images/singleProduct3.png";
+import productPlaceholder from "./images/product-placeholder.png";
 
 export {
   singleProduct1,
@@ -28,4 +29,5 @@ export {
   product2,
   product1,
   slider1,
+  productPlaceholder,
 };
