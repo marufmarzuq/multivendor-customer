@@ -34,7 +34,11 @@ const RightComp = ({
             </p>
           </SkeletonTheme>
         )}
-        {layout === "grid" ? <GridView products={shopProduct} /> : <ListView />}
+        {layout === "grid" ? (
+          <GridView products={shopProduct} />
+        ) : (
+          <ListView products={shopProduct} />
+        )}
         {/* {
 					shopProduct.map((product, index) => {
 						return (

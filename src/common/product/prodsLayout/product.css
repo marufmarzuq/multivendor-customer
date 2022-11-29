@@ -59,10 +59,76 @@
   transition: 0.5s;
 }
 .vpcc-btns:hover {
-  /* transform: translateY(-5px); */
   transform: scale(1.2);
 }
 .vartical-prod-card-container:hover .card-action-btn-container {
   height: 80px;
 }
 /* Grid view css end*/
+
+/* List view css start */
+.prods-list-view-container {
+  display: flex;
+  flex-direction: column;
+}
+.horizontal-prod-card-container {
+  display: grid;
+  grid-template-columns: 200px auto 250px;
+  border-top: 1px solid #ddd;
+  padding: 20px;
+}
+.hpcc-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 220px;
+  background-color: #f8f8f8;
+}
+.hpcc-image img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.hpcc-content {
+  padding: 0 20px;
+}
+.hpcc-name {
+  font-weight: 500;
+  font-size: 18px;
+  transition: 0.3s;
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+.hpcc-name:hover {
+  color: #2e73e8;
+}
+.hpcc-price {
+  padding: 10px 0;
+  font-size: 20px;
+  font-weight: 300;
+}
+.hpcc-description {
+  border-top: 1px solid #ddd;
+  padding: 10px 0;
+  margin-top: 15px;
+  color: #555;
+  font-weight: 300;
+}
+.hpcc-actions {
+  display: flex;
+  flex-direction: column;
+  /* gap: 4px; */
+  padding: 3px 0 5px 50px;
+}
+.hpcc-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.hpcc-btns:hover {
+  color: #2e73e8;
+  transform: translateY(-2px);
+}
+/* List view css end */
