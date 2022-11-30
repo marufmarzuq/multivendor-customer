@@ -13,13 +13,6 @@ const QuickView = ({ product }) => {
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
 
-  document.onclick = (e) => {
-    console.log("className");
-    console.log(e.target.className);
-    if (e.target.className === "quick-view-outer-container") {
-      dispatch(setQuickView({ open: false, product: null }));
-    }
-  };
   const close = (e) => {
     e.stopPropagation();
     dispatch(setQuickView({ open: false, product: null }));
@@ -27,7 +20,10 @@ const QuickView = ({ product }) => {
   return (
     <div className="quick-view">
       <div className="quick-view-outer-container" onClick={close}>
-        <div className="quick-view-container">
+        <div
+          className="quick-view-container"
+          onClick={(e) => e.stopPropagation()}
+        >
           <div className="quick-view-inner-container">
             <div className="qvi-scrollable">
               <div className="qvi-image">
