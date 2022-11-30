@@ -3,10 +3,10 @@ import { MdOutlineViewInAr } from "react-icons/md";
 import { useState } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import GridOne from "../../../../../common/product/layout/GridOne";
 import { NavLink } from "react-router-dom";
+import GridView from "../../../../../common/product/prodsLayout/GridView";
 
-const MostPopular = ({ addToCart , popularProducts }) => {
+const MostPopular = ({ addToCart, popularProducts }) => {
   const [categoryName, setCategoryName] = useState("all");
   const [categorySlug, setCategorySlug] = useState("all");
   return (
@@ -18,7 +18,9 @@ const MostPopular = ({ addToCart , popularProducts }) => {
 
         {Object.keys(popularProducts).length == 0 && (
           <SkeletonTheme height={50}>
-            <p><Skeleton count={5} /></p>
+            <p>
+              <Skeleton count={5} />
+            </p>
           </SkeletonTheme>
         )}
 
@@ -29,7 +31,13 @@ const MostPopular = ({ addToCart , popularProducts }) => {
                 return (
                   <li className="nav-item" key={index}>
                     <button
-                      onClick={() => setCategoryName(category_name) + setCategorySlug( popularProducts[categoryName]?.category_slug )}
+                      style={{ textTransform: "capitalize" }}
+                      onClick={() =>
+                        setCategoryName(category_name) +
+                        setCategorySlug(
+                          popularProducts[categoryName]?.category_slug
+                        )
+                      }
                       className={`nav-link ${
                         category_name == "all" ? "active" : ""
                       }`}
@@ -44,22 +52,13 @@ const MostPopular = ({ addToCart , popularProducts }) => {
           </ul>
           <div className="tab-content">
             <div className="container">
-              <div className="row products-wrap">
-                {popularProducts &&
-                  popularProducts[categoryName]?.products?.map((product, index) => {
-                    return (
-                      <GridOne
-                        key={index}
-                        product={product}
-                        addToCart={addToCart}
-                      />
-                    );
-                  })}
-              </div>
+              {popularProducts && (
+                <GridView products={popularProducts[categoryName]?.products} />
+              )}
             </div>
           </div>
         </div>
-        <div className="d-flex justify-content-center my-2 ">
+        <div className="d-flex justify-content-center mb-2 mt-5">
           <NavLink to={`/shop/${categorySlug}`} className="btn btn-primary ">
             <MdOutlineViewInAr /> View More
           </NavLink>

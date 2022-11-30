@@ -40,7 +40,9 @@ const VarticalCard = ({ product }) => {
       </div>
       <div className="vpcc-name">{product.name}</div>
       <div className="vpcc-footer">
-        <div className="vpcc-price">${product.price}</div>
+        <div className="vpcc-price">
+          <bdi>${product.price.toFixed(2)}</bdi>
+        </div>
         <div className="vpcc-rating">
           <Rating
             fullSymbol={<BsStarFill className="icon" color="#2e73e8" />}

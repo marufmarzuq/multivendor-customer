@@ -32,7 +32,7 @@ const HorizontalCard = ({ product }) => {
             readonly
           />
         </div>
-        <div className="hpcc-price">${product.price}</div>
+        <div className="hpcc-price">${product.price.toFixed(2)}</div>
         <div className="hpcc-description">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil quam
           consectetur dolor delectus? Inventore deserunt unde eos rem, sapiente.
