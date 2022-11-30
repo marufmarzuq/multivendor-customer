@@ -5,15 +5,23 @@ import { GiUnbalanced } from "react-icons/gi";
 import { IoEyeOutline } from "react-icons/io5";
 import Rating from "react-rating";
 import { productPlaceholder } from "../../../assets";
+import { useDispatch } from "react-redux";
+import { setQuickView } from "../../../redux/slices/quickView";
 
 const VarticalCard = ({ product }) => {
   console.log(product);
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(setQuickView({ open: true, product }));
+  };
+
   return (
     <div className="vartical-prod-card-container">
       <div className="vpcc-image">
         <img src={productPlaceholder} alt="" />
         <div className="card-action-btn-container">
-          <div className="vpcc-btns btn-1">
+          <div className="vpcc-btns btn-1" onClick={handleAddToCart}>
             <BsCart2 />
           </div>
           <div className="vpcc-btns btn-2">

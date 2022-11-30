@@ -2,9 +2,7 @@ import Router from "./setup/router";
 import AppProviders from "./setup/providers";
 
 function App() {
-  return (
-    <Router />
-  );
+  return <Router />;
 }
 
 export default App;

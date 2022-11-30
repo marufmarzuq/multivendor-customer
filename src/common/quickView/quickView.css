@@ -1,0 +1,189 @@
+.quick-view {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0e0e0e9e;
+  z-index: 100000;
+}
+.quick-view-outer-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+.quick-view-container {
+  background: #fff;
+  height: 100vh;
+  width: 480px;
+  position: absolute;
+  right: 0;
+}
+
+.quick-view-inner-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  padding: 25px;
+}
+.quick-view-close {
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  font-size: 19px;
+  top: 24px;
+  left: -22px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+.quick-view-close:hover {
+  background-color: #2e73e8;
+  color: #efefef;
+  border-color: #2e73e8;
+}
+.qvi-scrollable {
+  height: 100vh;
+  overflow-y: auto;
+}
+.qvi-image {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8f8f8;
+  margin-bottom: 20px;
+}
+.qvi-image img {
+  max-height: 100%;
+}
+.qvi-name {
+  font-size: 25px;
+  font-weight: 400;
+  color: #222;
+  padding-bottom: 5px;
+}
+.qvi-price {
+  font-size: 19px;
+  padding: 15px 0;
+  font-weight: 400;
+}
+.qvi-short-desc {
+  font-weight: 300;
+  color: #555;
+  padding: 10px 0;
+}
+.qvi-variants {
+  display: flex;
+  gap: 7px;
+  padding: 10px 0;
+}
+.qvi-single-color-btn {
+  height: 30px;
+  width: 30px;
+  background-color: #ddd;
+  border-radius: 50px;
+  border: 3px solid #fff;
+  cursor: pointer;
+  outline: 2px solid #fff;
+  transition: 0.3s;
+}
+.qvi-single-color-btn:hover {
+  outline-color: #2e73e8;
+}
+.qvi-single-color-btn.red {
+  background-color: #ec3636;
+}
+.qvi-single-color-btn.blue {
+  background-color: #6060ff;
+}
+.qvi-single-color-btn.green {
+  background-color: #5ad75a;
+}
+
+.qvi-single-size-btn {
+  height: 30px;
+  width: 30px;
+  border: 1px solid #111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+  font-size: 14px;
+}
+.qvi-single-size-btn:hover {
+  background-color: #111;
+  color: #efefef;
+}
+
+.qvi-color-title {
+  margin-top: 10px;
+}
+
+/* for removing arrow from the number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* for removing arrow from the number input */
+
+.qvi-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 0;
+  margin-bottom: 40px;
+}
+.qvi-qty-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+.qvi-qty-container input {
+  width: 44px;
+  padding: 8px 0;
+  text-align: center;
+  border: none;
+}
+.qvi-qty-container span {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 5px;
+}
+.qvi-add-to-cart-btn {
+  cursor: pointer;
+  user-select: none;
+  background-color: #2e73e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  color: #fff;
+}
+.qvi-extras {
+  margin: 10px 0;
+}
+.qvi-extras span {
+  font-weight: 300;
+  font-size: 15px;
+  padding-right: 7px;
+  text-transform: capitalize;
+}
+.qvi-extras span:first-child {
+  font-weight: 500;
+  font-size: 15px;
+}

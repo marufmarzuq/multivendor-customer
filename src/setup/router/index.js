@@ -55,86 +55,96 @@ import SupportTicket from "../../pages/customer/support/SupportTicket";
 import SingleTicket from "../../pages/customerDashboard/components/supports/components/SingleTicket";
 import ShopReviews from "../../pages/seller/shopReviews/ShopReviews";
 import Invoice from "../../common/invoice/Invoice";
+import QuickView from "../../common/quickView/QuickView";
 
 const Router = () => {
   return (
-    <Routes>
-      <Route path="invoice" element={<Invoice />} />
-      <Route path="/customer-home" element={<CustomerHome />} />
-      {/* Vendor Dashboard */}
-      <Route element={<PrivateRoutes />}>
-        <Route path="/seller" element={<Layout />}>
-          <Route path="" element={<Dashboard />} />
-          <Route path="orders" element={<Orders />} />
-          <Route path="approved-refund-request" element={<SentRefundReq />} />
-          <Route
-            path="received-refund-request"
-            element={<ReceivedRefundReq />}
-          />
-          <Route path="payment-history" element={<PaymentHistory />} />
-          <Route path="commission-history" element={<CommissionHistory />} />
-          <Route path="my-wallet" element={<MyWallet />} />
-          <Route path="withdraw" element={<MoneyWithDraw />} />
-          <Route path="manage-profile" element={<ManageProfile />} />
-          <Route path="setting" element={<ShopSetting />} />
-          <Route path="shop-reviews" element={<ShopReviews />} />
-        </Route>
-        <Route path="seller/products/" element={<Layout />}>
-          <Route path="all" element={<Products />} />
-          <Route path="reviews" element={<ProductReviews />} />
-          <Route path="add" element={<AddProducts />} />
-          <Route path="update/:id" element={<UpdateProduct />} />
-          <Route path="bulk-upload" element={<BulkUpload />} />
-          <Route path="wishlist" element={<Wishlist />} />
-          <Route path="digital/all" element={<DigitalProduct />} />
-          <Route path="digital/add" element={<AddDigitalProducts />} />
-          <Route path="digital/update/:id" element={<UpdateDigitalProduct />} />
-        </Route>
-      </Route>
-
-      {/* Customer homepage */}
-      <Route path="/" element={<CustomerLayout />}>
-        <Route path="" element={<Home />} />
-        <Route path="shop" element={<Shop />} />
-        <Route path="shop/:catId" element={<Shop />} />
-        <Route path="shop/:catId/?search=:search" element={<Shop />} />
-        <Route path="stores" element={<Stores />} />
-        <Route path="cart" element={<Cart />} />
-        <Route path="compare" element={<ProductCompare />} />
-        <Route path="wishlist" element={<CustomerWishlist />} />
-        <Route path="checkout" element={<Checkout />} />
-        <Route path="products/:slug" element={<SingleProduct />} />
-        <Route path="support" element={<Support />} />
-        <Route path="seller-request" element={<SellerRequest />} />
-        <Route path="seller-shop/:slug" element={<SellerShop />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="blog/:id" element={<BlogDetails />} />
-        <Route path="thank-you" element={<ThankYou />} />
-		<Route path="support/conversation" element={<SingleTicket />} />
-
-        {/* Login */}
-
-        <Route path="register" element={<CustomerRegister />} />
-        <Route path="login" element={<Login />} />
-        <Route path="reset-password" element={<ResetPassword />} />
-
-        <Route element={<CustomerPrivateRoutes />}>
-          <Route path="dashboard" element={<DashboardLayout />}>
-            <Route path="" element={<Profile />} />
-            <Route path="orders" element={<UserOrder />} />
-            <Route path="order-return-list" element={<OrderReturnList />} />
-            <Route path="order-returns" element={<UserOrderReturns />} />
-            <Route path="password-change" element={<ChangePass />} />
-            <Route path="become-vendor" element={<BeVendor />} />
-            <Route path="supports" element={<Supports />} />
-            <Route path="support-ticket/:ticket" element={<SupportTicket />} />
-            <Route path="support/conversation" element={<SingleTicket />} />
+    <>
+      <QuickView />
+      <Routes>
+        <Route path="invoice" element={<Invoice />} />
+        <Route path="/customer-home" element={<CustomerHome />} />
+        {/* Vendor Dashboard */}
+        <Route element={<PrivateRoutes />}>
+          <Route path="/seller" element={<Layout />}>
+            <Route path="" element={<Dashboard />} />
+            <Route path="orders" element={<Orders />} />
+            <Route path="approved-refund-request" element={<SentRefundReq />} />
+            <Route
+              path="received-refund-request"
+              element={<ReceivedRefundReq />}
+            />
+            <Route path="payment-history" element={<PaymentHistory />} />
+            <Route path="commission-history" element={<CommissionHistory />} />
+            <Route path="my-wallet" element={<MyWallet />} />
+            <Route path="withdraw" element={<MoneyWithDraw />} />
+            <Route path="manage-profile" element={<ManageProfile />} />
+            <Route path="setting" element={<ShopSetting />} />
+            <Route path="shop-reviews" element={<ShopReviews />} />
+          </Route>
+          <Route path="seller/products/" element={<Layout />}>
+            <Route path="all" element={<Products />} />
+            <Route path="reviews" element={<ProductReviews />} />
+            <Route path="add" element={<AddProducts />} />
+            <Route path="update/:id" element={<UpdateProduct />} />
+            <Route path="bulk-upload" element={<BulkUpload />} />
+            <Route path="wishlist" element={<Wishlist />} />
+            <Route path="digital/all" element={<DigitalProduct />} />
+            <Route path="digital/add" element={<AddDigitalProducts />} />
+            <Route
+              path="digital/update/:id"
+              element={<UpdateDigitalProduct />}
+            />
           </Route>
         </Route>
-      </Route>
 
-      <Route path="/*" element={<NotFound />} />
-    </Routes>
+        {/* Customer homepage */}
+        <Route path="/" element={<CustomerLayout />}>
+          <Route path="" element={<Home />} />
+          <Route path="shop" element={<Shop />} />
+          <Route path="shop/:catId" element={<Shop />} />
+          <Route path="shop/:catId/?search=:search" element={<Shop />} />
+          <Route path="stores" element={<Stores />} />
+          <Route path="cart" element={<Cart />} />
+          <Route path="compare" element={<ProductCompare />} />
+          <Route path="wishlist" element={<CustomerWishlist />} />
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="products/:slug" element={<SingleProduct />} />
+          <Route path="support" element={<Support />} />
+          <Route path="seller-request" element={<SellerRequest />} />
+          <Route path="seller-shop/:slug" element={<SellerShop />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="blog/:id" element={<BlogDetails />} />
+          <Route path="thank-you" element={<ThankYou />} />
+          <Route path="support/conversation" element={<SingleTicket />} />
+
+          {/* Login */}
+
+          <Route path="register" element={<CustomerRegister />} />
+          <Route path="login" element={<Login />} />
+          <Route path="reset-password" element={<ResetPassword />} />
+
+          <Route element={<CustomerPrivateRoutes />}>
+            <Route path="dashboard" element={<DashboardLayout />}>
+              <Route path="" element={<Profile />} />
+              <Route path="orders" element={<UserOrder />} />
+              <Route path="order-return-list" element={<OrderReturnList />} />
+              <Route path="order-returns" element={<UserOrderReturns />} />
+              <Route path="password-change" element={<ChangePass />} />
+              <Route path="become-vendor" element={<BeVendor />} />
+              <Route path="supports" element={<Supports />} />
+              <Route
+                path="support-ticket/:ticket"
+                element={<SupportTicket />}
+              />
+              <Route path="support/conversation" element={<SingleTicket />} />
+            </Route>
+          </Route>
+        </Route>
+
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 };
 
