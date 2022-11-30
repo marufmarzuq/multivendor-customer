@@ -14,6 +14,7 @@ import { markutosFrontendApi } from "../../../pages/services/Api/api";
 import SearchTemplate from "./SearchTemplate";
 import { useDispatch, useSelector } from "react-redux";
 import { setCustomerWishlist } from "../../../redux/slices/wishlist";
+import { setCompare } from "../../../redux/slices/compare";
 
 const MainHeader = ({ filterCategories, headerLogo }) => {
   const { totalItems } = useCart();
@@ -21,17 +22,28 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
   const [searchResult, setSearchResult] = useState([]);
   const [catId, setCatId] = useState("");
   const wishlistedProds = JSON.parse(localStorage.getItem("my-wishlist")) || [];
+  const comparedProds =
+    JSON.parse(localStorage.getItem("compared-prods")) || [];
   const [showSearchTemp, setShowSearchTemp] = useState(false);
   const dispatch = useDispatch();
 
   const { count: wishlishtCount } = useSelector(
     (state) => state?.customerWishlist
   );
+  const { products: comparedProdsOnState } = useSelector(
+    (state) => state?.compare
+  );
+
   useEffect(() => {
     dispatch(
       setCustomerWishlist({
         count: wishlistedProds.length,
         products: wishlistedProds,
+      })
+    );
+    dispatch(
+      setCompare({
+        products: comparedProds,
       })
     );
   }, []);
@@ -131,7 +143,9 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                   <NavLink to="/compare">
                     {/* <FaBalanceScaleRight /> */}
                     <IoIosGitCompare />
-                    <span>{0}</span>
+                    <span>
+                      {comparedProdsOnState && comparedProdsOnState.length}
+                    </span>
                   </NavLink>
                 </li>
                 {/* WishList */}
