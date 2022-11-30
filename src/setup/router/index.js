@@ -56,11 +56,13 @@ import SingleTicket from "../../pages/customerDashboard/components/supports/comp
 import ShopReviews from "../../pages/seller/shopReviews/ShopReviews";
 import Invoice from "../../common/invoice/Invoice";
 import QuickView from "../../common/quickView/QuickView";
+import { useSelector } from "react-redux";
 
 const Router = () => {
+  const { open, product } = useSelector((state) => state.quickView);
   return (
     <>
-      <QuickView />
+      {open && <QuickView product={product} />}
       <Routes>
         <Route path="invoice" element={<Invoice />} />
         <Route path="/customer-home" element={<CustomerHome />} />
