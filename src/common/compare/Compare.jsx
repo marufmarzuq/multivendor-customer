@@ -57,7 +57,7 @@ const Compare = ({ products }) => {
                   Clear All
                 </div>
                 <button
-                  disabled={products?.length < 2}
+                  disabled={products?.length < 1}
                   className="cgp-compare-btn"
                   onClick={() => {
                     navigate("../compare");

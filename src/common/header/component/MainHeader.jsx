@@ -140,15 +140,20 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
               <ul className="d-flex justify-content-end">
                 {/* Compare List */}
                 <li>
-                  <NavLink to="/compare">
-                    {/* <FaBalanceScaleRight /> */}
+                  <div
+                    className="header-sml-btn"
+                    onClick={() =>
+                      dispatch(
+                        setCompare({ open: true, products: comparedProds })
+                      )
+                    }
+                  >
                     <IoIosGitCompare />
                     <span>
                       {comparedProdsOnState && comparedProdsOnState.length}
                     </span>
-                  </NavLink>
+                  </div>
                 </li>
-                {/* WishList */}
                 <li>
                   <NavLink to="/wishlist">
                     <AiOutlineHeart />
