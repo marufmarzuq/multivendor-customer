@@ -9,10 +9,13 @@ import { useDispatch } from "react-redux";
 import { setQuickView } from "../../../redux/slices/quickView";
 
 const VarticalCard = ({ product }) => {
-  console.log(product);
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
+    dispatch(setQuickView({ open: true, product }));
+  };
+
+  const handleQuickView = () => {
     dispatch(setQuickView({ open: true, product }));
   };
 
@@ -30,7 +33,7 @@ const VarticalCard = ({ product }) => {
           <div className="vpcc-btns btn-3">
             <GiUnbalanced />
           </div>
-          <div className="vpcc-btns btn-4">
+          <div className="vpcc-btns btn-4" onClick={handleQuickView}>
             <IoEyeOutline />
           </div>
         </div>
