@@ -55,7 +55,6 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
       })
     );
     localStorage.setItem("my-wishlist", JSON.stringify(newWishlistedProds));
-    console.log(JSON.parse(localStorage.getItem("my-wishlist")));
   };
 
   return loading ? (
