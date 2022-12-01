@@ -5,30 +5,32 @@ import { AiOutlineDelete, AiOutlineShoppingCart } from "react-icons/ai";
 import { useCart } from "react-use-cart";
 import { priceFormat } from "../../../../../hooks/helper";
 import Variation from "../../../../../common/product/variation/Variation";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { productPlaceholder } from "../../../../../assets";
+import { setCompare } from "../../../../../redux/slices/compare";
 
 const CompareTable = () => {
   const { products: comparedProds } = useSelector((state) => state?.compare);
+  const dispatch = useDispatch();
   console.log(comparedProds);
   const { addItem, onItemAdd } = useCart();
+
+  const handleDelete = (id) => {
+    let newProducts = comparedProds.filter((prod) => prod.id !== id);
+    dispatch(setCompare({ open: true, products: newProducts }));
+  };
 
   const addToCart = (product) => {
     addItem(product);
   };
 
-  let layout = [];
-  for (let i = 1; i <= comparedProds.length + 1; i++) {
-    layout.push("1fr ");
-  }
-
-  return (
+  return comparedProds ? (
     <table className="compare-table">
       <tbody>
         <tr>
           <td>Image</td>
           {comparedProds?.map((p) => (
-            <td>
+            <td style={{ width: `${100 / comparedProds?.length}%` }}>
               <img
                 className="compare-table-img"
                 src={productPlaceholder}
@@ -44,7 +46,7 @@ const CompareTable = () => {
           ))}
         </tr>
         <tr>
-          <td>Name</td>
+          <td>Price</td>
           {comparedProds?.map((p) => (
             <td>${p.price}</td>
           ))}
@@ -52,31 +54,36 @@ const CompareTable = () => {
         <tr>
           <td>Add to cart</td>
           {comparedProds?.map((p) => (
-            <td>${p.price}</td>
+            <td>
+              <div className="qt-add-to-cart-btn">ADD TO CART</div>
+            </td>
           ))}
         </tr>
         <tr>
           <td>Description</td>
           {comparedProds?.map((p) => (
-            <td>${p.price}</td>
+            <td>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod non
+              deserunt tenetur sint cumque aut!
+            </td>
           ))}
         </tr>
         <tr>
           <td>Availability</td>
           {comparedProds?.map((p) => (
-            <td>${p.price}</td>
+            <td style={{ color: "green" }}>In Stock</td>
           ))}
         </tr>
         <tr>
           <td>Sku</td>
-          {comparedProds?.map((p) => (
-            <td>${p.price}</td>
+          {comparedProds?.map((p, i) => (
+            <td>FSH_ILVX4{i + 1}</td>
           ))}
         </tr>
         <tr>
           <td>Band</td>
           {comparedProds?.map((p) => (
-            <td>${p.price}</td>
+            <td>-</td>
           ))}
         </tr>
         <tr>
@@ -84,7 +91,12 @@ const CompareTable = () => {
           {comparedProds?.length ? (
             comparedProds?.map((p) => (
               <td>
-                <button>Remove</button>
+                <button
+                  className="ct-remove-btn"
+                  onClick={() => handleDelete(p.id)}
+                >
+                  Remove
+                </button>
               </td>
             ))
           ) : (
@@ -93,6 +105,10 @@ const CompareTable = () => {
         </tr>
       </tbody>
     </table>
+  ) : (
+    <div className="ct-null-container">
+      <div>There is no product to compare</div>
+    </div>
   );
 };
 
