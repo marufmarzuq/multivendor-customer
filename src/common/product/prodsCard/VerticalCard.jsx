@@ -11,16 +11,21 @@ import { useNavigate } from "react-router-dom";
 import { setCustomerWishlist } from "../../../redux/slices/wishlist";
 import { setCompare } from "../../../redux/slices/compare";
 
-const VarticalCard = ({ product }) => {
+const VerticalCard = ({ product , addToCart }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { products: wishlistedProds } = useSelector(
     (state) => state?.customerWishlist
   );
+
   const { products: comparedProds } = useSelector((state) => state?.compare);
 
   const handleAddToCart = () => {
     dispatch(setQuickView({ open: true, product }));
+	// add to cart
+	if ( product.product_type !=="variation") {
+		addToCart(product);
+	}
   };
 
   const handleQuickView = () => {
@@ -61,7 +66,6 @@ const VarticalCard = ({ product }) => {
     if (isComparedProd()) {
       dispatch(setCompare({ open: true, products: comparedProds }));
     } else {
-      console.log("Clicked");
       let newCompareProds = [...comparedProds];
       if (comparedProds.length === 4) {
         newCompareProds.shift();
@@ -118,4 +122,4 @@ const VarticalCard = ({ product }) => {
   );
 };
 
-export default VarticalCard;
+export default VerticalCard;

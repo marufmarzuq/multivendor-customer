@@ -1,10 +1,8 @@
 import { useState } from "react";
 import { useCart } from "react-use-cart";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import GridOne from "../../../../../common/product/layout/GridOne";
 import FrontendPagination from "../../../../../common/pagination/frontend/FrontendPagination";
 import SortBar from "./components/SortBar";
-import ListOne from "../../../../../common/product/layout/ListOne";
 import GridView from "../../../../../common/product/prodsLayout/GridView";
 import ListView from "../../../../../common/product/prodsLayout/ListView";
 
@@ -35,9 +33,9 @@ const RightComp = ({
           </SkeletonTheme>
         )}
         {layout === "grid" ? (
-          <GridView products={shopProduct} />
+          <GridView products={shopProduct} addToCart={addToCart} />
         ) : (
-          <ListView products={shopProduct} />
+          <ListView products={shopProduct} addToCart={addToCart} />
         )}
         {/* {
 					shopProduct.map((product, index) => {

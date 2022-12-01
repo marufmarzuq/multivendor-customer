@@ -11,7 +11,7 @@ import { setCompare } from "../../../redux/slices/compare";
 import { setQuickView } from "../../../redux/slices/quickView";
 import { setCustomerWishlist } from "../../../redux/slices/wishlist";
 
-const HorizontalCard = ({ product }) => {
+const HorizontalCard = ({ product , addToCart }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { products: wishlistedProds } = useSelector(
@@ -21,6 +21,10 @@ const HorizontalCard = ({ product }) => {
 
   const handleAddToCart = () => {
     dispatch(setQuickView({ open: true, product }));
+	// add to cart
+	if ( product.product_type !=="variation") {
+		addToCart(product);
+	}
   };
 
   const handleQuickView = () => {
