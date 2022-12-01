@@ -10,6 +10,7 @@ import { productPlaceholder } from "../../../assets";
 import { setCompare } from "../../../redux/slices/compare";
 import { setQuickView } from "../../../redux/slices/quickView";
 import { setCustomerWishlist } from "../../../redux/slices/wishlist";
+import { priceFormat } from "../../../hooks/helper";
 
 const HorizontalCard = ({ product , addToCart }) => {
   const dispatch = useDispatch();
@@ -95,7 +96,7 @@ const HorizontalCard = ({ product , addToCart }) => {
             readonly
           />
         </div>
-        <div className="hpcc-price">${product.price.toFixed(2)}</div>
+        <div className="hpcc-price">{priceFormat(product.discount_price)}</div>
         <div className="hpcc-description">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil quam
           consectetur dolor delectus? Inventore deserunt unde eos rem, sapiente.

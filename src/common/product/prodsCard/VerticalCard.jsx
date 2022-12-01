@@ -10,6 +10,7 @@ import { setQuickView } from "../../../redux/slices/quickView";
 import { useNavigate } from "react-router-dom";
 import { setCustomerWishlist } from "../../../redux/slices/wishlist";
 import { setCompare } from "../../../redux/slices/compare";
+import { priceFormat } from "../../../hooks/helper";
 
 const VerticalCard = ({ product , addToCart }) => {
   const dispatch = useDispatch();
@@ -107,7 +108,7 @@ const VerticalCard = ({ product , addToCart }) => {
       </div>
       <div className="vpcc-footer">
         <div className="vpcc-price">
-          <bdi>${product.price.toFixed(2)}</bdi>
+          <bdi>{priceFormat(product.discount_price)}</bdi>
         </div>
         <div className="vpcc-rating">
           <Rating
