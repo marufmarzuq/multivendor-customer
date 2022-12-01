@@ -1,0 +1,141 @@
+.compare-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0e0e0e9e;
+  z-index: 100000;
+  animation: qvcAnimation 0.8s forwards;
+}
+@keyframes cmAnimation {
+  0% {
+    background-color: #0e0e0e00;
+  }
+  100% {
+    background-color: #0e0e0e9e;
+  }
+}
+.compare-outer-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+.compare-container {
+  background: #fff;
+  width: 100vw;
+  height: 180px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  animation: qvAnimation 0.8s forwards;
+}
+
+@keyframes qvAnimation {
+  0% {
+    bottom: -180px;
+  }
+  100% {
+    bottom: 0px;
+  }
+}
+
+.compare-inner-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.compare-close {
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  top: -20px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  font-size: 19px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+.compare-close:hover {
+  background-color: #2e73e8;
+  color: #efefef;
+  border-color: #2e73e8;
+}
+
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 25px;
+}
+.cpg-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+}
+.cgp-products {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+.single-cgp-prod {
+  height: 150px;
+  width: 130px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+.single-cgp-prod span {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #fff;
+  border-radius: 50px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
+}
+.single-cgp-prod div {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 12px;
+}
+.single-cgp-prod img {
+  max-height: 140px;
+}
+.cgp-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.cgp-clear {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #555;
+  letter-spacing: 1px;
+}
+.cgp-compare-btn {
+  background-color: #2e73e8;
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+}

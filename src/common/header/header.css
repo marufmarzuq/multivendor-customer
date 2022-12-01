@@ -570,3 +570,22 @@ p.ssp-price {
 #react-select-4-listbox {
   z-index: 100;
 }
+.header-sml-btn {
+  position: relative;
+  margin-right: 25px;
+}
+
+.header-sml-btn span {
+  position: absolute;
+  background-color: #2e73e8;
+  color: #fff;
+  height: 18px;
+  width: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 11px;
+  top: -5px;
+  right: -12px;
+}

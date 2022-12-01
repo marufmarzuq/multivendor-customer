@@ -57,12 +57,15 @@ import ShopReviews from "../../pages/seller/shopReviews/ShopReviews";
 import Invoice from "../../common/invoice/Invoice";
 import QuickView from "../../common/quickView/QuickView";
 import { useSelector } from "react-redux";
+import Compare from "../../common/compare/Compare";
 
 const Router = () => {
-  const { open, product } = useSelector((state) => state.quickView);
+  const { open: openQv, product } = useSelector((state) => state.quickView);
+  const { open: openCompare, products } = useSelector((state) => state.compare);
   return (
     <>
-      {open && <QuickView product={product} />}
+      {openQv && <QuickView product={product} />}
+      {openCompare && <Compare products={products} />}
       <Routes>
         <Route path="invoice" element={<Invoice />} />
         <Route path="/customer-home" element={<CustomerHome />} />

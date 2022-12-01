@@ -1,8 +1,11 @@
 import CompareTable from "./components/productCompareCom/CompareTable";
+import "./productCompare.css";
 
 const ProductCompare = () => {
   return (
-	<CompareTable/>
+    <div className="container py-5">
+      <CompareTable />
+    </div>
   );
 };
 
