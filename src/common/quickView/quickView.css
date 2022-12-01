@@ -27,10 +27,10 @@
   width: 480px;
   position: absolute;
   right: 0;
-  animation: qvAnimation 0.8s forwards;
+  animation: qvvAnimation 0.8s forwards;
 }
 
-@keyframes qvAnimation {
+@keyframes qvvAnimation {
   0% {
     right: -480px;
   }
