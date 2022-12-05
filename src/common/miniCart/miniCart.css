@@ -67,7 +67,7 @@
   border-color: #2e73e8;
 }
 .mini-cart-scrollable {
-  height: calc(100vh - 227px);
+  height: calc(100vh - 360px);
   overflow-y: auto;
   margin-bottom: 10px;
 }
@@ -84,7 +84,12 @@
   display: grid;
   grid-template-columns: 90px auto;
   gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #efefef;
   margin-bottom: 20px;
+}
+.single-mini-cart-item:last-child {
+  border: none;
 }
 .smci-img {
   background-color: #f8f8f8;
@@ -147,4 +152,23 @@
   justify-content: center;
   padding: 12px;
   color: #fff;
+}
+.mc-subtotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  padding-top: 8px;
+  border-top: 1px solid #efefef;
+}
+.mc-shipping {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+.mc-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  border-top: 1px solid #efefef;
+  padding: 5px 0 18px;
 }

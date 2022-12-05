@@ -76,6 +76,20 @@ const MiniCart = ({ product }) => {
                 </div>
               ))}
             </div>
+            <div className="mini-cart-prices">
+              <div className="mc-subtotal">
+                <div>Subtotal</div>
+                <div>$1000</div>
+              </div>
+              <div className="mc-shipping">
+                <div>Shipping</div>
+                <div>$18</div>
+              </div>
+              <div className="mc-total">
+                <div>Total</div>
+                <div>$1018</div>
+              </div>
+            </div>
             <div className="mini-cart-actions">
               <div
                 className="mc-view-cart-btn"

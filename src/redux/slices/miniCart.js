@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const miniCartSlice = createSlice({
   name: "miniCart",
   initialState: {
-    open: true,
+    open: false,
   },
 
   reducers: {

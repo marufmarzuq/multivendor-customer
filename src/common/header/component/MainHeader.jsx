@@ -7,7 +7,7 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { IoIosGitCompare } from "react-icons/io";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useCart } from "react-use-cart";
 import Select from "react-select";
 import { markutosFrontendApi } from "../../../pages/services/Api/api";
@@ -18,6 +18,7 @@ import { setCompare } from "../../../redux/slices/compare";
 import { setMiniCart } from "../../../redux/slices/miniCart";
 
 const MainHeader = ({ filterCategories, headerLogo }) => {
+  const navigate = useNavigate();
   const { totalItems } = useCart();
   const [searchValue, setSearchValue] = useState("");
   const [searchResult, setSearchResult] = useState([]);
@@ -156,10 +157,13 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                   </div>
                 </li>
                 <li>
-                  <NavLink to="/wishlist">
+                  <div
+                    className="header-sml-btn"
+                    onClick={() => navigate("./wishlist")}
+                  >
                     <AiOutlineHeart />
                     <span>{wishlishtCount}</span>
-                  </NavLink>
+                  </div>
                 </li>
 
                 <li>
