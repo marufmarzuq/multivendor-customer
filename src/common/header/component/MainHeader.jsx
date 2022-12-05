@@ -15,6 +15,7 @@ import SearchTemplate from "./SearchTemplate";
 import { useDispatch, useSelector } from "react-redux";
 import { setCustomerWishlist } from "../../../redux/slices/wishlist";
 import { setCompare } from "../../../redux/slices/compare";
+import { setMiniCart } from "../../../redux/slices/miniCart";
 
 const MainHeader = ({ filterCategories, headerLogo }) => {
   const { totalItems } = useCart();
@@ -160,14 +161,15 @@ const MainHeader = ({ filterCategories, headerLogo }) => {
                     <span>{wishlishtCount}</span>
                   </NavLink>
                 </li>
-                <li className="headerMiniCartIcon">
-                  <NavLink to="/cart">
+
+                <li>
+                  <div
+                    className="header-sml-btn"
+                    onClick={() => dispatch(setMiniCart({ open: true }))}
+                  >
                     <AiOutlineShoppingCart />
-                    <span> {totalItems} </span>
-                  </NavLink>
-                  <span className="headerMiniCart">
-                    <MiniCart />
-                  </span>
+                    <span>{totalItems}</span>
+                  </div>
                 </li>
               </ul>
             </div>

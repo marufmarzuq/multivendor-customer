@@ -589,3 +589,6 @@ p.ssp-price {
   top: -5px;
   right: -12px;
 }
+.header-sml-btn svg {
+  font-size: 22px;
+}
