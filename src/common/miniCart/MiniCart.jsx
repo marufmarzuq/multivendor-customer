@@ -1,9 +1,6 @@
-import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./miniCart.css";
 import { BsCart2, BsChevronRight, BsStar, BsStarFill } from "react-icons/bs";
-import { productPlaceholder } from "../../assets";
-import Rating from "react-rating";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import { setMiniCart } from "../../redux/slices/miniCart";
 import { useCart } from "react-use-cart";
@@ -47,7 +44,7 @@ const MiniCart = ({ product }) => {
                   {items?.map((prod,key) => (
                     <div className="single-mini-cart-item" key={key}>
                       <div className="smci-img">
-                        <img src={productPlaceholder} alt="" />
+                        <img src={prod.thumbnail_img} alt={prod.name} />
                       </div>
                       <div className="smci-right">
                         <div className="smci-min-height">
