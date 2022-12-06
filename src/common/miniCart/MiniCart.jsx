@@ -9,13 +9,12 @@ import { setMiniCart } from "../../redux/slices/miniCart";
 import { useCart } from "react-use-cart";
 import { GrClose } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
+import ProdQty from "./ProdQty";
 
 const MiniCart = ({ product }) => {
   const navigate = useNavigate();
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
-  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
+  const shipping = 18;
 
   const close = (e) => {
     e.stopPropagation();
@@ -75,7 +74,7 @@ const MiniCart = ({ product }) => {
                         </div>
                         <div className="smcir-bottom">
                           <div className="smcir-qty">
-                            {prod.quantity} x ${prod.price}
+                            <ProdQty prod={prod} /> <div>x ${prod.price}</div>
                           </div>
                           <div className="smcir-item-total">
                             ${prod.itemTotal}
@@ -88,15 +87,15 @@ const MiniCart = ({ product }) => {
                 <div className="mini-cart-prices">
                   <div className="mc-subtotal">
                     <div>Subtotal</div>
-                    <div>$1000</div>
+                    <div>${cartTotal}</div>
                   </div>
                   <div className="mc-shipping">
                     <div>Shipping</div>
-                    <div>$18</div>
+                    <div>${shipping}</div>
                   </div>
                   <div className="mc-total">
                     <div>Total</div>
-                    <div>$1018</div>
+                    <div>${cartTotal + shipping}</div>
                   </div>
                 </div>
                 <div className="mini-cart-actions">
