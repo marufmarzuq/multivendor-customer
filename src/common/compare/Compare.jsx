@@ -1,11 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import "./compare.css";
-import { BsChevronDown, BsStar, BsStarFill } from "react-icons/bs";
-import { setQuickView } from "../../redux/slices/quickView";
+import { BsChevronDown } from "react-icons/bs";
 import { productPlaceholder } from "../../assets";
-import Rating from "react-rating";
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import { setCompare } from "../../redux/slices/compare";
 import { IoCloseOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";

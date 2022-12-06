@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsCart2, BsStar, BsStarFill } from "react-icons/bs";
 import { GiUnbalanced } from "react-icons/gi";
 import { IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
@@ -8,28 +8,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { productPlaceholder } from "../../../assets";
 import { setCompare } from "../../../redux/slices/compare";
-import { setQuickView } from "../../../redux/slices/quickView";
 import { setCustomerWishlist } from "../../../redux/slices/wishlist";
 import { priceFormat } from "../../../hooks/helper";
+import QuickView from "../../quickView/QuickView";
 
-const HorizontalCard = ({ product , addToCart }) => {
+const HorizontalCard = ({ product, addToCart }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { products: wishlistedProds } = useSelector(
     (state) => state?.customerWishlist
   );
+  const [openQuickView, setOpenQuickView] = useState(false);
   const { products: comparedProds } = useSelector((state) => state?.compare);
 
   const handleAddToCart = () => {
-    dispatch(setQuickView({ open: true, product }));
-	// add to cart
-	if ( product.product_type !=="variation") {
-		addToCart(product);
-	}
+    setOpenQuickView(true);
+    // add to cart
+    if (product.product_type !== "variation") {
+      addToCart(product);
+    }
   };
 
   const handleQuickView = () => {
-    dispatch(setQuickView({ open: true, product }));
+    setOpenQuickView(true);
   };
 
   const isWishlistedProd = () => {
@@ -82,50 +83,63 @@ const HorizontalCard = ({ product , addToCart }) => {
   };
 
   return (
-    <div className="horizontal-prod-card-container">
-      <div className="hpcc-image">
-        <img src={productPlaceholder} alt="" />
+    <>
+      <div className="horizontal-prod-card-container">
+        <div className="hpcc-image">
+          <img src={productPlaceholder} alt="" />
+        </div>
+        <div className="hpcc-content">
+          <div
+            className="hpcc-name"
+            onClick={() => navigate(`../products/${product.slug}`)}
+          >
+            {product.name}
+          </div>
+          <div className="hpcc-rating">
+            <Rating
+              fullSymbol={<BsStarFill className="icon" color="#2e73e8" />}
+              emptySymbol={<BsStar className="icon" />}
+              initialRating={product?.total_rating}
+              readonly
+            />
+          </div>
+          <div className="hpcc-price">
+            {priceFormat(product.discount_price)}
+          </div>
+          <div className="hpcc-description">
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil quam
+            consectetur dolor delectus? Inventore deserunt unde eos rem,
+            sapiente.
+          </div>
+        </div>
+        <div className="hpcc-actions">
+          <div className="hpcc-btns" onClick={handleAddToCart}>
+            <BsCart2 /> <span>Add to Cart</span>
+          </div>
+          <div className="hpcc-btns" onClick={addToWishlist}>
+            {isWishlistedProd() ? (
+              <>
+                <IoMdHeart /> <span>Wishlisted</span>
+              </>
+            ) : (
+              <>
+                <IoMdHeartEmpty />
+                <span>Wishlist</span>
+              </>
+            )}
+          </div>
+          <div className="hpcc-btns" onClick={addToCompare}>
+            <GiUnbalanced /> <span>Compare</span>
+          </div>
+          <div className="hpcc-btns" onClick={handleQuickView}>
+            <IoEyeOutline /> <span>Quick View</span>
+          </div>
+        </div>
       </div>
-      <div className="hpcc-content">
-        <div className="hpcc-name">{product.name}</div>
-        <div className="hpcc-rating">
-          <Rating
-            fullSymbol={<BsStarFill className="icon" color="#2e73e8" />}
-            emptySymbol={<BsStar className="icon" />}
-            initialRating={product?.total_rating}
-            readonly
-          />
-        </div>
-        <div className="hpcc-price">{priceFormat(product.discount_price)}</div>
-        <div className="hpcc-description">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil quam
-          consectetur dolor delectus? Inventore deserunt unde eos rem, sapiente.
-        </div>
-      </div>
-      <div className="hpcc-actions">
-        <div className="hpcc-btns" onClick={handleAddToCart}>
-          <BsCart2 /> <span>Add to Cart</span>
-        </div>
-        <div className="hpcc-btns" onClick={addToWishlist}>
-          {isWishlistedProd() ? (
-            <>
-              <IoMdHeart /> <span>Wishlisted</span>
-            </>
-          ) : (
-            <>
-              <IoMdHeartEmpty />
-              <span>Wishlist</span>
-            </>
-          )}
-        </div>
-        <div className="hpcc-btns" onClick={addToCompare}>
-          <GiUnbalanced /> <span>Compare</span>
-        </div>
-        <div className="hpcc-btns" onClick={handleQuickView}>
-          <IoEyeOutline /> <span>Quick View</span>
-        </div>
-      </div>
-    </div>
+      {openQuickView && (
+        <QuickView product={product} onClose={() => setOpenQuickView(false)} />
+      )}
+    </>
   );
 };
 

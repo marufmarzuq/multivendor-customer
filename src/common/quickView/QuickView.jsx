@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "./quickView.css";
 import { BsChevronRight, BsStar, BsStarFill } from "react-icons/bs";
-import { setQuickView } from "../../redux/slices/quickView";
 import { productPlaceholder } from "../../assets";
 import Rating from "react-rating";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
@@ -10,17 +9,16 @@ import { useCart } from "react-use-cart";
 import { setMiniCart } from "../../redux/slices/miniCart";
 import { priceFormat } from "../../hooks/helper";
 
-const QuickView = ({ product: quickViewProduct }) => {
+const QuickView = ({ product, onClose }) => {
   const [qty, setQty] = useState(1);
   const { addItem } = useCart();
   const dispatch = useDispatch();
 
   const [selectVariant, setSelectVariant] = useState([]);
   const [variantPrice, setVariantPrice] = useState("");
-  const product = { ...quickViewProduct };
-  product.selectedVariant = selectVariant;
 
   useEffect(() => {
+    product.selectedVariant = selectVariant;
     let getVariant = "";
     // sort by index
     selectVariant.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
@@ -29,16 +27,16 @@ const QuickView = ({ product: quickViewProduct }) => {
     if (selectVariant?.length > 0) {
       selectVariant.map((variant, key) => {
         let dash = `${selectVariant.length !== key + 1 ? "-" : ""}`;
-        getVariant += `${variant.variation}` + `${dash}`;
+        getVariant += `${variant.variation}${dash}`;
       });
       // get price
       if (getVariant !== "") {
         const found = product.variations.find(
-          (element) => element.variant_slug == getVariant
+          (element) => element.variant_slug === getVariant
         );
 
         if (found) {
-          product.price     = found.price;
+          product.price = found.price;
           product.variation = getVariant;
           setVariantPrice(found.price);
         }
@@ -46,9 +44,7 @@ const QuickView = ({ product: quickViewProduct }) => {
     }
   }, [selectVariant]);
 
-
-  const getVariation = (attribute, newVariant, index , variant_index ) => {
-
+  const getVariation = (attribute, newVariant, index, variant_index) => {
     if (
       selectVariant.find((item) => item.attribute === attribute) !== undefined
     ) {
@@ -58,28 +54,38 @@ const QuickView = ({ product: quickViewProduct }) => {
       );
       setSelectVariant([
         ...filteredVariant,
-        { attribute: attribute, variation: newVariant, index:index , variant_index:variant_index },
+        {
+          attribute: attribute,
+          variation: newVariant,
+          index: index,
+          variant_index: variant_index,
+        },
       ]);
     } else {
       setSelectVariant([
         ...selectVariant,
-        { attribute: attribute, variation: newVariant, index:index , variant_index:variant_index },
+        {
+          attribute: attribute,
+          variation: newVariant,
+          index: index,
+          variant_index: variant_index,
+        },
       ]);
     }
   };
 
   const handleAddToCart = () => {
-      product.id= `${product.id}${product.variation}`;
-      product.product_id = product.id;
-      console.log(product);
-      addItem(product, qty);
-      dispatch(setQuickView({ open: false, product: null }));
-      dispatch(setMiniCart({ open: true }));
+    product.id = `${product.id}${product.variation}`;
+    product.product_id = product.id;
+    console.log(product);
+    addItem(product, qty);
+    onClose();
+    dispatch(setMiniCart({ open: true }));
   };
 
   const close = (e) => {
     e.stopPropagation();
-    dispatch(setQuickView({ open: false, product: null }));
+    onClose();
   };
 
   return (
@@ -106,52 +112,57 @@ const QuickView = ({ product: quickViewProduct }) => {
                 {/* {product?.description} */}
               </div>
               <div>
-                  {product?.colors.length > 0 && (
-                    <Fragment>
-                      <div className="qvi-color-title">Colors :{" "}</div>
-                      <div className="qvi-variants">
-                        {product?.colors.map((item, key) => {
-                          return (
-                              <div
-                              key={key}
-                              style={{ background: item?.code }}
-                              className={`qvi-single-color-btn ${
-                                ( item == "" ) && "active"
-                              }`}
-                              onClick={(e) => getVariation("Colors", item.name, 0 , key )}
-                              ></div>
-                          );
-                        })}
-                      </div>
-                    </Fragment>
-                  )}
-                  { Object.keys(product?.choice_options)?.length > 0 && (
-                      <Fragment>
-                        {Object.keys(product?.choice_options)?.map((item, key) => {
-                          return (
-                            <Fragment key={key}>
-                                <div className="qvi-color-title">{item}</div>
-                                <div className="qvi-variants">
-                                  {product?.choice_options[item]?.map((variant, i) => {
-                                    return (
-                                      <div
-                                        key={i}
-                                        className={`qvi-single-fabric-btn ${
-                                          ( item == "" ) && "active"
-                                        }`}
-                                        onClick={() => getVariation(item, variant, key + 1 , i)}
-                                      >
-                                          {variant}
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                            </Fragment>
-                          );
-                        })}
-                      </Fragment>
-                  )}
-
+                {product?.colors.length > 0 && (
+                  <Fragment>
+                    <div className="qvi-color-title">Colors : </div>
+                    <div className="qvi-variants">
+                      {product?.colors.map((item, key) => {
+                        return (
+                          <div
+                            key={key}
+                            style={{ background: item?.code }}
+                            className={`qvi-single-color-btn ${
+                              item === "" && "active"
+                            }`}
+                            onClick={(e) =>
+                              getVariation("Colors", item.name, 0, key)
+                            }
+                          ></div>
+                        );
+                      })}
+                    </div>
+                  </Fragment>
+                )}
+                {Object.keys(product?.choice_options)?.length > 0 && (
+                  <Fragment>
+                    {Object.keys(product?.choice_options)?.map((item, key) => {
+                      return (
+                        <Fragment key={key}>
+                          <div className="qvi-color-title">{item}</div>
+                          <div className="qvi-variants">
+                            {product?.choice_options[item]?.map(
+                              (variant, i) => {
+                                return (
+                                  <div
+                                    key={i}
+                                    className={`qvi-single-fabric-btn ${
+                                      item === "" && "active"
+                                    }`}
+                                    onClick={() =>
+                                      getVariation(item, variant, key + 1, i)
+                                    }
+                                  >
+                                    {variant}
+                                  </div>
+                                );
+                              }
+                            )}
+                          </div>
+                        </Fragment>
+                      );
+                    })}
+                  </Fragment>
+                )}
               </div>
               <div className="qvi-actions">
                 <div className="qvi-qty-container">
@@ -173,7 +184,7 @@ const QuickView = ({ product: quickViewProduct }) => {
                 </div>
                 <div
                   className={`qvi-add-to-cart-btn ${
-                    variantPrice == "" && "disabled"
+                    variantPrice === "" && "disabled"
                   }`}
                   onClick={handleAddToCart}
                 >
