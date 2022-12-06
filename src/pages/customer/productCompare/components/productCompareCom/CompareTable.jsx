@@ -21,6 +21,7 @@ const CompareTable = () => {
   };
 
   const addToCart = (product) => {
+    product.product_id = product.id;
     addItem(product);
   };
 

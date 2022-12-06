@@ -6,6 +6,7 @@ const RelatedProducts = ({ loading, singleProduct }) => {
   const { addItem, onItemAdd } = useCart();
 
   const addToCart = (product) => {
+    product.product_id = product.id;
     addItem(product);
   };
 

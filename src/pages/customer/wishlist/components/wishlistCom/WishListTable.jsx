@@ -18,6 +18,7 @@ const WishListTable = () => {
   const dispatch = useDispatch();
 
   const addToCart = (product) => {
+    product.product_id = product.id;
     addItem(product);
   };
 

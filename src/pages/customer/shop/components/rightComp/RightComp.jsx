@@ -18,6 +18,7 @@ const RightComp = ({
   const [layout, setLayout] = useState("grid");
 
   const addToCart = (product) => {
+    product.product_id = product.id;
     addItem(product);
   };
 
