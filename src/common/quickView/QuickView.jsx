@@ -135,7 +135,7 @@ console.log(selectVariant);
                                       <div
                                         key={i}
                                         className={`qvi-single-fabric-btn ${
-                                          ( selectVariant?.variant_index === i ) && "active"
+                                          ( selectVariant[i]?.variant_index === i ) && "active"
                                         }`}
                                         onClick={() => getVariation(item, variant, key + 1 , i)}
                                       >
@@ -149,57 +149,7 @@ console.log(selectVariant);
                         })}
                       </Fragment>
                   )}
-                {product?.colors.length > 0 && (
-                  <Fragment>
-                    <div className="qvi-color-title">Colors : </div>
-                    <div className="qvi-variants">
-                      {product?.colors.map((item, key) => {
-                        return (
-                          <div
-                            key={key}
-                            style={{ background: item?.code }}
-                            className={`qvi-single-color-btn ${
-                              item === "" && "active"
-                            }`}
-                            onClick={(e) =>
-                              getVariation("Colors", item.name, 0)
-                            }
-                          ></div>
-                        );
-                      })}
-                    </div>
-                  </Fragment>
-                )}
-                {Object.keys(product?.choice_options)?.length > 0 && (
-                  <Fragment>
-                    {Object.keys(product?.choice_options)?.map((item, key) => {
-                      return (
-                        <Fragment key={key}>
-                          <div className="qvi-color-title">{item}</div>
-                          <div className="qvi-variants">
-                            {product?.choice_options[item]?.map(
-                              (variant, i) => {
-                                return (
-                                  <div
-                                    key={i}
-                                    className={`qvi-single-fabric-btn ${
-                                      variant === "" && "active"
-                                    }`}
-                                    onClick={() =>
-                                      getVariation(item, variant, key + 1)
-                                    }
-                                  >
-                                    {variant}
-                                  </div>
-                                );
-                              }
-                            )}
-                          </div>
-                        </Fragment>
-                      );
-                    })}
-                  </Fragment>
-                )}
+
               </div>
               <div className="qvi-actions">
                 <div className="qvi-qty-container">
