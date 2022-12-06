@@ -46,10 +46,9 @@ const ProductTable = () => {
                           <h5>{item.name}</h5>
                           <h5>(x {item.quantity})</h5>
                           {/* Variation */}
-						  <Variations item={item}/>
+						                <Variations item={item}/>
                           <h6>{ priceFormat(item.itemTotal) }</h6>
-                          
-						<div><span className="me-1">Sold By : </span><span>{item.shop_name}</span></div>
+						              <div><span className="me-1">Sold By : </span><span>{item.shop_name}</span></div>
                         </div>
                         <div className={miniCartStyle.cartIncreaseButton}>
                           <button

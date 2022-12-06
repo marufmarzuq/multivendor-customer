@@ -5,7 +5,7 @@ import "./product.css";
 const GridView = ({ products , addToCart }) => {
   return (
     <div className="prods-grid-view-container">
-      {products && products.map((prod) => <VerticalCard product={prod} addToCart={addToCart} />)}
+      {products && products.map((prod,key) => <VerticalCard key={key} product={prod} addToCart={addToCart} />)}
     </div>
   );
 };

@@ -20,18 +20,19 @@ const QuickView = ({ product }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    const prod = {
-      id: `${product.id}${color.charAt(0)}${size}${fabric.charAt(0)}`,
-      product_id: product.id,
-      name: product.name,
-      img: product.thumbnail_img,
-      color,
-      size,
-      fabric,
-      sku,
-      price: parseFloat(price),
-    };
-    addItem(prod, qty);
+    // const prod = {
+    //   id: `${product.id}${color.charAt(0)}${size}${fabric.charAt(0)}`,
+    //   product_id: product.id,
+    //   name: product.name,
+    //   img: product.thumbnail_img,
+    //   color,
+    //   size,
+    //   fabric,
+    //   sku,
+    //   price: parseFloat(price),
+    // };
+    product.price = parseFloat(price)
+    addItem(product, qty);
     dispatch(setQuickView({ open: false, product: null }));
     dispatch(setMiniCart({ open: true }));
   };
@@ -59,7 +60,7 @@ const QuickView = ({ product }) => {
     dispatch(setQuickView({ open: false, product: null }));
   };
   return (
-    <div className="quick-view">
+    <div className="quick-view" key={product?.id}>
       <div className="quick-view-outer-container" onClick={close}>
         <div
           className="quick-view-container"
@@ -87,8 +88,9 @@ const QuickView = ({ product }) => {
                   Color{color && `: ${color}`}
                 </div>
                 <div className="qvi-variants">
-                  {product?.colors.map((clr) => (
+                  {product?.colors.map((clr,key) => (
                     <div
+                      key={key}
                       style={{ background: clr?.code }}
                       className={`qvi-single-color-btn ${
                         color === clr?.name && "active"
@@ -99,8 +101,9 @@ const QuickView = ({ product }) => {
                 </div>
                 <div className="qvi-color-title">Size{size && `: ${size}`}</div>
                 <div className="qvi-variants">
-                  {product?.choice_options?.Size?.map((singleSize) => (
+                  {product?.choice_options?.Size?.map((singleSize,key) => (
                     <div
+                      key={key}
                       className={`qvi-single-size-btn ${
                         size === singleSize && "active"
                       }`}
@@ -114,8 +117,9 @@ const QuickView = ({ product }) => {
                   Fabric{fabric && `: ${fabric}`}
                 </div>
                 <div className="qvi-variants">
-                  {product?.choice_options?.Fabric?.map((singleFabric) => (
+                  {product?.choice_options?.Fabric?.map((singleFabric,key) => (
                     <div
+                      key={key}
                       className={`qvi-single-fabric-btn ${
                         fabric === singleFabric && "active"
                       }`}

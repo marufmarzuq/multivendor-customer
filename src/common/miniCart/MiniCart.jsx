@@ -52,8 +52,8 @@ const MiniCart = ({ product }) => {
             {items?.length ? (
               <>
                 <div className="mini-cart-scrollable">
-                  {items?.map((prod) => (
-                    <div className="single-mini-cart-item">
+                  {items?.map((prod,key) => (
+                    <div className="single-mini-cart-item" key={key}>
                       <div className="smci-img">
                         <img src={productPlaceholder} alt="" />
                       </div>

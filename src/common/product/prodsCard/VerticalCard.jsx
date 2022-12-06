@@ -84,7 +84,7 @@ const VerticalCard = ({ product , addToCart }) => {
   return (
     <div className="vartical-prod-card-container">
       <div className="vpcc-image">
-        <img src={productPlaceholder} alt="" />
+        <img src={product.thumbnail_img} alt="" />
         <div className="card-action-btn-container">
           <div className="vpcc-btns btn-1" onClick={handleAddToCart}>
             <BsCart2 />

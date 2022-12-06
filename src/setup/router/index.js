@@ -66,7 +66,7 @@ const Router = () => {
   const { open: openMiniCart } = useSelector((state) => state.miniCart);
   return (
     <>
-      {openQv && <QuickView product={product} />}
+      {openQv && <QuickView product={product}/>}
       {openCompare && <Compare products={products} />}
       {openMiniCart && <MiniCart />}
       <Routes>
