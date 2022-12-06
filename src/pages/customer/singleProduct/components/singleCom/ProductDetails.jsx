@@ -34,7 +34,7 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
   };
 
   const isWishlistedProd = (prod) => {
-    return wishlistedProds.some((wp) => {
+    return wishlistedProds?.some((wp) => {
       return wp.id === prod.id;
     });
   };

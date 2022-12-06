@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "./quickView.css";
 import { BsChevronRight, BsStar, BsStarFill } from "react-icons/bs";
@@ -8,52 +8,74 @@ import Rating from "react-rating";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import { useCart } from "react-use-cart";
 import { setMiniCart } from "../../redux/slices/miniCart";
+import { priceFormat } from "../../hooks/helper";
 
 const QuickView = ({ product }) => {
-  const [price, setPrice] = useState(product?.unit_price);
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
-  const [fabric, setFabric] = useState("");
-  const [sku, setSku] = useState("");
+
   const [qty, setQty] = useState(1);
   const { addItem } = useCart();
   const dispatch = useDispatch();
 
+  const [selectVariant, setSelectVariant] = useState([]);
+  const [variantPrice, setVariantPrice] = useState("");
+
+  useEffect(() => {
+
+    var tempProduct = JSON.parse(JSON.stringify(product));
+    tempProduct.selectedVariant = selectVariant;
+    Object.preventExtensions(tempProduct);
+    
+    var getVariant = "";
+    // sort by index
+    selectVariant.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
+
+    // combination of variation
+    if (selectVariant?.length > 0) {
+      selectVariant.map((variant, key) => {
+        var dash = `${selectVariant.length !== key + 1 ? "-" : ""}`;
+        getVariant += `${variant.variation}` + `${dash}`;
+      });
+      // get price
+      if (getVariant !== "") {
+        const found = product.variations.find(
+          (element) => element.variant_slug == getVariant
+        );
+
+        if (found) {
+          // tempProduct.price = found.price;
+          // tempProduct.variation = getVariant;
+          setVariantPrice(found.price);
+        }
+      }
+    }
+  }, [selectVariant]);
+
+  const getVariation = (attribute, newVariant, index) => {
+    if (
+      selectVariant.find((item) => item.attribute === attribute) !== undefined
+    ) {
+      // item exist
+      let filteredVariant = selectVariant.filter(
+        (item) => item.attribute !== attribute
+      );
+      setSelectVariant([
+        ...filteredVariant,
+        { attribute: attribute, variation: newVariant, index },
+      ]);
+    } else {
+      setSelectVariant([
+        ...selectVariant,
+        { attribute: attribute, variation: newVariant, index },
+      ]);
+    }
+  };
+
   const handleAddToCart = () => {
-    // const prod = {
-    //   id: `${product.id}${color.charAt(0)}${size}${fabric.charAt(0)}`,
-    //   product_id: product.id,
-    //   name: product.name,
-    //   img: product.thumbnail_img,
-    //   color,
-    //   size,
-    //   fabric,
-    //   sku,
-    //   price: parseFloat(price),
-    // };
-    product.price = parseFloat(price)
     addItem(product, qty);
     dispatch(setQuickView({ open: false, product: null }));
     dispatch(setMiniCart({ open: true }));
   };
 
-  console.log(product);
-
-  useEffect(() => {
-    if (color && size && fabric) {
-      product.variations.map((singleVariant) => {
-        if (
-          singleVariant.variant.Color === color &&
-          singleVariant.variant.Size === size &&
-          singleVariant.variant.Fabric === fabric
-        ) {
-          setPrice(singleVariant.price);
-          setSku(singleVariant.sku);
-        }
-        return null;
-      });
-    }
-  }, [color, size, fabric]);
 
   const close = (e) => {
     e.stopPropagation();
@@ -78,57 +100,56 @@ const QuickView = ({ product }) => {
                 initialRating={product?.avg_rating}
                 readonly
               />
-              <div className="qvi-price">${price}</div>
+              <div className="qvi-price">{priceFormat(variantPrice)}</div>
               <div className="qvi-short-desc">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Repellendus nobis id placeat.
+                {/* {product?.description} */}
               </div>
               <div>
-                <div className="qvi-color-title">
-                  Color{color && `: ${color}`}
-                </div>
-                <div className="qvi-variants">
-                  {product?.colors.map((clr,key) => (
-                    <div
-                      key={key}
-                      style={{ background: clr?.code }}
-                      className={`qvi-single-color-btn ${
-                        color === clr?.name && "active"
-                      }`}
-                      onClick={() => setColor(clr?.name)}
-                    ></div>
-                  ))}
-                </div>
-                <div className="qvi-color-title">Size{size && `: ${size}`}</div>
-                <div className="qvi-variants">
-                  {product?.choice_options?.Size?.map((singleSize,key) => (
-                    <div
-                      key={key}
-                      className={`qvi-single-size-btn ${
-                        size === singleSize && "active"
-                      }`}
-                      onClick={() => setSize(singleSize)}
-                    >
-                      {singleSize}
-                    </div>
-                  ))}
-                </div>
-                <div className="qvi-color-title">
-                  Fabric{fabric && `: ${fabric}`}
-                </div>
-                <div className="qvi-variants">
-                  {product?.choice_options?.Fabric?.map((singleFabric,key) => (
-                    <div
-                      key={key}
-                      className={`qvi-single-fabric-btn ${
-                        fabric === singleFabric && "active"
-                      }`}
-                      onClick={() => setFabric(singleFabric)}
-                    >
-                      {singleFabric}
-                    </div>
-                  ))}
-                </div>
+                  {product?.colors.length > 0 && (
+                    <Fragment>
+                      <div className="qvi-color-title">Colors :{" "}</div>
+                      <div className="qvi-variants">
+                        {product?.colors.map((item, key) => {
+                          return (
+                              <div
+                              key={key}
+                              style={{ background: item?.code }}
+                              className={`qvi-single-color-btn ${
+                                item === "" && "active"
+                              }`}
+                              onClick={(e) => getVariation("Colors", item.name, 0)}
+                              ></div>
+                          );
+                        })}
+                      </div>
+                    </Fragment>
+                  )}
+                  { Object.keys(product?.choice_options)?.length > 0 && (
+                      <Fragment>
+                        {Object.keys(product?.choice_options)?.map((item, key) => {
+                          return (
+                            <Fragment key={key}>
+                                <div className="qvi-color-title">{item}</div>
+                                <div className="qvi-variants">
+                                  {product?.choice_options[item]?.map((variant, i) => {
+                                    return (
+                                      <div
+                                        key={i}
+                                        className={`qvi-single-fabric-btn ${
+                                          variant === "" && "active"
+                                        }`}
+                                        onClick={() => getVariation(item, variant, key + 1)}
+                                      >
+                                          {variant}
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                            </Fragment>
+                          );
+                        })}
+                      </Fragment>
+                  )}
               </div>
               <div className="qvi-actions">
                 <div className="qvi-qty-container">
@@ -149,9 +170,7 @@ const QuickView = ({ product }) => {
                   </button>
                 </div>
                 <div
-                  className={`qvi-add-to-cart-btn ${
-                    (!size || !color || !fabric) && "disabled"
-                  }`}
+                  className={`qvi-add-to-cart-btn ${ variantPrice == "" && "disabled" }`}
                   onClick={handleAddToCart}
                 >
                   ADD TO CART
@@ -159,7 +178,7 @@ const QuickView = ({ product }) => {
                 <div>
                   <div className="qvi-extras">
                     <span>SKU: </span>
-                    <span>{sku}</span>
+                    <span>{product?.sku}</span>
                   </div>
                   <div className="qvi-extras">
                     <span>Categories: </span>
