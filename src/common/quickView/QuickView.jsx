@@ -10,27 +10,25 @@ import { useCart } from "react-use-cart";
 import { setMiniCart } from "../../redux/slices/miniCart";
 import { priceFormat } from "../../hooks/helper";
 
-const QuickView = ({ product }) => {
-
+const QuickView = ({ product: quickViewProduct }) => {
   const [qty, setQty] = useState(1);
   const { addItem } = useCart();
   const dispatch = useDispatch();
 
   const [selectVariant, setSelectVariant] = useState([]);
   const [variantPrice, setVariantPrice] = useState("");
+  const product = { ...quickViewProduct };
+  product.selectedVariant = selectVariant;
 
   useEffect(() => {
-    const quickViewProduct = {...product};
-    quickViewProduct.selectedVariant = selectVariant;
-    
-    var getVariant = "";
+    let getVariant = "";
     // sort by index
     selectVariant.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
 
     // combination of variation
     if (selectVariant?.length > 0) {
       selectVariant.map((variant, key) => {
-        var dash = `${selectVariant.length !== key + 1 ? "-" : ""}`;
+        let dash = `${selectVariant.length !== key + 1 ? "-" : ""}`;
         getVariant += `${variant.variation}` + `${dash}`;
       });
       // get price
@@ -40,8 +38,8 @@ const QuickView = ({ product }) => {
         );
 
         if (found) {
-          quickViewProduct.price = found.price;
-          quickViewProduct.variation = getVariant;
+          product.price = found.price;
+          product.variation = getVariant;
           setVariantPrice(found.price);
         }
       }
@@ -51,6 +49,7 @@ const QuickView = ({ product }) => {
 console.log(selectVariant);
 
   const getVariation = (attribute, newVariant, index , variant_index ) => {
+
     if (
       selectVariant.find((item) => item.attribute === attribute) !== undefined
     ) {
@@ -150,6 +149,57 @@ console.log(selectVariant);
                         })}
                       </Fragment>
                   )}
+                {product?.colors.length > 0 && (
+                  <Fragment>
+                    <div className="qvi-color-title">Colors : </div>
+                    <div className="qvi-variants">
+                      {product?.colors.map((item, key) => {
+                        return (
+                          <div
+                            key={key}
+                            style={{ background: item?.code }}
+                            className={`qvi-single-color-btn ${
+                              item === "" && "active"
+                            }`}
+                            onClick={(e) =>
+                              getVariation("Colors", item.name, 0)
+                            }
+                          ></div>
+                        );
+                      })}
+                    </div>
+                  </Fragment>
+                )}
+                {Object.keys(product?.choice_options)?.length > 0 && (
+                  <Fragment>
+                    {Object.keys(product?.choice_options)?.map((item, key) => {
+                      return (
+                        <Fragment key={key}>
+                          <div className="qvi-color-title">{item}</div>
+                          <div className="qvi-variants">
+                            {product?.choice_options[item]?.map(
+                              (variant, i) => {
+                                return (
+                                  <div
+                                    key={i}
+                                    className={`qvi-single-fabric-btn ${
+                                      variant === "" && "active"
+                                    }`}
+                                    onClick={() =>
+                                      getVariation(item, variant, key + 1)
+                                    }
+                                  >
+                                    {variant}
+                                  </div>
+                                );
+                              }
+                            )}
+                          </div>
+                        </Fragment>
+                      );
+                    })}
+                  </Fragment>
+                )}
               </div>
               <div className="qvi-actions">
                 <div className="qvi-qty-container">
@@ -170,7 +220,9 @@ console.log(selectVariant);
                   </button>
                 </div>
                 <div
-                  className={`qvi-add-to-cart-btn ${ variantPrice == "" && "disabled" }`}
+                  className={`qvi-add-to-cart-btn ${
+                    variantPrice == "" && "disabled"
+                  }`}
                   onClick={handleAddToCart}
                 >
                   ADD TO CART
