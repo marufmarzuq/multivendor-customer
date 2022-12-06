@@ -49,8 +49,8 @@ const QuickView = ({ product }) => {
   }, [selectVariant]);
 
 console.log(selectVariant);
-console.log(product);
-  const getVariation = (attribute, newVariant, index) => {
+
+  const getVariation = (attribute, newVariant, index , variant_index ) => {
     if (
       selectVariant.find((item) => item.attribute === attribute) !== undefined
     ) {
@@ -60,12 +60,12 @@ console.log(product);
       );
       setSelectVariant([
         ...filteredVariant,
-        { attribute: attribute, variation: newVariant, index },
+        { attribute: attribute, variation: newVariant, index:index , variant_index:variant_index },
       ]);
     } else {
       setSelectVariant([
         ...selectVariant,
-        { attribute: attribute, variation: newVariant, index },
+        { attribute: attribute, variation: newVariant, index:index , variant_index:variant_index },
       ]);
     }
   };
@@ -80,7 +80,7 @@ console.log(product);
     e.stopPropagation();
     dispatch(setQuickView({ open: false, product: null }));
   };
-  
+
   return (
     <div className="quick-view" key={product?.id}>
       <div className="quick-view-outer-container" onClick={close}>
@@ -115,9 +115,9 @@ console.log(product);
                               key={key}
                               style={{ background: item?.code }}
                               className={`qvi-single-color-btn ${
-                                item === "" && "active"
+                                ( selectVariant[0]?.variant_index === key ) && "active"
                               }`}
-                              onClick={(e) => getVariation("Colors", item.name, 0)}
+                              onClick={(e) => getVariation("Colors", item.name, 0 , key )}
                               ></div>
                           );
                         })}
@@ -136,9 +136,9 @@ console.log(product);
                                       <div
                                         key={i}
                                         className={`qvi-single-fabric-btn ${
-                                          variant === "" && "active"
+                                          ( selectVariant?.variant_index === i ) && "active"
                                         }`}
-                                        onClick={() => getVariation(item, variant, key + 1)}
+                                        onClick={() => getVariation(item, variant, key + 1 , i)}
                                       >
                                           {variant}
                                       </div>
