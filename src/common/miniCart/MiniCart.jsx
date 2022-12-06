@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import "./miniCart.css";
-import { BsCart2, BsChevronRight, BsStar, BsStarFill } from "react-icons/bs";
-import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
+import { BsCart2, BsChevronRight } from "react-icons/bs";
 import { setMiniCart } from "../../redux/slices/miniCart";
 import { useCart } from "react-use-cart";
 import { GrClose } from "react-icons/gr";
@@ -28,7 +27,7 @@ const MiniCart = ({ product }) => {
     removeItem,
     metadata,
   } = useCart();
-
+console.log(items);
   return (
     <div className="mini-cart">
       <div className="mini-cart-outer-container" onClick={close}>
