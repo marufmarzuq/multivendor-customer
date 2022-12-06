@@ -76,8 +76,6 @@ const QuickView = ({ product, onClose }) => {
 
   const handleAddToCart = () => {
     product.id = `${product.id}${product.variation}`;
-    product.product_id = product.id;
-    console.log(product);
     addItem(product, qty);
     onClose();
     dispatch(setMiniCart({ open: true }));

@@ -10,6 +10,7 @@ import { useCart } from "react-use-cart";
 import { GrClose } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 import ProdQty from "./ProdQty";
+import Variations from "./Variations";
 
 const MiniCart = ({ product }) => {
   const navigate = useNavigate();
@@ -30,15 +31,6 @@ const MiniCart = ({ product }) => {
     removeItem,
     metadata,
   } = useCart();
-  console.log({
-    isEmpty,
-    totalUniqueItems,
-    items,
-    cartTotal,
-    updateItemQuantity,
-    removeItem,
-    metadata,
-  });
 
   return (
     <div className="mini-cart">
@@ -68,9 +60,10 @@ const MiniCart = ({ product }) => {
                               <GrClose />
                             </div>
                           </div>
-                          <div className="smcir-variant">
-                            {prod?.color} / {prod?.size} / {prod?.fabric}
-                          </div>
+                          {
+                            prod.product_type == "variation" &&
+                            <Variations item={prod}/>
+                          }
                         </div>
                         <div className="smcir-bottom">
                           <div className="smcir-qty">

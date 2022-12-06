@@ -23,6 +23,7 @@ const VerticalCard = ({ product, addToCart }) => {
 
   const handleAddToCart = () => {
     setOpenQuickView(true);
+    product.product_id = product.id
     // add to cart
     if (product.product_type !== "variation") {
       addToCart(product);
