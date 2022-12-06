@@ -104,8 +104,8 @@
   margin-left: 2px;
 }
 .qvi-single-color-btn {
-  height: 30px;
-  width: 30px;
+  height: 27px;
+  width: 27px;
   background-color: #ddd;
   border-radius: 50px;
   border: 3px solid #fff;
@@ -115,16 +115,7 @@
 }
 .qvi-single-color-btn:hover,
 .qvi-single-color-btn.active {
-  outline-color: #2e73e8;
-}
-.qvi-single-color-btn.red {
-  background-color: #ec3636;
-}
-.qvi-single-color-btn.blue {
-  background-color: #6060ff;
-}
-.qvi-single-color-btn.green {
-  background-color: #5ad75a;
+  outline-color: #444;
 }
 
 .qvi-single-size-btn {
@@ -141,6 +132,23 @@
 }
 .qvi-single-size-btn:hover,
 .qvi-single-size-btn.active {
+  background-color: #111;
+  color: #efefef;
+}
+.qvi-single-fabric-btn {
+  height: 30px;
+  border: 1px solid #111;
+  border-radius: 5px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  cursor: pointer;
+  font-size: 14px;
+}
+.qvi-single-fabric-btn:hover,
+.qvi-single-fabric-btn.active {
   background-color: #111;
   color: #efefef;
 }
@@ -197,6 +205,11 @@ input[type="number"] {
   justify-content: center;
   padding: 12px;
   color: #fff;
+}
+.qvi-add-to-cart-btn.disabled {
+  background-color: #d1d1d1;
+  pointer-events: none;
+  cursor: not-allowed;
 }
 .qvi-extras {
   margin: 10px 0;

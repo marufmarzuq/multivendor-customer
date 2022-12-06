@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import "./quickView.css";
 import { BsChevronRight, BsStar, BsStarFill } from "react-icons/bs";
@@ -6,12 +6,53 @@ import { setQuickView } from "../../redux/slices/quickView";
 import { productPlaceholder } from "../../assets";
 import Rating from "react-rating";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
+import { useCart } from "react-use-cart";
+import { setMiniCart } from "../../redux/slices/miniCart";
 
 const QuickView = ({ product }) => {
+  const [price, setPrice] = useState(product?.unit_price);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+  const [fabric, setFabric] = useState("");
+  const [sku, setSku] = useState("");
   const [qty, setQty] = useState(1);
+  const { addItem } = useCart();
   const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const prod = {
+      id: `${product.id}${color.charAt(0)}${size}${fabric.charAt(0)}`,
+      product_id: product.id,
+      name: product.name,
+      img: product.thumbnail_img,
+      color,
+      size,
+      fabric,
+      sku,
+      price: parseFloat(price),
+    };
+    addItem(prod, qty);
+    dispatch(setQuickView({ open: false, product: null }));
+    dispatch(setMiniCart({ open: true }));
+  };
+
+  console.log(product);
+
+  useEffect(() => {
+    if (color && size && fabric) {
+      product.variations.map((singleVariant) => {
+        if (
+          singleVariant.variant.Color === color &&
+          singleVariant.variant.Size === size &&
+          singleVariant.variant.Fabric === fabric
+        ) {
+          setPrice(singleVariant.price);
+          setSku(singleVariant.sku);
+        }
+        return null;
+      });
+    }
+  }, [color, size, fabric]);
 
   const close = (e) => {
     e.stopPropagation();
@@ -33,62 +74,56 @@ const QuickView = ({ product }) => {
               <Rating
                 fullSymbol={<BsStarFill className="icon" color="#2e73e8" />}
                 emptySymbol={<BsStar className="icon" />}
-                initialRating={product?.total_rating}
+                initialRating={product?.avg_rating}
                 readonly
               />
-              <div className="qvi-price">${product?.price}</div>
+              <div className="qvi-price">${price}</div>
               <div className="qvi-short-desc">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Repellendus nobis id placeat.
               </div>
               <div>
-                <div className="qvi-color-title">Color</div>
-                <div className="qvi-variants">
-                  <div
-                    className={`qvi-single-color-btn red ${
-                      color === "red" && "active"
-                    }`}
-                    onClick={() => setColor("red")}
-                  ></div>
-                  <div
-                    className={`qvi-single-color-btn blue ${
-                      color === "blue" && "active"
-                    }`}
-                    onClick={() => setColor("blue")}
-                  ></div>
-                  <div
-                    className={`qvi-single-color-btn green ${
-                      color === "green" && "active"
-                    }`}
-                    onClick={() => setColor("green")}
-                  ></div>
+                <div className="qvi-color-title">
+                  Color{color && `: ${color}`}
                 </div>
-                <div className="qvi-color-title">Size</div>
                 <div className="qvi-variants">
-                  <div
-                    className={`qvi-single-size-btn ${
-                      size === "M" && "active"
-                    }`}
-                    onClick={() => setSize("M")}
-                  >
-                    M
-                  </div>
-                  <div
-                    className={`qvi-single-size-btn ${
-                      size === "L" && "active"
-                    }`}
-                    onClick={() => setSize("L")}
-                  >
-                    L
-                  </div>
-                  <div
-                    className={`qvi-single-size-btn ${
-                      size === "XL" && "active"
-                    }`}
-                    onClick={() => setSize("XL")}
-                  >
-                    XL
-                  </div>
+                  {product?.colors.map((clr) => (
+                    <div
+                      style={{ background: clr?.code }}
+                      className={`qvi-single-color-btn ${
+                        color === clr?.name && "active"
+                      }`}
+                      onClick={() => setColor(clr?.name)}
+                    ></div>
+                  ))}
+                </div>
+                <div className="qvi-color-title">Size{size && `: ${size}`}</div>
+                <div className="qvi-variants">
+                  {product?.choice_options?.Size?.map((singleSize) => (
+                    <div
+                      className={`qvi-single-size-btn ${
+                        size === singleSize && "active"
+                      }`}
+                      onClick={() => setSize(singleSize)}
+                    >
+                      {singleSize}
+                    </div>
+                  ))}
+                </div>
+                <div className="qvi-color-title">
+                  Fabric{fabric && `: ${fabric}`}
+                </div>
+                <div className="qvi-variants">
+                  {product?.choice_options?.Fabric?.map((singleFabric) => (
+                    <div
+                      className={`qvi-single-fabric-btn ${
+                        fabric === singleFabric && "active"
+                      }`}
+                      onClick={() => setFabric(singleFabric)}
+                    >
+                      {singleFabric}
+                    </div>
+                  ))}
                 </div>
               </div>
               <div className="qvi-actions">
@@ -102,7 +137,6 @@ const QuickView = ({ product }) => {
                   <input
                     type="number"
                     min={1}
-                    defaultValue={1}
                     value={qty}
                     onChange={(e) => setQty(e.target.value)}
                   />
@@ -110,11 +144,18 @@ const QuickView = ({ product }) => {
                     <HiOutlineChevronRight />
                   </button>
                 </div>
-                <div className="qvi-add-to-cart-btn">ADD TO CART</div>
+                <div
+                  className={`qvi-add-to-cart-btn ${
+                    (!size || !color || !fabric) && "disabled"
+                  }`}
+                  onClick={handleAddToCart}
+                >
+                  ADD TO CART
+                </div>
                 <div>
                   <div className="qvi-extras">
                     <span>SKU: </span>
-                    <span>FSH_ILVX4</span>
+                    <span>{sku}</span>
                   </div>
                   <div className="qvi-extras">
                     <span>Categories: </span>

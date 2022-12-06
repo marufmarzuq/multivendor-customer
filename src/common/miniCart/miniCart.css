@@ -1,0 +1,224 @@
+.mini-cart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: #0e0e0e9e;
+  z-index: 100000;
+  animation: qvcAnimation 0.8s forwards;
+}
+@keyframes qvcAnimation {
+  0% {
+    background-color: #0e0e0e00;
+  }
+  100% {
+    background-color: #0e0e0e9e;
+  }
+}
+.mini-cart-outer-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+.mini-cart-container {
+  background: #fff;
+  height: 100vh;
+  width: 480px;
+  position: absolute;
+  right: 0;
+  animation: qvvAnimation 0.8s forwards;
+}
+
+@keyframes qvvAnimation {
+  0% {
+    right: -480px;
+  }
+  100% {
+    right: 0px;
+  }
+}
+
+.mini-cart-inner-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  padding: 25px;
+}
+.mini-cart-close {
+  position: absolute;
+  height: 45px;
+  width: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  font-size: 19px;
+  top: 24px;
+  left: -22px;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  transition: 0.3s;
+}
+.mini-cart-close:hover {
+  background-color: #2e73e8;
+  color: #efefef;
+  border-color: #2e73e8;
+}
+.mini-cart-scrollable {
+  height: calc(100vh - 360px);
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.cart-header {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #333;
+  -webkit-font-smoothing: antialiased;
+}
+.single-mini-cart-item {
+  display: grid;
+  grid-template-columns: 90px auto;
+  gap: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #efefef;
+  margin-bottom: 20px;
+}
+.single-mini-cart-item:last-child {
+  border: none;
+}
+.smci-img {
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.smci-img img {
+  max-width: 100%;
+}
+.smcir-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+}
+.smcir-delete {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.smcir-delete:hover {
+  background-color: #f8f8f8;
+}
+.smcir-variant {
+  font-weight: 400;
+  font-size: 14px;
+  color: #7f7f7f;
+}
+.smcir-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+.smci-min-height {
+  min-height: 72px;
+}
+.mc-view-cart-btn {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  color: #2e72e8;
+  border: 1px solid #2e72e8;
+  margin-bottom: 10px;
+}
+.mc-add-to-cart-btn {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: #2e73e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  color: #fff;
+}
+.mc-subtotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  padding-top: 8px;
+  border-top: 1px solid #efefef;
+}
+.mc-shipping {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+}
+.mc-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  border-top: 1px solid #efefef;
+  padding: 5px 0 18px;
+}
+.empty-mini-cart-container {
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.empty-mini-cart-container svg {
+  font-size: 70px;
+  color: #bfbfbf;
+}
+.emc-desc {
+  font-size: 20px;
+  color: #444;
+}
+.emc-btn {
+  background-color: #2e72e8;
+  padding: 8px 20px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 3px;
+}
+.smcir-qty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mini-cart-qty-container button {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 5px;
+}
+.mini-cart-qty-container {
+  border: 1px solid #efefef;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  border-radius: 50px;
+}
+.mini-cart-qty-container button:first-child {
+  border-right: 1px solid #efefef;
+}
+.mini-cart-qty-container button:last-child {
+  border-left: 1px solid #efefef;
+}
