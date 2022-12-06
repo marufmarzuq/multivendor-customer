@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./miniCart.css";
-import { BsChevronRight, BsStar, BsStarFill } from "react-icons/bs";
+import { BsCart2, BsChevronRight, BsStar, BsStarFill } from "react-icons/bs";
 import { productPlaceholder } from "../../assets";
 import Rating from "react-rating";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
@@ -50,66 +50,85 @@ const MiniCart = ({ product }) => {
         >
           <div className="mini-cart-inner-container">
             <div className="cart-header">My Cart</div>
-            <div className="mini-cart-scrollable">
-              {items?.map((prod) => (
-                <div className="single-mini-cart-item">
-                  <div className="smci-img">
-                    <img src={productPlaceholder} alt="" />
-                  </div>
-                  <div className="smci-right">
-                    <div className="smci-min-height">
-                      <div className="smcir-top">
-                        <div className="smcir-name">{prod.name}</div>
-                        <div className="smcir-delete">
-                          <GrClose />
+            {items?.length ? (
+              <>
+                <div className="mini-cart-scrollable">
+                  {items?.map((prod) => (
+                    <div className="single-mini-cart-item">
+                      <div className="smci-img">
+                        <img src={productPlaceholder} alt="" />
+                      </div>
+                      <div className="smci-right">
+                        <div className="smci-min-height">
+                          <div className="smcir-top">
+                            <div className="smcir-name">{prod.name}</div>
+                            <div
+                              className="smcir-delete"
+                              onClick={() => removeItem(prod.id)}
+                            >
+                              <GrClose />
+                            </div>
+                          </div>
+                          <div className="smcir-variant">
+                            {prod?.color} / {prod?.size} / {prod?.fabric}
+                          </div>
+                        </div>
+                        <div className="smcir-bottom">
+                          <div className="smcir-qty">
+                            {prod.quantity} x ${prod.price}
+                          </div>
+                          <div className="smcir-item-total">
+                            ${prod.itemTotal}
+                          </div>
                         </div>
                       </div>
-                      <div className="smcir-variant">Yellow / L</div>
                     </div>
-                    <div className="smcir-bottom">
-                      <div className="smcir-qty">
-                        {prod.quantity} x ${prod.price}
-                      </div>
-                      <div className="smcir-item-total">${prod.itemTotal}</div>
-                    </div>
+                  ))}
+                </div>
+                <div className="mini-cart-prices">
+                  <div className="mc-subtotal">
+                    <div>Subtotal</div>
+                    <div>$1000</div>
+                  </div>
+                  <div className="mc-shipping">
+                    <div>Shipping</div>
+                    <div>$18</div>
+                  </div>
+                  <div className="mc-total">
+                    <div>Total</div>
+                    <div>$1018</div>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="mini-cart-prices">
-              <div className="mc-subtotal">
-                <div>Subtotal</div>
-                <div>$1000</div>
+                <div className="mini-cart-actions">
+                  <div
+                    className="mc-view-cart-btn"
+                    onClick={() => {
+                      navigate("../cart");
+                      dispatch(setMiniCart({ open: false }));
+                    }}
+                  >
+                    View Cart
+                  </div>
+                  <div
+                    className="mc-add-to-cart-btn"
+                    onClick={() => {
+                      navigate("../checkout");
+                      dispatch(setMiniCart({ open: false }));
+                    }}
+                  >
+                    CHECKOUT
+                  </div>
+                </div>
+              </>
+            ) : (
+              <div className="empty-mini-cart-container">
+                <BsCart2 />
+                <div className="emc-desc">No products in the cart.</div>
+                <div className="emc-btn" onClick={close}>
+                  RETURN TO SHOP
+                </div>
               </div>
-              <div className="mc-shipping">
-                <div>Shipping</div>
-                <div>$18</div>
-              </div>
-              <div className="mc-total">
-                <div>Total</div>
-                <div>$1018</div>
-              </div>
-            </div>
-            <div className="mini-cart-actions">
-              <div
-                className="mc-view-cart-btn"
-                onClick={() => {
-                  navigate("../cart");
-                  dispatch(setMiniCart({ open: false }));
-                }}
-              >
-                View Cart
-              </div>
-              <div
-                className="mc-add-to-cart-btn"
-                onClick={() => {
-                  navigate("../checkout");
-                  dispatch(setMiniCart({ open: false }));
-                }}
-              >
-                CHECKOUT
-              </div>
-            </div>
+            )}
 
             <div className="mini-cart-close" onClick={close}>
               <BsChevronRight />

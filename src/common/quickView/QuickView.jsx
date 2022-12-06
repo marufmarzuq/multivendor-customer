@@ -6,6 +6,8 @@ import { setQuickView } from "../../redux/slices/quickView";
 import { productPlaceholder } from "../../assets";
 import Rating from "react-rating";
 import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
+import { useCart } from "react-use-cart";
+import { setMiniCart } from "../../redux/slices/miniCart";
 
 const QuickView = ({ product }) => {
   const [price, setPrice] = useState(product?.unit_price);
@@ -14,7 +16,25 @@ const QuickView = ({ product }) => {
   const [fabric, setFabric] = useState("");
   const [sku, setSku] = useState("");
   const [qty, setQty] = useState(1);
+  const { addItem } = useCart();
   const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const prod = {
+      id: `${product.id}${color.charAt(0)}${size}${fabric.charAt(0)}`,
+      product_id: product.id,
+      name: product.name,
+      img: product.thumbnail_img,
+      color,
+      size,
+      fabric,
+      sku,
+      price: parseFloat(price),
+    };
+    addItem(prod, qty);
+    dispatch(setQuickView({ open: false, product: null }));
+    dispatch(setMiniCart({ open: true }));
+  };
 
   console.log(product);
 
@@ -128,6 +148,7 @@ const QuickView = ({ product }) => {
                   className={`qvi-add-to-cart-btn ${
                     (!size || !color || !fabric) && "disabled"
                   }`}
+                  onClick={handleAddToCart}
                 >
                   ADD TO CART
                 </div>

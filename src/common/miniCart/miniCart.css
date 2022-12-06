@@ -172,3 +172,26 @@
   border-top: 1px solid #efefef;
   padding: 5px 0 18px;
 }
+.empty-mini-cart-container {
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+.empty-mini-cart-container svg {
+  font-size: 70px;
+  color: #bfbfbf;
+}
+.emc-desc {
+  font-size: 20px;
+  color: #444;
+}
+.emc-btn {
+  background-color: #2e72e8;
+  padding: 8px 20px;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 3px;
+}
