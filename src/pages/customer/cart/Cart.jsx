@@ -1,4 +1,4 @@
-import {useState} from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PageHeader from "./components/cartCom/PageHeader";
 import ProductTable from "./components/cartCom/ProductTable";
@@ -12,43 +12,42 @@ import { useCart } from "react-use-cart";
 import { Fragment } from "react";
 
 const Cart = () => {
-  	const { t } = useTranslation();
+  const { t } = useTranslation();
 
-	const {
+  const {
     isEmpty,
     totalUniqueItems,
     items,
-	cartTotal,
+    cartTotal,
     updateItemQuantity,
     removeItem,
-	metadata
-  	} = useCart();
+    metadata,
+  } = useCart();
+  console.log(items);
 
   return (
     <div>
       <BreadCumb data={"Shopping Cart"} />
       <div className="container">
         <PageHeader />
-        {
-          isEmpty ? <p>Your cart is empty</p> :
-          (
+        {isEmpty ? (
+          <p>Your cart is empty</p>
+        ) : (
           <Fragment>
-				<ProductTable
-					totalUniqueItems={totalUniqueItems}
-					items={items}
-					updateItemQuantity={updateItemQuantity}
-					removeItem={removeItem}
-				/>
-				<ActionButton />
-				<hr />
-				<div className={`mt-4 ${cartStyle.cuponContainer}`}>
-					<Coupon/>
-					<CartTotal proceedKey="cart" cartTotal={cartTotal}/>
-				</div>
+            <ProductTable
+              totalUniqueItems={totalUniqueItems}
+              items={items}
+              updateItemQuantity={updateItemQuantity}
+              removeItem={removeItem}
+            />
+            <ActionButton />
+            <hr />
+            <div className={`mt-4 ${cartStyle.cuponContainer}`}>
+              <Coupon />
+              <CartTotal proceedKey="cart" cartTotal={cartTotal} />
+            </div>
           </Fragment>
-          )
-
-        }
+        )}
         <OrderBump />
       </div>
     </div>
