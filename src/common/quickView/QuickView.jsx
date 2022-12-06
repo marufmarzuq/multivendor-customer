@@ -38,7 +38,7 @@ const QuickView = ({ product: quickViewProduct }) => {
         );
 
         if (found) {
-          product.price = found.price;
+          product.price     = found.price;
           product.variation = getVariant;
           setVariantPrice(found.price);
         }
@@ -46,7 +46,7 @@ const QuickView = ({ product: quickViewProduct }) => {
     }
   }, [selectVariant]);
 
-console.log(selectVariant);
+// console.log(selectVariant);
 
   const getVariation = (attribute, newVariant, index , variant_index ) => {
 
@@ -70,9 +70,12 @@ console.log(selectVariant);
   };
 
   const handleAddToCart = () => {
-    addItem(product, qty);
-    dispatch(setQuickView({ open: false, product: null }));
-    dispatch(setMiniCart({ open: true }));
+      product.id= `${product.id}${product.variation}`;
+      product.product_id = product.id;
+      console.log(product);
+      addItem(product, qty);
+      dispatch(setQuickView({ open: false, product: null }));
+      dispatch(setMiniCart({ open: true }));
   };
 
   const close = (e) => {
@@ -114,7 +117,7 @@ console.log(selectVariant);
                               key={key}
                               style={{ background: item?.code }}
                               className={`qvi-single-color-btn ${
-                                ( selectVariant[0]?.variant_index === key ) && "active"
+                                ( item == "" ) && "active"
                               }`}
                               onClick={(e) => getVariation("Colors", item.name, 0 , key )}
                               ></div>
@@ -135,7 +138,7 @@ console.log(selectVariant);
                                       <div
                                         key={i}
                                         className={`qvi-single-fabric-btn ${
-                                          ( selectVariant[i]?.variant_index === i ) && "active"
+                                          ( item == "" ) && "active"
                                         }`}
                                         onClick={() => getVariation(item, variant, key + 1 , i)}
                                       >
