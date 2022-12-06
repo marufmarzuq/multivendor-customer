@@ -206,6 +206,11 @@ input[type="number"] {
   padding: 12px;
   color: #fff;
 }
+.qvi-add-to-cart-btn.disabled {
+  background-color: #d1d1d1;
+  pointer-events: none;
+  cursor: not-allowed;
+}
 .qvi-extras {
   margin: 10px 0;
 }

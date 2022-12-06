@@ -124,7 +124,13 @@ const QuickView = ({ product }) => {
                     <HiOutlineChevronRight />
                   </button>
                 </div>
-                <div className="qvi-add-to-cart-btn">ADD TO CART</div>
+                <div
+                  className={`qvi-add-to-cart-btn ${
+                    (!size || !color || !fabric) && "disabled"
+                  }`}
+                >
+                  ADD TO CART
+                </div>
                 <div>
                   <div className="qvi-extras">
                     <span>SKU: </span>
