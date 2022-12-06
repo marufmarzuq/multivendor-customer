@@ -20,10 +20,8 @@ const QuickView = ({ product }) => {
   const [variantPrice, setVariantPrice] = useState("");
 
   useEffect(() => {
-
-    var tempProduct = JSON.parse(JSON.stringify(product));
-    tempProduct.selectedVariant = selectVariant;
-    Object.preventExtensions(tempProduct);
+    const quickViewProduct = {...product};
+    quickViewProduct.selectedVariant = selectVariant;
     
     var getVariant = "";
     // sort by index
@@ -42,14 +40,16 @@ const QuickView = ({ product }) => {
         );
 
         if (found) {
-          // tempProduct.price = found.price;
-          // tempProduct.variation = getVariant;
+          quickViewProduct.price = found.price;
+          quickViewProduct.variation = getVariant;
           setVariantPrice(found.price);
         }
       }
     }
   }, [selectVariant]);
 
+console.log(selectVariant);
+console.log(product);
   const getVariation = (attribute, newVariant, index) => {
     if (
       selectVariant.find((item) => item.attribute === attribute) !== undefined
@@ -76,11 +76,11 @@ const QuickView = ({ product }) => {
     dispatch(setMiniCart({ open: true }));
   };
 
-
   const close = (e) => {
     e.stopPropagation();
     dispatch(setQuickView({ open: false, product: null }));
   };
+  
   return (
     <div className="quick-view" key={product?.id}>
       <div className="quick-view-outer-container" onClick={close}>
