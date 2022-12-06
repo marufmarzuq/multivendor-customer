@@ -46,7 +46,6 @@ const QuickView = ({ product: quickViewProduct }) => {
     }
   }, [selectVariant]);
 
-// console.log(selectVariant);
 
   const getVariation = (attribute, newVariant, index , variant_index ) => {
 
