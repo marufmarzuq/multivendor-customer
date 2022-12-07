@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Table } from "react-bootstrap";
 import { AiOutlineDelete, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { priceFormat } from "../../../../../hooks/helper";
@@ -29,7 +29,17 @@ const ProductTable = ({totalUniqueItems,items,updateItemQuantity,removeItem}) =>
 							<Variations item={item}/>
 							<div><span className="me-1">Sold By : </span><span>{item.shop_name}</span></div>
 						</td>
-            <td className="py-3"><span className={ item.discount_price ? cartStyle.del : '' }>{priceFormat(item.unit_price)}</span>{priceFormat(item.discount_price)}</td>
+            <td className="py-3">
+              {
+                item.product_type !== "variation" ?
+                (
+                  <Fragment>
+                    <span className={ item.discount_price ? cartStyle.del : '' }>{priceFormat(item.unit_price)}</span>{priceFormat(item.discount_price)}
+                  </Fragment>
+                ) :
+                ( priceFormat(item.price) )
+              }
+            </td>
             <td className="py-3">
               <div className={cartStyle.quantity}>
                 <button onClick={() => updateItemQuantity(item.id, item.quantity - 1)}>
