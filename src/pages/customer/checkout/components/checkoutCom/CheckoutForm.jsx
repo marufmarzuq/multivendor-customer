@@ -42,10 +42,13 @@ const CheckoutForm = ({storesCart,cartTotal,metadata}) => {
 		finalValues.order_notes     =  values.order_notes ? values.order_notes : '';
 		finalValues.subtotal        =  cartTotal;
 		finalValues.shipping_info   =  shipping_info;
+	
 		if (metadata?.coupon) {
 			finalValues.coupon_discount =  metadata.coupon;
 			cartTotal -= parseFloat(metadata.coupon);
-		}
+		}else{
+            finalValues.coupon_discount   =  0;
+        }
 		finalValues.total           =  cartTotal;
 
 		setLoading(true);
@@ -56,7 +59,8 @@ const CheckoutForm = ({storesCart,cartTotal,metadata}) => {
 
 			toast.success(res.data.message);
 			action.resetForm();
-			navigate('/thank-you',{state: {...res.data}})
+            console.log(res.data);
+			// navigate('/thank-you',{state: {...res.data}});
 			})
 			.catch((e) => {
 			setLoading(false)

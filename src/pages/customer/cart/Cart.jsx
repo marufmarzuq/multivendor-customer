@@ -23,7 +23,6 @@ const Cart = () => {
     removeItem,
     metadata,
   } = useCart();
-  console.log(items);
 
   return (
     <div>

@@ -19,10 +19,11 @@ const { state } = useLocation();
 
 useEffect(() => {
     emptyCart();
-	clearCartMetadata();
-    setOrderData(state.packages)
-    setShippingAddress(state.shipping_address)
-    setCoupon(state.coupon_discount)
+	  clearCartMetadata();
+    setOrderData(state.packages);
+    setShippingAddress(state.shipping_address);
+    setCoupon(state.coupon_discount);
+    console.log(state);
 }, [state]);
 return (
     <div>
