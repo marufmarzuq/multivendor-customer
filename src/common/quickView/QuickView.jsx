@@ -117,7 +117,7 @@ const QuickView = ({ product, onClose }) => {
               />
               <div className="qvi-price">{priceFormat(variantPrice)}</div>
               <div className="qvi-short-desc">
-                {/* {product?.description} */}
+                {product?.description}
               </div>
               <div>
                 {product?.colors.length > 0 && (
