@@ -109,9 +109,16 @@ const VerticalCard = ({ product, addToCart }) => {
           {product.name}
         </div>
         <div className="vpcc-footer">
-          <div className="vpcc-price">
-            <bdi>{priceFormat(product.discount_price)}</bdi>
-          </div>
+          {product.product_type !== "variation" ? (
+            <div className="vpcc-price">
+                <bdi>{priceFormat(product.discount_price)}</bdi>
+                <del className={product?.discount_price ? " del ms-1" : "ms-1"}>
+                  {priceFormat(product.unit_price)}
+                </del>
+            </div>
+          ) : (
+            priceFormat(product.discount_price_range, "variable")
+          )}
           <div className="vpcc-rating">
             <Rating
               fullSymbol={<BsStarFill className="icon" color="#2e73e8" />}

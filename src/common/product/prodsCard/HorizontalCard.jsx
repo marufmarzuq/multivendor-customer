@@ -103,13 +103,18 @@ const HorizontalCard = ({ product, addToCart }) => {
               readonly
             />
           </div>
-          <div className="hpcc-price">
-            {priceFormat(product.discount_price)}
-          </div>
+            {product.product_type !== "variation" ? (
+              <div className="hpcc-price">
+                  <bdi>{priceFormat(product.discount_price)}</bdi>
+                  <del className={product?.discount_price ? " del ms-1" : "ms-1"}>
+                    {priceFormat(product.unit_price)}
+                  </del>
+              </div>
+            ) : (
+              priceFormat(product.discount_price_range, "variable")
+            )}
           <div className="hpcc-description">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil quam
-            consectetur dolor delectus? Inventore deserunt unde eos rem,
-            sapiente.
+            { product?.description }
           </div>
         </div>
         <div className="hpcc-actions">

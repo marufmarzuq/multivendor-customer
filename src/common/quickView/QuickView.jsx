@@ -27,7 +27,8 @@ const QuickView = ({ product, onClose }) => {
     let new_arr = [];
     selectVariant.map((item,key)=>{
       new_arr[item.index]=item
-    })
+    });
+    
     setActiveClass(new_arr);
 
 
