@@ -28,7 +28,7 @@ const QuickView = ({ product, onClose }) => {
     selectVariant.map((item,key)=>{
       new_arr[item.index]=item
     });
-    
+
     setActiveClass(new_arr);
 
 
@@ -95,7 +95,6 @@ const QuickView = ({ product, onClose }) => {
     e.stopPropagation();
     onClose();
   };
-
 
   return (
     <div className="quick-view" key={product?.id}>
