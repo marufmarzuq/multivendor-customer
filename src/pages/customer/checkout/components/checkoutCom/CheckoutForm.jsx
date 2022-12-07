@@ -59,8 +59,7 @@ const CheckoutForm = ({storesCart,cartTotal,metadata}) => {
 
 			toast.success(res.data.message);
 			action.resetForm();
-            console.log(res.data);
-			// navigate('/thank-you',{state: {...res.data}});
+			navigate('/thank-you',{state: {...res.data}});
 			})
 			.catch((e) => {
 			setLoading(false)
