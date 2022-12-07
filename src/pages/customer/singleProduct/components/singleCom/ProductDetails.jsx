@@ -29,7 +29,6 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
   const myItem = loading === false && getItem(singleProduct.id);
 
   const addToCart = (product) => {
-    product.product_id = product.id;
     product.total = parseFloat(product.price) - parseFloat(product.discount);
     addItem(product);
   };
