@@ -16,6 +16,7 @@ const QuickView = ({ product, onClose }) => {
 
   const [selectVariant, setSelectVariant] = useState([]);
   const [variantPrice, setVariantPrice] = useState("");
+  const [activeClass, setActiveClass] = useState("");
 
   useEffect(() => {
     product.selectedVariant = selectVariant;
@@ -23,12 +24,20 @@ const QuickView = ({ product, onClose }) => {
     // sort by index
     selectVariant.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
 
+    let new_arr = [];
+    selectVariant.map((item,key)=>{
+      new_arr[item.index]=item
+    })
+    setActiveClass(new_arr);
+
+
     // combination of variation
     if (selectVariant?.length > 0) {
       selectVariant.map((variant, key) => {
         let dash = `${selectVariant.length !== key + 1 ? "-" : ""}`;
         getVariant += `${variant.variation}${dash}`;
       });
+
       // get price
       if (getVariant !== "") {
         const found = product.variations.find(
@@ -86,6 +95,7 @@ const QuickView = ({ product, onClose }) => {
     onClose();
   };
 
+
   return (
     <div className="quick-view" key={product?.id}>
       <div className="quick-view-outer-container" onClick={close}>
@@ -120,10 +130,10 @@ const QuickView = ({ product, onClose }) => {
                             key={key}
                             style={{ background: item?.code }}
                             className={`qvi-single-color-btn ${
-                              item === "" && "active"
+                              key === activeClass[0].variant_index ? "active" : "" 
                             }`}
                             onClick={(e) =>
-                              getVariation("Colors", item.name, 0, key)
+                              getVariation("Colors", item.name, 0, key) 
                             }
                           ></div>
                         );
@@ -144,10 +154,9 @@ const QuickView = ({ product, onClose }) => {
                                   <div
                                     key={i}
                                     className={`qvi-single-fabric-btn ${
-                                      item === "" && "active"
-                                    }`}
+                                      i === activeClass[key+1].variant_index  && "active" }`}
                                     onClick={() =>
-                                      getVariation(item, variant, key + 1, i)
+                                      getVariation(item, variant, key + 1, i) 
                                     }
                                   >
                                     {variant}
