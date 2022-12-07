@@ -37,27 +37,6 @@ const RightComp = ({
         ) : (
           <ListView products={shopProduct} addToCart={addToCart} />
         )}
-        {/* {
-					shopProduct.map((product, index) => {
-						return (
-							layout == "grid" ?
-							(
-							<GridOne 
-								key={index}
-								product={product}
-								addToCart={addToCart}
-							/>
-							) :
-							(
-							<ListOne
-								key={index}
-								product={product}
-								addToCart={addToCart}
-							/>
-							)
-					);
-					})
-				} */}
 
         {shopProduct.length > 0 && (
           <FrontendPagination

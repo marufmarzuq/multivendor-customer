@@ -86,7 +86,7 @@ const HorizontalCard = ({ product, addToCart }) => {
     <>
       <div className="horizontal-prod-card-container">
         <div className="hpcc-image">
-          <img src={productPlaceholder} alt="" />
+          <img src={product.thumbnail_img} alt={product.name} />
         </div>
         <div className="hpcc-content">
           <div
