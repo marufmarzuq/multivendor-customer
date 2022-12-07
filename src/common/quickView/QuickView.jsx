@@ -130,7 +130,7 @@ const QuickView = ({ product, onClose }) => {
                             key={key}
                             style={{ background: item?.code }}
                             className={`qvi-single-color-btn ${
-                              key === activeClass[0].variant_index ? "active" : "" 
+                              key === activeClass[0]?.variant_index && "active" 
                             }`}
                             onClick={(e) =>
                               getVariation("Colors", item.name, 0, key) 
@@ -154,7 +154,7 @@ const QuickView = ({ product, onClose }) => {
                                   <div
                                     key={i}
                                     className={`qvi-single-fabric-btn ${
-                                      i === activeClass[key+1].variant_index  && "active" }`}
+                                      i === activeClass[key+1]?.variant_index  && "active" }`}
                                     onClick={() =>
                                       getVariation(item, variant, key + 1, i) 
                                     }
