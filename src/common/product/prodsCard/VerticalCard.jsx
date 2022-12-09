@@ -123,7 +123,7 @@ const VerticalCard = ({ product, addToCart }) => {
             <Rating
               fullSymbol={<BsStarFill className="icon" color="#2e73e8" />}
               emptySymbol={<BsStar className="icon" />}
-              initialRating={product?.total_rating}
+              initialRating={product?.avg_rating}
               readonly
             />
           </div>
