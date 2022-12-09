@@ -58,12 +58,15 @@ import Invoice from "../../common/invoice/Invoice";
 import { useSelector } from "react-redux";
 import Compare from "../../common/compare/Compare";
 import MiniCart from "../../common/miniCart/MiniCart";
+import QuickView from "../../common/quickView/QuickView";
 
 const Router = () => {
+  const { open: openQv, product } = useSelector((state) => state.quickView);
   const { open: openCompare, products } = useSelector((state) => state.compare);
   const { open: openMiniCart } = useSelector((state) => state.miniCart);
   return (
     <>
+      {openQv && <QuickView product={product} />}
       {openCompare && <Compare products={products} />}
       {openMiniCart && <MiniCart />}
       <Routes>

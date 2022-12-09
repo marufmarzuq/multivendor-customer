@@ -8,8 +8,9 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import { useCart } from "react-use-cart";
 import { setMiniCart } from "../../redux/slices/miniCart";
 import { priceFormat } from "../../hooks/helper";
+import { setQuickView } from "../../redux/slices/quickView";
 
-const QuickView = ({ product, onClose }) => {
+const QuickView = ({ product: quickViewProduct }) => {
   const [qty, setQty] = useState(1);
   const { addItem } = useCart();
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const QuickView = ({ product, onClose }) => {
   const [selectVariant, setSelectVariant] = useState([]);
   const [variantPrice, setVariantPrice] = useState("");
   const [activeClass, setActiveClass] = useState("");
+  const product = { ...quickViewProduct };
 
   useEffect(() => {
     product.selectedVariant = selectVariant;
@@ -25,12 +27,11 @@ const QuickView = ({ product, onClose }) => {
     selectVariant.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
 
     let new_arr = [];
-    selectVariant.map((item,key)=>{
-      new_arr[item.index]=item
+    selectVariant.map((item, key) => {
+      new_arr[item.index] = item;
     });
 
     setActiveClass(new_arr);
-
 
     // combination of variation
     if (selectVariant?.length > 0) {
@@ -87,13 +88,13 @@ const QuickView = ({ product, onClose }) => {
   const handleAddToCart = () => {
     product.id = `${product.id}${product.variation}`;
     addItem(product, qty);
-    onClose();
+    dispatch(setQuickView({ open: false, product: null }));
     dispatch(setMiniCart({ open: true }));
   };
 
   const close = (e) => {
     e.stopPropagation();
-    onClose();
+    dispatch(setQuickView({ open: false, product: null }));
   };
 
   return (
@@ -116,9 +117,7 @@ const QuickView = ({ product, onClose }) => {
                 readonly
               />
               <div className="qvi-price">{priceFormat(variantPrice)}</div>
-              <div className="qvi-short-desc">
-                {product?.description}
-              </div>
+              <div className="qvi-short-desc">{product?.description}</div>
               <div>
                 {product?.colors.length > 0 && (
                   <Fragment>
@@ -130,10 +129,10 @@ const QuickView = ({ product, onClose }) => {
                             key={key}
                             style={{ background: item?.code }}
                             className={`qvi-single-color-btn ${
-                              key === activeClass[0]?.variant_index && "active" 
+                              key === activeClass[0]?.variant_index && "active"
                             }`}
                             onClick={(e) =>
-                              getVariation("Colors", item.name, 0, key) 
+                              getVariation("Colors", item.name, 0, key)
                             }
                           ></div>
                         );
@@ -154,9 +153,12 @@ const QuickView = ({ product, onClose }) => {
                                   <div
                                     key={i}
                                     className={`qvi-single-fabric-btn ${
-                                      i === activeClass[key+1]?.variant_index  && "active" }`}
+                                      i ===
+                                        activeClass[key + 1]?.variant_index &&
+                                      "active"
+                                    }`}
                                     onClick={() =>
-                                      getVariation(item, variant, key + 1, i) 
+                                      getVariation(item, variant, key + 1, i)
                                     }
                                   >
                                     {variant}

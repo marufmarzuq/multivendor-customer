@@ -10,6 +10,7 @@ import { setCustomerWishlist } from "../../../redux/slices/wishlist";
 import { setCompare } from "../../../redux/slices/compare";
 import { priceFormat } from "../../../hooks/helper";
 import QuickView from "../../quickView/QuickView";
+import { setQuickView } from "../../../redux/slices/quickView";
 
 const VerticalCard = ({ product, addToCart }) => {
   const dispatch = useDispatch();
@@ -22,8 +23,7 @@ const VerticalCard = ({ product, addToCart }) => {
   const { products: comparedProds } = useSelector((state) => state?.compare);
 
   const handleAddToCart = () => {
-    setOpenQuickView(true);
-    product.product_id = product.id
+    dispatch(setQuickView({ open: true, product }));
     // add to cart
     if (product.product_type !== "variation") {
       addToCart(product);
@@ -31,7 +31,7 @@ const VerticalCard = ({ product, addToCart }) => {
   };
 
   const handleQuickView = () => {
-    setOpenQuickView(true);
+    dispatch(setQuickView({ open: true, product }));
   };
 
   const isWishlistedProd = () => {
@@ -111,10 +111,10 @@ const VerticalCard = ({ product, addToCart }) => {
         <div className="vpcc-footer">
           {product.product_type !== "variation" ? (
             <div className="vpcc-price">
-                <bdi>{priceFormat(product.discount_price)}</bdi>
-                <del className={product?.discount_price ? " del ms-1" : "ms-1"}>
-                  {priceFormat(product.unit_price)}
-                </del>
+              <bdi>{priceFormat(product.discount_price)}</bdi>
+              <del className={product?.discount_price ? " del ms-1" : "ms-1"}>
+                {priceFormat(product.unit_price)}
+              </del>
             </div>
           ) : (
             priceFormat(product.discount_price_range, "variable")
