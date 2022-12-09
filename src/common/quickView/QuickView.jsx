@@ -18,25 +18,28 @@ const QuickView = ({ product: quickViewProduct }) => {
   const [selectVariant, setSelectVariant] = useState([]);
   const [variantPrice, setVariantPrice] = useState("");
   const [activeClass, setActiveClass] = useState("");
+  const [processedProduct, setProcessedProduct] = useState([]);
   const product = { ...quickViewProduct };
 
-  useEffect(() => {
-    product.selectedVariant = selectVariant;
+  const handleVariantPrice = (newSelectedVariant) => {
+    product.selectedVariant = newSelectedVariant;
     let getVariant = "";
     // sort by index
-    selectVariant.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
+    newSelectedVariant.sort(
+      (a, b) => parseFloat(a.index) - parseFloat(b.index)
+    );
 
     let new_arr = [];
-    selectVariant.map((item, key) => {
+    newSelectedVariant.map((item, key) => {
       new_arr[item.index] = item;
     });
 
     setActiveClass(new_arr);
 
     // combination of variation
-    if (selectVariant?.length > 0) {
-      selectVariant.map((variant, key) => {
-        let dash = `${selectVariant.length !== key + 1 ? "-" : ""}`;
+    if (newSelectedVariant?.length > 0) {
+      newSelectedVariant.map((variant, key) => {
+        let dash = `${newSelectedVariant.length !== key + 1 ? "-" : ""}`;
         getVariant += `${variant.variation}${dash}`;
       });
 
@@ -53,9 +56,11 @@ const QuickView = ({ product: quickViewProduct }) => {
         }
       }
     }
-  }, [selectVariant]);
+    setProcessedProduct(product);
+  };
 
   const getVariation = (attribute, newVariant, index, variant_index) => {
+    let newSelectedVariant = [];
     if (
       selectVariant.find((item) => item.attribute === attribute) !== undefined
     ) {
@@ -63,7 +68,7 @@ const QuickView = ({ product: quickViewProduct }) => {
       let filteredVariant = selectVariant.filter(
         (item) => item.attribute !== attribute
       );
-      setSelectVariant([
+      newSelectedVariant = [
         ...filteredVariant,
         {
           attribute: attribute,
@@ -71,9 +76,9 @@ const QuickView = ({ product: quickViewProduct }) => {
           index: index,
           variant_index: variant_index,
         },
-      ]);
+      ];
     } else {
-      setSelectVariant([
+      newSelectedVariant = [
         ...selectVariant,
         {
           attribute: attribute,
@@ -81,13 +86,15 @@ const QuickView = ({ product: quickViewProduct }) => {
           index: index,
           variant_index: variant_index,
         },
-      ]);
+      ];
     }
+    setSelectVariant(newSelectedVariant);
+    handleVariantPrice(newSelectedVariant);
   };
 
   const handleAddToCart = () => {
-    product.id = `${product.id}${product.variation}`;
-    addItem(product, qty);
+    processedProduct.id = `${processedProduct.id}${processedProduct.variation}`;
+    addItem(processedProduct, qty);
     dispatch(setQuickView({ open: false, product: null }));
     dispatch(setMiniCart({ open: true }));
   };
