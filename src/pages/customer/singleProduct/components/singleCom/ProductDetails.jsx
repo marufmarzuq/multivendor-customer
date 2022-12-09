@@ -19,7 +19,7 @@ import { BsStar, BsStarFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { setCustomerWishlist } from "../../../../../redux/slices/wishlist";
 
-const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
+const ProductDetails = ({ loading, singleProduct }) => {
   const { addItem, updateItemQuantity, getItem } = useCart();
   const dispatch = useDispatch();
   const { products: wishlistedProds } = useSelector(
@@ -109,7 +109,7 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
             </div>
             <button
               className="btn ms-0 ms-md-5 btn-primary search-button"
-              onClick={handleClickToScroll}
+              onClick={() => console.log("DD")}
             >
               <AiOutlineMessage className="me-1" /> Message Seller
             </button>

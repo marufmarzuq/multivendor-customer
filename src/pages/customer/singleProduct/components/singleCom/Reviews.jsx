@@ -4,7 +4,7 @@ import ProgressBar from "./ProgressBar";
 import Rating from "react-rating";
 import { BsStar, BsStarFill } from "react-icons/bs";
 
-const Reviews = ({ loading, singleProduct, forwardedRef }) => {
+const Reviews = ({ loading, singleProduct }) => {
   return (
     <div>
       <div className=" mt-5 ">
@@ -71,7 +71,7 @@ const Reviews = ({ loading, singleProduct, forwardedRef }) => {
       </section>
 
       {/* Review Form */}
-      <section ref={forwardedRef}>
+      <section>
         <ReviewForm reviewStyle={reviewStyle} productId={singleProduct.id} />
       </section>
     </div>

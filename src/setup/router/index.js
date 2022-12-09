@@ -121,6 +121,7 @@ const Router = () => {
           <Route path="support" element={<Support />} />
           <Route path="seller-request" element={<SellerRequest />} />
           <Route path="seller-shop/:slug" element={<SellerShop />} />
+          <Route path="messege-seller" element={<SellerShop />} />
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:id" element={<BlogDetails />} />
           <Route path="thank-you" element={<ThankYou />} />
