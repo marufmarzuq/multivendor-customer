@@ -21,6 +21,7 @@ const ReceivedRefunds = () => {
   const [show, setShow] = useState(false);
   const [refund, setRefund] = useState({});
   const [statusUpdate, setStatusUpdate] = useState(false);
+  const [reload, setReload] = useState(false);
 
   const setModalOpen = (refund) => {
     setRefund(refund);
@@ -32,7 +33,7 @@ const ReceivedRefunds = () => {
       `refund-requests?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`,
       setReceivedRefunds
     );
-  }, [perPage, startDate, endDate, currentPage, statusUpdate]);
+  }, [perPage, startDate, endDate, currentPage, statusUpdate , reload ]);
 
   return (
     <div>
@@ -150,6 +151,7 @@ const ReceivedRefunds = () => {
           </Table>
           <DetailsModal
             refund={refund}
+            setReload={setReload}
             show={show}
             setShow={setShow}
             date={new Date()}

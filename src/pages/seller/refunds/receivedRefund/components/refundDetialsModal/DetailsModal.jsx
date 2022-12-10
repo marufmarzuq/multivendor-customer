@@ -8,11 +8,14 @@ import { useState } from "react";
 import { markutosSellerApi } from "../../../../../services/Api/api";
 import authHeader from "../../../../../services/auth-header";
 import { toast } from "react-toastify";
+import { useFormik } from "formik";
+import { FocusError } from "focus-formik-error";
+import * as yup from "yup";
 
 const options = [
-  { value: "pending", label: "Pending" },
-  { value: "approved", label: "Approve" },
-  { value: "rejected", label: "Reject" },
+  { value: "Pending", label: "Pending" },
+  { value: "Approve", label: "Approve" },
+  { value: "Reject", label: "Reject" },
 ];
 
 const DetailsModal = ({
@@ -22,65 +25,59 @@ const DetailsModal = ({
   date,
   statusUpdate,
   setStatusUpdate,
+  setReload,
 }) => {
-  const [refundStatus, setRefundStatus] = useState("");
-  const [submiting, setSubmitting] = useState(false);
-  const [rejectReason, setRejectReason] = useState("");
+  const [status, setStatus] = useState( refund?.refund_status || "Pending" );
+  const [loading, setLoading] = useState(false);
 
-  const handleRefund = () => {
-    setSubmitting(true);
-    if (refundStatus == "approved") {
+  const schema = yup.object().shape({
+    seller_note: yup.string().required("Seller note is required"),
+  });
+
+  const formik = useFormik({
+    validationSchema: schema,
+    initialValues: {
+      seller_note: refund?.seller_note || "",
+      seller_approval: refund?.seller_approval || "Pending",
+    },
+    enableReinitialize: true,
+    onSubmit: (values, action) => {
+      if (refund) {
+        values.request_id = refund.id;
+      }
+      setLoading(true);
       markutosSellerApi
-        .get(`/refund-requests/approve?request_id=${refund?.id}`, {
+        .post(`/refund-requests/change-status`, values, {
           headers: {
             Authorization: authHeader(),
           },
         })
         .then((res) => {
+          setReload((pre) => !pre);
+          setLoading(false);
           toast.success(res.data.message);
-          setStatusUpdate(!statusUpdate);
-          setSubmitting(false);
-          setShow(!show);
+          setShow(false);
+          
         })
-        .catch((err) => {
-          toast.error(err.message);
-          setSubmitting(false);
+        .catch((e) => {
+          setLoading(false);
+          toast.error(e.message);
         });
-    } else if (refundStatus == "rejected") {
-      markutosSellerApi
-        .get(
-          `/refund-requests/reject?request_id=${refund?.id}?reason=${rejectReason}`,
-          {
-            headers: {
-              Authorization: authHeader(),
-            },
-          }
-        )
-        .then((res) => {
-          toast.success(res.data.message);
-          setStatusUpdate(!statusUpdate);
-          setSubmitting(false);
-          setShow(!show);
-        })
-        .catch((err) => {
-          toast.error(err.message);
-          setSubmitting(false);
-        });
-    } else {
-      setSubmitting(false);
-    }
-  };
+    },
+  });
 
-  useEffect(() => {
-    setRefundStatus(refund.refund_status);
-    setRejectReason(refund?.reject_reason);
-  }, [date]);
-
-  console.log(refund);
-  console.log(refundStatus);
+  const {
+    values,
+    setErrors,
+    handleChange,
+    touched,
+    errors,
+    handleSubmit,
+    handleBlur,
+    setFieldValue,
+  } = formik;
 
   return (
-    <>
       <Modal
         show={show}
         onHide={() => setShow(false)}
@@ -95,138 +92,136 @@ const DetailsModal = ({
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <section>
-            <div className={modalStyle.orderSummary}>
-              <div className={modalStyle.topBar}>
-                <h6>Refund Details</h6>
+          <form  onSubmit={(e) => e.preventDefault()}>
+				    <FocusError formik={formik} />
+            <section>
+              <div className={modalStyle.orderSummary}>
+                <div className={modalStyle.topBar}>
+                  <h6>Refund Details</h6>
 
-                <div className={modalStyle.approveButtonsContainer}>
-                  <Select
-                    isDisabled={refund.refund_status !== "pending"}
-                    style={{
-                      height: "25px",
-                    }}
-                    value={options.find((option) => {
-                      return option.value == refundStatus;
-                    })}
-                    onChange={(e) => setRefundStatus(e.value)}
-                    options={options}
-                    placeholder="Approval"
-                  />
+                  <div className={modalStyle.approveButtonsContainer}>
+                    <Select
+                      style={{
+                        height: "25px",
+                      }}
+                      value={options.find((option) => {
+                        return option.value == status ;
+                      })}
+                      onChange={(e) => setStatus(e.value) + setFieldValue("seller_approval",e.value)}
+                      options={options}
+                      placeholder="Seller Approval"
+                    />
 
-                  <button
-                    onClick={handleRefund}
-                    disabled={
-                      refund?.refund_status !== "pending" ||
-                      submiting ||
-                      refundStatus == "pending"
-                    }
-                    type="button"
-                    className="btn btn-outline-success"
-                  >
-                    {submiting ? (
-                      <div>
-                        <div
-                          className="spinner-border spinner-border-sm me-1"
-                          role="status"
-                        >
-                          <span className="visually-hidden">Loading...</span>
+                    <button
+                      onClick={handleSubmit}
+                      disabled={loading}
+                      type="submit"
+                      className="btn btn-outline-success"
+                    >
+                      {loading ? (
+                        <div>
+                          <div
+                            className="spinner-border spinner-border-sm me-1"
+                            role="status"
+                          >
+                            <span className="visually-hidden">Loading...</span>
+                          </div>
+                          Updating
                         </div>
-                        Updating
-                      </div>
-                    ) : (
-                      "Confirm"
-                    )}
-                  </button>
+                      ) : (
+                        "Confirm"
+                      )}
+                    </button>
+                  </div>
                 </div>
-              </div>
 
-              <div className={modalStyle.orderBody}>
-                <Row>
-                  <Col xs="6" md="3">
-                    <h6>Refund Reason from Customer</h6>
-                  </Col>
-                  <Col xs="6" md="9">
-                    <h5>{refund?.reason}</h5>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col xs="6" md="3">
-                    <h6> Refund Amount</h6>
-                  </Col>
-                  <Col xs="6" md="9">
-                    <h5>$ {refund?.refund_amount} </h5>
-                  </Col>
-                </Row>
-                {refundStatus == "rejected" && (
+                <div className={modalStyle.orderBody}>
                   <Row>
                     <Col xs="6" md="3">
-                      <h6> Reject Reason</h6>{" "}
+                      <h6>Refund Reason from Customer</h6>
                     </Col>
                     <Col xs="6" md="9">
-                      <textarea
-                        value={rejectReason}
-                        type="text"
-                        onChange={(e) => setRejectReason(e.target.value)}
-                        id=""
-                        cols="30"
-                        rows="3"
-                      ></textarea>
+                      <h5>{refund?.reason}</h5>
                     </Col>
                   </Row>
-                )}
+                  <Row>
+                    <Col xs="6" md="3">
+                      <h6> Refund Amount</h6>
+                    </Col>
+                    <Col xs="6" md="9">
+                      <h5>$ {refund?.refund_amount} </h5>
+                    </Col>
+                  </Row>
+                  <Row>
+                      <Col xs="6" md="3">
+                        <h6> Seller Notes : </h6>{" "}
+                      </Col>
+                      <Col xs="6" md="9">
+                        <textarea
+                          value={values.seller_note}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                          id="seller_note"
+                          cols="30"
+                          rows="3"
+                        ></textarea>
+                        {errors.seller_note && touched.seller_note && (
+                          <small className="text-danger"> {errors.seller_note} </small>
+                        )}
+                      </Col>
+                    </Row>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
 
-          <section>
-            <div className="row mt-5">
-              <div className="col-12">
-                <div className={modalStyle.orderSummary}>
-                  <h6>Product Details</h6>
+            <section>
+              <div className="row mt-5">
+                <div className="col-12">
+                  <div className={modalStyle.orderSummary}>
+                    <h6>Product Details</h6>
 
-                  <div className={modalStyle.orderBody}>
-                    <Table borderless responsive>
-                      <thead>
-                        <tr className="mb-5">
-                          {/* <th>#</th> */}
-                          <th>Product</th>
+                    <div className={modalStyle.orderBody}>
+                      <Table borderless responsive>
+                        <thead>
+                          <tr className="mb-5">
+                            {/* <th>#</th> */}
+                            <th>Product</th>
 
-                          {/* <th>Quantity</th> */}
-                          {/* <th>Price</th> */}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {refund?.products?.map((product) => {
-                          return (
-                            <tr key={product.name}>
-                              {/* <td>1</td> */}
-                              <td>{product?.name} </td>
+                            {/* <th>Quantity</th> */}
+                            {/* <th>Price</th> */}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {refund?.products?.map((product) => {
+                            return (
+                              <tr key={product.name}>
+                                {/* <td>1</td> */}
+                                <td>{product?.name} </td>
 
-                              {/* <td>1</td> */}
+                                {/* <td>1</td> */}
 
-                              {/* <td>৳1,000.000</td> */}
-                            </tr>
-                          );
-                        })}
-                        {/* <tr>
-                          <td>1</td>
-                          <td>Nokia </td>
+                                {/* <td>৳1,000.000</td> */}
+                              </tr>
+                            );
+                          })}
+                          {/* <tr>
+                            <td>1</td>
+                            <td>Nokia </td>
 
-                          <td>1</td>
+                            <td>1</td>
 
-                          <td>৳1,000.000</td>
-                        </tr> */}
-                      </tbody>
-                    </Table>
+                            <td>৳1,000.000</td>
+                          </tr> */}
+                        </tbody>
+                      </Table>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </form>
         </Modal.Body>
       </Modal>
-    </>
   );
 };
 
