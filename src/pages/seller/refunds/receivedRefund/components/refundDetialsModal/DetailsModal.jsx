@@ -11,7 +11,6 @@ import { toast } from "react-toastify";
 
 const options = [
   { value: "pending", label: "Pending" },
-  // { value: "wise", label: "Wise" },
   { value: "approved", label: "Approve" },
   { value: "rejected", label: "Reject" },
 ];

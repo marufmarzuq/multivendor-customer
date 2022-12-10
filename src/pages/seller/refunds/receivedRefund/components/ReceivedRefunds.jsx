@@ -9,6 +9,7 @@ import DateRangeSelector from "../../../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import DetailsModal from "./refundDetialsModal/DetailsModal";
 import { priceFormat } from "../../../../../hooks/helper";
+import { BiEdit } from "react-icons/bi";
 
 const ReceivedRefunds = () => {
   const { receivedRefunds, last_page, per_page, current_page, loading, error } =
@@ -80,6 +81,9 @@ const ReceivedRefunds = () => {
                 <th className="text-center">
                   <small>Seller Approval</small>
                 </th>
+                <th className="text-center">
+                  <small>Action</small>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -132,7 +136,13 @@ const ReceivedRefunds = () => {
                       </td>
                       <td className="text-center">{item.admin_approval}</td>
                       <td className="text-center">{item.seller_approval}</td>
-                      <td></td>
+                      <td>
+                          <button
+                            className={receivedRefundStyle.modalOpen}
+                            onClick={() => setModalOpen(item)}>
+                            <BiEdit />
+                          </button>
+                      </td>
                     </tr>
                   );
                 })}

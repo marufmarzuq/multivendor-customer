@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import allProductsStyle from "./allProducts.module.css";
-import { BiCopy, BiEdit, BiX } from "react-icons/bi";
+import { BiCopy, BiEdit } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getApi } from "../../../../../api/apiCall";
