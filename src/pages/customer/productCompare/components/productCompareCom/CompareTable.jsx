@@ -18,6 +18,7 @@ const CompareTable = () => {
   const handleDelete = (id) => {
     let newProducts = comparedProds.filter((prod) => prod.id !== id);
     dispatch(setCompare({ open: false, products: newProducts }));
+    localStorage.setItem("compared-prods", JSON.stringify(newProducts));
   };
 
   const addToCart = (product) => {

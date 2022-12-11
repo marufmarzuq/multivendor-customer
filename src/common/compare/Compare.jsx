@@ -19,9 +19,11 @@ const Compare = ({ products }) => {
   const handleDelete = (id) => {
     let newProducts = products.filter((prod) => prod.id !== id);
     dispatch(setCompare({ open: true, products: newProducts }));
+    localStorage.setItem("compared-prods", JSON.stringify(newProducts));
   };
   const handleDeleteAll = () => {
     dispatch(setCompare({ open: true, products: [] }));
+    localStorage.setItem("compared-prods", JSON.stringify([]));
     setTimeout(() => {
       dispatch(setCompare({ open: false, products: [] }));
     }, 1000);
