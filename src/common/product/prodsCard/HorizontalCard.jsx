@@ -6,11 +6,11 @@ import { IoEyeOutline } from "react-icons/io5";
 import Rating from "react-rating";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { productPlaceholder } from "../../../assets";
 import { setCompare } from "../../../redux/slices/compare";
 import { setCustomerWishlist } from "../../../redux/slices/wishlist";
 import { priceFormat } from "../../../hooks/helper";
 import QuickView from "../../quickView/QuickView";
+import { setQuickView } from "../../../redux/slices/quickView";
 
 const HorizontalCard = ({ product, addToCart }) => {
   const dispatch = useDispatch();
@@ -19,10 +19,11 @@ const HorizontalCard = ({ product, addToCart }) => {
     (state) => state?.customerWishlist
   );
   const [openQuickView, setOpenQuickView] = useState(false);
+
   const { products: comparedProds } = useSelector((state) => state?.compare);
 
   const handleAddToCart = () => {
-    setOpenQuickView(true);
+    dispatch(setQuickView({ open: true, product }));
     // add to cart
     if (product.product_type !== "variation") {
       addToCart(product);
@@ -30,7 +31,7 @@ const HorizontalCard = ({ product, addToCart }) => {
   };
 
   const handleQuickView = () => {
-    setOpenQuickView(true);
+    dispatch(setQuickView({ open: true, product }));
   };
 
   const isWishlistedProd = () => {
@@ -67,7 +68,6 @@ const HorizontalCard = ({ product, addToCart }) => {
     if (isComparedProd()) {
       dispatch(setCompare({ open: true, products: comparedProds }));
     } else {
-      console.log("Clicked");
       let newCompareProds = [...comparedProds];
       if (comparedProds.length === 4) {
         newCompareProds.shift();
@@ -99,23 +99,21 @@ const HorizontalCard = ({ product, addToCart }) => {
             <Rating
               fullSymbol={<BsStarFill className="icon" color="#2e73e8" />}
               emptySymbol={<BsStar className="icon" />}
-              initialRating={product?.total_rating}
+              initialRating={product?.avg_rating}
               readonly
             />
           </div>
-            {product.product_type !== "variation" ? (
-              <div className="hpcc-price">
-                  <bdi>{priceFormat(product.discount_price)}</bdi>
-                  <del className={product?.discount_price ? " del ms-1" : "ms-1"}>
-                    {priceFormat(product.unit_price)}
-                  </del>
-              </div>
-            ) : (
-              priceFormat(product.discount_price_range, "variable")
-            )}
-          <div className="hpcc-description">
-            { product?.description }
-          </div>
+          {product.product_type !== "variation" ? (
+            <div className="hpcc-price">
+              <bdi>{priceFormat(product.discount_price)}</bdi>
+              <del className={product?.discount_price ? " del ms-1" : "ms-1"}>
+                {priceFormat(product.unit_price)}
+              </del>
+            </div>
+          ) : (
+            priceFormat(product.discount_price_range, "variable")
+          )}
+          <div className="hpcc-description">{product?.description}</div>
         </div>
         <div className="hpcc-actions">
           <div className="hpcc-btns" onClick={handleAddToCart}>

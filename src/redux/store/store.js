@@ -23,6 +23,7 @@ import { shopSettingSlice } from "../slices/seller/shopSetting";
 import { customerWishlistSlice } from "../slices/wishlist";
 import { compareSlice } from "../slices/compare";
 import { miniCartSlice } from "../slices/miniCart";
+import { quickViewSlice } from "../slices/quickView";
 
 export const store = configureStore({
   reducer: {
@@ -37,6 +38,7 @@ export const store = configureStore({
     shopSettingReducer: shopSettingSlice.reducer,
     authSlice: authSlice.reducer,
     customerWishlist: customerWishlistSlice.reducer,
+    quickView: quickViewSlice.reducer,
     compare: compareSlice.reducer,
     miniCart: miniCartSlice.reducer,
   },

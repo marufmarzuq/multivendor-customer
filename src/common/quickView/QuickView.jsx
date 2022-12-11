@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useDispatch } from "react-redux";
 import "./quickView.css";
 import { BsChevronRight, BsStar, BsStarFill } from "react-icons/bs";
@@ -8,8 +8,9 @@ import { HiOutlineChevronLeft, HiOutlineChevronRight } from "react-icons/hi";
 import { useCart } from "react-use-cart";
 import { setMiniCart } from "../../redux/slices/miniCart";
 import { priceFormat } from "../../hooks/helper";
+import { setQuickView } from "../../redux/slices/quickView";
 
-const QuickView = ({ product, onClose }) => {
+const QuickView = ({ product: quickViewProduct }) => {
   const [qty, setQty] = useState(1);
   const { addItem } = useCart();
   const dispatch = useDispatch();
@@ -17,25 +18,28 @@ const QuickView = ({ product, onClose }) => {
   const [selectVariant, setSelectVariant] = useState([]);
   const [variantPrice, setVariantPrice] = useState("");
   const [activeClass, setActiveClass] = useState("");
+  const [processedProduct, setProcessedProduct] = useState([]);
+  const product = { ...quickViewProduct };
 
-  useEffect(() => {
-    product.selectedVariant = selectVariant;
+  const handleVariantPrice = (newSelectedVariant) => {
+    product.selectedVariant = newSelectedVariant;
     let getVariant = "";
     // sort by index
-    selectVariant.sort((a, b) => parseFloat(a.index) - parseFloat(b.index));
+    newSelectedVariant.sort(
+      (a, b) => parseFloat(a.index) - parseFloat(b.index)
+    );
 
     let new_arr = [];
-    selectVariant.map((item,key)=>{
-      new_arr[item.index]=item
+    newSelectedVariant.map((item, key) => {
+      new_arr[item.index] = item;
     });
 
     setActiveClass(new_arr);
 
-
     // combination of variation
-    if (selectVariant?.length > 0) {
-      selectVariant.map((variant, key) => {
-        let dash = `${selectVariant.length !== key + 1 ? "-" : ""}`;
+    if (newSelectedVariant?.length > 0) {
+      newSelectedVariant.map((variant, key) => {
+        let dash = `${newSelectedVariant.length !== key + 1 ? "-" : ""}`;
         getVariant += `${variant.variation}${dash}`;
       });
 
@@ -52,9 +56,11 @@ const QuickView = ({ product, onClose }) => {
         }
       }
     }
-  }, [selectVariant]);
+    setProcessedProduct(product);
+  };
 
   const getVariation = (attribute, newVariant, index, variant_index) => {
+    let newSelectedVariant = [];
     if (
       selectVariant.find((item) => item.attribute === attribute) !== undefined
     ) {
@@ -62,7 +68,7 @@ const QuickView = ({ product, onClose }) => {
       let filteredVariant = selectVariant.filter(
         (item) => item.attribute !== attribute
       );
-      setSelectVariant([
+      newSelectedVariant = [
         ...filteredVariant,
         {
           attribute: attribute,
@@ -70,9 +76,9 @@ const QuickView = ({ product, onClose }) => {
           index: index,
           variant_index: variant_index,
         },
-      ]);
+      ];
     } else {
-      setSelectVariant([
+      newSelectedVariant = [
         ...selectVariant,
         {
           attribute: attribute,
@@ -80,20 +86,22 @@ const QuickView = ({ product, onClose }) => {
           index: index,
           variant_index: variant_index,
         },
-      ]);
+      ];
     }
+    setSelectVariant(newSelectedVariant);
+    handleVariantPrice(newSelectedVariant);
   };
 
   const handleAddToCart = () => {
-    product.id = `${product.id}${product.variation}`;
-    addItem(product, qty);
-    onClose();
+    processedProduct.id = `${processedProduct.id}${processedProduct.variation}`;
+    addItem(processedProduct, qty);
+    dispatch(setQuickView({ open: false, product: null }));
     dispatch(setMiniCart({ open: true }));
   };
 
   const close = (e) => {
     e.stopPropagation();
-    onClose();
+    dispatch(setQuickView({ open: false, product: null }));
   };
 
   return (
@@ -116,9 +124,7 @@ const QuickView = ({ product, onClose }) => {
                 readonly
               />
               <div className="qvi-price">{priceFormat(variantPrice)}</div>
-              <div className="qvi-short-desc">
-                {product?.description}
-              </div>
+              <div className="qvi-short-desc">{product?.description}</div>
               <div>
                 {product?.colors.length > 0 && (
                   <Fragment>
@@ -130,10 +136,10 @@ const QuickView = ({ product, onClose }) => {
                             key={key}
                             style={{ background: item?.code }}
                             className={`qvi-single-color-btn ${
-                              key === activeClass[0]?.variant_index && "active" 
+                              key === activeClass[0]?.variant_index && "active"
                             }`}
                             onClick={(e) =>
-                              getVariation("Colors", item.name, 0, key) 
+                              getVariation("Colors", item.name, 0, key)
                             }
                           ></div>
                         );
@@ -154,9 +160,12 @@ const QuickView = ({ product, onClose }) => {
                                   <div
                                     key={i}
                                     className={`qvi-single-fabric-btn ${
-                                      i === activeClass[key+1]?.variant_index  && "active" }`}
+                                      i ===
+                                        activeClass[key + 1]?.variant_index &&
+                                      "active"
+                                    }`}
                                     onClick={() =>
-                                      getVariation(item, variant, key + 1, i) 
+                                      getVariation(item, variant, key + 1, i)
                                     }
                                   >
                                     {variant}

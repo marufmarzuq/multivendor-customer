@@ -18,9 +18,11 @@ import Rating from "react-rating";
 import { BsStar, BsStarFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { setCustomerWishlist } from "../../../../../redux/slices/wishlist";
+import { useNavigate } from "react-router-dom";
 
-const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
+const ProductDetails = ({ loading, singleProduct }) => {
   const { addItem, updateItemQuantity, getItem } = useCart();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { products: wishlistedProds } = useSelector(
     (state) => state?.customerWishlist
@@ -109,7 +111,7 @@ const ProductDetails = ({ loading, singleProduct, handleClickToScroll }) => {
             </div>
             <button
               className="btn ms-0 ms-md-5 btn-primary search-button"
-              onClick={handleClickToScroll}
+              onClick={() => navigate("../messege-seller")}
             >
               <AiOutlineMessage className="me-1" /> Message Seller
             </button>

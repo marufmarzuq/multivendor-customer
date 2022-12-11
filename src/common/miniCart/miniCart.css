@@ -168,7 +168,7 @@
 .mc-total {
   display: flex;
   justify-content: space-between;
-  font-size: 24px;
+  font-size: 22px;
   border-top: 1px solid #efefef;
   padding: 5px 0 18px;
 }

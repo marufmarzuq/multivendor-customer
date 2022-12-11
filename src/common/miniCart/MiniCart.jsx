@@ -27,7 +27,7 @@ const MiniCart = ({ product }) => {
     removeItem,
     metadata,
   } = useCart();
-console.log(items);
+  console.log(items);
   return (
     <div className="mini-cart">
       <div className="mini-cart-outer-container" onClick={close}>
@@ -40,7 +40,7 @@ console.log(items);
             {items?.length ? (
               <>
                 <div className="mini-cart-scrollable">
-                  {items?.map((prod,key) => (
+                  {items?.map((prod, key) => (
                     <div className="single-mini-cart-item" key={key}>
                       <div className="smci-img">
                         <img src={prod.thumbnail_img} alt={prod.name} />
@@ -56,10 +56,9 @@ console.log(items);
                               <GrClose />
                             </div>
                           </div>
-                          {
-                            prod.product_type == "variation" &&
-                            <Variations item={prod}/>
-                          }
+                          {prod.product_type == "variation" && (
+                            <Variations item={prod} />
+                          )}
                         </div>
                         <div className="smcir-bottom">
                           <div className="smcir-qty">
