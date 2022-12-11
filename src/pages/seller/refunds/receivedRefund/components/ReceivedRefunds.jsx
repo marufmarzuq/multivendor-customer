@@ -9,6 +9,7 @@ import DateRangeSelector from "../../../../../common/ui/dateRangeSelector";
 import SimpleLoading from "../../../../../common/loading/SimpleLoading";
 import DetailsModal from "./refundDetialsModal/DetailsModal";
 import { priceFormat } from "../../../../../hooks/helper";
+import { BiEdit } from "react-icons/bi";
 
 const ReceivedRefunds = () => {
   const { receivedRefunds, last_page, per_page, current_page, loading, error } =
@@ -20,6 +21,7 @@ const ReceivedRefunds = () => {
   const [show, setShow] = useState(false);
   const [refund, setRefund] = useState({});
   const [statusUpdate, setStatusUpdate] = useState(false);
+  const [reload, setReload] = useState(false);
 
   const setModalOpen = (refund) => {
     setRefund(refund);
@@ -31,7 +33,7 @@ const ReceivedRefunds = () => {
       `refund-requests?date_from=${startDate}&date_to=${endDate}&per_page=${perPage}&page=${currentPage}`,
       setReceivedRefunds
     );
-  }, [perPage, startDate, endDate, currentPage, statusUpdate]);
+  }, [perPage, startDate, endDate, currentPage, statusUpdate , reload ]);
 
   return (
     <div>
@@ -79,6 +81,9 @@ const ReceivedRefunds = () => {
                 </th>
                 <th className="text-center">
                   <small>Seller Approval</small>
+                </th>
+                <th className="text-center">
+                  <small>Action</small>
                 </th>
               </tr>
             </thead>
@@ -132,7 +137,13 @@ const ReceivedRefunds = () => {
                       </td>
                       <td className="text-center">{item.admin_approval}</td>
                       <td className="text-center">{item.seller_approval}</td>
-                      <td></td>
+                      <td>
+                          <button
+                            className={receivedRefundStyle.modalOpen}
+                            onClick={() => setModalOpen(item)}>
+                            <BiEdit />
+                          </button>
+                      </td>
                     </tr>
                   );
                 })}
@@ -140,6 +151,7 @@ const ReceivedRefunds = () => {
           </Table>
           <DetailsModal
             refund={refund}
+            setReload={setReload}
             show={show}
             setShow={setShow}
             date={new Date()}
