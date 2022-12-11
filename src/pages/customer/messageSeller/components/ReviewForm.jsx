@@ -20,7 +20,6 @@ const ReviewForm = () => {
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(5);
   const user = loadFromLocalStorage();
-  console.log(user);
 
   const formik = useFormik({
     validationSchema: schema,
