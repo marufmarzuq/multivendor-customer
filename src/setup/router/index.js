@@ -59,6 +59,7 @@ import { useSelector } from "react-redux";
 import Compare from "../../common/compare/Compare";
 import MiniCart from "../../common/miniCart/MiniCart";
 import QuickView from "../../common/quickView/QuickView";
+import MessageSeller from "../../pages/customer/messageSeller/MessageSeller";
 
 const Router = () => {
   const { open: openQv, product } = useSelector((state) => state.quickView);
@@ -121,7 +122,7 @@ const Router = () => {
           <Route path="support" element={<Support />} />
           <Route path="seller-request" element={<SellerRequest />} />
           <Route path="seller-shop/:slug" element={<SellerShop />} />
-          <Route path="messege-seller" element={<SellerShop />} />
+          <Route path="messege-seller" element={<MessageSeller />} />
           <Route path="blog" element={<Blog />} />
           <Route path="blog/:id" element={<BlogDetails />} />
           <Route path="thank-you" element={<ThankYou />} />
