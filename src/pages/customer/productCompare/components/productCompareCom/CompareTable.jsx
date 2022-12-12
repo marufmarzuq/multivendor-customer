@@ -8,6 +8,7 @@ import Variation from "../../../../../common/product/variation/Variation";
 import { useDispatch, useSelector } from "react-redux";
 import { productPlaceholder } from "../../../../../assets";
 import { setCompare } from "../../../../../redux/slices/compare";
+import { setQuickView } from "../../../../../redux/slices/quickView";
 
 const CompareTable = () => {
   const { products: comparedProds } = useSelector((state) => state?.compare);
@@ -21,8 +22,13 @@ const CompareTable = () => {
     localStorage.setItem("compared-prods", JSON.stringify(newProducts));
   };
 
-  const addToCart = (product) => {
-    addItem(product);
+  const handleAddToCart = (product) => {
+    // add to cart
+    if (product.product_type !== "variation") {
+      addItem(product);
+    } else {
+      dispatch(setQuickView({ open: true, product }));
+    }
   };
 
   console.log(comparedProds);
@@ -59,7 +65,12 @@ const CompareTable = () => {
           <td>Add to cart</td>
           {comparedProds?.map((p, k) => (
             <td key={k}>
-              <div className="qt-add-to-cart-btn">ADD TO CART</div>
+              <div
+                className="qt-add-to-cart-btn"
+                onClick={() => handleAddToCart(p)}
+              >
+                ADD TO CART
+              </div>
             </td>
           ))}
         </tr>
@@ -72,13 +83,17 @@ const CompareTable = () => {
         <tr>
           <td>Availability</td>
           {comparedProds?.map((p) => (
-            <td style={{ color: "green" }}>In Stock</td>
+            <td
+              style={{ color: p.stock_status === "In-Stock" ? "green" : "red" }}
+            >
+              {p.stock_status}
+            </td>
           ))}
         </tr>
         <tr>
           <td>Sku</td>
           {comparedProds?.map((p, i) => (
-            <td>FSH_ILVX4{i + 1}</td>
+            <td>-</td>
           ))}
         </tr>
         <tr>

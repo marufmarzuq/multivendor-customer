@@ -23,10 +23,11 @@ const VerticalCard = ({ product, addToCart }) => {
   const { products: comparedProds } = useSelector((state) => state?.compare);
 
   const handleAddToCart = () => {
-    dispatch(setQuickView({ open: true, product }));
     // add to cart
     if (product.product_type !== "variation") {
       addToCart(product);
+    } else {
+      dispatch(setQuickView({ open: true, product }));
     }
   };
 
