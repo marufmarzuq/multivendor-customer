@@ -4,12 +4,12 @@ import ReviewForm from "./components/ReviewForm";
 
 const MessageSeller = () => {
   const location = useLocation();
-  const { seller_id } = location.state;
+  const { shop_slug } = location.state;
 
   return (
     <div className="container">
       <section className="my-5">
-        <ReviewForm seller_id={seller_id} />
+        <ReviewForm shop_slug={shop_slug} />
       </section>
     </div>
   );

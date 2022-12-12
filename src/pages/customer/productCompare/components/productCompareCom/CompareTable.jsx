@@ -25,36 +25,39 @@ const CompareTable = () => {
     addItem(product);
   };
 
+  console.log(comparedProds);
+
   return comparedProds ? (
     <table className="compare-table">
       <tbody>
         <tr>
           <td>Image</td>
-          {comparedProds?.map((p,key) => (
+          {comparedProds?.map((p, key) => (
             <td style={{ width: `${100 / comparedProds?.length}%` }} key={key}>
-              <img
-                className="compare-table-img"
-                src={productPlaceholder}
-                alt=""
-              />
+              <img className="compare-table-img" src={p.thumbnail_img} alt="" />
             </td>
           ))}
         </tr>
         <tr>
           <td>Name</td>
-          {comparedProds?.map((p,i) => (
-            <td  key={i}>{p.name}</td>
+          {comparedProds?.map((p, i) => (
+            <td key={i}>{p.name}</td>
           ))}
         </tr>
         <tr>
           <td>Price</td>
-          {comparedProds?.map((p,j) => (
-            <td key={j}>${p.price}</td>
+          {comparedProds?.map((p, i) => (
+            <td key={i}>
+              <bdi>{priceFormat(p.discount_price)}</bdi>
+              <del className={p?.discount_price ? " del ms-1" : "ms-1"}>
+                {priceFormat(p.unit_price)}
+              </del>
+            </td>
           ))}
         </tr>
         <tr>
           <td>Add to cart</td>
-          {comparedProds?.map((p,k) => (
+          {comparedProds?.map((p, k) => (
             <td key={k}>
               <div className="qt-add-to-cart-btn">ADD TO CART</div>
             </td>
@@ -63,10 +66,7 @@ const CompareTable = () => {
         <tr>
           <td>Description</td>
           {comparedProds?.map((p) => (
-            <td>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod non
-              deserunt tenetur sint cumque aut!
-            </td>
+            <td>{p.description}</td>
           ))}
         </tr>
         <tr>

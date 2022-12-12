@@ -114,7 +114,7 @@ const ProductDetails = ({ loading, singleProduct }) => {
               className="btn ms-0 ms-md-5 btn-primary search-button"
               onClick={() =>
                 navigate("../messege-seller", {
-                  state: { seller_id: singleProduct.user_id },
+                  state: { shop_slug: singleProduct.shop_slug },
                 })
               }
             >

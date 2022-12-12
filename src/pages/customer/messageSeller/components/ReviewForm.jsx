@@ -16,7 +16,7 @@ const schema = yup.object().shape({
   email: yup.string().email().required("Email is required."),
 });
 
-const ReviewForm = ({ seller_id }) => {
+const ReviewForm = ({ shop_slug }) => {
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(5);
   const user = loadFromLocalStorage();
@@ -32,7 +32,7 @@ const ReviewForm = ({ seller_id }) => {
     onSubmit: (values, action) => {
       const finalValues = values;
       finalValues.rating = rating;
-      finalValues.seller_id = seller_id;
+      finalValues.shop_slug = shop_slug;
       finalValues.anonymous = values.anonymous == ["on"] ? 1 : 0;
       setLoading(true);
       markutosFrontendApi
