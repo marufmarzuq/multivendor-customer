@@ -21,6 +21,7 @@ import { setCustomerWishlist } from "../../../../../redux/slices/wishlist";
 import { useNavigate } from "react-router-dom";
 
 const ProductDetails = ({ loading, singleProduct }) => {
+  console.log(singleProduct);
   const { addItem, updateItemQuantity, getItem } = useCart();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -111,7 +112,11 @@ const ProductDetails = ({ loading, singleProduct }) => {
             </div>
             <button
               className="btn ms-0 ms-md-5 btn-primary search-button"
-              onClick={() => navigate("../messege-seller")}
+              onClick={() =>
+                navigate("../messege-seller", {
+                  state: { seller_id: singleProduct.user_id },
+                })
+              }
             >
               <AiOutlineMessage className="me-1" /> Message Seller
             </button>
