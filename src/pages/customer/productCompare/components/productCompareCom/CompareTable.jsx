@@ -30,8 +30,8 @@ const CompareTable = () => {
       <tbody>
         <tr>
           <td>Image</td>
-          {comparedProds?.map((p) => (
-            <td style={{ width: `${100 / comparedProds?.length}%` }}>
+          {comparedProds?.map((p,key) => (
+            <td style={{ width: `${100 / comparedProds?.length}%` }} key={key}>
               <img
                 className="compare-table-img"
                 src={productPlaceholder}
@@ -42,20 +42,20 @@ const CompareTable = () => {
         </tr>
         <tr>
           <td>Name</td>
-          {comparedProds?.map((p) => (
-            <td>{p.name}</td>
+          {comparedProds?.map((p,i) => (
+            <td  key={i}>{p.name}</td>
           ))}
         </tr>
         <tr>
           <td>Price</td>
-          {comparedProds?.map((p) => (
-            <td>${p.price}</td>
+          {comparedProds?.map((p,j) => (
+            <td key={j}>${p.price}</td>
           ))}
         </tr>
         <tr>
           <td>Add to cart</td>
-          {comparedProds?.map((p) => (
-            <td>
+          {comparedProds?.map((p,k) => (
+            <td key={k}>
               <div className="qt-add-to-cart-btn">ADD TO CART</div>
             </td>
           ))}

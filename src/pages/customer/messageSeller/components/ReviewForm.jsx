@@ -1,22 +1,22 @@
 import { useState } from "react";
+import Rating from "react-rating";
 import { useFormik } from "formik";
 import { FocusError } from "focus-formik-error";
 import { toast } from "react-toastify";
 import * as yup from "yup";
-import { BsArrowRightCircle, BsStar } from "react-icons/bs";
-import Rating from "react-rating";
-import { BsStarFill } from "react-icons/bs";
-import { loadFromLocalStorage } from "../../../../utils/user/manageLocalStorage";
-import customerAuthHeader from "../../../services/customer-auth-header";
+import { BsArrowRightCircle, BsStarFill } from "react-icons/bs";
+import { BsStar } from "react-icons/bs";
 import { markutosFrontendApi } from "../../../services/Api/api";
-import reviewStyle from "./relatedProduct.module.css";
+import customerAuthHeader from "../../../services/customer-auth-header";
+import { loadFromLocalStorage } from "../../../../utils/user/manageLocalStorage";
+import reviewStyle from "../../../customer/singleProduct/components/singleCom/relatedProduct.module.css";
 
 const schema = yup.object().shape({
   name: yup.string().required("Name is required"),
   email: yup.string().email().required("Email is required."),
 });
 
-const ReviewForm = () => {
+const ReviewForm = ({ sellerId }) => {
   const [loading, setLoading] = useState(false);
   const [rating, setRating] = useState(5);
   const user = loadFromLocalStorage();
@@ -31,12 +31,12 @@ const ReviewForm = () => {
     enableReinitialize: true,
     onSubmit: (values, action) => {
       const finalValues = values;
-      // finalValues.product_id = productId;
       finalValues.rating = rating;
+      finalValues.seller_id = sellerId;
       finalValues.anonymous = values.anonymous == ["on"] ? 1 : 0;
       setLoading(true);
       markutosFrontendApi
-        .post("/product-details/add-review", finalValues, {
+        .post("/seller-shop/add-review", finalValues, {
           headers: {
             Authorization: customerAuthHeader(),
           },
@@ -65,14 +65,17 @@ const ReviewForm = () => {
   } = formik;
 
   return (
-    <section>
+    <section className="container pb-5" id="seller-review">
+      <div className={""}>
+        <h1 className="pt-5 mt-5 mb-5 text-center">Review Seller</h1>
+      </div>
       {user ? (
         <div className={reviewStyle.addReview}>
           <form onSubmit={(e) => e.preventDefault()}>
             <FocusError formik={formik} />
 
             <div>
-              <h4>Add Your Review</h4>
+              <h4>Add Your Review...</h4>
               <p>
                 Your email address will not be published. Required fields are
                 marked *
@@ -165,6 +168,7 @@ const ReviewForm = () => {
                 </div>
               ) : (
                 <div>
+                  {" "}
                   Submit <BsArrowRightCircle />
                 </div>
               )}
