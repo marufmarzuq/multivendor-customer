@@ -66,21 +66,21 @@ const Navigation = ({ toggleF, toggle }) => {
     setActiveMenu(type);
   };
 
-  useEffect(() => {
-    if (pathName.pathname.split("/")[2] == "products") {
-      setProdColl(true);
-      setActiveMenu(pathName.pathname.split("/")[3]);
-    }
+  // useEffect(() => {
+  //   if (pathName.pathname.split("/")[2] == "products") {
+  //     setProdColl(true);
+  //     setActiveMenu(pathName.pathname.split("/")[3]);
+  //   }
 
-    const firstPath = pathname.split("/")[2];
-    if (
-      firstPath == "approved-refund-request" ||
-      firstPath == "received-refund-request"
-    ) {
-      setRefundProdColl(true);
-      setActiveMenu(firstPath);
-    }
-  }, [pathName]);
+  //   const firstPath = pathname.split("/")[2];
+  //   if (
+  //     firstPath == "approved-refund-request" ||
+  //     firstPath == "received-refund-request"
+  //   ) {
+  //     setRefundProdColl(true);
+  //     setActiveMenu(firstPath);
+  //   }
+  // }, [pathName]);
 
   return (
     <Fragment>

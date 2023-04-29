@@ -13,12 +13,12 @@ const DashboardLinks = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (location.pathname.split("/").length > 2) {
-      setPathName(location.pathname.split("/")[2]);
+    if (location?.pathname.split("/").length > 2) {
+      setPathName(location?.pathname.split("/")[2]);
     } else {
       setPathName("profile");
     }
-  }, [location.pathname]);
+  }, [location?.pathname]);
 
   // Logout
   const navigate = useNavigate();
